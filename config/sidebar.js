@@ -119,7 +119,7 @@ const adminSidebarContent = (locale, t) => [
     id: 11,
     icon: "ph:chat",
     name: t("messenger"),
-    routePath: `/${locale}/dashboard/messenger`,
+    routePath: `/${locale}/messenger`,
   },
 ];
 

@@ -19,7 +19,7 @@ module.exports = {
     "/dashboard/subscriptions": ["super_admin"],
     "/dashboard/me": ["super_admin", "user"],
     "/dashboard/invoices": ["super_admin", "user"],
-    "/dashboard/messenger": ["super_admin", "user"],
+    "/messenger": ["super_admin", "user"],
   },
   create: {
     "/dashboard/users": ["super_admin"],
@@ -39,7 +39,7 @@ module.exports = {
     "/dashboard/subscriptions": ["super_admin"],
     "/dashboard/me": ["super_admin", "user"],
     "/dashboard/invoices": ["super_admin", "user"],
-    "/dashboard/messenger": ["super_admin", "user"],
+    "/messenger": ["super_admin", "user"],
   },
   update: {
     "/dashboard/users": ["super_admin"],
@@ -59,7 +59,7 @@ module.exports = {
     "/dashboard/subscriptions": ["super_admin"],
     "/dashboard/me": ["super_admin", "user"],
     "/dashboard/invoices": ["super_admin", "user"],
-    "/dashboard/messenger": ["super_admin", "user"],
+    "/messenger": ["super_admin", "user"],
   },
   delete: {
     "/dashboard/users": ["super_admin"],
@@ -79,6 +79,6 @@ module.exports = {
     "/dashboard/subscriptions": ["super_admin"],
     "/dashboard/me": ["super_admin", "user"],
     "/dashboard/invoices": ["super_admin", "user"],
-    "/dashboard/messenger": ["super_admin", "user"],
+    "/messenger": ["super_admin", "user"],
   },
 };

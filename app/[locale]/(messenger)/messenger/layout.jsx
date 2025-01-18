@@ -4,6 +4,7 @@ import { BreadcrumbProvider } from "@/context/Breadcrumb";
 import { PermissionsProvider } from "@/context/PermissionProvider";
 
 import { getCurrentUser } from "@/lib/session";
+import Link from "next/link";
 
 const DashboardLayout = async ({ params, children }) => {
   const user = await getCurrentUser();
@@ -15,14 +16,12 @@ const DashboardLayout = async ({ params, children }) => {
 
         <Header user={user} />
 
-        <div className="dashboard">
-          <div className="dashboard__sidebar bg-white scroll-bar-1 ">
-            <Sidebar />
-          </div>
+        <Link href={`/${params?.locale}/dashboard/dwellings`}>
+          <p>Dashboard</p>
+        </Link>
 
-          <div className="dashboard__main">
-            <div className="dashboard__content bg-light-2 ">{children}</div>
-          </div>
+        <div className="messenger">
+          <div className="messenger__main">{children}</div>
         </div>
       </PermissionsProvider>
     </BreadcrumbProvider>
