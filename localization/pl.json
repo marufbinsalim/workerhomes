@@ -1244,7 +1244,8 @@
     "packages": "Pakiety",
     "users": "Użytkownicy",
     "invoice": "Faktury",
-    "statistics": "Statystyki"
+    "statistics": "Statystyki",
+    "messenger": "Messages"
   },
   "pagination": {
     "of": "z",

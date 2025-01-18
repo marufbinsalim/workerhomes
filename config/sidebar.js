@@ -1,32 +1,32 @@
 const adminSidebarContent = (locale, t) => [
   {
     id: 1,
-    icon: 'mage:dashboard-minus',
-    name: t('dashboard'),
+    icon: "mage:dashboard-minus",
+    name: t("dashboard"),
     routePath: `/${locale}/dashboard`,
   },
   {
     id: 11,
-    icon: 'wpf:statistics',
-    name: t('statistics'),
+    icon: "wpf:statistics",
+    name: t("statistics"),
     routePath: `/${locale}/dashboard/statistics`,
   },
   {
     id: 2,
-    icon: 'solar:home-broken',
-    name: t('dwellings'),
+    icon: "solar:home-broken",
+    name: t("dwellings"),
     routePath: `/${locale}/dashboard/dwellings`,
     submenu: [
       {
         id: 1,
-        name: t('dwelling-equipments'),
-        icon: 'fluent:spatula-spoon-28-regular',
+        name: t("dwelling-equipments"),
+        icon: "fluent:spatula-spoon-28-regular",
         routePath: `/${locale}/dashboard/dwellings/equipments`,
       },
       {
         id: 2,
-        name: t('dwelling-categories'),
-        icon: 'carbon:category-new-each',
+        name: t("dwelling-categories"),
+        icon: "carbon:category-new-each",
         routePath: `/${locale}/dashboard/dwellings/categories`,
       },
       // {
@@ -37,22 +37,22 @@ const adminSidebarContent = (locale, t) => [
       // },
       {
         id: 5,
-        name: t('dwelling-guidelines'),
-        icon: 'basil:document-outline',
+        name: t("dwelling-guidelines"),
+        icon: "basil:document-outline",
         routePath: `/${locale}/dashboard/dwellings/guidelines`,
       },
       {
         id: 6,
-        name: t('dwelling-amenities'),
-        icon: 'la:swimming-pool',
+        name: t("dwelling-amenities"),
+        icon: "la:swimming-pool",
         routePath: `/${locale}/dashboard/dwellings/amenities`,
       },
     ],
   },
   {
     id: 4,
-    icon: 'mingcute:location-line',
-    name: t('locations'),
+    icon: "mingcute:location-line",
+    name: t("locations"),
     routePath: `/${locale}/dashboard/locations`,
     // submenu: [
     //   {
@@ -65,14 +65,14 @@ const adminSidebarContent = (locale, t) => [
   },
   {
     id: 5,
-    icon: 'carbon:blog',
-    name: t('blogs'),
+    icon: "carbon:blog",
+    name: t("blogs"),
     routePath: `/${locale}/dashboard/blog`,
     submenu: [
       {
         id: 1,
-        name: t('blog-categories'),
-        icon: 'carbon:category-new-each',
+        name: t("blog-categories"),
+        icon: "carbon:category-new-each",
         routePath: `/${locale}/dashboard/blog/categories`,
       },
       // {
@@ -85,64 +85,72 @@ const adminSidebarContent = (locale, t) => [
   },
   {
     id: 6,
-    icon: 'iconoir:packages',
-    name: t('packages'),
+    icon: "iconoir:packages",
+    name: t("packages"),
     routePath: `/${locale}/dashboard/packages`,
   },
   {
     id: 7,
-    icon: 'streamline:subscription-cashflow',
-    name: t('subscription'),
+    icon: "streamline:subscription-cashflow",
+    name: t("subscription"),
     routePath: `/${locale}/dashboard/subscriptions`,
   },
   {
     id: 8,
-    icon: 'heroicons:users',
-    name: t('users'),
+    icon: "heroicons:users",
+    name: t("users"),
     routePath: `/${locale}/dashboard/users`,
   },
   {
     id: 9,
-    icon: 'iconamoon:profile-light',
-    name: t('profile'),
+    icon: "iconamoon:profile-light",
+    name: t("profile"),
     routePath: `/${locale}/dashboard/me`,
   },
+
   {
     id: 10,
-    icon: 'ph:invoice-duotone',
-    name: t('invoice'),
+    icon: "ph:invoice-duotone",
+    name: t("invoice"),
     routePath: `/${locale}/dashboard/invoices`,
   },
-]
+
+  {
+    id: 11,
+    icon: "ph:chat",
+    name: t("messenger"),
+    routePath: `/${locale}/dashboard/messenger`,
+  },
+];
 
 const hasPermission = (permissions, action, path, userRoles) => {
-  const pathWithOutLocale = path.replace(/\/\w{2}/, '')
-  return permissions[action]?.[pathWithOutLocale]?.some(role =>
-    userRoles.includes(role)
-  )
-}
+  const pathWithOutLocale = path.replace(/\/\w{2}/, "");
+  return permissions[action]?.[pathWithOutLocale]?.some((role) =>
+    userRoles.includes(role),
+  );
+};
 
 export const filterSidebarContent = (locale, t, permissions, userRoles) => {
-  const checkPermission = routePath => {
-    const action = 'read'
-    return hasPermission(permissions, action, routePath, userRoles)
-  }
+  const checkPermission = (routePath) => {
+    const action = "read";
+    return hasPermission(permissions, action, routePath, userRoles);
+  };
 
   const filteredContent = adminSidebarContent(locale, t)
-    .map(item => {
+    .map((item) => {
       if (!checkPermission(item.routePath)) {
-        return null
+        return null;
       }
 
       if (item.submenu) {
-        item.submenu = item.submenu.filter(subItem =>
-          checkPermission(subItem.routePath)
-        )
+        item.submenu = item.submenu.filter((subItem) =>
+          checkPermission(subItem.routePath),
+        );
       }
 
-      return item
+      return item;
     })
-    .filter(Boolean)
+    .filter(Boolean);
 
-  return filteredContent
-}
+  return filteredContent;
+};

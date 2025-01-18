@@ -1243,7 +1243,8 @@
     "packages": "Pakete",
     "users": "Benutzer",
     "invoice": "Rechnungen",
-    "statistics": "Statistiken"
+    "statistics": "Statistiken",
+    "messenger": "Messages"
   },
   "pagination": {
     "of": "von",

@@ -1241,7 +1241,8 @@
     "packages": "Packages",
     "users": "Users",
     "invoice": "Invoices",
-    "statistics": "Statistics"
+    "statistics": "Statistics",
+    "messenger": "Messages"
   },
   "pagination": {
     "of": "of",
