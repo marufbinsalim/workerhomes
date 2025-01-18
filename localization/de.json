@@ -1,0 +1,2039 @@
+{
+  "brand": {
+    "title": "Hallo Welt!",
+    "description": "Dies ist ein einfaches Beispiel eines Markenobjekts."
+  },
+  "subscribe": {
+    "title": "Abonnieren Sie unseren Newsletter",
+    "description": "Melden Sie sich an und wir senden Ihnen die besten Angebote",
+    "placeholder": "Ihre E-Mail hier",
+    "button": "Abonnieren"
+  },
+  "header": {
+    "links": {
+      "home": "Startseite",
+      "bookmarks": "Lesezeichen",
+      "pricing": "Preise",
+      "blogs": "Blogs",
+      "about": "Über uns",
+      "contact": "Kontakt"
+    },
+    "locales": {
+      "title": "Wählen Sie Ihre Sprache",
+      "title2": "Verfügbare Sprachen",
+      "en": {
+        "language": "Englisch",
+        "country": "Großbritannien"
+      },
+      "pl": {
+        "language": "Polnisch",
+        "country": "Polen"
+      },
+      "de": {
+        "language": "Deutsch",
+        "country": "Deutschland"
+      }
+    },
+    "brand": {
+      "name": "Homeworkers",
+      "description": "Dies ist ein einfaches Beispiel eines Markenobjekts."
+    },
+    "button": {
+      "sign": "Anmelden / Registrieren",
+      "sign-out": "Abmelden"
+    }
+  },
+  "hero": {
+    "title": "Finden Sie Ihren perfekten Arbeitsplatz",
+    "description": "Entdecken Sie erstaunliche Orte zu exklusiven Angeboten.",
+    "search": {
+      "button": "Suche",
+      "placeholder": "Wo ist Ihr Arbeitsplatz / Suche nach Ort oder Postleitzahl"
+    }
+  },
+  "plan": {
+    "title": "Preise Pläne",
+    "description": "Wählen Sie den besten Plan für Sie.",
+    "button": "Plan wählen",
+    "date": "Datumsbereich auswählen",
+    "options": {
+      "free": "Kostenlos",
+      "silver": "Silber",
+      "gold": "Gold",
+      "platinum": "Platin"
+    },
+    "features": {
+      "title": "Eigenschaften",
+      "recommended": "Empfohlen",
+      "month": "Monat",
+      "button": {
+        "create": "Erstelle ein Inserat",
+        "buy": "Weiter zur Zahlung",
+        "free": "Weiter als kostenlos",
+        "choose": "Plan auswählen"
+      },
+      "list": {
+        "picture": "Bilder",
+        "website": "Webseiten-Link",
+        "facebook": "Facebook-Link",
+        "instagram": "Instagram-Link",
+        "google": "Google Listing",
+        "search": "Suchposition",
+        "featured": "Empfohlener Abschnitt",
+        "visibility": "Abdeckungsradius"
+      },
+
+      "position": {
+        "first": "Über kostenlos, Silber und Gold gelistet",
+        "second": "Über kostenlos und Silber gelistet",
+        "third": "Über kostenlos gelistet",
+        "last": "Letzte"
+      }
+    }
+  },
+  "become-hosted": {
+    "title": "Werden Sie Gastgeber",
+    "description": "Geben Sie die Details Ihrer Immobilie ein, um eine Schätzung zu erhalten, wie viel Sie pro Monat verdienen könnten.",
+    "form": {
+      "title": "Berechnen Sie Ihre Einnahmen",
+      "description": "Geben Sie die Details Ihrer Immobilie ein, um eine Schätzung zu erhalten, wie viel Sie pro Monat verdienen könnten.",
+      "button": "Berechnen",
+      "result": {
+        "title": "Sie könnten verdienen",
+        "nights": "Nächte",
+        "estimated": "bei einem geschätzten Preis pro Nacht von",
+        "button": "Jetzt Immobilie eingeben"
+      },
+      "fields": {
+        "guests": "Anzahl der Gäste",
+        "price": "Preis pro Nacht"
+      }
+    }
+  },
+  "footer": {
+    "hosting": {
+      "title": "Hosting",
+      "host": "Listen Sie Ihre Immobilie auf",
+      "resource": "Hosting-Ressourcen",
+      "guide": "Tipps und Tricks/Ratschläge/Leitfaden",
+      "blog": "Blog",
+      "earn": "Sie könnten verdienen"
+    },
+    "customer": {
+      "care": "Kostenloser Kundenservice",
+      "support": "Benötigen Sie Live-Support?"
+    },
+    "subscribe": {
+      "title": "Abonnieren Sie unseren Newsletter",
+      "placeholder": "Ihre E-Mail hier",
+      "button": "Abonnieren"
+    },
+    "follow": {
+      "title": "Folgen Sie uns in den sozialen Medien"
+    },
+    "company": {
+      "title": "Unternehmen",
+      "links": {
+        "about": "Über uns",
+        "contact": "Kontakt",
+        "careers": "Karriere",
+        "press": "Presse",
+        "blog": "Blog",
+        "faqs": "FAQs"
+      }
+    },
+    "support": {
+      "title": "Support",
+      "links": {
+        "contact": "Kontaktieren Sie uns",
+        "faq": "FAQ",
+        "help": "Hilfe",
+        "privacy": "Datenschutzrichtlinie",
+        "terms": "Allgemeine Geschäftsbedingungen",
+        "legal": "Rechtlicher Hinweis",
+        "sitemap": "Seitenübersicht"
+      }
+    },
+    "service": {
+      "title": "Unsere Dienstleistungen"
+    },
+    "copy": {
+      "right": {
+        "text": "Alle Rechte vorbehalten",
+        "by": "Von",
+        "brand": "Workerhomes.pl"
+      },
+      "privacy": "Datenschutz",
+      "terms": "Bedingungen",
+      "sitemap": "Seitenübersicht"
+    },
+    "default": {
+      "contact": {
+        "title": "Kontaktieren Sie uns",
+        "customer": "Kostenloser Kundenservice",
+        "support": "Benötigen Sie Live-Support?"
+      }
+    }
+  },
+  "landing": {
+    "city": {
+      "title": "Beliebte Städte",
+      "description": "Entdecken Sie die besten Arbeitsplätze in diesen Städten."
+    },
+    "about": {
+      "title": "Wer wir sind und was wir tun",
+      "description": "Erfahren Sie mehr über unsere Identität und die Dienstleistungen, die wir anbieten."
+    },
+    "offer": {
+      "title": "Sonderangebote",
+      "description": "Diese beliebten Reiseziele haben viel zu bieten"
+    },
+    "recommended": {
+      "title": "Empfohlene Listings",
+      "description": "Dies sind die am meisten ausgewählten Listings weltweit.",
+      "button": "Mehr"
+    },
+    "popular": {
+      "title": "Beliebte Reiseziele",
+      "description": "Dies sind die beliebtesten Reiseziele weltweit.",
+      "button": "Mehr"
+    },
+    "featured": {
+      "title": "Ausgewählte Reiseziele",
+      "description": "Dies sind die beliebtesten Reiseziele weltweit.",
+      "button": "Mehr"
+    },
+    "trended": {
+      "title": "Am meisten trendende Orte",
+      "description": "Dies sind die beliebtesten Reiseziele weltweit.",
+      "button": "Mehr"
+    }
+  },
+  "contact": {
+    "form": {
+      "title": "Eine Nachricht senden",
+      "name": "Vollständiger Name",
+      "email": "E-Mail",
+      "subject": "Betreff",
+      "message": "Ihre Nachricht",
+      "button": "Senden"
+    },
+    "messages": {
+      "create": "Wir haben Ihre Nachricht erfolgreich erhalten und werden uns bald bei Ihnen melden.",
+      "error": "Etwas ist schiefgelaufen, bitte versuchen Sie es später erneut.",
+      "recaptcha-not-ready": "Recaptcha ist noch nicht bereit. Bitte versuchen Sie es später erneut.",
+      "recaptcha-failed": "Die Recaptcha-Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "recaptcha-success": "Sie wurden als Mensch verifiziert."
+    },
+    "title": "Kontaktieren Sie uns",
+    "meta": {
+      "customer": "Kostenlose Kundenbetreuung",
+      "support": "Benötigen Sie Live-Support?",
+      "address": "Adresse",
+      "social": "Folgen Sie uns in den sozialen Medien"
+    },
+    "about": {
+      "title": "Wer wir sind und was wir tun",
+      "description": "Erfahren Sie mehr über unsere Identität und die Dienstleistungen, die wir anbieten."
+    }
+  },
+  "claim": {
+    "title": "Erstellen Sie Ihren Anspruch auf diese Immobilie.",
+    "description": "Ihre Anfrage wird an den Administrator gesendet und nach dessen Genehmigung freigegeben.",
+    "form": {
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "email": "E-Mail-Adresse",
+      "description": "Beschreibung",
+      "button": "Senden"
+    },
+    "messages": {
+      "create": "Ihr Anspruch wurde erfolgreich erstellt und wird nach der Genehmigung des Administrators veröffentlicht.",
+      "error": "Etwas ist schiefgelaufen, bitte versuchen Sie es später erneut.",
+      "empty": "Sie haben noch keine Ansprüche.",
+      "signin": "Sie müssen sich anmelden, um einen Anspruch zu erstellen.",
+      "recaptcha-not-ready": "Recaptcha ist noch nicht bereit. Bitte versuchen Sie es später erneut.",
+      "recaptcha-failed": "Die Recaptcha-Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "recaptcha-success": "Sie wurden als Mensch verifiziert."
+    },
+    "table": {
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "email": "E-Mail-Adresse",
+      "user": "Kontodetails",
+      "description": "Beschreibung",
+      "dwelling": "Immobiliendetails",
+      "status": "Status"
+    },
+    "control-panel": {
+      "filters": {
+        "all": "Alle",
+        "approved": "Genehmigt",
+        "not-approved": "Nicht genehmigt"
+      },
+      "search": "Suche nach Vorname oder Nachname",
+      "create": "Diese Immobilie beanspruchen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "login": "Anmelden",
+      "approve": "Genehmigen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Immobilien",
+        "3": "Ansprüche"
+      }
+    }
+  },
+  "listing-contact": {
+    "title": "Kontakt zum Eigentümer",
+    "description": "Sie können den Eigentümer dieses Angebots kontaktieren, indem Sie das untenstehende Formular ausfüllen.",
+    "create": "Jetzt kontaktieren",
+    "form": {
+      "name_or_company": "Ihr Name oder Firmenname",
+      "email": "E-Mail-Adresse",
+      "phone": "Telefonnummer",
+      "guests": "Anzahl der Gäste",
+      "check_in": "Check-in",
+      "check_out": "Check-out",
+      "additional_information": "Zusätzliche Informationen",
+      "button": "Senden"
+    },
+    "messages": {
+      "create": "Ihre Nachricht wurde erfolgreich gesendet.",
+      "error": "Etwas ist schiefgelaufen, bitte versuchen Sie es später erneut.",
+      "empty": "Sie haben noch keine Nachrichten.",
+      "recaptcha-not-ready": "Recaptcha ist noch nicht bereit. Bitte versuchen Sie es später erneut.",
+      "recaptcha-failed": "Die Recaptcha-Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "recaptcha-success": "Sie wurden als Mensch verifiziert."
+    }
+  },
+
+  "bookmark": {
+    "title": "Lesezeichen",
+    "description": "Dies sind die beliebtesten Reiseziele weltweit.",
+    "button": "Mehr",
+
+    "message": {
+      "empty": "Sie haben noch keine Lesezeichen.",
+      "empty2": "Sie können Lesezeichen hinzufügen, indem Sie auf das Lesezeichensymbol in den Einträgen klicken."
+    }
+  },
+  "pricing": {
+    "title": "Preise",
+    "description": "Steigern Sie Ihre Erfolgsrate und Leistung mit einem unserer Vorteilspakete.",
+    "button": "Mehr"
+  },
+  "blog": {
+    "title": "Artikel",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "button": "Mehr",
+    "loading": "Laden...",
+    "not-found": "Keine Artikel gefunden, bitte versuchen Sie es mit einem anderen Ort.",
+    "sidebar": {
+      "search": {
+        "title": "Suche",
+        "placeholder": "Nach Artikeln suchen"
+      },
+      "category": {
+        "title": "Kategorien",
+        "all": "Alle Kategorien"
+      },
+      "recent": {
+        "sort-by": "Sortieren nach",
+        "new": "Neueste Beiträge",
+        "old": "Älteste Beiträge"
+      },
+      "tag": {
+        "title": "Tags"
+      }
+    },
+    "pagination": {
+      "found": "Eigenschaften gefunden"
+    }
+  },
+
+  "register": {
+    "title": "Willkommen - Melden Sie sich kostenlos an",
+    "message": {
+      "text": "Haben Sie bereits ein Konto?",
+      "link": "Anmelden",
+      "recaptcha-not-ready": "Recaptcha ist noch nicht bereit. Bitte versuchen Sie es später erneut.",
+      "recaptcha-failed": "Die Recaptcha-Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "recaptcha-success": "Sie wurden als Mensch verifiziert.",
+      "invalid": "Ungültige Daten, bitte überprüfen Sie Ihre Eingaben.",
+      "success": "Ihr Konto wurde erfolgreich erstellt. Bitte überprüfen Sie Ihren E-Mail-Posteingang (Spam), um Ihr Konto zu bestätigen.",
+      "error": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
+    },
+    "form": {
+      "firstname": "Vorname",
+      "lastname": "Nachname",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "confirm": "Passwort bestätigen",
+      "privacy": "Senden Sie mir exklusive Agoda-Werbeaktionen per E-Mail. Ich kann später wie in der Datenschutzrichtlinie angegeben abmelden.",
+      "button": "Anmelden"
+    },
+    "social": {
+      "title": "oder melden Sie sich an mit",
+      "description": "Durch die Erstellung eines Kontos stimmen Sie unseren Nutzungsbedingungen und der Datenschutzerklärung zu.",
+      "facebook": "Facebook",
+      "google": "Google"
+    }
+  },
+  "login": {
+    "title": "Willkommen zurück",
+    "message": {
+      "text": "Haben Sie noch kein Konto?",
+      "link": "Kostenlos registrieren",
+      "recaptcha-not-ready": "Recaptcha ist noch nicht bereit. Bitte versuchen Sie es später erneut.",
+      "recaptcha-failed": "Die Recaptcha-Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "recaptcha-success": "Sie wurden als Mensch verifiziert.",
+      "invalid": "Ungültige Anmeldedaten. Bitte versuchen Sie es erneut.",
+      "success": "Sie haben sich erfolgreich angemeldet.",
+      "error": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
+    },
+    "form": {
+      "email": "E-Mail",
+      "password": "Passwort",
+      "forgot": "Passwort vergessen?",
+      "button": "Anmelden"
+    },
+    "social": {
+      "title": "oder melden Sie sich an mit",
+      "description": "Durch die Erstellung eines Kontos stimmen Sie unseren Nutzungsbedingungen und der Datenschutzerklärung zu.",
+      "facebook": "Facebook",
+      "google": "Google"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "buttons": {
+      "view": "Alle ansehen",
+      "date": "Datumsbereich auswählen"
+    },
+    "card": {
+      "customer": "Gesamtzahl der Kunden",
+      "listing": "Gesamtzahl der Angebote",
+      "sales": "Gesamtumsatz",
+      "session": "Letzte 7 Tage eingeloggte Benutzer"
+    },
+    "loading": {
+      "analyzing": "Analysieren...",
+      "loading": "Laden..."
+    },
+    "filters": {
+      "weekly": "Wöchentlich",
+      "daily": "Täglich",
+      "monthly": "Monatlich"
+    },
+    "tabs": {
+      "Sales": "Verkäufe",
+      "Users": "Benutzer",
+      "Listings": "Angebote",
+      "overview": "Übersicht",
+      "recent-sales": "Letzte Verkäufe"
+    },
+    "table": {
+      "item": "Artikel",
+      "total": "Gesamt",
+      "plan": "Plan",
+      "status": "Status",
+      "created": "Erstellt am"
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "messages": {
+      "delete-account": "Wichtiger Hinweis - Ihr Konto und Abonnements",
+      "delete": {
+        "1": "Wir hoffen, Sie hatten eine großartige Zeit mit unseren Services! Bevor Sie Ihr Konto löschen, möchten wir sicherstellen, dass alles optimal für Sie geregelt ist. Bitte denken Sie daran, zunächst Ihre aktiven Abonnements zu kündigen in dem Sie ihre Einträge zunächst löschen, um Missverständnisse oder unerwartete Kosten zu vermeiden.",
+        "2": "So einfach funktioniert es:",
+        "3": "Wir würden uns freuen, Sie irgendwann wieder bei uns begrüßen zu dürfen! Falls Sie Unterstützung benötigen, steht unser Team jederzeit bereit, um Ihnen zu helfen. Vielen Dank, dass Sie Teil unserer Community waren!",
+        "4": "PS: Vielleicht überlegen Sie es sich ja noch einmal? Wir haben regelmäßig spannende Neuerungen - bleiben Sie gern mit uns in Kontakt! 😊",
+        "list": {
+          "1": "Melden Sie sich in Ihrem Konto an.",
+          "2": "Öffnen Sie den Bereich “Meine Einträge”",
+          "3": "unter dem Button Menü, löschen Sie Ihren Eintrag. Wiederholen Sie den Vorgang bis alle Einträge gelöscht sind"
+        }
+      },
+      "update": "Dein Konto wurde erfolgreich aktualisiert.",
+      "delete-success": "Dein Konto wurde erfolgreich gelöscht.",
+      "password": "Dein Passwort wurde erfolgreich aktualisiert.",
+      "ok": "Du wirst nach dem Aktualisieren deiner Kontodaten abgemeldet. Bitte melde dich erneut an.",
+      "loading": "Deine Identität wird abgerufen, bitte warten...",
+      "auth": "Gefahrenzone!",
+      "change": "Ändere dein Passwort",
+      "verify-password": "Bitte bestätigen Sie Ihr Passwort, um fortzufahren.",
+      "password-verified": "Passwort wurde erfolgreich überprüft.",
+      "invalid-password": "Ungültiges Passwort. Bitte versuchen Sie es erneut.",
+      "no-card": "Sie müssen mindestens eine Zahlungsmethode auswählen.",
+      "payment-method": "Zahlungsmethode wurde erfolgreich aktualisiert."
+    },
+    "control-panel": {
+      "edit": "Aktualisieren",
+      "delete": "Löschen",
+      "submit": "Einreichen",
+      "password": "Ändere dein Passwort",
+      "deleteAccount": "Mein Konto löschen",
+      "change-payment": "Zahlungsmethode ändern",
+      "breadcrumb": {
+        "1": "Armaturenbrett",
+        "2": "Profil"
+      }
+    },
+    "form": {
+      "field": {
+        "password": "Passwort",
+        "current-password": "Aktuelles Passwort",
+        "confirm-password": "Passwort bestätigen",
+        "business-account": "Geschäftskonto",
+        "private-account": "Privatkonto",
+        "company": "Firmenname",
+        "phone": "Telefon",
+        "address": "Adresse",
+        "vat": "USt-IdNr.",
+        "email": "E-Mail-Adresse",
+        "first_name": "Vorname",
+        "last_name": "Nachname",
+        "first_line": "Straße und Hausnummer",
+        "second_line": "Zweite Adresszeile",
+        "city": "Stadt",
+        "zip": "Postleitzahl",
+        "country": "Land",
+        "spoken-language": "Gesprochene Sprache",
+        "paypal": "Paypal",
+        "card": "Kreditkarte",
+        "yes": "Ja",
+        "no": "Nein",
+        "payment-methods": "Zahlungsmethoden",
+        "current-method": "Aktuelle Zahlungsmethode",
+        "payment-method": "Zahlungsmethode"
+      },
+      "errors": {
+        "password": "Passwort ist erforderlich.",
+        "first_name": "Vorname ist erforderlich.",
+        "last_name": "Nachname ist erforderlich.",
+        "email": "E-Mail-Adresse ist erforderlich."
+      }
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt."
+  },
+  "logout": {
+    "title": "Abmelden",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt."
+  },
+  "blogs": {
+    "title": "Artikel",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Sind Sie sicher, dass Sie diesen Artikel löschen möchten?",
+      "create": "Artikel wurde erfolgreich erstellt.",
+      "update": "Artikel wurde erfolgreich aktualisiert.",
+      "delete-success": "Artikel wurde erfolgreich gelöscht.",
+      "translate": "Land wurde erfolgreich übersetzt."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "Alle",
+        "not-published": "Nicht veröffentlicht",
+        "newest": "Neueste"
+      },
+      "search": "Nach Titel suchen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Artikel"
+      }
+    },
+    "table": {
+      "title": "Titel",
+      "author": "Autor",
+      "category": "Kategorie",
+      "published": "Veröffentlicht",
+      "translation": "Übersetzungen",
+      "created": "Erstellt am",
+      "options": "Optionen"
+    }
+  },
+  "blog-comments": {
+    "title": "Kommentare",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Sind Sie sicher, dass Sie diesen Kommentar löschen möchten?",
+      "create": "Kommentar wurde erfolgreich erstellt.",
+      "update": "Kommentar wurde erfolgreich aktualisiert.",
+      "delete-success": "Kommentar wurde erfolgreich gelöscht.",
+      "translate": "Land wurde erfolgreich übersetzt."
+    }
+  },
+  "blog-categories": {
+    "title": "Kategorien",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Sind Sie sicher, dass Sie diese Kategorie löschen möchten?",
+      "create": "Kategorie wurde erfolgreich erstellt.",
+      "update": "Kategorie wurde erfolgreich aktualisiert.",
+      "delete-success": "Kategorie wurde erfolgreich gelöscht.",
+      "translate": "Land wurde erfolgreich übersetzt."
+    },
+    "control-panel": {
+      "search": "Nach Titel suchen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Artikel",
+        "3": "Kategorien"
+      }
+    },
+    "table": {
+      "title": "Titel",
+      "description": "Beschreibung",
+      "translation": "Übersetzungen",
+      "options": "Optionen"
+    }
+  },
+  "subscription": {
+    "title": "Abonnements",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "create": "Erstellen",
+    "reset": "Formular zurücksetzen",
+    "messages": {
+      "delete": "Sind Sie sicher, dass Sie dieses Abonnement löschen möchten?",
+      "create": "Abonnement wurde erfolgreich erstellt.",
+      "update": "Abonnement wurde erfolgreich aktualisiert.",
+      "delete-success": "Abonnement wurde erfolgreich gelöscht.",
+      "translate": "Land wurde erfolgreich übersetzt."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "Alle",
+        "admin": "Vom Admin zugewiesen",
+        "purchased": "Gekauft",
+        "close-to-expire": "Kurz vor Ablauf",
+        "expired": "Abgelaufen",
+        "used": "Noch nicht gelistet"
+      },
+      "search": "Suche nach Paketnamen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Abonnements"
+      }
+    },
+    "table": {
+      "by": "Erstellt von",
+      "package": "Paketname",
+      "start": "Startdatum",
+      "end": "Enddatum",
+      "state": "Zahlungsstatus",
+      "status": "Status",
+      "amount": "Betrag",
+      "not-set": "Gelistet",
+      "options": "Optionen"
+    },
+    "form": {
+      "titles": {
+        "create": "Abonnement erstellen",
+        "description": "Sie können ein Abonnement mit benutzerdefiniertem Zeitraum und freiem Betrag für Ihre Angebote erstellen.",
+        "edit": "Abonnement bearbeiten"
+      },
+      "fields": {
+        "package": "Abonnementplan",
+        "start": "Startdatum",
+        "end": "Enddatum"
+      }
+    }
+  },
+  "dwellings": {
+    "title": "Angebote",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "messages": {
+      "delete": "Sind Sie sicher, dass Sie es aus der Liste löschen möchten?",
+      "create": "Der Artikel wurde erfolgreich erstellt.",
+      "create2": "Ihr gelisteter Artikel wurde erfolgreich erstellt und wird nach Genehmigung durch den Administrator veröffentlicht.",
+      "update": "Der Artikel wurde erfolgreich aktualisiert.",
+      "delete-success": "Der Artikel wurde erfolgreich gelöscht.",
+      "translate": "Das Land wurde erfolgreich übersetzt.",
+      "loading": "Generieren des Inseratformulars...",
+      "subscription": "Die Wohnung wurde erfolgreich erstellt. Ihr Artikel wird nach der Genehmigung durch den Administrator veröffentlicht.",
+      "not-valid-country": "Der ausgewählte Standort muss in Deutschland, Polen oder England liegen.",
+      "pending-subscription": "Ihr Abonnement steht für die nächste Abrechnungsperiode aus und Sie können Ihren Eintrag erst zur nächsten Abrechnungsperiode löschen, herabstufen oder heraufstufen."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "Alle",
+        "pending": "Ausstehend",
+        "rent": "Mieten",
+        "available": "Verfügbar",
+        "old": "Sortieren nach ältesten",
+        "new": "Sortieren nach neuesten",
+        "expired": "Abgelaufen",
+        "recommended": "Empfohlen",
+        "featured": "Hervorgehoben",
+        "approval": "Benötigt Genehmigung"
+      },
+      "search": "Suche nach Titel",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "current-state": "Aktueller Zustand",
+      "preview": "Sicht",
+      "next": "Weiter",
+      "downgrade": "Downgrade",
+      "upgrade": "Upgrade",
+      "menu": "Menü",
+      "next2": "Weiter & Speichern",
+      "save": "Speichern & Weiter",
+      "close": "Schließen & Zurück",
+      "reset": "Formular zurücksetzen",
+      "prev": "Zurück",
+      "claims": "Anspruchsanfragen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Angebote"
+      }
+    },
+    "table": {
+      "title": "Titel",
+      "status": "Status",
+      "payment_status": "Zahlungsstatus",
+      "published": "Veröffentlicht",
+      "plan": "Plan (Ablaufdatum)",
+      "translation": "Übersetzungen",
+      "created": "Erstellt am",
+      "options": "Optionen",
+      "owner": "Besitzer",
+      "claims": "Ansprüche",
+      "created_by": "Erstellt von",
+      "image": "Standardbild"
+    },
+    "form": {
+      "title": {
+        "create": "Neues Angebot erstellen",
+        "edit": "Gelisteten Artikel bearbeiten",
+        "delete": "Gelisteten Artikel löschen",
+        "delete-msg": "Sind Sie sicher, dass Sie den gelisteten Artikel löschen möchten?",
+        "images": "Bilder des Inserats",
+        "prices": "Preise des Inserats"
+      },
+      "field": {
+        "plan": "Ausgewählter Plan",
+        "category": "Kategorie auswählen",
+        "title": "Titel",
+        "slug": "Slug",
+        "description": "Beschreibung",
+        "description-info": "Der Beschreibungstext muss mindestens 50 Zeichen lang sein.",
+        "amenities": "Ausstattung auswählen",
+        "equipments": "Ausrüstung auswählen",
+        "trend": "Trend",
+        "popular": "Beliebt",
+        "recommended": "Empfohlen",
+        "status": "Aktueller Status",
+        "publish": "Veröffentlichen",
+        "images": "Bilder des Angebots",
+        "accommodation-type": "Unterkunftsart",
+        "price": "Preis (USD)",
+        "payment-period": "Zahlungszeitraum",
+        "guest": "Anzahl der Gäste",
+        "adult": "Anzahl der Erwachsenen",
+        "min": "Mindestaufenthalt (Tage)",
+        "line1": "Straße, Hausnummer",
+        "line2": "Adresszeile 2",
+        "city": "Stadt",
+        "zip": "Postleitzahl",
+        "country": "Land",
+        "search": "Suche nach Name",
+        "search2": "Suche nach Titel",
+        "owner": "Bin ich der Besitzer dieser Wohnung?"
+      },
+      "tabs": {
+        "payment": "Zahlung",
+        "listing": "Anzeigedetails",
+        "source": "Preise & Bilder",
+        "social": "Kontakt & Standort",
+        "package": "Abonnement-Paket"
+      },
+      "price-table": {
+        "price": "Preis",
+        "type": "Typ",
+        "guest": "Anzahl der Gäste",
+        "rooms": "Anzahl der Zimmer",
+        "min_stay": "Mindestaufenthalt Tag(e)",
+        "options": "Optionen"
+      }
+    },
+    "modal": {
+      "create": {
+        "title": "Neues Inserat erstellen",
+        "description": "Hier können Sie ein neues Inserat erstellen."
+      },
+      "update": {
+        "title": "Bearbeiten Sie Ihr Inserat"
+      },
+      "delete": {
+        "yes": "Ja, Inserat löschen",
+        "no": "Abbrechen",
+        "title": "Das Löschen Ihres Inserats hat folgende Auswirkungen:",
+        "description": "Möchten Sie Ihr Inserat wirklich löschen und das Abo kündigen?",
+        "list": {
+          "0": {
+            "bold": "1. Inserat wird dauerhaft entfernt: ",
+            "text": "Ihr Inserat wird sofort von unserer Plattform gelöscht und ist für Nutzer nicht mehr sichtbar"
+          },
+          "1": {
+            "bold": "2. Abo wird gekündigt: ",
+            "text": "Ihr aktuelles Abonnement wird automatisch zum nächstmöglichen Zeitpunkt beendet."
+          }
+        },
+        "notice": {
+          "title": "Wichtiger Hinweis:",
+          "text": "Sie verlieren mit der Löschung wertvolle Sichtbarkeit und die Möglichkeit, neue Anfragen von Interessenten zu erhalten."
+        }
+      },
+      "claims": {
+        "title": "Anspruchsanfragen",
+        "description": "Hier sehen Sie die Liste der Benutzer, die den Anspruch auf diesen Artikel geltend gemacht haben."
+      },
+      "preview": {
+        "title": "Vorschau Ihres Inserats",
+        "description": "Hier können Sie die Vorschau Ihres Inserats sehen."
+      },
+      "review": {
+        "title": "Live-Modus",
+        "description": "Hier können Sie die Bewertungen Ihres Inserats vor der Veröffentlichung sehen."
+      },
+      "translate": {
+        "title": "Übersetzen Sie Ihr Inserat",
+        "description": "Hier können Sie Ihr Inserat übersetzen."
+      },
+      "upgrade": {
+        "title": "Upgrade auf Premium",
+        "description": "Bringen Sie Ihr Erlebnis auf die nächste Ebene, indem Sie Ihren Plan upgraden. Profitieren Sie von erweiterten Funktionen und größerer Transparenz, die Ihnen dabei helfen, mehr zu erreichen.",
+        "description2": "Der upgrade Plan wird sofort aktiviert und gibt Ihnen sofortigen Zugriff auf Premium-Vorteile."
+      },
+      "downgrade": {
+        "title": "Downgrade auf Basic",
+        "description": "Ihr aktueller Plan und seine Funktionen bleiben bis zum Ende Ihres Abrechnungszeitraums aktiv. Danach wird Ihr neuer Plan automatisch gestartet.",
+        "description2": "Dies gewährleistet einen reibungslosen Übergang, ohne dass Sie den Zugriff auf die Vorteile verlieren, für die Sie bereits bezahlt haben. Wenn Sie jemals wieder erweiterte Funktionen benötigen, können Sie Ihren Plan jederzeit problemlos aktualisieren."
+      }
+    }
+  },
+  "review": {
+    "items": {
+      "details": "Details",
+      "owner": "Eigentümer",
+      "no-owner": "Kein Eigentümer gefunden, muss beansprucht werden.",
+      "created-by": "Erstellt von",
+      "title": "Titel",
+      "description": "Beschreibung",
+      "current-state": "Aktueller Zustand",
+      "approved": "Genehmigt",
+      "yes": "Ja",
+      "no": "Nein",
+      "recommended": "Empfohlen",
+      "translation": "Übersetzungen",
+      "no-translation": "Keine Übersetzung gefunden.",
+      "category": "Kategorie",
+      "payment-details": "Zahlungsdetails",
+      "current-plan": "Aktueller Plan",
+      "payment-status": "Zahlungsstatus",
+      "paid": "Bezahlt",
+      "free": "Kostenlos",
+      "assigned-admin": "Zugewiesen von Admin",
+      "payment-amount": "Zahlungsbetrag",
+      "payment-expiry": "Ablaufdatum",
+      "start-date": "Startdatum",
+      "end-date": "Enddatum",
+      "remaining-period": "Verbleibende Periode",
+      "unlimited": "Unbegrenzt",
+      "expired": "Abgelaufen",
+      "pending-subscription": "Ausstehendes Abonnement für die nächste Abrechnungsperiode.",
+      "uploaded-images": "Hochgeladene Bilder",
+      "no-images": "Keine Bilder gefunden.",
+      "features": "Eigenschaften und Ausstattung",
+      "no-features": "Keine Eigenschaften gefunden.",
+      "amenities": "Ausstattung",
+      "no-amenities": "Keine Ausstattung gefunden.",
+      "prices": "Preise und Typen",
+      "price": "Preis: ",
+      "min": "Mindestaufenthalt: ",
+      "guest": "Anzahl der Gäste: ",
+      "no-price": "Keine Preise gefunden.",
+      "type": "Typ: ",
+      "remove-from": "Von der empfohlenen Liste entfernen",
+      "add-to": "Zur empfohlenen Liste hinzufügen",
+      "available": "Auf ausstehend setzen",
+      "approve": "Genehmigen",
+      "rent": "Mieten",
+      "rented": "Bereits vermietet"
+    }
+  },
+  "dwelling-categories": {
+    "title": "Kategorien",
+    "description": "Dies sind die beliebtesten Ziele weltweit.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Möchten Sie diese Kategorie wirklich löschen?",
+      "create": "Kategorie wurde erfolgreich erstellt.",
+      "update": "Kategorie wurde erfolgreich aktualisiert.",
+      "delete-success": "Kategorie wurde erfolgreich gelöscht.",
+      "translate": "Kategorie wurde erfolgreich übersetzt."
+    },
+    "control-panel": {
+      "search": "Nach Titel suchen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Listings",
+        "3": "Kategorien"
+      }
+    },
+    "table": {
+      "icon": "Symbol",
+      "title": "Titel",
+      "description": "Beschreibung",
+      "translation": "Übersetzungen",
+      "options": "Optionen"
+    }
+  },
+  "dwelling-equipments": {
+    "title": "Ausstattungen",
+    "description": "Dies sind die beliebtesten Ziele weltweit.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Möchten Sie diese Ausstattung wirklich löschen?",
+      "create": "Ausstattung wurde erfolgreich erstellt.",
+      "update": "Ausstattung wurde erfolgreich aktualisiert.",
+      "delete-success": "Ausstattung wurde erfolgreich gelöscht.",
+      "translate": "Ausstattung wurde erfolgreich übersetzt."
+    },
+    "control-panel": {
+      "search": "Nach Titel suchen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Listings",
+        "3": "Ausstattungen"
+      }
+    },
+    "table": {
+      "title": "Titel",
+      "description": "Beschreibung",
+      "translation": "Übersetzungen",
+      "options": "Optionen"
+    }
+  },
+  "dwelling-amenities": {
+    "title": "Annehmlichkeiten",
+    "description": "Dies sind die beliebtesten Ziele weltweit.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Möchten Sie diese Annehmlichkeit wirklich löschen?",
+      "create": "Annehmlichkeit wurde erfolgreich erstellt.",
+      "update": "Annehmlichkeit wurde erfolgreich aktualisiert.",
+      "delete-success": "Annehmlichkeit wurde erfolgreich gelöscht.",
+      "translate": "Annehmlichkeit wurde erfolgreich übersetzt."
+    },
+    "control-panel": {
+      "search": "Nach Titel suchen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Listings",
+        "3": "Annehmlichkeiten"
+      }
+    },
+    "table": {
+      "title": "Titel",
+      "description": "Beschreibung",
+      "translation": "Übersetzungen",
+      "options": "Optionen",
+      "icon": "Symbol"
+    }
+  },
+  "dwelling-galleries": {
+    "title": "Galerien",
+    "description": "Dies sind die beliebtesten Ziele weltweit.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Möchten Sie diese Galerie wirklich löschen?",
+      "create": "Galerie wurde erfolgreich erstellt.",
+      "update": "Galerie wurde erfolgreich aktualisiert.",
+      "delete-success": "Galerie wurde erfolgreich gelöscht.",
+      "translate": "Galerie wurde erfolgreich übersetzt."
+    }
+  },
+  "dwelling-guidelines": {
+    "title": "Richtlinien",
+    "description": "Dies sind die beliebtesten Ziele weltweit.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Möchten Sie diese Richtlinie wirklich löschen?",
+      "create": "Richtlinie wurde erfolgreich erstellt.",
+      "update": "Richtlinie wurde erfolgreich aktualisiert.",
+      "delete-success": "Richtlinie wurde erfolgreich gelöscht.",
+      "translate": "Richtlinie wurde erfolgreich übersetzt."
+    },
+    "control-panel": {
+      "search": "Nach Titel suchen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Listings",
+        "3": "Richtlinien"
+      }
+    },
+    "table": {
+      "title": "Titel",
+      "description": "Beschreibung",
+      "pdf": "PDF",
+      "doc": "DOC",
+      "options": "Optionen"
+    }
+  },
+  "locations": {
+    "title": "Beliebte Standorte",
+    "description": "Dies sind die beliebtesten Reiseziele, sehen Sie sich diese an, um die besten Angebote zu erhalten.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Möchten Sie diesen Standort wirklich löschen?",
+      "create": "Standort wurde erfolgreich erstellt.",
+      "update": "Standort wurde erfolgreich aktualisiert.",
+      "delete-success": "Standort wurde erfolgreich gelöscht.",
+      "translate": "Standort wurde erfolgreich übersetzt."
+    },
+    "control-panel": {
+      "search": "Nach Name suchen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Städte"
+      }
+    },
+    "table": {
+      "name": "Name",
+      "country": "Land",
+      "order": "Reihenfolge",
+      "popular": "Beliebt",
+      "trend": "Trend",
+      "translation": "Übersetzungen",
+      "options": "Optionen"
+    }
+  },
+  "location-countries": {
+    "title": "Länder",
+    "description": "Dies sind die beliebtesten Ziele weltweit.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Möchten Sie dieses Land wirklich löschen?",
+      "create": "Land wurde erfolgreich erstellt.",
+      "update": "Land wurde erfolgreich aktualisiert.",
+      "translate": "Land wurde erfolgreich übersetzt.",
+      "delete-success": "Land wurde erfolgreich gelöscht."
+    },
+    "control-panel": {
+      "search": "Nach Name suchen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Standort",
+        "3": "Länder"
+      }
+    },
+    "table": {
+      "name": "Name",
+      "code": "Code",
+      "currency": "Währung",
+      "translation": "Übersetzungen",
+      "options": "Optionen"
+    }
+  },
+  "galleries": {
+    "title": "Bilder des Inserats",
+    "info": "Sie dürfen insgesamt",
+    "info2": "Bild(er) hochladen.",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "create": "Speichern & Weiter",
+    "upload": "Bilder hochladen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "messages": {
+      "delete": "Sind Sie sicher, dass Sie diese Galerie löschen möchten?",
+      "create": "Galerie wurde erfolgreich erstellt.",
+      "update": "Galerie wurde erfolgreich aktualisiert.",
+      "delete-success": "Galerie wurde erfolgreich gelöscht.",
+      "translate": "Galerie wurde erfolgreich übersetzt."
+    }
+  },
+  "prices": {
+    "title": "Preise & Bedingungen",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "create": "Erstellen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "messages": {
+      "delete": "Sind Sie sicher, dass Sie diesen Preis löschen möchten?",
+      "create": "Der Preis wurde erfolgreich erstellt.",
+      "update": "Der Preis wurde erfolgreich aktualisiert.",
+      "delete-success": "Der Preis wurde erfolgreich gelöscht.",
+      "translate": "Der Preis wurde erfolgreich übersetzt.",
+      "required": "Der Preisbetrag ist ein Pflichtfeld, bitte füllen Sie ihn aus."
+    },
+    "control-panel": {
+      "search": "Nach Titel suchen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Preise"
+      }
+    },
+    "table": {
+      "title": "Preis",
+      "type": "Typ",
+      "guest": "Personen",
+      "rooms": "Zimmer",
+      "min_stay": "Mindestaufenthalt",
+      "option": "Optionen"
+    },
+    "form": {
+      "titles": {
+        "create": "Neuen Preis erstellen",
+        "edit": "Preis bearbeiten",
+        "delete": "Preis löschen",
+        "delete-msg": "Sind Sie sicher, dass Sie diesen Preis löschen möchten?"
+      },
+      "fields": {
+        "type": "Typ",
+        "guest": "Personen",
+        "rooms": "Zimmer",
+        "min_stay": "Mind. Aufenthalt",
+        "price": "Preis zł"
+      }
+    }
+  },
+  "packages": {
+    "title": "Pakete",
+    "description": "Dies sind die beliebtesten Ziele weltweit.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Möchten Sie dieses Paket wirklich löschen?",
+      "create": "Paket wurde erfolgreich erstellt.",
+      "update": "Paket wurde erfolgreich aktualisiert.",
+      "delete-success": "Paket wurde erfolgreich gelöscht.",
+      "translate": "Paket wurde erfolgreich übersetzt."
+    },
+    "control-panel": {
+      "search": "Nach Titel suchen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Pakete"
+      }
+    },
+    "table": {
+      "title": "Paketname",
+      "price": "Preis / Monat",
+      "description": "Beschreibung",
+      "recommended": "Empfohlen",
+      "stripe": "Stripe Verifiziert",
+      "translation": "Übersetzungen",
+      "options": "Optionen"
+    }
+  },
+  "users": {
+    "title": "Benutzer",
+    "description": "Dies sind die beliebtesten Ziele weltweit.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Möchten Sie diesen Benutzer wirklich löschen?",
+      "create": "Benutzer wurde erfolgreich erstellt.",
+      "update": "Benutzer wurde erfolgreich aktualisiert.",
+      "delete-success": "Benutzer wurde erfolgreich gelöscht."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "Alle",
+        "admin": "Admins",
+        "user": "Benutzer",
+        "blocked": "Blockiert",
+        "confirmed": "Nicht bestätigt"
+      },
+      "search": "Nach E-Mail suchen",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Benutzer"
+      }
+    },
+    "table": {
+      "icon": "Bild",
+      "f-name": "Vorname",
+      "l-name": "Nachname",
+      "email": "E-Mail-Adresse",
+      "blocked": "Blockiert",
+      "confirmed": "Bestätigt",
+      "role": "Rolle",
+      "options": "Optionen"
+    }
+  },
+  "dashboard-sidebar": {
+    "dashboard": "Dashboard",
+    "profile": "Profil",
+    "settings": "Einstellungen",
+    "logout": "Ausloggen",
+    "blogs": "Artikel",
+    "blog-comments": "Kommentare",
+    "blog-categories": "Kategorien",
+    "dwellings": "Listings",
+    "dwelling-categories": "Kategorien",
+    "dwelling-equipments": "Ausstattungen",
+    "dwelling-galleries": "Galerien",
+    "dwelling-reviews": "Bewertungen",
+    "dwelling-guidelines": "Richtlinien",
+    "dwelling-amenities": "Annehmlichkeiten",
+    "listings": "Listings",
+    "locations": "Beliebte Standorte",
+    "location-countries": "Länder",
+    "subscription": "Abonnements",
+    "packages": "Pakete",
+    "users": "Benutzer",
+    "invoice": "Rechnungen",
+    "statistics": "Statistiken"
+  },
+  "pagination": {
+    "of": "von",
+    "found": "Eigenschaften gefunden"
+  },
+  "table": {
+    "loading": "Laden...",
+    "no-data": "Es gibt keine Datensätze, die momentan angezeigt werden könnten. Bitte fügen Sie zuerst einige Datensätze hinzu."
+  },
+  "localizations": {
+    "default": "Sprache auswählen",
+    "en": "Englisch",
+    "pl": "Polnisch",
+    "de": "Deutsch"
+  },
+
+  "listings": {
+    "title": "Anzeigen",
+    "description": "Finden Sie Ihr Traumhaus in unseren Angeboten.",
+    "button": "Mehr",
+    "filters": {
+      "0": {
+        "title": "Filtern nach Preis",
+        "options": {
+          "0": "Alle Preise",
+          "1": "Weniger als zł 500",
+          "2": "zł 500 - zł 1000",
+          "3": "zł 1000 - zł 2000",
+          "4": "zł 1000 - zł 3000",
+          "5": "Mehr als zł 3000"
+        }
+      },
+      "1": {
+        "title": "Filtern nach Gästen",
+        "options": {
+          "0": "Alle",
+          "1": "Weniger als 5",
+          "2": "5 - 10",
+          "3": "10 - 15",
+          "4": "Mehr als 15"
+        }
+      },
+      "2": {
+        "title": "Filtern nach Mindestaufenthalt",
+        "options": {
+          "0": "Alle",
+          "1": "Weniger als 5 Tage",
+          "2": "5 - 10 Tage",
+          "3": "10 - 15 Tage",
+          "4": "Mehr als 15 Tage"
+        }
+      }
+    },
+    "sorts": {
+      "price": "Nach Preis sortieren",
+      "distance": "Nach Entfernung sortieren"
+    },
+    "messages": {
+      "empty": "Es gibt derzeit keine Einträge anzuzeigen. Bitte suchen Sie mit einem anderen Ort.",
+      "invalid": "Bitte wählen Sie einen gültigen Ort aus dem Dropdown-Menü.",
+      "properties": "Immobilien gefunden."
+    }
+  },
+  "dwelling-card": {
+    "more": "mehr Ausstattung",
+    "starting-from": "Ab",
+    "per-night": "pro Nacht",
+    "visit": "Immobilie besuchen",
+    "guests": "Anzahl der Gäste",
+    "min-stay": "Mindestaufenthalt",
+    "posted": "Veröffentlicht",
+    "loading": "Laden",
+    "not-found": "Keine Immobilien gefunden, bitte versuchen Sie es mit einem anderen Standort.",
+    "days": "Tage"
+  },
+  "single-listing": {
+    "location-detail": "Standortdetails",
+    "contact-detail": "Kontaktdetails",
+    "owner-detail": "Eigentümerdetails",
+    "start-from": "Ab",
+    "photos": "Alle Fotos ansehen",
+    "map": "Auf der Karte anzeigen",
+    "not-found": "Es wurde kein Standort gefunden.",
+    "no-contact": "Keine Kontaktdaten gefunden.",
+    "no-owner": "Keine Eigentümerdaten gefunden.",
+    "direction": "Richtung",
+    "service": "Kundendienstsprache",
+    "tabs": {
+      "overview": "Übersicht",
+      "facilities": "Einrichtungen",
+      "amenities": "Ausstattung",
+      "price": "Verfügbare Preise & Bedingungen",
+      "location": "Adresse & Standort"
+    },
+    "sections": {
+      "price": {
+        "title": "Verfügbare Preise & Bedingungen",
+        "description": "Wählen Sie Ihre Unterkunft und erhalten Sie den besten Preis für Ihren Aufenthalt."
+      },
+      "location": {
+        "title": "Standort & Umgebung"
+      },
+      "top-properties": {
+        "title": "Top-Immobilien werden gelistet von",
+        "description": "Hier finden Sie weitere Immobilien, die vom selben Eigentümer gelistet wurden."
+      },
+      "featured": {
+        "title": "Empfohlene Immobilien",
+        "description": "Hier sehen Sie weitere Immobilien, die dieser ähneln."
+      }
+    }
+  },
+  "status": {
+    "AVAILABLE": "Verfügbar",
+    "PENDING": "Ausstehend",
+    "RENT": "Miete",
+    "needs-admin-approval": "Benötigt Admin-Genehmigung"
+  },
+  "confirm": {
+    "confirm": "Bestätigen",
+    "reject": "Abbrechen"
+  },
+  "accommodation-types": {
+    "SELECT TYPE": "Typ Wählen",
+    "SINGLE ROOMS": "Einzelzimmer",
+    "DOUBLE ROOMS": "Doppelzimmer",
+    "SHARED ROOMS": "Gemeinschaftszimmer",
+    "WHOLE ACCOMMODATION": "Gesamte Unterkunft"
+  },
+  "image-uploader": {
+    "larger": "ist größer als 10 MB und kann nicht hochgeladen werden.",
+    "allowed": "Sie dürfen nur ",
+    "images": "Bilder hochladen",
+    "error": "Einige Dateien waren zu groß und wurden nicht hinzugefügt.",
+    "upload": "Bilder Hochladen",
+    "selected": "Ausgewählte Bilder",
+    "remove": "Entfernen",
+    "upload2": "Hochladen"
+  },
+  "social": {
+    "title": "Fügen Sie Ihre sozialen Medien und Kontakte hinzu",
+    "create": "Erstellen",
+    "edit": "Aktualisieren",
+    "list": {
+      "type": "Name des sozialen Netzwerks",
+      "value": "Wert"
+    },
+    "form": {
+      "fields": {
+        "type": "Art des Kontakts",
+        "url": "Link zu Ihrem Profil oder Nummer",
+        "select": "Element auswählen"
+      }
+    }
+  },
+  "address": {
+    "title": "Standort- und Adressdetails",
+    "load": "Karte laden",
+    "close": "Schließen und zurückkehren",
+    "update": "Aktualisieren",
+    "create": "Speichern & Weiter",
+    "reset": "Formular zurücksetzen",
+    "prev": "Zurück",
+    "messages": {
+      "location": "Bitte markieren Sie Ihren Standort.",
+      "update": "Ihr Standort wurde erfolgreich festgelegt.",
+      "not-valid-country": "Der ausgewählte Standort muss in Deutschland, Polen oder England liegen.",
+      "no-api-key": "Google Maps API-Schlüssel ist nicht gesetzt, bitte wenden Sie sich an den Administrator.",
+      "need-to-load": "Sie müssen zuerst die Karte laden und Ihren Standort auswählen."
+    },
+    "form": {
+      "fields": {
+        "first_line": "Straße, Hausnummer",
+        "second_line": "Zweite Adresszeile",
+        "city": "Stadtname",
+        "zip_code": "Postleitzahl",
+        "direction": "Richtungsdetails",
+        "service_lang": "Kundendienstsprache"
+      }
+    }
+  },
+  "validation": {
+    "required": "Dieses Feld ist erforderlich.",
+    "minLength": "Dieses Feld muss mindestens {min} Zeichen lang sein.",
+    "maxLength": "Dieses Feld darf höchstens {max} Zeichen lang sein.",
+    "matches": "Das Passwort muss mindestens einen Großbuchstaben, eine Zahl und ein Symbol enthalten.",
+
+    "email": "Dies muss eine gültige E-Mail-Adresse sein.",
+    "password": {
+      "min": "Das Passwort muss mindestens 6 Zeichen lang sein.",
+      "matches": "Das Passwort muss mindestens einen Großbuchstaben, eine Zahl und ein Symbol enthalten.",
+      "required": "Passwort ist erforderlich."
+    },
+    "confirm_password": {
+      "required": "Bitte bestätige dein Passwort.",
+      "oneOf": "Passwörter müssen übereinstimmen."
+    },
+    "dwelling": {
+      "title": "Titel ist erforderlich.",
+      "description": {
+        "min": "Die Beschreibung muss mindestens 50 Zeichen lang sein.",
+        "required": "Beschreibung ist erforderlich."
+      },
+      "category": "Kategorie ist erforderlich.",
+      "features": "Funktionen sind erforderlich und es muss mindestens eine Option ausgewählt werden.",
+      "slug": "Slug ist erforderlich.",
+      "package": "Paket ist erforderlich."
+    },
+    "amenity": {
+      "title": "Titel ist erforderlich.",
+      "description": "Beschreibung ist erforderlich."
+    },
+    "dwelling-category": {
+      "title": "Titel ist erforderlich.",
+      "description": "Beschreibung ist erforderlich."
+    },
+    "dwelling-contact": {
+      "phone": "Telefonnummer ist erforderlich.",
+      "email": "E-Mail ist erforderlich.",
+      "invalid-email": "E-Mail ist ungültig.",
+      "check_in": "Check-in-Zeit ist erforderlich.",
+      "check_out": "Check-out-Zeit ist erforderlich.",
+      "name_or_company": "Ihr Name oder Firmenname ist erforderlich."
+    },
+    "dwelling-equipment": {
+      "title": "Titel ist erforderlich.",
+      "description": "Beschreibung ist erforderlich.",
+      "icon": "Symbol ist erforderlich."
+    },
+    "galleries": {
+      "image": "Du musst mindestens ein Bild hochladen.",
+      "order": "Reihenfolge ist erforderlich.",
+      "dwelling": "Angebotsdetails sind erforderlich."
+    },
+    "price": {
+      "price": "Preis ist erforderlich.",
+      "type": "Typ ist erforderlich.",
+      "guest": "Anzahl der Gäste ist erforderlich.",
+      "rooms": "Anzahl der Zimmer ist erforderlich.",
+      "min_stay": "Mindestaufenthalt ist erforderlich."
+    },
+    "contact": {
+      "name": "Dein Name ist erforderlich.",
+      "email": "E-Mail-Adresse ist erforderlich, wird aber anderen zur Verfügung gestellt.",
+      "subject": "Betreff ist erforderlich.",
+      "message": "Nachricht ist erforderlich.",
+      "invalid-email": "E-Mail ist ungültig."
+    },
+    "guideline": {
+      "title": "Titel ist erforderlich.",
+      "description": {
+        "min": "Die Beschreibung muss mindestens 10 Zeichen lang sein.",
+        "max": "Die Beschreibung darf maximal 30 Zeichen lang sein."
+      },
+      "pdf": "PDF ist erforderlich."
+    },
+    "location": {
+      "name": "Name ist erforderlich.",
+      "country": "Land ist erforderlich.",
+      "order": "Reihenfolge ist erforderlich.",
+      "image": "Du musst mindestens ein Bild hochladen."
+    },
+    "package": {
+      "name": "Paketname ist erforderlich.",
+      "icon": "Symbol ist erforderlich.",
+      "iconSize": "Symbolgröße ist erforderlich und muss in Pixel angegeben sein.",
+      "order": "Reihenfolge ist erforderlich."
+    },
+    "subscription": {
+      "package": "Paket ist erforderlich.",
+      "start_date": "Startdatum ist erforderlich.",
+      "end_date": "Enddatum ist erforderlich."
+    },
+    "user": {
+      "first_name": "Vorname ist erforderlich.",
+      "last_name": "Nachname ist erforderlich.",
+      "email": "E-Mail-Adresse ist erforderlich.",
+      "password": {
+        "min": "Das Passwort muss mindestens 6 Zeichen lang sein.",
+        "lowercase": "Das Passwort muss mindestens einen Kleinbuchstaben enthalten.",
+        "uppercase": "Das Passwort muss mindestens einen Großbuchstaben enthalten.",
+        "number": "Das Passwort muss mindestens eine Zahl enthalten.",
+        "symbol": "Das Passwort muss mindestens ein Symbol enthalten.",
+        "required": "Passwort ist erforderlich."
+      },
+      "role": "Rolle ist erforderlich."
+    }
+  },
+  "invoice": {
+    "title": "Rechnungen",
+    "description": "Dies sind die beliebtesten Ziele. Prüfen Sie sie, um die besten Angebote zu erhalten.",
+    "create": "Erstellen",
+    "messages": {
+      "delete": "Möchten Sie diesen Standort wirklich löschen?",
+      "create": "Der Standort wurde erfolgreich erstellt.",
+      "update": "Der Standort wurde erfolgreich aktualisiert.",
+      "delete-success": "Der Standort wurde erfolgreich gelöscht.",
+      "translate": "Der Standort wurde erfolgreich übersetzt."
+    },
+    "control-panel": {
+      "search": "Suche nach Name",
+      "create": "Erstellen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "translate": "Übersetzen",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Rechnungen"
+      }
+    },
+    "table": {
+      "date": "Datum",
+      "cost": "Kosten",
+      "action": "Aktion",
+      "download": "Herunterladen",
+      "name": "Paketname"
+    }
+  },
+  "forgot-password": {
+    "title": "Passwort vergessen",
+    "description": "",
+    "send": "Senden",
+    "messages": {
+      "success": "Wir senden einen Link an Ihre E-Mail-Adresse. Bitte überprüfen Sie Ihren Posteingang.",
+      "failed": "Das Senden der E-Mail ist fehlgeschlagen, bitte überprüfen Sie Ihre E-Mail und versuchen Sie es erneut.",
+      "not-exists": "Ihre E-Mail-Adresse ist nicht als gültige E-Mail-Adresse registriert. Bitte registrieren Sie sich zuerst.",
+      "error": "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal.",
+      "recaptcha-not-ready": "Recaptcha ist noch nicht bereit. Bitte versuchen Sie es später erneut.",
+      "recaptcha-failed": "Recaptcha-Überprüfung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "recaptcha-success": "Sie wurden als Mensch verifiziert.",
+      "invalid": "Ungültige Daten, bitte überprüfen Sie Ihre Eingabedaten.",
+      "provider-error": "Ihr Konto ist bei einem sozialen Anbieter registriert. Bitte verwenden Sie die soziale Anmeldung."
+    },
+    "form": {
+      "email": "Ihre registrierte E-Mail-Adresse"
+    }
+  },
+  "reset-password": {
+    "title": "Passwort zurücksetzen",
+    "description": "",
+    "send": "Bestätigen & Zurücksetzen",
+    "messages": {
+      "success": "Ihr Passwort wurde erfolgreich geändert. Sie werden zur Anmeldeseite weitergeleitet.",
+      "failed": "Das Ändern des Passworts ist fehlgeschlagen, bitte versuchen Sie es später erneut.",
+      "not-exists": "Ihre E-Mail-Adresse ist nicht als gültige E-Mail-Adresse registriert. Bitte registrieren Sie sich zuerst.",
+      "error": "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal.",
+      "recaptcha-not-ready": "Recaptcha ist noch nicht bereit. Bitte versuchen Sie es später erneut.",
+      "recaptcha-failed": "Recaptcha-Überprüfung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "recaptcha-success": "Sie wurden als Mensch verifiziert.",
+      "invalid": "Ungültige Daten, bitte überprüfen Sie Ihre Eingabedaten."
+    },
+    "form": {
+      "password": "Neues Passwort",
+      "confirmPassword": "Bestätige neues Passwort"
+    }
+  },
+
+  "about": {
+    "title": {
+      "main": "Über uns",
+      "welcome": "Willkommen bei",
+      "brand": "Workerhomes",
+      "who": "Wer wir sind",
+      "vision": "Unsere Vision",
+      "values": "Unsere Werte",
+      "offer": "Was wir anbieten",
+      "choose": "Warum WorkerHomes wählen?",
+      "community": "Treten Sie unserer Gemeinschaft bei",
+      "connect": "Lassen Sie uns in Kontakt treten!"
+    },
+    "description": {
+      "main": "Bei WorkerHomes verstehen wir, dass die Suche nach der richtigen Unterkunft eine Herausforderung sein kann, besonders für mobile Arbeiter. Deshalb haben wir eine Plattform geschaffen, die es einfacher macht, Arbeiter, Unternehmen und Immobilieneigentümer miteinander zu verbinden und komfortable, erschwingliche und praktische Wohnlösungen anzubieten.",
+      "who": "WorkerHomes wurde mit einer einfachen, aber kraftvollen Mission gegründet: Den Prozess der Bereitstellung und Suche nach temporären Unterkünften für reisende Arbeiter zu vereinfachen. Ob Sie Auftragnehmer, Projektleiter oder Immobilieneigentümer sind, unsere Plattform ist darauf ausgelegt, Ihre spezifischen Bedürfnisse zu erfüllen. Mit langjähriger Erfahrung in der Wohnungs- und Vermietungsbranche ist unser Team bestrebt, eine Gemeinschaft zu schaffen, in der die Suche nach einer Unterkunft schnell, einfach und stressfrei ist.",
+      "vision": "Wir stellen uns eine Welt vor, in der jeder Arbeiter, unabhängig vom Standort, Zugang zu qualitativ hochwertigen Unterkünften hat, die seinen Bedürfnissen entsprechen. Unser Ziel ist es, die Plattform für temporäre Unterkünfte zu werden und ein umfangreiches Netzwerk von Angeboten in verschiedenen Regionen zu bieten. Wir wollen den Wohnungs-Suchprozess so reibungslos wie möglich gestalten und es den Arbeitern ermöglichen, sich auf ihre Arbeit zu konzentrieren, ohne sich Gedanken darüber machen zu müssen, wo sie wohnen werden.",
+      "community": "Egal, ob Sie nach einer Unterkunft suchen oder eine Immobilie anbieten möchten, WorkerHomes ist hier, um zu helfen. Treten Sie unserer wachsenden Gemeinschaft von Arbeitern und Immobilieneigentümern bei, die uns vertrauen, ihre Wohnungs-Suche einfach, zuverlässig und effizient zu gestalten.",
+      "connect": "Beginnen Sie noch heute mit der Erkundung von WorkerHomes und entdecken Sie den einfachsten Weg, temporäre Unterkünfte zu finden, die sich wie ein Zuhause anfühlen."
+    },
+    "list": {
+      "values": {
+        "1": {
+          "title": "Einfachheit",
+          "description": "Wir glauben daran, Dinge einfach zu halten. Unsere benutzerfreundliche Plattform sorgt dafür, dass sowohl das Inserieren als auch das Finden von Unterkünften stressfrei ist."
+        },
+        "2": {
+          "title": "Vertrauen",
+          "description": "Vertrauen steht im Mittelpunkt von allem, was wir tun. Wir überprüfen unsere Angebote sorgfältig und bemühen uns, eine Gemeinschaft zu schaffen, in der sich die Nutzer bei ihren Entscheidungen sicher fühlen."
+        },
+        "3": {
+          "title": "Zugänglichkeit",
+          "description": "Wir setzen uns dafür ein, dass Wohnraum für jeden zugänglich ist. Von kleinen Städten bis hin zu belebten Metropolen deckt unsere Plattform eine Vielzahl von Standorten ab, um verschiedenen Bedürfnissen gerecht zu werden."
+        },
+        "4": {
+          "title": "Gemeinschaft",
+          "description": "Wir sind mehr als nur eine Plattform - wir sind eine Gemeinschaft. Wir verbinden Arbeiter mit Immobilieneigentümern und fördern Beziehungen, die für alle Beteiligten von Vorteil sind."
+        }
+      },
+      "offer": {
+        "1": {
+          "title": "Umfangreiche Angebote",
+          "description": "Egal, ob Sie eine Unterkunft für ein paar Tage, Wochen oder mehrere Monate benötigen, WorkerHomes hat das Richtige für Sie. Unsere Plattform bietet eine große Auswahl an Immobilien, von Einzelzimmern bis hin zu ganzen Häusern, in verschiedenen Regionen."
+        },
+        "2": {
+          "title": "Einfach zu bedienende Plattform",
+          "description": "Unsere Website ist auf Sie zugeschnitten. Durchsuchen Sie die Angebote schnell, filtern Sie nach Ihren spezifischen Bedürfnissen und treten Sie direkt mit Immobilieneigentümern in Kontakt."
+        },
+        "3": {
+          "title": "Flexible Lösungen",
+          "description": "Wir verstehen, dass sich Arbeitspläne ändern können, daher bieten wir flexible Mietoptionen, die sowohl Kurzzeit- als auch Langzeitaufenthalte abdecken."
+        }
+      },
+      "choose": {
+        "1": {
+          "title": "Speziell für Arbeiter",
+          "description": "Im Gegensatz zu generischen Vermietungsplattformen ist WorkerHomes speziell darauf ausgelegt, die Bedürfnisse von reisenden Arbeitern und den Unternehmen, die sie unterstützen, zu erfüllen."
+        },
+        "2": {
+          "title": "Zuverlässige Angebote",
+          "description": "Wir arbeiten eng mit Immobilieneigentümern zusammen, um sicherzustellen, dass jedes Angebot auf unserer Website unseren hohen Qualitäts- und Zuverlässigkeitsstandards entspricht."
+        },
+        "3": {
+          "title": "Erschwingliche Optionen",
+          "description": "Wir bieten eine Reihe von Preismöglichkeiten, die zu jedem Budget passen, sodass Sie leichter eine komfortable Unterkunft finden können, ohne Ihr Budget zu sprengen."
+        },
+        "4": {
+          "title": "Wachsendes Netzwerk",
+          "description": "Unser Netzwerk von Angeboten wächst ständig, sodass Sie mehr Auswahl und Flexibilität haben, wenn es darum geht, die perfekte Unterkunft zu finden."
+        }
+      }
+    }
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung für WorkerHomes",
+    "date": "Stand: 22.09.2024",
+    "sidebar": {
+      "1": "Verantwortliche Stelle",
+      "2": "Erhebung und Speicherung personenbezogener Daten",
+      "3": "Zweck der Datenverarbeitung",
+      "4": "Rechtsgrundlage für die Datenverarbeitung",
+      "5": "Weitergabe von Daten an Dritte",
+      "6": "Speicherdauer",
+      "7": "Ihre Rechte",
+      "8": "Datensicherheit",
+      "9": "Cookies",
+      "10": "Änderungen dieser Datenschutzerklärung",
+      "11": "Kontakt"
+    },
+    "description": {
+      "main": "Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Diese Datenschutzerklärung erläutert, wie WorkerHomes Ihre personenbezogenen Daten erhebt, verarbeitet und nutzt, wenn Sie unsere Website und unsere Dienste nutzen. Bitte lesen Sie diese Erklärung sorgfältig durch, um zu verstehen, wie wir mit Ihren Daten umgehen.",
+      "1": {
+        "text": "Die verantwortliche Stelle für die Verarbeitung Ihrer personenbezogenen Daten auf dieser Website ist:",
+        "address": "Adresse:",
+        "email": "E-Mail-Adresse:",
+        "phone": "Telefonnummer:"
+      },
+      "2": {
+        "text": "Wir erheben und speichern personenbezogene Daten nur im gesetzlich zulässigen Rahmen. Dies geschieht in folgenden Fällen:",
+        "list": {
+          "1": {
+            "title": "Bei der Registrierung:",
+            "description": "Wenn Sie sich auf unserer Plattform registrieren, erheben wir Daten wie Name, E-Mail-Adresse, Adresse und gegebenenfalls Zahlungsinformationen."
+          },
+          "2": {
+            "title": "Bei der Nutzung der Plattform:",
+            "description": "Während der Nutzung der Plattform können wir Informationen über Ihre Aktivitäten sammeln, einschließlich der von Ihnen erstellten Inserate und der Interaktionen mit anderen Nutzern."
+          },
+          "3": {
+            "title": "Technische Daten:",
+            "description": "Beim Besuch unserer Website werden automatisch Daten erhoben, die von Ihrem Browser übermittelt werden, wie z.B. IP-Adresse, Browsertyp, verwendetes Betriebssystem und Zugriffszeiten."
+          }
+        }
+      },
+      "3": {
+        "text": "Ihre personenbezogenen Daten werden zu folgenden Zwecken verarbeitet:",
+        "list": {
+          "1": {
+            "title": "Bereitstellung der Dienste:",
+            "description": "Um Ihnen den Zugriff auf die Plattform und die Nutzung unserer Dienste zu ermöglichen."
+          },
+          "2": {
+            "title": "Vertragsdurchführung:",
+            "description": "Zur Erfüllung unserer vertraglichen Pflichten, z.B. zur Abwicklung Ihrer Zahlungen oder zur Verwaltung Ihrer Inserate."
+          },
+          "3": {
+            "title": "Kommunikation:",
+            "description": "Um mit Ihnen in Kontakt zu treten, z.B. um Sie über Änderungen unserer Dienste oder dieser Datenschutzerklärung zu informieren."
+          },
+          "4": {
+            "title": "Optimierung der Website:",
+            "description": "Zur Verbesserung der Funktionalität und Benutzerfreundlichkeit unserer Website."
+          },
+          "5": {
+            "title": "Rechtliche Verpflichtungen:",
+            "description": "Zur Einhaltung gesetzlicher Vorschriften, z.B. im Zusammenhang mit der Aufbewahrung von Rechnungen und Buchhaltungsunterlagen."
+          }
+        }
+      },
+      "4": {
+        "text": "Die Verarbeitung Ihrer personenbezogenen Daten erfolgt auf folgenden Rechtsgrundlagen:",
+        "list": {
+          "1": {
+            "title": "Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung):",
+            "description": "Die Verarbeitung ist notwendig für die Erfüllung eines Vertrags, dessen Vertragspartei Sie sind, oder zur Durchführung vorvertraglicher Maßnahmen, die auf Ihre Anfrage hin erfolgen."
+          },
+          "2": {
+            "title": "Art. 6 Abs. 1 lit. a DSGVO (Einwilligung):",
+            "description": "Soweit Sie uns eine Einwilligung zur Verarbeitung Ihrer Daten für bestimmte Zwecke gegeben haben, erfolgt die Verarbeitung auf Basis dieser Einwilligung."
+          },
+          "3": {
+            "title": "Art. 6 Abs. 1 lit. f DSGVO (Berechtigte Interessen):",
+            "description": "Die Verarbeitung erfolgt zur Wahrung unserer berechtigten Interessen, soweit Ihre Interessen oder Grundrechte und Grundfreiheiten nicht überwiegen."
+          },
+          "4": {
+            "title": "Art. 6 Abs. 1 lit. c DSGVO (Rechtliche Verpflichtungen): ",
+            "description": "Soweit wir zur Erfüllung gesetzlicher Verpflichtungen verpflichtet sind, verarbeiten wir Ihre Daten auf Basis dieser rechtlichen Verpflichtung."
+          }
+        }
+      },
+      "5": {
+        "text": "Ihre personenbezogenen Daten werden nur dann an Dritte weitergegeben, wenn dies gesetzlich erlaubt ist oder Sie ausdrücklich eingewilligt haben. Dies kann in folgenden Fällen geschehen:",
+        "list": {
+          "1": {
+            "title": "Zahlungsabwicklung:",
+            "description": "Zur Durchführung von Zahlungen arbeiten wir mit externen Zahlungsdienstleistern zusammen, denen wir Ihre Zahlungsdaten übermitteln."
+          },
+          "2": {
+            "title": "Dienstleister:",
+            "description": "Wir beauftragen externe Dienstleister mit der Erbringung bestimmter Leistungen, z.B. IT-Dienstleistungen, Hosting oder Marketing. Diese Dienstleister sind vertraglich verpflichtet, Ihre Daten vertraulich zu behandeln und nur im Rahmen der vereinbarten Leistung zu verarbeiten."
+          },
+          "3": {
+            "title": "Rechtliche Verpflichtungen:",
+            "description": "Wenn wir gesetzlich dazu verpflichtet sind, geben wir Ihre Daten an Behörden oder andere staatliche Einrichtungen weiter."
+          }
+        }
+      },
+      "6": {
+        "text": "Ihre personenbezogenen Daten werden nur so lange gespeichert, wie es für die Erfüllung der jeweiligen Zwecke erforderlich ist oder wir gesetzlich zur Aufbewahrung verpflichtet sind. Nach Ablauf der entsprechenden Fristen werden die Daten gelöscht oder anonymisiert."
+      },
+      "7": {
+        "text": "Sie haben das Recht:",
+        "text2": "Zur Ausübung dieser Rechte können Sie sich jederzeit an uns wenden.",
+        "list": {
+          "1": {
+            "title": "Auskunft:",
+            "description": "Sie können jederzeit Auskunft über die von uns gespeicherten personenbezogenen Daten verlangen."
+          },
+          "2": {
+            "title": "Berichtigung:",
+            "description": "Sie können die Berichtigung unrichtiger Daten oder die Vervollständigung unvollständiger Daten verlangen."
+          },
+          "3": {
+            "title": "Löschung:",
+            "description": "Sie können die Löschung Ihrer personenbezogenen Daten verlangen, soweit diese nicht mehr zur Erfüllung eines Vertrags, zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen oder zur Erfüllung gesetzlicher Pflichten erforderlich sind."
+          },
+          "4": {
+            "title": "Einschränkung der Verarbeitung:",
+            "description": "Sie können die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten verlangen, wenn die Richtigkeit der Daten bestritten wird, die Verarbeitung unrechtmäßig ist, Sie aber deren Löschung ablehnen, oder wir die Daten nicht mehr benötigen, Sie diese jedoch zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen benötigen."
+          },
+          "5": {
+            "title": "Datenübertragbarkeit:",
+            "description": "Sie haben das Recht, die Sie betreffenden personenbezogenen Daten, die Sie uns bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten und deren Übermittlung an einen anderen Verantwortlichen zu verlangen."
+          },
+          "6": {
+            "title": "Widerruf:",
+            "description": "Sie können eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen."
+          },
+          "7": {
+            "title": "Widerspruch:",
+            "description": "Sie können der Verarbeitung Ihrer personenbezogenen Daten widersprechen, wenn sich aus Ihrer besonderen Situation Gründe ergeben, die gegen die Datenverarbeitung sprechen."
+          }
+        }
+      },
+      "8": {
+        "text": "Wir setzen technische und organisatorische Sicherheitsmaßnahmen ein, um Ihre personenbezogenen Daten gegen unbefugten Zugriff, Verlust oder Zerstörung zu schützen. Unsere Sicherheitsmaßnahmen werden entsprechend der technologischen Entwicklung fortlaufend verbessert."
+      },
+      "9": {
+        "text": "Unsere Website verwendet Cookies, um die Nutzung unserer Website zu erleichtern und bestimmte Funktionen bereitzustellen. Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden. Einige der von uns verwendeten Cookies werden nach dem Ende der Browser-Sitzung wieder gelöscht, andere verbleiben auf Ihrem Endgerät und ermöglichen uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.",
+        "text2": "Sie können Ihre Cookie-Einstellungen jederzeit anpassen und der Verwendung bestimmter Cookies widersprechen. Die Deaktivierung von Cookies kann jedoch dazu führen, dass einige Funktionen unserer Website eingeschränkt sind."
+      },
+      "10": {
+        "text": "Wir behalten uns das Recht vor, diese Datenschutzerklärung jederzeit zu ändern, um sie an geänderte Rechtslagen oder bei Änderungen des Dienstes oder der Datenverarbeitung anzupassen. Die jeweils aktuelle Version ist auf unserer Website verfügbar."
+      },
+      "11": {
+        "text": "Wenn Sie Fragen zu dieser Datenschutzerklärung oder zur Verarbeitung Ihrer personenbezogenen Daten haben, können Sie uns unter den folgenden Kontaktdaten erreichen:"
+      }
+    }
+  },
+
+  "terms": {
+    "title": "AAllgemeine Geschäftsbedingungen (AGB) für WorkerHomes",
+    "date": "Stand: 22.09.2024",
+    "sidebar": {
+      "1": "Geltungsbereich",
+      "2": "Leistungsbeschreibung",
+      "3": "Registrierung und Nutzerkonto",
+      "4": "Angebot und Nutzung von Unterkünften",
+      "5": "Kosten und Gebühren",
+      "6": "Haftungsausschluss",
+      "8": "Verbotene Handlungen",
+      "9": "Beendigung und Kündigung",
+      "7": "Leistungsverzögerungen",
+      "10": "Datensicherung",
+      "11": "Inhalte",
+      "12": "Rechteeinräumung",
+      "13": "Freistellung",
+      "14": "Haftungsausschluss",
+      "15": "Haftungsvorbehalt",
+      "16": "Rechtswahl",
+      "17": "Schlussbestimmungen"
+    },
+    "description": {
+      "main": "Herzlich willkommen bei WorkerHomes. Diese Allgemeinen Geschäftsbedingungen ('AGB') regeln die Nutzung unserer Plattform, über die Unterkünfte zur Miete gelistet und gefunden werden können. Bitte lesen Sie diese AGB sorgfältig durch, bevor Sie unsere Dienste nutzen. Mit der Nutzung unserer Plattform erklären Sie sich mit diesen AGB einverstanden. Sollten Sie diesen nicht zustimmen, dürfen Sie die Plattform nicht nutzen.",
+      "1": "Diese AGB gelten für die Nutzung der WorkerHomes-Website sowie aller damit verbundenen Dienste und Inhalte. Sie regeln das Verhältnis zwischen WorkerHomes und den Nutzern der Plattform, sowohl Anbietern von Unterkünften ('Anbieter') als auch Suchenden ('Nutzer').",
+      "2": "WorkerHomes bietet eine Plattform, auf der Anbieter ihre Unterkünfte zur Miete anbieten und Nutzer diese einsehen können. WorkerHomes stellt lediglich eine Verzeichnisdienstleistung zur Verfügung. Es findet keine direkte Buchung oder Zahlungsabwicklung über die Plattform statt.",
+      "3": {
+        "list": {
+          "1": {
+            "title": "Registrierungspflicht:",
+            "description": "Um alle Funktionen der Plattform nutzen zu können, müssen sich Nutzer registrieren und ein Konto erstellen. Die Registrierung ist kostenlos."
+          },
+          "2": {
+            "title": "Angaben:",
+            "description": "Nutzer sind verpflichtet, bei der Registrierung wahrheitsgemäße und vollständige Angaben zu machen und diese bei Änderungen umgehend zu aktualisieren."
+          },
+          "3": {
+            "title": "Verantwortung:",
+            "description": "Der Nutzer ist verantwortlich für die Geheimhaltung seines Passworts und die Aktivitäten, die über sein Konto erfolgen."
+          }
+        }
+      },
+      "4": {
+        "list": {
+          "1": {
+            "title": "Angebotsbeschreibung:",
+            "description": "Anbieter müssen sicherstellen, dass die Beschreibungen ihrer Unterkünfte korrekt, vollständig und aktuell sind. Alle relevanten Informationen, einschließlich Preisen, Verfügbarkeit und Bedingungen, müssen angegeben werden."
+          },
+          "2": {
+            "title": "Rechtskonformität:",
+            "description": "Anbieter sind verantwortlich dafür, dass ihre Angebote den geltenden Gesetzen, Vorschriften und Bestimmungen entsprechen, einschließlich lokaler Regelungen zur Vermietung."
+          },
+          "3": {
+            "title": "Nutzung der Informationen:",
+            "description": "WorkerHomes übernimmt keine Haftung für die Richtigkeit der von den Anbietern gemachten Angaben. Die Nutzung der Plattform erfolgt auf eigenes Risiko."
+          },
+          "4": {
+            "title": "Angebotsbeschreibungen:",
+            "description": "Kunden sind verpflichtet, die Angebote zutreffend und vollständig zu beschreiben. Angebote, die kein wirkliches Angebot darstellen, sondern ausschließlich dem Zweck dienen, die Aufmerksamkeit von Interessenten zu gewinnen oder Beiträge mit beleidigenden oder in sonstiger Weise gegen das geltende Recht, die Rechte Dritter oder die guten Sitten verstoßenden Inhalten, werden als Missbrauch betrachtet und werden ohne Vorankündigung von WorkerHomes deaktiviert oder gelöscht."
+          }
+        }
+      },
+      "5": {
+        "list": {
+          "1": {
+            "title": "Kostenfreie Nutzung:",
+            "description": "Die Nutzung der grundlegenden Funktionen der Plattform ist kostenfrei. Es fallen keine Gebühren für das Erstellen und Anzeigen von Inseraten an."
+          },
+          "2": {
+            "title": "Kostenpflichtige Dienste:",
+            "description": "WorkerHomes behält sich das Recht vor, in der Zukunft kostenpflichtige Zusatzdienste anzubieten. Diese würden nur nach ausdrücklicher Zustimmung des Nutzers in Anspruch genommen."
+          },
+          "3": {
+            "title": "Preise und Rechnungsstellung:",
+            "description": "Sämtliche Preise verstehen sich exklusive Umsatzsteuer. WorkerHomes erstellt dem zahlungspflichtigen Kunden ausschließlich per E-Mail eine Rechnung über den Rechnungsbetrag. Zusätzlich sind alle Rechnungen im User-Dashboard zum Download verfügbar."
+          }
+        }
+      },
+      "6": {
+        "list": {
+          "1": {
+            "title": "Inhalte der Plattform:",
+            "description": "WorkerHomes stellt die Plattform 'wie besehen' und 'wie verfügbar' zur Verfügung. Es wird keine Gewähr für die Richtigkeit, Vollständigkeit oder Aktualität der Inhalte übernommen."
+          },
+          "2": {
+            "title": "Haftungsausschluss:",
+            "description": "WorkerHomes sowie ihre gesetzlichen Vertreter und Erfüllungsgehilfen haften nur für Vorsatz oder grobe Fahrlässigkeit. Soweit wesentliche Vertragspflichten (folglich solche Pflichten, deren Einhaltung für die Erreichung des Vertragszwecks von besonderer Bedeutung ist) betroffen sind, wird auch für leichte Fahrlässigkeit gehaftet. Dabei beschränkt sich die Haftung auf den vorhersehbaren, vertragstypischen, unmittelbaren Durchschnittsschaden. Gegenüber Unternehmern haftet WorkerHomes im Falle eines grob fahrlässigen Verstoßes gegen nicht wesentliche Vertragspflichten nur in Höhe des vorhersehbaren, vertragstypischen, unmittelbaren Durchschnittsschadens."
+          }
+        }
+      },
+      "7": "Leistungsverzögerungen aufgrund höherer Gewalt und aufgrund von außergewöhnlichen und unvorhersehbaren Ereignissen, welche auch durch äußerste Sorgfalt von WorkerHomes nicht verhindert werden können (hierzu gehören insbesondere Streiks, behördliche oder gerichtliche Anordnungen und Fälle nicht richtiger oder nicht ordnungsgemäßer Selbstbelieferung trotz dahingehenden Deckungsgeschäfts), hat WorkerHomes nicht zu vertreten. Sie berechtigen WorkerHomes dazu, die Leistung um die Dauer des behindernden Ereignisses zu verschieben. Bei Nichtverfügbarkeit aus zuvor genannten Gründen kann WorkerHomes vom Vertrag zurücktreten. WorkerHomes verpflichtet sich dabei, den Kunden unverzüglich über die Nichtverfügbarkeit zu informieren und etwaig bereits erbrachte Gegenleistungen unverzüglich zu erstatten.",
+      "8": {
+        "text": "Nutzer dürfen die Plattform nicht für illegale oder unbefugte Zwecke nutzen. Dazu gehören:",
+        "list": {
+          "1": {
+            "title": "Missbrauch:",
+            "description": "Nutzern ist es untersagt, die Plattform für illegale Aktivitäten zu nutzen, einschließlich, aber nicht beschränkt auf Betrug, Geldwäsche oder die Verbreitung illegaler Inhalte."
+          },
+          "2": {
+            "title": "Datenschutz:",
+            "description": "Die Nutzung der Plattform muss den geltenden Datenschutzgesetzen entsprechen. Es ist untersagt, ohne die Zustimmung anderer Nutzer persönliche Daten zu erheben, zu speichern oder weiterzugeben."
+          }
+        }
+      },
+      "9": {
+        "list": {
+          "1": {
+            "title": "Kündigung durch WorkerHomes:",
+            "description": "WorkerHomes behält sich das Recht vor, das Konto eines Nutzers jederzeit und ohne Angabe von Gründen zu sperren oder zu löschen, insbesondere im Falle von Verstößen gegen diese AGB oder Missbrauch der Plattform. In solchen Fällen hat der Nutzer keinen Anspruch auf Erstattung von gezahlten Gebühren. WorkerHomes kann den Vertrag mit einer Frist von einem Monat kündigen. WorkerHomes behält sich auch das Recht vor, Nutzerkonten zu löschen, die länger als 12 Monate inaktiv waren."
+          },
+          "2": {
+            "title": "Kündigung durch den Nutzer:",
+            "description": "Nutzer können ihr monatliches Abonnement jederzeit über ihr Nutzerkonto kündigen. Die Kündigung wird am Ende des aktuellen Abrechnungszeitraums wirksam. Für den aktuellen Monat erfolgt keine teilweise Erstattung. Nach der Kündigung bleibt der Zugriff auf kostenpflichtige Funktionen bis zum Ende des aktuellen Abrechnungszeitraums bestehen, nach dem der Nutzer auf ein kostenloses Konto zurückfällt."
+          },
+          "3": {
+            "title": "Laufzeit und Kündigung des Abonnements:",
+            "description": "Die Laufzeit für kostenpflichtige Pakete beträgt 1 Monat. Das Recht zur Kündigung aus wichtigem Grund bleibt unberührt. Sofern das Paket nicht vor Ende der Vertragslaufzeit gekündigt wird, verlängert es sich automatisch um die gewählte Laufzeit. Der Nutzer kann den Vertrag jederzeit über den Kündigungsbutton kündigen. Das Konto bleibt bis zum Ende der aktuellen Paketlaufzeit oder des Testzeitraums aktiv und kann in dieser Zeit weiterhin vom Nutzer genutzt werden. Der aktuelle Abrechnungszeitraum muss vom Nutzer weiterhin bezahlt werden. WorkerHomes kann den Vertrag jederzeit zum Ende der jeweiligen Vertragslaufzeit kündigen."
+          },
+          "4": {
+            "title": "Widerrufsrecht gemäß Richtlinie 2011/83/EU:",
+            "list": {
+              "1": "Verbraucher haben das Recht, innerhalb von 14 Tagen ohne Angabe von Gründen von ihrem Vertrag zurückzutreten (Widerrufsrecht).",
+              "2": "Um Ihr Widerrufsrecht auszuüben, müssen Sie uns durch eine eindeutige Erklärung (z.B. per E-Mail oder Post) über Ihre Entscheidung informieren, von diesem Vertrag zurückzutreten. Zur Wahrung der Widerrufsfrist genügt es, wenn Sie Ihre Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.",
+              "3": "Ablauf des Widerrufsrechts: Das Widerrufsrecht erlischt gemäß Artikel 16 der Richtlinie 2011/83/EU, wenn die Dienstleistung vollständig erbracht wurde oder, in Fällen, in denen die Dienstleistung während der Widerrufsfrist beginnt, wenn Sie ausdrücklich zugestimmt haben, dass die Ausführung der Dienstleistung beginnt und Sie anerkannt haben, dass Sie Ihr Widerrufsrecht verlieren, sobald die Dienstleistung begonnen hat.",
+              "4": "Da die Dienstleistung bei WorkerHomes mit der Veröffentlichung Ihres Angebots beginnt, erlischt Ihr Widerrufsrecht, sobald Ihr Angebot veröffentlicht wird und Sie der Durchführung der Dienstleistung zugestimmt haben."
+            }
+          }
+        }
+      },
+      "10": "WorkerHomes führt im Rahmen der Leistungserbringung effektive Datensicherungen durch, übernimmt jedoch keine allgemeine Datensicherungsgarantie für die vom Nutzer übermittelten Daten. Der Nutzer ist auch selbst dafür verantwortlich, in regelmäßigen Abständen angemessene Backups seiner Daten zu erstellen und so einem Datenverlust vorzubeugen. WorkerHomes lässt bei der Erbringung der vereinbarten Dienstleistung die angemessene Sorgfalt walten und wird die Datensicherung mit der erforderlichen Fachkenntnis erbringen. WorkerHomes sichert jedoch nicht zu, dass die gespeicherten Inhalte oder Daten, auf die der Nutzer zugreift, nicht versehentlich beschädigt oder verfälscht werden, verloren gehen oder teilweise entfernt werden. Es obliegt dem Nutzer, eigene Vorsichtsmaßnahmen zur Sicherung seiner Daten zu treffen.",
+      "11": "Die Website WorkerHomes enthält vorwiegend von Nutzern eingestellte Inhalte. WorkerHomes wird Inhalte entfernen, wenn Anhaltspunkte für eine Verletzung dieser Geschäftsbedingungen, geltender Gesetze oder von Rechten Dritter vorliegen. In Bezug auf die von Dritten eingestellten Inhalte haftet WorkerHomes lediglich als Diensteanbieter gemäß § 10 TMG (Telemediengesetz). Berechtigte, insbesondere Inhaber von Urheberrechten und gewerblichen Schutzrechten, können rechtsverletzende Angebote melden und deren Entfernung beantragen. WorkerHomes übernimmt keine Gewähr und Haftung für die inhaltliche Richtigkeit der auf der Website durch Dritte eingestellten Inhalte.",
+      "12": "Für die Inhalte (Bilder, Angebotsbeschreibungen), die der Kunde auf WorkerHomes einstellt, räumt er WorkerHomes das nicht ausschließliche, weltweite, unbefristete, unbegrenzte, übertragbare und unwiderrufliche Nutzungsrecht in allen bekannten Nutzungsarten bezüglich aller Urheberrechte und sonstiger Schutzrechte ein. Der Kunde verpflichtet sich, nur solche Inhalte einzustellen, hinsichtlich derer er diese Rechteeinräumung vornehmen kann.",
+      "13": "Der Kunde stellt WorkerHomes von allen Ansprüchen frei, die von Dritten wegen solcher Verletzungen gegenüber WorkerHomes geltend gemacht werden. Dies umfasst auch die Erstattung von Kosten notwendiger rechtlicher Vertretung. Der Nutzer verpflichtet sich, WorkerHomes im Falle einer Inanspruchnahme schadlos zu halten.",
+      "14": "WorkerHomes sowie ihre gesetzlichen Vertreter und Erfüllungsgehilfen haften nur für Vorsatz oder grobe Fahrlässigkeit. Soweit wesentliche Vertragspflichten betroffen sind (Pflichten, deren Einhaltung für die Erreichung des Vertragszwecks von besonderer Bedeutung ist), wird auch für leichte Fahrlässigkeit gehaftet, allerdings nur in Höhe des vorhersehbaren, vertragstypischen, unmittelbaren Durchschnittsschadens. Gegenüber Unternehmern haftet WorkerHomes im Falle eines grob fahrlässigen Verstoßes gegen nicht wesentliche Vertragspflichten nur in Höhe des vorhersehbaren, vertragstypischen, unmittelbaren Durchschnittsschadens.",
+      "15": "Der vorstehende Haftungsausschluss betrifft nicht die Haftung für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit. Auch die Vorschriften des Produkthaftungsgesetzes bleiben vom Haftungsausschluss unberührt.",
+      "16": "Soweit nicht zwingende gesetzliche Bestimmungen nach dem Heimatrecht des Kunden entgegenstehen, gilt deutsches Recht unter Ausschluss des UN-Kaufrechts als vereinbart.",
+      "17": "Sollte eine Bestimmung dieser AGB ganz oder teilweise unwirksam sein, so berührt dies die Wirksamkeit der übrigen Bestimmungen nicht. An die Stelle der unwirksamen Bestimmung tritt eine Regelung, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung möglichst nahekommt."
+    }
+  },
+  "statistics": {
+    "title": "Statistiken",
+    "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "views": "Ansichten",
+    "contacts": "Kontakte",
+    "most-visited": "Meistbesucht",
+    "table": {
+      "title": "Titel",
+      "image": "Bild",
+      "date": "Datum",
+      "count": "Gesamtansichten"
+    }
+  },
+  "email-verified": {
+    "title": "DANKE",
+    "description": "Deine E-Mail wurde erfolgreich verifiziert. Du kannst dich jetzt in dein Konto einloggen.",
+    "button": "Hier klicken, um dich anzumelden"
+  },
+  "upgrade": {
+    "message": "Ihr Paket wurde erfolgreich geändert. Sie können nun die Vorteile Ihres neuen Pakets genießen.",
+    "upgrade": "Aktualisiere deinen Plan",
+    "process": "Wird verarbeitet...",
+    "downgrade": "Stufe deinen Plan herab",
+
+    "confirm": {
+      "upgrade": {
+        "title": "Aktualisierung",
+        "text": "Sie sind dabei, auf ",
+        "text2": ". Sobald die Zahlung abgeschlossen ist, wird Ihr Konto sofort hochgestuft und Sie erhalten sofortigen Zugriff auf alle Premiumfunktionen und Vorteile Ihres neuen Plans."
+      },
+
+      "downgrade": {
+        "title": "Herabstufung",
+        "text": "Sehr geehrter Kunde, Ihr ",
+        "text2": "-Abonnement wird am Ende des aktuellen Abrechnungszeitraums aktiviert. Bis dahin können Sie die Vorteile Ihres aktuellen Pakets nutzen."
+      }
+    }
+  },
+  "checkout": {
+    "buy": "Kaufe einen Plan",
+    "trail": "Erhalte deine ersten 3 Monate kostenlos",
+    "process": "Verarbeite...",
+    "free-success": "Dein kostenloser Plan wurde erfolgreich erstellt.",
+    "trial-success": "Dein Testpaket wurde erstellt und ist für 3 Monate aktiv."
+  },
+  "payment-card": {
+    "customer": "Kunde:",
+    "email": "E-Mail:",
+    "brand": "Kartenmarke:",
+    "type": "Zahlungsmethode:",
+    "last4": "Letzten 4 Ziffern:",
+    "expiry": "Ablaufdatum:",
+    "no-method": "Keine Zahlungsmethode gefunden.",
+    "un-support": "Nicht unterstützte Zahlungsmethode.",
+    "loading": "Lade Zahlungsdetails...",
+    "update": "Zahlungsdetails aktualisieren",
+    "failed": "Ein Fehler ist beim Erstellen der Portal-Session aufgetreten.",
+    "unable": "Kundenportal-Session konnte nicht erstellt werden.",
+    "retrieve-error": "Kundendaten konnten nicht abgerufen werden.",
+    "setup": "Richten Sie Ihre Zahlungsmethode ein"
+  },
+  "warning": {
+    "title": "Warnung",
+    "description": "Sehr geehrter Kunde, bitte stellen Sie sicher, dass Sie Ihr Profil vollständig ausgefüllt haben, bevor Sie ein Angebot erstellen, einschließlich Adresse und Kontaktdaten.",
+    "button": "Zum Profil"
+  }
+}

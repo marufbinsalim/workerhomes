@@ -1,0 +1,2040 @@
+{
+  "brand": {
+    "title": "Witaj świecie!",
+    "description": "To jest prosty przykład obiektu marki."
+  },
+  "subscribe": {
+    "title": "Subskrybuj nasz newsletter",
+    "description": "Zapisz się, a my wyślemy Ci najlepsze oferty",
+    "placeholder": "Twoje e-maile tutaj",
+    "button": "Subskrybuj"
+  },
+  "header": {
+    "links": {
+      "home": "Strona główna",
+      "bookmarks": "Zakładki",
+      "pricing": "Cennik",
+      "blogs": "Blogi",
+      "about": "O nas",
+      "contact": "Kontakt"
+    },
+    "locales": {
+      "title": "Wybierz swój język",
+      "title2": "Dostępne języki",
+      "en": {
+        "language": "Angielski",
+        "country": "Wielka Brytania"
+      },
+      "pl": {
+        "language": "Polski",
+        "country": "Polska"
+      },
+      "de": {
+        "language": "Niemiecki",
+        "country": "Niemcy"
+      }
+    },
+    "brand": {
+      "name": "Homeworkers",
+      "description": "To jest prosty przykład obiektu marki."
+    },
+    "button": {
+      "sign": "Zaloguj się / Zarejestruj się",
+      "sign-out": "Wyloguj się"
+    }
+  },
+  "hero": {
+    "title": "Znajdź idealne miejsce do pracy",
+    "description": "Odkryj niesamowite miejsca w ekskluzywnych ofertach.",
+    "search": {
+      "button": "Szukaj",
+      "placeholder": "Gdzie jest twoje miejsce pracy / Szukaj miejsca lub kodu pocztowego"
+    }
+  },
+  "plan": {
+    "title": "Plany cenowe",
+    "description": "Wybierz najlepszy plan dla siebie.",
+    "button": "Wybierz plan",
+    "date": "Wybierz zakres dat",
+    "options": {
+      "free": "Darmowy",
+      "silver": "Srebrny",
+      "gold": "Złoto",
+      "platinum": "Platynowy"
+    },
+    "features": {
+      "title": "Funkcje",
+      "recommended": "Polecane",
+      "month": "Miesiąc",
+      "button": {
+        "create": "Utwórz ogłoszenie",
+        "buy": "Przejdź do płatności",
+        "free": "Kontynuuj jako darmowy",
+        "choose": "Wybierz plan"
+      },
+      "list": {
+        "picture": "Zdjęcia",
+        "website": "Link do strony",
+        "facebook": "Link do Facebooka",
+        "instagram": "Link do Instagrama",
+        "google": "Google Listing",
+        "search": "Pozycja w wyszukiwarce",
+        "featured": "Wyróżniona sekcja",
+        "visibility": "Zasięg pokrycia"
+      },
+      "position": {
+        "first": "Wymienione powyżej darmowych, srebrnych i złotych",
+        "second": "Wymienione powyżej darmowych i srebrnych",
+        "third": "Wymienione powyżej darmowych",
+        "last": "Ostatni"
+      }
+    }
+  },
+  "become-hosted": {
+    "title": "Zostań gospodarzem",
+    "description": "Wprowadź szczegóły swojej nieruchomości, aby uzyskać szacunkową kwotę, jaką możesz zarobić miesięcznie.",
+    "form": {
+      "title": "Oblicz swoje zarobki",
+      "description": "Wprowadź szczegóły swojej nieruchomości, aby uzyskać szacunkową kwotę, jaką możesz zarobić miesięcznie.",
+      "button": "Oblicz",
+      "result": {
+        "title": "Możesz zarobić",
+        "nights": "nocy",
+        "estimated": "przy szacunkowej cenie za noc wynoszącej",
+        "button": "Wprowadź nieruchomość teraz"
+      },
+      "fields": {
+        "guests": "Liczba gości",
+        "price": "Cena za noc"
+      }
+    }
+  },
+  "footer": {
+    "hosting": {
+      "title": "Hosting",
+      "host": "Dodaj swoją nieruchomość",
+      "resource": "Zasoby hostingowe",
+      "guide": "Porady i triki/Porady/Przewodnik",
+      "blog": "Blog",
+      "earn": "Możesz zarobić"
+    },
+    "customer": {
+      "care": "Bezpłatna obsługa klienta",
+      "support": "Potrzebujesz wsparcia na żywo?"
+    },
+    "subscribe": {
+      "title": "Subskrybuj nasz newsletter",
+      "placeholder": "Twoje e-maile tutaj",
+      "button": "Subskrybuj"
+    },
+    "follow": {
+      "title": "Śledź nas w mediach społecznościowych"
+    },
+    "company": {
+      "title": "Firma",
+      "links": {
+        "about": "O nas",
+        "contact": "Kontakt",
+        "careers": "Kariera",
+        "press": "Prasa",
+        "blog": "Blog",
+        "faqs": "FAQ"
+      }
+    },
+    "support": {
+      "title": "Wsparcie",
+      "links": {
+        "contact": "Skontaktuj się z nami",
+        "faq": "FAQ",
+        "help": "Pomoc",
+        "privacy": "Polityka prywatności",
+        "terms": "Regulamin",
+        "legal": "Nota prawna",
+        "sitemap": "Mapa strony"
+      }
+    },
+    "service": {
+      "title": "Nasze usługi"
+    },
+    "copy": {
+      "right": {
+        "text": "Wszelkie prawa zastrzeżone",
+        "by": "Przez",
+        "brand": "Workerhomes.pl"
+      },
+      "privacy": "Prywatność",
+      "terms": "Warunki",
+      "sitemap": "Mapa strony"
+    },
+    "default": {
+      "contact": {
+        "title": "Skontaktuj się z nami",
+        "customer": "Bezpłatna obsługa klienta",
+        "support": "Potrzebujesz wsparcia na żywo?"
+      }
+    }
+  },
+  "landing": {
+    "city": {
+      "title": "Popularne miasta",
+      "description": "Odkryj najlepsze miejsca do pracy w tych miastach."
+    },
+    "about": {
+      "title": "Kim jesteśmy i co robimy",
+      "description": "Dowiedz się o naszej tożsamości i usługach, które oferujemy."
+    },
+    "offer": {
+      "title": "Oferty specjalne",
+      "description": "Te popularne miejsca mają wiele do zaoferowania"
+    },
+    "recommended": {
+      "title": "Polecane oferty",
+      "description": "To są najczęściej wybierane oferty na świecie.",
+      "button": "Więcej"
+    },
+    "popular": {
+      "title": "Popularne destynacje",
+      "description": "To są najpopularniejsze destynacje na świecie.",
+      "button": "Więcej"
+    },
+    "featured": {
+      "title": "Polecane destynacje",
+      "description": "To są najpopularniejsze destynacje na świecie.",
+      "button": "Więcej"
+    },
+    "trended": {
+      "title": "Najczęściej trendowane miejsca",
+      "description": "To są najpopularniejsze destynacje na świecie.",
+      "button": "Więcej"
+    }
+  },
+  "contact": {
+    "form": {
+      "title": "Wyślij wiadomość",
+      "name": "Pełne imię i nazwisko",
+      "email": "Email",
+      "subject": "Temat",
+      "message": "Twoja wiadomość",
+      "button": "Wyślij"
+    },
+    "messages": {
+      "create": "Otrzymaliśmy Twoją wiadomość, skontaktujemy się z Tobą wkrótce.",
+      "error": "Coś poszło nie tak, spróbuj ponownie później.",
+      "recaptcha-not-ready": "Recaptcha nie jest gotowa. Spróbuj ponownie później.",
+      "recaptcha-failed": "Weryfikacja Recaptcha nie powiodła się. Spróbuj ponownie.",
+      "recaptcha-success": "Zostałeś zweryfikowany jako człowiek."
+    },
+    "title": "Skontaktuj się z nami",
+    "meta": {
+      "customer": "Bezpłatna obsługa klienta",
+      "support": "Potrzebujesz wsparcia na żywo?",
+      "address": "Adres",
+      "social": "Śledź nas w mediach społecznościowych"
+    },
+    "about": {
+      "title": "Kim jesteśmy i co robimy",
+      "description": "Dowiedz się o naszej tożsamości i usługach, które oferujemy."
+    }
+  },
+  "listing-contact": {
+    "title": "Kontakt z właścicielem",
+    "description": "Możesz skontaktować się z właścicielem tej oferty, wypełniając poniższy formularz.",
+    "create": "Skontaktuj się teraz",
+    "form": {
+      "name_or_company": "Twoje imię lub nazwa firmy",
+      "email": "Adres e-mail",
+      "phone": "Numer telefonu",
+      "guests": "Liczba gości",
+      "check_in": "Zameldowanie",
+      "check_out": "Wymeldowanie",
+      "additional_information": "Dodatkowe informacje",
+      "button": "Wyślij"
+    },
+    "messages": {
+      "create": "Twoja wiadomość została pomyślnie wysłana.",
+      "error": "Coś poszło nie tak, spróbuj ponownie później.",
+      "empty": "Nie masz jeszcze żadnych wiadomości.",
+      "recaptcha-not-ready": "Recaptcha nie jest gotowa. Spróbuj ponownie później.",
+      "recaptcha-failed": "Weryfikacja Recaptcha nie powiodła się. Spróbuj ponownie.",
+      "recaptcha-success": "Zostałeś zweryfikowany jako człowiek."
+    }
+  },
+
+  "claim": {
+    "title": "Złóż roszczenie do tej nieruchomości.",
+    "description": "Twoje zgłoszenie zostanie wysłane do administratora i będzie zatwierdzone po jego akceptacji.",
+    "form": {
+      "first_name": "Imię",
+      "last_name": "Nazwisko",
+      "email": "Adres e-mail",
+      "description": "Opis",
+      "button": "Wyślij"
+    },
+    "messages": {
+      "create": "Twoje roszczenie zostało pomyślnie utworzone i zostanie opublikowane po zatwierdzeniu przez administratora.",
+      "error": "Coś poszło nie tak, spróbuj ponownie później.",
+      "empty": "Nie masz jeszcze żadnych roszczeń.",
+      "signin": "Musisz się zalogować, aby złożyć roszczenie.",
+      "recaptcha-not-ready": "Recaptcha nie jest gotowa. Spróbuj ponownie później.",
+      "recaptcha-failed": "Weryfikacja Recaptcha nie powiodła się. Spróbuj ponownie.",
+      "recaptcha-success": "Zostałeś zweryfikowany jako człowiek."
+    },
+    "table": {
+      "first_name": "Imię",
+      "last_name": "Nazwisko",
+      "email": "Adres e-mail",
+      "user": "Szczegóły konta",
+      "description": "Opis",
+      "dwelling": "Szczegóły oferty",
+      "status": "Status"
+    },
+    "control-panel": {
+      "filters": {
+        "all": "Wszystkie",
+        "approved": "Zatwierdzone",
+        "not-approved": "Niezatwierdzone"
+      },
+      "search": "Szukaj według imienia lub nazwiska",
+      "create": "Złóż roszczenie do tej nieruchomości",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "approve": "Zatwierdź",
+      "login": "Zaloguj się",
+      "breadcrumb": {
+        "1": "Panel",
+        "2": "Oferty",
+        "3": "Roszczenia"
+      }
+    }
+  },
+  "bookmark": {
+    "title": "Zakładki",
+    "description": "To są najpopularniejsze destynacje na świecie.",
+    "button": "Więcej",
+
+    "message": {
+      "empty": "Nie masz jeszcze zakładek.",
+      "empty2": "Możesz dodać zakładki, klikając ikonę zakładki na liście."
+    }
+  },
+  "pricing": {
+    "title": "Cennik",
+    "description": "Zwiększ swój wskaźnik sukcesu i wydajność dzięki jednemu z naszych pakietów korzyści.",
+    "button": "Więcej"
+  },
+  "blog": {
+    "title": "Artykuły",
+    "description": "To są najpopularniejsze miejsca na świecie.",
+    "button": "Więcej",
+    "loading": "Ładowanie...",
+    "not-found": "Nie znaleziono artykułów, spróbuj innej lokalizacji.",
+    "sidebar": {
+      "search": {
+        "title": "Szukaj",
+        "placeholder": "Szukaj artykułów"
+      },
+      "category": {
+        "title": "Kategorie",
+        "all": "Wszystkie kategorie"
+      },
+      "recent": {
+        "sort-by": "Sortuj według",
+        "new": "Najnowsze posty",
+        "old": "Najstarsze posty"
+      },
+      "tag": {
+        "title": "Tagi"
+      }
+    },
+    "pagination": {
+      "found": "znalezione nieruchomości"
+    }
+  },
+
+  "register": {
+    "title": "Witamy - Zarejestruj się za darmo",
+    "message": {
+      "text": "Masz już konto?",
+      "link": "Zaloguj się",
+      "recaptcha-not-ready": "Recaptcha nie jest gotowa. Spróbuj ponownie później.",
+      "recaptcha-failed": "Weryfikacja Recaptcha nie powiodła się. Spróbuj ponownie.",
+      "recaptcha-success": "Zostałeś zweryfikowany jako człowiek.",
+      "invalid": "Nieprawidłowe dane, sprawdź swoje wpisane informacje.",
+      "success": "Twoje konto zostało pomyślnie utworzone. Sprawdź skrzynkę odbiorczą poczty e-mail (spam), aby zweryfikować swoje konto.",
+      "error": "Coś poszło nie tak. Spróbuj ponownie."
+    },
+    "form": {
+      "firstname": "Imię",
+      "lastname": "Nazwisko",
+      "email": "Email",
+      "password": "Hasło",
+      "confirm": "Potwierdź hasło",
+      "privacy": "Wyślij mi ekskluzywne promocje Agoda. Mogę zrezygnować później, jak wskazano w Polityce Prywatności.",
+      "button": "Zarejestruj się"
+    },
+    "social": {
+      "title": "lub zaloguj się przez",
+      "description": "Tworząc konto, zgadzasz się na nasze Warunki Użytkowania i Politykę Prywatności.",
+      "facebook": "Facebook",
+      "google": "Google"
+    }
+  },
+  "login": {
+    "title": "Witamy z powrotem",
+    "message": {
+      "text": "Nie masz jeszcze konta?",
+      "link": "zarejestruj się za darmo",
+      "recaptcha-not-ready": "Recaptcha nie jest gotowa. Spróbuj ponownie później.",
+      "recaptcha-failed": "Weryfikacja Recaptcha nie powiodła się. Spróbuj ponownie.",
+      "recaptcha-success": "Zostałeś zweryfikowany jako człowiek.",
+      "invalid": "Nieprawidłowe dane logowania. Spróbuj ponownie.",
+      "success": "Zalogowano pomyślnie.",
+      "error": "Coś poszło nie tak. Spróbuj ponownie."
+    },
+    "form": {
+      "email": "Email",
+      "password": "Hasło",
+      "forgot": "Zapomniałeś hasła?",
+      "button": "Zaloguj się"
+    },
+    "social": {
+      "title": "lub zaloguj się przez",
+      "description": "Tworząc konto, zgadzasz się na nasze Warunki Użytkowania i Politykę Prywatności.",
+      "facebook": "Facebook",
+      "google": "Google"
+    }
+  },
+  "dashboard": {
+    "title": "Pulpit",
+    "description": "To są najpopularniejsze miejsca na świecie.",
+    "buttons": {
+      "view": "Zobacz Wszystko",
+      "date": "Wybierz zakres dat"
+    },
+    "card": {
+      "customer": "Łączna liczba klientów",
+      "listing": "Łączna liczba ofert",
+      "sales": "Łączna sprzedaż",
+      "session": "Ostatnie 7 dni zalogowanych użytkowników"
+    },
+    "loading": {
+      "analyzing": "Analizowanie...",
+      "loading": "Ładowanie..."
+    },
+    "filters": {
+      "weekly": "Tygodniowo",
+      "daily": "Dziennie",
+      "monthly": "Miesięcznie"
+    },
+    "tabs": {
+      "Sales": "Sprzedaż",
+      "Users": "Użytkownicy",
+      "Listings": "Oferty",
+      "overview": "Przegląd",
+      "recent-sales": "Ostatnie sprzedaże"
+    },
+    "table": {
+      "item": "Pozycja",
+      "total": "Łącznie",
+      "plan": "Plan",
+      "status": "Status",
+      "created": "Utworzono"
+    }
+  },
+
+  "profile": {
+    "title": "Profil",
+    "description": "To są najpopularniejsze miejsca na świecie.",
+    "messages": {
+      "delete-account": "Ważna informacja - Twoje konto i subskrypcje",
+      "delete": {
+        "1": "Mamy nadzieję, że korzystanie z naszych usług sprawiło Ci radość! Przed usunięciem konta chcemy upewnić się, że wszystko jest dla Ciebie dobrze przygotowane. Pamiętaj, aby najpierw anulować wszystkie aktywne subskrypcje, aby uniknąć nieporozumień lub nieoczekiwanych opłat.",
+        "2": "Oto jak to działa:",
+        "3": "Chętnie powitamy Cię z powrotem w przyszłości! Jeśli potrzebujesz pomocy, nasz zespół jest zawsze gotowy, aby Ci pomóc. Dziękujemy, że byłeś częścią naszej społeczności!",
+        "4": "PS: Może zmienisz zdanie? Zawsze wprowadzamy nowe aktualizacje - pozostań z nami w kontakcie! 😊",
+        "list": {
+          "1": "Zaloguj się na swoje konto.",
+          "2": "Przejdź do sekcji „Oferty”.",
+          "3": "Pod przyciskiem 'Menu' usuń swoją ofertę. Powtarzaj ten proces, aż wszystkie oferty zostaną usunięte."
+        }
+      },
+      "update": "Twoje konto zostało pomyślnie zaktualizowane.",
+      "delete-success": "Twoje konto zostało pomyślnie usunięte.",
+      "password": "Twoje hasło zostało pomyślnie zaktualizowane.",
+      "ok": "Zostaniesz wylogowany po zaktualizowaniu danych konta. Proszę zaloguj się ponownie.",
+      "loading": "Trwa pobieranie Twoich danych, proszę czekać...",
+      "auth": "Strefa zagrożenia!",
+      "change": "Zmień swoje hasło",
+      "verify-password": "Aby kontynuować, potwierdź hasło.",
+      "no-card": "Musisz wybrać co najmniej jedną metodę płatności.",
+      "password-verified": "Hasło zostało pomyślnie zweryfikowane.",
+      "invalid-password": "Nieprawidłowe hasło. Spróbuj ponownie.",
+      "payment-method": "Metoda płatności została pomyślnie zaktualizowana."
+    },
+    "control-panel": {
+      "edit": "Zaktualizuj",
+      "delete": "Usuń",
+      "password": "Zmień swoje hasło",
+      "deleteAccount": "Usuń moje konto",
+      "change-payment": "Zmień metodę płatności",
+      "submit": "Składać",
+      "breadcrumb": {
+        "1": "Panel sterowania",
+        "2": "Profil"
+      }
+    },
+    "form": {
+      "field": {
+        "password": "Hasło",
+        "current-password": "Aktualne hasło",
+        "confirm-password": "Potwierdź hasło",
+        "business-account": "Konto firmowe",
+        "private-account": "Konto prywatne",
+        "company": "Nazwa firmy",
+        "phone": "Telefon",
+        "address": "Adres",
+        "vat": "Numer VAT",
+        "email": "Adres e-mail",
+        "first_name": "Imię",
+        "last_name": "Nazwisko",
+        "first_line": "Ulica i numer domu",
+        "second_line": "Druga Linia Adresowa",
+        "city": "Miasto",
+        "zip": "Kod Pocztowy",
+        "country": "Kraj",
+        "spoken-language": "Język mówiony",
+        "paypal": "Paypal",
+        "card": "Karta kredytowa",
+        "yes": "Tak",
+        "no": "Nie",
+        "payment-methods": "Metody płatności",
+        "current-method": "Obecna metoda płatności",
+        "payment-method": "Metoda płatności"
+      },
+      "errors": {
+        "password": "Hasło jest wymagane.",
+        "first_name": "Imię jest wymagane.",
+        "last_name": "Nazwisko jest wymagane.",
+        "email": "Adres e-mail jest wymagany."
+      }
+    }
+  },
+
+  "settings": {
+    "title": "Ustawienia",
+    "description": "To są najpopularniejsze miejsca na świecie."
+  },
+  "logout": {
+    "title": "Wyloguj się",
+    "description": "To są najpopularniejsze miejsca na świecie."
+  },
+  "blogs": {
+    "title": "Artykuły",
+    "description": "To są najpopularniejsze miejsca na świecie.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć ten artykuł?",
+      "create": "Artykuł został pomyślnie utworzony.",
+      "update": "Artykuł został pomyślnie zaktualizowany.",
+      "delete-success": "Artykuł został pomyślnie usunięty.",
+      "translate": "Kraj został pomyślnie przetłumaczony."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "Wszystkie",
+        "not-published": "Nieopublikowane",
+        "newest": "Najnowsze"
+      },
+      "search": "Szukaj według tytułu",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Artykuły"
+      }
+    },
+    "table": {
+      "title": "Tytuł",
+      "author": "Autor",
+      "category": "Kategoria",
+      "published": "Opublikowane",
+      "translation": "Tłumaczenia",
+      "created": "Utworzono dnia",
+      "options": "Opcje"
+    }
+  },
+  "blog-comments": {
+    "title": "Komentarze",
+    "description": "To są najpopularniejsze miejsca na świecie.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć ten komentarz?",
+      "create": "Komentarz został pomyślnie utworzony.",
+      "update": "Komentarz został pomyślnie zaktualizowany.",
+      "delete-success": "Komentarz został pomyślnie usunięty.",
+      "translate": "Kraj został pomyślnie przetłumaczony."
+    }
+  },
+  "blog-categories": {
+    "title": "Kategorie",
+    "description": "To są najpopularniejsze miejsca na świecie.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć tę kategorię?",
+      "create": "Kategoria została pomyślnie utworzona.",
+      "update": "Kategoria została pomyślnie zaktualizowana.",
+      "delete-success": "Kategoria została pomyślnie usunięta.",
+      "translate": "Kraj został pomyślnie przetłumaczony."
+    },
+    "control-panel": {
+      "search": "Szukaj według tytułu",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Artykuły",
+        "3": "Kategorie"
+      }
+    },
+    "table": {
+      "title": "Tytuł",
+      "description": "Opis",
+      "translation": "Tłumaczenia",
+      "options": "Opcje"
+    }
+  },
+  "subscription": {
+    "title": "Subskrypcje",
+    "description": "To są najpopularniejsze destynacje na świecie.",
+    "create": "Stwórz",
+    "reset": "Zresetuj formularz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć tę subskrypcję?",
+      "create": "Subskrypcja została pomyślnie utworzona.",
+      "update": "Subskrypcja została pomyślnie zaktualizowana.",
+      "delete-success": "Subskrypcja została pomyślnie usunięta.",
+      "translate": "Kraj został pomyślnie przetłumaczony."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "Wszystkie",
+        "admin": "Przydzielone przez admina",
+        "purchased": "Zakupione",
+        "close-to-expire": "Blisko wygaśnięcia",
+        "expired": "Wygasłe",
+        "used": "Nieopublikowane jeszcze"
+      },
+      "search": "Szukaj według nazwy pakietu",
+      "create": "Stwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Subskrypcje"
+      }
+    },
+    "table": {
+      "by": "Utworzone przez",
+      "package": "Nazwa pakietu",
+      "start": "Data rozpoczęcia",
+      "end": "Data zakończenia",
+      "state": "Status płatności",
+      "status": "Status",
+      "amount": "Kwota",
+      "not-set": "Opublikowane",
+      "options": "Opcje"
+    },
+    "form": {
+      "titles": {
+        "create": "Utwórz subskrypcję",
+        "description": "Możesz utworzyć subskrypcję z niestandardowym okresem i darmową kwotą dla swoich ofert.",
+        "edit": "Edytuj subskrypcję"
+      },
+      "fields": {
+        "package": "Plan subskrypcji",
+        "start": "Data rozpoczęcia",
+        "end": "Data zakończenia"
+      }
+    }
+  },
+  "dwellings": {
+    "title": "Oferty",
+    "description": "To są najpopularniejsze destynacje na świecie.",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć to z listy?",
+      "create": "Przedmiot został pomyślnie utworzony.",
+      "create2": "Twój wystawiony przedmiot został pomyślnie utworzony, zostanie opublikowany po zatwierdzeniu przez administratora.",
+      "update": "Przedmiot został pomyślnie zaktualizowany.",
+      "delete-success": "Przedmiot został pomyślnie usunięty.",
+      "translate": "Kraj został pomyślnie przetłumaczony.",
+      "loading": "Generowanie formularza ogłoszenia...",
+      "subscription": "Musisz zasubskrybować plan, zanim będziesz mógł kontynuować.",
+      "not-valid-country": "Mieszkanie zostało pomyślnie utworzone, Twój element zostanie opublikowany po zatwierdzeniu przez administratora.",
+      "pending-subscription": "Twoja subskrypcja jest w trakcie realizacji i czeka na kolejny okres rozliczeniowy. Nie możesz usunąć, zmienić wersji ani obniżyć swojego ogłoszenia aż do następnego okresu rozliczeniowego."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "Wszystkie",
+        "pending": "Oczekujące",
+        "rent": "Wynajem",
+        "available": "Dostępne",
+        "old": "Sortuj od najstarszych",
+        "new": "Sortuj od najnowszych",
+        "expired": "Wygasłe",
+        "recommended": "Polecane",
+        "featured": "Wyróżnione",
+        "approval": "Wymaga zatwierdzenia"
+      },
+      "search": "Szukaj według tytułu",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "next": "Dalej",
+      "next2": "Dalej i Zapisz",
+      "save": "Zapisz i przejdź dalej",
+      "close": "Zamknij i wróć",
+      "reset": "Zresetuj formularz",
+      "menu": "Menu",
+      "prev": "Poprzedni",
+      "downgrade": "Obniżanie",
+      "upgrade": "Aktualizacja",
+      "current-state": "Aktualny Stan",
+      "preview": "Pogląd",
+      "claims": "Wnioski o roszczenia",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Oferty"
+      }
+    },
+    "table": {
+      "title": "Tytuł",
+      "status": "Status",
+      "payment_status": "Status Płatności",
+      "published": "Opublikowano",
+      "plan": "Plan (Data Wygaśnięcia)",
+      "translation": "Tłumaczenia",
+      "created": "Utworzono",
+      "options": "Opcje",
+      "owner": "Właściciel",
+      "claims": "Roszczenia",
+      "created_by": "Utworzono przez",
+      "image": "Domyślny obraz"
+    },
+    "form": {
+      "title": {
+        "create": "Utwórz Nową Ofertę",
+        "edit": "Edytuj Wystawiony Przedmiot",
+        "delete": "Usuń Wystawiony Przedmiot",
+        "delete-msg": "Czy na pewno chcesz usunąć wystawiony przedmiot?",
+        "images": "Zdjęcia ogłoszenia",
+        "prices": "Ceny ogłoszenia"
+      },
+      "field": {
+        "plan": "Wybrany plan",
+        "category": "Wybierz Kategorię",
+        "title": "Tytuł",
+        "slug": "Slug",
+        "description": "Opis",
+        "description-info": "Treść opisu musi mieć co najmniej 50 znaków.",
+        "amenities": "Wybierz Udogodnienia",
+        "equipments": "Wybierz Wyposażenie",
+        "trend": "Trend",
+        "popular": "Popularne",
+        "recommended": "Polecane",
+        "status": "Aktualny Status",
+        "publish": "Opublikuj",
+        "images": "Zdjęcia oferty",
+        "accommodation-type": "Rodzaj Zakwaterowania",
+        "price": "Cena (USD)",
+        "payment-period": "Okres Płatności",
+        "guest": "Liczba Gości",
+        "adult": "Liczba Dorosłych",
+        "min": "Minimalny Pobyt (dni)",
+        "line1": "Ulica i numer domu",
+        "line2": "Adres Linia 2",
+        "city": "Miasto",
+        "zip": "Kod Pocztowy",
+        "country": "Kraj",
+        "search": "Szukaj po nazwie",
+        "search2": "Szukaj po tytule",
+        "owner": "Czy jestem właścicielem tego mieszkania?"
+      },
+      "tabs": {
+        "payment": "Płatność",
+        "listing": "Szczegóły Ogłoszenia",
+        "source": "Ceny i Obrazy",
+        "social": "Kontakt i Lokalizacja",
+        "package": "Pakiet Subskrypcyjny"
+      },
+      "price-table": {
+        "price": "Cena",
+        "type": "Typ",
+        "guest": "Liczba Gości",
+        "rooms": "Liczba Pokoi",
+        "min_stay": "Minimalna liczba dni pobytu",
+        "options": "Opcje"
+      }
+    },
+    "modal": {
+      "create": {
+        "title": "Utwórz nowe ogłoszenie",
+        "description": "Tutaj możesz utworzyć nowe ogłoszenie."
+      },
+      "update": {
+        "title": "Edytuj swoje ogłoszenie"
+      },
+      "delete": {
+        "yes": "Tak, usuń ogłoszenie",
+        "no": "Anuluj",
+        "title": "Usunięcie oferty będzie miało następujące skutki:",
+        "description": "Czy na pewno chcesz usunąć swoją ofertę i anulować subskrypcję?",
+        "list": {
+          "0": {
+            "bold": "1. Twoja oferta zostanie trwale usunięta: ",
+            "text": "Nie będzie już widoczna na naszej platformie, a potencjalni klienci nie będą mogli Cię znaleźć ani się z Tobą skontaktować."
+          },
+          "1": {
+            "bold": "2. Twoja subskrypcja zostanie anulowana: ",
+            "text": "Twoja bieżąca subskrypcja automatycznie zakończy się w najbliższym możliwym terminie"
+          }
+        },
+        "notice": {
+          "title": "Ważna uwaga:",
+          "text": "Usunięcie oferty oznacza utratę cennej widoczności i możliwości otrzymywania nowych zapytań od potencjalnych klientów."
+        }
+      },
+      "claims": {
+        "title": "Żądania roszczeń",
+        "description": "Tutaj możesz zobaczyć listę użytkowników, którzy zażądali roszczenia tego przedmiotu."
+      },
+      "preview": {
+        "title": "Podgląd twojego ogłoszenia",
+        "description": "Tutaj możesz zobaczyć podgląd swojego ogłoszenia."
+      },
+      "review": {
+        "title": "Tryb na żywo",
+        "description": "Tutaj możesz zobaczyć recenzje swojego ogłoszenia przed publikacją."
+      },
+      "translate": {
+        "title": "Przetłumacz swoje ogłoszenie",
+        "description": "Tutaj możesz przetłumaczyć swoje ogłoszenie."
+      },
+      "upgrade": {
+        "title": "Aktualizacja planu",
+        "description": "Przenieś swoje doświadczenie na wyższy poziom, ulepszając swój plan. Ciesz się ulepszonymi funkcjami i większą widocznością, które pomogą Ci osiągnąć więcej.",
+        "description2": "Zaktualizowany plan zostanie natychmiast aktywowany, dając Ci natychmiastowy dostęp do korzyści premium."
+      },
+      "downgrade": {
+        "title": "Obniżenie planu",
+        "description": "Twój obecny plan i jego funkcje pozostaną aktywne do końca okresu rozliczeniowego. Po tym czasie nowy plan zostanie uruchomiony automatycznie.",
+        "description2": "Zapewnia to płynne przejście bez utraty dostępu do korzyści, za które już zapłaciłeś. Jeśli kiedykolwiek będziesz potrzebować zaawansowanych funkcji, możesz łatwo uaktualnić swój plan w dowolnym momencie."
+      }
+    }
+  },
+  "review": {
+    "items": {
+      "details": "Szczegóły",
+      "owner": "Właściciel",
+      "no-owner": "Nie znaleziono właściciela, wymaga przypisania.",
+      "created-by": "Utworzony przez",
+      "title": "Tytuł",
+      "description": "Opis",
+      "current-state": "Aktualny stan",
+      "approved": "Zatwierdzony",
+      "yes": "Tak",
+      "no": "Nie",
+      "recommended": "Polecane",
+      "translation": "Tłumaczenia",
+      "no-translation": "Nie znaleziono tłumaczenia.",
+      "category": "Kategoria",
+      "payment-details": "Szczegóły płatności",
+      "current-plan": "Aktualny plan",
+      "payment-status": "Status płatności",
+      "paid": "Zapłacono",
+      "free": "Darmowe",
+      "assigned-admin": "Przypisane przez administratora",
+      "payment-amount": "Kwota płatności",
+      "payment-expiry": "Data wygaśnięcia",
+      "start-date": "Data rozpoczęcia",
+      "end-date": "Data zakończenia",
+      "remaining-period": "Pozostały okres",
+      "unlimited": "Bez limitu",
+      "expired": "Wygasło",
+      "pending-subscription": "Oczekujące subskrypcje na następny okres rozliczeniowy.",
+      "uploaded-images": "Przesłane zdjęcia",
+      "no-images": "Nie znaleziono zdjęć.",
+      "features": "Funkcje i wyposażenie",
+      "no-features": "Nie znaleziono funkcji.",
+      "amenities": "Udogodnienia",
+      "no-amenities": "Nie znaleziono udogodnień.",
+      "prices": "Ceny i rodzaje",
+      "price": "Cena: ",
+      "min": "Minimalny pobyt: ",
+      "guest": "Liczba gości: ",
+      "no-price": "Nie znaleziono cen.",
+      "type": "Rodzaj: ",
+      "remove-from": "Usuń z polecanej listy",
+      "add-to": "Dodaj do polecanej listy",
+      "available": "Ustaw jako oczekujące",
+      "approve": "Zatwierdź",
+      "rent": "Wynajmij",
+      "rented": "Już wynajęte"
+    }
+  },
+  "dwelling-categories": {
+    "title": "Kategorie",
+    "description": "To są najpopularniejsze miejsca na świecie.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć tę kategorię?",
+      "create": "Kategoria została pomyślnie utworzona.",
+      "update": "Kategoria została pomyślnie zaktualizowana.",
+      "delete-success": "Kategoria została pomyślnie usunięta.",
+      "translate": "Kraj został pomyślnie przetłumaczony."
+    },
+    "control-panel": {
+      "search": "Szukaj według tytułu",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Wpisy",
+        "3": "Kategorie"
+      }
+    },
+    "table": {
+      "icon": "Ikona",
+      "title": "Tytuł",
+      "description": "Opis",
+      "translation": "Tłumaczenia",
+      "options": "Opcje"
+    }
+  },
+  "dwelling-equipments": {
+    "title": "Wyposażenie",
+    "description": "To są najpopularniejsze miejsca na świecie.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć to wyposażenie?",
+      "create": "Wyposażenie zostało pomyślnie utworzone.",
+      "update": "Wyposażenie zostało pomyślnie zaktualizowane.",
+      "delete-success": "Wyposażenie zostało pomyślnie usunięte.",
+      "translate": "Kraj został pomyślnie przetłumaczony."
+    },
+    "control-panel": {
+      "search": "Szukaj według tytułu",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Wpisy",
+        "3": "Wyposażenie"
+      }
+    },
+    "table": {
+      "title": "Tytuł",
+      "description": "Opis",
+      "translation": "Tłumaczenia",
+      "options": "Opcje",
+      "icon": "Ikona"
+    }
+  },
+  "dwelling-amenities": {
+    "title": "Udogodnienia",
+    "description": "To są najpopularniejsze miejsca na świecie.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć to udogodnienie?",
+      "create": "Udogodnienie zostało pomyślnie utworzone.",
+      "update": "Udogodnienie zostało pomyślnie zaktualizowane.",
+      "delete-success": "Udogodnienie zostało pomyślnie usunięte.",
+      "translate": "Kraj został pomyślnie przetłumaczony."
+    },
+    "control-panel": {
+      "search": "Szukaj według tytułu",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Wpisy",
+        "3": "Udogodnienia"
+      }
+    },
+    "table": {
+      "title": "Tytuł",
+      "description": "Opis",
+      "translation": "Tłumaczenia",
+      "options": "Opcje"
+    }
+  },
+  "dwelling-galleries": {
+    "title": "Galerie",
+    "description": "To są najpopularniejsze miejsca na świecie.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć tę galerię?",
+      "create": "Galeria została pomyślnie utworzona.",
+      "update": "Galeria została pomyślnie zaktualizowana.",
+      "delete-success": "Galeria została pomyślnie usunięta.",
+      "translate": "Galeria została pomyślnie przetłumaczona."
+    }
+  },
+  "dwelling-guidelines": {
+    "title": "Wytyczne",
+    "description": "To są najpopularniejsze miejsca na świecie.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć te wytyczne?",
+      "create": "Wytyczne zostały pomyślnie utworzone.",
+      "update": "Wytyczne zostały pomyślnie zaktualizowane.",
+      "delete-success": "Wytyczne zostały pomyślnie usunięte.",
+      "translate": "Wytyczne zostały pomyślnie przetłumaczone."
+    },
+    "control-panel": {
+      "search": "Szukaj według tytułu",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Wpisy",
+        "3": "Wytyczne"
+      }
+    },
+    "table": {
+      "title": "Tytuł",
+      "description": "Opis",
+      "pdf": "PDF",
+      "doc": "DOC",
+      "options": "Opcje"
+    }
+  },
+  "locations": {
+    "title": "Popularne lokalizacje",
+    "description": "To są najpopularniejsze miejsca docelowe, sprawdź je, aby uzyskać najlepsze oferty.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć tę lokalizację?",
+      "create": "Lokalizacja została pomyślnie utworzona.",
+      "update": "Lokalizacja została pomyślnie zaktualizowana.",
+      "delete-success": "Lokalizacja została pomyślnie usunięta.",
+      "translate": "Lokalizacja została pomyślnie przetłumaczona."
+    },
+    "control-panel": {
+      "search": "Szukaj według nazwy",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Miasta"
+      }
+    },
+    "table": {
+      "name": "Nazwa",
+      "country": "Kraj",
+      "order": "Kolejność",
+      "popular": "Popularny",
+      "trend": "Trend",
+      "translation": "Tłumaczenia",
+      "options": "Opcje"
+    }
+  },
+  "location-countries": {
+    "title": "Kraje",
+    "description": "To są najpopularniejsze destynacje na świecie.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć ten kraj?",
+      "create": "Kraj został pomyślnie utworzony.",
+      "update": "Kraj został pomyślnie zaktualizowany.",
+      "translate": "Kraj został pomyślnie przetłumaczony.",
+      "delete-success": "Kraj został pomyślnie usunięty."
+    },
+    "control-panel": {
+      "search": "Szukaj według nazwy",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Lokalizacja",
+        "3": "Kraje"
+      }
+    },
+    "table": {
+      "name": "Nazwa",
+      "code": "Kod",
+      "currency": "Waluta",
+      "translation": "Tłumaczenia",
+      "options": "Opcje"
+    }
+  },
+  "galleries": {
+    "title": "Zdjęcia Ogłoszenia",
+    "info": "Możesz przesłać łącznie",
+    "info2": "obraz(ów).",
+    "description": "To są najpopularniejsze destynacje na świecie.",
+    "create": "Zapisz i Dalej",
+    "upload": "Prześlij Zdjęcia",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć tę galerię?",
+      "create": "Galeria została pomyślnie utworzona.",
+      "update": "Galeria została pomyślnie zaktualizowana.",
+      "delete-success": "Galeria została pomyślnie usunięta.",
+      "translate": "Galeria została pomyślnie przetłumaczona."
+    }
+  },
+  "prices": {
+    "title": "Ceny i Warunki",
+    "description": "To są najpopularniejsze destynacje na świecie.",
+    "create": "Utwórz",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć tę cenę?",
+      "create": "Cena została pomyślnie utworzona.",
+      "update": "Cena została pomyślnie zaktualizowana.",
+      "delete-success": "Cena została pomyślnie usunięta.",
+      "translate": "Cena została pomyślnie przetłumaczona.",
+      "required": "Wartość ceny jest wymagana, upewnij się, że została wypełniona."
+    },
+    "control-panel": {
+      "search": "Szukaj według tytułu",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Panel sterowania",
+        "2": "Ceny"
+      }
+    },
+    "table": {
+      "title": "Cena",
+      "type": "Typ",
+      "guest": "Osoby",
+      "rooms": "Pokoje",
+      "min_stay": "Minimalny pobyt",
+      "option": "Opcje"
+    },
+    "form": {
+      "titles": {
+        "create": "Utwórz nową cenę",
+        "edit": "Edytuj cenę",
+        "delete": "Usuń cenę",
+        "delete-msg": "Czy na pewno chcesz usunąć tę cenę?"
+      },
+      "fields": {
+        "type": "Typ",
+        "guest": "Osoby",
+        "rooms": "Pokoje",
+        "min_stay": "Min. pobyt",
+        "price": "Cena zł"
+      }
+    }
+  },
+  "packages": {
+    "title": "Pakiety",
+    "description": "To są najpopularniejsze destynacje na świecie.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć ten pakiet?",
+      "create": "Pakiet został pomyślnie utworzony.",
+      "update": "Pakiet został pomyślnie zaktualizowany.",
+      "delete-success": "Pakiet został pomyślnie usunięty.",
+      "translate": "Pakiet został pomyślnie przetłumaczony."
+    },
+    "control-panel": {
+      "search": "Szukaj według tytułu",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Pakiety"
+      }
+    },
+    "table": {
+      "title": "Nazwa planu",
+      "price": "Cena / Miesiąc",
+      "description": "Opis",
+      "recommended": "Polecane",
+      "stripe": "Zweryfikowane przez Stripe",
+      "translation": "Tłumaczenia",
+      "options": "Opcje"
+    }
+  },
+  "users": {
+    "title": "Użytkownicy",
+    "description": "To są najpopularniejsze destynacje na świecie.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć tego użytkownika?",
+      "create": "Użytkownik został pomyślnie utworzony.",
+      "update": "Użytkownik został pomyślnie zaktualizowany.",
+      "delete-success": "Użytkownik został pomyślnie usunięty."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "Wszyscy",
+        "admin": "Administratorzy",
+        "user": "użytkownicy",
+        "blocked": "Zablokowani",
+        "confirmed": "Niepotwierdzeni"
+      },
+      "search": "Szukaj według adresu email",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Przetłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Użytkownicy"
+      }
+    },
+    "table": {
+      "icon": "Zdjęcie",
+      "f-name": "Imię",
+      "l-name": "Nazwisko",
+      "email": "Adres email",
+      "blocked": "Zablokowany",
+      "confirmed": "Potwierdzony",
+      "role": "Rola",
+      "options": "Opcje"
+    }
+  },
+  "dashboard-sidebar": {
+    "dashboard": "Pulpit",
+    "profile": "Profil",
+    "settings": "Ustawienia",
+    "logout": "Wyloguj się",
+    "blogs": "Artykuły",
+    "blog-comments": "Komentarze",
+    "blog-categories": "Kategorie",
+    "dwellings": "Ogłoszenia",
+    "dwelling-categories": "Kategorie",
+    "dwelling-equipments": "Wyposażenie",
+    "dwelling-galleries": "Galerie",
+    "dwelling-reviews": "Opinie",
+    "dwelling-guidelines": "Wytyczne",
+    "dwelling-amenities": "Udogodnienia",
+    "listings": "Ogłoszenia",
+    "locations": "Popularne lokalizacje",
+    "location-countries": "Kraje",
+    "subscription": "Subskrypcje",
+    "packages": "Pakiety",
+    "users": "Użytkownicy",
+    "invoice": "Faktury",
+    "statistics": "Statystyki"
+  },
+  "pagination": {
+    "of": "z",
+    "found": "znalezionych nieruchomości"
+  },
+  "table": {
+    "loading": "Ładowanie...",
+    "no-data": "Obecnie brak danych do wyświetlenia. Proszę najpierw dodać dane."
+  },
+  "localizations": {
+    "default": "Wybierz język",
+    "en": "Angielski",
+    "pl": "Polski",
+    "de": "Niemiecki"
+  },
+
+  "listings": {
+    "title": "Oferty",
+    "description": "Znajdź swój wymarzony dom w naszych ofertach.",
+    "button": "Więcej",
+    "filters": {
+      "0": {
+        "title": "Filtruj według ceny",
+        "options": {
+          "0": "Wszystkie ceny",
+          "1": "Mniej niż zł 500",
+          "2": "zł 500 - zł 1000",
+          "3": "zł 1000 - zł 2000",
+          "4": "zł 1000 - zł 3000",
+          "5": "Więcej niż zł 3000"
+        }
+      },
+      "1": {
+        "title": "Filtruj według liczby gości",
+        "options": {
+          "0": "Wszystkie",
+          "1": "Mniej niż 5",
+          "2": "5 - 10",
+          "3": "10 - 15",
+          "4": "Więcej niż 15"
+        }
+      },
+      "2": {
+        "title": "Filtruj według minimalnego pobytu",
+        "options": {
+          "0": "Wszystkie",
+          "1": "Mniej niż 5 dni",
+          "2": "5 - 10 dni",
+          "3": "10 - 15 dni",
+          "4": "Więcej niż 15 dni"
+        }
+      }
+    },
+    "sorts": {
+      "price": "Sortuj według ceny",
+      "distance": "Sortuj według odległości"
+    },
+    "messages": {
+      "empty": "Brak zapisów do wyświetlenia w tej chwili. Proszę wyszukać inne miejsce.",
+      "invalid": "Proszę wybrać prawidłową lokalizację z listy rozwijanej.",
+      "properties": "znaleziono nieruchomości."
+    }
+  },
+  "dwelling-card": {
+    "more": "więcej wyposażenia",
+    "starting-from": "Począwszy od",
+    "per-night": "za noc",
+    "visit": "Odwiedź nieruchomość",
+    "guests": "Liczba gości",
+    "min-stay": "Minimalny pobyt",
+    "posted": "Opublikowano",
+    "loading": "Ładowanie",
+    "not-found": "Nie znaleziono nieruchomości, proszę spróbować w innej lokalizacji.",
+    "days": "dni"
+  },
+  "single-listing": {
+    "location-detail": "Szczegóły lokalizacji",
+    "contact-detail": "Szczegóły kontaktu",
+    "owner-detail": "Szczegóły właściciela",
+    "start-from": "Zaczynając od",
+    "photos": "Zobacz wszystkie zdjęcia",
+    "map": "Pokaż na mapie",
+    "not-found": "Nie znaleziono lokalizacji.",
+    "no-contact": "Nie znaleziono danych kontaktowych.",
+    "no-owner": "Nie znaleziono danych właściciela.",
+    "direction": "Kierunek",
+    "service": "Język obsługi klienta",
+    "tabs": {
+      "overview": "Przegląd",
+      "facilities": "Udogodnienia",
+      "amenities": "Wyposażenie",
+      "price": "Dostępne ceny i warunki",
+      "location": "Adres i lokalizacja"
+    },
+    "sections": {
+      "price": {
+        "title": "Dostępne ceny i warunki",
+        "description": "Wybierz zakwaterowanie i uzyskaj najlepszą cenę za pobyt."
+      },
+      "location": {
+        "title": "Lokalizacja i okolica"
+      },
+      "top-properties": {
+        "title": "Najlepsze nieruchomości są oferowane przez",
+        "description": "Tutaj znajdziesz inne nieruchomości oferowane przez tego samego właściciela."
+      },
+      "featured": {
+        "title": "Polecane nieruchomości",
+        "description": "Tutaj możesz zobaczyć inne nieruchomości podobne do tej."
+      }
+    }
+  },
+  "status": {
+    "AVAILABLE": "Dostępny",
+    "PENDING": "Oczekujący",
+    "RENT": "Wynajem",
+    "needs-admin-approval": "Wymaga zatwierdzenia przez administratora"
+  },
+  "confirm": {
+    "confirm": "Potwierdź",
+    "reject": "Anuluj"
+  },
+  "accommodation-types": {
+    "SELECT TYPE": "Wybierz Typ",
+    "SINGLE ROOMS": "Pokój Jednoosobowy",
+    "DOUBLE ROOMS": "Pokoje Dwuosobowe",
+    "SHARED ROOMS": "Pokoje Wspólne",
+    "WHOLE ACCOMMODATION": "Całe Zakwaterowanie"
+  },
+  "image-uploader": {
+    "larger": "jest większy niż 10 MB i nie może zostać przesłany.",
+    "allowed": "Możesz przesłać tylko ",
+    "images": "zdjęcia",
+    "error": "Niektóre pliki były zbyt duże i nie zostały dodane.",
+    "upload": "Prześlij Zdjęcia",
+    "selected": "Wybrane Zdjęcia",
+    "remove": "Usuń",
+    "upload2": "Prześlij"
+  },
+  "social": {
+    "title": "Dodaj swoje media społecznościowe i kontakty",
+    "create": "Stwórz",
+    "edit": "Aktualizuj",
+    "list": {
+      "type": "Nazwa mediów społecznościowych",
+      "value": "wartość"
+    },
+    "form": {
+      "fields": {
+        "type": "Rodzaj kontaktu",
+        "url": "Link do twojego profilu lub numer",
+        "select": "Wybierz element"
+      }
+    }
+  },
+  "address": {
+    "title": "Lokalizacja i Szczegóły Adresu",
+    "load": "Załaduj mapę",
+    "close": "Zamknij i wróć",
+    "update": "Aktualizuj",
+    "create": "Zapisz i przejdź dalej",
+    "reset": "Zresetuj formularz",
+    "prev": "Poprzedni",
+    "messages": {
+      "location": "Proszę oznaczyć swoją lokalizację.",
+      "update": "Twoja lokalizacja została pomyślnie ustawiona.",
+      "not-valid-country": "Wybrana lokalizacja musi znajdować się w Niemczech, Polsce lub Anglii.",
+      "no-api-key": "Klucz API Google Maps nie jest ustawiony, skontaktuj się z administratorem.",
+      "need-to-load": "Najpierw musisz załadować mapę i wybrać swoją lokalizację."
+    },
+    "form": {
+      "fields": {
+        "first_line": "Ulica i numer domu",
+        "second_line": "Druga linia adresu",
+        "city": "Nazwa miasta",
+        "zip_code": "Kod pocztowy",
+        "direction": "Szczegóły kierunku",
+        "service_lang": "Język obsługi klienta"
+      }
+    }
+  },
+  "validation": {
+    "required": "To pole jest wymagane.",
+    "minLength": "To pole musi mieć co najmniej {min} znaków.",
+    "maxLength": "To pole może mieć maksymalnie {max} znaków.",
+    "email": "To musi być prawidłowy adres e-mail.",
+    "matches": "Hasło musi zawierać co najmniej jedną wielką literę, jedną cyfrę i jeden symbol.",
+    "password": {
+      "min": "Hasło musi mieć co najmniej 6 znaków.",
+      "matches": "Hasło musi zawierać co najmniej jedną wielką literę, jedną cyfrę i jeden symbol.",
+      "required": "Hasło jest wymagane."
+    },
+    "confirm_password": {
+      "required": "Proszę potwierdzić hasło.",
+      "oneOf": "Hasła muszą się zgadzać."
+    },
+    "dwelling": {
+      "title": "Tytuł jest wymagany.",
+      "description": {
+        "min": "Opis musi mieć co najmniej 50 znaków.",
+        "required": "Opis jest wymagany."
+      },
+      "category": "Kategoria jest wymagana.",
+      "features": "Funkcje są wymagane i musisz wybrać co najmniej jedną opcję.",
+      "slug": "Slug jest wymagany.",
+      "package": "Pakiet jest wymagany."
+    },
+    "amenity": {
+      "title": "Tytuł jest wymagany.",
+      "description": "Opis jest wymagany."
+    },
+    "dwelling-category": {
+      "title": "Tytuł jest wymagany.",
+      "description": "Opis jest wymagany."
+    },
+    "dwelling-contact": {
+      "phone": "Numer telefonu jest wymagany.",
+      "email": "Adres e-mail jest wymagany.",
+      "invalid-email": "Adres e-mail jest nieprawidłowy.",
+      "check_in": "Czas zameldowania jest wymagany.",
+      "check_out": "Czas wymeldowania jest wymagany.",
+      "name_or_company": "Twoje imię lub nazwa firmy jest wymagana."
+    },
+    "dwelling-equipment": {
+      "title": "Tytuł jest wymagany.",
+      "description": "Opis jest wymagany.",
+      "icon": "Ikona jest wymagana."
+    },
+    "galleries": {
+      "image": "Musisz przesłać co najmniej jedno zdjęcie.",
+      "order": "Kolejność jest wymagana.",
+      "dwelling": "Szczegóły oferty są wymagane."
+    },
+    "price": {
+      "price": "Cena jest wymagana.",
+      "type": "Typ jest wymagany.",
+      "guest": "Liczba gości jest wymagana.",
+      "rooms": "Liczba pokoi jest wymagana.",
+      "min_stay": "Minimalny czas pobytu jest wymagany."
+    },
+    "contact": {
+      "name": "Twoje imię jest wymagane.",
+      "email": "Adres e-mail jest wymagany, ale będzie udostępniany innym.",
+      "subject": "Temat jest wymagany.",
+      "message": "Wiadomość jest wymagana.",
+      "invalid-email": "Adres e-mail jest nieprawidłowy."
+    },
+    "guideline": {
+      "title": "Tytuł jest wymagany.",
+      "description": {
+        "min": "Opis musi mieć co najmniej 10 znaków.",
+        "max": "Opis może mieć maksymalnie 30 znaków."
+      },
+      "pdf": "PDF jest wymagany."
+    },
+    "location": {
+      "name": "Nazwa jest wymagana.",
+      "country": "Kraj jest wymagany.",
+      "order": "Kolejność jest wymagana.",
+      "image": "Musisz przesłać co najmniej jedno zdjęcie."
+    },
+    "package": {
+      "name": "Nazwa pakietu jest wymagana.",
+      "icon": "Ikona jest wymagana.",
+      "iconSize": "Wielkość ikony jest wymagana i musi być w pikselach.",
+      "order": "Kolejność jest wymagana."
+    },
+    "subscription": {
+      "package": "Pakiet jest wymagany.",
+      "start_date": "Data rozpoczęcia jest wymagana.",
+      "end_date": "Data zakończenia jest wymagana."
+    },
+    "user": {
+      "first_name": "Imię jest wymagane.",
+      "last_name": "Nazwisko jest wymagane.",
+      "email": "Adres e-mail jest wymagany.",
+      "password": {
+        "min": "Hasło musi mieć co najmniej 6 znaków.",
+        "lowercase": "Hasło musi zawierać co najmniej jedną małą literę.",
+        "uppercase": "Hasło musi zawierać co najmniej jedną wielką literę.",
+        "number": "Hasło musi zawierać co najmniej jedną cyfrę.",
+        "symbol": "Hasło musi zawierać co najmniej jeden symbol.",
+        "required": "Hasło jest wymagane."
+      },
+      "role": "Rola jest wymagana."
+    }
+  },
+  "invoice": {
+    "title": "Faktury",
+    "description": "To są najpopularniejsze destynacje, sprawdź je, aby uzyskać najlepsze oferty.",
+    "create": "Utwórz",
+    "messages": {
+      "delete": "Czy na pewno chcesz usunąć tę lokalizację?",
+      "create": "Lokalizacja została pomyślnie utworzona.",
+      "update": "Lokalizacja została pomyślnie zaktualizowana.",
+      "delete-success": "Lokalizacja została pomyślnie usunięta.",
+      "translate": "Lokalizacja została pomyślnie przetłumaczona."
+    },
+    "control-panel": {
+      "search": "Szukaj po nazwie",
+      "create": "Utwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "translate": "Tłumacz",
+      "breadcrumb": {
+        "1": "Pulpit",
+        "2": "Faktury"
+      }
+    },
+    "table": {
+      "date": "Data",
+      "cost": "Koszt",
+      "action": "Akcja",
+      "download": "Pobierz",
+      "name": "Nazwa Pakietu"
+    }
+  },
+  "forgot-password": {
+    "title": "Zapomniane hasło",
+    "description": "",
+    "send": "Wyślij",
+    "messages": {
+      "success": "Wysyłamy link na twój adres e-mail. Sprawdź swoją skrzynkę odbiorczą.",
+      "failed": "Wysłanie e-maila nie powiodło się, sprawdź swój e-mail i spróbuj ponownie.",
+      "not-exists": "Twój adres e-mail nie został zarejestrowany jako poprawny adres. Zarejestruj się najpierw.",
+      "error": "Coś poszło nie tak, spróbuj ponownie później.",
+      "recaptcha-not-ready": "Recaptcha nie jest gotowa. Spróbuj ponownie później.",
+      "recaptcha-failed": "Weryfikacja Recaptcha nie powiodła się. Spróbuj ponownie.",
+      "recaptcha-success": "Zostałeś zweryfikowany jako człowiek.",
+      "invalid": "Nieprawidłowe dane, sprawdź swoje dane wejściowe.",
+      "provider-error": "Twoje konto jest zarejestrowane u dostawcy społecznościowego. Proszę użyć logowania społecznościowego."
+    },
+    "form": {
+      "email": "Twój zarejestrowany adres e-mail"
+    }
+  },
+  "reset-password": {
+    "title": "Zresetuj hasło",
+    "description": "",
+    "send": "Potwierdź i zresetuj",
+    "messages": {
+      "success": "Twoje hasło zostało pomyślnie zmienione. Przekierowujemy cię na stronę logowania.",
+      "failed": "Zmiana hasła nie powiodła się, spróbuj ponownie później.",
+      "not-exists": "Twój adres e-mail nie został zarejestrowany jako poprawny adres. Zarejestruj się najpierw.",
+      "error": "Coś poszło nie tak, spróbuj ponownie później.",
+      "recaptcha-not-ready": "Recaptcha nie jest gotowa. Spróbuj ponownie później.",
+      "recaptcha-failed": "Weryfikacja Recaptcha nie powiodła się. Spróbuj ponownie.",
+      "recaptcha-success": "Zostałeś zweryfikowany jako człowiek.",
+      "invalid": "Nieprawidłowe dane, sprawdź swoje dane wejściowe."
+    },
+    "form": {
+      "password": "Nowe hasło",
+      "confirmPassword": "Potwierdź nowe hasło"
+    }
+  },
+
+  "about": {
+    "title": {
+      "main": "O nas",
+      "welcome": "Witamy w",
+      "brand": "Workerhomes",
+      "who": "Kim jesteśmy",
+      "vision": "Nasza wizja",
+      "values": "Nasze wartości",
+      "offer": "Co oferujemy",
+      "choose": "Dlaczego WorkerHomes?",
+      "community": "Dołącz do naszej społeczności",
+      "connect": "Pozostańmy w kontakcie!"
+    },
+    "description": {
+      "main": "W WorkerHomes rozumiemy, że znalezienie odpowiedniego zakwaterowania może być wyzwaniem, szczególnie dla pracowników w podróży. Dlatego stworzyliśmy platformę, która łączy pracowników, firmy i właścicieli nieruchomości, ułatwiając znalezienie i oferowanie komfortowych, przystępnych cenowo i wygodnych rozwiązań mieszkaniowych.",
+      "who": "WorkerHomes powstało z prostą, ale potężną misją: uproszczenie procesu wyszukiwania i zapewniania tymczasowego zakwaterowania dla pracowników podróżujących. Niezależnie od tego, czy jesteś wykonawcą, kierownikiem projektu, czy właścicielem nieruchomości, nasza platforma jest zaprojektowana tak, aby spełniać Twoje specyficzne potrzeby. Dzięki wieloletniemu doświadczeniu w branży mieszkaniowej i wynajmu, nasz zespół z pasją tworzy społeczność, w której znalezienie zakwaterowania jest szybkie, łatwe i bezstresowe.",
+      "vision": "Wyobrażamy sobie świat, w którym każdy pracownik, niezależnie od lokalizacji, ma dostęp do zakwaterowania o wysokiej jakości, które spełnia jego potrzeby. Naszym celem jest bycie preferowaną platformą do tymczasowego zakwaterowania, oferującą rozbudowaną sieć ofert w różnych regionach. Chcemy, aby proces poszukiwania zakwaterowania był jak najbardziej bezproblemowy, aby pracownicy mogli skupić się na swojej pracy, nie martwiąc się o to, gdzie się zatrzymają.",
+      "community": "Niezależnie od tego, czy szukasz miejsca do zamieszkania, czy chcesz wynająć swoją nieruchomość – WorkerHomes jest tutaj, aby Ci pomóc. Dołącz do naszej rosnącej społeczności pracowników i właścicieli nieruchomości, którzy ufają nam w kwestii prostego, niezawodnego i efektywnego wyszukiwania zakwaterowania.",
+      "connect": "Zacznij korzystać z WorkerHomes już dziś i odkryj najprostszy sposób na znalezienie tymczasowego zakwaterowania, które poczujesz jak w domu."
+    },
+    "list": {
+      "values": {
+        "1": {
+          "title": "Prostota",
+          "description": "Wierzymy w prostotę. Nasza przyjazna dla użytkownika platforma zapewnia, że zarówno zamieszczanie ogłoszeń, jak i wyszukiwanie zakwaterowania przebiega bezproblemowo."
+        },
+        "2": {
+          "title": "Zaufanie",
+          "description": "Zaufanie jest fundamentem wszystkiego, co robimy. Starannie weryfikujemy nasze ogłoszenia i dążymy do stworzenia społeczności, w której użytkownicy mogą być pewni swojego wyboru."
+        },
+        "3": {
+          "title": "Dostępność",
+          "description": "Jesteśmy zaangażowani w zapewnianie dostępu do zakwaterowania dla każdego. Od małych miasteczek po tętniące życiem metropolie - nasza platforma obejmuje szeroki zakres lokalizacji, aby sprostać różnorodnym potrzebom."
+        },
+        "4": {
+          "title": "Społeczność",
+          "description": "Jesteśmy czymś więcej niż tylko platformą - jesteśmy społecznością. Łączymy pracowników z właścicielami nieruchomości, budując relacje korzystne dla wszystkich zaangażowanych stron."
+        }
+      },
+      "offer": {
+        "1": {
+          "title": "Szeroki wybór ofert",
+          "description": "Niezależnie od tego, czy potrzebujesz zakwaterowania na kilka dni, tygodni, czy miesięcy, WorkerHomes ma dla Ciebie odpowiednie rozwiązanie. Nasza platforma oferuje szeroki wybór nieruchomości, od pojedynczych pokoi po całe domy, w różnych regionach."
+        },
+        "2": {
+          "title": "Łatwa w użyciu platforma",
+          "description": "Nasza strona internetowa jest zaprojektowana z myślą o Twoich potrzebach. Szybko przeglądaj ogłoszenia, filtruj je według swoich wymagań i kontaktuj się bezpośrednio z właścicielami nieruchomości."
+        },
+        "3": {
+          "title": "Elastyczne rozwiązania",
+          "description": "Rozumiemy, że harmonogramy pracy mogą się zmieniać, dlatego oferujemy elastyczne opcje wynajmu, które obejmują zarówno krótkoterminowe, jak i długoterminowe pobyty."
+        }
+      },
+      "choose": {
+        "1": {
+          "title": "Dostosowane do potrzeb pracowników",
+          "description": "W przeciwieństwie do ogólnych platform wynajmu, WorkerHomes jest specjalnie zaprojektowane, aby spełniać potrzeby podróżujących pracowników i wspierających ich firm."
+        },
+        "2": {
+          "title": "Zaufane ogłoszenia",
+          "description": "Ściśle współpracujemy z właścicielami nieruchomości, aby upewnić się, że każde ogłoszenie na naszej stronie spełnia nasze wysokie standardy jakości i niezawodności."
+        },
+        "3": {
+          "title": "Przystępne ceny",
+          "description": "Oferujemy różne opcje cenowe, które pasują do każdego budżetu, co ułatwia znalezienie komfortowego miejsca do zamieszkania bez przekraczania budżetu."
+        },
+        "4": {
+          "title": "Rozwijająca się sieć",
+          "description": "Nasza sieć ofert stale się powiększa, dając Ci więcej możliwości i elastyczność w znalezieniu idealnego zakwaterowania."
+        }
+      }
+    }
+  },
+  "privacy": {
+    "title": "Polityka Prywatności WorkerHomes",
+    "date": "Ostatnia aktualizacja: 22.09.2024",
+    "sidebar": {
+      "1": "Administrator Danych",
+      "2": "Zbieranie i przechowywanie danych osobowych",
+      "3": "Cel przetwarzania danych",
+      "4": "Podstawa prawna przetwarzania danych",
+      "5": "Udostępnianie danych stronom trzecim",
+      "6": "Okres przechowywania danych",
+      "7": "Twoje prawa",
+      "8": "Bezpieczeństwo danych",
+      "9": "Cookies",
+      "10": "Zmiany w niniejszej Polityce Prywatności",
+      "11": "Kontakt"
+    },
+    "description": {
+      "main": "Ochrona Twoich danych osobowych jest dla nas bardzo ważna. Niniejsza Polityka Prywatności wyjaśnia, w jaki sposób WorkerHomes zbiera, przetwarza i wykorzystuje Twoje dane osobowe, gdy korzystasz z naszej strony internetowej i usług. Prosimy o dokładne zapoznanie się z tą polityką, aby zrozumieć, jak obchodzimy się z Twoimi danymi.",
+      "1": {
+        "text": "Administratorem danych osobowych przetwarzanych na tej stronie internetowej jest:",
+        "address": "Adres:",
+        "email": "Adres Email:",
+        "phone": "Numer Telefonu:"
+      },
+      "2": {
+        "text": "Zbieramy i przechowujemy dane osobowe wyłącznie w ramach dozwolonych przez prawo. Dzieje się to w następujących sytuacjach:",
+        "list": {
+          "1": {
+            "title": "Podczas rejestracji:",
+            "description": "Kiedy rejestrujesz się na naszej platformie, zbieramy dane takie jak imię i nazwisko, adres e-mail, adres zamieszkania oraz, w razie potrzeby, dane dotyczące płatności."
+          },
+          "2": {
+            "title": "Podczas korzystania z platformy:",
+            "description": "W trakcie korzystania z platformy możemy zbierać informacje o Twojej aktywności, w tym o tworzonych przez Ciebie ogłoszeniach i interakcjach z innymi użytkownikami."
+          },
+          "3": {
+            "title": "Dane techniczne:",
+            "description": "Podczas odwiedzania naszej strony internetowej automatycznie zbierane są dane przesyłane przez Twoją przeglądarkę, takie jak adres IP, typ przeglądarki, system operacyjny i czasy dostępu."
+          }
+        }
+      },
+      "3": {
+        "text": "Twoje dane osobowe są przetwarzane w następujących celach:",
+        "list": {
+          "1": {
+            "title": "Świadczenie usług:",
+            "description": "Aby umożliwić Ci dostęp do platformy i korzystanie z naszych usług."
+          },
+          "2": {
+            "title": "Realizacja umowy:",
+            "description": "W celu realizacji naszych zobowiązań umownych, takich jak przetwarzanie płatności lub zarządzanie Twoimi ogłoszeniami."
+          },
+          "3": {
+            "title": "Komunikacja:",
+            "description": "Aby się z Tobą skontaktować, na przykład w celu poinformowania Cię o zmianach w naszych usługach lub w niniejszej Polityce Prywatności."
+          },
+          "4": {
+            "title": "Optymalizacja strony internetowej:",
+            "description": "W celu poprawy funkcjonalności i łatwości użytkowania naszej strony internetowej."
+          },
+          "5": {
+            "title": "Obowiązki prawne:",
+            "description": "Aby spełnić wymagania prawne, takie jak przechowywanie faktur i dokumentów księgowych."
+          }
+        }
+      },
+      "4": {
+        "text": "Przetwarzanie Twoich danych osobowych odbywa się na następujących podstawach prawnych:",
+        "list": {
+          "1": {
+            "title": "Art. 6 ust. 1 lit. b RODO (Wykonanie umowy):",
+            "description": "Przetwarzanie jest niezbędne do wykonania umowy, której jesteś stroną, lub do podjęcia działań przed zawarciem umowy na Twoje żądanie."
+          },
+          "2": {
+            "title": "Art. 6 ust. 1 lit. a RODO (Zgoda):",
+            "description": "eśli wyraziłeś zgodę na przetwarzanie swoich danych w określonych celach, przetwarzanie odbywa się na podstawie Twojej zgody."
+          },
+          "3": {
+            "title": "Art. 6 ust. 1 lit. f RODO (Prawnie uzasadnione interesy):",
+            "description": "Przetwarzanie jest niezbędne do celów wynikających z prawnie uzasadnionych interesów realizowanych przez nas, o ile Twoje interesy lub podstawowe prawa i wolności nie mają nadrzędnego charakteru."
+          },
+          "4": {
+            "title": "Art. 6 ust. 1 lit. c RODO (Obowiązki prawne):",
+            "description": "Przetwarzanie jest niezbędne do wypełnienia obowiązku prawnego ciążącego na nas."
+          }
+        }
+      },
+      "5": {
+        "text": "Twoje dane osobowe będą przekazywane stronom trzecim tylko wtedy, gdy jest to dozwolone przez prawo lub jeśli wyraziłeś na to wyraźną zgodę. Może to mieć miejsce w następujących przypadkach:",
+        "list": {
+          "1": {
+            "title": "Przetwarzanie płatności:",
+            "description": "W celu realizacji płatności współpracujemy z zewnętrznymi dostawcami usług płatniczych, którym przekazujemy Twoje dane płatnicze."
+          },
+          "2": {
+            "title": "Usługodawcy:",
+            "description": "Zatrudniamy zewnętrznych usługodawców do świadczenia określonych usług, takich jak usługi IT, hosting lub marketing. Usługodawcy ci są zobowiązani umową do poufnego traktowania Twoich danych i przetwarzania ich wyłącznie w ramach uzgodnionej usługi."
+          },
+          "3": {
+            "title": "Obowiązki prawne:",
+            "description": " Jeśli jesteśmy do tego zobowiązani prawem, udostępniamy Twoje dane organom lub innym instytucjom rządowym."
+          }
+        }
+      },
+      "6": {
+        "text": "Twoje dane osobowe będą przechowywane tylko tak długo, jak jest to konieczne do realizacji celów, dla których zostały zebrane, lub tak długo, jak wymagają tego przepisy prawa. Po upływie odpowiednich okresów dane zostaną usunięte lub zanonimizowane."
+      },
+      "7": {
+        "text": "Przysługują Ci następujące prawa dotyczące Twoich danych osobowych:",
+        "text2": "Aby skorzystać z tych praw, możesz skontaktować się z nami w dowolnym momencie.",
+        "list": {
+          "1": {
+            "title": "Prawo dostępu:",
+            "description": "Możesz w każdej chwili zażądać informacji o przetwarzanych przez nas danych osobowych dotyczących Ciebie."
+          },
+          "2": {
+            "title": "Prawo do sprostowania:",
+            "description": "Możesz zażądać sprostowania nieprawidłowych danych lub uzupełnienia niekompletnych danych."
+          },
+          "3": {
+            "title": "Prawo do usunięcia danych:",
+            "description": "Możesz zażądać usunięcia swoich danych osobowych, jeśli nie są już one niezbędne do realizacji umowy, obrony roszczeń prawnych lub wypełnienia obowiązków prawnych."
+          },
+          "4": {
+            "title": "Prawo do ograniczenia przetwarzania:",
+            "description": "Możesz zażądać ograniczenia przetwarzania swoich danych osobowych, jeśli kwestionujesz ich prawidłowość, przetwarzanie jest niezgodne z prawem, ale sprzeciwiasz się ich usunięciu, lub jeśli nie potrzebujemy już danych, ale są one niezbędne do dochodzenia, wykonywania lub obrony roszczeń prawnych."
+          },
+          "5": {
+            "title": "Prawo do przenoszenia danych:",
+            "description": "Masz prawo otrzymać dane osobowe dotyczące Ciebie, które nam dostarczyłeś, w ustrukturyzowanym, powszechnie używanym formacie nadającym się do odczytu maszynowego i zażądać ich przesłania innemu administratorowi."
+          },
+          "6": {
+            "title": "Prawo do wycofania zgody:",
+            "description": "Możesz w każdej chwili wycofać zgodę na przetwarzanie swoich danych, ze skutkiem na przyszłość."
+          },
+          "7": {
+            "title": "Prawo do sprzeciwu:",
+            "description": "Możesz sprzeciwić się przetwarzaniu swoich danych osobowych, jeśli istnieją uzasadnione powody wynikające z Twojej szczególnej sytuacji."
+          }
+        }
+      },
+      "8": {
+        "text": "Stosujemy techniczne i organizacyjne środki bezpieczeństwa, aby chronić Twoje dane osobowe przed nieautoryzowanym dostępem, utratą lub zniszczeniem. Nasze środki bezpieczeństwa są stale ulepszane zgodnie z postępem technologicznym."
+      },
+      "9": {
+        "text": "Nasza strona internetowa wykorzystuje pliki cookie, aby ułatwić korzystanie z naszej strony i zapewnić niektóre funkcje. Cookies to małe pliki tekstowe, które są przechowywane na Twoim urządzeniu. Niektóre z używanych przez nas plików cookie są usuwane po zakończeniu sesji przeglądarki, inne pozostają na Twoim urządzeniu i umożliwiają nam rozpoznanie Twojej przeglądarki przy następnej wizycie.",
+        "text2": "Możesz w dowolnym momencie dostosować swoje ustawienia dotyczące plików cookie i sprzeciwić się używaniu niektórych plików cookie. Wyłączenie plików cookie może jednak ograniczyć funkcjonalność naszej strony internetowej."
+      },
+      "10": {
+        "text": "Zastrzegamy sobie prawo do zmiany niniejszej Polityki Prywatności w dowolnym momencie, aby dostosować ją do nowych wymagań prawnych lub zmian w naszej usłudze lub przetwarzaniu danych. Aktualna wersja jest dostępna na naszej stronie internetowej."
+      },
+      "11": {
+        "text": "Jeśli masz pytania:",
+        "address": "Adres:",
+        "email": "Adres Email:",
+        "phone": "Numer Telefonu:"
+      }
+    }
+  },
+  "terms": {
+    "title": "Regulamin WorkerHomes",
+    "date": "Ostatnia aktualizacja: 22.09.2024",
+    "sidebar": {
+      "1": "Zakres",
+      "2": "Opis usług",
+      "3": "Rejestracja i konto użytkownika",
+      "4": "Oferta i korzystanie z zakwaterowania",
+      "5": "Koszty i opłaty",
+      "6": "Zrzeczenie się odpowiedzialności",
+      "7": "Ograniczenie odpowiedzialności",
+      "8": "Zakazane działania",
+      "9": "Zakończenie i rozwiązanie umowy",
+      "10": "Kopia zapasowa danych",
+      "11": "Treści",
+      "12": "Przyznanie praw",
+      "13": "Zwolnienie z odpowiedzialności",
+      "14": "Ograniczenie odpowiedzialności",
+      "15": "Zastrzeżenie odpowiedzialności",
+      "16": "Wybór prawa",
+      "17": "Postanowienia końcowe"
+    },
+    "description": {
+      "main": "Witamy w WorkerHomes. Niniejszy Regulamin ('Regulamin') reguluje korzystanie z naszej platformy, na której można zamieszczać i przeglądać oferty wynajmu zakwaterowania. Prosimy o uważne przeczytanie niniejszego Regulaminu przed rozpoczęciem korzystania z naszych usług. Korzystając z naszej platformy, akceptujesz niniejszy Regulamin. Jeśli się z nim nie zgadzasz, nie możesz korzystać z platformy.",
+      "1": "Niniejszy Regulamin ma zastosowanie do korzystania ze strony internetowej WorkerHomes oraz wszystkich związanych z nią usług i treści. Reguluje on relacje pomiędzy WorkerHomes a użytkownikami platformy, zarówno dostawcami zakwaterowania ('Dostawcy'), jak i osobami poszukującymi zakwaterowania ('Użytkownicy').",
+      "2": "WorkerHomes oferuje platformę, na której Dostawcy mogą zamieszczać oferty wynajmu zakwaterowania, a Użytkownicy mogą przeglądać te oferty. WorkerHomes świadczy jedynie usługę katalogową. Nie dochodzi do bezpośrednich rezerwacji ani przetwarzania płatności za pośrednictwem platformy.",
+      "3": {
+        "list": {
+          "1": {
+            "title": "Wymóg rejestracji:",
+            "description": "Aby uzyskać dostęp do wszystkich funkcji platformy, Użytkownicy muszą się zarejestrować i utworzyć konto. Rejestracja jest bezpłatna."
+          },
+          "2": {
+            "title": "Informacje:",
+            "description": "Użytkownicy są zobowiązani do podawania prawdziwych i pełnych informacji podczas rejestracji oraz do niezwłocznej aktualizacji tych informacji w przypadku ich zmiany."
+          },
+          "3": {
+            "title": "Odpowiedzialność:",
+            "description": "Użytkownik jest odpowiedzialny za zachowanie poufności swojego hasła oraz za wszelkie działania podejmowane na jego koncie."
+          }
+        }
+      },
+      "4": {
+        "list": {
+          "1": {
+            "title": "Opis oferty:",
+            "description": "Dostawcy muszą zapewnić, że opisy ich zakwaterowania są dokładne, kompletne i aktualne. Należy podać wszystkie istotne informacje, w tym ceny, dostępność i warunki."
+          },
+          "2": {
+            "title": "Zgodność z prawem:",
+            "description": "Dostawcy są odpowiedzialni za zapewnienie, że ich oferty są zgodne z obowiązującymi przepisami prawa, regulacjami i wymaganiami, w tym lokalnymi przepisami dotyczącymi wynajmu."
+          },
+          "3": {
+            "title": "Korzystanie z informacji:",
+            "description": "WorkerHomes nie ponosi odpowiedzialności za dokładność informacji podanych przez Dostawców. Korzystanie z platformy odbywa się na własne ryzyko Użytkownika."
+          },
+          "4": {
+            "title": "Opisy ofert:",
+            "description": "Użytkownicy są zobowiązani do dokładnego i pełnego opisywania swoich ofert. Oferty, które nie stanowią rzeczywistej oferty, ale mają na celu wyłącznie przyciągnięcie uwagi potencjalnych klientów, lub posty zawierające obraźliwe lub w inny sposób nielegalne treści, będą uważane za nadużycie i zostaną zdezaktywowane lub usunięte przez WorkerHomes bez uprzedzenia."
+          }
+        }
+      },
+      "5": {
+        "list": {
+          "1": {
+            "title": "Darmowe korzystanie:",
+            "description": "Podstawowe funkcje platformy są bezpłatne. Za tworzenie i wyświetlanie ogłoszeń nie są pobierane żadne opłaty."
+          },
+          "2": {
+            "title": "Płatne usługi:",
+            "description": "WorkerHomes zastrzega sobie prawo do oferowania w przyszłości płatnych usług dodatkowych. Usługi te będą świadczone wyłącznie za wyraźną zgodą Użytkownika."
+          },
+          "3": {
+            "title": "Ceny i fakturowanie:",
+            "description": "Wszystkie ceny są podane bez VAT. WorkerHomes wystawia faktury płatnym klientom wyłącznie drogą elektroniczną. Dodatkowo wszystkie faktury są dostępne do pobrania w panelu użytkownika."
+          }
+        }
+      },
+      "6": {
+        "list": {
+          "1": {
+            "title": "Treści na platformie:",
+            "description": "WorkerHomes udostępnia platformę 'taką, jaka jest' i 'jak jest dostępna'. Nie udziela się żadnych gwarancji dotyczących dokładności, kompletności ani aktualności treści."
+          },
+          "2": {
+            "title": "Zrzeczenie się odpowiedzialności:",
+            "description": "WorkerHomes, jej przedstawiciele prawni oraz pomocnicy ponoszą odpowiedzialność jedynie za umyślne lub rażąco niedbałe działanie. W przypadku istotnych obowiązków umownych (tj. obowiązków, które są kluczowe dla osiągnięcia celu umowy) odpowiedzialność obejmuje także lekką niedbałość, ale jest ograniczona do przewidywalnych, typowych dla umowy, bezpośrednich średnich szkód. Wobec przedsiębiorców WorkerHomes ponosi odpowiedzialność w przypadku rażąco niedbałych naruszeń nieistotnych obowiązków umownych jedynie do wysokości przewidywalnych, typowych dla umowy, bezpośrednich średnich szkód."
+          }
+        }
+      },
+      "7": "Powyższe zrzeczenie się odpowiedzialności nie dotyczy odpowiedzialności za szkody wynikłe z uszkodzenia ciała, zdrowia lub życia. Przepisy ustawy o odpowiedzialności za produkt pozostają nienaruszone przez to zrzeczenie się odpowiedzialności.",
+      "8": {
+        "text": "Użytkownicy nie mogą korzystać z platformy do celów nielegalnych lub nieautoryzowanych. Obejmuje to",
+        "list": {
+          "1": {
+            "title": "Nadużycie:",
+            "description": "Publikowanie fałszywych informacji, niewłaściwe wykorzystanie danych lub nieautoryzowany dostęp do systemu jest zabroniony."
+          },
+          "2": {
+            "title": "Ochrona danych:",
+            "description": "Korzystanie z platformy musi być zgodne z obowiązującymi przepisami o ochronie danych osobowych. Zabrania się zbierania, przechowywania lub udostępniania danych osobowych innych Użytkowników bez ich zgody."
+          }
+        }
+      },
+      "9": {
+        "list": {
+          "1": {
+            "title": "Zakończenie przez WorkerHomes:",
+            "description": "WorkerHomes zastrzega sobie prawo do zawieszenia lub usunięcia konta Użytkownika w dowolnym momencie i bez podania przyczyny, szczególnie w przypadku naruszenia niniejszego Regulaminu lub niewłaściwego korzystania z platformy. W takim przypadku Użytkownik nie ma prawa do zwrotu opłat. WorkerHomes może wypowiedzieć umowę z jednomiesięcznym wypowiedzeniem. WorkerHomes zastrzega sobie również prawo do usunięcia kont użytkowników, które były nieaktywne przez ponad 12 miesięcy."
+          },
+          "2": {
+            "title": "Rozwiązanie przez Użytkownika:",
+            "description": "Użytkownicy mogą w każdej chwili anulować swoją miesięczną subskrypcję za pośrednictwem swojego konta użytkownika. Anulowanie subskrypcji wchodzi w życie z końcem bieżącego okresu rozliczeniowego. Nie przysługuje częściowy zwrot za bieżący miesiąc. Po anulowaniu dostęp do płatnych funkcji pozostanie aktywny do końca bieżącego okresu rozliczeniowego, po czym Użytkownik zostanie przywrócony do bezpłatnego konta."
+          },
+          "3": {
+            "title": "Okres trwania subskrypcji i rozwiązanie umowy:",
+            "description": "Okres obowiązywania płatnych pakietów wynosi 1 miesiąc. Prawo do rozwiązania umowy z ważnej przyczyny bez wypowiedzenia pozostaje nienaruszone. O ile pakiet nie zostanie anulowany przed końcem okresu obowiązywania umowy, automatycznie przedłuża się on o wybrany okres. Użytkownik może w każdej chwili rozwiązać umowę, korzystając z przycisku anulowania. Konto pozostanie aktywne do końca bieżącego okresu pakietu lub okresu próbnego i może być nadal wykorzystywane przez Użytkownika w tym czasie. Bieżący okres rozliczeniowy musi zostać opłacony przez Użytkownika. WorkerHomes może rozwiązać umowę w dowolnym momencie z końcem odpowiedniego okresu obowiązywania umowy."
+          },
+          "4": {
+            "title": "Prawo do odstąpienia zgodnie z Dyrektywą 2011/83/UE:",
+            "list": {
+              "1": "Konsumenci mają prawo odstąpić od umowy w ciągu 14 dni bez podawania przyczyny (Prawo do odstąpienia).",
+              "2": "Aby skorzystać z prawa do odstąpienia, musisz poinformować nas w sposób jasny (np. poprzez e-mail lub pocztę) o swojej decyzji o odstąpieniu od tej umowy. Aby dotrzymać terminu odstąpienia, wystarczy, że wyślesz swoją wiadomość dotyczącą wykonania prawa do odstąpienia przed upływem okresu odstąpienia.",
+              "3": "Wygaśnięcie prawa do odstąpienia: Prawo do odstąpienia wygasa zgodnie z Artykułem 16 Dyrektywy 2011/83/UE, gdy usługa została w pełni wykonana lub w przypadkach, gdy usługa zaczyna się w trakcie okresu odstąpienia, gdy wyraźnie wyraziłeś zgodę na rozpoczęcie wykonania usługi i uznałeś, że utracisz prawo do odstąpienia, gdy usługa została rozpoczęta.",
+              "4": "Ponieważ usługa na WorkerHomes rozpoczyna się od publikacji twojego ogłoszenia, twoje prawo do odstąpienia wygasa, gdy tylko twoje ogłoszenie zostanie opublikowane i zgadzasz się na rozpoczęcie usługi."
+            }
+          }
+        }
+      },
+      "10": "WorkerHomes w ramach świadczenia usług przeprowadza skuteczne kopie zapasowe, jednak nie udziela ogólnej gwarancji bezpieczeństwa danych przesyłanych przez Użytkownika. Użytkownik jest również odpowiedzialny za regularne tworzenie kopii zapasowych swoich danych w celu zapobieżenia ich utracie. WorkerHomes dołoży należytej staranności podczas świadczenia uzgodnionej usługi i przeprowadzi kopie zapasowe z niezbędną wiedzą fachową. WorkerHomes nie gwarantuje jednak, że przechowywane treści lub dane, do których Użytkownik uzyskuje dostęp, nie zostaną przypadkowo uszkodzone, zniekształcone, utracone lub częściowo usunięte. Użytkownik jest zobowiązany do podjęcia własnych środków ostrożności w celu zabezpieczenia swoich danych.",
+      "11": "Strona internetowa WorkerHomes zawiera treści w przeważającej mierze zamieszczone przez Użytkowników. WorkerHomes usunie treści, jeśli istnieją przesłanki, że naruszają one niniejszy Regulamin, obowiązujące przepisy prawa lub prawa osób trzecich. W odniesieniu do treści zamieszczonych przez osoby trzecie, WorkerHomes działa wyłącznie jako dostawca usług zgodnie z § 10 TMG (Ustawa o telemediach). Uprawnieni, w szczególności właściciele praw autorskich i praw własności przemysłowej, mogą zgłaszać naruszające prawo oferty i wnioskować o ich usunięcie. WorkerHomes nie gwarantuje ani nie ponosi odpowiedzialności za dokładność treści zamieszczonych na stronie internetowej przez osoby trzecie.",
+      "12": "W odniesieniu do treści (zdjęć, opisów ofert), które Użytkownik zamieszcza na WorkerHomes, Użytkownik przyznaje WorkerHomes niewyłączne, ogólnoświatowe, bezterminowe, nieograniczone, zbywalne i nieodwołalne prawo do ich wykorzystywania we wszystkich znanych formach eksploatacji dotyczących wszystkich praw autorskich i innych praw ochronnych. Użytkownik zobowiązuje się do zamieszczania wyłącznie takich treści, do których może przyznać takie prawa WorkerHomes.",
+      "13": "Użytkownik zwalnia WorkerHomes z wszelkich roszczeń zgłaszanych przez osoby trzecie przeciwko WorkerHomes z powodu takich naruszeń. Obejmuje to również zwrot kosztów koniecznej obrony prawnej. Użytkownik zobowiązuje się do zwolnienia WorkerHomes z odpowiedzialności w przypadku wystąpienia roszczeń.",
+      "14": "WorkerHomes oraz jej przedstawiciele prawni i pomocnicy ponoszą odpowiedzialność jedynie za umyślne lub rażące zaniedbanie. W przypadku istotnych obowiązków umownych (tj. obowiązków, które są kluczowe dla osiągnięcia celu umowy), odpowiedzialność obejmuje także lekką niedbałość, ale jest ograniczona do przewidywalnych, typowych dla umowy, bezpośrednich średnich szkód. Wobec przedsiębiorców WorkerHomes ponosi odpowiedzialność w przypadku rażącego zaniedbania naruszenia nieistotnych obowiązków umownych tylko do wysokości przewidywalnych, typowych dla umowy, bezpośrednich średnich szkód.",
+      "15": "Powyższe zrzeczenie się odpowiedzialności nie dotyczy odpowiedzialności za szkody wynikłe z uszkodzenia ciała, zdrowia lub życia. Przepisy ustawy o odpowiedzialności za produkt pozostają nienaruszone przez to zrzeczenie się odpowiedzialności.",
+      "16": "O ile obowiązujące przepisy prawa kraju zamieszkania klienta nie stanowią inaczej, uznaje się, że zastosowanie ma prawo niemieckie, z wyłączeniem Konwencji Narodów Zjednoczonych o Umowach Międzynarodowej Sprzedaży Towarów (CISG).",
+      "17": "Jeśli którekolwiek z postanowień niniejszego Regulaminu jest całkowicie lub częściowo nieważne, nie wpływa to na ważność pozostałych postanowień. W miejsce nieważnego postanowienia stosuje się postanowienie, które jak najbardziej zbliża się do celu gospodarczego nieważnego postanowienia."
+    }
+  },
+  "statistics": {
+    "title": "Statystyki",
+    "description": "Są to najpopularniejsze destynacje na świecie.",
+    "views": "Wyświetlenia",
+    "contacts": "Kontakty",
+    "most-visited": "Najczęściej odwiedzane",
+    "table": {
+      "title": "Tytuł",
+      "image": "Obraz",
+      "date": "Data",
+      "count": "Łączna liczba wyświetleń"
+    }
+  },
+  "email-verified": {
+    "title": "DZIĘKUJEMY",
+    "description": "Twój email został pomyślnie zweryfikowany. Teraz możesz zalogować się na swoje konto.",
+    "button": "Kliknij tutaj, aby się zalogować"
+  },
+  "upgrade": {
+    "message": "Twój pakiet został pomyślnie zmieniony. Teraz możesz cieszyć się korzyściami z nowego pakietu.",
+    "upgrade": "Ulepsz swój plan",
+    "process": "Przetwarzanie...",
+    "downgrade": "Obniż swój plan",
+    "confirm": {
+      "upgrade": {
+        "title": "Aktualizacja",
+        "text": "Zamierzasz dokonać uaktualnienia do ",
+        "text2": ". Po zakończeniu płatności Twoje konto zostanie natychmiast uaktualnione, a Ty uzyskasz natychmiastowy dostęp do wszystkich funkcji premium i korzyści nowego planu."
+      },
+
+      "downgrade": {
+        "title": "Nachylenie",
+        "text": "Drogi Kliencie, Twój abonament ",
+        "text2": " zostanie aktywowany na koniec bieżącego okresu rozliczeniowego. Do tego czasu możesz korzystać z korzyści obecnego pakietu."
+      }
+    }
+  },
+  "checkout": {
+    "buy": "Kup plan",
+    "trail": "Otrzymaj pierwsze 3 miesiące za darmo",
+    "process": "Przetwarzanie...",
+    "free-success": "Twój darmowy plan został pomyślnie utworzony.",
+    "trial-success": "Twój pakiet próbny został utworzony i jest aktywny przez 3 miesiące."
+  },
+  "payment-card": {
+    "customer": "Klient:",
+    "email": "E-mail:",
+    "brand": "Marka karty:",
+    "type": "Typ płatności:",
+    "last4": "Ostatnie 4 cyfry:",
+    "expiry": "Data ważności:",
+    "no-method": "Nie znaleziono metody płatności.",
+    "un-support": "Nieobsługiwana metoda płatności.",
+    "loading": "Ładowanie szczegółów płatności...",
+    "update": "Zaktualizuj szczegóły płatności",
+    "failed": "Wystąpił błąd podczas tworzenia sesji portalu.",
+    "unable": "Nie można utworzyć sesji portalu klienta.",
+    "retrieve-error": "Nie udało się pobrać danych klienta.",
+    "setup": "Skonfiguruj swoją metodę płatności"
+  },
+  "warning": {
+    "title": "Ostrzeżenie",
+    "description": "Drogi kliencie, upewnij się, że Twoje konto jest w pełni uzupełnione przed dodaniem ogłoszenia, w tym adres i dane kontaktowe.",
+    "button": "Przejdź do profilu"
+  }
+}

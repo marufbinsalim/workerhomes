@@ -1,0 +1,2098 @@
+{
+  "brand": {
+    "title": "Hello world!",
+    "description": "This is a simple example of a brand object."
+  },
+
+  "subscribe": {
+    "title": "Subscribe to our newsletter",
+    "description": "Sign up and we'll send the best deals to you",
+    "placeholder": "Your emails here",
+    "button": "Subscribe"
+  },
+  "header": {
+    "links": {
+      "home": "Home",
+      "bookmarks": "Bookmarks",
+      "pricing": "Pricing",
+      "blogs": "Blogs",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "locales": {
+      "title": "Select your language",
+      "title2": "Available Languages",
+      "en": {
+        "language": "English",
+        "country": "Great Britain"
+      },
+      "pl": {
+        "language": "Polish",
+        "country": "Poland"
+      },
+      "de": {
+        "language": "German",
+        "country": "Germany"
+      }
+    },
+    "brand": {
+      "name": "Homeworkers",
+      "description": "This is a simple example of a brand object."
+    },
+    "button": {
+      "sign": "Sign In / Register",
+      "sign-out": "Sign out"
+    }
+  },
+  "hero": {
+    "title": "Find Your Perfect Work Stay",
+    "description": "Discover amazing places at exclusive deals.",
+    "search": {
+      "button": "Search",
+      "placeholder": "Where is your workplace / Search for location or zip code"
+    }
+  },
+  "plan": {
+    "title": "Pricing Plans",
+    "description": "Choose the best plan for you.",
+    "button": "Choose Plan",
+    "date": "Select date range",
+    "options": {
+      "free": "Free",
+      "silver": "Silver",
+      "gold": "Gold",
+      "platinum": "Platinum"
+    },
+    "features": {
+      "title": "Features",
+      "recommended": "Recommended",
+      "month": "Month",
+      "button": {
+        "create": "Create a listing",
+        "buy": "Proceed to Payment",
+        "free": "Continue as free",
+        "choose": "Choose plan"
+      },
+      "list": {
+        "picture": "Pictures",
+        "website": "Website Link",
+        "facebook": "Facebook Link",
+        "instagram": "Instagram Link",
+        "google": "Google Listing",
+        "search": "Search Position",
+        "featured": "Featured Section",
+        "visibility": "Coverage Radius"
+      },
+      "position": {
+        "first": "Listed above free, silver and gold",
+        "second": "Listed above free and silver",
+        "third": "Listed above free",
+        "last": "Last"
+      }
+    }
+  },
+  "footer": {
+    "hosting": {
+      "title": "Hosting",
+      "host": "List your property",
+      "resource": "Hosting Resources",
+      "guide": "Tips and Tricks/Advices/Guide",
+      "blog": "Blog",
+      "earn": "You could earn"
+    },
+    "customer": {
+      "care": "Toll Free Customer Care",
+      "support": "Need live support?"
+    },
+    "subscribe": {
+      "title": "Subscribe to our newsletter",
+      "placeholder": "Your emails here",
+      "button": "Subscribe"
+    },
+    "follow": {
+      "title": "Follow us on social media"
+    },
+    "company": {
+      "title": "Company",
+      "links": {
+        "about": "About",
+        "contact": "Contact",
+        "careers": "Careers",
+        "press": "Press",
+        "blog": "Blog",
+        "faqs": "FAQs"
+      }
+    },
+    "support": {
+      "title": "Support",
+      "links": {
+        "contact": "Contact Us",
+        "faq": "FAQ",
+        "help": "Help",
+        "privacy": "Privacy Policy",
+        "terms": "Terms & Conditions",
+        "legal": "Legal Notice",
+        "sitemap": "Site Map"
+      }
+    },
+    "service": {
+      "title": "Our Services"
+    },
+    "copy": {
+      "right": {
+        "text": "All Rights Reserved",
+        "by": "By",
+        "brand": "Workerhomes.pl"
+      },
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "sitemap": "Site Map"
+    },
+    "default": {
+      "contact": {
+        "title": "Contact Us",
+        "customer": "Toll Free Customer Care",
+        "support": "Need live support?"
+      }
+    }
+  },
+  "become-hosted": {
+    "title": "Become a host page",
+    "description": "Enter your property details to get an estimate of how much you could earn per month..",
+    "form": {
+      "title": "Calculate your earnings",
+      "description": "Enter your property details to get an estimate of how much you could earn per month.",
+      "button": "Calculate",
+      "result": {
+        "title": "You could earn",
+        "nights": "nights",
+        "estimated": "at an estimated nightly price of",
+        "button": "Enter Property Now"
+      },
+      "fields": {
+        "guests": "Number of Guests",
+        "price": "Price per night"
+      }
+    }
+  },
+  "landing": {
+    "city": {
+      "title": "Popular Cities",
+      "description": "Discover the best places to work in these cities."
+    },
+    "about": {
+      "title": "Who we are and what we do",
+      "description": "Learn about our identity and the services we provide."
+    },
+    "offer": {
+      "title": "Special Offers",
+      "description": "These popular destinations have a lot to offer"
+    },
+    "recommended": {
+      "title": "Recommended Listings",
+      "description": "These are the most selected Listings in the world.",
+      "button": "More"
+    },
+    "popular": {
+      "title": "Popular Destinations",
+      "description": "These are the most popular destinations in the world.",
+      "button": "More"
+    },
+    "featured": {
+      "title": "Featured Destinations",
+      "description": "These are the most popular destinations in the world.",
+      "button": "More"
+    },
+    "trended": {
+      "title": "Most Trended Places",
+      "description": "These are the most popular destinations in the world.",
+      "button": "More"
+    }
+  },
+  "contact": {
+    "form": {
+      "title": "Send a message",
+      "name": "Full Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Your Message",
+      "button": "Send"
+    },
+    "messages": {
+      "create": "We are successfully received your message, we will contact you soon.",
+      "error": "Something went wrong, please try again later.",
+      "recaptcha-not-ready": "Recaptcha is not ready. Please try again latter.",
+      "recaptcha-failed": "Recaptcha verification failed. Please try again.",
+      "recaptcha-success": "You are verified as a human."
+    },
+    "title": "Contact Us",
+    "meta": {
+      "customer": "Toll Free Customer Care",
+      "support": "Need live support?",
+      "address": "Address",
+      "social": "Follow us on social media"
+    },
+    "about": {
+      "title": "Who we are and what we do",
+      "description": "Learn about our identity and the services we provide."
+    }
+  },
+  "claim": {
+    "title": "Create your claim to this property.",
+    "description": "You request will be send to admin, and it will be approved after admin approval.",
+
+    "form": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email Address",
+      "description": "Description",
+      "button": "Send"
+    },
+    "messages": {
+      "create": "Your claim has been created successfully, it will be published after admin approval.",
+      "error": "Something went wrong, please try again later.",
+      "empty": "You have no claims yet.",
+      "signin": "You need to sign in to create a claim.",
+      "recaptcha-not-ready": "Recaptcha is not ready. Please try again latter.",
+      "recaptcha-failed": "Recaptcha verification failed. Please try again.",
+      "recaptcha-success": "You are verified as a human."
+    },
+    "table": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email Address",
+      "user": "Account Details",
+      "description": "Description",
+      "dwelling": "Listing Details",
+      "status": "Status"
+    },
+    "control-panel": {
+      "filters": {
+        "all": "All",
+        "approved": "Approved",
+        "not-approved": "Not Approved"
+      },
+      "search": "Search by First Name or Last Name",
+      "create": "Claim this property",
+      "edit": "Edit",
+      "delete": "Delete",
+      "approve": "Approve",
+      "login": "Sign in",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Listings",
+        "3": "Claims"
+      }
+    }
+  },
+  "listing-contact": {
+    "title": "Contact to the owner",
+    "description": "You can contact to the owner of this listing by filling the form below.",
+    "create": "Contact now",
+    "form": {
+      "name_or_company": "Your name or Company name",
+      "email": "Email Address",
+      "phone": "Phone number",
+      "guests": "Number of Guests",
+      "check_in": "Check In",
+      "check_out": "Check out",
+      "additional_information": "Additional Information",
+      "button": "Send"
+    },
+    "messages": {
+      "create": "Your message has been sent successfully.",
+      "error": "Something went wrong, please try again later.",
+      "empty": "You have no messages yet.",
+      "recaptcha-not-ready": "Recaptcha is not ready. Please try again latter.",
+      "recaptcha-failed": "Recaptcha verification failed. Please try again.",
+      "recaptcha-success": "You are verified as a human."
+    }
+  },
+  "bookmark": {
+    "title": "Bookmarks",
+    "description": "These are the most popular destinations in the world.",
+    "button": "More",
+
+    "message": {
+      "empty": "You have no bookmarks yet.",
+      "empty2": "You can add bookmarks by clicking the bookmark icon on the listings."
+    }
+  },
+  "listings": {
+    "title": "Listings",
+    "description": "Find your dream home form our listings.",
+    "button": "More",
+    "filters": {
+      "0": {
+        "title": "Filter By Price",
+        "options": {
+          "0": "All Prices",
+          "1": "Less than zł 500",
+          "2": "zł 500 - zł 1000",
+          "3": "zł 1000 - zł 2000",
+          "4": "zł 1000 - zł 3000",
+          "5": "More than zł 3000"
+        }
+      },
+      "1": {
+        "title": "Filter By Guests",
+        "options": {
+          "0": "All",
+          "1": "Lower then 5",
+          "2": "5 - 10",
+          "3": "10 - 15",
+          "4": "More than 15"
+        }
+      },
+      "2": {
+        "title": "Filter By Min stay",
+        "options": {
+          "0": "All",
+          "1": "Less then 5 days",
+          "2": "5 - 10 days",
+          "3": "10 - 15 days",
+          "4": "More than 15 days"
+        }
+      }
+    },
+    "sorts": {
+      "price": "Sort by price",
+      "distance": "Sort by distance"
+    },
+    "messages": {
+      "empty": "There are no records to display at this moment. please search with different location",
+      "invalid": "Please select a valid location from the dropdown",
+      "properties": "properties are found."
+    }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "description": "Increase your success rate and performance with one of our advantage packages.",
+    "button": "More"
+  },
+  "guide": {
+    "title": "Guidelines",
+    "description": "Here is list of Tips and Tricks/Advices/Guide for you."
+  },
+  "blog": {
+    "title": "Articles",
+    "description": "These are the most popular destinations in the world.",
+    "button": "More",
+    "loading": "Loading...",
+    "not-found": "No articles found, please try with another location.",
+    "sidebar": {
+      "search": {
+        "title": "Search",
+        "placeholder": "Search for articles"
+      },
+      "category": {
+        "title": "Categories",
+        "all": "All Categories"
+      },
+      "recent": {
+        "sort-by": "Sort By",
+        "new": "Recent Posts",
+        "old": "Oldest Posts"
+      },
+      "tag": {
+        "title": "Tags"
+      }
+    },
+    "pagination": {
+      "found": "properties found"
+    }
+  },
+  "register": {
+    "title": "Welcome Dear - Sign Up for Free",
+    "message": {
+      "text": "Already have an account yet?",
+      "link": "login",
+      "recaptcha-not-ready": "Recaptcha is not ready. Please try again latter.",
+      "recaptcha-failed": "Recaptcha verification failed. Please try again.",
+      "recaptcha-success": "You are verified as a human.",
+      "invalid": "Invalid details please check your entry data.",
+      "success": "Your account has been created successfully. please check your email inbox (spam) to verify your account.",
+      "error": "Something went wrong. Please try again."
+    },
+    "form": {
+      "firstname": "First Name",
+      "lastname": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "confirm": "Confirm Password",
+      "privacy": "Email me exclusive Agoda promotions. I can opt out later as stated in the Privacy Policy.",
+      "button": "Sign up"
+    },
+    "social": {
+      "title": "or sign in with",
+      "description": "By creating an account, you agree to our Terms of Service and Privacy Statement.",
+      "facebook": "Facebook",
+      "google": "Google"
+    }
+  },
+  "login": {
+    "title": "Welcome back",
+    "message": {
+      "text": "Don't have an account yet?",
+      "link": "sign up for free",
+      "recaptcha-not-ready": "Recaptcha is not ready. Please try again latter.",
+      "recaptcha-failed": "Recaptcha verification failed. Please try again.",
+      "recaptcha-success": "You are verified as a human.",
+      "invalid": "Invalid credentials. Please try again.",
+      "success": "You have been signed in successfully.",
+      "error": "Something went wrong. Please try again."
+    },
+    "form": {
+      "email": "Email",
+      "password": "Password",
+      "forgot": "Forgot your password?",
+      "button": "Sign In"
+    },
+    "social": {
+      "title": "or sign in with",
+      "description": "By creating an account, you agree to our Terms of Service and Privacy Statement.",
+      "facebook": "Facebook",
+      "google": "Google"
+    }
+  },
+
+  "profile": {
+    "title": "Profile",
+    "description": "These are the most popular destinations in the world.",
+    "messages": {
+      "delete-account": "Important Notice - Your Account and Subscriptions",
+      "delete": {
+        "1": "We hope you’ve enjoyed using our services! Before deleting your account, we want to make sure everything is set up smoothly for you. Please remember to cancel any active subscriptions first to avoid misunderstandings or unexpected charges.",
+        "2": "Here’s how it works:",
+        "3": "We’d love to welcome you back someday! If you need any assistance, our team is always here to help. Thank you for being part of our community!",
+        "4": "PS: Maybe you’ll change your mind? We’re always introducing new updates - stay connected with us! 😊",
+        "list": {
+          "1": "Log in to your account.",
+          "2": "Go to the “Listings” section.",
+          "3": "Under the 'Menu' button, delete your listing. Repeat this process until all Listings have been deleted."
+        }
+      },
+      "update": "Your account has been updated successfully.",
+      "delete-success": "Your account has been deleted successfully.",
+      "password": "Your password has been updated successfully.",
+      "ok": "You'll signed out after updating you account details. please signin again.",
+      "loading": "Getting your identity, please wait...",
+      "auth": "Danger Zone!",
+      "change": "Change Your Password",
+      "verify-password": "Please verify your password to continue.",
+      "password-verified": "Your password has been verified successfully.",
+      "invalid-password": "Invalid password, please try again.",
+      "no-card": "You need to select a least one payment method.",
+      "payment-method": "Payment method has been updated successfully."
+    },
+    "control-panel": {
+      "edit": "Update",
+      "delete": "Delete",
+      "submit": "Submit",
+      "password": "Change Your Password",
+      "deleteAccount": "Delete My Account",
+      "change-payment": "Change payment method",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Profile"
+      }
+    },
+    "form": {
+      "field": {
+        "password": "Password",
+        "current-password": "Current Password",
+        "confirm-password": "Confirm Password",
+        "business-account": "Business Account",
+        "private-account": "Private Account",
+        "company": "Company Name",
+        "phone": "Phone",
+        "address": "Address",
+        "vat": "VAT Number",
+        "email": "Email Address",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "first_line": "Street and house number",
+        "second_line": "Second Address Line",
+        "city": "City",
+        "zip": "Zip Code",
+        "country": "Country",
+        "spoken-language": "Spoken Language",
+        "paypal": "Paypal",
+        "card": "Credit Card",
+        "yes": "Yes",
+        "no": "No",
+        "payment-methods": "Payment Methods",
+        "current-method": "Current Payment Method",
+        "payment-method": "Payment Method"
+      },
+      "errors": {
+        "password": "Password is required.",
+        "first_name": "First Name is required.",
+        "last_name": "Last Name is required.",
+        "email": "Email Address is required."
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "These are the most popular destinations in the world."
+  },
+  "logout": {
+    "title": "Logout",
+    "description": "These are the most popular destinations in the world."
+  },
+  "blogs": {
+    "title": "Articles",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this article?",
+      "create": "Article has been created successfully.",
+      "update": "Article has been updated successfully.",
+      "delete-success": "Article has been deleted successfully.",
+      "translate": "Country has been translated successfully."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "All",
+        "not-published": "Not Published",
+        "newest": "Latest"
+      },
+      "search": "Search by Title",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Articles"
+      }
+    },
+    "table": {
+      "title": "Title",
+      "author": "Author",
+      "category": "Category",
+      "published": "Published",
+      "translation": "Translations",
+      "created": "Created At",
+      "options": "Options"
+    }
+  },
+  "blog-comments": {
+    "title": "Comments",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this comment?",
+      "create": "Comment has been created successfully.",
+      "update": "Comment has been updated successfully.",
+      "delete-success": "Comment has been deleted successfully.",
+      "translate": "Country has been translated successfully."
+    }
+  },
+  "blog-categories": {
+    "title": "Categories",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this category?",
+      "create": "Category has been created successfully.",
+      "update": "Category has been updated successfully.",
+      "delete-success": "Category has been deleted successfully.",
+      "translate": "Country has been translated successfully."
+    },
+    "control-panel": {
+      "search": "Search by Title",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Articles",
+        "3": "Categories"
+      }
+    },
+    "table": {
+      "title": "Title",
+      "description": "Description",
+      "translation": "Translations",
+      "options": "Options"
+    }
+  },
+  "subscription": {
+    "title": "Subscriptions",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "reset": "Reset Form",
+    "messages": {
+      "delete": "Are you sure you want to delete this subscription?",
+      "create": "Subscription has been created successfully.",
+      "update": "Subscription has been updated successfully.",
+      "delete-success": "Subscription has been deleted successfully.",
+      "translate": "Country has been translated successfully."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "All",
+        "admin": "Assigned By Admin",
+        "purchased": "Purchased",
+        "close-to-expire": "Close to Expire",
+        "expired": "Expired",
+        "used": "Not Listed yet"
+      },
+      "search": "Search by package name",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Subscriptions"
+      }
+    },
+    "table": {
+      "by": "Created By",
+      "package": "Package Name",
+      "start": "Started Date",
+      "end": "End Date",
+      "state": "Payment Status",
+      "status": "Status",
+      "amount": "Amount",
+      "not-set": "Listed",
+      "options": "Options"
+    },
+    "form": {
+      "titles": {
+        "create": "Create subscription",
+        "description": "You can create subscription with custom period and free amount for your listings.",
+        "edit": "Edit subscription"
+      },
+      "fields": {
+        "package": "Subscription Plan",
+        "start": "Started Date",
+        "end": "End Date"
+      }
+    }
+  },
+  "dwellings": {
+    "title": "Listings",
+    "description": "These are the most popular destinations in the world.",
+    "messages": {
+      "delete": "Are you sure you want to delete it from the list?",
+      "create": "Item has been created successfully.",
+      "create2": "Your listed item has been created successfully, it will be published after admin approval.",
+      "update": "item has been updated successfully.",
+      "delete-success": "item has been deleted successfully.",
+      "translate": "Country has been translated successfully.",
+      "claims": "Claim Requests",
+      "claims-msg": "Here you can see the list of users who have requested to claim this item.",
+      "loading": "Generating Listing Form...",
+      "subscription": "Dwelling has been created successfully, your item will be published after admin approval.",
+      "pending-subscription": "Your subscription is pending for next billing period, and you are not able to delete, downgrade or upgrade your listing until the next billing period."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "All",
+        "pending": "Pending",
+        "rent": "Rent",
+        "available": "Available",
+        "old": "Sort By oldest",
+        "new": "Sort By Newest",
+        "expired": "Expired",
+        "recommended": "Recommended",
+        "featured": "Featured",
+        "approval": "Needs Claim Approval"
+      },
+      "search": "Search by Title",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "next": "Next",
+      "next2": "Save & Next",
+      "save": "Save & Next",
+      "close": "Close & return back",
+      "reset": "Reset Form",
+      "prev": "Previous",
+      "downgrade": "Downgrade",
+      "upgrade": "Upgrade",
+      "menu": "Menu",
+      "current-state": "Current State",
+      "preview": "View",
+      "claims": "Claims Requests",
+      "translate": "Translate",
+      "not-valid-country": "The selected location must be in Germany, Poland, or England.",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Listings"
+      }
+    },
+    "table": {
+      "title": "Title",
+      "status": "Status",
+      "payment_status": "Payment Status",
+      "published": "Published",
+      "plan": "Plan (Expiration Date)",
+      "translation": "Translations",
+      "created": "Created At",
+      "options": "Options",
+      "owner": "Owner",
+      "claims": "Claims",
+      "created_by": "Created By",
+      "image": "Default Image"
+    },
+    "form": {
+      "title": {
+        "create": "Create New Listing",
+        "edit": "Edit Listed Item",
+        "delete": "Delete Listed item",
+        "delete-msg": "Are you sure you want to delete listed item?",
+        "images": "Listing images",
+        "prices": "Listing prices"
+      },
+      "field": {
+        "translate": "Translation Language",
+        "plan": "Selected Plan",
+        "category": "Select Category",
+        "title": "Title",
+        "slug": "Slug",
+        "description": "Description",
+        "description-info": "Description content must be at least 50 characters long.",
+        "amenities": "Select Amenities",
+        "equipments": "Select Equipments",
+        "trend": "Trended",
+        "popular": "Popular",
+        "recommended": "Recommended",
+        "status": "Current Status",
+        "publish": "Publish",
+        "images": "listing images",
+        "accommodation-type": "Accommodation Type",
+        "price": "Price (USD)",
+        "payment-period": "Payment Period",
+        "guest": "Number of Guests",
+        "adult": "Number of Adults",
+        "min": "Minimum Stay (days)",
+        "line1": "Street & House Number",
+        "line2": "Address Line 2",
+        "city": "City",
+        "zip": "Zip Code",
+        "country": "Country",
+        "search": "Search by name",
+        "search2": "Search by title",
+        "owner": "Am I the owner of this dwelling?'"
+      },
+      "tabs": {
+        "payment": "Payment",
+        "listing": "Listing Details",
+        "source": "Prices & Images",
+        "social": "Contact & Location",
+        "package": "Subscription Package"
+      },
+      "price-table": {
+        "price": "Price",
+        "type": "Type",
+        "guest": "Number of Guests",
+        "rooms": "Number of Rooms",
+        "min_stay": "Minimum Stay day(s)",
+        "options": "Options"
+      }
+    },
+    "modal": {
+      "create": {
+        "title": "Create New Listing",
+        "description": "Here you can create new listing."
+      },
+      "update": {
+        "title": "Edit your listing"
+      },
+      "delete": {
+        "yes": "Yes, delete listing",
+        "no": "Cancel",
+        "title": "Deleting your listing will have the following effects:",
+        "description": "Are you sure you want to delete your listing and cancel your subscription?",
+        "list": {
+          "0": {
+            "bold": "1. Your listing will be permanently removed: ",
+            "text": "It will no longer be visible on our platform, and potential customers won’t be able to find or contact you."
+          },
+          "1": {
+            "bold": "2. Your subscription will be canceled: ",
+            "text": "Your current subscription will automatically end at the next possible date"
+          }
+        },
+        "notice": {
+          "title": "Important Note:",
+          "text": "Deleting your listing means losing valuable visibility and the opportunity to receive new inquiries from potential clients."
+        }
+      },
+      "claims": {
+        "title": "Claim Requests",
+        "description": "Here you can see the list of users who have requested to claim this item."
+      },
+      "preview": {
+        "title": "Preview your listing",
+        "description": "Here you can see the preview of your listing."
+      },
+      "review": {
+        "title": "Live Mode",
+        "description": "Here you can see the reviews of your listing. before publishing."
+      },
+      "translate": {
+        "title": "Translate your listing",
+        "description": "Here you can translate your listing."
+      },
+      "upgrade": {
+        "title": "Upgrade Your Subscription Plan",
+        "description": "Take your experience to the next level by upgrading your plan. Enjoy enhanced features and greater visibility to help you achieve more.",
+        "description2": "The upgraded plan will be activated immediately, giving you instant access to premium benefits."
+      },
+      "downgrade": {
+        "title": "Downgrade Your Subscription Plan",
+        "description": "Your current plan and its features will stay active until the end of your billing period. After that, your new plan will automatically start.",
+        "description2": "This ensures a smooth transition without losing access to the benefits you've already paid for. If you ever need advanced features again, you can easily upgrade your plan at any time."
+      }
+    }
+  },
+  "dwelling-categories": {
+    "title": "Categories",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this category?",
+      "create": "Category has been created successfully.",
+      "update": "Category has been updated successfully.",
+      "delete-success": "Category has been deleted successfully.",
+      "translate": "Country has been translated successfully."
+    },
+    "control-panel": {
+      "search": "Search by Title",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Listings",
+        "3": "Categories"
+      }
+    },
+    "table": {
+      "icon": "Icon",
+      "title": "Title",
+      "description": "Description",
+      "translation": "Translations",
+      "options": "Options"
+    }
+  },
+  "dwelling-equipments": {
+    "title": "Equipments",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this equipment?",
+      "create": "Equipment has been created successfully.",
+      "update": "Equipment has been updated successfully.",
+      "delete-success": "Equipment has been deleted successfully.",
+      "translate": "Country has been translated successfully."
+    },
+    "control-panel": {
+      "search": "Search by Title",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Listings",
+        "3": "Equipments"
+      }
+    },
+    "table": {
+      "title": "Title",
+      "description": "Description",
+      "translation": "Translations",
+      "options": "Options",
+      "icon": "Icon"
+    }
+  },
+  "dwelling-amenities": {
+    "title": "Amenities",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this amenity?",
+      "create": "Amenity has been created successfully.",
+      "update": "Amenity has been updated successfully.",
+      "delete-success": "Amenity has been deleted successfully.",
+      "translate": "Country has been translated successfully."
+    },
+    "control-panel": {
+      "search": "Search by Title",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Listings",
+        "3": "Amenities"
+      }
+    },
+    "table": {
+      "title": "Title",
+      "description": "Description",
+      "translation": "Translations",
+      "options": "Options"
+    }
+  },
+  "dwelling-galleries": {
+    "title": "Galleries",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this gallery?",
+      "create": "Gallery has been created successfully.",
+      "update": "Gallery has been updated successfully.",
+      "delete-success": "Gallery has been deleted successfully.",
+      "translate": "Gallery has been translated successfully."
+    }
+  },
+  "dwelling-guidelines": {
+    "title": "Guidelines",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this guideline?",
+      "create": "Guideline has been created successfully.",
+      "update": "Guideline has been updated successfully.",
+      "delete-success": "Guideline has been deleted successfully.",
+      "translate": "Guideline has been translated successfully."
+    },
+    "control-panel": {
+      "search": "Search by Title",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Listings",
+        "3": "Guidelines"
+      }
+    },
+    "table": {
+      "title": "Title",
+      "description": "Description",
+      "pdf": "PDF",
+      "doc": "DOC",
+      "options": "Options"
+    }
+  },
+  "locations": {
+    "title": "Popular Locations",
+    "description": "These are the most popular destinations check them to get the best offers.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this location?",
+      "create": "Location has been created successfully.",
+      "update": "Location has been updated successfully.",
+      "delete-success": "Location has been deleted successfully.",
+      "translate": "Location has been translated successfully."
+    },
+    "control-panel": {
+      "search": "Search by Name",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Cities"
+      }
+    },
+    "table": {
+      "name": "Name",
+      "country": "Country",
+      "order": "Order",
+      "popular": "Popular",
+      "trend": "Trend",
+      "translation": "Translations",
+      "options": "Options"
+    }
+  },
+  "invoice": {
+    "title": "Invoices",
+    "description": "These are the most popular destinations check them to get the best offers.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this location?",
+      "create": "Location has been created successfully.",
+      "update": "Location has been updated successfully.",
+      "delete-success": "Location has been deleted successfully.",
+      "translate": "Location has been translated successfully."
+    },
+    "control-panel": {
+      "search": "Search by Name",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Invoices"
+      }
+    },
+    "table": {
+      "date": "Date",
+      "cost": "Cost",
+      "action": "Action",
+      "download": "Download",
+      "name": "Package Name"
+    }
+  },
+  "location-countries": {
+    "title": "Countries",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this country?",
+      "create": "Country has been created successfully.",
+      "update": "Country has been updated successfully.",
+      "translate": "Country has been translated successfully.",
+      "delete-success": "Country has been deleted successfully."
+    },
+    "control-panel": {
+      "search": "Search by Name",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Location",
+        "3": "Countries"
+      }
+    },
+    "table": {
+      "name": "Name",
+      "code": "Code",
+      "currency": "Currency",
+      "translation": "Translations",
+      "options": "Options"
+    }
+  },
+  "galleries": {
+    "title": "Listing Images",
+    "info": "You are allowed to upload total",
+    "info2": "image(s).",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Save & Next",
+    "upload": "Upload Images",
+    "edit": "Edit",
+    "delete": "Delete",
+    "messages": {
+      "delete": "Are you sure you want to delete this gallery?",
+      "create": "Gallery has been created successfully.",
+      "update": "Gallery has been updated successfully.",
+      "delete-success": "Gallery has been deleted successfully.",
+      "translate": "Gallery has been translated successfully."
+    }
+  },
+
+  "prices": {
+    "title": "Prices & Conditions",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "messages": {
+      "delete": "Are you sure you want to delete this price?",
+      "create": "Price has been created successfully.",
+      "update": "Price has been updated successfully.",
+      "delete-success": "Price has been deleted successfully.",
+      "translate": "Price has been translated successfully.",
+      "required": "Prices amount is required field make sure to fill them first."
+    },
+    "control-panel": {
+      "search": "Search by Title",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Prices"
+      }
+    },
+    "table": {
+      "title": "Price",
+      "type": "Type",
+      "guest": "Persons",
+      "rooms": "Rooms",
+      "min_stay": "Minimum Stay",
+      "option": "Options"
+    },
+    "form": {
+      "titles": {
+        "create": "Create New Price",
+        "edit": "Edit Price",
+        "delete": "Delete Price",
+        "delete-msg": "Are you sure you want to delete this price?"
+      },
+      "fields": {
+        "type": "Type",
+        "guest": "Persons",
+        "rooms": "Rooms",
+        "min_stay": "Min Stay",
+        "price": "Price zł"
+      }
+    }
+  },
+  "packages": {
+    "title": "Packages",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this package?",
+      "create": "Package has been created successfully.",
+      "update": "Package has been updated successfully.",
+      "delete-success": "Package has been deleted successfully.",
+      "translate": "Package has been translated successfully."
+    },
+    "control-panel": {
+      "search": "Search by Title",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Packages"
+      }
+    },
+    "table": {
+      "title": "Plan Name",
+      "price": "Price / Month",
+      "description": "Description",
+      "recommended": "Recommended",
+      "stripe": "Stripe Verified",
+      "translation": "Translations",
+      "options": "Options"
+    }
+  },
+  "users": {
+    "title": "Users",
+    "description": "These are the most popular destinations in the world.",
+    "create": "Create",
+    "messages": {
+      "delete": "Are you sure you want to delete this user?",
+      "create": "User has been created successfully.",
+      "update": "User has been updated successfully.",
+      "delete-success": "User has been deleted successfully."
+    },
+    "control-panel": {
+      "filters": {
+        "all": "All",
+        "admin": "Admins",
+        "user": "users",
+        "blocked": "Blocked",
+        "confirmed": "Not Confirmed"
+      },
+      "search": "Search by email",
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "translate": "Translate",
+      "breadcrumb": {
+        "1": "Dashboard",
+        "2": "Users"
+      }
+    },
+    "table": {
+      "icon": "Picture",
+      "f-name": "First Name",
+      "l-name": "Last Name",
+      "email": "Email Address",
+      "blocked": "Blocked",
+      "confirmed": "Confirmed",
+      "role": "Role",
+      "options": "Options"
+    }
+  },
+  "dashboard-sidebar": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "blogs": "Articles",
+    "blog-comments": "Comments",
+    "blog-categories": "Categories",
+    "dwellings": "Listings",
+    "dwelling-categories": "Categories",
+    "dwelling-equipments": "Equipments",
+    "dwelling-galleries": "Galleries",
+    "dwelling-reviews": "Reviews",
+    "dwelling-guidelines": "Guidelines",
+    "dwelling-amenities": "Amenities",
+    "listings": "Listings",
+    "locations": "Popular Destinations",
+    "location-countries": "Countries",
+    "subscription": "Subscriptions",
+    "packages": "Packages",
+    "users": "Users",
+    "invoice": "Invoices",
+    "statistics": "Statistics"
+  },
+  "pagination": {
+    "of": "of",
+    "found": "properties found"
+  },
+  "table": {
+    "loading": "Loading...",
+    "no-data": "There are no records to display at this moment. please add some records first."
+  },
+  "localizations": {
+    "default": "Select Language",
+    "en": "English",
+    "pl": "Polish",
+    "de": "German"
+  },
+  "dwelling-card": {
+    "more": "more equipments",
+    "starting-from": "Starting from",
+    "per-night": "per night",
+    "visit": "Visit Property",
+    "guests": "Number of Guests",
+    "min-stay": "Minimum Stay",
+    "posted": "Posted",
+    "loading": "Loading",
+    "not-found": "No properties found, please try with another location.",
+    "days": "days"
+  },
+  "single-listing": {
+    "location-detail": "Location Details",
+    "contact-detail": "Contact Details",
+    "owner-detail": "Owner Details",
+    "start-from": "Starting from",
+    "photos": "See all photos",
+    "map": "Show on the map",
+    "not-found": "No Location has been found.",
+    "no-contact": "No contact details found.",
+    "no-owner": "No owner details found.",
+    "direction": "Direction",
+    "service": "Customer Service Language",
+    "tabs": {
+      "overview": "Overview",
+      "facilities": "Facilities",
+      "amenities": "Amenities",
+      "price": "Available Prices & Conditions",
+      "location": "Address & location"
+    },
+    "sections": {
+      "price": {
+        "title": "Available Prices & Conditions",
+        "description": "Select your accommodation and get the best price for your stay."
+      },
+      "location": {
+        "title": "Location & Surroundings"
+      },
+      "top-properties": {
+        "title": "Top Properties Are listed by ",
+        "description": "Here you can find other properties listed by the same owner."
+      },
+      "featured": {
+        "title": "Featured Properties",
+        "description": "Here you can see other properties that are similar to this one"
+      }
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "These are the most popular destinations in the world.",
+    "buttons": {
+      "view": "View All",
+      "date": "Select date range"
+    },
+    "card": {
+      "customer": "Total Customers",
+      "listing": "Total Listings",
+      "sales": "Total Sales",
+      "session": "Last 7 days logged in users"
+    },
+    "loading": {
+      "analyzing": "Analyzing ...",
+      "loading": "Loading..."
+    },
+    "filters": {
+      "weekly": "Weekly",
+      "daily": "Daily",
+      "monthly": "Monthly"
+    },
+    "tabs": {
+      "Sales": "Sales",
+      "Users": "Users",
+      "Listings": "Listings",
+      "overview": "Overview",
+      "recent-sales": "Recent Sales"
+    },
+    "table": {
+      "item": "Item",
+      "total": "Total",
+      "plan": "Plan",
+      "status": "Status",
+      "created": "Created At"
+    }
+  },
+  "statistics": {
+    "title": "Statistics",
+    "description": "These are the most popular destinations in the world.",
+    "views": "Views",
+    "contacts": "Contacts",
+    "most-visited": "Most Visited",
+    "table": {
+      "title": "Title",
+      "image": "Image",
+      "date": "Date",
+      "count": "Total Views"
+    }
+  },
+  "status": {
+    "AVAILABLE": "Available",
+    "PENDING": "Pending",
+    "RENT": "Rent",
+    "needs-admin-approval": "Needs Admin Approval"
+  },
+  "confirm": {
+    "confirm": "Confirm",
+    "reject": "Cancel"
+  },
+  "accommodation-types": {
+    "SELECT TYPE": "Select Type",
+    "SINGLE ROOMS": "Single Room",
+    "DOUBLE ROOMS": "Double Rooms",
+    "SHARED ROOMS": "Shared Rooms",
+    "WHOLE ACCOMMODATION": "Whole Accommodation"
+  },
+  "image-uploader": {
+    "larger": "is larger than 10 MB and cannot be uploaded.",
+    "allowed": "You are allowed to upload only ",
+    "images": "images",
+    "error": "Some files were too large and were not added.",
+    "upload": "Upload Images",
+    "selected": "Selected Images",
+    "remove": "Remove",
+    "upload2": "Upload"
+  },
+  "social": {
+    "title": "Add you social & contacts",
+    "create": "Create",
+    "edit": "Update",
+    "list": {
+      "type": "Social name",
+      "value": "value"
+    },
+    "form": {
+      "fields": {
+        "type": "Type of contact",
+        "url": "Link to you profile or number",
+        "select": "Select item"
+      }
+    }
+  },
+  "address": {
+    "title": "Location & Address Details",
+    "load": "Load the map",
+    "close": "Close & return back",
+    "update": "Update",
+    "create": "Save & Next",
+    "reset": "Reset Form",
+    "prev": "Previous",
+    "messages": {
+      "location": "Please mark you location.",
+      "update": "Your location has been set successfully.",
+      "not-valid-country": "The selected location must be in Germany, Poland, or England.",
+      "no-api-key": "Google Maps API key is not set, please contact the administrator.",
+      "need-to-load": "You need to load the map and select you location first."
+    },
+    "form": {
+      "fields": {
+        "first_line": "Street and house number",
+        "second_line": "Second Address Line",
+        "city": "City Name",
+        "zip_code": "Postal Code",
+        "direction": "Direction details",
+        "service_lang": "Customer Service Language"
+      }
+    }
+  },
+
+  "validation": {
+    "required": "This field is required.",
+    "minLength": "This field must be at least {min} characters long.",
+    "maxLength": "This field must be at most {max} characters long.",
+    "email": "This must be a valid email address.",
+    "matches": "Password must include at least one uppercase letter, one number, and one symbol.",
+
+    "password": {
+      "min": "Password must be at least 6 characters long.",
+      "matches": "Password must include at least one uppercase letter, one number, and one symbol.",
+      "required": "Password is required."
+    },
+    "confirm_password": {
+      "required": "Please confirm your password.",
+      "oneOf": "Passwords must match."
+    },
+
+    "dwelling": {
+      "title": "Title is required.",
+      "description": {
+        "min": "Description must be at least 50 characters long.",
+        "required": "Description is required."
+      },
+      "category": "Category is required.",
+      "features": "Features are required and you must select at least one item",
+      "slug": "Slug is required.",
+      "package": "Package is required."
+    },
+    "amenity": {
+      "title": "Title is required.",
+      "description": "Description is required."
+    },
+    "dwelling-category": {
+      "title": "Title is required.",
+      "description": "Description is required."
+    },
+    "dwelling-contact": {
+      "phone": "Phone number is required.",
+      "email": "Email is required.",
+      "invalid-email": "Email is invalid.",
+      "check_in": "Check in time is required.",
+      "check_out": "Check out time is required.",
+      "name_or_company": "Your name or Company name is required."
+    },
+    "dwelling-equipment": {
+      "title": "Title is required.",
+      "description": "Description is required.",
+      "icon": "Icon is required."
+    },
+    "galleries": {
+      "image": "You must upload at least one image.",
+      "order": "Order is required.",
+      "dwelling": "Listing Details is required."
+    },
+    "price": {
+      "price": "Price is required.",
+      "type": "Type is required.",
+      "guest": "Number of guests is required.",
+      "rooms": "Number of rooms is required.",
+      "min_stay": "Minimum stay is required."
+    },
+    "contact": {
+      "name": "Your name is required.",
+      "email": "Email Address is required. but shared with others.",
+      "subject": "Subject is required.",
+      "message": "Message is required.",
+      "invalid-email": "Email is invalid."
+    },
+    "guideline": {
+      "title": "Title is required.",
+      "description": {
+        "min": "Description must be at least 10 characters long.",
+        "max": "Description must be maximum 30 characters long."
+      },
+      "pdf": "PDF is required."
+    },
+    "location": {
+      "name": "Name is required.",
+      "country": "Country is required.",
+      "order": "Order is required.",
+      "image": "You must upload at least one image."
+    },
+    "package": {
+      "name": "Package name is required.",
+      "icon": "Icon is required.",
+      "iconSize": "Icon size required and must be in pixel.",
+      "order": "Order is required."
+    },
+    "subscription": {
+      "package": "Package is required.",
+      "start_date": "Start date is required.",
+      "end_date": "End date is required."
+    },
+    "user": {
+      "first_name": "First Name is required.",
+      "last_name": "Last Name is required.",
+      "email": "Email Address is required.",
+      "password": {
+        "min": "Password must be at least 6 characters long.",
+        "lowercase": "Password must include at least one lowercase letter.",
+        "uppercase": "Password must include at least one uppercase letter.",
+        "number": "Password must include at least one number.",
+        "symbol": "Password must include at least one symbol.",
+        "required": "Password is required."
+      },
+      "role": "Role is required."
+    }
+  },
+  "forgot-password": {
+    "title": "Forgot Password",
+    "description": "",
+    "send": "Send",
+    "messages": {
+      "success": "We are sending a link to you email address. please check you inbox.",
+      "failed": "Sending email was failed please check your email and try again.",
+      "not-exists": "Your email did not registered as valid email address. please sign up first.",
+      "error": "Something went wrong, please try again later.",
+      "recaptcha-not-ready": "Recaptcha is not ready. Please try again latter.",
+      "recaptcha-failed": "Recaptcha verification failed. Please try again.",
+      "recaptcha-success": "You are verified as a human.",
+      "invalid": "Invalid details please check your entry data.",
+      "provider-error": "Your account is registered with social provider. please use social login."
+    },
+    "form": {
+      "email": "Your registered Email Address"
+    }
+  },
+  "reset-password": {
+    "title": "Reset Password",
+    "description": "",
+    "send": "Confirm & Reset",
+    "messages": {
+      "success": "Your password successfully changed. you are redirecting to sign in page.",
+      "failed": "Changing password failed, please try again later.",
+      "not-exists": "Your email did not registered as valid email address. please sign up first.",
+      "error": "Something went wrong, please try again later.",
+      "recaptcha-not-ready": "Recaptcha is not ready. Please try again latter.",
+      "recaptcha-failed": "Recaptcha verification failed. Please try again.",
+      "recaptcha-success": "You are verified as a human.",
+      "invalid": "Invalid details please check your entry data."
+    },
+    "form": {
+      "password": "New Password",
+      "confirmPassword": "Confirm new password"
+    }
+  },
+  "about": {
+    "title": {
+      "main": "About us",
+      "welcome": "Welcome to",
+      "brand": "Workerhomes",
+      "who": "Who we are",
+      "vision": "Our Vision",
+      "values": "Our Values",
+      "offer": "What We Offer",
+      "choose": "Why Choose WorkerHomes?",
+      "community": "Join Our Community",
+      "connect": "Let's connect!"
+    },
+    "description": {
+      "main": "At WorkerHomes, we understand that finding the right accommodation can be challenging, especially workers on the move. That's why we've created a platform dedicated to connecting workers, businesses, and property owners, making it easier than ever to find and offer comfortable, affordable, and convenient housing solutions.",
+      "who": "WorkerHomes was founded with a simple yet powerful mission: to streamline the process of finding and providing temporary housing for traveling workers. Whether you're a contractor, project manager, or property owner, our platform is designed to cater to your specific needs. With years of experience in the housing and rental industry, our team is passionate about creating a community where finding accommodation is quick, easy, and stress-free.",
+      "vision": "We envision a world where every worker, regardless of location, has access to quality accommodation that suits their needs. Our goal is to be the go-to platform for temporary housing, offering an extensive network of listings across various regions. We aim to make the housing search process as seamless as possible, empowering workers to focus on their jobs without worrying about where they'll stay.",
+      "community": "Whether you're looking for a place to stay or have a property to list, WorkerHomes is here to help. Join our growing community of workers and property owners who trust us to make their housing search simple, reliable, and efficient.",
+      "connect": "Start exploring WorkerHomes today and discover the easiest way to find temporary housing that feels like home."
+    },
+    "list": {
+      "values": {
+        "1": {
+          "title": "Simplicity",
+          "description": "We believe in keeping things simple. Our user-friendly platform ensures that both listing and finding accommodations are hassle-free."
+        },
+        "2": {
+          "title": "Trust",
+          "description": "Trust is at the core of everything we do. We carefully vet our listings and strive to create a community where users feel confident in their choices."
+        },
+        "3": {
+          "title": "Accessibility",
+          "description": "We're committed to making housing accessible to everyone. From small towns to bustling cities, our platform covers a wide range of locations to meet diverse needs."
+        },
+        "4": {
+          "title": "Community",
+          "description": "We're more than just a platform—we're a community. We connect workers with property owners, fostering relationships that benefit everyone involved."
+        }
+      },
+      "offer": {
+        "1": {
+          "title": "Extensive Listings",
+          "description": "Whether you need a place for a few days, weeks, or several months, WorkerHomes has you covered. Our platform features a wide variety of properties, from single rooms to entire homes, across multiple regions."
+        },
+        "2": {
+          "title": "Easy-to-Use Platform",
+          "description": "Our website is designed with you in mind. Quickly browse through listings, filter by your specific needs, and connect directly with property owners."
+        },
+        "3": {
+          "title": "Flexible Solutions",
+          "description": "We understand that work schedules can change, so we offer flexible rental options that cater to both short-term and long-term stays."
+        }
+      },
+      "choose": {
+        "1": {
+          "title": "Tailored for Workers",
+          "description": "Unlike generic rental platforms, WorkerHomes is specifically designed to meet the needs of traveling workers and the businesses that support them."
+        },
+        "2": {
+          "title": "Reliable Listings",
+          "description": "We work closely with property owners to ensure that every listing on our site meets our high standards for quality and reliability."
+        },
+        "3": {
+          "title": "Affordable Options",
+          "description": "We offer a range of pricing options to fit every budget, making it easier to find a comfortable place to stay without breaking the bank."
+        },
+        "4": {
+          "title": "Growing Network",
+          "description": "Our network of listings is constantly expanding, giving you more choices and flexibility when it comes to finding the perfect accommodation."
+        }
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy for WorkerHomes",
+    "date": "Last Updated: 22.09.2024",
+    "sidebar": {
+      "1": "Data Controller",
+      "2": "Collection and Storage of Personal Data",
+      "3": "Purpose of Data Processing",
+      "4": "Legal Basis for Data Processing",
+      "5": "Disclosure of Data to Third Parties",
+      "6": "Data Retention",
+      "7": "Your Rights",
+      "8": "Data Security",
+      "9": "Cookies",
+      "10": "Changes to This Privacy Policy",
+      "11": "Contact"
+    },
+    "description": {
+      "main": "Your privacy is important to us. This Privacy Policy explains how WorkerHomes collects, processes, and uses your personal data when you use our website and services. Please read this policy carefully to understand how we handle your data.",
+      "1": {
+        "text": "The data controller responsible for processing your personal data on this website is:",
+        "address": "Address:",
+        "email": "Email Address:",
+        "phone": "Phone Number:"
+      },
+      "2": {
+        "text": "We collect and store personal data only as permitted by law. This occurs in the following situations:",
+        "list": {
+          "1": {
+            "title": "When Registering:",
+            "description": "When you register on our platform, we collect data such as your name, email address, address, and, if applicable, payment information."
+          },
+          "2": {
+            "title": "When Using the Platform:",
+            "description": "While using the platform, we may collect information about your activities, including the listings you create and your interactions with other users."
+          },
+          "3": {
+            "title": "Technical Data:",
+            "description": "When you visit our website, data is automatically collected by your browser, such as your IP address, browser type, operating system, and access times."
+          }
+        }
+      },
+      "3": {
+        "text": "Your personal data is processed for the following purposes:",
+        "list": {
+          "1": {
+            "title": "Providing Services:",
+            "description": "To enable you to access the platform and use our services."
+          },
+          "2": {
+            "title": "Contract Fulfillment:",
+            "description": "To fulfill our contractual obligations, such as processing your payments or managing your listings."
+          },
+          "3": {
+            "title": "Communication:",
+            "description": "To contact you, such as to inform you about changes to our services or this Privacy Policy."
+          },
+          "4": {
+            "title": "Website Optimization:",
+            "description": "To improve the functionality and user-friendliness of our website."
+          },
+          "5": {
+            "title": "Legal Obligations:",
+            "description": "To comply with legal requirements, such as the retention of invoices and accounting records."
+          }
+        }
+      },
+      "4": {
+        "text": "The processing of your personal data is based on the following legal grounds:",
+        "list": {
+          "1": {
+            "title": "Art. 6(1)(b) GDPR (Contract Performance):",
+            "description": "Processing is necessary for the performance of a contract to which you are a party or to take steps at your request prior to entering into a contract."
+          },
+          "2": {
+            "title": "Art. 6(1)(a) GDPR (Consent):",
+            "description": "If you have given us consent to process your data for specific purposes, the processing is based on your consent."
+          },
+          "3": {
+            "title": "Art. 6(1)(f) GDPR (Legitimate Interests):",
+            "description": "Processing is necessary for the purposes of the legitimate interests pursued by us, provided that your interests or fundamental rights and freedoms do not override these interests."
+          },
+          "4": {
+            "title": "Art. 6(1)(c) GDPR (Legal Obligations):",
+            "description": "Processing is necessary for compliance with a legal obligation to which we are subject."
+          }
+        }
+      },
+      "5": {
+        "text": "Your personal data will only be disclosed to third parties if permitted by law or if you have given your explicit consent. This may occur in the following cases:",
+        "list": {
+          "1": {
+            "title": "Payment Processing:",
+            "description": "We work with external payment service providers to process payments, and your payment data will be transmitted to them."
+          },
+          "2": {
+            "title": "Service Providers:",
+            "description": "We engage external service providers to perform certain services, such as IT services, hosting, or marketing. These providers are contractually obligated to treat your data confidentially and to process it only as part of the agreed service."
+          },
+          "3": {
+            "title": "Legal Obligations:",
+            "description": "If we are legally obliged to do so, we will disclose your data to authorities or other government entities."
+          }
+        }
+      },
+      "6": {
+        "text": "Your personal data will only be retained as long as necessary to fulfill the purposes for which it was collected or as required by law. After the relevant periods have expired, the data will be deleted or anonymized."
+      },
+      "7": {
+        "text": "You have the following rights regarding your personal data:",
+        "text2": "To exercise these rights, you can contact us at any time.",
+        "list": {
+          "1": {
+            "title": "Access:",
+            "description": "You can request information about the personal data we hold about you at any time."
+          },
+          "2": {
+            "title": "Rectification:",
+            "description": "You can request the correction of inaccurate data or the completion of incomplete data."
+          },
+          "3": {
+            "title": "Erasure:",
+            "description": "You can request the deletion of your personal data if it is no longer necessary for the fulfillment of a contract, the assertion, exercise, or defense of legal claims, or compliance with legal obligations."
+          },
+          "4": {
+            "title": "Restriction of Processing:",
+            "description": "You can request the restriction of the processing of your personal data if the accuracy of the data is disputed, the processing is unlawful, but you oppose the erasure, or we no longer need the data, but you require it for the establishment, exercise, or defense of legal claims."
+          },
+          "5": {
+            "title": "Data Portability:",
+            "description": "You have the right to receive the personal data concerning you that you have provided to us in a structured, commonly used, and machine-readable format and to request the transfer of this data to another controller."
+          },
+          "6": {
+            "title": "Withdrawal of Consent:",
+            "description": "You can withdraw your consent at any time with effect for the future."
+          },
+          "7": {
+            "title": "Objection:",
+            "description": "You can object to the processing of your personal data if there are reasons arising from your particular situation that speak against the data processing."
+          }
+        }
+      },
+      "8": {
+        "text": "We implement technical and organizational security measures to protect your personal data against unauthorized access, loss, or destruction. Our security measures are continuously improved in line with technological developments."
+      },
+      "9": {
+        "text": "Our website uses cookies to facilitate the use of our website and to provide certain features. Cookies are small text files that are stored on your device. Some of the cookies we use are deleted at the end of the browser session, while others remain on your device and allow us to recognize your browser on your next visit.",
+        "text2": "You can adjust your cookie settings at any time and object to the use of certain cookies. However, disabling cookies may limit the functionality of our website."
+      },
+      "10": {
+        "text": "We reserve the right to change this Privacy Policy at any time to adapt it to new legal situations or changes to our service or data processing. The current version is available on our website."
+      },
+      "11": {
+        "text": "If you have any questions about this Privacy Policy or the processing of your personal data, you can contact us at the following details:",
+        "address": "Address:",
+        "email": "Email Address:",
+        "phone": "Phone Number:"
+      }
+    }
+  },
+  "terms": {
+    "title": "Terms and Conditions (T&Cs) for WorkerHomes",
+    "date": "Last Updated: 22.09.2024",
+    "sidebar": {
+      "1": "Scope",
+      "2": "Description of Services",
+      "3": "Registration and User Account",
+      "4": "Offering and Use of Accommodations",
+      "5": "Costs and Fees",
+      "6": "Disclaimer of Liability",
+      "7": "Limitation of Liability",
+      "8": "Prohibited Activities",
+      "9": "Termination and Cancellation",
+      "10": "Data Backup",
+      "11": "Content",
+      "12": "Granting of Rights",
+      "13": "Indemnification",
+      "14": "Limitation of Liability",
+      "15": "Liability Disclaimer",
+      "16": "Choice of Law",
+      "17": "Final Provisions"
+    },
+    "description": {
+      "main": "Welcome to WorkerHomes. These Terms and Conditions ('Terms') govern the use of our platform, where accommodations for rent can be listed and found. Please read these Terms carefully before using our services. By using our platform, you agree to these Terms. If you do not agree, you may not use the platform.",
+      "1": "These Terms apply to the use of the WorkerHomes website and all associated services and content. They govern the relationship between WorkerHomes and the users of the platform, including both accommodation providers ('Providers') and seekers ('Users').",
+      "2": "WorkerHomes offers a platform where Providers can list their accommodations for rent and Users can view these listings. WorkerHomes provides only a directory service. No direct booking or payment processing takes place through the platform.",
+      "3": {
+        "list": {
+          "1": {
+            "title": "Registration Requirement:",
+            "description": "To access all the platform's features, Users must register and create an account. Registration is free of charge."
+          },
+          "2": {
+            "title": "Information:",
+            "description": "Users are required to provide truthful and complete information during registration and promptly update this information in the event of changes."
+          },
+          "3": {
+            "title": "Responsibility:",
+            "description": "The User is responsible for maintaining the confidentiality of their password and for all activities that occur under their account."
+          }
+        }
+      },
+      "4": {
+        "list": {
+          "1": {
+            "title": "Listing Description:",
+            "description": "Providers must ensure that their accommodation descriptions are accurate, complete, and up to date. All relevant information, including prices, availability, and conditions, must be provided."
+          },
+          "2": {
+            "title": "Legal Compliance:",
+            "description": "Providers are responsible for ensuring that their listings comply with applicable laws, regulations, and requirements, including local rental regulations."
+          },
+          "3": {
+            "title": "Use of Information:",
+            "description": "WorkerHomes is not liable for the accuracy of the information provided by Providers. The use of the platform is at the User's own risk."
+          },
+          "4": {
+            "title": "Listing Descriptions:",
+            "description": "Users are required to accurately and fully describe their listings. Listings that do not constitute a genuine offer but are intended solely to attract the attention of potential customers, or posts containing offensive or otherwise illegal content, will be considered abuse and will be deactivated or deleted by WorkerHomes without prior notice."
+          }
+        }
+      },
+      "5": {
+        "list": {
+          "1": {
+            "title": "Free Use:",
+            "description": "The basic features of the platform are free of charge. There are no fees for creating and displaying listings."
+          },
+          "2": {
+            "title": "Paid Services:",
+            "description": "WorkerHomes reserves the right to offer paid additional services in the future. These will only be provided with the User's express consent."
+          },
+          "3": {
+            "title": "Pricing and Billing:",
+            "description": "All prices are exclusive of VAT. WorkerHomes will issue invoices to paying customers by email only. Additionally, all invoices are available for download in the User Dashboard."
+          }
+        }
+      },
+      "6": {
+        "list": {
+          "1": {
+            "title": "Content on the Platform:",
+            "description": "WorkerHomes provides the platform 'as is' and 'as available.' No warranty is given for the accuracy, completeness, or timeliness of the content."
+          },
+          "2": {
+            "title": "Liability Disclaimer:",
+            "description": "WorkerHomes, its legal representatives, and its vicarious agents are only liable for intentional or grossly negligent conduct. For essential contractual obligations (i.e., obligations that are crucial for achieving the purpose of the contract), liability extends to slight negligence, but is limited to the foreseeable, contract-typical, direct average damage. For entrepreneurs, WorkerHomes is liable in the case of grossly negligent breaches of non-essential contractual obligations only to the extent of the foreseeable, contract-typical, direct average damage."
+          }
+        }
+      },
+      "7": "The above disclaimer does not apply to liability for damages resulting from injury to life, body, or health. The provisions of the Product Liability Act remain unaffected by the disclaimer.",
+      "8": {
+        "text": "Users may not use the platform for illegal or unauthorized purposes. This includes:",
+        "list": {
+          "1": {
+            "title": "Abuse:",
+            "description": "Users are prohibited from using the platform for illegal activities, including but not limited to fraud, money laundering, or the dissemination of illegal content."
+          },
+          "2": {
+            "title": "Data Protection:",
+            "description": "The use of the platform must comply with applicable data protection laws. It is prohibited to collect, store, or share personal data of other Users without their consent."
+          }
+        }
+      },
+      "9": {
+        "list": {
+          "1": {
+            "title": "Termination by WorkerHomes:",
+            "description": "WorkerHomes reserves the right to suspend or delete a User's account at any time and without giving reasons, especially in the event of violations of these Terms or misuse of the platform. In such cases, the User is not entitled to a refund of any fees paid. WorkerHomes may terminate the contract with one month's notice. WorkerHomes also reserves the right to delete user accounts that have been inactive for more than 12 months."
+          },
+          "2": {
+            "title": "Termination by the User:",
+            "description": "Users can cancel their monthly subscription at any time via their user account. The cancellation will take effect at the end of the current billing period. No partial refund will be given for the current month. After cancellation, access to paid features will remain available until the end of the current billing period, after which the User will revert to a free account."
+          },
+          "3": {
+            "title": "Subscription Term and Termination:",
+            "description": "The term for paid packages is 1 month. The right to terminate for cause without notice remains unaffected. Unless the package is canceled before the end of the contract term, it will automatically renew for the selected term. The User can cancel the contract at any time using the cancellation button. The account will remain active until the end of the current package term or trial period and can still be used by the User during this time. The current billing period must still be paid by the User. WorkerHomes may terminate the contract at any time at the end of the respective contract term."
+          },
+          "4": {
+            "title": "Right of Withdrawal in Accordance with Directive 2011/83/EU:",
+            "list": {
+              "1": "Consumers have the right to withdraw from their contract within 14 days without giving any reason (Right of Withdrawal).",
+              "2": "To exercise your right of withdrawal, you must inform us by means of a clear statement (e.g., by email or post) of your decision to withdraw from this contract. To meet the withdrawal deadline, it is sufficient for you to send your communication concerning your exercise of the right of withdrawal before the withdrawal period has expired.",
+              "3": "Expiry of the Right of Withdrawal: The right of withdrawal expires in accordance with Article 16 of Directive 2011/83/EU when the service has been fully performed or, in cases where the service begins during the withdrawal period, when you have expressly agreed that the execution of the service begins and you have acknowledged that you will lose your right of withdrawal once the service has started.",
+              "4": "As the service on WorkerHomes begins with the publication of your listing, your right of withdrawal expires as soon as your listing is published and you have agreed to the start of the service."
+            }
+          }
+        }
+      },
+      "10": "WorkerHomes implements effective data backups as part of its service provision, but does not provide a general data backup guarantee for the data submitted by the User. The User is also responsible for creating regular backups of their data to prevent data loss. WorkerHomes will exercise the appropriate level of care in delivering the agreed service and will perform data backups with the necessary expertise. However, WorkerHomes does not guarantee that the stored content or data accessed by the User will not be accidentally damaged, corrupted, lost, or partially removed. It is the User's responsibility to take their own precautions to secure their data.",
+      "11": "The WorkerHomes website contains content primarily uploaded by Users. WorkerHomes will remove content if there are indications that these Terms, applicable laws, or the rights of third parties have been violated. Regarding content uploaded by third parties, WorkerHomes acts merely as a service provider in accordance with § 10 TMG (Telemedia Act). Rights holders, particularly those with copyrights and industrial property rights, can report infringing content and request its removal. WorkerHomes does not guarantee or assume liability for the accuracy of the content posted on the website by third parties.",
+      "12": "For the content (images, listing descriptions) that the User uploads to WorkerHomes, the User grants WorkerHomes a non-exclusive, worldwide, perpetual, unlimited, transferable, and irrevocable right of use in all known forms of use regarding all copyrights and other protective rights. The User undertakes to only upload content for which they can grant such rights to WorkerHomes.",
+      "13": "The User shall indemnify WorkerHomes against all claims asserted by third parties against WorkerHomes due to such violations. This also includes the reimbursement of necessary legal defense costs. The User undertakes to hold WorkerHomes harmless in the event of a claim.",
+      "14": "WorkerHomes and its legal representatives and vicarious agents are only liable for intentional or gross negligence. For essential contractual obligations (i.e., obligations that are crucial for achieving the purpose of the contract), liability extends to slight negligence but is limited to the foreseeable, contract-typical, direct average damage. For entrepreneurs, WorkerHomes is liable in the case of grossly negligent breaches of non-essential contractual obligations only to the extent of the foreseeable, contract-typical, direct average damage.",
+      "15": "The above disclaimer does not apply to liability for damages resulting from injury to life, body, or health. The provisions of the Product Liability Act remain unaffected by the disclaimer.",
+      "16": "Unless mandatory legal provisions under the customer's home country’s law prevail, German law shall apply, excluding the UN Convention on Contracts for the International Sale of Goods (CISG).",
+      "17": "Should any provision of these Terms be wholly or partially invalid, this shall not affect the validity of the remaining provisions. In place of the invalid provision, a provision shall apply that comes as close as possible to the economic purpose of the invalid provision."
+    }
+  },
+  "email-verified": {
+    "title": "THANK YOU",
+    "description": "Your email has been verified successfully. You can now login to your account.",
+    "button": "Click here to login"
+  },
+
+  "upgrade": {
+    "message": "Your package has been successfully changed. You can now enjoy the benefits of your new package.",
+
+    "upgrade": "Upgrade your plan",
+    "process": "Processing...",
+    "downgrade": "Downgrade your plan",
+
+    "confirm": {
+      "upgrade": {
+        "title": "Upgrade",
+        "text": "You’re about to upgrade to ",
+        "text2": "Once the payment is completed, your account will be immediately upgraded, and you’ll gain instant access to all the premium features and benefits of your new plan."
+      },
+
+      "downgrade": {
+        "title": "Downgrade",
+        "text": "Dear customer, your ",
+        "text2": " subscription will activate at the end of the current billing period. You can enjoy your current package benefits until then."
+      }
+    }
+  },
+  "review": {
+    "title": "Current State of your item",
+    "description": "Here you can see the reviews of your listing. before publishing.",
+    "details": {
+      "label": "Current Details",
+      "owner": "Owner",
+      "creator": "Created By",
+      "title": "Title",
+      "description": "Description"
+    },
+    "state": {
+      "label": "Current State",
+      "status": "Status",
+      "published": "Published",
+      "recommended": "Recommended",
+      "translations": "Translations",
+      "category": "Category",
+      "reason": "Reason",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "payment": {
+      "label": "Current Payment",
+      "label2": "Pending subscription for next month",
+      "plan": "Current Plan",
+      "status": "Current Status",
+      "amount": "Payment amount",
+      "start_date": "Start Date",
+      "end_date": "End Date",
+      "remaining": "Remaining period"
+    },
+    "images": {
+      "1": "Uploaded Images",
+      "2": "No images uploaded yet."
+    },
+    "features": {
+      "1": "Selected Features",
+      "2": "No features selected yet."
+    },
+    "amenities": {
+      "1": "Selected Amenities",
+      "2": "No amenities selected yet."
+    },
+    "items": {
+      "details": "Details",
+      "owner": "Owner",
+      "no-owner": "No owner found needs to claim.",
+      "created-by": "Created by",
+      "title": "Title",
+      "description": "Description",
+      "current-state": "Current State",
+      "approved": "Approved",
+      "yes": "Yes",
+      "no": "NO",
+      "recommended": "Recommended",
+      "translation": "Translations",
+      "no-translation": "No translation found.",
+      "category": "Category",
+      "payment-details": "Payment Details",
+      "current-plan": "Current Plan",
+      "payment-status": "Payment Status",
+      "paid": "Paid",
+      "free": "Free",
+      "assigned-admin": "Assigned by Admin",
+      "payment-amount": "Payment Amount",
+      "payment-expiry": "Expiration Date",
+      "start-date": "Start Date",
+      "end-date": "End Date",
+      "remaining-period": "Remaining Period",
+      "unlimited": "Unlimited",
+      "expired": "Expired",
+      "pending-subscription": "Pending subscription for next billing period.",
+      "uploaded-images": "Uploaded Images",
+      "no-images": "No images found.",
+      "features": "Features and Equipments",
+      "no-features": "No features found.",
+      "amenities": "Amenities",
+      "no-amenities": "No amenities found.",
+
+      "prices": "Prices and types",
+      "price": "Price: ",
+      "min": "Minimum stay: ",
+      "guest": "Number of guests: ",
+      "no-price": "No prices found.",
+      "type": "Type: ",
+
+      "remove-from": "Remove from recommended list",
+      "add-to": "Add to recommended list",
+
+      "available": "Set to pending",
+      "approve": "Approve",
+      "rent": "Rent",
+      "rented": "Already rented"
+    }
+  },
+  "checkout": {
+    "buy": "Buy a plan",
+
+    "trail": "Get your first 3 months free trail",
+    "process": "Processing...",
+
+    "free-success": "Your free plan was created successfully.",
+    "trial-success": "Your trial package has been created and is active for 3 months."
+  },
+  "payment-card": {
+    "customer": "Customer:",
+    "email": "Email:",
+    "brand": "Card Brand:",
+    "type": "Payment type:",
+    "last4": "Last 4 digits:",
+    "expiry": "Expiry:",
+    "no-method": "No payment method found.",
+    "un-support": "Unsupported payment method",
+    "loading": "Loading your payment details...",
+    "update": "Update payment details",
+    "failed": "An error occurred while creating the portal session.",
+    "unable": "Unable to create customer portal session.",
+    "retrieve-error": "Failed to retrieve customer data.",
+    "setup": "Setup your payment method"
+  },
+  "warning": {
+    "title": "Warning",
+    "description": "Their customer please make sure to complete your profile before creating a listing. such as address and contact details.",
+    "button": "Go to profile"
+  }
+}
