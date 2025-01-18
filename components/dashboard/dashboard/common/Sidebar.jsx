@@ -1,51 +1,53 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
+import Link from "next/link";
 
-import permissions from '@/config/permissions'
-import { filterSidebarContent } from '@/config/sidebar'
-import { isActiveLink } from '@/utils/linkActiveChecker'
-import { Icon } from '@iconify/react'
-import { useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
-import { useParams, usePathname } from 'next/navigation'
-import { useState } from 'react'
+import permissions from "@/config/permissions";
+import { filterSidebarContent } from "@/config/sidebar";
+import { isActiveLink } from "@/utils/linkActiveChecker";
+import { Icon } from "@iconify/react";
+import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import { useParams, usePathname } from "next/navigation";
+import { useState } from "react";
 
 const Sidebar = () => {
-  const locale = useParams().locale
-  const t = useTranslations('dashboard-sidebar')
-  const pathname = usePathname()
-  const { data } = useSession()
+  const locale = useParams().locale;
+  const t = useTranslations("dashboard-sidebar");
+  const pathname = usePathname();
+  const { data } = useSession();
+
+  const isMessengerPage = pathname.includes("/messenger");
 
   const sidebarContent = filterSidebarContent(
     locale,
     t,
     permissions,
-    data?.role
-  )
-  const [open, setOpen] = useState(1)
+    data?.role,
+  );
+  const [open, setOpen] = useState(isMessengerPage ? 0 : 1);
 
   return (
-    <div className='sidebar -dashboard'>
-      {sidebarContent.map(item => (
-        <div className='sidebar__item' key={item.id}>
+    <div className="sidebar -dashboard">
+      {sidebarContent.map((item) => (
+        <div className="sidebar__item" key={item.id}>
           <div
             className={`${
               isActiveLink(item.routePath, pathname) ||
               (item?.submenu && open === item.id)
-                ? '-is-active'
-                : ''
+                ? "-is-active"
+                : ""
             } sidebar__button `}
             onClick={() => setOpen(item.id)}
           >
             <Link
               href={item.routePath}
-              className='d-flex items-center justify-between text-15 lh-1 w-100'
+              className="d-flex items-center justify-between text-15 lh-1 w-100"
             >
-              <div className='d-flex items-center'>
+              <div className="d-flex items-center">
                 <Icon
                   icon={item.icon}
-                  className='mr-15'
+                  className="mr-15"
                   width={20}
                   height={20}
                 />
@@ -55,8 +57,8 @@ const Sidebar = () => {
                 <Icon
                   icon={
                     open === item.id
-                      ? 'icon-park-outline:down'
-                      : 'icon-park-outline:right'
+                      ? "icon-park-outline:down"
+                      : "icon-park-outline:right"
                   }
                   width={20}
                   height={20}
@@ -94,15 +96,15 @@ const Sidebar = () => {
         </div>
       </div> */}
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
 
 const SubMenuItem = ({ open, items, pathname }) => {
   return (
-    <div className={`sidebar__submenu${open ? '--active' : ''}`}>
-      <div className='sidebar__submenu__content'>
+    <div className={`sidebar__submenu${open ? "--active" : ""}`}>
+      <div className="sidebar__submenu__content">
         {items?.length > 0 &&
           items?.map((item, i) => (
             <Link
@@ -110,8 +112,8 @@ const SubMenuItem = ({ open, items, pathname }) => {
               href={item.routePath}
               className={`sidebar__submenu__content__item text-15 lh-1 fw-500 ${
                 isActiveLink(item.routePath, pathname)
-                  ? 'submenu__item__active'
-                  : ''
+                  ? "submenu__item__active"
+                  : ""
               }`}
             >
               <Icon icon={item?.icon} width={16} height={16} />
@@ -120,5 +122,5 @@ const SubMenuItem = ({ open, items, pathname }) => {
           ))}
       </div>
     </div>
-  )
-}
+  );
+};
