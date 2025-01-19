@@ -2,14 +2,13 @@
 
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
 const MessengerPage = ({ locale }) => {
   const t = useTranslations("messenger");
   const { data: session } = useSession();
 
-  // Dummy Data for Users, Chats, and Property
   const users = [
     { id: 1, name: "John", image: "https://randomuser.me/api/portraits/men/1.jpg", lastMessage: "Hello!", date: "2025-01-19" },
     { id: 2, name: "Anney", image: "https://randomuser.me/api/portraits/women/1.jpg", lastMessage: "How are you?", date: "2025-01-18" },
@@ -19,7 +18,7 @@ const MessengerPage = ({ locale }) => {
   const initialChats = [
     { sender: "User 1", message: "Hey, how's it going?", time: "10:30 AM", direction: "received" },
     { sender: "User 2", message: "What's up?", time: "10:31 AM", direction: "sent" },
-    { sender: "User 1", message: "Just working on a project!", time: "10:32 AM", direction: "received" },
+    { sender: "User 3", message: "Just working on a project!", time: "10:32 AM", direction: "received" },
   ];
 
   const propertyDetails = {
@@ -28,11 +27,29 @@ const MessengerPage = ({ locale }) => {
     address: "123 Main St, Cityville",
   };
 
-  const [selectedUser, setSelectedUser] = useState(users[0]);
+  const [selectedUser, setSelectedUser] = useState(null);
   const [chats, setChats] = useState(initialChats);
   const [newMessage, setNewMessage] = useState("");
+  const [isMobileView, setIsMobileView] = useState(false);
 
- 
+  const middleSectionRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setSelectedUser(users[0]); 
+        setIsMobileView(false);
+      } else {
+        setSelectedUser(null);
+      }
+    };
+
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
 
   const handleSendMessage = () => {
     if (newMessage.trim()) {
@@ -50,19 +67,30 @@ const MessengerPage = ({ locale }) => {
 
   const handleUserSelect = (user) => {
     setSelectedUser(user);
-    if (chats[user.id]) {
-      setChats(chats); 
+    setIsMobileView(true);
+
+    if (middleSectionRef.current) {
+      middleSectionRef.current.classList.add('show-middle');
+      setTimeout(() => {
+        middleSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
     }
   };
 
-
+  const handleBack = () => {
+    setIsMobileView(false);
+    setSelectedUser(null);
+    if (middleSectionRef.current) {
+      middleSectionRef.current.classList.remove('show-middle');
+    }
+  };
 
   return (
     <>
       <div className="container-fluid border-top d-flex flex-row" style={{ height: "90vh" }}>
         {/* Left Section */}
         <div
-          className="col-3 bg-white border-end p-3 d-flex justify-content-center flex-column"
+          className={`col-12 col-md-3 bg-white border-end p-3 d-flex justify-content-center flex-column ${isMobileView ? 'd-none' : ''}`}
           style={{ overflowY: "auto" }}
         >
           <div className="p-3 border-bottom position-relative">
@@ -90,14 +118,14 @@ const MessengerPage = ({ locale }) => {
                     <img src={user.image} alt={user.name} className="rounded-circle me-3" width="50" height="50" />
                     <div>
                       <strong>{user.name}</strong>
-                      <div className="text-muted">{user.lastMessage}</div> 
+                      <div className="text-muted">{user.lastMessage}</div>
                     </div>
                   </div>
 
                   <p className="mt-2 text-muted">{propertyDetails.title}</p>
 
                   <div className="mt-auto text-end text-muted" style={{ fontSize: '0.75rem' }}>
-                    {user.date} 
+                    {user.date}
                   </div>
                 </li>
               ))}
@@ -105,25 +133,38 @@ const MessengerPage = ({ locale }) => {
           </div>
         </div>
 
-
+        {/* Middle Section */}
         <div
-          className="col-6 bg-light border-end d-flex flex-column"
-          style={{ backgroundColor: "#eff0f8" }}
+          ref={middleSectionRef}
+          className={`col-12 col-md-6 bg-light d-flex flex-column ${isMobileView || selectedUser ? '' : 'd-none'}`}
+          style={{ backgroundColor: "#eff0f8", transition: 'opacity 0.3s ease-in-out', opacity: isMobileView || selectedUser ? 1 : 0 }}
         >
-          {selectedUser ? (
+          {selectedUser && (
             <>
-              <div className="p-2 border-bottom">
-                <div className="d-flex align-items-center">
-                  <img
-                    src={selectedUser.image}
-                    alt={selectedUser.name}
-                    className="rounded-circle me-2"
-                    width="40"
-                    height="40"
-                  />
-                  <strong>{selectedUser.name}</strong>
-                </div>
+              <div className="d-flex align-items-center mt-2 border-bottom pb-2">
+                <button
+                  className="btn  d-md-none"
+                  onClick={handleBack}
+                  style={{
+                    padding: '5px',
+                    borderRadius: '10px',
+                    marginRight: '5px',
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                  </svg>
+                </button>
+                <img
+                  src={selectedUser.image}
+                  alt={selectedUser.name}
+                  className="rounded-circle me-2"
+                  width="40"
+                  height="40"
+                />
+                <strong>{selectedUser.name}</strong>
               </div>
+
               <div className="flex-grow-1 p-3" style={{ overflowY: "auto" }}>
                 {chats.map((chat, index) => (
                   <div key={index} className={`mb-3 d-flex ${chat.direction === 'sent' ? 'justify-content-end' : 'justify-content-start'}`}>
@@ -136,7 +177,6 @@ const MessengerPage = ({ locale }) => {
                         wordWrap: "break-word",
                         fontSize: "0.875rem",
                         backgroundColor: chat.direction === 'sent' ? "#e0e2ef" : "#fff"
-
                       }}
                     >
                       <p className="mb-0">{chat.message}</p>
@@ -153,16 +193,16 @@ const MessengerPage = ({ locale }) => {
                   placeholder="Write your message"
                   aria-label="Message"
                   value={newMessage}
-                  onChange={(e) => setNewMessage(e.target.value)} 
+                  onChange={(e) => setNewMessage(e.target.value)}
                   style={{
                     background: 'white',
                     border: '1px solid #ccc',
                     padding: '15px',
                     borderRadius: '10px',
                     flex: '1',
-                    resize: 'none', 
+                    resize: 'none',
                     height: '140px',
-                    marginBottom: '20px',
+                    marginBottom: '10px',
                   }}
                 ></textarea>
 
@@ -171,8 +211,8 @@ const MessengerPage = ({ locale }) => {
                   onClick={handleSendMessage}
                   style={{
                     position: 'absolute',
-                    bottom: '50px', 
-                    right: '30px', 
+                    bottom: '50px',
+                    right: '30px',
                     height: '40px',
                     padding: '0 15px',
                     borderRadius: '10px',
@@ -192,30 +232,46 @@ const MessengerPage = ({ locale }) => {
                 </button>
               </div>
             </>
-        ) : (
-          <div className="flex-grow-1 p-3 d-flex justify-content-center align-items-center">
-            <p>Select a user to start chatting</p>
-          </div>
-        )}
+          )}
         </div>
 
-        <div
-          className="col-3 bg-white d-flex ustify-content-start flex-column align-items-center p-3"
-        >
-          <div className="d-flex flex-column align-items-center">
-            <img
-              src={propertyDetails.image}
-              alt="Property"
-              className="img-fluid mb-3"
-              style={{ borderRadius: "10px", width: "400px", height: "240px" }}
-            />
-            <h5 className="text-center">{propertyDetails.title}</h5>
-            <p className="text-center">{propertyDetails.address}</p>
-            <button className="btn btn-secondary">View Property Details</button>
-          </div>
+        {/* Property Section (Visible Only on Big Screens) */}
+        <div className="col-md-3 bg-white border-end d-flex align-items-center flex-column p-3 d-none d-md-block">
+          <img src={propertyDetails.image} alt="Property Image" className="img-fluid mb-3" style={{ width: "400px", height: "200px" }} />
+          <h5>{propertyDetails.title}</h5>
+          <p>{propertyDetails.address}</p>
         </div>
-
       </div>
+
+      <style jsx>
+        {`
+        @media (max-width: 768px) {
+          /* Initially hide the middle section off-screen */
+          .col-md-6 {
+            padding: 0 !important; /* Remove any padding */
+            margin: 0 !important;  /* Remove any margin */
+            width: 100%;
+            order: 1; /* Ensure the middle section stays above */
+            transform: translateX(100%); /* Start off-screen to the right */
+            transition: transform 0.1s ease-out; /* Slider effect */
+          }
+
+          /* When middle section is visible, slide it in */
+          .show-middle {
+            transform: translateX(0); /* Slide in */
+          }
+
+          /* Optionally, hide the left section when viewing the middle section */
+          .d-none {
+            display: none !important;
+          }
+          .container-fluid {
+            padding: 0 !important; /* Remove padding from the container */
+          }
+       }
+      `}
+      </style>
+
     </>
   );
 };
