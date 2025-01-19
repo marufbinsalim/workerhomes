@@ -1,3 +1,4 @@
+import Content from "@/components/dashboard/dashboard/common/Content";
 import Sidebar from "@/components/dashboard/dashboard/common/Sidebar";
 import Header from "@/components/header/dashboard-header";
 import { BreadcrumbProvider } from "@/context/Breadcrumb";
@@ -7,6 +8,8 @@ import { getCurrentUser } from "@/lib/session";
 
 const DashboardLayout = async ({ params, children }) => {
   const user = await getCurrentUser();
+
+
 
   return (
     <BreadcrumbProvider>
@@ -21,7 +24,7 @@ const DashboardLayout = async ({ params, children }) => {
           </div>
 
           <div className="dashboard__main">
-            <div className="dashboard__content bg-light-2 ">{children}</div>
+            <Content>{children}</Content>
           </div>
         </div>
       </PermissionsProvider>
