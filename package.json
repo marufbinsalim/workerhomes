@@ -19,6 +19,7 @@
     "@react-google-maps/api": "^2.19.3",
     "@reduxjs/toolkit": "^1.9.6",
     "@stripe/stripe-js": "^3.4.1",
+    "@supabase/supabase-js": "^2.48.0",
     "aos": "^2.3.4",
     "array-move": "^4.0.0",
     "axios": "^1.6.8",

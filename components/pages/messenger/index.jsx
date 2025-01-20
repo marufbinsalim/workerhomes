@@ -1,9 +1,10 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useTranslations } from "next-intl";
+import { useMessages, useTranslations } from "next-intl";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import useMessenger from "@/hooks/useMessenger";
 
 const MessengerPage = ({ locale }) => {
   const t = useTranslations("messenger");
@@ -80,6 +81,8 @@ const MessengerPage = ({ locale }) => {
   const [isMobileView, setIsMobileView] = useState(false);
 
   const middleSectionRef = useRef(null);
+
+  const { data } = useMessenger("messages");
 
   useEffect(() => {
     const handleResize = () => {
