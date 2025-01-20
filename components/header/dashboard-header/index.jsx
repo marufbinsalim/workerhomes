@@ -20,9 +20,18 @@ const HeaderDashBoard = ({ user }) => {
 
   const pathName = usePathname();
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+  const [isMobileView, setIsMobileView] = useState(false);
 
-  const [isSubOpen, setIsSubOpen] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const t = useTranslations("header");
 
   const handleToggle = () => {
@@ -38,8 +47,8 @@ const HeaderDashBoard = ({ user }) => {
   };
 
   useEffect(() => {
-    const isMessengerPage = pathName.includes("/messenger");
-    if (isMessengerPage) {
+    if (isMobileView) {
+      console.log("pathName", pathName);
       setIsOpen(true);
     }
   }, [pathName]);
@@ -47,7 +56,7 @@ const HeaderDashBoard = ({ user }) => {
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
     const body = document.querySelector("body");
-    if (isOpen) {
+    if (!isOpen) {
       body.classList.add("-is-sidebar-open");
     } else {
       body.classList.remove("-is-sidebar-open");

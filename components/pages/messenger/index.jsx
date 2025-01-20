@@ -10,15 +10,62 @@ const MessengerPage = ({ locale }) => {
   const { data: session } = useSession();
 
   const users = [
-    { id: 1, name: "John", image: "https://randomuser.me/api/portraits/men/1.jpg", lastMessage: "Hello!", date: "2025-01-19" },
-    { id: 2, name: "Anney", image: "https://randomuser.me/api/portraits/women/1.jpg", lastMessage: "How are you?", date: "2025-01-18" },
-    { id: 3, name: "Dube", image: "https://randomuser.me/api/portraits/men/3.jpg", lastMessage: "Let's meet up!", date: "2025-01-17" },
+    {
+      id: 1,
+      name: "John",
+      image: "https://randomuser.me/api/portraits/men/1.jpg",
+      lastMessage: "Hello!",
+      date: "2025-01-19",
+    },
+    {
+      id: 2,
+      name: "Anney",
+      image: "https://randomuser.me/api/portraits/women/1.jpg",
+      lastMessage: "How are you?",
+      date: "2025-01-18",
+    },
+    {
+      id: 3,
+      name: "Dube",
+      image: "https://randomuser.me/api/portraits/men/3.jpg",
+      lastMessage: "Let's meet up!",
+      date: "2025-01-17",
+    },
+    {
+      id: 4,
+      name: "Linda",
+      image: "https://randomuser.me/api/portraits/men/4.jpg",
+      lastMessage: "I'm busy",
+      date: "2025-01-16",
+    },
+    {
+      id: 5,
+      name: "Sara",
+      image: "https://randomuser.me/api/portraits/men/5.jpg",
+      lastMessage: "I'm free",
+      date: "2025-01-15",
+    },
   ];
 
   const initialChats = [
-    { sender: "User 1", message: "Hey, how's it going?", time: "10:30 AM", direction: "received" },
-    { sender: "User 2", message: "What's up?", time: "10:31 AM", direction: "sent" },
-    { sender: "User 3", message: "Just working on a project!", time: "10:32 AM", direction: "received" },
+    {
+      sender: "User 1",
+      message: "Hey, how's it going?",
+      time: "10:30 AM",
+      direction: "received",
+    },
+    {
+      sender: "User 2",
+      message: "What's up?",
+      time: "10:31 AM",
+      direction: "sent",
+    },
+    {
+      sender: "User 3",
+      message: "Just working on a project!",
+      time: "10:32 AM",
+      direction: "received",
+    },
   ];
 
   const propertyDetails = {
@@ -37,28 +84,30 @@ const MessengerPage = ({ locale }) => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setSelectedUser(users[0]); 
+        setSelectedUser(users[0]);
         setIsMobileView(false);
       } else {
         setSelectedUser(null);
       }
     };
 
-    handleResize(); 
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-
   const handleSendMessage = () => {
     if (newMessage.trim()) {
-      const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const currentTime = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
       const sentMessage = {
         sender: "You",
         message: newMessage,
         time: currentTime,
-        direction: "sent"
+        direction: "sent",
       };
       setChats([...chats, sentMessage]);
       setNewMessage("");
@@ -70,9 +119,12 @@ const MessengerPage = ({ locale }) => {
     setIsMobileView(true);
 
     if (middleSectionRef.current) {
-      middleSectionRef.current.classList.add('show-middle');
+      middleSectionRef.current.classList.add("show-middle");
       setTimeout(() => {
-        middleSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        middleSectionRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }, 200);
     }
   };
@@ -81,17 +133,20 @@ const MessengerPage = ({ locale }) => {
     setIsMobileView(false);
     setSelectedUser(null);
     if (middleSectionRef.current) {
-      middleSectionRef.current.classList.remove('show-middle');
+      middleSectionRef.current.classList.remove("show-middle");
     }
   };
 
   return (
     <>
-      <div className="container-fluid border-top d-flex flex-row" style={{ height: "90vh" }}>
+      <div
+        className="container-fluid border-top d-flex flex-row"
+        style={{ height: "calc(100vh - 90px)" }}
+      >
         {/* Left Section */}
         <div
-          className={`col-12 col-md-3 bg-white border-end p-3 d-flex justify-content-center flex-column ${isMobileView ? 'd-none' : ''}`}
-          style={{ overflowY: "auto" }}
+          className={`col-12 overflow-hidden col-md-3 bg-white border-end p-3 d-flex flex-column ${isMobileView ? "d-none" : ""}`}
+          style={{ height: "calc(100vh - 90px)" }}
         >
           <div className="p-3 border-bottom position-relative">
             <input
@@ -99,23 +154,44 @@ const MessengerPage = ({ locale }) => {
               className="form-control pe-5"
               placeholder="Search in my messages"
               aria-label="Search"
-              style={{ border: '1px solid #ccc', padding: '10px' }}
+              style={{ border: "1px solid #ccc", padding: "10px" }}
             />
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search position-absolute" style={{ top: '50%', right: '30px', transform: 'translateY(-50%)' }} viewBox="0 0 16 16">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-search position-absolute"
+              style={{
+                top: "50%",
+                right: "30px",
+                transform: "translateY(-50%)",
+              }}
+              viewBox="0 0 16 16"
+            >
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
             </svg>
           </div>
-          <div className="flex-grow-1">
+          <div className="flex-grow-1 overflow-auto">
             <ul className="list-group">
               {users.map((user) => (
                 <li
                   key={user.id}
-                  className={`list-group-item list-group-item-action p-2 ${selectedUser?.id === user.id ? 'bg-light' : ''}`}
-                  style={{ backgroundColor: selectedUser?.id === user.id ? "#eff0f8" : "#fff" }}
+                  className={`list-group-item list-group-item-action p-2 ${selectedUser?.id === user.id ? "bg-light" : ""}`}
+                  style={{
+                    backgroundColor:
+                      selectedUser?.id === user.id ? "#eff0f8" : "#fff",
+                  }}
                   onClick={() => handleUserSelect(user)}
                 >
                   <div className="d-flex align-items-center">
-                    <img src={user.image} alt={user.name} className="rounded-circle me-3" width="50" height="50" />
+                    <img
+                      src={user.image}
+                      alt={user.name}
+                      className="rounded-circle me-3"
+                      width="50"
+                      height="50"
+                    />
                     <div>
                       <strong>{user.name}</strong>
                       <div className="text-muted">{user.lastMessage}</div>
@@ -124,7 +200,10 @@ const MessengerPage = ({ locale }) => {
 
                   <p className="mt-2 text-muted">{propertyDetails.title}</p>
 
-                  <div className="mt-auto text-end text-muted" style={{ fontSize: '0.75rem' }}>
+                  <div
+                    className="mt-auto text-end text-muted"
+                    style={{ fontSize: "0.75rem" }}
+                  >
                     {user.date}
                   </div>
                 </li>
@@ -136,8 +215,12 @@ const MessengerPage = ({ locale }) => {
         {/* Middle Section */}
         <div
           ref={middleSectionRef}
-          className={`col-12 col-md-6 bg-light d-flex flex-column ${isMobileView || selectedUser ? '' : 'd-none'}`}
-          style={{ backgroundColor: "#eff0f8", transition: 'opacity 0.3s ease-in-out', opacity: isMobileView || selectedUser ? 1 : 0 }}
+          className={`col-12 col-md-6 bg-light d-flex flex-column ${isMobileView || selectedUser ? "" : "d-none"}`}
+          style={{
+            backgroundColor: "#eff0f8",
+            transition: "opacity 0.3s ease-in-out",
+            opacity: isMobileView || selectedUser ? 1 : 0,
+          }}
         >
           {selectedUser && (
             <>
@@ -146,13 +229,23 @@ const MessengerPage = ({ locale }) => {
                   className="btn  d-md-none"
                   onClick={handleBack}
                   style={{
-                    padding: '5px',
-                    borderRadius: '10px',
-                    marginRight: '5px',
+                    padding: "5px",
+                    borderRadius: "10px",
+                    marginRight: "5px",
                   }}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-chevron-left"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+                    />
                   </svg>
                 </button>
                 <img
@@ -167,7 +260,10 @@ const MessengerPage = ({ locale }) => {
 
               <div className="flex-grow-1 p-3" style={{ overflowY: "auto" }}>
                 {chats.map((chat, index) => (
-                  <div key={index} className={`mb-3 d-flex ${chat.direction === 'sent' ? 'justify-content-end' : 'justify-content-start'}`}>
+                  <div
+                    key={index}
+                    className={`mb-3 d-flex ${chat.direction === "sent" ? "justify-content-end" : "justify-content-start"}`}
+                  >
                     <div
                       style={{
                         maxWidth: "70%",
@@ -176,18 +272,25 @@ const MessengerPage = ({ locale }) => {
                         display: "inline-block",
                         wordWrap: "break-word",
                         fontSize: "0.875rem",
-                        backgroundColor: chat.direction === 'sent' ? "#e0e2ef" : "#fff"
+                        backgroundColor:
+                          chat.direction === "sent" ? "#e0e2ef" : "#fff",
                       }}
                     >
                       <p className="mb-0">{chat.message}</p>
-                      <div className="text-end text-muted" style={{ fontSize: '0.75rem' }}>
+                      <div
+                        className="text-end text-muted"
+                        style={{ fontSize: "0.75rem" }}
+                      >
                         {chat.time}
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="p-3 d-flex align-items-center" style={{ position: 'relative' }}>
+              <div
+                className="p-3 d-flex align-items-center"
+                style={{ position: "relative" }}
+              >
                 <textarea
                   className="form-control"
                   placeholder="Write your message"
@@ -195,14 +298,14 @@ const MessengerPage = ({ locale }) => {
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   style={{
-                    background: 'white',
-                    border: '1px solid #ccc',
-                    padding: '15px',
-                    borderRadius: '10px',
-                    flex: '1',
-                    resize: 'none',
-                    height: '140px',
-                    marginBottom: '10px',
+                    background: "white",
+                    border: "1px solid #ccc",
+                    padding: "15px",
+                    borderRadius: "10px",
+                    flex: "1",
+                    resize: "none",
+                    height: "140px",
+                    marginBottom: "10px",
                   }}
                 ></textarea>
 
@@ -210,15 +313,15 @@ const MessengerPage = ({ locale }) => {
                   className="btn btn-primary ms-2"
                   onClick={handleSendMessage}
                   style={{
-                    position: 'absolute',
-                    bottom: '50px',
-                    right: '30px',
-                    height: '40px',
-                    padding: '0 15px',
-                    borderRadius: '10px',
+                    position: "absolute",
+                    bottom: "50px",
+                    right: "30px",
+                    height: "40px",
+                    padding: "0 15px",
+                    borderRadius: "10px",
                   }}
                 >
-                  <span style={{ marginRight: '6px' }}>Send</span>
+                  <span style={{ marginRight: "6px" }}>Send</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -237,7 +340,12 @@ const MessengerPage = ({ locale }) => {
 
         {/* Property Section (Visible Only on Big Screens) */}
         <div className="col-md-3 bg-white border-end d-flex align-items-center flex-column p-3 d-none d-md-block">
-          <img src={propertyDetails.image} alt="Property Image" className="img-fluid mb-3" style={{ width: "400px", height: "200px" }} />
+          <img
+            src={propertyDetails.image}
+            alt="Property Image"
+            className="img-fluid mb-3"
+            style={{ width: "400px", height: "200px" }}
+          />
           <h5>{propertyDetails.title}</h5>
           <p>{propertyDetails.address}</p>
         </div>
@@ -245,33 +353,32 @@ const MessengerPage = ({ locale }) => {
 
       <style jsx>
         {`
-        @media (max-width: 768px) {
-          /* Initially hide the middle section off-screen */
-          .col-md-6 {
-            padding: 0 !important; /* Remove any padding */
-            margin: 0 !important;  /* Remove any margin */
-            width: 100%;
-            order: 1; /* Ensure the middle section stays above */
-            transform: translateX(100%); /* Start off-screen to the right */
-            transition: transform 0.1s ease-out; /* Slider effect */
-          }
+          @media (max-width: 768px) {
+            /* Initially hide the middle section off-screen */
+            .col-md-6 {
+              padding: 0 !important; /* Remove any padding */
+              margin: 0 !important; /* Remove any margin */
+              width: 100%;
+              order: 1; /* Ensure the middle section stays above */
+              transform: translateX(100%); /* Start off-screen to the right */
+              transition: transform 0.1s ease-out; /* Slider effect */
+            }
 
-          /* When middle section is visible, slide it in */
-          .show-middle {
-            transform: translateX(0); /* Slide in */
-          }
+            /* When middle section is visible, slide it in */
+            .show-middle {
+              transform: translateX(0); /* Slide in */
+            }
 
-          /* Optionally, hide the left section when viewing the middle section */
-          .d-none {
-            display: none !important;
+            /* Optionally, hide the left section when viewing the middle section */
+            .d-none {
+              display: none !important;
+            }
+            .container-fluid {
+              padding: 0 !important; /* Remove padding from the container */
+            }
           }
-          .container-fluid {
-            padding: 0 !important; /* Remove padding from the container */
-          }
-       }
-      `}
+        `}
       </style>
-
     </>
   );
 };
