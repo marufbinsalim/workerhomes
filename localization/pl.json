@@ -3,6 +3,10 @@
     "title": "Witaj świecie!",
     "description": "To jest prosty przykład obiektu marki."
   },
+  "messenger": {
+    "title": "Messenger",
+    "description": "This is a simple example of a messenger object."
+  },
   "subscribe": {
     "title": "Subskrybuj nasz newsletter",
     "description": "Zapisz się, a my wyślemy Ci najlepsze oferty",

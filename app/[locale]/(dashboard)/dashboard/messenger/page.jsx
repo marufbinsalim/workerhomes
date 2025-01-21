@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import dynamic from "next/dynamic";
 
 export async function generateMetadata({ params: { locale } }) {
-  const t = await getTranslations({ locale, namespace: "invoice" });
+  const t = await getTranslations({ locale, namespace: "messenger" });
 
   return {
     title: t("title"),
