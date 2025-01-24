@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 import { useEffect } from "react";
-
+import { api } from "@/config";
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
@@ -13,6 +13,7 @@ export default function useMessenger(page, session, locale) {
   const [threads, setThreads] = useState([]);
   const [selectedThread, setselectedThread] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [property, setProperty] = useState(null);
 
   useEffect(() => {
     const threadsListener = supabase
@@ -85,7 +86,36 @@ export default function useMessenger(page, session, locale) {
           setMessages(data);
         }
       };
+
       fetchMessages();
+    }
+  }, [page, selectedThread]);
+
+  useEffect(() => {
+    const fetchListingBySlug = async (slug, locale) => {
+      // Fetch listing by slug
+      const res = await fetch(
+        api +
+          `/api/dwellings?filters[slug][$eq]=${slug}&populate=galleries.image,features.icon,seo,location,contact,amenities,category,prices,subscription.package,owner,subscription.package.icon,localizations&locale=${locale}`,
+        {
+          next: {
+            revalidate: 0,
+          },
+        },
+      );
+      const data = await res.json();
+      return data?.data?.[0] || [];
+    };
+
+    if (page === "messenger" && selectedThread) {
+      console.log("fetching property", selectedThread);
+      fetchListingBySlug(
+        selectedThread.dwelling_slugs?.find((slug) => slug.locale === locale)
+          ?.value,
+        locale,
+      ).then((data) => {
+        setProperty(data);
+      });
     }
   }, [page, selectedThread]);
 
@@ -123,6 +153,14 @@ export default function useMessenger(page, session, locale) {
         },
       ];
       setMessages(newMessages);
+
+      // change last message in the thread to the new message
+      const { data, error } = await supabase
+        .from("threads")
+        .update({
+          last_message: message,
+        })
+        .eq("thread_id", message.thread_id);
     }
 
     return { data, error };
@@ -145,6 +183,8 @@ export default function useMessenger(page, session, locale) {
       dwelling_slug:
         thread.dwelling_slug.find((slug) => slug.locale === locale)?.value ||
         "",
+      dwelling_titles: thread.dwelling_title,
+      dwelling_slugs: thread.dwelling_slug,
     };
   }
 
@@ -155,7 +195,7 @@ export default function useMessenger(page, session, locale) {
       sender: message.sender,
       recipient: message.recipient,
       message: message.content,
-      time: new Date(message.timestamp).toLocaleDateString(locale),
+      time: new Date(message.timestamp).toLocaleTimeString(),
       direction:
         session?.user.email === message.sender.email ? "sent" : "received",
     };
@@ -163,6 +203,7 @@ export default function useMessenger(page, session, locale) {
 
   return {
     data: {
+      property: property,
       threads: threads.map(generateThreadType).filter((thread) => {
         return (
           thread.user.email === session?.user.email ||

@@ -20,6 +20,7 @@ const MessengerPage = ({ locale }) => {
   let selectedThread = messengerData?.selectedThread || null;
   let setselectedThread = messengerData?.setselectedThread || null;
   const messages = messengerData?.messages || [];
+  const property = messengerData?.property || null;
 
   console.log("messengerData", messengerData);
 
