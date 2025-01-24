@@ -45,6 +45,33 @@ export default function useMessenger(page, session, locale) {
     };
   }, [threads]);
 
+  // effect to fetch messages in the messenger page in realtime
+  //
+
+  useEffect(() => {
+    const messagesListener = supabase
+      .channel("public:messages")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "messages" },
+        (payload) => {
+          let currentMessages = [...messages];
+          console.log("Change received!", payload);
+          if (payload.eventType === "INSERT") {
+            if (payload.new.thread_id === selectedThread.thread_id) {
+              currentMessages = [payload.new, ...currentMessages];
+            }
+          }
+          setMessages(currentMessages);
+        },
+      )
+      .subscribe();
+
+    return () => {
+      messagesListener.unsubscribe();
+    };
+  }, [messages, selectedThread]);
+
   useEffect(() => {
     console.log("selectedThread", selectedThread);
     if (page === "messenger" && selectedThread) {
@@ -142,7 +169,9 @@ export default function useMessenger(page, session, locale) {
           thread.owner.email === session?.user.email
         );
       }),
-      messages: messages.map(generateMessageType),
+      messages: messages.map(generateMessageType).sort((a, b) => {
+        return new Date(b.time) - new Date(a.time);
+      }),
       selectedThread: selectedThread,
       setselectedThread: setselectedThread,
     },
