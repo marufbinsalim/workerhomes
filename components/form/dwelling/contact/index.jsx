@@ -94,10 +94,36 @@ const ContactForm = ({ dwelling, onSuccess }) => {
           console.log("session", session);
           console.log("fetchedDwelling", fetchedDwelling);
 
+          let allIds = [
+            fetchedDwelling.id,
+            ...fetchedDwelling.localizations.map((l) => l.id),
+          ];
+          allIds.sort((a, b) => a - b);
+          let combined_id = `${allIds.join("-")}`;
+
           const thread = {
-            thread_id: dwelling.id,
-            dwelling_title: fetchedDwelling.title,
-            dwelling_slug: fetchedDwelling.slug,
+            thread_id: combined_id,
+            dwelling_title: [
+              {
+                locale: fetchedDwelling.locale,
+                value: fetchedDwelling.title,
+              },
+              ...fetchedDwelling.localizations.map((l) => ({
+                locale: l.locale,
+                value: l.title,
+              })),
+            ],
+
+            dwelling_slug: [
+              {
+                locale: fetchedDwelling.locale,
+                value: fetchedDwelling.slug,
+              },
+              ...fetchedDwelling.localizations.map((l) => ({
+                locale: l.locale,
+                value: l.slug,
+              })),
+            ],
             user: {
               email: session ? session.user.email : formattedValues.email,
               username: session ? session.user.name : "Guest",
@@ -128,8 +154,40 @@ const ContactForm = ({ dwelling, onSuccess }) => {
             },
           };
 
-          await functions.createThread(thread);
           console.log("thread", thread);
+          await functions.createThread(thread);
+          const message = {
+            thread_id: combined_id,
+            content:
+              `Name / Company: ${formattedValues.name_or_company}` +
+              "\n" +
+              `Email: ${formattedValues.email}` +
+              "\n" +
+              `Phone: ${formattedValues.phone}` +
+              "\n" +
+              `Check-in: ${formattedValues.check_in}` +
+              "\n" +
+              `Check-out: ${formattedValues.check_out}` +
+              "\n" +
+              `Guests: ${formattedValues.guests}` +
+              "\n" +
+              `Additional information: ${formattedValues.additional_information}`,
+
+            timestamp: new Date().toISOString(),
+            type: "text",
+            sender: {
+              email: session ? session.user.email : formattedValues.email,
+              username: session ? session.user.name : "Guest",
+            },
+            recipient: {
+              email: fetchedDwelling.owner.email,
+              username:
+                fetchedDwelling.owner.name || fetchedDwelling.owner.username,
+            },
+          };
+
+          console.log("message", message);
+          await functions.sendMessage(message);
 
           onSuccess && onSuccess();
           resetForm();

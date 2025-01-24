@@ -10,64 +10,18 @@ const MessengerPage = ({ locale }) => {
   const t = useTranslations("messenger");
   const { data: session } = useSession();
 
-  const users = [
-    {
-      id: 1,
-      name: "John",
-      image: "https://randomuser.me/api/portraits/men/1.jpg",
-      lastMessage: "Hello!",
-      date: "2025-01-19",
-    },
-    {
-      id: 2,
-      name: "Anney",
-      image: "https://randomuser.me/api/portraits/women/1.jpg",
-      lastMessage: "How are you?",
-      date: "2025-01-18",
-    },
-    {
-      id: 3,
-      name: "Dube",
-      image: "https://randomuser.me/api/portraits/men/3.jpg",
-      lastMessage: "Let's meet up!",
-      date: "2025-01-17",
-    },
-    {
-      id: 4,
-      name: "Linda",
-      image: "https://randomuser.me/api/portraits/men/4.jpg",
-      lastMessage: "I'm busy",
-      date: "2025-01-16",
-    },
-    {
-      id: 5,
-      name: "Sara",
-      image: "https://randomuser.me/api/portraits/men/5.jpg",
-      lastMessage: "I'm free",
-      date: "2025-01-15",
-    },
-  ];
+  const { data: messengerData, functions } = useMessenger(
+    "messenger",
+    session,
+    locale,
+  );
 
-  const initialChats = [
-    {
-      sender: "User 1",
-      message: "Hey, how's it going?",
-      time: "10:30 AM",
-      direction: "received",
-    },
-    {
-      sender: "User 2",
-      message: "What's up?",
-      time: "10:31 AM",
-      direction: "sent",
-    },
-    {
-      sender: "User 3",
-      message: "Just working on a project!",
-      time: "10:32 AM",
-      direction: "received",
-    },
-  ];
+  const threads = messengerData?.threads || [];
+  let selectedThread = messengerData?.selectedThread || null;
+  let setselectedThread = messengerData?.setselectedThread || null;
+  const messages = messengerData?.messages || [];
+
+  console.log("messengerData", messengerData);
 
   const propertyDetails = {
     image: "/image.png",
@@ -75,8 +29,6 @@ const MessengerPage = ({ locale }) => {
     address: "123 Main St, Cityville",
   };
 
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [chats, setChats] = useState(initialChats);
   const [newMessage, setNewMessage] = useState("");
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -87,10 +39,10 @@ const MessengerPage = ({ locale }) => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setSelectedUser(users[0]);
+        setselectedThread(threads[0]);
         setIsMobileView(false);
       } else {
-        setSelectedUser(null);
+        setselectedThread(null);
       }
     };
 
@@ -102,29 +54,37 @@ const MessengerPage = ({ locale }) => {
 
   const handleSendMessage = () => {
     if (newMessage.trim()) {
-      const currentTime = new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
+      functions.sendMessage({
+        thread_id: selectedThread.thread_id,
+        content: newMessage,
+        type: "text",
+        sender: {
+          email: session.user.email,
+          username: session.user.username || session.user.name,
+        },
+        recipient: {
+          email:
+            session.user.email === selectedThread.owner.email
+              ? selectedThread.user.email
+              : selectedThread.owner.email,
+          username:
+            session.user.email === selectedThread.owner.email
+              ? selectedThread.user.username
+              : selectedThread.owner.username,
+        },
       });
-      const sentMessage = {
-        sender: "You",
-        message: newMessage,
-        time: currentTime,
-        direction: "sent",
-      };
-      setChats([...chats, sentMessage]);
       setNewMessage("");
     }
   };
 
-  const handleUserSelect = (user) => {
-    setSelectedUser(user);
+  const handlethreadselect = (thread) => {
+    setselectedThread(thread);
     setIsMobileView(true);
 
     if (middleSectionRef.current) {
       middleSectionRef.current.classList.add("show-middle");
       setTimeout(() => {
-        middleSectionRef.current.scrollIntoView({
+        middleSectionRef?.current?.scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
@@ -134,7 +94,7 @@ const MessengerPage = ({ locale }) => {
 
   const handleBack = () => {
     setIsMobileView(false);
-    setSelectedUser(null);
+    setselectedThread(null);
     if (middleSectionRef.current) {
       middleSectionRef.current.classList.remove("show-middle");
     }
@@ -155,7 +115,7 @@ const MessengerPage = ({ locale }) => {
             <input
               type="text"
               className="form-control pe-5"
-              placeholder="Search in my messages"
+              placeholder="Search by Username / Email"
               aria-label="Search"
               style={{ border: "1px solid #ccc", padding: "10px" }}
             />
@@ -175,39 +135,47 @@ const MessengerPage = ({ locale }) => {
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
             </svg>
           </div>
-          <div className="flex-grow-1 overflow-auto">
+          <div className="flex-grow-1 overflow-y-auto">
             <ul className="list-group">
-              {users.map((user) => (
+              {threads.map((thread) => (
                 <li
-                  key={user.id}
-                  className={`list-group-item list-group-item-action p-2 ${selectedUser?.id === user.id ? "bg-light" : ""}`}
+                  key={thread.thread_id}
+                  className={`list-group-item list-group-item-action p-2 ${selectedThread?.thread_id === thread.thread_id ? "bg-light" : ""}`}
                   style={{
                     backgroundColor:
-                      selectedUser?.id === user.id ? "#eff0f8" : "#fff",
+                      selectedThread?.thread_id === thread.thread_id
+                        ? "#eff0f8"
+                        : "#fff",
                   }}
-                  onClick={() => handleUserSelect(user)}
+                  onClick={() => handlethreadselect(thread)}
                 >
                   <div className="d-flex align-items-center">
-                    <img
-                      src={user.image}
-                      alt={user.name}
-                      className="rounded-circle me-3"
-                      width="50"
-                      height="50"
-                    />
                     <div>
-                      <strong>{user.name}</strong>
-                      <div className="text-muted">{user.lastMessage}</div>
+                      <strong>{thread.name}</strong>
+                      <div
+                        className="text-muted text-truncate"
+                        style={{ maxWidth: "320px" }}
+                      >
+                        {thread.lastMessage}
+                      </div>
                     </div>
                   </div>
 
-                  <p className="mt-2 text-muted">{propertyDetails.title}</p>
-
+                  <Link href={`/${locale}/listings/${thread.dwelling_slug}`}>
+                    <p
+                      className="mt-2 text-muted
+                      text-underline-hover
+                      "
+                      style={{ width: "max-content" }}
+                    >
+                      {thread.dwelling_title}
+                    </p>
+                  </Link>
                   <div
                     className="mt-auto text-end text-muted"
                     style={{ fontSize: "0.75rem" }}
                   >
-                    {user.date}
+                    {thread.created_at}
                   </div>
                 </li>
               ))}
@@ -217,15 +185,15 @@ const MessengerPage = ({ locale }) => {
 
         {/* Middle Section */}
         <div
-          ref={middleSectionRef}
-          className={`col-12 col-md-6 bg-light d-flex flex-column ${isMobileView || selectedUser ? "" : "d-none"}`}
+          ref={middleSectionRef || null}
+          className={`col-12 col-md-6 bg-light d-flex flex-column ${isMobileView || selectedThread ? "" : "d-none"}`}
           style={{
             backgroundColor: "#eff0f8",
             transition: "opacity 0.3s ease-in-out",
-            opacity: isMobileView || selectedUser ? 1 : 0,
+            opacity: isMobileView || selectedThread ? 1 : 0,
           }}
         >
-          {selectedUser && (
+          {selectedThread && (
             <>
               <div className="d-flex align-items-center mt-2 border-bottom pb-2">
                 <button
@@ -251,18 +219,11 @@ const MessengerPage = ({ locale }) => {
                     />
                   </svg>
                 </button>
-                <img
-                  src={selectedUser.image}
-                  alt={selectedUser.name}
-                  className="rounded-circle me-2"
-                  width="40"
-                  height="40"
-                />
-                <strong>{selectedUser.name}</strong>
+                <strong>{selectedThread.name}</strong>
               </div>
 
               <div className="flex-grow-1 p-3" style={{ overflowY: "auto" }}>
-                {chats.map((chat, index) => (
+                {messages.map((chat, index) => (
                   <div
                     key={index}
                     className={`mb-3 d-flex ${chat.direction === "sent" ? "justify-content-end" : "justify-content-start"}`}
@@ -279,7 +240,9 @@ const MessengerPage = ({ locale }) => {
                           chat.direction === "sent" ? "#e0e2ef" : "#fff",
                       }}
                     >
-                      <p className="mb-0">{chat.message}</p>
+                      <pre>
+                        <p className="mb-0">{chat.message}</p>
+                      </pre>
                       <div
                         className="text-end text-muted"
                         style={{ fontSize: "0.75rem" }}
