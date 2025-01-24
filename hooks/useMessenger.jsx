@@ -201,9 +201,24 @@ export default function useMessenger(page, session, locale) {
     };
   }
 
+  function generatePropertyType(property, selectedThread) {
+    if (!property) return null;
+    return {
+      title: selectedThread?.dwelling_titles.find(
+        (title) => title.locale === locale,
+      )?.value,
+
+      image_url: `${api}${property?.galleries?.[0]?.image?.url}` || "",
+      location:
+        property?.location.length !== 0
+          ? `${property.location[0].street_one}, ${property.location[0].zip_code || ""}, ${property.location[0].city || ""}, ${property.location[0].country || ""}`
+          : "",
+    };
+  }
+
   return {
     data: {
-      property: property,
+      property: generatePropertyType(property, selectedThread),
       threads: threads.map(generateThreadType).filter((thread) => {
         return (
           thread.user.email === session?.user.email ||
