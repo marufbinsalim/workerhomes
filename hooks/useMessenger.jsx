@@ -136,7 +136,12 @@ export default function useMessenger(page, session, locale) {
 
   return {
     data: {
-      threads: threads.map(generateThreadType),
+      threads: threads.map(generateThreadType).filter((thread) => {
+        return (
+          thread.user.email === session?.user.email ||
+          thread.owner.email === session?.user.email
+        );
+      }),
       messages: messages.map(generateMessageType),
       selectedThread: selectedThread,
       setselectedThread: setselectedThread,
