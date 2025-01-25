@@ -99,6 +99,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
           ];
           allIds.sort((a, b) => a - b);
           let combined_id = `${allIds.join("-")}`;
+          combined_id += "-" + new Date().toISOString();
 
           const thread = {
             thread_id: combined_id,

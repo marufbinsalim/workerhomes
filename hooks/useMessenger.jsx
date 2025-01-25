@@ -194,6 +194,7 @@ export default function useMessenger(page, session, locale) {
   }
 
   function generateThreadType(thread) {
+    if (!thread) return null;
     return {
       thread_id: thread.thread_id,
       user: thread.user,

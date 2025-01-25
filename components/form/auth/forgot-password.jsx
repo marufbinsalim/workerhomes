@@ -1,95 +1,95 @@
-'use client'
+"use client";
 
-import { api } from '@/config'
-import { forgotPassword } from '@/lib/services/auth'
-import { authSchema } from '@/lib/validation/auth'
-import { Icon } from '@iconify/react'
-import axios from 'axios'
-import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
-import { toast } from 'react-toastify'
+import { api } from "@/config";
+import { forgotPassword } from "@/lib/services/auth";
+import { authSchema } from "@/lib/validation/auth";
+import { Icon } from "@iconify/react";
+import axios from "axios";
+import { useFormik } from "formik";
+import { useTranslations } from "next-intl";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { toast } from "react-toastify";
 
 const ForgotPasswordForm = ({ locale }) => {
-  const { executeRecaptcha } = useGoogleReCaptcha()
-  const router = useRouter()
-  const [isLoading, setIsLoading] = useState(false)
-  const [showPassword, setShowPassword] = useState(false)
-  const t = useTranslations('forgot-password')
-  const searchParams = useSearchParams()
-  const callbackUrl = `/${locale}`
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const t = useTranslations("forgot-password");
+  const searchParams = useSearchParams();
+  const callbackUrl = `/${locale}`;
 
-  const handleVerifyAccount = async email => {
+  const handleVerifyAccount = async (email) => {
     try {
-      const result = await axios.post(api + '/api/auth/local/verify-account', {
+      const result = await axios.post(api + "/api/auth/local/verify-account", {
         data: {
           email,
         },
-      })
+      });
 
       if (result?.status == 200) {
-        if (result?.data?.provider !== 'local') {
-          toast.error(t('messages.provider-error'))
-          return false
+        if (result?.data?.provider !== "local") {
+          toast.error(t("messages.provider-error"));
+          return false;
         } else {
-          return true
+          return true;
         }
       }
 
-      return false
+      return false;
     } catch (error) {
-      console.log(error)
-      toast.error(t('messages.failed'))
+      console.log(error);
+      toast.error(t("messages.failed"));
 
-      return false
+      return false;
     }
-  }
+  };
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     validationSchema: authSchema.forgotPassword,
     enableReinitialize: true,
-    onSubmit: async values => {
-      setIsLoading(true)
+    onSubmit: async (values) => {
+      setIsLoading(true);
 
       if (!executeRecaptcha) {
-        setIsLoading(false)
-        return toast.error(t('messages.recaptcha-not-ready'))
+        setIsLoading(false);
+        return toast.error(t("messages.recaptcha-not-ready"));
       }
 
       try {
-        const token = await executeRecaptcha('login')
+        const token = await executeRecaptcha("login");
 
-        const recaptchaResponse = await fetch('/api/recaptcha', {
-          method: 'POST',
+        const recaptchaResponse = await fetch("/api/recaptcha", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ token }),
-        })
+        });
 
-        const recaptchaData = await recaptchaResponse.json()
+        const recaptchaData = await recaptchaResponse.json();
 
         if (!recaptchaData.success) {
-          setIsLoading(false)
-          return toast.error(t('messages.recaptcha-failed'))
+          setIsLoading(false);
+          return toast.error(t("messages.recaptcha-failed"));
         }
 
-        toast.success(t('messages.recaptcha-success'))
+        toast.success(t("messages.recaptcha-success"));
 
-        const isVerified = await handleVerifyAccount(values?.email)
+        const isVerified = await handleVerifyAccount(values?.email);
 
         if (!isVerified) {
-          setIsLoading(false)
-          return false
+          setIsLoading(false);
+          return false;
         }
 
-        const result = await forgotPassword(values.email)
+        const result = await forgotPassword(values.email);
         // console.log(result.status)
         // if (
         //   result.status !== 200 ||
@@ -100,29 +100,29 @@ const ForgotPasswordForm = ({ locale }) => {
         //   return toast.error(t('messages.failed'))
         // }
 
-        toast.success(t('messages.success'))
-        return router.push(`/${locale}`)
+        toast.success(t("messages.success"));
+        return router.push(`/${locale}`);
       } catch (error) {
-        setIsLoading(false)
-        console.log(error)
-        toast.error(t('messages.error'))
+        setIsLoading(false);
+        console.log(error);
+        toast.error(t("messages.error"));
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
     },
-  })
+  });
 
   return (
     <form
-      className='row y-gap-20'
+      className="row y-gap-20"
       onSubmit={formik.handleSubmit}
       onReset={formik.handleReset}
     >
-      <div className='col-12'>
-        <div className='form-input '>
+      <div className="col-12">
+        <div className="form-input ">
           <input
-            type='email'
-            name='email'
+            type="email"
+            name="email"
             autoFocus
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -130,21 +130,21 @@ const ForgotPasswordForm = ({ locale }) => {
             disabled={isLoading}
             required
           />
-          <label className='lh-1 text-14 text-light-1'>{t('form.email')}</label>
+          <label className="lh-1 text-14 text-light-1">{t("form.email")}</label>
         </div>
       </div>
       {/* End .col */}
 
-      <div className='col-12'>
+      <div className="col-12">
         <button
-          type='submit'
+          type="submit"
           disabled={isLoading || !formik.isValid}
-          className='button py-20  -dark-1 bg-blue-1 text-white w-100'
+          className="button py-20  -dark-1 bg-blue-1 text-white w-100"
         >
-          {t('send')}{' '}
+          {t("send")}{" "}
           <Icon
-            icon={isLoading ? 'line-md:loading-loop' : 'mdi:email-send-outline'}
-            className='ml-10'
+            icon={isLoading ? "line-md:loading-loop" : "mdi:email-send-outline"}
+            className="ml-10"
             width={20}
             height={20}
           />
@@ -152,10 +152,10 @@ const ForgotPasswordForm = ({ locale }) => {
       </div>
       {/* End .col */}
     </form>
-  )
-}
+  );
+};
 
-export default ForgotPasswordForm
+export default ForgotPasswordForm;
 
 // 'use client'
 
