@@ -140,7 +140,7 @@ export default function useMessenger(page, session, locale) {
   }
 
   async function sendMessage(message) {
-    const { data, error } = await supabase
+    const { data: messageData, error } = await supabase
       .from("messages")
       .upsert([message])
       .select();
@@ -150,6 +150,7 @@ export default function useMessenger(page, session, locale) {
         ...messages,
         {
           ...message,
+          id: messageData[0].id,
           timestamp: new Date().toISOString(),
         },
       ];
@@ -164,7 +165,7 @@ export default function useMessenger(page, session, locale) {
         .eq("thread_id", message.thread_id);
     }
 
-    return { data, error };
+    return { messageData, error };
   }
 
   function generateThreadType(thread) {
@@ -226,9 +227,17 @@ export default function useMessenger(page, session, locale) {
           thread.owner.email === session?.user.email
         );
       }),
-      messages: messages.map(generateMessageType).sort((a, b) => {
-        return new Date(b.time) - new Date(a.time);
-      }),
+      // make sure  message_id is unique
+      messages: messages
+        .map(generateMessageType)
+        .sort((a, b) => {
+          return new Date(b.time) - new Date(a.time);
+        })
+        .filter(
+          (message, index, self) =>
+            index ===
+            self.findIndex((t) => t.message_id === message.message_id),
+        ),
       selectedThread: selectedThread,
       setselectedThread: setselectedThread,
     },
