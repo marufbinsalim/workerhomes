@@ -2,6 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 import { useEffect } from "react";
 import { api } from "@/config";
+import { useRef } from "react";
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
@@ -14,6 +15,14 @@ export default function useMessenger(page, session, locale) {
   const [selectedThread, setselectedThread] = useState(null);
   const [messages, setMessages] = useState([]);
   const [property, setProperty] = useState(null);
+  const [propertyLoading, setPropertyLoading] = useState(false);
+  const scrollRef = useRef();
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   useEffect(() => {
     const threadsListener = supabase
@@ -59,8 +68,11 @@ export default function useMessenger(page, session, locale) {
           let currentMessages = [...messages];
           console.log("Change received!", payload);
           if (payload.eventType === "INSERT") {
-            if (payload.new.thread_id === selectedThread.thread_id) {
+            if (payload.new.thread_id === selectedThread?.thread_id) {
               currentMessages = [payload.new, ...currentMessages];
+              currentMessages = currentMessages.sort((a, b) => {
+                return new Date(a.timestamp) - new Date(b.timestamp);
+              });
             }
           }
           setMessages(currentMessages);
@@ -93,6 +105,7 @@ export default function useMessenger(page, session, locale) {
 
   useEffect(() => {
     const fetchListingBySlug = async (slug, locale) => {
+      setPropertyLoading(true);
       // Fetch listing by slug
       const res = await fetch(
         api +
@@ -104,6 +117,7 @@ export default function useMessenger(page, session, locale) {
         },
       );
       const data = await res.json();
+      setPropertyLoading(false);
       return data?.data?.[0] || [];
     };
 
@@ -117,7 +131,7 @@ export default function useMessenger(page, session, locale) {
         setProperty(data);
       });
     }
-  }, [page, selectedThread]);
+  }, [page, selectedThread, locale]);
 
   useEffect(() => {
     if (page === "messenger") {
@@ -167,7 +181,11 @@ export default function useMessenger(page, session, locale) {
       const { data, error } = await supabase
         .from("threads")
         .update({
-          last_message: message,
+          last_message: {
+            ...message,
+            id: messageData[0].id,
+            timestamp: new Date().toISOString(),
+          },
         })
         .eq("thread_id", message.thread_id);
     }
@@ -185,7 +203,10 @@ export default function useMessenger(page, session, locale) {
           ? thread.owner.username
           : thread.user.username,
       lastMessage: thread.last_message.content,
-      created_at: new Date(thread.created_at).toLocaleDateString(locale),
+      lastMessageTime: new Date(
+        thread.last_message.timestamp,
+      ).toLocaleTimeString(),
+      created_at: new Date(thread.last_message.timestamp).toLocaleDateString(),
       dwelling_title:
         thread.dwelling_title.find((title) => title.locale === locale)?.value ||
         "",
@@ -205,6 +226,7 @@ export default function useMessenger(page, session, locale) {
       recipient: message.recipient,
       message: message.content,
       time: new Date(message.timestamp).toLocaleTimeString(),
+      timestamp: message.timestamp,
       direction:
         session?.user.email === message.sender.email ? "sent" : "received",
     };
@@ -228,18 +250,21 @@ export default function useMessenger(page, session, locale) {
   return {
     data: {
       property: generatePropertyType(property, selectedThread),
-      threads: threads.map(generateThreadType).filter((thread) => {
-        return (
-          thread.user.email === session?.user.email ||
-          thread.owner.email === session?.user.email
-        );
-      }),
+      propertyLoading: propertyLoading,
+      threads: threads
+        .map(generateThreadType)
+        .filter((thread) => {
+          return (
+            thread.user.email === session?.user.email ||
+            thread.owner.email === session?.user.email
+          );
+        })
+        .sort((a, b) => {
+          return new Date(a.lastMessageTime) - new Date(b.lastMessageTime);
+        }),
       // make sure  message_id is unique
       messages: messages
         .map(generateMessageType)
-        .sort((a, b) => {
-          return new Date(a.time) - new Date(b.time);
-        })
         .filter(
           (message, index, self) =>
             index ===
@@ -247,6 +272,7 @@ export default function useMessenger(page, session, locale) {
         ),
       selectedThread: selectedThread,
       setselectedThread: setselectedThread,
+      scrollRef: scrollRef,
     },
     functions: {
       createThread,

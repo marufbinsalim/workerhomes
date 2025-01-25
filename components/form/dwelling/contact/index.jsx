@@ -19,8 +19,7 @@ import { api } from "@/config";
 
 const ContactForm = ({ dwelling, onSuccess }) => {
   // const { executeRecaptcha } = useGoogleReCaptcha();
-  //
-  //
+
   const locale = useParams().locale;
 
   const [isLoading, setIsLoading] = React.useState(false);
@@ -37,8 +36,8 @@ const ContactForm = ({ dwelling, onSuccess }) => {
         setIsLoading(true);
 
         // if (!executeRecaptcha) {
-        //   setIsLoading(false)
-        //   return toast.error(t('messages.recaptcha-not-ready'))
+        //   setIsLoading(false);
+        //   return toast.error(t("messages.recaptcha-not-ready"));
         // }
 
         const formattedValues = {

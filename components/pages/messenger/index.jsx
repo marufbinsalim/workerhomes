@@ -19,8 +19,12 @@ const MessengerPage = ({ locale }) => {
   const threads = messengerData?.threads || [];
   let selectedThread = messengerData?.selectedThread || null;
   let setselectedThread = messengerData?.setselectedThread || null;
-  const messages = messengerData?.messages || [];
+  let messages = messengerData?.messages || [];
+  messages = messages.sort(
+    (a, b) => new Date(a.timestamp) - new Date(b.timestamp),
+  );
   const property = messengerData?.property || null;
+  const propertyLoading = messengerData?.propertyLoading || false;
 
   console.log("messengerData", messengerData);
 
@@ -35,9 +39,8 @@ const MessengerPage = ({ locale }) => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
         setselectedThread(threads[0]);
-        setIsMobileView(false);
+        setIsMobileView(true);
       } else {
-        setselectedThread(null);
       }
     };
 
@@ -226,10 +229,11 @@ const MessengerPage = ({ locale }) => {
                         borderRadius: "10px",
                         display: "inline-block",
                         fontSize: "0.875rem",
-                        backgroundColor: chat.direction === "sent" ? "#e0e2ef" : "#fff",
+                        backgroundColor:
+                          chat.direction === "sent" ? "#e0e2ef" : "#fff",
                         wordWrap: "break-word",
-                        overflowWrap: "break-word", 
-                        whiteSpace: "pre-wrap", 
+                        overflowWrap: "break-word",
+                        whiteSpace: "pre-wrap",
                       }}
                     >
                       <p
@@ -237,8 +241,8 @@ const MessengerPage = ({ locale }) => {
                         style={{
                           margin: 0,
                           wordWrap: "break-word",
-                          overflowWrap: "break-word", 
-                          whiteSpace: "pre-wrap", 
+                          overflowWrap: "break-word",
+                          whiteSpace: "pre-wrap",
                         }}
                       >
                         {chat.message}
@@ -252,6 +256,7 @@ const MessengerPage = ({ locale }) => {
                     </div>
                   </div>
                 ))}
+                <div ref={messengerData.scrollRef}></div>
               </div>
 
               <div
@@ -324,20 +329,31 @@ const MessengerPage = ({ locale }) => {
           )}
         </div>
 
-        {property && (
-          <div className="col-md-3 bg-white border-end d-flex align-items-center flex-column p-3 d-none d-md-block">
-            {property?.image_url && (
-              <img
-                src={property.image_url}
-                alt="Property Image"
-                className="img-fluid mb-3"
-                style={{ width: "400px", height: "200px" }}
-              />
-            )}
-            {property?.title && <h5>{property.title}</h5>}
-            {property?.location && <p>{property.location}</p>}
-          </div>
-        )}
+        {property &&
+          selectedThread &&
+          selectedThread.dwelling_title === property.title &&
+          !propertyLoading && (
+            <div className="col-md-3 bg-white border-end d-flex align-items-center flex-column p-3 d-none d-md-block">
+              {property.image_url && (
+                <img
+                  src={property.image_url}
+                  alt="Property Image"
+                  className="img-fluid mb-3"
+                  style={{ width: "400px", height: "200px" }}
+                />
+              )}
+              {property?.title && (
+                <Link
+                  href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
+                >
+                  <h5 className="text-center text-18 fw-500 text-underline-hover">
+                    {property.title}
+                  </h5>
+                </Link>
+              )}
+              {property?.location && <p>{property.location}</p>}
+            </div>
+          )}
       </div>
 
       <style jsx>
