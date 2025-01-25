@@ -125,6 +125,7 @@ export default function useMessenger(page, session, locale) {
         const { data, error } = await supabase.from("threads").select("*");
         if (data) {
           setThreads(data);
+          setselectedThread(generateThreadType(data[0]));
         }
       };
       fetchThreads();
