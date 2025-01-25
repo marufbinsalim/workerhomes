@@ -125,12 +125,19 @@ export default function useMessenger(page, session, locale) {
         const { data, error } = await supabase.from("threads").select("*");
         if (data) {
           setThreads(data);
-          setselectedThread(generateThreadType(data[0]));
+
+          let firstThread = data.find((thread) => {
+            return (
+              thread.user.email === session?.user.email ||
+              thread.owner.email === session?.user.email
+            );
+          });
+          setselectedThread(generateThreadType(firstThread));
         }
       };
       fetchThreads();
     }
-  }, [page]);
+  }, [page, session]);
 
   async function createThread(thread) {
     const { data, error } = await supabase
@@ -231,7 +238,7 @@ export default function useMessenger(page, session, locale) {
       messages: messages
         .map(generateMessageType)
         .sort((a, b) => {
-          return new Date(b.time) - new Date(a.time);
+          return new Date(a.time) - new Date(b.time);
         })
         .filter(
           (message, index, self) =>
