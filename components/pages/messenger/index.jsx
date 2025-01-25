@@ -217,7 +217,7 @@ const MessengerPage = ({ locale }) => {
                 <strong>{selectedThread.name}</strong>
               </div>
 
-              <div className="flex-grow-1 p-2" style={{ overflowY: "auto", }}>
+              <div className="flex-grow-1 p-3" style={{ overflowY: "auto" }}>
                 {messages.map((chat, index) => (
                   <div
                     key={index}
@@ -225,21 +225,28 @@ const MessengerPage = ({ locale }) => {
                   >
                     <div
                       style={{
-                        maxWidth: "70%",  
-                        width: "100%",  
+                        maxWidth: "70%",
                         padding: "10px",
                         borderRadius: "10px",
                         display: "inline-block",
-                        wordWrap: "break-word", 
-                        overflowWrap: "break-word", 
                         fontSize: "0.875rem",
                         backgroundColor: chat.direction === "sent" ? "#e0e2ef" : "#fff",
-                        whiteSpace: "normal",  
+                        wordWrap: "break-word",
+                        overflowWrap: "break-word", 
+                        whiteSpace: "pre-wrap", 
                       }}
                     >
-                      <pre>
-                        <p className="mb-0">{chat.message}</p>
-                      </pre>
+                      <p
+                        className="mb-0"
+                        style={{
+                          margin: 0,
+                          wordWrap: "break-word",
+                          overflowWrap: "break-word", 
+                          whiteSpace: "pre-wrap", 
+                        }}
+                      >
+                        {chat.message}
+                      </p>
                       <div
                         className="text-end text-muted"
                         style={{ fontSize: "0.75rem" }}
@@ -250,6 +257,7 @@ const MessengerPage = ({ locale }) => {
                   </div>
                 ))}
               </div>
+
               <div
                 className="p-3 d-flex align-items-center"
                 style={{
@@ -360,8 +368,6 @@ const MessengerPage = ({ locale }) => {
             .container-fluid {
               padding: 0 !important; /* Remove padding from the container */
             }
-              
-            
           }
         `}
       </style>
