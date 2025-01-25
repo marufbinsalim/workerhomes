@@ -131,7 +131,7 @@ const MessengerPage = ({ locale }) => {
             </svg>
           </div>
           <div className="flex-grow-1 overflow-y-auto">
-            <ul className="list-group">
+            <ul className="list-group overflow-hidden">
               {threads.map((thread) => (
                 <li
                   key={thread.thread_id}
@@ -147,11 +147,8 @@ const MessengerPage = ({ locale }) => {
                   <div className="d-flex align-items-center">
                     <div>
                       <strong>{thread.name}</strong>
-                      <div
-                        className="text-muted text-truncate"
-                        style={{ maxWidth: "320px" }}
-                      >
-                        {thread.lastMessage}
+                      <div className="text-muted text-wrap">
+                        {thread.lastMessage.slice(0, 40) + "..."}
                       </div>
                     </div>
                   </div>
@@ -159,9 +156,8 @@ const MessengerPage = ({ locale }) => {
                   <Link href={`/${locale}/listings/${thread.dwelling_slug}`}>
                     <p
                       className="mt-2 text-muted
-                      text-underline-hover
+                      text-underline-hover text-wrap
                       "
-                      style={{ width: "max-content" }}
                     >
                       {thread.dwelling_title}
                     </p>
@@ -217,7 +213,7 @@ const MessengerPage = ({ locale }) => {
                 <strong>{selectedThread.name}</strong>
               </div>
 
-              <div className="flex-grow-1 p-2" style={{ overflowY: "auto", }}>
+              <div className="flex-grow-1 p-2" style={{ overflowY: "auto" }}>
                 {messages.map((chat, index) => (
                   <div
                     key={index}
@@ -225,16 +221,17 @@ const MessengerPage = ({ locale }) => {
                   >
                     <div
                       style={{
-                        maxWidth: "70%",  
-                        width: "100%",  
+                        maxWidth: "70%",
+                        width: "100%",
                         padding: "10px",
                         borderRadius: "10px",
                         display: "inline-block",
-                        wordWrap: "break-word", 
-                        overflowWrap: "break-word", 
+                        wordWrap: "break-word",
+                        overflowWrap: "break-word",
                         fontSize: "0.875rem",
-                        backgroundColor: chat.direction === "sent" ? "#e0e2ef" : "#fff",
-                        whiteSpace: "normal",  
+                        backgroundColor:
+                          chat.direction === "sent" ? "#e0e2ef" : "#fff",
+                        whiteSpace: "normal",
                       }}
                     >
                       <pre>
@@ -316,23 +313,24 @@ const MessengerPage = ({ locale }) => {
                   </svg>
                 </button>
               </div>
-
             </>
           )}
         </div>
 
-        <div className="col-md-3 bg-white border-end d-flex align-items-center flex-column p-3 d-none d-md-block">
-          {property?.image_url && (
-            <img
-              src={property.image_url}
-              alt="Property Image"
-              className="img-fluid mb-3"
-              style={{ width: "400px", height: "200px" }}
-            />
-          )}
-          {property?.title && <h5>{property.title}</h5>}
-          {property?.location && <p>{property.location}</p>}
-        </div>
+        {property && (
+          <div className="col-md-3 bg-white border-end d-flex align-items-center flex-column p-3 d-none d-md-block">
+            {property?.image_url && (
+              <img
+                src={property.image_url}
+                alt="Property Image"
+                className="img-fluid mb-3"
+                style={{ width: "400px", height: "200px" }}
+              />
+            )}
+            {property?.title && <h5>{property.title}</h5>}
+            {property?.location && <p>{property.location}</p>}
+          </div>
+        )}
       </div>
 
       <style jsx>
@@ -360,8 +358,6 @@ const MessengerPage = ({ locale }) => {
             .container-fluid {
               padding: 0 !important; /* Remove padding from the container */
             }
-              
-            
           }
         `}
       </style>
