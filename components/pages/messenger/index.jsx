@@ -24,12 +24,6 @@ const MessengerPage = ({ locale }) => {
 
   console.log("messengerData", messengerData);
 
-  const propertyDetails = {
-    image: "/image.png",
-    title: "Beautiful Apartment",
-    address: "123 Main St, Cityville",
-  };
-
   const [newMessage, setNewMessage] = useState("");
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -196,7 +190,7 @@ const MessengerPage = ({ locale }) => {
         >
           {selectedThread && (
             <>
-              <div className="d-flex align-items-center mt-2 border-bottom pb-2">
+              <div className="d-flex p-2 align-items-center mt-2 border-bottom pb-2">
                 <button
                   className="btn  d-md-none"
                   onClick={handleBack}
@@ -223,7 +217,7 @@ const MessengerPage = ({ locale }) => {
                 <strong>{selectedThread.name}</strong>
               </div>
 
-              <div className="flex-grow-1 p-3" style={{ overflowY: "auto" }}>
+              <div className="flex-grow-1 p-2" style={{ overflowY: "auto", }}>
                 {messages.map((chat, index) => (
                   <div
                     key={index}
@@ -231,14 +225,16 @@ const MessengerPage = ({ locale }) => {
                   >
                     <div
                       style={{
-                        maxWidth: "70%",
+                        maxWidth: "70%",  
+                        width: "100%",  
                         padding: "10px",
                         borderRadius: "10px",
                         display: "inline-block",
-                        wordWrap: "break-word",
+                        wordWrap: "break-word", 
+                        overflowWrap: "break-word", 
                         fontSize: "0.875rem",
-                        backgroundColor:
-                          chat.direction === "sent" ? "#e0e2ef" : "#fff",
+                        backgroundColor: chat.direction === "sent" ? "#e0e2ef" : "#fff",
+                        whiteSpace: "normal",  
                       }}
                     >
                       <pre>
@@ -256,33 +252,52 @@ const MessengerPage = ({ locale }) => {
               </div>
               <div
                 className="p-3 d-flex align-items-center"
-                style={{ position: "relative" }}
+                style={{
+                  position: "relative",
+                  height: "180px",
+                  border: "1px solid #ccc",
+                  borderRadius: "10px",
+                  background: "white",
+                  marginBottom: "15px",
+                  marginLeft: "15px",
+                  marginRight: "15px",
+                }}
               >
-                <textarea
-                  className="form-control"
-                  placeholder="Write your message"
-                  aria-label="Message"
-                  value={newMessage}
-                  onChange={(e) => setNewMessage(e.target.value)}
+                {/* Scrollable container */}
+                <div
                   style={{
-                    background: "white",
-                    border: "1px solid #ccc",
-                    padding: "15px",
-                    borderRadius: "10px",
                     flex: "1",
-                    resize: "none",
-                    height: "140px",
-                    marginBottom: "10px",
+                    overflowY: "auto", // Scrollable
+                    padding: "10px",
+                    marginBottom: "35px", // Space for the button
                   }}
-                ></textarea>
+                >
+                  <textarea
+                    className=""
+                    placeholder="Write your message"
+                    aria-label="Message"
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      border: "none",
+                      outline: "none",
+                      resize: "none",
+                      background: "transparent",
+                      // overflow: "hidden",
+                    }}
+                  ></textarea>
+                </div>
 
+                {/* Fixed Button */}
                 <button
-                  className="btn btn-primary ms-2"
+                  className="btn btn-primary"
                   onClick={handleSendMessage}
                   style={{
                     position: "absolute",
-                    bottom: "50px",
-                    right: "30px",
+                    bottom: "10px",
+                    right: "10px",
                     height: "40px",
                     padding: "0 15px",
                     borderRadius: "10px",
@@ -301,20 +316,22 @@ const MessengerPage = ({ locale }) => {
                   </svg>
                 </button>
               </div>
+
             </>
           )}
         </div>
 
-        {/* Property Section (Visible Only on Big Screens) */}
         <div className="col-md-3 bg-white border-end d-flex align-items-center flex-column p-3 d-none d-md-block">
-          <img
-            src={propertyDetails.image}
-            alt="Property Image"
-            className="img-fluid mb-3"
-            style={{ width: "400px", height: "200px" }}
-          />
-          <h5>{propertyDetails.title}</h5>
-          <p>{propertyDetails.address}</p>
+          {property?.image_url && (
+            <img
+              src={property.image_url}
+              alt="Property Image"
+              className="img-fluid mb-3"
+              style={{ width: "400px", height: "200px" }}
+            />
+          )}
+          {property?.title && <h5>{property.title}</h5>}
+          {property?.location && <p>{property.location}</p>}
         </div>
       </div>
 
@@ -343,6 +360,8 @@ const MessengerPage = ({ locale }) => {
             .container-fluid {
               padding: 0 !important; /* Remove padding from the container */
             }
+              
+            
           }
         `}
       </style>
