@@ -101,21 +101,24 @@ const MessengerPage = ({ locale }) => {
   return (
     <>
       <div
-        className="container-fluid border-top d-flex flex-row"
-        style={{ height: "calc(100vh - 90px)" }}
+        className="container-fluid d-flex flex-row mt-1"
+        style={{ height: "calc(100vh - 90px)", borderTop: ".5px solid #E5E7EB" }}
       >
+      
         {/* Left Section */}
         <div
-          className={`col-12 overflow-hidden col-md-3 bg-white border-end p-3 d-flex flex-column ${isMobileView ? "d-none" : ""}`}
+          className={`col-12 overflow-hidden col-md-3 bg-white p-3 d-flex flex-column ${isMobileView ? "d-none " : ""}`}
           style={{ height: "calc(100vh - 90px)" }}
         >
-          <div className="p-3 border-bottom position-relative">
+          <div className="p-1 ">
+            <h4>{t("title")}</h4>
+          </div>
+          <div className="mb-3 position-relative ">
             <input
               type="text"
-              className="form-control pe-5"
               placeholder="Search by Username / Email"
               aria-label="Search"
-              style={{ border: "1px solid #ccc", padding: "10px" }}
+              style={{ border: "1px solid #e9ecef", padding: "10px", borderRadius: "20px" }}
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +128,7 @@ const MessengerPage = ({ locale }) => {
               className="bi bi-search position-absolute"
               style={{
                 top: "50%",
-                right: "30px",
+                right: "20px",
                 transform: "translateY(-50%)",
               }}
               viewBox="0 0 16 16"
@@ -134,20 +137,20 @@ const MessengerPage = ({ locale }) => {
             </svg>
           </div>
           <div className="flex-grow-1 overflow-y-auto">
-            <ul className="list-group overflow-hidden">
+            <ul className="list-group  overflow-hidden">
               {threads.map((thread) => (
                 <li
                   key={thread.thread_id}
-                  className={`list-group-item list-group-item-action p-2 ${selectedThread?.thread_id === thread.thread_id ? "bg-light" : ""}`}
+                  className={`list-group-item list-group-item-action border-0 rounded ${selectedThread?.thread_id === thread.thread_id ? "selected-bg" : ""}`}
                   style={{
                     backgroundColor:
                       selectedThread?.thread_id === thread.thread_id
-                        ? "#eff0f8"
+                        ? "#f7f7f7"
                         : "#fff",
                   }}
                   onClick={() => handlethreadselect(thread)}
                 >
-                  <div className="d-flex align-items-center">
+                  <div className="d-flex  align-items-center">
                     <div>
                       <strong>{thread.name}</strong>
                       <div className="text-muted text-wrap">
@@ -156,15 +159,14 @@ const MessengerPage = ({ locale }) => {
                     </div>
                   </div>
 
-                  <Link href={`/${locale}/listings/${thread.dwelling_slug}`}>
-                    <p
-                      className="mt-2 text-muted
-                      text-underline-hover text-wrap
+                    <h5
+                      className="mt-2 fw-500 
+                       text-wrap
                       "
                     >
                       {thread.dwelling_title}
-                    </p>
-                  </Link>
+                    </h5>
+             
                   <div
                     className="mt-auto text-end text-muted"
                     style={{ fontSize: "0.75rem" }}
@@ -180,11 +182,12 @@ const MessengerPage = ({ locale }) => {
         {/* Middle Section */}
         <div
           ref={middleSectionRef || null}
-          className={`col-12 col-md-6 bg-light d-flex flex-column ${isMobileView || selectedThread ? "" : "d-none"}`}
+          className={`col-12 col-md-6  d-flex flex-column ${isMobileView || selectedThread ? "" : "d-none"}`}
           style={{
-            backgroundColor: "#eff0f8",
             transition: "opacity 0.3s ease-in-out",
             opacity: isMobileView || selectedThread ? 1 : 0,
+            borderLeft: ".5px solid #E5E7EB",
+            borderRight: ".5px solid #E5E7EB",
           }}
         >
           {selectedThread && (
@@ -230,7 +233,7 @@ const MessengerPage = ({ locale }) => {
                         display: "inline-block",
                         fontSize: "0.875rem",
                         backgroundColor:
-                          chat.direction === "sent" ? "#e0e2ef" : "#fff",
+                          chat.direction === "sent" ? "#e0e2ef" : "#f1f1f1",
                         wordWrap: "break-word",
                         overflowWrap: "break-word",
                         whiteSpace: "pre-wrap",
@@ -263,11 +266,11 @@ const MessengerPage = ({ locale }) => {
                 className="p-3 d-flex align-items-center"
                 style={{
                   position: "relative",
-                  height: "180px",
+                  height: "120px",
                   border: "1px solid #ccc",
-                  borderRadius: "10px",
+                  borderRadius: "30px",
                   background: "white",
-                  marginBottom: "15px",
+                  marginBottom: "25px",
                   marginLeft: "15px",
                   marginRight: "15px",
                 }}
@@ -333,7 +336,16 @@ const MessengerPage = ({ locale }) => {
           selectedThread &&
           selectedThread.dwelling_title === property.title &&
           !propertyLoading && (
-            <div className="col-md-3 bg-white border-end d-flex align-items-center flex-column p-3 d-none d-md-block">
+          <div className="col-md-3 bg-white border-end d-flex flex-column p-2 d-none d-md-block">
+            {property?.title && (
+              <Link
+                href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
+              >
+                <h3 className=" text-start fw-400 text-underline-hover">
+                  {property.title}
+                </h3>
+              </Link>
+            )}
               {property.image_url && (
                 <img
                   src={property.image_url}
@@ -342,15 +354,7 @@ const MessengerPage = ({ locale }) => {
                   style={{ width: "400px", height: "200px" }}
                 />
               )}
-              {property?.title && (
-                <Link
-                  href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
-                >
-                  <h5 className="text-center text-18 fw-500 text-underline-hover">
-                    {property.title}
-                  </h5>
-                </Link>
-              )}
+             
               {property?.location && <p>{property.location}</p>}
             </div>
           )}
