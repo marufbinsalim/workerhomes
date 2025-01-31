@@ -34,6 +34,14 @@ const MessengerPage = ({ locale }) => {
   const middleSectionRef = useRef(null);
 
   const { data } = useMessenger("messages");
+  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+
+  const toggleSearch = () => {
+    setIsSearchExpanded((prev) => !prev);
+  };
+
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -104,40 +112,104 @@ const MessengerPage = ({ locale }) => {
         className="container-fluid d-flex flex-row mt-1"
         style={{ height: "calc(100vh - 90px)", borderTop: ".5px solid #E5E7EB" }}
       >
-      
+
         {/* Left Section */}
         <div
           className={`col-12 overflow-hidden col-md-3 bg-white p-3 d-flex flex-column ${isMobileView ? "d-none " : ""}`}
           style={{ height: "calc(100vh - 90px)" }}
         >
-          <div className="p-1 ">
-            <h4>{t("title")}</h4>
-          </div>
-          <div className="mb-3 position-relative ">
-            <input
-              type="text"
-              placeholder="Search by Username / Email"
-              aria-label="Search"
-              style={{ border: "1px solid #e9ecef", padding: "10px", borderRadius: "20px" }}
-            />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-search position-absolute"
-              style={{
-                top: "50%",
-                right: "20px",
-                transform: "translateY(-50%)",
-              }}
-              viewBox="0 0 16 16"
+          <div className="p-1 d-flex align-items-center">
+            {/* Messenger Title and Search Box */}
+            <h4
+              className={`me-3 ${isSearchExpanded ? "d-none" : ""}`}
+              style={{ flex: 1 }}
             >
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-            </svg>
+              {t("title")}
+            </h4>
+
+            {/* Search Box */}
+            <div className="position-relative flex-grow-1 mb-2">
+              {/* Search Input */}
+              <input
+                type="text"
+                placeholder="Search by Username / Email"
+                aria-label="Search"
+                className={`search-input ${isSearchExpanded ? "show-searchbar" : "hide-searchbar"}`}
+              />
+
+              {/* Search Icon */}
+              <svg
+                onClick={toggleSearch}
+                xmlns="http://www.w3.org/2000/svg"
+                width="35px"
+                height="35px"
+                fill="currentColor"
+                className={`bi bi-search position-absolute ${isSearchExpanded ? "d-none" : ""}`}
+                style={{
+                  top: "50%",
+                  right: "20px",
+                  transform: "translateY(-50%)",
+                  backgroundColor: "#e9ecef",
+                  borderRadius: "50%",
+                  padding: "9px",
+                }}
+                viewBox="0 0 16 16"
+              >
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+              </svg>
+
+              {/* Cancel Button */}
+              {isSearchExpanded && (
+                <button
+                  className="btn btn-link position-absolute"
+                  onClick={toggleSearch}
+                  style={{
+                    right: "10px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    fontSize: "1rem",
+                    padding: 0,
+                    textDecoration: "none",
+                    color: "black",
+                  }}
+                >
+                  Cancel
+                </button>
+              )}
+            </div>
           </div>
+
+          {/* Filter Buttons (all/unread) */}
+          <div className="d-flex mb-3">
+            <button
+              className={`btn px-3 ${selectedFilter === "all" ? "btn-black" : "btn-white"}`}
+              onClick={() => setSelectedFilter("all")}
+              style={{
+                backgroundColor: selectedFilter === "all" ? "black" : "white",
+                color: selectedFilter === "all" ? "white" : "black",
+                border: "1px solid #D1D5DB",
+                borderRadius: "20px",
+              }}
+            >
+              All
+            </button>
+            <button
+              className={`btn ${selectedFilter === "unread" ? "btn-black" : "btn-white"}`}
+              onClick={() => setSelectedFilter("unread")}
+              style={{
+                backgroundColor: selectedFilter === "unread" ? "black" : "white",
+                color: selectedFilter === "unread" ? "white" : "black",
+                border: "1px solid #D1D5DB",
+                borderRadius: "20px",
+                marginLeft: "10px",
+              }}
+            >
+              Unread
+            </button>
+          </div>
+
           <div className="flex-grow-1 overflow-y-auto">
-            <ul className="list-group  overflow-hidden">
+            <ul className="list-group overflow-hidden">
               {threads.map((thread) => (
                 <li
                   key={thread.thread_id}
@@ -150,7 +222,7 @@ const MessengerPage = ({ locale }) => {
                   }}
                   onClick={() => handlethreadselect(thread)}
                 >
-                  <div className="d-flex  align-items-center">
+                  <div className="d-flex align-items-center">
                     <div>
                       <strong>{thread.name}</strong>
                       <div className="text-muted text-wrap">
@@ -159,18 +231,11 @@ const MessengerPage = ({ locale }) => {
                     </div>
                   </div>
 
-                    <h5
-                      className="mt-2 fw-500 
-                       text-wrap
-                      "
-                    >
-                      {thread.dwelling_title}
-                    </h5>
-             
-                  <div
-                    className="mt-auto text-end text-muted"
-                    style={{ fontSize: "0.75rem" }}
-                  >
+                  <h5 className="mt-2 fw-500 text-wrap">
+                    {thread.dwelling_title}
+                  </h5>
+
+                  <div className="mt-auto text-end text-muted" style={{ fontSize: "0.75rem" }}>
                     {thread.created_at}
                   </div>
                 </li>
@@ -178,6 +243,7 @@ const MessengerPage = ({ locale }) => {
             </ul>
           </div>
         </div>
+
 
         {/* Middle Section */}
         <div
@@ -336,16 +402,16 @@ const MessengerPage = ({ locale }) => {
           selectedThread &&
           selectedThread.dwelling_title === property.title &&
           !propertyLoading && (
-          <div className="col-md-3 bg-white border-end d-flex flex-column p-2 d-none d-md-block">
-            {property?.title && (
-              <Link
-                href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
-              >
-                <h3 className=" text-start fw-400 text-underline-hover">
-                  {property.title}
-                </h3>
-              </Link>
-            )}
+            <div className="col-md-3 bg-white border-end d-flex flex-column p-2 d-none d-md-block">
+              {property?.title && (
+                <Link
+                  href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
+                >
+                  <h3 className=" text-start fw-400 text-underline-hover">
+                    {property.title}
+                  </h3>
+                </Link>
+              )}
               {property.image_url && (
                 <img
                   src={property.image_url}
@@ -354,7 +420,7 @@ const MessengerPage = ({ locale }) => {
                   style={{ width: "400px", height: "200px" }}
                 />
               )}
-             
+
               {property?.location && <p>{property.location}</p>}
             </div>
           )}
@@ -362,6 +428,49 @@ const MessengerPage = ({ locale }) => {
 
       <style jsx>
         {`
+             /* Animation for showing the search bar (right to left) */
+    .show-searchbar {
+      width: 290px; /* Width when shown */
+      opacity: 1;
+      transition: all 0.3s ease-in-out;
+      padding-left: 30px;
+    }
+
+    /* Animation for hiding the search bar (left to right) */
+    .hide-searchbar {
+      width: 0; /* Width when hidden */
+      opacity: 0;
+      padding-left: 0;
+      transition: all 0.5s ease-in-out opacity 0.5s ease;
+    }
+
+    /* Position and styling for the search input */
+    .search-input {
+      border: 2px solid black;
+      padding: 4px 10px;
+      border-radius: 30px;
+      transition: width 0.5s ease, opacity 0.5s ease;
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    /* Icon appearance */
+    .bi-search {
+      cursor: pointer;
+    }
+
+    /* Styling for Cancel button */
+    button.btn-link {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+    }
+
           @media (max-width: 768px) {
             /* Initially hide the middle section off-screen */
             .col-md-6 {
@@ -385,6 +494,9 @@ const MessengerPage = ({ locale }) => {
             .container-fluid {
               padding: 0 !important; /* Remove padding from the container */
             }
+            .show-searchbar {
+                width: 300px; /* Adjust width for mobile view */
+             }
           }
         `}
       </style>
