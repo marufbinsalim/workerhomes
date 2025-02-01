@@ -37,8 +37,12 @@ const MessengerPage = ({ locale }) => {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
 
-  const toggleSearch = () => {
-    setIsSearchExpanded((prev) => !prev);
+  const expandSearch = () => {
+    setIsSearchExpanded(true); // Only expands, doesn't toggle
+  };
+
+  const hideSearch = () => {
+    setIsSearchExpanded(false); // Only hides when clicking cancel
   };
 
 
@@ -127,32 +131,23 @@ const MessengerPage = ({ locale }) => {
               {t("title")}
             </h4>
 
-            {/* Search Box */}
             <div className="position-relative flex-grow-1 mb-2">
               {/* Search Input */}
               <input
                 type="text"
-                placeholder="Search by Username / Email"
+                placeholder="Search"
                 aria-label="Search"
                 className={`search-input ${isSearchExpanded ? "show-searchbar" : "hide-searchbar"}`}
               />
 
               {/* Search Icon */}
               <svg
-                onClick={toggleSearch}
+                onClick={expandSearch}
                 xmlns="http://www.w3.org/2000/svg"
-                width="35px"
-                height="35px"
+                width="20px"
+                height="20px"
                 fill="currentColor"
-                className={`bi bi-search position-absolute ${isSearchExpanded ? "d-none" : ""}`}
-                style={{
-                  top: "50%",
-                  right: "20px",
-                  transform: "translateY(-50%)",
-                  backgroundColor: "#e9ecef",
-                  borderRadius: "50%",
-                  padding: "9px",
-                }}
+                className="search-icon bi bi-search"
                 viewBox="0 0 16 16"
               >
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
@@ -162,7 +157,7 @@ const MessengerPage = ({ locale }) => {
               {isSearchExpanded && (
                 <button
                   className="btn btn-link position-absolute"
-                  onClick={toggleSearch}
+                  onClick={hideSearch} 
                   style={{
                     right: "10px",
                     top: "50%",
@@ -248,9 +243,8 @@ const MessengerPage = ({ locale }) => {
         {/* Middle Section */}
         <div
           ref={middleSectionRef || null}
-          className={`col-12 col-md-6  d-flex flex-column ${isMobileView || selectedThread ? "" : "d-none"}`}
+          className={`col-12 col-md-6 d-flex flex-column ${isMobileView || selectedThread ? "" : "d-none"}`}
           style={{
-            transition: "opacity 0.3s ease-in-out",
             opacity: isMobileView || selectedThread ? 1 : 0,
             borderLeft: ".5px solid #E5E7EB",
             borderRight: ".5px solid #E5E7EB",
@@ -299,7 +293,7 @@ const MessengerPage = ({ locale }) => {
                         display: "inline-block",
                         fontSize: "0.875rem",
                         backgroundColor:
-                          chat.direction === "sent" ? "#e0e2ef" : "#f1f1f1",
+                          chat.direction === "sent" ? "#d1e7ff" : "#f1f1f1",
                         wordWrap: "break-word",
                         overflowWrap: "break-word",
                         whiteSpace: "pre-wrap",
@@ -428,63 +422,70 @@ const MessengerPage = ({ locale }) => {
 
       <style jsx>
         {`
-             /* Animation for showing the search bar (right to left) */
-    .show-searchbar {
-      width: 290px; /* Width when shown */
-      opacity: 1;
-      transition: all 0.3s ease-in-out;
-      padding-left: 30px;
-    }
+            /* Search Input - Initially Hidden */
+        .search-input {
+          width: 0;
+          opacity: 0;
+          border: 2px solid #ccc;
+          border-radius: 50px;
+          padding: 0;
+          font-size: 14px;
+          height: 36px;
+          transition: width 0.4s ease-in-out, opacity 0.3s ease-in-out;
+          transform-origin: left;
+          transform: scaleX(0);
+          position: relative;
+        }
 
-    /* Animation for hiding the search bar (left to right) */
-    .hide-searchbar {
-      width: 0; /* Width when hidden */
-      opacity: 0;
-      padding-left: 0;
-      transition: all 0.5s ease-in-out opacity 0.5s ease;
-    }
+        /* Expanded Search Input */
+        .show-searchbar {
+          width: 280px;
+          opacity: 1;
+          padding-left: 40px;
+          transform: scaleX(1);
+        }
 
-    /* Position and styling for the search input */
-    .search-input {
-      border: 2px solid black;
-      padding: 4px 10px;
-      border-radius: 30px;
-      transition: width 0.5s ease, opacity 0.5s ease;
-      display: inline-block;
-      overflow: hidden;
-    }
+        /* Search Icon - Default (Outside) */
+        .search-icon {
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+          cursor: pointer;
+          background-color: #f5f5f5;
+          padding: 8px;
+          border-radius: 50%;
+          width: 35px;
+          height: 35px;
+        }
 
-    /* Icon appearance */
-    .bi-search {
-      cursor: pointer;
-    }
+        /* Move Search Icon Inside the Input When Expanded */
+        .show-searchbar ~ .search-icon {
+          left: 12px;  /* Moves inside the search bar */
+          right: auto;
+          background: transparent;
+          padding: 0;
+          color: #666;
+          height: 20px;
+          width: 20px;
+        }
 
-    /* Styling for Cancel button */
-    button.btn-link {
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
-      font-size: 1rem;
-      padding: 0;
-      background-color: transparent;
-      border: none;
-    }
+        /* Hide Icon on Collapse */
+        .hide-searchbar ~ .search-icon {
+          opacity: 1;
+          transition: none;
+        }
+
+
+
 
           @media (max-width: 768px) {
             /* Initially hide the middle section off-screen */
             .col-md-6 {
               padding: 0 !important; /* Remove any padding */
               margin: 0 !important; /* Remove any margin */
-              width: 100%;
+              width: 100vw;
               order: 1; /* Ensure the middle section stays above */
-              transform: translateX(100%); /* Start off-screen to the right */
-              transition: transform 0.1s ease-out; /* Slider effect */
-            }
-
-            /* When middle section is visible, slide it in */
-            .show-middle {
-              transform: translateX(0); /* Slide in */
             }
 
             /* Optionally, hide the left section when viewing the middle section */
@@ -495,7 +496,7 @@ const MessengerPage = ({ locale }) => {
               padding: 0 !important; /* Remove padding from the container */
             }
             .show-searchbar {
-                width: 300px; /* Adjust width for mobile view */
+                width: 320px; /* Adjust width for mobile view */
              }
           }
         `}
