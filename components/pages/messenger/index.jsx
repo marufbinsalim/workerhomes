@@ -174,35 +174,38 @@ const MessengerPage = ({ locale }) => {
             </div>
           </div>
 
-          {/* Filter Buttons (all/unread) */}
           <div className="d-flex mb-3">
             <button
-              className={`btn px-3 ${selectedFilter === "all" ? "btn-black" : "btn-white"}`}
+              className={`btn px-3 py-1 ${selectedFilter === "all" ? "btn-black" : "btn-white"}`}
               onClick={() => setSelectedFilter("all")}
               style={{
                 backgroundColor: selectedFilter === "all" ? "black" : "white",
                 color: selectedFilter === "all" ? "white" : "black",
                 border: "1px solid #D1D5DB",
-                borderRadius: "20px",
+                borderRadius: "16px", 
+                fontSize: "14px", 
+                padding: "6px 18px", 
               }}
             >
               All
             </button>
             <button
-              className={`btn ${selectedFilter === "unread" ? "btn-black" : "btn-white"}`}
+              className={`btn px-3 py-1 ${selectedFilter === "unread" ? "btn-black" : "btn-white"}`}
               onClick={() => setSelectedFilter("unread")}
               style={{
-                backgroundColor:
-                  selectedFilter === "unread" ? "black" : "white",
+                backgroundColor: selectedFilter === "unread" ? "black" : "white",
                 color: selectedFilter === "unread" ? "white" : "black",
                 border: "1px solid #D1D5DB",
-                borderRadius: "20px",
-                marginLeft: "10px",
+                borderRadius: "16px",
+                fontSize: "14px",
+                padding: "6px 12px",
+                marginLeft: "8px", 
               }}
             >
               Unread
             </button>
           </div>
+
 
           <div className="flex-grow-1 overflow-y-auto">
             <ul className="list-group overflow-hidden">
@@ -442,13 +445,13 @@ const MessengerPage = ({ locale }) => {
             position: relative;
           }
 
-          /* Expanded Search Input */
-          .show-searchbar {
-            width: 80%;
+         .show-searchbar {
+            width: calc(100% - 70px); /* Adjust based on padding/margins */
             opacity: 1;
             padding-left: 40px;
             transform: scaleX(1);
           }
+
 
           /* Search Icon - Default (Outside) */
           .search-icon {
