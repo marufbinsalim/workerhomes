@@ -45,8 +45,6 @@ const MessengerPage = ({ locale }) => {
     setIsSearchExpanded(false); // Only hides when clicking cancel
   };
 
-
-
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -114,9 +112,11 @@ const MessengerPage = ({ locale }) => {
     <>
       <div
         className="container-fluid d-flex flex-row mt-1"
-        style={{ height: "calc(100vh - 90px)", borderTop: ".5px solid #E5E7EB" }}
+        style={{
+          height: "calc(100vh - 90px)",
+          borderTop: ".5px solid #E5E7EB",
+        }}
       >
-
         {/* Left Section */}
         <div
           className={`col-12 overflow-hidden col-md-3 bg-white p-3 d-flex flex-column ${isMobileView ? "d-none " : ""}`}
@@ -157,7 +157,7 @@ const MessengerPage = ({ locale }) => {
               {isSearchExpanded && (
                 <button
                   className="btn btn-link position-absolute"
-                  onClick={hideSearch} 
+                  onClick={hideSearch}
                   style={{
                     right: "10px",
                     top: "50%",
@@ -192,7 +192,8 @@ const MessengerPage = ({ locale }) => {
               className={`btn ${selectedFilter === "unread" ? "btn-black" : "btn-white"}`}
               onClick={() => setSelectedFilter("unread")}
               style={{
-                backgroundColor: selectedFilter === "unread" ? "black" : "white",
+                backgroundColor:
+                  selectedFilter === "unread" ? "black" : "white",
                 color: selectedFilter === "unread" ? "white" : "black",
                 border: "1px solid #D1D5DB",
                 borderRadius: "20px",
@@ -230,7 +231,10 @@ const MessengerPage = ({ locale }) => {
                     {thread.dwelling_title}
                   </h5>
 
-                  <div className="mt-auto text-end text-muted" style={{ fontSize: "0.75rem" }}>
+                  <div
+                    className="mt-auto text-end text-muted"
+                    style={{ fontSize: "0.75rem" }}
+                  >
                     {thread.created_at}
                   </div>
                 </li>
@@ -238,7 +242,6 @@ const MessengerPage = ({ locale }) => {
             </ul>
           </div>
         </div>
-
 
         {/* Middle Section */}
         <div
@@ -422,62 +425,61 @@ const MessengerPage = ({ locale }) => {
 
       <style jsx>
         {`
-            /* Search Input - Initially Hidden */
-        .search-input {
-          width: 0;
-          opacity: 0;
-          border: 2px solid #ccc;
-          border-radius: 50px;
-          padding: 0;
-          font-size: 14px;
-          height: 36px;
-          transition: width 0.4s ease-in-out, opacity 0.3s ease-in-out;
-          transform-origin: left;
-          transform: scaleX(0);
-          position: relative;
-        }
+          /* Search Input - Initially Hidden */
+          .search-input {
+            width: 0;
+            opacity: 0;
+            border: 2px solid #ccc;
+            border-radius: 50px;
+            padding: 0;
+            font-size: 14px;
+            height: 36px;
+            transition:
+              width 0.4s ease-in-out,
+              opacity 0.3s ease-in-out;
+            transform-origin: left;
+            transform: scaleX(0);
+            position: relative;
+          }
 
-        /* Expanded Search Input */
-        .show-searchbar {
-          width: 280px;
-          opacity: 1;
-          padding-left: 40px;
-          transform: scaleX(1);
-        }
+          /* Expanded Search Input */
+          .show-searchbar {
+            width: 80%;
+            opacity: 1;
+            padding-left: 40px;
+            transform: scaleX(1);
+          }
 
-        /* Search Icon - Default (Outside) */
-        .search-icon {
-          position: absolute;
-          top: 50%;
-          right: 10px;
-          transform: translateY(-50%);
-          cursor: pointer;
-          background-color: #f5f5f5;
-          padding: 8px;
-          border-radius: 50%;
-          width: 35px;
-          height: 35px;
-        }
+          /* Search Icon - Default (Outside) */
+          .search-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            background-color: #f5f5f5;
+            padding: 8px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+          }
 
-        /* Move Search Icon Inside the Input When Expanded */
-        .show-searchbar ~ .search-icon {
-          left: 12px;  /* Moves inside the search bar */
-          right: auto;
-          background: transparent;
-          padding: 0;
-          color: #666;
-          height: 20px;
-          width: 20px;
-        }
+          /* Move Search Icon Inside the Input When Expanded */
+          .show-searchbar ~ .search-icon {
+            left: 12px; /* Moves inside the search bar */
+            right: auto;
+            background: transparent;
+            padding: 0;
+            color: #666;
+            height: 20px;
+            width: 20px;
+          }
 
-        /* Hide Icon on Collapse */
-        .hide-searchbar ~ .search-icon {
-          opacity: 1;
-          transition: none;
-        }
-
-
-
+          /* Hide Icon on Collapse */
+          .hide-searchbar ~ .search-icon {
+            opacity: 1;
+            transition: none;
+          }
 
           @media (max-width: 768px) {
             /* Initially hide the middle section off-screen */
@@ -496,8 +498,8 @@ const MessengerPage = ({ locale }) => {
               padding: 0 !important; /* Remove padding from the container */
             }
             .show-searchbar {
-                width: 320px; /* Adjust width for mobile view */
-             }
+              width: 320px; /* Adjust width for mobile view */
+            }
           }
         `}
       </style>
