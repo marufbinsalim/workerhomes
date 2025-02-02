@@ -8,7 +8,7 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
 );
 
-export default function useMessenger(page, session, locale) {
+export default function useMessenger(page, filter, query, session, locale) {
   // effect to fetch threads in the messenger page in realtime
   //
   const [threads, setThreads] = useState([]);
@@ -195,6 +195,21 @@ export default function useMessenger(page, session, locale) {
 
   function generateThreadType(thread) {
     if (!thread) return null;
+
+    if (query && query !== "" && thread.user && thread.owner) {
+      let userNameIncludesQuery = thread.user.username
+        .toLowerCase()
+        .includes(query.toLowerCase());
+
+      let ownerNameIncludesQuery = thread.owner.username
+        .toLowerCase()
+        .includes(query.toLowerCase());
+
+      if (!userNameIncludesQuery && !ownerNameIncludesQuery) {
+        return null;
+      }
+    }
+
     return {
       thread_id: thread.thread_id,
       user: thread.user,
@@ -252,17 +267,23 @@ export default function useMessenger(page, session, locale) {
     data: {
       property: generatePropertyType(property, selectedThread),
       propertyLoading: propertyLoading,
-      threads: threads
-        .map(generateThreadType)
-        .filter((thread) => {
-          return (
-            thread.user.email === session?.user.email ||
-            thread.owner.email === session?.user.email
-          );
-        })
-        .sort((a, b) => {
-          return new Date(a.lastMessageTime) - new Date(b.lastMessageTime);
-        }),
+      threads:
+        filter === "all"
+          ? threads
+              .map(generateThreadType)
+              .filter((thread) => {
+                if (!thread) return false;
+                return (
+                  thread.user.email === session?.user.email ||
+                  thread.owner.email === session?.user.email
+                );
+              })
+              .sort((a, b) => {
+                return (
+                  new Date(a.lastMessageTime) - new Date(b.lastMessageTime)
+                );
+              })
+          : [],
       // make sure  message_id is unique
       messages: messages
         .map(generateMessageType)

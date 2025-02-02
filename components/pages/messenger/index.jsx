@@ -10,8 +10,14 @@ const MessengerPage = ({ locale }) => {
   const t = useTranslations("messenger");
   const { data: session } = useSession();
 
+  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
   const { data: messengerData, functions } = useMessenger(
     "messenger",
+    selectedFilter,
+    searchQuery,
     session,
     locale,
   );
@@ -34,8 +40,6 @@ const MessengerPage = ({ locale }) => {
   const middleSectionRef = useRef(null);
 
   const { data } = useMessenger("messages");
-  const [selectedFilter, setSelectedFilter] = useState("all");
-  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
 
   const expandSearch = () => {
     setIsSearchExpanded(true); // Only expands, doesn't toggle
@@ -138,6 +142,8 @@ const MessengerPage = ({ locale }) => {
                 placeholder="Search"
                 aria-label="Search"
                 className={`search-input ${isSearchExpanded ? "show-searchbar" : "hide-searchbar"}`}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
 
               {/* Search Icon */}
