@@ -135,6 +135,10 @@ const ContactForm = ({ dwelling, onSuccess }) => {
             },
             last_message: {
               type: "text",
+              sender: {
+                email: session ? session.user.email : formattedValues.email,
+                username: session ? session.user.name : "Guest",
+              },
               content:
                 `Name / Company: ${formattedValues.name_or_company}` +
                 "\n" +
@@ -149,12 +153,18 @@ const ContactForm = ({ dwelling, onSuccess }) => {
                 `Guests: ${formattedValues.guests}` +
                 "\n" +
                 `Additional information: ${formattedValues.additional_information}`,
-
+              recipient: {
+                email: fetchedDwelling.owner.email,
+                username:
+                  fetchedDwelling.owner.name || fetchedDwelling.owner.username,
+              },
+              thread_id: combined_id,
               timestamp: new Date().toISOString(),
             },
           };
 
           console.log("thread", thread);
+
           await functions.createThread(thread);
           const message = {
             thread_id: combined_id,

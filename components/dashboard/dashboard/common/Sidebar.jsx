@@ -10,6 +10,13 @@ import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useParams, usePathname } from "next/navigation";
 import { useState } from "react";
+import { useEffect } from "react";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+);
 
 const Sidebar = () => {
   const locale = useParams().locale;

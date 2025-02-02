@@ -118,7 +118,9 @@ const adminSidebarContent = (locale, t) => [
   {
     id: 100,
     icon: "ph:chat",
-    name: t("messenger"),
+    name:
+      t("messenger") +
+      ` (${localStorage.getItem("unreadThreads") ? localStorage.getItem("unreadThreads") : "0"})`,
     routePath: `/${locale}/dashboard/messenger`,
   },
 ];

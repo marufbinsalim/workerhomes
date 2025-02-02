@@ -232,6 +232,28 @@ export default function useMessenger(
     return { messageData, error };
   }
 
+  useEffect(() => {
+    // get all the unread status threads and print the count
+
+    let unreadThreads = [...threads]
+      .map(generateThreadType)
+      .filter((thread) => {
+        if (!thread) return false;
+        if (thread.seen) return false;
+        return (
+          thread.user.email === session?.user.email ||
+          thread.owner.email === session?.user.email
+        );
+      })
+      .toSorted((a, b) => {
+        return new Date(b.lastMessageTime) - new Date(a.lastMessageTime);
+      });
+
+    // save the count in local storage
+    localStorage.setItem("unreadThreads", unreadThreads.length);
+    console.log("unread threads", unreadThreads);
+  }, [threads]);
+
   function generateThreadType(thread) {
     if (!thread) return null;
 
@@ -258,7 +280,7 @@ export default function useMessenger(
           ? thread.owner.username
           : thread.user.username,
       lastMessage: thread.last_message.content,
-      lastMessageSender: thread.last_message.sender.email,
+      lastMessageSender: thread.last_message?.sender?.email,
       lastMessageTime: thread.last_message.timestamp,
       created_at: new Date(thread.last_message.timestamp).toLocaleDateString(),
       dwelling_title:

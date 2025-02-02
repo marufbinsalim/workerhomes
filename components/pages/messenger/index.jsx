@@ -436,13 +436,9 @@ const MessengerPage = ({ locale }) => {
           !propertyLoading && (
             <div className="col-md-3 bg-white border-end d-flex flex-column p-2 d-none d-md-block">
               {property?.title && (
-                <Link
-                  href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
-                >
-                  <h3 className=" text-start fw-400 text-underline-hover">
-                    {property.title}
-                  </h3>
-                </Link>
+                <h4 className=" text-center mb-10 fw-500 text-underline-hover">
+                  {property.title}
+                </h4>
               )}
               {property.image_url && (
                 <img
@@ -453,7 +449,16 @@ const MessengerPage = ({ locale }) => {
                 />
               )}
 
-              {property?.location && <p>{property.location}</p>}
+              {property?.location && (
+                <p className="mx-auto">{property.location}</p>
+              )}
+              <button className="view-details-button">
+                <Link
+                  href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
+                >
+                  View Property
+                </Link>
+              </button>
             </div>
           )}
       </div>
@@ -513,6 +518,23 @@ const MessengerPage = ({ locale }) => {
           .hide-searchbar ~ .search-icon {
             opacity: 1;
             transition: none;
+          }
+
+          /* View Details Button */
+          .view-details-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            cursor: pointer;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            background-color: #ff7504;
           }
 
           @media (max-width: 768px) {
