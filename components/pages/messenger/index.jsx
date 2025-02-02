@@ -13,11 +13,21 @@ const MessengerPage = ({ locale }) => {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isPhoneScreen, setIsPhoneScreen] = useState(true);
+
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setIsPhoneScreen(true);
+    } else {
+      setIsPhoneScreen(false);
+    }
+  }, []);
 
   const { data: messengerData, functions } = useMessenger(
     "messenger",
     selectedFilter,
     searchQuery,
+    isPhoneScreen,
     session,
     locale,
   );
@@ -188,9 +198,9 @@ const MessengerPage = ({ locale }) => {
                 backgroundColor: selectedFilter === "all" ? "black" : "white",
                 color: selectedFilter === "all" ? "white" : "black",
                 border: "1px solid #D1D5DB",
-                borderRadius: "16px", 
-                fontSize: "14px", 
-                padding: "6px 18px", 
+                borderRadius: "16px",
+                fontSize: "14px",
+                padding: "6px 18px",
               }}
             >
               All
@@ -199,55 +209,71 @@ const MessengerPage = ({ locale }) => {
               className={`btn px-3 py-1 ${selectedFilter === "unread" ? "btn-black" : "btn-white"}`}
               onClick={() => setSelectedFilter("unread")}
               style={{
-                backgroundColor: selectedFilter === "unread" ? "black" : "white",
+                backgroundColor:
+                  selectedFilter === "unread" ? "black" : "white",
                 color: selectedFilter === "unread" ? "white" : "black",
                 border: "1px solid #D1D5DB",
                 borderRadius: "16px",
                 fontSize: "14px",
                 padding: "6px 12px",
-                marginLeft: "8px", 
+                marginLeft: "8px",
               }}
             >
               Unread
             </button>
           </div>
 
-
           <div className="flex-grow-1 overflow-y-auto">
             <ul className="list-group overflow-hidden">
-              {threads.map((thread) => (
-                <li
-                  key={thread.thread_id}
-                  className={`list-group-item list-group-item-action border-0 rounded ${selectedThread?.thread_id === thread.thread_id ? "selected-bg" : ""}`}
-                  style={{
-                    backgroundColor:
-                      selectedThread?.thread_id === thread.thread_id
-                        ? "#f7f7f7"
-                        : "#fff",
-                  }}
-                  onClick={() => handlethreadselect(thread)}
-                >
-                  <div className="d-flex align-items-center">
-                    <div>
-                      <strong>{thread.name}</strong>
-                      <div className="text-muted text-wrap">
-                        {thread.lastMessage.slice(0, 40) + "..."}
+              {[...threads]
+                .toSorted(
+                  (a, b) =>
+                    new Date(b.lastMessageTime) - new Date(a.lastMessageTime),
+                )
+                .map((thread) => (
+                  <li
+                    key={thread.thread_id}
+                    className={`list-group-item list-group-item-action border-0 rounded ${selectedThread?.thread_id === thread.thread_id ? "selected-bg" : ""}`}
+                    style={{
+                      backgroundColor:
+                        selectedThread?.thread_id === thread.thread_id
+                          ? "#f7f7f7"
+                          : "#fff",
+                    }}
+                    onClick={() => handlethreadselect(thread)}
+                  >
+                    <div className="d-flex align-items-center">
+                      <div style={{ width: "100%" }}>
+                        <div
+                          className="d-flex align-items-center justify-content-between w-100"
+                          style={{ width: "100%" }}
+                        >
+                          <strong>{thread.name}</strong>
+                          <p>
+                            {" "}
+                            {new Date(
+                              thread.lastMessageTime,
+                            ).toLocaleDateString()}
+                          </p>
+                        </div>
+                        <div className="text-muted text-wrap">
+                          {thread.lastMessage.slice(0, 40) + "..."}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <h5 className="mt-2 fw-500 text-wrap">
-                    {thread.dwelling_title}
-                  </h5>
+                    <h5 className="mt-2 fw-500 text-wrap">
+                      {thread.dwelling_title}
+                    </h5>
 
-                  <div
-                    className="mt-auto text-end text-muted"
-                    style={{ fontSize: "0.75rem" }}
-                  >
-                    {thread.created_at}
-                  </div>
-                </li>
-              ))}
+                    <div
+                      className="mt-auto text-end text-muted"
+                      style={{ fontSize: "0.75rem" }}
+                    >
+                      <p>{thread.status}</p>
+                    </div>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
@@ -451,13 +477,12 @@ const MessengerPage = ({ locale }) => {
             position: relative;
           }
 
-         .show-searchbar {
+          .show-searchbar {
             width: calc(100% - 70px); /* Adjust based on padding/margins */
             opacity: 1;
             padding-left: 40px;
             transform: scaleX(1);
           }
-
 
           /* Search Icon - Default (Outside) */
           .search-icon {

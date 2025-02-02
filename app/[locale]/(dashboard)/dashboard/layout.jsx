@@ -9,8 +9,6 @@ import { getCurrentUser } from "@/lib/session";
 const DashboardLayout = async ({ params, children }) => {
   const user = await getCurrentUser();
 
-
-
   return (
     <BreadcrumbProvider>
       <PermissionsProvider locale={params?.locale}>

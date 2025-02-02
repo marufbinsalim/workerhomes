@@ -8,7 +8,14 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
 );
 
-export default function useMessenger(page, filter, query, session, locale) {
+export default function useMessenger(
+  page,
+  filter,
+  query,
+  isPhone,
+  session,
+  locale,
+) {
   // effect to fetch threads in the messenger page in realtime
   //
   const [threads, setThreads] = useState([]);
@@ -17,6 +24,16 @@ export default function useMessenger(page, filter, query, session, locale) {
   const [property, setProperty] = useState(null);
   const [propertyLoading, setPropertyLoading] = useState(false);
   const scrollRef = useRef();
+  const [refreshThreads, setRefreshThreads] = useState(false);
+
+  async function seeThread(threadID) {
+    const { data, error } = await supabase
+      .from("threads")
+      .update({ seen: true })
+      .eq("thread_id", threadID);
+
+    console.log(data, error);
+  }
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -55,6 +72,25 @@ export default function useMessenger(page, filter, query, session, locale) {
     };
   }, [threads]);
 
+  useEffect(() => {
+    if (!selectedThread) return;
+
+    async function seenThread() {
+      console.log(selectedThread);
+
+      let isRecipient =
+        session?.user.email !== selectedThread.lastMessageSender;
+
+      if (!isRecipient) return;
+      const { data, error } = await supabase
+        .from("threads")
+        .update({ seen: true })
+        .eq("thread_id", selectedThread.thread_id);
+    }
+
+    seenThread();
+  }, [selectedThread]);
+
   // effect to fetch messages in the messenger page in realtime
   //
 
@@ -73,6 +109,8 @@ export default function useMessenger(page, filter, query, session, locale) {
               currentMessages = currentMessages.sort((a, b) => {
                 return new Date(a.timestamp) - new Date(b.timestamp);
               });
+              seeThread(selectedThread.thread_id);
+              setRefreshThreads(!refreshThreads);
             }
           }
           setMessages(currentMessages);
@@ -146,12 +184,12 @@ export default function useMessenger(page, filter, query, session, locale) {
               thread.owner.email === session?.user.email
             );
           });
-          setselectedThread(generateThreadType(firstThread));
+          if (!isPhone) setselectedThread(generateThreadType(firstThread));
         }
       };
       fetchThreads();
     }
-  }, [page, session]);
+  }, [page, session, isPhone, refreshThreads]);
 
   async function createThread(thread) {
     const { data, error } = await supabase
@@ -186,6 +224,7 @@ export default function useMessenger(page, filter, query, session, locale) {
             id: messageData[0].id,
             timestamp: new Date().toISOString(),
           },
+          seen: false,
         })
         .eq("thread_id", message.thread_id);
     }
@@ -219,9 +258,8 @@ export default function useMessenger(page, filter, query, session, locale) {
           ? thread.owner.username
           : thread.user.username,
       lastMessage: thread.last_message.content,
-      lastMessageTime: new Date(
-        thread.last_message.timestamp,
-      ).toLocaleTimeString(),
+      lastMessageSender: thread.last_message.sender.email,
+      lastMessageTime: thread.last_message.timestamp,
       created_at: new Date(thread.last_message.timestamp).toLocaleDateString(),
       dwelling_title:
         thread.dwelling_title.find((title) => title.locale === locale)?.value ||
@@ -231,6 +269,18 @@ export default function useMessenger(page, filter, query, session, locale) {
         "",
       dwelling_titles: thread.dwelling_title,
       dwelling_slugs: thread.dwelling_slug,
+      seen:
+        session?.user.email === thread?.last_message?.sender?.email
+          ? true
+          : thread.seen,
+      status:
+        session?.user.email === thread?.last_message?.sender?.email
+          ? thread.seen
+            ? "seen by recipient"
+            : "sent"
+          : thread.seen
+            ? "seen by you"
+            : "unread",
     };
   }
 
@@ -283,7 +333,22 @@ export default function useMessenger(page, filter, query, session, locale) {
                   new Date(a.lastMessageTime) - new Date(b.lastMessageTime)
                 );
               })
-          : [],
+          : threads
+              .map(generateThreadType)
+
+              .filter((thread) => {
+                if (!thread) return false;
+                if (thread.seen) return false;
+                return (
+                  thread.user.email === session?.user.email ||
+                  thread.owner.email === session?.user.email
+                );
+              })
+              .toSorted((a, b) => {
+                return (
+                  new Date(b.lastMessageTime) - new Date(a.lastMessageTime)
+                );
+              }),
       // make sure  message_id is unique
       messages: messages
         .map(generateMessageType)
