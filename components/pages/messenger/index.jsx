@@ -5,6 +5,8 @@ import { useMessages, useTranslations } from "next-intl";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import useMessenger from "@/hooks/useMessenger";
+import { ImageUpload } from "ckeditor5";
+
 
 const MessengerPage = ({ locale }) => {
   const t = useTranslations("messenger");
@@ -50,6 +52,8 @@ const MessengerPage = ({ locale }) => {
   const middleSectionRef = useRef(null);
 
   const { data } = useMessenger("messages");
+  const [imageFile, setImageFile] = useState(null); // New state for image file
+
 
   const expandSearch = () => {
     setIsSearchExpanded(true); // Only expands, doesn't toggle
@@ -74,12 +78,26 @@ const MessengerPage = ({ locale }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleSendMessage = () => {
-    if (newMessage.trim()) {
-      functions.sendMessage({
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file && file.size <= 8 * 1024 * 1024) { // Check for max size of 8MB
+      setImageFile(file);
+    } else {
+      alert("Image size should not exceed 8MB.");
+    }
+  };
+
+  const handleImageRemove = () => {
+    setImageFile(null);
+  };
+
+  const handleSendMessage = async () => {
+    if (newMessage.trim() || imageFile) {
+      await functions.sendMessage({
         thread_id: selectedThread.thread_id,
-        content: newMessage,
-        type: "text",
+        content: newMessage, // Will be replaced with image URL if an image is uploaded
+        type: imageFile ? "image" : "text",
         sender: {
           email: session.user.email,
           username: session.user.username || session.user.name,
@@ -94,10 +112,14 @@ const MessengerPage = ({ locale }) => {
               ? selectedThread.user.username
               : selectedThread.owner.username,
         },
+        imageFile,
       });
+
       setNewMessage("");
+      setImageFile(null);
     }
   };
+
 
   const handlethreadselect = (thread) => {
     setselectedThread(thread);
@@ -137,7 +159,6 @@ const MessengerPage = ({ locale }) => {
           style={{ height: "calc(100vh - 90px)" }}
         >
           <div className="p-1 d-flex align-items-center">
-            {/* Messenger Title and Search Box */}
             <h4
               className={`me-3 ${isSearchExpanded ? "d-none" : ""}`}
               style={{ flex: 1 }}
@@ -146,7 +167,6 @@ const MessengerPage = ({ locale }) => {
             </h4>
 
             <div className="position-relative flex-grow-1 mb-2">
-              {/* Search Input */}
               <input
                 type="text"
                 placeholder="Search"
@@ -156,7 +176,6 @@ const MessengerPage = ({ locale }) => {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
 
-              {/* Search Icon */}
               <svg
                 onClick={expandSearch}
                 xmlns="http://www.w3.org/2000/svg"
@@ -256,9 +275,9 @@ const MessengerPage = ({ locale }) => {
                             ).toLocaleDateString()}
                           </p>
                         </div>
-                        <div className="text-muted text-wrap">
+                        {/* <div className="text-muted text-wrap">
                           {thread.lastMessage.slice(0, 40) + "..."}
-                        </div>
+                        </div> */}
                       </div>
                     </div>
 
@@ -326,106 +345,178 @@ const MessengerPage = ({ locale }) => {
                     <div
                       style={{
                         maxWidth: "70%",
-                        padding: "10px",
-                        borderRadius: "10px",
+                        padding: chat.type === "image" ? "0" : "10px", 
+                        borderRadius: chat.type === "image" ? "0" : "10px",
                         display: "inline-block",
                         fontSize: "0.875rem",
                         backgroundColor:
-                          chat.direction === "sent" ? "#d1e7ff" : "#f1f1f1",
+                          chat.type === "image" ? "transparent" : chat.direction === "sent" ? "#d1e7ff" : "#f1f1f1", 
                         wordWrap: "break-word",
                         overflowWrap: "break-word",
                         whiteSpace: "pre-wrap",
+                        textAlign: chat.direction === "sent" ? "right" : "left", 
                       }}
                     >
-                      <p
-                        className="mb-0"
-                        style={{
-                          margin: 0,
-                          wordWrap: "break-word",
-                          overflowWrap: "break-word",
-                          whiteSpace: "pre-wrap",
-                        }}
-                      >
-                        {chat.message}
-                      </p>
-                      <div
-                        className="text-end text-muted"
-                        style={{ fontSize: "0.75rem" }}
-                      >
+                      {chat.type === "image" ? (
+                        <img
+                          src={chat.message}
+                          alt="Sent image"
+                          style={{
+                            maxWidth: "40%",
+                            borderRadius: "8px",
+                            cursor: "pointer",
+                            transition: "transform 0.2s",
+                            display: "block",
+                            marginLeft: chat.direction === "sent" ? "auto" : "0", 
+                          }}
+                          onClick={() => window.open(chat.message, "_blank")}
+                        />
+                      ) : (
+                        <p className="mb-0">{chat.message}</p>
+                      )}
+                      <div className="text-end text-muted" style={{ fontSize: "0.75rem" }}>
                         {chat.time}
                       </div>
                     </div>
                   </div>
+
                 ))}
+
                 <div ref={messengerData.scrollRef}></div>
               </div>
 
-              <div
-                className="p-3 d-flex align-items-center"
-                style={{
-                  position: "relative",
-                  height: "120px",
-                  border: "1px solid #ccc",
-                  borderRadius: "30px",
-                  background: "white",
-                  marginBottom: "25px",
-                  marginLeft: "15px",
-                  marginRight: "15px",
-                }}
-              >
-                {/* Scrollable container */}
+              <div className="p-3">
                 <div
+                  className="position-relative d-flex align-items-center"
                   style={{
-                    flex: "1",
-                    overflowY: "auto", // Scrollable
+                    border: "1px solid #ccc",
+                    borderRadius: "8px",
                     padding: "10px",
-                    marginBottom: "35px", // Space for the button
+                    backgroundColor: "#fff",
+                    height: "140px", 
+                    display: "flex",
+                    flexDirection: "column", 
                   }}
                 >
+                  <label
+                    htmlFor="imageUpload"
+                    className="me-2"
+                    style={{
+                      cursor: "pointer",
+                      position: "absolute", 
+                      bottom: "10px", 
+                      left: "10px", 
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      fill="currentColor"
+                      class="bi bi-card-image"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                      <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z" />
+                    </svg>
+                  </label>
+                  <input
+                    type="file"
+                    id="imageUpload"
+                    accept="image/*"
+                    style={{ display: "none" }}
+                    onChange={handleImageUpload}
+                  />
+
+                  {imageFile && (
+                    <div
+                      className="position-absolute"
+                      style={{
+                        top: "10px",
+                        left: "10px",
+                        width: "70px",
+                        height: "70px",
+                        backgroundImage: `url(${URL.createObjectURL(imageFile)})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        borderRadius: "5px",
+                        border: "1px solid #ddd",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <span
+                        onClick={handleImageRemove}
+                        style={{
+                          position: "absolute",
+                          top: "-6px",
+                          right: "-6px",
+                          background: "red",
+                          color: "white",
+                          borderRadius: "50%",
+                          cursor: "pointer",
+                          width: "18px",
+                          height: "18px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: "12px",
+                          fontWeight: "bold",
+                          border: "2px solid white",
+                        }}
+                      >
+                        ✕
+                      </span>
+                    </div>
+                  )}
+
                   <textarea
-                    className=""
-                    placeholder="Write your message"
-                    aria-label="Message"
+                    className="flex-grow-1"
+                    placeholder={imageFile ? "" : "Write your message..."}
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                     style={{
                       width: "100%",
-                      height: "100%",
+                      maxHeight: "70px",
+                      height: "auto",
                       border: "none",
                       outline: "none",
                       resize: "none",
+                      paddingLeft: imageFile ? "60px" : "12px", 
+                      paddingRight: "20px", 
                       background: "transparent",
-                      // overflow: "hidden",
+                      textAlign: "left", 
+                      overflowY: "auto", 
+                      marginBottom: "40px", 
                     }}
-                  ></textarea>
-                </div>
+                  />
 
-                {/* Fixed Button */}
-                <button
-                  className="btn btn-primary"
-                  onClick={handleSendMessage}
-                  style={{
-                    position: "absolute",
-                    bottom: "10px",
-                    right: "10px",
-                    height: "40px",
-                    padding: "0 15px",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <span style={{ marginRight: "6px" }}>Send</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-send"
-                    viewBox="0 0 16 16"
+                  <button
+                    className="btn btn-primary"
+                    onClick={handleSendMessage}
+                    style={{
+                      position: "absolute",
+                      bottom: "10px",
+                      right: "10px",
+                      height: "40px",
+                      padding: "0 15px",
+                      borderRadius: "10px",
+                    }}
                   >
-                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.356 3.748 3.038-7.457-3.773 1.033-2.047 2.457Z" />
-                  </svg>
-                </button>
+                    <span style={{ marginRight: "6px" }}>Send</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-send"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.356 3.748 3.038-7.457-3.773 1.033-2.047 2.457Z" />
+                    </svg>
+                  </button>
+                </div>
               </div>
+
             </>
           )}
         </div>

@@ -198,39 +198,78 @@ export default function useMessenger(
       .select();
   }
 
-  async function sendMessage(message) {
-    const { data: messageData, error } = await supabase
-      .from("messages")
-      .upsert([message])
-      .select();
+async function sendMessage(message) {
+  let imageUrl = null;
 
-    if (page === "messenger" && selectedThread) {
-      let newMessages = [
-        ...messages,
-        {
-          ...message,
+  if (message.imageFile) {
+    const fileExt = message.imageFile.name.split(".").pop();
+    const fileName = `${Date.now()}.${fileExt}`;
+    const filePath = `chat-images/${fileName}`;
+
+    const { data, error } = await supabase.storage
+      .from("chat-images")
+      .upload(filePath, message.imageFile);
+
+    if (error) {
+      console.error("Image upload failed:", error.message);
+      return { messageData: null, error };
+    }
+
+    imageUrl = supabase.storage
+      .from("chat-images")
+      .getPublicUrl(filePath).data.publicUrl;
+  }
+
+  const newMessage = {
+    thread_id: message.thread_id,
+    content: imageUrl || message.content, 
+    type: imageUrl ? "image" : "text",
+    sender: message.sender,
+    recipient: message.recipient,
+  };
+
+  const { data: messageData, error: insertError } = await supabase
+    .from("messages")
+    .upsert([newMessage])
+    .select();
+
+  if (insertError) {
+    console.error("Error saving message:", insertError.message);
+    return { messageData, error: insertError };
+  }
+
+  if (page === "messenger" && selectedThread) {
+    let newMessages = [
+      ...messages,
+      {
+        ...newMessage,
+        id: messageData[0].id,
+        timestamp: new Date().toISOString(),
+      },
+    ];
+    setMessages(newMessages);
+
+    // Update last message in the thread
+    const { data: threadData, error: threadError } = await supabase
+      .from("threads")
+      .update({
+        last_message: {
+          ...newMessage,
           id: messageData[0].id,
           timestamp: new Date().toISOString(),
         },
-      ];
-      setMessages(newMessages);
+        seen: false,
+      })
+      .eq("thread_id", message.thread_id);
 
-      // change last message in the thread to the new message
-      const { data, error } = await supabase
-        .from("threads")
-        .update({
-          last_message: {
-            ...message,
-            id: messageData[0].id,
-            timestamp: new Date().toISOString(),
-          },
-          seen: false,
-        })
-        .eq("thread_id", message.thread_id);
+    if (threadError) {
+      console.error("Error updating thread:", threadError.message);
     }
-
-    return { messageData, error };
   }
+
+  return { messageData, error: insertError };
+}
+
 
   useEffect(() => {
     // get all the unread status threads and print the count
@@ -313,7 +352,8 @@ export default function useMessenger(
       sender: message.sender,
       recipient: message.recipient,
       message: message.content,
-      time: new Date(message.timestamp).toLocaleTimeString(),
+      type: message.type,
+      time: new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       timestamp: message.timestamp,
       direction:
         session?.user.email === message.sender.email ? "sent" : "received",
