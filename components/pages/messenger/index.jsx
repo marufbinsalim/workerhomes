@@ -7,7 +7,6 @@ import Link from "next/link";
 import useMessenger from "@/hooks/useMessenger";
 import { ImageUpload } from "ckeditor5";
 
-
 const MessengerPage = ({ locale }) => {
   const t = useTranslations("messenger");
   const { data: session } = useSession();
@@ -54,7 +53,6 @@ const MessengerPage = ({ locale }) => {
   const { data } = useMessenger("messages");
   const [imageFile, setImageFile] = useState(null); // New state for image file
 
-
   const expandSearch = () => {
     setIsSearchExpanded(true); // Only expands, doesn't toggle
   };
@@ -78,10 +76,10 @@ const MessengerPage = ({ locale }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    if (file && file.size <= 8 * 1024 * 1024) { // Check for max size of 8MB
+    if (file && file.size <= 8 * 1024 * 1024) {
+      // Check for max size of 8MB
       setImageFile(file);
     } else {
       alert("Image size should not exceed 8MB.");
@@ -119,7 +117,6 @@ const MessengerPage = ({ locale }) => {
       setImageFile(null);
     }
   };
-
 
   const handlethreadselect = (thread) => {
     setselectedThread(thread);
@@ -344,17 +341,21 @@ const MessengerPage = ({ locale }) => {
                   >
                     <div
                       style={{
-                        maxWidth: "70%",
-                        padding: chat.type === "image" ? "0" : "10px", 
+                        maxWidth: "100%",
+                        padding: chat.type === "image" ? "0" : "10px",
                         borderRadius: chat.type === "image" ? "0" : "10px",
                         display: "inline-block",
                         fontSize: "0.875rem",
                         backgroundColor:
-                          chat.type === "image" ? "transparent" : chat.direction === "sent" ? "#d1e7ff" : "#f1f1f1", 
+                          chat.type === "image"
+                            ? "transparent"
+                            : chat.direction === "sent"
+                              ? "#d1e7ff"
+                              : "#f1f1f1",
                         wordWrap: "break-word",
                         overflowWrap: "break-word",
                         whiteSpace: "pre-wrap",
-                        textAlign: chat.direction === "sent" ? "right" : "left", 
+                        textAlign: chat.direction === "sent" ? "right" : "left",
                       }}
                     >
                       {chat.type === "image" ? (
@@ -367,19 +368,25 @@ const MessengerPage = ({ locale }) => {
                             cursor: "pointer",
                             transition: "transform 0.2s",
                             display: "block",
-                            marginLeft: chat.direction === "sent" ? "auto" : "0", 
+                            marginLeft:
+                              chat.direction === "sent" ? "auto" : "0",
                           }}
                           onClick={() => window.open(chat.message, "_blank")}
                         />
                       ) : (
                         <p className="mb-0">{chat.message}</p>
                       )}
-                      <div className="text-end text-muted" style={{ fontSize: "0.75rem" }}>
-                        {chat.time}
+                      <div
+                        className={`text-muted ml-auto ${chat.type === "image" && chat.direction !== "sent" ? "text-start" : "text-end"}`}
+                        style={{
+                          fontSize: "0.75rem",
+                          width: "100%",
+                        }}
+                      >
+                        <p>{chat.time}</p>
                       </div>
                     </div>
                   </div>
-
                 ))}
 
                 <div ref={messengerData.scrollRef}></div>
@@ -393,9 +400,9 @@ const MessengerPage = ({ locale }) => {
                     borderRadius: "8px",
                     padding: "10px",
                     backgroundColor: "#fff",
-                    height: "140px", 
+                    height: "140px",
                     display: "flex",
-                    flexDirection: "column", 
+                    flexDirection: "column",
                   }}
                 >
                   <label
@@ -403,9 +410,9 @@ const MessengerPage = ({ locale }) => {
                     className="me-2"
                     style={{
                       cursor: "pointer",
-                      position: "absolute", 
-                      bottom: "10px", 
-                      left: "10px", 
+                      position: "absolute",
+                      bottom: "10px",
+                      left: "10px",
                     }}
                   >
                     <svg
@@ -481,12 +488,12 @@ const MessengerPage = ({ locale }) => {
                       border: "none",
                       outline: "none",
                       resize: "none",
-                      paddingLeft: imageFile ? "60px" : "12px", 
-                      paddingRight: "20px", 
+                      paddingLeft: imageFile ? "60px" : "12px",
+                      paddingRight: "20px",
                       background: "transparent",
-                      textAlign: "left", 
-                      overflowY: "auto", 
-                      marginBottom: "40px", 
+                      textAlign: "left",
+                      overflowY: "auto",
+                      marginBottom: "40px",
                     }}
                   />
 
@@ -516,7 +523,6 @@ const MessengerPage = ({ locale }) => {
                   </button>
                 </div>
               </div>
-
             </>
           )}
         </div>
