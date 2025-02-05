@@ -385,9 +385,10 @@ const MessengerPage = ({ locale }) => {
                         style={{
                           fontSize: "0.75rem",
                           width: "100%",
+                          
                         }}
                       >
-                        <p>{chat.time}</p>
+                        {chat.time}
                       </div>
                     </div>
                   </div>
