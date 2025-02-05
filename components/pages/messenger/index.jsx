@@ -272,9 +272,11 @@ const MessengerPage = ({ locale }) => {
                             ).toLocaleDateString()}
                           </p>
                         </div>
-                        {/* <div className="text-muted text-wrap">
-                          {thread.lastMessage.slice(0, 40) + "..."}
-                        </div> */}
+                        <div className="text-muted text-wrap">
+                          {thread.lastMessage.includes("https")
+                            ? "Attachment"
+                            : thread.lastMessage.slice(0, 40) + "..."}
+                        </div>
                       </div>
                     </div>
 
@@ -368,6 +370,8 @@ const MessengerPage = ({ locale }) => {
                             cursor: "pointer",
                             transition: "transform 0.2s",
                             display: "block",
+                            border: "1px solid #ccc",
+                            padding: "5px",
                             marginLeft:
                               chat.direction === "sent" ? "auto" : "0",
                           }}
