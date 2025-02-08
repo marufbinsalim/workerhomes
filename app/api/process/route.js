@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { simpleParser } from "mailparser";
 
 export async function POST(req) {
   try {
@@ -13,9 +12,7 @@ export async function POST(req) {
       );
     }
 
-    const parsed = await simpleParser(rawEmail);
-
-    console.log("Received Raw MIME Email:", parsed);
+    console.log("Received Raw MIME Email:", rawEmail);
 
     return NextResponse.json({ message: "Email received" }, { status: 200 });
   } catch (error) {
