@@ -34,8 +34,8 @@ export async function POST(req) {
     let supabase = await createClient();
 
     let { data: thread, error } = await supabase
-      .select("*")
       .from("threads")
+      .select("*")
       .eq("thread_id", email.thread_id)
       .single();
 
