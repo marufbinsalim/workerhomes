@@ -18,7 +18,7 @@ export async function POST(req) {
     let emailBody = parsed.text || "";
 
     if (parsed.subject.includes("Re:")) {
-      endIndex = emailBody.indexOf("On ");
+      let endIndex = emailBody.indexOf("On ");
       emailBody = emailBody.substring(0, endIndex);
     }
 
