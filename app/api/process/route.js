@@ -1,3 +1,5 @@
+import { createClient } from "@/utils/supabase/server";
+import { simpleParser } from "mailparser";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -12,7 +14,38 @@ export async function POST(req) {
       );
     }
 
-    console.log("Received Raw MIME Email:", rawEmail);
+    const parsed = await simpleParser(rawEmail);
+    let emailBody = parsed.text || "";
+
+    if (parsed.subject.includes("Re:")) {
+      endIndex = emailBody.indexOf("On ");
+      emailBody = emailBody.substring(0, endIndex);
+    }
+
+    let email = {
+      thread_id: parsed.to.split("@")[0],
+      subject: parsed.subject,
+      from: parsed.from?.text || "",
+      to: parsed.to?.text || "",
+      latestReply: emailBody.trim() || "No Reply Found",
+    };
+    console.log("Received Email:", email);
+
+    let supabase = await createClient();
+
+    let { data: thread, error } = await supabase
+      .select("*")
+      .from("threads")
+      .eq("thread_id", email.thread_id)
+      .single();
+
+    if (!thread || error) {
+      console.error("Error fetching thread:", error);
+      return NextResponse.json({ error: "Thread not found" }, { status: 404 });
+    }
+
+    console.log("Thread found:", thread);
+    console.log("Emaio:", email);
 
     return NextResponse.json({ message: "Email received" }, { status: 200 });
   } catch (error) {
