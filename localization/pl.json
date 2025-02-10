@@ -4,8 +4,12 @@
     "description": "To jest prosty przykład obiektu marki."
   },
   "messenger": {
-    "title": "Messenger",
-    "description": "This is a simple example of a messenger object."
+    "title": "Komunikator",
+    "description": "This is a simple example of a messenger object.",
+    "send": "wysłać",
+    "write": "Napisz swoją wiadomość...",
+    "all": "Wszystkie",
+    "unread": "Nieprzeczytane"
   },
   "subscribe": {
     "title": "Subskrybuj nasz newsletter",
@@ -1249,7 +1253,7 @@
     "users": "Użytkownicy",
     "invoice": "Faktury",
     "statistics": "Statystyki",
-    "messenger": "Messages"
+    "messenger": "wiadomości"
   },
   "pagination": {
     "of": "z",

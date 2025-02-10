@@ -178,18 +178,22 @@ const MessengerPage = ({ locale }) => {
   return (
     <>
       <div
-        className="container-fluid d-flex flex-row mt-1"
+        className="d-flex flex-row"
         style={{
           height: "calc(100vh - 90px)",
-          borderTop: ".5px solid #E5E7EB",
         }}
       >
         {/* Left Section */}
         <div
-          className={`col-12 overflow-hidden col-md-3 bg-white p-3 d-flex flex-column ${isMobileView ? "d-none " : ""}`}
+          className={`col-12 overflow-hidden col-md-3 bg-white d-flex flex-column ${isMobileView ? "d-none " : ""}`}
           style={{ height: "calc(100vh - 90px)" }}
         >
-          <div className="p-1 d-flex align-items-center">
+          <div
+            className="p-1 d-flex align-items-center"
+            style={{
+              borderTop: "1px solid #E5E7EB",
+            }}
+          >
             <h4
               className={`me-3 ${isSearchExpanded ? "d-none" : ""}`}
               style={{ flex: 1 }}
@@ -253,7 +257,7 @@ const MessengerPage = ({ locale }) => {
                 padding: "6px 18px",
               }}
             >
-              All
+              {t("all")}
             </button>
             <button
               className={`btn px-3 py-1 ${selectedFilter === "unread" ? "btn-black" : "btn-white"}`}
@@ -269,7 +273,7 @@ const MessengerPage = ({ locale }) => {
                 marginLeft: "8px",
               }}
             >
-              Unread
+              {t("unread")}
             </button>
           </div>
 
@@ -338,6 +342,7 @@ const MessengerPage = ({ locale }) => {
             opacity: isMobileView || selectedThread ? 1 : 0,
             borderLeft: ".5px solid #E5E7EB",
             borderRight: ".5px solid #E5E7EB",
+            borderTop: "1px solid #E5E7EB",
           }}
         >
           {selectedThread && (
@@ -516,7 +521,7 @@ const MessengerPage = ({ locale }) => {
 
                   <textarea
                     className="flex-grow-1"
-                    placeholder={imageFile ? "" : "Write your message..."}
+                    placeholder={imageFile ? "" : t("write")}
                     value={newMessage}
                     onChange={(e) => {
                       setNewMessage(
@@ -571,7 +576,7 @@ const MessengerPage = ({ locale }) => {
                         borderRadius: "10px",
                       }}
                     >
-                      <span style={{ marginRight: "6px" }}>Send</span>
+                      <span style={{ marginRight: "6px" }}>{t("send")}</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -594,7 +599,14 @@ const MessengerPage = ({ locale }) => {
           selectedThread &&
           selectedThread.dwelling_title === property.title &&
           !propertyLoading && (
-            <div className="col-md-3 bg-white border-end d-flex flex-column p-4 d-none d-md-block">
+            <div
+              className="col-md-3 bg-white border-end d-flex flex-column p-4 d-none d-md-block"
+              style={{
+                height: "calc(100vh - 90px)",
+                overflowY: "auto",
+                borderTop: "1px solid #E5E7EB",
+              }}
+            >
               {property?.title && (
                 <h4 className=" text-start mb-10 fw-500">{property.title}</h4>
               )}
@@ -620,12 +632,15 @@ const MessengerPage = ({ locale }) => {
                 <div
                   style={{
                     width: "100%",
-                    backgroundColor: "#f7f7f7",
                     padding: "0px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "20px",
+                    marginTop: "20px",
                   }}
                 >
                   {property?.data?.prices?.length > 0 &&
-                    property?.data?.prices?.map((p, idx) => (
+                    property?.data?.prices.map((p, idx) => (
                       <PricingCard
                         adults={p.adult}
                         amountNote={p.note}

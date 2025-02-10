@@ -5,7 +5,11 @@
   },
   "messenger": {
     "title": "Messenger",
-    "description": "This is a simple example of a messenger object."
+    "description": "This is a simple example of a messenger object.",
+    "send": "Send",
+    "write": "Write your message...",
+    "all": "All",
+    "unread": "Unread"
   },
 
   "subscribe": {
