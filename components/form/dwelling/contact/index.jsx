@@ -199,6 +199,41 @@ const ContactForm = ({ dwelling, onSuccess }) => {
           console.log("message", message);
           await functions.sendMessage(message);
 
+          await fetch("/api/send-email", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              to: fetchedDwelling.owner.email,
+              from: `${combined_id}@parse.workerhomes.pl`,
+              subject: `You received a new message from ${session ? session.user.email : formattedValues.email} for ${fetchedDwelling.title}`,
+              text:
+                `Name / Company: ${formattedValues.name_or_company}` +
+                "\n" +
+                `Email: ${formattedValues.email}` +
+                "\n" +
+                `Phone: ${formattedValues.phone}` +
+                "\n" +
+                `Check-in: ${formattedValues.check_in}` +
+                "\n" +
+                `Check-out: ${formattedValues.check_out}` +
+                "\n" +
+                `Guests: ${formattedValues.guests}` +
+                "\n" +
+                `Additional information: ${formattedValues.additional_information}`,
+              html:
+                `<p>Name / Company: ${formattedValues.name_or_company}</p>` +
+                `<p>Email: ${formattedValues.email}</p>` +
+                `<p>Phone: ${formattedValues.phone}</p>` +
+                `<p>Check-in: ${formattedValues.check_in}</p>` +
+                `<p>Check-out: ${formattedValues.check_out}</p>` +
+                `<p>Guests: ${formattedValues.guests}</p>` +
+                `<p>Additional information: ${formattedValues.additional_information}</p>` +
+                `Reply to this email to respond to the message.`,
+            }),
+          });
+
           onSuccess && onSuccess();
           resetForm();
         } catch (error) {
