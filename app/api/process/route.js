@@ -40,6 +40,13 @@ export async function POST(req) {
     };
     console.log("Received Email:", email);
 
+    if (email.from === email.to) {
+      return NextResponse.json(
+        { error: "Email from and to are the same" },
+        { status: 200 },
+      );
+    }
+
     let supabase = await createClient();
 
     let { data: thread, error } = await supabase
