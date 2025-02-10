@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import useMessenger from "@/hooks/useMessenger";
 import { ImageUpload } from "ckeditor5";
+import PricingCard from "@/components/common/card/price-card";
 
 const MessengerPage = ({ locale }) => {
   const t = useTranslations("messenger");
@@ -568,31 +569,52 @@ const MessengerPage = ({ locale }) => {
           selectedThread &&
           selectedThread.dwelling_title === property.title &&
           !propertyLoading && (
-            <div className="col-md-3 bg-white border-end d-flex flex-column p-2 d-none d-md-block">
+            <div className="col-md-3 bg-white border-end d-flex flex-column p-4 d-none d-md-block">
               {property?.title && (
-                <h4 className=" text-center mb-10 fw-500 text-underline-hover">
-                  {property.title}
-                </h4>
+                <h4 className=" text-start mb-10 fw-500">{property.title}</h4>
               )}
-              {property.image_url && (
-                <img
-                  src={property.image_url}
-                  alt="Property Image"
-                  className="img-fluid mb-3"
-                  style={{ width: "400px", height: "200px" }}
-                />
-              )}
+              <Link
+                href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
+              >
+                {property.image_url && (
+                  <img
+                    src={property.image_url}
+                    alt="Property Image"
+                    className="img-fluid mb-3"
+                    style={{
+                      width: "400px",
+                      height: "200px",
+                      borderRadius: "10px",
+                      boxShadow: "0 0 15px rgba(0, 0, 0, 0.3)",
+                    }}
+                  />
+                )}
+              </Link>
 
+              {property?.data?.prices?.length > 0 && (
+                <div
+                  style={{
+                    width: "100%",
+                    backgroundColor: "#f7f7f7",
+                    padding: "0px",
+                  }}
+                >
+                  {property?.data?.prices?.length > 0 &&
+                    property?.data?.prices?.map((p, idx) => (
+                      <PricingCard
+                        adults={p.adult}
+                        amountNote={p.note}
+                        guests={p.guest}
+                        minStay={p.min_stay}
+                        price={p.amount}
+                        type={p.total ? `${p.total} X ${p.type}` : p.type}
+                      />
+                    ))}
+                </div>
+              )}
               {property?.location && (
                 <p className="mx-auto">{property.location}</p>
               )}
-              <button className="view-details-button">
-                <Link
-                  href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
-                >
-                  View Property
-                </Link>
-              </button>
             </div>
           )}
       </div>

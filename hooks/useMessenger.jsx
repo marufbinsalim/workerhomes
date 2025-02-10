@@ -362,6 +362,7 @@ export default function useMessenger(
   function generatePropertyType(property, selectedThread) {
     if (!property) return null;
     return {
+      data: property,
       title: selectedThread?.dwelling_titles.find(
         (title) => title.locale === locale,
       )?.value,
