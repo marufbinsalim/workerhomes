@@ -69,6 +69,19 @@ const ContactForm = ({ dwelling, onSuccess }) => {
           //
           await create(formattedValues, t("messages.create"));
 
+          function randomString(length) {
+            var result = [];
+            var characters =
+              "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var charactersLength = characters.length;
+            for (var i = 0; i < length; i++) {
+              result.push(
+                characters.charAt(Math.floor(Math.random() * charactersLength)),
+              );
+            }
+            return result.join("");
+          }
+
           const fetchListingBySlug = async (slug, locale) => {
             // Fetch listing by slug
             const res = await fetch(
@@ -99,7 +112,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
           ];
           allIds.sort((a, b) => a - b);
           let combined_id = `${allIds.join("-")}`;
-          combined_id += "-" + new Date().toISOString();
+          combined_id += "-" + randomString(10);
 
           const thread = {
             thread_id: combined_id,
