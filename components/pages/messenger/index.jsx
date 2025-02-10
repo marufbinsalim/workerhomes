@@ -569,7 +569,7 @@ const MessengerPage = ({ locale }) => {
                     <button
                       className="btn btn-primary"
                       onClick={handleSendMessage}
-                      disabled={newMessage.length === 0}
+                      disabled={newMessage.length === 0 && !imageFile}
                       style={{
                         height: "40px",
                         padding: "0 15px",
