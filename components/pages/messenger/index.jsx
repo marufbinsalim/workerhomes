@@ -377,7 +377,7 @@ const MessengerPage = ({ locale }) => {
                   >
                     <div
                       style={{
-                        maxWidth: "100%",
+                        maxWidth: "60%",
                         padding: chat.type === "image" ? "0" : "10px",
                         borderRadius: chat.type === "image" ? "0" : "10px",
                         display: "inline-block",

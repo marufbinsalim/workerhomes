@@ -314,10 +314,12 @@ export default function useMessenger(
         session?.user.email === thread.user.email
           ? thread.owner.username
           : thread.user.username,
-      lastMessage: thread.last_message.content,
+      lastMessage: thread.last_message?.content,
       lastMessageSender: thread.last_message?.sender?.email,
-      lastMessageTime: thread.last_message.timestamp,
-      created_at: new Date(thread.last_message.timestamp).toLocaleDateString(),
+      lastMessageTime: thread.last_message?.timestamp,
+      created_at: thread.last_message
+        ? new Date(thread.last_message.timestamp).toLocaleDateString()
+        : new Date(thread.created_at).toLocaleDateString(),
       dwelling_title:
         thread.dwelling_title.find((title) => title.locale === locale)?.value ||
         "",
