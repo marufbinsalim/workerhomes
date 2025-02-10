@@ -518,7 +518,11 @@ const MessengerPage = ({ locale }) => {
                     className="flex-grow-1"
                     placeholder={imageFile ? "" : "Write your message..."}
                     value={newMessage}
-                    onChange={(e) => setNewMessage(e.target.value)}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 2000) {
+                        setNewMessage(e.target.value);
+                      }
+                    }}
                     style={{
                       width: "100%",
                       maxHeight: "70px",
@@ -535,9 +539,24 @@ const MessengerPage = ({ locale }) => {
                     }}
                   />
 
+                  <div
+                    className="text-muted"
+                    style={{
+                      fontSize: "0.75rem",
+                      textAlign: "right",
+                      width: "100%",
+                      position: "absolute",
+                      bottom: "50px",
+                      right: "10px",
+                    }}
+                  >
+                    {newMessage.length}/2000
+                  </div>
+
                   <button
                     className="btn btn-primary"
                     onClick={handleSendMessage}
+                    disabled={newMessage.length === 0}
                     style={{
                       position: "absolute",
                       bottom: "10px",
