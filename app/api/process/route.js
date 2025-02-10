@@ -120,7 +120,10 @@ export async function POST(req) {
     }
 
     const msg = {
-      to: email.to,
+      to:
+        email.from === thread.user.email
+          ? thread.owner.email
+          : thread.user.email,
       from: `${thread.thread_id}@parse.workerhomes.pl`,
       subject: email.subject.includes("Re:")
         ? email.subject.substring(4)
