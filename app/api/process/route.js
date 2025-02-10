@@ -27,7 +27,7 @@ export async function POST(req) {
       subject: parsed.subject,
       from: parsed.from?.text || "",
       to: parsed.to?.text || "",
-      latestReply: emailBody.trim() || "No Reply Found",
+      content: emailBody.trim() || "No Reply Found",
     };
     console.log("Received Email:", email);
 
@@ -44,8 +44,69 @@ export async function POST(req) {
       return NextResponse.json({ error: "Thread not found" }, { status: 404 });
     }
 
+    let sender = null;
+    let recipient = null;
+
+    if (thread.user.email === email.from) {
+      sender = thread.user;
+      recipient = thread.owner;
+    } else {
+      sender = thread.owner;
+      recipient = thread.user;
+    }
+
+    let newMessage = {
+      thread_id: thread.thread_id,
+      content: email.content,
+      sender: sender,
+      recipient: recipient,
+      type: "text",
+    };
+
+    if (!sender || !recipient) {
+      console.error("Error fetching sender or recipient");
+      return NextResponse.json(
+        { error: "Sender or recipient not found" },
+        { status: 404 },
+      );
+    }
+
+    let { error: messageError } = await supabase
+      .from("messages")
+      .insert([newMessage]);
+
+    if (messageError) {
+      console.error("Error inserting message:", messageError);
+      return NextResponse.json(
+        { error: "Error inserting message" },
+        { status: 500 },
+      );
+    }
+
     console.log("Thread found:", thread);
-    console.log("Emaio:", email);
+    console.log("Email:", email);
+    console.log("Message: ", newMessage);
+
+    let { error: threadError } = await supabase
+      .from("threads")
+      .update({
+        last_message: {
+          type: "text",
+          sender: sender,
+          content: email.content,
+          recipient: recipient,
+          timestamp: new Date().toISOString,
+        },
+      }) // update last message
+      .eq("thread_id", thread.thread_id);
+
+    if (threadError) {
+      console.error("Error updating thread:", threadError);
+      return NextResponse.json(
+        { error: "Error updating thread" },
+        { status: 500 },
+      );
+    }
 
     return NextResponse.json({ message: "Email received" }, { status: 200 });
   } catch (error) {
