@@ -92,6 +92,25 @@ const MessengerPage = ({ locale }) => {
 
   const handleSendMessage = async () => {
     if (newMessage.trim() || imageFile) {
+      await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to:
+            session.user.email === selectedThread.owner.email
+              ? selectedThread.user.email
+              : selectedThread.owner.email,
+          from: `${selectedThread.thread_id}@parse.workerhomes.pl`,
+          subject: `You received a new message from ${session.user.email} for ${selectedThread.thread_id}`,
+          text: newMessage,
+          html: imageFile
+            ? `<img src="${URL.createObjectURL(imageFile)}" alt="Sent image" style="max-width: 40%; border-radius: 8px; cursor: pointer; transition: transform 0.2s; display: block; border: 1px solid #ccc; padding: 5px; margin-left: auto;" onClick="window.open('${URL.createObjectURL(imageFile)}', '_blank')" />`
+            : newMessage,
+        }),
+      });
+
       await functions.sendMessage({
         thread_id: selectedThread.thread_id,
         content: newMessage, // Will be replaced with image URL if an image is uploaded
@@ -385,7 +404,6 @@ const MessengerPage = ({ locale }) => {
                         style={{
                           fontSize: "0.75rem",
                           width: "100%",
-                          
                         }}
                       >
                         {chat.time}

@@ -220,7 +220,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
             body: JSON.stringify({
               to: fetchedDwelling.owner.email,
               from: `${combined_id}@parse.workerhomes.pl`,
-              subject: `You received a new message from ${session ? session.user.email : formattedValues.email} for ${fetchedDwelling.title}`,
+              subject: `You received a new message from ${session ? session.user.email : formattedValues.email}`,
               text:
                 `Name / Company: ${formattedValues.name_or_company}` +
                 "\n" +
