@@ -2,6 +2,10 @@ import { createClient } from "@/utils/supabase/server";
 import { simpleParser } from "mailparser";
 import { NextResponse } from "next/server";
 
+import * as sgMail from "@sendgrid/mail";
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 export async function POST(req) {
   try {
     const formData = await req.formData(); // Parse multipart form data
@@ -92,6 +96,8 @@ export async function POST(req) {
     console.log("Email:", email);
     console.log("Message: ", newMessage);
 
+    let timestamp = new Date().toISOString();
+
     let { error: threadError } = await supabase
       .from("threads")
       .update({
@@ -100,7 +106,7 @@ export async function POST(req) {
           sender: sender,
           content: email.content,
           recipient: recipient,
-          timestamp: new Date().toISOString,
+          timestamp: timestamp,
         },
       }) // update last message
       .eq("thread_id", thread.thread_id);
@@ -112,6 +118,18 @@ export async function POST(req) {
         { status: 500 },
       );
     }
+
+    const msg = {
+      to: email.to,
+      from: `${thread.thread_id}@parse.workerhomes.pl`,
+      subject: email.subject.includes("Re:")
+        ? email.subject.substring(4)
+        : email.subject,
+      text: email.content,
+      html: email.content,
+    };
+
+    await sgMail.send(msg);
 
     return NextResponse.json({ message: "Email received" }, { status: 200 });
   } catch (error) {

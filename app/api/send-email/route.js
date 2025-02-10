@@ -31,10 +31,12 @@ export async function POST(req) {
   try {
     const { to, from, subject, text, html } = await req.json();
 
+    console.log(to, from, subject, text, html);
+
     // Ensure required fields are present
     if (!to || !from || !subject || !text || !html) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: "Missing required fields", to, from, subject, text, html },
         { status: 400 },
       );
     }

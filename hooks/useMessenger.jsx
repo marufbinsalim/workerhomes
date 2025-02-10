@@ -264,7 +264,7 @@ export default function useMessenger(
       }
     }
 
-    return { messageData, error: insertError };
+    return { messageData, error: insertError, imageUrl };
   }
 
   useEffect(() => {
