@@ -519,9 +519,9 @@ const MessengerPage = ({ locale }) => {
                     placeholder={imageFile ? "" : "Write your message..."}
                     value={newMessage}
                     onChange={(e) => {
-                      if (e.target.value.length <= 2000) {
-                        setNewMessage(e.target.value);
-                      }
+                      setNewMessage(
+                        e.target.value ? e.target.value.slice(0, 2000) : "",
+                      );
                     }}
                     style={{
                       width: "100%",
@@ -540,44 +540,50 @@ const MessengerPage = ({ locale }) => {
                   />
 
                   <div
-                    className="text-muted"
-                    style={{
-                      fontSize: "0.75rem",
-                      textAlign: "right",
-                      width: "100%",
-                      position: "absolute",
-                      bottom: "50px",
-                      right: "10px",
-                    }}
-                  >
-                    {newMessage.length}/2000
-                  </div>
-
-                  <button
-                    className="btn btn-primary"
-                    onClick={handleSendMessage}
-                    disabled={newMessage.length === 0}
+                    className="d-flex align-items-center"
                     style={{
                       position: "absolute",
                       bottom: "10px",
                       right: "10px",
-                      height: "40px",
-                      padding: "0 15px",
-                      borderRadius: "10px",
+                      display: "flex",
+                      width: "max-content",
+                      gap: "10px",
                     }}
                   >
-                    <span style={{ marginRight: "6px" }}>Send</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-send"
-                      viewBox="0 0 16 16"
+                    <div
+                      className="text-muted"
+                      style={{
+                        fontSize: "0.75rem",
+                        textAlign: "right",
+                        width: "max",
+                      }}
                     >
-                      <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.356 3.748 3.038-7.457-3.773 1.033-2.047 2.457Z" />
-                    </svg>
-                  </button>
+                      {newMessage.length}/2000
+                    </div>
+
+                    <button
+                      className="btn btn-primary"
+                      onClick={handleSendMessage}
+                      disabled={newMessage.length === 0}
+                      style={{
+                        height: "40px",
+                        padding: "0 15px",
+                        borderRadius: "10px",
+                      }}
+                    >
+                      <span style={{ marginRight: "6px" }}>Send</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-send"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.356 3.748 3.038-7.457-3.773 1.033-2.047 2.457Z" />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
             </>
