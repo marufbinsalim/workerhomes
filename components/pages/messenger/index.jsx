@@ -7,6 +7,7 @@ import Link from "next/link";
 import useMessenger from "@/hooks/useMessenger";
 import { ImageUpload } from "ckeditor5";
 import PricingCard from "@/components/common/card/price-card";
+import { useSearchParams } from "next/navigation";
 
 const MessengerPage = ({ locale }) => {
   const t = useTranslations("messenger");
@@ -16,6 +17,14 @@ const MessengerPage = ({ locale }) => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isPhoneScreen, setIsPhoneScreen] = useState(true);
+  const [threadID, setThreadId] = useState(null);
+
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    console.log("router.searchParams", searchParams);
+    let thread_id = searchParams.get("thread") || null;
+    setThreadId(thread_id);
+  }, [searchParams]);
 
   useEffect(() => {
     if (window.innerWidth < 768) {
@@ -27,6 +36,7 @@ const MessengerPage = ({ locale }) => {
 
   const { data: messengerData, functions } = useMessenger(
     "messenger",
+    threadID,
     selectedFilter,
     searchQuery,
     isPhoneScreen,
@@ -131,7 +141,8 @@ const MessengerPage = ({ locale }) => {
                 <p>${newMessage}</p>
               </div>
 
-              <a href="#" style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+              <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
+              style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
                 Reply to the chat
               </a>
 

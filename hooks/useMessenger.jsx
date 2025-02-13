@@ -10,6 +10,7 @@ const supabase = createClient(
 
 export default function useMessenger(
   page,
+  threadID,
   filter,
   query,
   isPhone,
@@ -182,7 +183,22 @@ export default function useMessenger(
               thread.owner.email === session?.user.email
             );
           });
-          if (!isPhone) setselectedThread(generateThreadType(firstThread));
+
+          let currentThread = data.find((thread) => {
+            return thread.thread_id === threadID;
+          });
+
+          if (!isPhone) {
+            if (currentThread) {
+              setselectedThread(generateThreadType(currentThread));
+            } else {
+              setselectedThread(generateThreadType(firstThread));
+            }
+          } else {
+            if (currentThread) {
+              setselectedThread(generateThreadType(currentThread));
+            }
+          }
         }
       };
       fetchThreads();
