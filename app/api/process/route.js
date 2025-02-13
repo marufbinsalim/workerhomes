@@ -92,7 +92,7 @@ export async function POST(req) {
         message_id = thread.user.messageID;
       }
 
-      if (thread.owner.messageID) {
+      if (!thread.owner.messageID) {
         await supabase
           .from("threads")
           .update({
