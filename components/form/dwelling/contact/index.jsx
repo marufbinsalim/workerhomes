@@ -235,15 +235,34 @@ const ContactForm = ({ dwelling, onSuccess }) => {
                 `Guests: ${formattedValues.guests}` +
                 "\n" +
                 `Additional information: ${formattedValues.additional_information}`,
-              html:
-                `<p>Name / Company: ${formattedValues.name_or_company}</p>` +
-                `<p>Email: ${formattedValues.email}</p>` +
-                `<p>Phone: ${formattedValues.phone}</p>` +
-                `<p>Check-in: ${formattedValues.check_in}</p>` +
-                `<p>Check-out: ${formattedValues.check_out}</p>` +
-                `<p>Guests: ${formattedValues.guests}</p>` +
-                `<p>Additional information: ${formattedValues.additional_information}</p>` +
-                `Reply to this email to respond to the message.`,
+              html: `
+                  <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
+                    <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+                      <p style="font-size: 14px; color: #777;">
+                       You have recieved a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${session ? session.user.email : formattedValues.email}</span>
+
+                      <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
+                       <p>Name / Company: ${formattedValues.name_or_company}</p>
+                       <p>Email: ${formattedValues.email}</p>
+                        <p>Phone: ${formattedValues.phone}</p>
+                        <p>Check-in: ${formattedValues.check_in}</p>
+                        <p>Check-out: ${formattedValues.check_out}</p>
+                        <p>Guests: ${formattedValues.guests}</p>
+                        <p>Additional information: ${formattedValues.additional_information}</p>
+                      </div>
+
+                      <a href="https://workerhomes-two.vercel.app/pl/dashboard/messenger?thread=${thread.thread_id}"
+                      style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+                        Reply to the chat
+                      </a>
+
+                      <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
+                        You can reply to this email to participate in the conversation
+                      </p>
+                    </div>
+                  </div>
+                `,
             }),
           });
 
