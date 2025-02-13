@@ -69,20 +69,10 @@ export async function POST(req) {
     if (thread.user.email === email.from) {
       sender = thread.user;
       recipient = thread.owner;
-      if (!thread.owner.messageID) {
-        await supabase
-          .from("threads")
-          .update({
-            owner: {
-              ...thread.owner,
-              messageID: message_id,
-            },
-          })
-          .eq("thread_id", email.thread_id);
-      } else message_id = thread.owner.messageID;
-    } else {
-      sender = thread.owner;
-      recipient = thread.user;
+
+      if (thread.owner.messageID) {
+        message_id = thread.owner.messageID;
+      }
       if (!thread.user.messageID) {
         await supabase
           .from("threads")
@@ -93,7 +83,26 @@ export async function POST(req) {
             },
           })
           .eq("thread_id", email.thread_id);
-      } else message_id = thread.user.messageID;
+      }
+    } else {
+      sender = thread.owner;
+      recipient = thread.user;
+
+      if (thread.user.messageID) {
+        message_id = thread.user.messageID;
+      }
+
+      if (thread.owner.messageID) {
+        await supabase
+          .from("threads")
+          .update({
+            owner: {
+              ...thread.owner,
+              messageID: message_id,
+            },
+          })
+          .eq("thread_id", email.thread_id);
+      }
     }
 
     let newMessage = {
