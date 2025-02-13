@@ -69,9 +69,31 @@ export async function POST(req) {
     if (thread.user.email === email.from) {
       sender = thread.user;
       recipient = thread.owner;
+      if (!thread.owner.messageID) {
+        await supabase
+          .from("threads")
+          .update({
+            owner: {
+              ...thread.owner,
+              messageID: message_id,
+            },
+          })
+          .eq("thread_id", email.thread_id);
+      } else message_id = thread.owner.messageID;
     } else {
       sender = thread.owner;
       recipient = thread.user;
+      if (!thread.user.messageID) {
+        await supabase
+          .from("threads")
+          .update({
+            user: {
+              ...thread.user,
+              messageID: message_id,
+            },
+          })
+          .eq("thread_id", email.thread_id);
+      } else message_id = thread.user.messageID;
     }
 
     let newMessage = {
@@ -140,6 +162,10 @@ export async function POST(req) {
         : email.subject,
       text: email.content,
       html: email.content,
+      headers: {
+        "In-Reply-To": message_id,
+        References: message_id,
+      },
     };
 
     await sgMail.send(msg);
