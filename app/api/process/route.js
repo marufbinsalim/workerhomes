@@ -18,6 +18,9 @@ export async function POST(req) {
       );
     }
 
+    let message_id = rawEmail.match(/Message-ID: <(.*?)>/)[1];
+    console.log("Message ID:", message_id);
+
     const parsed = await simpleParser(rawEmail);
     let emailBody = parsed.text || "";
 
