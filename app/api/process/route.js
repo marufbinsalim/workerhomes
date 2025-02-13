@@ -131,7 +131,7 @@ export async function POST(req) {
         <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
 
           <p style="font-size: 14px; color: #777;">
-           You have recieved a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${newMessage.sender}</span>
+           You have recieved a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${newMessage.sender.email}</span>
           </p>
 
           <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
