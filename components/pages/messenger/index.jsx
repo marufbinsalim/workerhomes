@@ -249,7 +249,7 @@ const MessengerPage = ({ locale }) => {
             }}
           >
             <h4
-              className={`me-3 ${isSearchExpanded ? "d-none" : ""}`}
+              className={`me-3 pl-10 ${isSearchExpanded ? "d-none" : ""}`}
               style={{ flex: 1 }}
             >
               {t("title")}
@@ -298,9 +298,9 @@ const MessengerPage = ({ locale }) => {
             </div>
           </div>
 
-          <div className="d-flex mb-3">
+          <div className="d-flex mb-3 pl-10">
             <button
-              className={`btn px-3 py-1 ${selectedFilter === "all" ? "btn-black" : "btn-white"}`}
+              className={`btn px-6 py-1 ${selectedFilter === "all" ? "btn-black" : "btn-white"}`}
               onClick={() => setSelectedFilter("all")}
               style={{
                 backgroundColor: selectedFilter === "all" ? "black" : "white",
@@ -341,29 +341,25 @@ const MessengerPage = ({ locale }) => {
                 .map((thread) => (
                   <li
                     key={thread.thread_id}
-                    className={`list-group-item list-group-item-action border-0 rounded ${selectedThread?.thread_id === thread.thread_id ? "selected-bg" : ""}`}
+                    className={`list-group-item list-group-item-action border-0 rounded ${selectedThread?.thread_id === thread.thread_id ? "selected-bg" : ""
+                      }`}
                     style={{
                       backgroundColor:
-                        selectedThread?.thread_id === thread.thread_id
-                          ? "#f7f7f7"
-                          : "#fff",
+                        selectedThread?.thread_id === thread.thread_id ? "#f7f7f7" : "#fff",
                     }}
                     onClick={() => handlethreadselect(thread)}
                   >
                     <div className="d-flex align-items-center">
                       <div style={{ width: "100%" }}>
+                        <h4 className="mt-2 fw-500 text-wrap">{thread.dwelling_title}</h4>
                         <div
                           className="d-flex align-items-center justify-content-between w-100"
                           style={{ width: "100%" }}
                         >
                           <strong>{thread.name}</strong>
-                          <p>
-                            {" "}
-                            {new Date(
-                              thread.lastMessageTime,
-                            ).toLocaleDateString()}
-                          </p>
+                          <p>{new Date(thread.lastMessageTime).toLocaleDateString()}</p>
                         </div>
+
                         <div className="text-muted text-wrap">
                           {thread.lastMessage.includes("https")
                             ? "Attachment"
@@ -371,10 +367,6 @@ const MessengerPage = ({ locale }) => {
                         </div>
                       </div>
                     </div>
-
-                    <h5 className="mt-2 fw-500 text-wrap">
-                      {thread.dwelling_title}
-                    </h5>
 
                     <div
                       className="mt-auto text-end text-muted"
@@ -386,6 +378,7 @@ const MessengerPage = ({ locale }) => {
                 ))}
             </ul>
           </div>
+
         </div>
 
         {/* Middle Section */}
@@ -401,7 +394,7 @@ const MessengerPage = ({ locale }) => {
         >
           {selectedThread && (
             <>
-              <div className="d-flex p-2 align-items-center mt-2 border-bottom pb-2">
+              <div className="d-flex p-3 align-items-center  border-bottom ">
                 <button
                   className="btn  d-md-none"
                   onClick={handleBack}
@@ -418,6 +411,10 @@ const MessengerPage = ({ locale }) => {
                     fill="currentColor"
                     className="bi bi-chevron-left"
                     viewBox="0 0 16 16"
+                    style={{
+                      transform: "scale(1.2)", 
+                      fontWeight: "bold", 
+                    }}
                   >
                     <path
                       fillRule="evenodd"
@@ -426,6 +423,77 @@ const MessengerPage = ({ locale }) => {
                   </svg>
                 </button>
                 <strong>{selectedThread.name}</strong>
+              </div>
+
+              <div className="p-2 mobile-only " style={{
+                borderBottom: "1px solid #E5E7EB",
+                backgroundColor: "#EFEFEF",
+                boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)", 
+                border: "1px solid rgba(233, 233, 233, 0.1)", 
+              }}>
+                { property && selectedThread.dwelling_title === property.title && (
+                  <div className="d-flex align-items-center text-start" style={{ gap: "10px", flexWrap: "wrap", position: "relative" }}>
+                    {property.image_url && (
+                      <img
+                        src={property.image_url}
+                        alt="Property Image"
+                        className="img-fluid"
+                        style={{
+                          width: "80px",
+                          height: "60px",
+                          borderRadius: "8px",
+                          objectFit: "cover",
+                          boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+                          flexShrink: 0,
+                          minWidth: "80px",
+                        }}
+                      />
+                    )}
+                    <h6 className="mb-0 " style={{
+                      wordBreak: "break-word",
+                      flex: 1,
+                      whiteSpace: "normal",
+                      position: "relative",
+                      width: "80%",
+                      maxWidth: "calc(100% - 90px)",
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      WebkitLineClamp: 2,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      marginRight: "30px", 
+                    }}>
+                      {property.title}
+                    </h6>
+                    <Link href={`/${locale}/listings/${selectedThread.dwelling_slug}`} style={{
+                      position: "absolute",
+                      right: "0",
+                      top: "50%",
+                      transform: "translateY(-50%)", 
+                      fontSize: "18px",
+                      color: "#333", 
+                      textDecoration: "none", 
+                    }}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-chevron-right"
+                        viewBox="0 0 16 16"
+                        style={{
+                          transform: "scale(1.5)", 
+                          fontWeight: "bold",
+                        }}
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M4.646 1.646a.5.5 0 0 1 .708 0L10.293 8l-5.647 5.646a.5.5 0 0 1-.708-.708l5-5a.5.5 0 0 1 0-.708l-5-5a.5.5 0 0 1 0-.708z"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
+                )}
               </div>
 
               <div className="flex-grow-1 p-3" style={{ overflowY: "auto" }}>
@@ -450,7 +518,8 @@ const MessengerPage = ({ locale }) => {
                         wordWrap: "break-word",
                         overflowWrap: "break-word",
                         whiteSpace: "pre-wrap",
-                        textAlign: chat.direction === "sent" ? "right" : "left",
+                        // textAlign: chat.direction === "sent" ? "left" : "right",
+                        textAlign: "left",
                       }}
                     >
                       {chat.type === "image" ? (
@@ -671,12 +740,13 @@ const MessengerPage = ({ locale }) => {
                   <img
                     src={property.image_url}
                     alt="Property Image"
-                    className="img-fluid mb-3"
+                    className="img-fluid mb-3 property-image"
                     style={{
                       width: "400px",
                       height: "200px",
                       borderRadius: "10px",
                       boxShadow: "0 0 15px rgba(0, 0, 0, 0.3)",
+                      transition: "transform 0.4s ease-in-out",
                     }}
                   />
                 )}
@@ -787,6 +857,10 @@ const MessengerPage = ({ locale }) => {
             background-color: #ff7504;
           }
 
+          .property-image:hover {
+            transform: scale(1.01);
+          } 
+
           @media (max-width: 768px) {
             /* Initially hide the middle section off-screen */
             .col-md-6 {
@@ -794,6 +868,9 @@ const MessengerPage = ({ locale }) => {
               margin: 0 !important; /* Remove any margin */
               width: 100vw;
               order: 1; /* Ensure the middle section stays above */
+            }
+               .mobile-only {
+                  display: block;
             }
 
             /* Optionally, hide the left section when viewing the middle section */
@@ -807,6 +884,10 @@ const MessengerPage = ({ locale }) => {
               width: 320px; /* Adjust width for mobile view */
             }
           }
+            @media (min-width: 769px) {
+              .mobile-only {
+                  display: none !important; /* Hide elements with this class on larger screens */
+              }
         `}
       </style>
     </>
