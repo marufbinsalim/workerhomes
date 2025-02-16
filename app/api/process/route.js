@@ -18,9 +18,6 @@ export async function POST(req) {
       );
     }
 
-    let message_id = rawEmail.match(/Message-ID: <(.*?)>/)[1];
-    console.log("Message ID:", message_id);
-
     const parsed = await simpleParser(rawEmail);
     let emailBody = parsed.text || "";
 
@@ -69,40 +66,9 @@ export async function POST(req) {
     if (thread.user.email === email.from) {
       sender = thread.user;
       recipient = thread.owner;
-
-      if (thread.owner.messageID) {
-        message_id = thread.owner.messageID;
-      }
-      if (!thread.user.messageID) {
-        await supabase
-          .from("threads")
-          .update({
-            user: {
-              ...thread.user,
-              messageID: message_id,
-            },
-          })
-          .eq("thread_id", email.thread_id);
-      }
     } else {
       sender = thread.owner;
       recipient = thread.user;
-
-      if (thread.user.messageID) {
-        message_id = thread.user.messageID;
-      }
-
-      if (!thread.owner.messageID) {
-        await supabase
-          .from("threads")
-          .update({
-            owner: {
-              ...thread.owner,
-              messageID: message_id,
-            },
-          })
-          .eq("thread_id", email.thread_id);
-      }
     }
 
     let newMessage = {
@@ -160,6 +126,30 @@ export async function POST(req) {
       );
     }
 
+    let html = `
+      <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
+        <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+          <p style="font-size: 14px; color: #777;">
+           You have recieved a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${newMessage.sender.email}</span>
+          </p>
+
+          <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
+            <p>${newMessage.content}</p>
+          </div>
+
+          <a href="https://workerhomes-two.vercel.app/pl/dashboard/messenger?thread=${newMessage.thread_id}"
+          style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+            Reply to the chat
+          </a>
+
+          <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
+            You can reply to this email to participate in the conversation
+          </p>
+        </div>
+      </div>
+    `;
+
     const msg = {
       to:
         email.from === thread.user.email
@@ -170,11 +160,7 @@ export async function POST(req) {
         ? email.subject.substring(4)
         : email.subject,
       text: email.content,
-      html: email.content,
-      headers: {
-        "In-Reply-To": message_id,
-        References: message_id,
-      },
+      html: html,
     };
 
     await sgMail.send(msg);

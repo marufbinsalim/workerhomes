@@ -7,6 +7,7 @@ import Link from "next/link";
 import useMessenger from "@/hooks/useMessenger";
 import { ImageUpload } from "ckeditor5";
 import PricingCard from "@/components/common/card/price-card";
+import { useSearchParams } from "next/navigation";
 
 const MessengerPage = ({ locale }) => {
   const t = useTranslations("messenger");
@@ -16,6 +17,14 @@ const MessengerPage = ({ locale }) => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isPhoneScreen, setIsPhoneScreen] = useState(true);
+  const [threadID, setThreadId] = useState(null);
+
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    console.log("router.searchParams", searchParams);
+    let thread_id = searchParams.get("thread") || null;
+    setThreadId(thread_id);
+  }, [searchParams]);
 
   useEffect(() => {
     if (window.innerWidth < 768) {
@@ -27,6 +36,7 @@ const MessengerPage = ({ locale }) => {
 
   const { data: messengerData, functions } = useMessenger(
     "messenger",
+    threadID,
     selectedFilter,
     searchQuery,
     isPhoneScreen,
@@ -117,9 +127,53 @@ const MessengerPage = ({ locale }) => {
       let html;
 
       if (imageFile && imageUrl) {
-        html = `<img src="${imageUrl}" alt="Sent image" style="max-width: 40%; border-radius: 8px; cursor: pointer; transition: transform 0.2s; display: block; border: 1px solid #ccc; padding: 5px; margin-left: auto;"/>`;
+        html = `
+            <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
+              <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+                <p style="font-size: 14px; color: #777;">
+                 You have recieved a new message (attachment) in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${session.user.email}</span>
+                </p>
+
+                <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
+                  <img src="${imageUrl}" alt="Sent image" style="max-width: 40%; border-radius: 8px; cursor: pointer; display: block; border: 1px solid #ccc; padding: 5px;"/>
+                </div>
+
+                <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
+                style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+                  Reply to the chat
+                </a>
+
+                <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
+                  You can reply to this email to participate in the conversation
+                </p>
+              </div>
+            </div>
+          `;
       } else {
-        html = `<p>${newMessage}</p>`;
+        html = `
+          <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
+            <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+              <p style="font-size: 14px; color: #777;">
+               You have recieved a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${session.user.email}</span>
+              </p>
+
+              <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
+                <p>${newMessage}</p>
+              </div>
+
+              <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
+              style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+                Reply to the chat
+              </a>
+
+              <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
+                You can reply to this email to participate in the conversation
+              </p>
+            </div>
+          </div>
+        `;
       }
 
       let text;
