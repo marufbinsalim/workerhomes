@@ -569,6 +569,7 @@ const MessengerPage = ({ locale }) => {
                     height: "140px",
                     display: "flex",
                     flexDirection: "column",
+                    overflow: "hidden",
                   }}
                 >
                   <label
@@ -635,6 +636,7 @@ const MessengerPage = ({ locale }) => {
                           fontSize: "12px",
                           fontWeight: "bold",
                           border: "2px solid white",
+                          zIndex: 10,
                         }}
                       >
                         ✕
@@ -658,12 +660,16 @@ const MessengerPage = ({ locale }) => {
                       border: "none",
                       outline: "none",
                       resize: "none",
-                      paddingLeft: imageFile ? "60px" : "12px",
+                      paddingLeft: imageFile ? "85px" : "12px",
                       paddingRight: "20px",
                       background: "transparent",
                       textAlign: "left",
                       overflowY: "auto",
                       marginBottom: "40px",
+                      position: "absolute",
+                      top: "10px", 
+                      left: imageFile ? "10px" : "5px",
+                      right: "10px"
                     }}
                   />
 
