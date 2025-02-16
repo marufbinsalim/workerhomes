@@ -89,9 +89,7 @@ export default function useMessenger(
     seenThread();
   }, [selectedThread]);
 
-  // effect to fetch messages in the messenger page in realtime
-  //
-
+ 
   useEffect(() => {
     const messagesListener = supabase
       .channel("public:messages")
@@ -269,7 +267,6 @@ export default function useMessenger(
 
   useEffect(() => {
     // get all the unread status threads and print the count
-
     let unreadThreads = [...threads]
       .map(generateThreadType)
       .filter((thread) => {
