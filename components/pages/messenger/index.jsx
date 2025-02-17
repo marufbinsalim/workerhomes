@@ -651,7 +651,7 @@ const MessengerPage = ({ locale }) => {
                         left: "10px",
                         width: "70px",
                         height: "70px",
-                        backgroundImage: `url(${URL.createObjectURL(imageFile)})`,
+                        // backgroundImage: `url(${URL.createObjectURL(imageFile)})`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         borderRadius: "5px",
@@ -659,12 +659,22 @@ const MessengerPage = ({ locale }) => {
                         cursor: "pointer",
                       }}
                     >
+                      <img
+                        src={URL.createObjectURL(imageFile)}
+                        alt="Sent image"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          borderRadius: "5px",
+                        }}
+                      />
                       <span
                         onClick={handleImageRemove}
                         style={{
                           position: "absolute",
-                          top: "-6px",
-                          right: "-6px",
+                          top: "1px",
+                          right: "1px",
                           background: "red",
                           color: "white",
                           borderRadius: "50%",
@@ -690,9 +700,7 @@ const MessengerPage = ({ locale }) => {
                     placeholder={imageFile ? "" : t("write")}
                     value={newMessage}
                     onChange={(e) => {
-                      setNewMessage(
-                        e.target.value ? e.target.value.slice(0, 2000) : "",
-                      );
+                      setNewMessage(e.target.value);
                     }}
                     style={{
                       width: "100%",
