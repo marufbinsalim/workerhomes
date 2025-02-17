@@ -101,12 +101,18 @@ const MessengerPage = ({ locale }) => {
     setImageFile(null);
   };
 
+
   const handleSendMessage = async () => {
-    if (newMessage.trim() || imageFile) {
-      const { imageUrl } = await functions.sendMessage({
+    if (!newMessage.trim() && !imageFile) return; // Prevent sending empty messages
+
+    let imageUrl = null;
+
+    if (imageFile) {
+      // Upload the image first
+      const response = await functions.sendMessage({
         thread_id: selectedThread.thread_id,
-        content: newMessage, // Will be replaced with image URL if an image is uploaded
-        type: imageFile ? "image" : "text",
+        content: "", // No text yet, only image
+        type: "image",
         sender: {
           email: session.user.email,
           username: session.user.username || session.user.name,
@@ -124,87 +130,90 @@ const MessengerPage = ({ locale }) => {
         imageFile,
       });
 
-      let html;
+      imageUrl = response.imageUrl;
+      setImageFile(null); // Clear the image after sending
+    }
 
-      if (imageFile && imageUrl) {
-        html = `
-            <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
-              <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-
-                <p style="font-size: 14px; color: #777;">
-                 You have recieved a new message (attachment) in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${session.user.email}</span>
-                </p>
-
-                <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
-                  <img src="${imageUrl}" alt="Sent image" style="max-width: 40%; border-radius: 8px; cursor: pointer; display: block; border: 1px solid #ccc; padding: 5px;"/>
-                </div>
-
-                <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
-                style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
-                  Reply to the chat
-                </a>
-
-                <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
-                  You can reply to this email to participate in the conversation
-                </p>
-              </div>
-            </div>
-          `;
-      } else {
-        html = `
-          <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
-            <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-
-              <p style="font-size: 14px; color: #777;">
-               You have recieved a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${session.user.email}</span>
-              </p>
-
-              <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
-                <p>${newMessage}</p>
-              </div>
-
-              <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
-              style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
-                Reply to the chat
-              </a>
-
-              <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
-                You can reply to this email to participate in the conversation
-              </p>
-            </div>
-          </div>
-        `;
-      }
-
-      let text;
-
-      if (imageFile && imageUrl) {
-        text = imageUrl;
-      } else {
-        text = newMessage;
-      }
-
-      await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    if (newMessage.trim()) {
+      // Send the text message separately
+      await functions.sendMessage({
+        thread_id: selectedThread.thread_id,
+        content: newMessage, // Now sending the text
+        type: "text",
+        sender: {
+          email: session.user.email,
+          username: session.user.username || session.user.name,
         },
-        body: JSON.stringify({
-          to:
+        recipient: {
+          email:
             session.user.email === selectedThread.owner.email
               ? selectedThread.user.email
               : selectedThread.owner.email,
-          from: `${selectedThread.thread_id}@parse.workerhomes.pl`,
-          subject: `You received a new message from ${session.user.email} for ${selectedThread.thread_id}`,
-          text: text,
-          html: html,
-        }),
+          username:
+            session.user.email === selectedThread.owner.email
+              ? selectedThread.user.username
+              : selectedThread.owner.username,
+        },
       });
 
-      setNewMessage("");
-      setImageFile(null);
+      setNewMessage(""); // Clear the text input after sending
     }
+
+    // Now, send the email notification
+    let html = `
+    <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
+      <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <p style="font-size: 14px; color: #777;">
+          You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${session.user.email}</span>
+        </p>
+  `;
+
+    if (imageUrl) {
+      html += `
+      <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
+        <img src="${imageUrl}" alt="Sent image" style="max-width: 40%; border-radius: 8px; cursor: pointer; display: block; border: 1px solid #ccc; padding: 5px;"/>
+      </div>
+    `;
+    }
+
+    if (newMessage.trim()) {
+      html += `
+      <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
+        <p>${newMessage}</p>
+      </div>
+    `;
+    }
+
+    html += `
+      <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
+        style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+        Reply to the chat
+      </a>
+      <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
+        You can reply to this email to participate in the conversation
+      </p>
+      </div>
+    </div>
+  `;
+
+    await fetch("/api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        to:
+          session.user.email === selectedThread.owner.email
+            ? selectedThread.user.email
+            : selectedThread.owner.email,
+        from: `${selectedThread.thread_id}@parse.workerhomes.pl`,
+        subject: `You received a new message from ${session.user.email} for ${selectedThread.thread_id}`,
+        text: imageUrl ? imageUrl + (newMessage ? `\n\n${newMessage}` : "") : newMessage,
+        html: html,
+      }),
+    });
   };
+
 
   const handlethreadselect = (thread) => {
     setselectedThread(thread);
@@ -412,8 +421,8 @@ const MessengerPage = ({ locale }) => {
                     className="bi bi-chevron-left"
                     viewBox="0 0 16 16"
                     style={{
-                      transform: "scale(1.2)", 
-                      fontWeight: "bold", 
+                      transform: "scale(1.2)",
+                      fontWeight: "bold",
                     }}
                   >
                     <path
@@ -428,10 +437,10 @@ const MessengerPage = ({ locale }) => {
               <div className="p-2 mobile-only " style={{
                 borderBottom: "1px solid #E5E7EB",
                 backgroundColor: "#EFEFEF",
-                boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)", 
-                border: "1px solid rgba(233, 233, 233, 0.1)", 
+                boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
+                border: "1px solid rgba(233, 233, 233, 0.1)",
               }}>
-                { property && selectedThread.dwelling_title === property.title && (
+                {property && selectedThread.dwelling_title === property.title && (
                   <div className="d-flex align-items-center text-start" style={{ gap: "10px", flexWrap: "wrap", position: "relative" }}>
                     {property.image_url && (
                       <img
@@ -461,7 +470,7 @@ const MessengerPage = ({ locale }) => {
                       WebkitLineClamp: 2,
                       overflow: "hidden",
                       textOverflow: "ellipsis",
-                      marginRight: "30px", 
+                      marginRight: "30px",
                     }}>
                       {property.title}
                     </h6>
@@ -469,10 +478,10 @@ const MessengerPage = ({ locale }) => {
                       position: "absolute",
                       right: "0",
                       top: "50%",
-                      transform: "translateY(-50%)", 
+                      transform: "translateY(-50%)",
                       fontSize: "18px",
-                      color: "#333", 
-                      textDecoration: "none", 
+                      color: "#333",
+                      textDecoration: "none",
                     }}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -482,7 +491,7 @@ const MessengerPage = ({ locale }) => {
                         className="bi bi-chevron-right"
                         viewBox="0 0 16 16"
                         style={{
-                          transform: "scale(1.5)", 
+                          transform: "scale(1.5)",
                           fontWeight: "bold",
                         }}
                       >
@@ -667,7 +676,7 @@ const MessengerPage = ({ locale }) => {
                       overflowY: "auto",
                       marginBottom: "40px",
                       position: "absolute",
-                      top: "10px", 
+                      top: "10px",
                       left: imageFile ? "10px" : "5px",
                       right: "10px"
                     }}
