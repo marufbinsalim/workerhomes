@@ -540,16 +540,11 @@ const MessengerPage = ({ locale }) => {
                       <div
                         style={{
                           maxWidth: "60%",
-                          padding: chat.type === "image" || chat.type === "image_and_text" ? "0" : "10px",
+                          padding: chat.type === "image" || chat.type === "image_and_text" ? "0" : "0",
                           borderRadius: chat.type === "image" || chat.type === "image_and_text" ? "0" : "10px",
                           display: "inline-block",
                           fontSize: "0.875rem",
-                          backgroundColor:
-                            chat.type === "image" || chat.type === "image_and_text"
-                              ? "transparent"
-                              : chat.direction === "sent"
-                                ? "#d1e7ff"
-                                : "#f1f1f1",
+                          backgroundColor: "transparent", 
                           wordWrap: "break-word",
                           overflowWrap: "break-word",
                           whiteSpace: "pre-wrap",
@@ -570,7 +565,7 @@ const MessengerPage = ({ locale }) => {
                                 display: "block",
                                 border: "1px solid #ccc",
                                 padding: "5px",
-                                marginBottom: "10px",  // Added margin between the image and text
+                                marginBottom: "5px",
                               }}
                               onClick={() =>
                                 window.open(
@@ -582,26 +577,76 @@ const MessengerPage = ({ locale }) => {
 
                             {/* Render text if type is "image_and_text" */}
                             {chat.type === "image_and_text" && (
-                              <p className="mb-0">{textContent}</p>
+                              <div
+                                style={{
+                                  backgroundColor: chat.direction === "sent" ? "#d1e7ff" : "#f1f1f1", 
+                                  padding: "10px",
+                                  borderRadius: "10px", 
+                                  width: "max-content", 
+                                  maxWidth: "100%", 
+                                }}
+                              >
+                                <p className="mb-0">{textContent}</p>
+                                {/* Render timestamp */}
+                                <div
+                                  className={`text-muted ml-auto ${chat.direction !== "sent" ? "text-start" : "text-end"}`}
+                                  style={{
+                                    fontSize: "0.75rem",
+                                    width: "100%", 
+                                  }}
+                                >
+                                  {chat.time}
+                                </div>
+                              </div>
+                            )}
+
+                            {chat.type === "image" && (
+                              <div
+                                style={{
+                                  
+                                  borderRadius: "10px",
+                                  width: "max-content",
+                                  maxWidth: "100%",
+                                }}
+                              >
+                                {/* Render timestamp */}
+                                <div
+                                  className={`text-muted ml-auto ${chat.direction !== "sent" ? "text-start" : "text-end"}`}
+                                  style={{
+                                    fontSize: "0.75rem",
+                                    width: "100%",
+                                  }}
+                                >
+                                  {chat.time}
+                                </div>
+                              </div>
                             )}
                           </div>
                         )}
 
                         {/* Render text if type is "text" */}
                         {chat.type === "text" && (
-                          <p className="mb-0">{chat.message}</p>
+                          <div
+                            style={{
+                              backgroundColor: chat.direction === "sent" ? "#d1e7ff" : "#f1f1f1", 
+                              padding: "10px", 
+                              borderRadius: "10px", 
+                              width: "max-content", 
+                              maxWidth: "100%",  
+                            }}
+                          >
+                            <p className="mb-0">{chat.message}</p>
+                            <div
+                              className={`text-muted ml-auto ${chat.direction !== "sent" ? "text-start" : "text-end"}`}
+                              style={{
+                                fontSize: "0.75rem",
+                                width: "100%", 
+                              }}
+                            >
+                              {chat.time}
+                            </div>
+                          </div>
                         )}
-
-                        {/* Render timestamp */}
-                        <div
-                          className={`text-muted ml-auto ${(chat.type === "image" || chat.type === "image_and_text") && chat.direction !== "sent" ? "text-start" : "text-end"}`}
-                          style={{
-                            fontSize: "0.75rem",
-                            width: "100%",
-                          }}
-                        >
-                          {chat.time}
-                        </div>
                       </div>
                     </div>
                   );
