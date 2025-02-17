@@ -44,6 +44,10 @@ const MessengerPage = ({ locale }) => {
     locale,
   );
 
+  useEffect(() => {
+    console.log("messengerData", messengerData);
+  }, [messengerData]);
+
   const threads = messengerData?.threads || [];
   let selectedThread = messengerData?.selectedThread || null;
   let setselectedThread = messengerData?.setselectedThread || null;
@@ -95,12 +99,12 @@ const MessengerPage = ({ locale }) => {
     } else {
       alert("Image size should not exceed 8MB.");
     }
+    event.target.value = null; // Reset the input field after selecting the image
   };
 
   const handleImageRemove = () => {
     setImageFile(null);
   };
-
 
   const handleSendMessage = async () => {
     if (!newMessage.trim() && !imageFile) return; // Prevent sending empty messages
@@ -131,7 +135,6 @@ const MessengerPage = ({ locale }) => {
       });
 
       imageUrl = response.imageUrl;
-      setImageFile(null); // Clear the image after sending
     }
 
     if (newMessage.trim()) {
@@ -155,9 +158,10 @@ const MessengerPage = ({ locale }) => {
               : selectedThread.owner.username,
         },
       });
-
-      setNewMessage(""); // Clear the text input after sending
     }
+
+    setImageFile(null); // Clear the image after sending
+    setNewMessage(""); // Clear the text input after sending
 
     // Now, send the email notification
     let html = `
@@ -208,12 +212,13 @@ const MessengerPage = ({ locale }) => {
             : selectedThread.owner.email,
         from: `${selectedThread.thread_id}@parse.workerhomes.pl`,
         subject: `You received a new message from ${session.user.email} for ${selectedThread.thread_id}`,
-        text: imageUrl ? imageUrl + (newMessage ? `\n\n${newMessage}` : "") : newMessage,
+        text: imageUrl
+          ? imageUrl + (newMessage ? `\n\n${newMessage}` : "")
+          : newMessage,
         html: html,
       }),
     });
   };
-
 
   const handlethreadselect = (thread) => {
     setselectedThread(thread);
@@ -350,23 +355,34 @@ const MessengerPage = ({ locale }) => {
                 .map((thread) => (
                   <li
                     key={thread.thread_id}
-                    className={`list-group-item list-group-item-action border-0 rounded ${selectedThread?.thread_id === thread.thread_id ? "selected-bg" : ""
-                      }`}
+                    className={`list-group-item list-group-item-action border-0 rounded ${
+                      selectedThread?.thread_id === thread.thread_id
+                        ? "selected-bg"
+                        : ""
+                    }`}
                     style={{
                       backgroundColor:
-                        selectedThread?.thread_id === thread.thread_id ? "#f7f7f7" : "#fff",
+                        selectedThread?.thread_id === thread.thread_id
+                          ? "#f7f7f7"
+                          : "#fff",
                     }}
                     onClick={() => handlethreadselect(thread)}
                   >
                     <div className="d-flex align-items-center">
                       <div style={{ width: "100%" }}>
-                        <h4 className="mt-2 fw-500 text-wrap">{thread.dwelling_title}</h4>
+                        <h4 className="mt-2 fw-500 text-wrap">
+                          {thread.dwelling_title}
+                        </h4>
                         <div
                           className="d-flex align-items-center justify-content-between w-100"
                           style={{ width: "100%" }}
                         >
                           <strong>{thread.name}</strong>
-                          <p>{new Date(thread.lastMessageTime).toLocaleDateString()}</p>
+                          <p>
+                            {new Date(
+                              thread.lastMessageTime,
+                            ).toLocaleDateString()}
+                          </p>
                         </div>
 
                         <div className="text-muted text-wrap">
@@ -387,7 +403,6 @@ const MessengerPage = ({ locale }) => {
                 ))}
             </ul>
           </div>
-
         </div>
 
         {/* Middle Section */}
@@ -434,75 +449,92 @@ const MessengerPage = ({ locale }) => {
                 <strong>{selectedThread.name}</strong>
               </div>
 
-              <div className="p-2 mobile-only " style={{
-                borderBottom: "1px solid #E5E7EB",
-                backgroundColor: "#EFEFEF",
-                boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
-                border: "1px solid rgba(233, 233, 233, 0.1)",
-              }}>
-                {property && selectedThread.dwelling_title === property.title && (
-                  <div className="d-flex align-items-center text-start" style={{ gap: "10px", flexWrap: "wrap", position: "relative" }}>
-                    {property.image_url && (
-                      <img
-                        src={property.image_url}
-                        alt="Property Image"
-                        className="img-fluid"
+              <div
+                className="p-2 mobile-only "
+                style={{
+                  borderBottom: "1px solid #E5E7EB",
+                  backgroundColor: "#EFEFEF",
+                  boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
+                  border: "1px solid rgba(233, 233, 233, 0.1)",
+                }}
+              >
+                {property &&
+                  selectedThread.dwelling_title === property.title && (
+                    <div
+                      className="d-flex align-items-center text-start"
+                      style={{
+                        gap: "10px",
+                        flexWrap: "wrap",
+                        position: "relative",
+                      }}
+                    >
+                      {property.image_url && (
+                        <img
+                          src={property.image_url}
+                          alt="Property Image"
+                          className="img-fluid"
+                          style={{
+                            width: "80px",
+                            height: "60px",
+                            borderRadius: "8px",
+                            objectFit: "cover",
+                            boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+                            flexShrink: 0,
+                            minWidth: "80px",
+                          }}
+                        />
+                      )}
+                      <h6
+                        className="mb-0 "
                         style={{
-                          width: "80px",
-                          height: "60px",
-                          borderRadius: "8px",
-                          objectFit: "cover",
-                          boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-                          flexShrink: 0,
-                          minWidth: "80px",
-                        }}
-                      />
-                    )}
-                    <h6 className="mb-0 " style={{
-                      wordBreak: "break-word",
-                      flex: 1,
-                      whiteSpace: "normal",
-                      position: "relative",
-                      width: "80%",
-                      maxWidth: "calc(100% - 90px)",
-                      display: "-webkit-box",
-                      WebkitBoxOrient: "vertical",
-                      WebkitLineClamp: 2,
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      marginRight: "30px",
-                    }}>
-                      {property.title}
-                    </h6>
-                    <Link href={`/${locale}/listings/${selectedThread.dwelling_slug}`} style={{
-                      position: "absolute",
-                      right: "0",
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                      fontSize: "18px",
-                      color: "#333",
-                      textDecoration: "none",
-                    }}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-chevron-right"
-                        viewBox="0 0 16 16"
-                        style={{
-                          transform: "scale(1.5)",
-                          fontWeight: "bold",
+                          wordBreak: "break-word",
+                          flex: 1,
+                          whiteSpace: "normal",
+                          position: "relative",
+                          width: "80%",
+                          maxWidth: "calc(100% - 90px)",
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          WebkitLineClamp: 2,
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          marginRight: "30px",
                         }}
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M4.646 1.646a.5.5 0 0 1 .708 0L10.293 8l-5.647 5.646a.5.5 0 0 1-.708-.708l5-5a.5.5 0 0 1 0-.708l-5-5a.5.5 0 0 1 0-.708z"
-                        />
-                      </svg>
-                    </Link>
-                  </div>
-                )}
+                        {property.title}
+                      </h6>
+                      <Link
+                        href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
+                        style={{
+                          position: "absolute",
+                          right: "0",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          fontSize: "18px",
+                          color: "#333",
+                          textDecoration: "none",
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-chevron-right"
+                          viewBox="0 0 16 16"
+                          style={{
+                            transform: "scale(1.5)",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M4.646 1.646a.5.5 0 0 1 .708 0L10.293 8l-5.647 5.646a.5.5 0 0 1-.708-.708l5-5a.5.5 0 0 1 0-.708l-5-5a.5.5 0 0 1 0-.708z"
+                          />
+                        </svg>
+                      </Link>
+                    </div>
+                  )}
               </div>
 
               <div className="flex-grow-1 p-3" style={{ overflowY: "auto" }}>
@@ -678,7 +710,7 @@ const MessengerPage = ({ locale }) => {
                       position: "absolute",
                       top: "10px",
                       left: imageFile ? "10px" : "5px",
-                      right: "10px"
+                      right: "10px",
                     }}
                   />
 
@@ -874,7 +906,7 @@ const MessengerPage = ({ locale }) => {
 
           .property-image:hover {
             transform: scale(1.01);
-          } 
+          }
 
           @media (max-width: 768px) {
             /* Initially hide the middle section off-screen */
