@@ -111,12 +111,12 @@ const MessengerPage = ({ locale }) => {
 
     let imageUrl = null;
 
-    if (imageFile) {
-      // Upload the image first
+    // Send both image and text together if both are present
+    if (imageFile || newMessage.trim()) {
       const response = await functions.sendMessage({
         thread_id: selectedThread.thread_id,
-        content: "", // No text yet, only image
-        type: "image",
+        content: newMessage.trim(), // Include the text content here
+        type: imageFile ? "image_and_text" : "text", // Use a type that handles both image and text
         sender: {
           email: session.user.email,
           username: session.user.username || session.user.name,
@@ -131,33 +131,13 @@ const MessengerPage = ({ locale }) => {
               ? selectedThread.user.username
               : selectedThread.owner.username,
         },
-        imageFile,
+        imageFile: imageFile || null, // Include the image file if present
       });
 
-      imageUrl = response.imageUrl;
-    }
-
-    if (newMessage.trim()) {
-      // Send the text message separately
-      await functions.sendMessage({
-        thread_id: selectedThread.thread_id,
-        content: newMessage, // Now sending the text
-        type: "text",
-        sender: {
-          email: session.user.email,
-          username: session.user.username || session.user.name,
-        },
-        recipient: {
-          email:
-            session.user.email === selectedThread.owner.email
-              ? selectedThread.user.email
-              : selectedThread.owner.email,
-          username:
-            session.user.email === selectedThread.owner.email
-              ? selectedThread.user.username
-              : selectedThread.owner.username,
-        },
-      });
+      // If an image was uploaded, get the image URL from the response
+      if (imageFile) {
+        imageUrl = response.imageUrl;
+      }
     }
 
     setImageFile(null); // Clear the image after sending
@@ -189,13 +169,13 @@ const MessengerPage = ({ locale }) => {
     }
 
     html += `
-      <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
-        style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
-        Reply to the chat
-      </a>
-      <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
-        You can reply to this email to participate in the conversation
-      </p>
+        <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
+          style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+          Reply to the chat
+        </a>
+        <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
+          You can reply to this email to participate in the conversation
+        </p>
       </div>
     </div>
   `;
@@ -538,63 +518,94 @@ const MessengerPage = ({ locale }) => {
               </div>
 
               <div className="flex-grow-1 p-3" style={{ overflowY: "auto" }}>
-                {messages.map((chat, index) => (
-                  <div
-                    key={index}
-                    className={`mb-3 d-flex ${chat.direction === "sent" ? "justify-content-end" : "justify-content-start"}`}
-                  >
+                {messages.map((chat, index) => {
+                  let imageUrl = null;
+                  let textContent = null;
+
+                  if (chat.type === "image_and_text") {
+                    try {
+                      const parsedContent = JSON.parse(chat.message);
+                      textContent = parsedContent.text;
+                      imageUrl = parsedContent.imageUrl;
+                    } catch (error) {
+                      console.error("Error parsing message content:", error);
+                    }
+                  }
+
+                  return (
                     <div
-                      style={{
-                        maxWidth: "60%",
-                        padding: chat.type === "image" ? "0" : "10px",
-                        borderRadius: chat.type === "image" ? "0" : "10px",
-                        display: "inline-block",
-                        fontSize: "0.875rem",
-                        backgroundColor:
-                          chat.type === "image"
-                            ? "transparent"
-                            : chat.direction === "sent"
-                              ? "#d1e7ff"
-                              : "#f1f1f1",
-                        wordWrap: "break-word",
-                        overflowWrap: "break-word",
-                        whiteSpace: "pre-wrap",
-                        // textAlign: chat.direction === "sent" ? "left" : "right",
-                        textAlign: "left",
-                      }}
+                      key={index}
+                      className={`mb-3 d-flex ${chat.direction === "sent" ? "justify-content-end" : "justify-content-start"}`}
                     >
-                      {chat.type === "image" ? (
-                        <img
-                          src={chat.message}
-                          alt="Sent image"
-                          style={{
-                            maxWidth: "40%",
-                            borderRadius: "8px",
-                            cursor: "pointer",
-                            transition: "transform 0.2s",
-                            display: "block",
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            marginLeft:
-                              chat.direction === "sent" ? "auto" : "0",
-                          }}
-                          onClick={() => window.open(chat.message, "_blank")}
-                        />
-                      ) : (
-                        <p className="mb-0">{chat.message}</p>
-                      )}
                       <div
-                        className={`text-muted ml-auto ${chat.type === "image" && chat.direction !== "sent" ? "text-start" : "text-end"}`}
                         style={{
-                          fontSize: "0.75rem",
-                          width: "100%",
+                          maxWidth: "60%",
+                          padding: chat.type === "image" || chat.type === "image_and_text" ? "0" : "10px",
+                          borderRadius: chat.type === "image" || chat.type === "image_and_text" ? "0" : "10px",
+                          display: "inline-block",
+                          fontSize: "0.875rem",
+                          backgroundColor:
+                            chat.type === "image" || chat.type === "image_and_text"
+                              ? "transparent"
+                              : chat.direction === "sent"
+                                ? "#d1e7ff"
+                                : "#f1f1f1",
+                          wordWrap: "break-word",
+                          overflowWrap: "break-word",
+                          whiteSpace: "pre-wrap",
+                          textAlign: "left",
                         }}
                       >
-                        {chat.time}
+                        {/* Render image if type is "image" or "image_and_text" */}
+                        {(chat.type === "image" || chat.type === "image_and_text") && (
+                          <div style={{ display: "flex", flexDirection: "column", alignItems: chat.direction === "sent" ? "flex-end" : "flex-start" }}>
+                            <img
+                              src={chat.type === "image" ? chat.message : imageUrl}
+                              alt="Sent image"
+                              style={{
+                                maxWidth: "40%",
+                                borderRadius: "8px",
+                                cursor: "pointer",
+                                transition: "transform 0.2s",
+                                display: "block",
+                                border: "1px solid #ccc",
+                                padding: "5px",
+                                marginBottom: "10px",  // Added margin between the image and text
+                              }}
+                              onClick={() =>
+                                window.open(
+                                  chat.type === "image" ? chat.message : imageUrl,
+                                  "_blank"
+                                )
+                              }
+                            />
+
+                            {/* Render text if type is "image_and_text" */}
+                            {chat.type === "image_and_text" && (
+                              <p className="mb-0">{textContent}</p>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Render text if type is "text" */}
+                        {chat.type === "text" && (
+                          <p className="mb-0">{chat.message}</p>
+                        )}
+
+                        {/* Render timestamp */}
+                        <div
+                          className={`text-muted ml-auto ${(chat.type === "image" || chat.type === "image_and_text") && chat.direction !== "sent" ? "text-start" : "text-end"}`}
+                          style={{
+                            fontSize: "0.75rem",
+                            width: "100%",
+                          }}
+                        >
+                          {chat.time}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
 
                 <div ref={messengerData.scrollRef}></div>
               </div>

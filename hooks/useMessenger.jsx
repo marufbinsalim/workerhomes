@@ -213,6 +213,7 @@ export default function useMessenger(
   async function sendMessage(message) {
     let imageUrl = null;
 
+    // Upload image if present
     if (message.imageFile) {
       const fileExt = message.imageFile.name.split(".").pop();
       const fileName = `${Date.now()}.${fileExt}`;
@@ -227,18 +228,36 @@ export default function useMessenger(
         return { messageData: null, error };
       }
 
-      imageUrl = supabase.storage.from("chat-images").getPublicUrl(filePath)
-        .data.publicUrl;
+      imageUrl = supabase.storage.from("chat-images").getPublicUrl(filePath).data
+        .publicUrl;
     }
 
+    // Prepare the message content
+    let content = message.content; 
+    let type = "text"; 
+    
+    if (imageUrl && message.content) {
+      // If both image and text are present, combine them
+      content = JSON.stringify({
+        text: message.content,
+        imageUrl: imageUrl,
+      });
+      type = "image_and_text"; 
+    } else if (imageUrl) {
+      content = imageUrl;
+      type = "image";
+    }
+
+    // Create the new message object
     const newMessage = {
       thread_id: message.thread_id,
-      content: imageUrl || message.content,
-      type: imageUrl ? "image" : "text",
+      content: content, 
+      type: type, 
       sender: message.sender,
       recipient: message.recipient,
     };
 
+    // Save the message to the database
     const { data: messageData, error: insertError } = await supabase
       .from("messages")
       .upsert([newMessage])
@@ -249,6 +268,7 @@ export default function useMessenger(
       return { messageData, error: insertError };
     }
 
+    // Update the UI if on the messenger page
     if (page === "messenger" && selectedThread) {
       let newMessages = [
         ...messages,
@@ -260,7 +280,6 @@ export default function useMessenger(
       ];
       setMessages(newMessages);
 
-      // Update last message in the thread
       const { data: threadData, error: threadError } = await supabase
         .from("threads")
         .update({
