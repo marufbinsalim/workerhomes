@@ -175,8 +175,6 @@ const ContactForm = ({ dwelling, onSuccess }) => {
               content:
                 `Name / Company: ${formattedValues.name_or_company}` +
                 "\n" +
-                `Email: ${formattedValues.email}` +
-                "\n" +
                 `Phone: ${formattedValues.phone}` +
                 "\n" +
                 `Check-in: ${formattedValues.check_in}` +
@@ -203,8 +201,6 @@ const ContactForm = ({ dwelling, onSuccess }) => {
             thread_id: combined_id,
             content:
               `Name / Company: ${formattedValues.name_or_company}` +
-              "\n" +
-              `Email: ${formattedValues.email}` +
               "\n" +
               `Phone: ${formattedValues.phone}` +
               "\n" +
@@ -244,8 +240,6 @@ const ContactForm = ({ dwelling, onSuccess }) => {
               text:
                 `Name / Company: ${formattedValues.name_or_company}` +
                 "\n" +
-                `Email: ${formattedValues.email}` +
-                "\n" +
                 `Phone: ${formattedValues.phone}` +
                 "\n" +
                 `Check-in: ${formattedValues.check_in}` +
@@ -264,7 +258,6 @@ const ContactForm = ({ dwelling, onSuccess }) => {
 
                       <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
                        <p>Name / Company: ${formattedValues.name_or_company}</p>
-                       <p>Email: ${formattedValues.email}</p>
                         <p>Phone: ${formattedValues.phone}</p>
                         <p>Check-in: ${formattedValues.check_in}</p>
                         <p>Check-out: ${formattedValues.check_out}</p>
