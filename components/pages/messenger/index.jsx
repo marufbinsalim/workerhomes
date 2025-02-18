@@ -143,12 +143,23 @@ const MessengerPage = ({ locale }) => {
     setImageFile(null); // Clear the image after sending
     setNewMessage(""); // Clear the text input after sending
 
+    let polishListingTitle = selectedThread.dwelling_titles.find(
+      (title) => title.locale === "pl",
+    )?.value;
+
+    let polishSlug = selectedThread.dwelling_slugs.find(
+      (slug) => slug.locale === "pl",
+    )?.value;
+
+    let span = `<span style="color: #ff5a5f; font-weight: bold;"><a href="https://workerhomes-two.vercel.app/pl/listings/${polishSlug}">${polishListingTitle}</a></span>`;
+
     // Now, send the email notification
     let html = `
     <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
+      <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=256&q=75" alt="Workerhomes" style="max-width: 200px; margin: 0 auto; display: block; margin-bottom: 20px;"/>
       <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
         <p style="font-size: 14px; color: #777;">
-          You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span>
+          You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from ${span}
         </p>
   `;
 
