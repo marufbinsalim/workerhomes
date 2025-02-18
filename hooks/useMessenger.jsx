@@ -90,7 +90,6 @@ export default function useMessenger(
     seenThread();
   }, [selectedThread]);
 
- 
   useEffect(() => {
     const messagesListener = supabase
       .channel("public:messages")
@@ -299,6 +298,7 @@ export default function useMessenger(
 
     // save the count in local storage
     localStorage.setItem("unreadThreads", unreadThreads.length);
+    window.dispatchEvent(new Event("storage"));
     console.log("unread threads", unreadThreads);
   }, [threads]);
 

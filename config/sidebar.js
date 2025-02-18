@@ -1,4 +1,7 @@
-const adminSidebarContent = (locale, t) => [
+import { useState } from "react";
+import { useEffect } from "react";
+
+const adminSidebarContent = (locale, t, unreadCount) => [
   {
     id: 1,
     icon: "mage:dashboard-minus",
@@ -118,9 +121,7 @@ const adminSidebarContent = (locale, t) => [
   {
     id: 100,
     icon: "ph:chat",
-    name:
-      t("messenger") +
-      ` (${localStorage.getItem("unreadThreads") ? localStorage.getItem("unreadThreads") : "0"})`,
+    name: t("messenger") + ` (${unreadCount})`,
     routePath: `/${locale}/dashboard/messenger`,
   },
 ];
@@ -133,12 +134,24 @@ const hasPermission = (permissions, action, path, userRoles) => {
 };
 
 export const filterSidebarContent = (locale, t, permissions, userRoles) => {
+  const [unreadCount, setUnreadCount] = useState(0);
+
   const checkPermission = (routePath) => {
     const action = "read";
     return hasPermission(permissions, action, routePath, userRoles);
   };
 
-  const filteredContent = adminSidebarContent(locale, t)
+  useEffect(() => {
+    const handleStorage = () => {
+      console.log("Storage event");
+      setUnreadCount(localStorage.getItem("unreadThreads") || 0);
+    };
+
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
+
+  const filteredContent = adminSidebarContent(locale, t, unreadCount)
     .map((item) => {
       if (!checkPermission(item.routePath)) {
         return null;

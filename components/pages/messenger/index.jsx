@@ -228,7 +228,7 @@ const MessengerPage = ({ locale }) => {
       middleSectionRef.current.classList.add("show-middle");
       setTimeout(() => {
         middleSectionRef?.current?.scrollIntoView({
-          behavior: "smooth",
+          // behavior: "smooth",
           block: "start",
         });
       }, 200);
