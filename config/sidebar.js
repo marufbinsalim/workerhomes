@@ -1,5 +1,12 @@
+import useMessenger from "@/hooks/useMessenger";
+import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 import { useEffect } from "react";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+);
 
 const adminSidebarContent = (locale, t, unreadCount) => [
   {
@@ -133,23 +140,98 @@ const hasPermission = (permissions, action, path, userRoles) => {
   );
 };
 
-export const filterSidebarContent = (locale, t, permissions, userRoles) => {
-  const [unreadCount, setUnreadCount] = useState(0);
-
+export const filterSidebarContent = (
+  locale,
+  t,
+  permissions,
+  userRoles,
+  session,
+) => {
   const checkPermission = (routePath) => {
     const action = "read";
     return hasPermission(permissions, action, routePath, userRoles);
   };
 
-  useEffect(() => {
-    const handleStorage = () => {
-      console.log("Storage event");
-      setUnreadCount(localStorage.getItem("unreadThreads") || 0);
-    };
+  const [unreadCount, setUnreadCount] = useState(0);
+  const [threads, setThreads] = useState([]);
 
-    window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
+  function generateThreadType(thread) {
+    if (!thread) return null;
+
+    return {
+      thread_id: thread.thread_id,
+      user: thread.user,
+      owner: thread.owner,
+      name:
+        session?.user.email === thread.user.email
+          ? thread.owner.username
+          : thread.user.username,
+      lastMessage: thread.last_message?.content,
+      lastMessageSender: thread.last_message?.sender?.email,
+      lastMessageTime: thread.last_message?.timestamp,
+      status:
+        session?.user.email === thread?.last_message?.sender?.email
+          ? thread.seen
+            ? "seen by recipient"
+            : "sent"
+          : thread.seen
+            ? "seen by you"
+            : "unread",
+    };
+  }
+
+  useEffect(() => {
+    const threadsListener = supabase
+      .channel("public:threads")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "threads" },
+        (payload) => {
+          let currentThreads = [...threads];
+          console.log("Change received!", payload);
+          if (payload.eventType === "INSERT") {
+            currentThreads = [payload.new, ...currentThreads];
+          } else if (payload.eventType === "UPDATE") {
+            const index = currentThreads.findIndex(
+              (thread) => thread.thread_id === payload.new.thread_id,
+            );
+            currentThreads[index] = payload.new;
+          } else if (payload.eventType === "DELETE") {
+            currentThreads = currentThreads.filter(
+              (thread) => thread.thread_id !== payload.old.thread_id,
+            );
+          }
+          setThreads(currentThreads);
+        },
+      )
+      .subscribe();
+
+    return () => {
+      threadsListener.unsubscribe();
+    };
+  }, [threads]);
+
+  useEffect(() => {
+    async function fetchThreads() {
+      const { data } = await supabase.from("threads").select("*");
+      setThreads(data);
+    }
+    fetchThreads();
   }, []);
+
+  useEffect(() => {
+    if (threads.length > 0) {
+      const unread = threads.map(generateThreadType).filter((thread) => {
+        return (
+          thread.status === "unread" &&
+          thread.lastMessageSender !== session?.user.email &&
+          (session?.user.email === thread.user.email ||
+            session?.user.email === thread.owner.email)
+        );
+      });
+      setUnreadCount(unread?.length || 0);
+    }
+  }, [threads]);
 
   const filteredContent = adminSidebarContent(locale, t, unreadCount)
     .map((item) => {

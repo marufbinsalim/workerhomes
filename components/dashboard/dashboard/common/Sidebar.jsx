@@ -31,6 +31,7 @@ const Sidebar = () => {
     t,
     permissions,
     data?.role,
+    data,
   );
   const [open, setOpen] = useState(isMessengerPage ? 0 : 1);
 
