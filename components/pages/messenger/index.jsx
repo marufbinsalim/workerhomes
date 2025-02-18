@@ -111,12 +111,12 @@ const MessengerPage = ({ locale }) => {
 
     let imageUrl = null;
 
-    if (imageFile) {
-      // Upload the image first
+    // Send both image and text together if both are present
+    if (imageFile || newMessage.trim()) {
       const response = await functions.sendMessage({
         thread_id: selectedThread.thread_id,
-        content: "", // No text yet, only image
-        type: "image",
+        content: newMessage.trim(), // Include the text content here
+        type: imageFile ? "image_and_text" : "text", // Use a type that handles both image and text
         sender: {
           email: session.user.email,
           username: session.user.username || session.user.name,
@@ -131,33 +131,13 @@ const MessengerPage = ({ locale }) => {
               ? selectedThread.user.username
               : selectedThread.owner.username,
         },
-        imageFile,
+        imageFile: imageFile || null, // Include the image file if present
       });
 
-      imageUrl = response.imageUrl;
-    }
-
-    if (newMessage.trim()) {
-      // Send the text message separately
-      await functions.sendMessage({
-        thread_id: selectedThread.thread_id,
-        content: newMessage, // Now sending the text
-        type: "text",
-        sender: {
-          email: session.user.email,
-          username: session.user.username || session.user.name,
-        },
-        recipient: {
-          email:
-            session.user.email === selectedThread.owner.email
-              ? selectedThread.user.email
-              : selectedThread.owner.email,
-          username:
-            session.user.email === selectedThread.owner.email
-              ? selectedThread.user.username
-              : selectedThread.owner.username,
-        },
-      });
+      // If an image was uploaded, get the image URL from the response
+      if (imageFile) {
+        imageUrl = response.imageUrl;
+      }
     }
 
     setImageFile(null); // Clear the image after sending
@@ -168,7 +148,7 @@ const MessengerPage = ({ locale }) => {
     <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
       <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
         <p style="font-size: 14px; color: #777;">
-          You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${session.user.email}</span>
+          You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> 
         </p>
   `;
 
@@ -189,13 +169,13 @@ const MessengerPage = ({ locale }) => {
     }
 
     html += `
-      <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
-        style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
-        Reply to the chat
-      </a>
-      <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
-        You can reply to this email to participate in the conversation
-      </p>
+        <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
+          style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+          Reply to the chat
+        </a>
+        <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
+          You can reply to this email to participate in the conversation
+        </p>
       </div>
     </div>
   `;
@@ -352,55 +332,70 @@ const MessengerPage = ({ locale }) => {
                   (a, b) =>
                     new Date(b.lastMessageTime) - new Date(a.lastMessageTime),
                 )
-                .map((thread) => (
-                  <li
-                    key={thread.thread_id}
-                    className={`list-group-item list-group-item-action border-0 rounded ${
-                      selectedThread?.thread_id === thread.thread_id
-                        ? "selected-bg"
-                        : ""
-                    }`}
-                    style={{
-                      backgroundColor:
-                        selectedThread?.thread_id === thread.thread_id
-                          ? "#f7f7f7"
-                          : "#fff",
-                    }}
-                    onClick={() => handlethreadselect(thread)}
-                  >
-                    <div className="d-flex align-items-center">
-                      <div style={{ width: "100%" }}>
-                        <h4 className="mt-2 fw-500 text-wrap">
-                          {thread.dwelling_title}
-                        </h4>
-                        <div
-                          className="d-flex align-items-center justify-content-between w-100"
-                          style={{ width: "100%" }}
-                        >
-                          <strong>{thread.name}</strong>
-                          <p>
-                            {new Date(
-                              thread.lastMessageTime,
-                            ).toLocaleDateString()}
-                          </p>
-                        </div>
-
-                        <div className="text-muted text-wrap">
-                          {thread.lastMessage.includes("https")
-                            ? "Attachment"
-                            : thread.lastMessage.slice(0, 40) + "..."}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div
-                      className="mt-auto text-end text-muted"
-                      style={{ fontSize: "0.75rem" }}
+                .map((thread) => {
+                  const isUnread = !thread.seen;
+                  return (
+                    <li
+                      key={thread.thread_id}
+                      className={`list-group-item list-group-item-action border-0 rounded ${selectedThread?.thread_id === thread.thread_id
+                          ? "selected-bg"
+                          : ""
+                        }`}
+                      style={{
+                        backgroundColor:
+                          selectedThread?.thread_id === thread.thread_id
+                            ? "#f7f7f7"
+                            : "#fff",
+                      }}
+                      onClick={() => handlethreadselect(thread)}
                     >
-                      <p>{thread.status}</p>
-                    </div>
-                  </li>
-                ))}
+                      <div className="d-flex align-items-center">
+                        <div style={{ width: "100%" }}>
+                          <div className="d-flex align-items-center justify-content-between w-100">
+                            <h5
+                              className="mt-2 fw-500 text-truncate"
+                              style={{ maxWidth: "70%", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
+                              title={thread.dwelling_title}
+                            >
+                              {thread.dwelling_title}
+                            </h5>
+                            <p>
+                              {new Date(thread.lastMessageTime).toLocaleDateString()}
+                            </p>
+                          </div>
+                          <div style={{ width: "100%" }}>
+                            <strong>{thread.name}</strong>
+                          </div>
+                          <div className="text-muted text-wrap">
+                            {thread.lastMessage.includes("https") ? "Attachment" : thread.lastMessage.slice(0, 40) + "..."}
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div
+                        className="mt-auto text-end "
+                        style={{ fontSize: "0.75rem" }}
+                      >
+                        {isUnread ? (
+                          <span
+                            style={{
+                              width: "8px",
+                              height: "8px",
+                              backgroundColor: "blue",
+                              borderRadius: "50%",
+                              display: "inline-block",
+                            }}
+                          ></span>
+                        ) : (
+                          <p className="mb-0 text-muted" style={{ fontSize: "0.75rem" }}>
+                            {thread.status}
+                          </p>
+                        )}
+                      </div>
+                    </li>
+                  )
+                })}
             </ul>
           </div>
         </div>
@@ -538,63 +533,139 @@ const MessengerPage = ({ locale }) => {
               </div>
 
               <div className="flex-grow-1 p-3" style={{ overflowY: "auto" }}>
-                {messages.map((chat, index) => (
-                  <div
-                    key={index}
-                    className={`mb-3 d-flex ${chat.direction === "sent" ? "justify-content-end" : "justify-content-start"}`}
-                  >
+                {messages.map((chat, index) => {
+                  let imageUrl = null;
+                  let textContent = null;
+
+                  if (chat.type === "image_and_text") {
+                    try {
+                      const parsedContent = JSON.parse(chat.message);
+                      textContent = parsedContent.text;
+                      imageUrl = parsedContent.imageUrl;
+                    } catch (error) {
+                      console.error("Error parsing message content:", error);
+                    }
+                  }
+
+                  return (
                     <div
-                      style={{
-                        maxWidth: "60%",
-                        padding: chat.type === "image" ? "0" : "10px",
-                        borderRadius: chat.type === "image" ? "0" : "10px",
-                        display: "inline-block",
-                        fontSize: "0.875rem",
-                        backgroundColor:
-                          chat.type === "image"
-                            ? "transparent"
-                            : chat.direction === "sent"
-                              ? "#d1e7ff"
-                              : "#f1f1f1",
-                        wordWrap: "break-word",
-                        overflowWrap: "break-word",
-                        whiteSpace: "pre-wrap",
-                        // textAlign: chat.direction === "sent" ? "left" : "right",
-                        textAlign: "left",
-                      }}
+                      key={index}
+                      className={`mb-3 d-flex ${chat.direction === "sent" ? "justify-content-end" : "justify-content-start"}`}
                     >
-                      {chat.type === "image" ? (
-                        <img
-                          src={chat.message}
-                          alt="Sent image"
-                          style={{
-                            maxWidth: "40%",
-                            borderRadius: "8px",
-                            cursor: "pointer",
-                            transition: "transform 0.2s",
-                            display: "block",
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            marginLeft:
-                              chat.direction === "sent" ? "auto" : "0",
-                          }}
-                          onClick={() => window.open(chat.message, "_blank")}
-                        />
-                      ) : (
-                        <p className="mb-0">{chat.message}</p>
-                      )}
                       <div
-                        className={`text-muted ml-auto ${chat.type === "image" && chat.direction !== "sent" ? "text-start" : "text-end"}`}
                         style={{
-                          fontSize: "0.75rem",
-                          width: "100%",
+                          maxWidth: "60%",
+                          padding: chat.type === "image" || chat.type === "image_and_text" ? "0" : "0",
+                          borderRadius: chat.type === "image" || chat.type === "image_and_text" ? "0" : "10px",
+                          display: "inline-block",
+                          fontSize: "0.875rem",
+                          backgroundColor: "transparent", 
+                          wordWrap: "break-word",
+                          overflowWrap: "break-word",
+                          whiteSpace: "pre-wrap",
+                          textAlign: "left",
                         }}
                       >
-                        {chat.time}
+                        {/* Render image if type is "image" or "image_and_text" */}
+                        {(chat.type === "image" || chat.type === "image_and_text") && (
+                          <div style={{ display: "flex", flexDirection: "column", alignItems: chat.direction === "sent" ? "flex-end" : "flex-start" }}>
+                            <img
+                              src={chat.type === "image" ? chat.message : imageUrl}
+                              alt="Sent image"
+                              style={{
+                                maxWidth: "40%",
+                                borderRadius: "8px",
+                                cursor: "pointer",
+                                transition: "transform 0.2s",
+                                display: "block",
+                                border: "1px solid #ccc",
+                                padding: "5px",
+                                marginBottom: "5px",
+                              }}
+                              onClick={() =>
+                                window.open(
+                                  chat.type === "image" ? chat.message : imageUrl,
+                                  "_blank"
+                                )
+                              }
+                            />
+
+                            {/* Render text if type is "image_and_text" */}
+                            {chat.type === "image_and_text" && (
+                              <div
+                                style={{
+                                  backgroundColor: chat.direction === "sent" ? "#d1e7ff" : "#f1f1f1", 
+                                  padding: "10px",
+                                  borderRadius: "10px", 
+                                  width: "max-content", 
+                                  maxWidth: "100%", 
+                                }}
+                              >
+                                <p className="mb-0">{textContent}</p>
+                                {/* Render timestamp */}
+                                <div
+                                  className={`text-muted ml-auto ${chat.direction !== "sent" ? "text-start" : "text-end"}`}
+                                  style={{
+                                    fontSize: "0.75rem",
+                                    width: "100%", 
+                                  }}
+                                >
+                                  {chat.time}
+                                </div>
+                              </div>
+                            )}
+
+                            {chat.type === "image" && (
+                              <div
+                                style={{
+                                  
+                                  borderRadius: "10px",
+                                  width: "max-content",
+                                  maxWidth: "100%",
+                                }}
+                              >
+                                {/* Render timestamp */}
+                                <div
+                                  className={`text-muted ml-auto ${chat.direction !== "sent" ? "text-start" : "text-end"}`}
+                                  style={{
+                                    fontSize: "0.75rem",
+                                    width: "100%",
+                                  }}
+                                >
+                                  {chat.time}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Render text if type is "text" */}
+                        {chat.type === "text" && (
+                          <div
+                            style={{
+                              backgroundColor: chat.direction === "sent" ? "#d1e7ff" : "#f1f1f1", 
+                              padding: "10px", 
+                              borderRadius: "10px", 
+                              width: "max-content", 
+                              maxWidth: "100%",  
+                            }}
+                          >
+                            <p className="mb-0">{chat.message}</p>
+                            <div
+                              className={`text-muted ml-auto ${chat.direction !== "sent" ? "text-start" : "text-end"}`}
+                              style={{
+                                fontSize: "0.75rem",
+                                width: "100%", 
+                              }}
+                            >
+                              {chat.time}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
 
                 <div ref={messengerData.scrollRef}></div>
               </div>
