@@ -16,6 +16,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import { api } from "@/config";
 import useFetch from "@/hooks/useFetch";
+import { useEffect } from "react";
 // import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const ContactForm = ({ dwelling, onSuccess }) => {
@@ -30,29 +31,25 @@ const ContactForm = ({ dwelling, onSuccess }) => {
   const t = useTranslations("listing-contact");
 
   let email = session ? session.user.email : "";
-  let phone = "";
-  if (session) {
-    const {
-      data,
-      isLoading: isProfileLoading,
-      reFetch,
-    } = useFetch({
-      keys: ["me"],
-      url: "/api/users/me",
-      query: {
-        populate: ["address", "subscriptions"],
-      },
-    });
-    console.log("data", data);
-    phone = data?.phone || "";
-  }
 
-  console.log("email", email);
-  console.log("phone", phone);
+  const { data, reFetch } = useFetch(
+    session
+      ? {
+          keys: ["me"],
+          url: "/api/users/me",
+          query: {
+            populate: ["address", "subscriptions"],
+          },
+        }
+      : {
+          keys: [""],
+        },
+  );
+  let phone = data?.phone;
 
   return (
     <Formik
-      initialValues={initDwellingContact({ phone: phone, email: email })}
+      initialValues={initDwellingContact({ email: email, phone: phone })}
       enableReinitialize={true}
       validationSchema={dwellingContactSchema()}
       onSubmit={async (values, { resetForm }) => {
