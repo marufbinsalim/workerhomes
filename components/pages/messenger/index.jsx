@@ -148,7 +148,7 @@ const MessengerPage = ({ locale }) => {
     <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
       <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
         <p style="font-size: 14px; color: #777;">
-          You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${session.user.email}</span>
+          You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> 
         </p>
   `;
 
@@ -332,55 +332,70 @@ const MessengerPage = ({ locale }) => {
                   (a, b) =>
                     new Date(b.lastMessageTime) - new Date(a.lastMessageTime),
                 )
-                .map((thread) => (
-                  <li
-                    key={thread.thread_id}
-                    className={`list-group-item list-group-item-action border-0 rounded ${
-                      selectedThread?.thread_id === thread.thread_id
-                        ? "selected-bg"
-                        : ""
-                    }`}
-                    style={{
-                      backgroundColor:
-                        selectedThread?.thread_id === thread.thread_id
-                          ? "#f7f7f7"
-                          : "#fff",
-                    }}
-                    onClick={() => handlethreadselect(thread)}
-                  >
-                    <div className="d-flex align-items-center">
-                      <div style={{ width: "100%" }}>
-                        <h4 className="mt-2 fw-500 text-wrap">
-                          {thread.dwelling_title}
-                        </h4>
-                        <div
-                          className="d-flex align-items-center justify-content-between w-100"
-                          style={{ width: "100%" }}
-                        >
-                          <strong>{thread.name}</strong>
-                          <p>
-                            {new Date(
-                              thread.lastMessageTime,
-                            ).toLocaleDateString()}
-                          </p>
-                        </div>
-
-                        <div className="text-muted text-wrap">
-                          {thread.lastMessage.includes("https")
-                            ? "Attachment"
-                            : thread.lastMessage.slice(0, 40) + "..."}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div
-                      className="mt-auto text-end text-muted"
-                      style={{ fontSize: "0.75rem" }}
+                .map((thread) => {
+                  const isUnread = !thread.seen;
+                  return (
+                    <li
+                      key={thread.thread_id}
+                      className={`list-group-item list-group-item-action border-0 rounded ${selectedThread?.thread_id === thread.thread_id
+                          ? "selected-bg"
+                          : ""
+                        }`}
+                      style={{
+                        backgroundColor:
+                          selectedThread?.thread_id === thread.thread_id
+                            ? "#f7f7f7"
+                            : "#fff",
+                      }}
+                      onClick={() => handlethreadselect(thread)}
                     >
-                      <p>{thread.status}</p>
-                    </div>
-                  </li>
-                ))}
+                      <div className="d-flex align-items-center">
+                        <div style={{ width: "100%" }}>
+                          <div className="d-flex align-items-center justify-content-between w-100">
+                            <h5
+                              className="mt-2 fw-500 text-truncate"
+                              style={{ maxWidth: "70%", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
+                              title={thread.dwelling_title}
+                            >
+                              {thread.dwelling_title}
+                            </h5>
+                            <p>
+                              {new Date(thread.lastMessageTime).toLocaleDateString()}
+                            </p>
+                          </div>
+                          <div style={{ width: "100%" }}>
+                            <strong>{thread.name}</strong>
+                          </div>
+                          <div className="text-muted text-wrap">
+                            {thread.lastMessage.includes("https") ? "Attachment" : thread.lastMessage.slice(0, 40) + "..."}
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div
+                        className="mt-auto text-end "
+                        style={{ fontSize: "0.75rem" }}
+                      >
+                        {isUnread ? (
+                          <span
+                            style={{
+                              width: "8px",
+                              height: "8px",
+                              backgroundColor: "green",
+                              borderRadius: "50%",
+                              display: "inline-block",
+                            }}
+                          ></span>
+                        ) : (
+                          <p className="mb-0 text-muted" style={{ fontSize: "0.75rem" }}>
+                            {thread.status}
+                          </p>
+                        )}
+                      </div>
+                    </li>
+                  )
+                })}
             </ul>
           </div>
         </div>

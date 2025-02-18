@@ -235,7 +235,7 @@ export default function useMessenger(
     // Prepare the message content
     let content = message.content; 
     let type = "text"; 
-    
+
     if (imageUrl && message.content) {
       // If both image and text are present, combine them
       content = JSON.stringify({
