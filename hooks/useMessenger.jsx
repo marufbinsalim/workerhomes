@@ -184,7 +184,7 @@ export default function useMessenger(
           });
 
           let currentThread = data.find((thread) => {
-            return thread.thread_id === threadID;
+            return thread.thread_id === selectedThread?.thread_id;
           });
 
           if (!isPhone) {
