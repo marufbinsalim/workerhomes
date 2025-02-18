@@ -382,7 +382,7 @@ const MessengerPage = ({ locale }) => {
                             style={{
                               width: "8px",
                               height: "8px",
-                              backgroundColor: "green",
+                              backgroundColor: "blue",
                               borderRadius: "50%",
                               display: "inline-block",
                             }}
