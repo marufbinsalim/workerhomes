@@ -148,7 +148,7 @@ const MessengerPage = ({ locale }) => {
     <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
       <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
         <p style="font-size: 14px; color: #777;">
-          You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> 
+          You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span>
         </p>
   `;
 
@@ -337,10 +337,11 @@ const MessengerPage = ({ locale }) => {
                   return (
                     <li
                       key={thread.thread_id}
-                      className={`list-group-item list-group-item-action border-0 rounded ${selectedThread?.thread_id === thread.thread_id
+                      className={`list-group-item list-group-item-action border-0 rounded ${
+                        selectedThread?.thread_id === thread.thread_id
                           ? "selected-bg"
                           : ""
-                        }`}
+                      }`}
                       style={{
                         backgroundColor:
                           selectedThread?.thread_id === thread.thread_id
@@ -354,23 +355,31 @@ const MessengerPage = ({ locale }) => {
                           <div className="d-flex align-items-center justify-content-between w-100">
                             <h5
                               className="mt-2 fw-500 text-truncate"
-                              style={{ maxWidth: "70%", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
+                              style={{
+                                maxWidth: "70%",
+                                whiteSpace: "nowrap",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                              }}
                               title={thread.dwelling_title}
                             >
                               {thread.dwelling_title}
                             </h5>
                             <p>
-                              {new Date(thread.lastMessageTime).toLocaleDateString()}
+                              {new Date(
+                                thread.lastMessageTime,
+                              ).toLocaleDateString()}
                             </p>
                           </div>
                           <div style={{ width: "100%" }}>
                             <strong>{thread.name}</strong>
                           </div>
                           <div className="text-muted text-wrap">
-                            {thread.lastMessage.includes("https") ? "Attachment" : thread.lastMessage.slice(0, 40) + "..."}
+                            {thread?.lastMessage?.includes("https")
+                              ? "Attachment"
+                              : thread.lastMessage.slice(0, 40) + "..."}
                           </div>
                         </div>
-
                       </div>
 
                       <div
@@ -388,13 +397,16 @@ const MessengerPage = ({ locale }) => {
                             }}
                           ></span>
                         ) : (
-                          <p className="mb-0 text-muted" style={{ fontSize: "0.75rem" }}>
+                          <p
+                            className="mb-0 text-muted"
+                            style={{ fontSize: "0.75rem" }}
+                          >
                             {thread.status}
                           </p>
                         )}
                       </div>
                     </li>
-                  )
+                  );
                 })}
             </ul>
           </div>
@@ -555,11 +567,19 @@ const MessengerPage = ({ locale }) => {
                       <div
                         style={{
                           maxWidth: "60%",
-                          padding: chat.type === "image" || chat.type === "image_and_text" ? "0" : "0",
-                          borderRadius: chat.type === "image" || chat.type === "image_and_text" ? "0" : "10px",
+                          padding:
+                            chat.type === "image" ||
+                            chat.type === "image_and_text"
+                              ? "0"
+                              : "0",
+                          borderRadius:
+                            chat.type === "image" ||
+                            chat.type === "image_and_text"
+                              ? "0"
+                              : "10px",
                           display: "inline-block",
                           fontSize: "0.875rem",
-                          backgroundColor: "transparent", 
+                          backgroundColor: "transparent",
                           wordWrap: "break-word",
                           overflowWrap: "break-word",
                           whiteSpace: "pre-wrap",
@@ -567,10 +587,22 @@ const MessengerPage = ({ locale }) => {
                         }}
                       >
                         {/* Render image if type is "image" or "image_and_text" */}
-                        {(chat.type === "image" || chat.type === "image_and_text") && (
-                          <div style={{ display: "flex", flexDirection: "column", alignItems: chat.direction === "sent" ? "flex-end" : "flex-start" }}>
+                        {(chat.type === "image" ||
+                          chat.type === "image_and_text") && (
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems:
+                                chat.direction === "sent"
+                                  ? "flex-end"
+                                  : "flex-start",
+                            }}
+                          >
                             <img
-                              src={chat.type === "image" ? chat.message : imageUrl}
+                              src={
+                                chat.type === "image" ? chat.message : imageUrl
+                              }
                               alt="Sent image"
                               style={{
                                 maxWidth: "40%",
@@ -584,8 +616,10 @@ const MessengerPage = ({ locale }) => {
                               }}
                               onClick={() =>
                                 window.open(
-                                  chat.type === "image" ? chat.message : imageUrl,
-                                  "_blank"
+                                  chat.type === "image"
+                                    ? chat.message
+                                    : imageUrl,
+                                  "_blank",
                                 )
                               }
                             />
@@ -594,11 +628,14 @@ const MessengerPage = ({ locale }) => {
                             {chat.type === "image_and_text" && (
                               <div
                                 style={{
-                                  backgroundColor: chat.direction === "sent" ? "#d1e7ff" : "#f1f1f1", 
+                                  backgroundColor:
+                                    chat.direction === "sent"
+                                      ? "#d1e7ff"
+                                      : "#f1f1f1",
                                   padding: "10px",
-                                  borderRadius: "10px", 
-                                  width: "max-content", 
-                                  maxWidth: "100%", 
+                                  borderRadius: "10px",
+                                  width: "max-content",
+                                  maxWidth: "100%",
                                 }}
                               >
                                 <p className="mb-0">{textContent}</p>
@@ -607,7 +644,7 @@ const MessengerPage = ({ locale }) => {
                                   className={`text-muted ml-auto ${chat.direction !== "sent" ? "text-start" : "text-end"}`}
                                   style={{
                                     fontSize: "0.75rem",
-                                    width: "100%", 
+                                    width: "100%",
                                   }}
                                 >
                                   {chat.time}
@@ -618,7 +655,6 @@ const MessengerPage = ({ locale }) => {
                             {chat.type === "image" && (
                               <div
                                 style={{
-                                  
                                   borderRadius: "10px",
                                   width: "max-content",
                                   maxWidth: "100%",
@@ -643,11 +679,14 @@ const MessengerPage = ({ locale }) => {
                         {chat.type === "text" && (
                           <div
                             style={{
-                              backgroundColor: chat.direction === "sent" ? "#d1e7ff" : "#f1f1f1", 
-                              padding: "10px", 
-                              borderRadius: "10px", 
-                              width: "max-content", 
-                              maxWidth: "100%",  
+                              backgroundColor:
+                                chat.direction === "sent"
+                                  ? "#d1e7ff"
+                                  : "#f1f1f1",
+                              padding: "10px",
+                              borderRadius: "10px",
+                              width: "max-content",
+                              maxWidth: "100%",
                             }}
                           >
                             <p className="mb-0">{chat.message}</p>
@@ -655,7 +694,7 @@ const MessengerPage = ({ locale }) => {
                               className={`text-muted ml-auto ${chat.direction !== "sent" ? "text-start" : "text-end"}`}
                               style={{
                                 fontSize: "0.75rem",
-                                width: "100%", 
+                                width: "100%",
                               }}
                             >
                               {chat.time}
@@ -771,7 +810,7 @@ const MessengerPage = ({ locale }) => {
                     placeholder={imageFile ? "" : t("write")}
                     value={newMessage}
                     onChange={(e) => {
-                      setNewMessage(e.target.value);
+                      setNewMessage(e.target.value.slice(0, 800));
                     }}
                     style={{
                       width: "100%",
@@ -812,7 +851,7 @@ const MessengerPage = ({ locale }) => {
                         width: "max",
                       }}
                     >
-                      {newMessage.length}/2000
+                      {newMessage.length}/800
                     </div>
 
                     <button

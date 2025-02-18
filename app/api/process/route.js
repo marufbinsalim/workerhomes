@@ -115,6 +115,7 @@ export async function POST(req) {
           recipient: recipient,
           timestamp: timestamp,
         },
+        seen: false,
       }) // update last message
       .eq("thread_id", thread.thread_id);
 

@@ -100,7 +100,9 @@ export default function useMessenger(
           let currentMessages = [...messages];
           console.log("Change received!", payload);
           if (payload.eventType === "INSERT") {
-            if (payload.new.thread_id === selectedThread?.thread_id) {
+            console.log("new message", payload.new);
+            console.log("selected thread", selectedThread);
+            if (payload.new.thread_id === selectedThread.thread_id) {
               currentMessages = [payload.new, ...currentMessages];
               currentMessages = currentMessages.sort((a, b) => {
                 return new Date(a.timestamp) - new Date(b.timestamp);
