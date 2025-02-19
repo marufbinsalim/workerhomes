@@ -152,7 +152,7 @@ export async function POST(req) {
       <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">You have recieved a new message in Workerhomes for ${span}</h2>
 
       <!-- Reply Name -->
-      <p style="font-size: 16px; font-weight: bold; color: #555;"> ${newMessage.sender.name} </p>
+      <p style="font-size: 16px; font-weight: bold; color: #555;"> ${newMessage.sender.username || "Guest"}</p>
 
       <!-- Message Content -->
       <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
