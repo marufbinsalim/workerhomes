@@ -248,10 +248,26 @@ export default function useMessenger(
         .data.publicUrl;
     }
 
+    // Prepare the message content
+    let content = message.content;
+    let type = "text";
+
+    if (imageUrl && message.content) {
+      // If both image and text are present, combine them
+      content = JSON.stringify({
+        text: message.content,
+        imageUrl: imageUrl,
+      });
+      type = "image_and_text";
+    } else if (imageUrl) {
+      content = imageUrl;
+      type = "image";
+    }
+
     const newMessage = {
       thread_id: message.thread_id,
-      content: imageUrl || message.content,
-      type: imageUrl ? "image" : "text",
+      content: content,
+      type: type,
       sender: message.sender,
       recipient: message.recipient,
     };
