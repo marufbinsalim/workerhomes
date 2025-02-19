@@ -145,7 +145,7 @@ export async function POST(req) {
       <!-- Logo -->
       <div style="text-align: center; margin-bottom: 20px;">
         <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=256&q=75"
-          alt="Workerhomes" style="max-width: 200px; display: block; margin: 0 auto;"/>
+          alt="Workerhomes" style="max-width: 200px; display: block; margin: 0;"/>
       </div>
 
       <!-- Title (Listing Name) -->
@@ -186,13 +186,13 @@ export async function POST(req) {
           <!-- Right side: Social Media Icons -->
           <div style="display: flex; margin-left: auto; gap: 10px;">
             <a href="https://facebook.com" style="text-decoration: none; margin-left: 10px;">
-              <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" width="30"/>
+              <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" width="20"/>
             </a>
             <a href="https://instagram.com" style="text-decoration: none; margin-left: 10px;">
-              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="30"/>
+              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="20"/>
             </a>
             <a href="https://x.com" style="text-decoration: none; margin-left: 10px;">
-              <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X" width="30"/>
+              <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X" width="20"/>
             </a>
           </div>
 
