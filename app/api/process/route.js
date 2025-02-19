@@ -212,8 +212,8 @@ export async function POST(req) {
         name: "Workerhomes",
       },
       subject: email.subject.includes("Re:")
-        ? email.subject.substring(4)
-        : email.subject,
+        ? email.subject
+        : "Re: " + email.subject,
       text: email.content,
       html: html,
     };

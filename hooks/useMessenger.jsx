@@ -96,7 +96,7 @@ export default function useMessenger(
         (payload) => {
           let currentMessages = [...messages];
           if (payload.eventType === "INSERT") {
-            if (payload.new.thread_id === selectedThread.thread_id) {
+            if (payload.new.thread_id === selectedThread?.thread_id) {
               currentMessages = [payload.new, ...currentMessages];
               currentMessages = currentMessages.sort((a, b) => {
                 return new Date(a.timestamp) - new Date(b.timestamp);
