@@ -21,6 +21,8 @@ export async function POST(req) {
     const parsed = await simpleParser(rawEmail);
     let emailBody = parsed.text || "";
 
+    console.log("Parsed Email:", parsed);
+
     if (parsed.subject.includes("Re:")) {
       let endIndex = emailBody.indexOf("On ");
       emailBody = emailBody.substring(0, endIndex);
