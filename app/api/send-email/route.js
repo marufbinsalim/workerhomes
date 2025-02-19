@@ -43,7 +43,7 @@ export async function POST(req) {
 
     // Validate that the sender email is from an allowed domain
     const allowedDomain = "parse.workerhomes.pl"; // Change this to your verified domain
-    if (!from.endsWith(`@${allowedDomain}`)) {
+    if (!from.email.endsWith(`@${allowedDomain}`)) {
       return NextResponse.json(
         { error: "Unauthorized sender email" },
         { status: 403 },

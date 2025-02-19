@@ -134,6 +134,28 @@ const ContactForm = ({ dwelling, onSuccess }) => {
           let combined_id = `${allIds.join("-")}`;
           combined_id += "-" + randomString(10);
 
+          let polishTitle = [
+            {
+              locale: fetchedDwelling.locale,
+              value: fetchedDwelling.title,
+            },
+            ...fetchedDwelling.localizations.map((l) => ({
+              locale: l.locale,
+              value: l.title,
+            })),
+          ].find((l) => l.locale === "pl")?.value;
+
+          let polishSlug = [
+            {
+              locale: fetchedDwelling.locale,
+              value: fetchedDwelling.slug,
+            },
+            ...fetchedDwelling.localizations.map((l) => ({
+              locale: l.locale,
+              value: l.slug,
+            })),
+          ].find((l) => l.locale === "pl")?.value;
+
           const thread = {
             thread_id: combined_id,
             dwelling_title: [
@@ -226,6 +248,9 @@ const ContactForm = ({ dwelling, onSuccess }) => {
           };
 
           console.log("message", message);
+
+          let span = `<span style="color: #ff5a5f; font-weight: bold;"><a href="https://workerhomes-two.vercel.app/pl/listings/${polishSlug}">${polishTitle}</a></span>`;
+
           await functions.sendMessage(message);
 
           await fetch("/api/send-email", {
@@ -235,8 +260,11 @@ const ContactForm = ({ dwelling, onSuccess }) => {
             },
             body: JSON.stringify({
               to: fetchedDwelling.owner.email,
-              from: `${combined_id}@parse.workerhomes.pl`,
-              subject: `You received a new message from ${session ? session.user.email : formattedValues.email}`,
+              from: {
+                email: `${combined_id}@parse.workerhomes.pl`,
+                name: "Workerhomes",
+              },
+              subject: `You received a new message from Workerhomes for "${polishTitle}"`,
               text:
                 `Name / Company: ${formattedValues.name_or_company}` +
                 "\n" +
@@ -254,7 +282,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
                     <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
 
                       <p style="font-size: 14px; color: #777;">
-                       You have recieved a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <span style="color: #ff5a5f; font-weight: bold;">${session ? session.user.email : formattedValues.email}</span>
+                       You have recieved a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> for ${span}
 
                       <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
                        <p>Name / Company: ${formattedValues.name_or_company}</p>

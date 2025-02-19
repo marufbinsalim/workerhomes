@@ -201,8 +201,11 @@ const MessengerPage = ({ locale }) => {
           session.user.email === selectedThread.owner.email
             ? selectedThread.user.email
             : selectedThread.owner.email,
-        from: `${selectedThread.thread_id}@parse.workerhomes.pl`,
-        subject: `You received a new message from ${session.user.email} for ${selectedThread.thread_id}`,
+        from: {
+          email: `${selectedThread.thread_id}@parse.workerhomes.pl`,
+          name: "Workerhomes",
+        },
+        subject: `You received a new message in Workerhomes for "${polishListingTitle}"`,
         text: imageUrl
           ? imageUrl + (newMessage ? `\n\n${newMessage}` : "")
           : newMessage,

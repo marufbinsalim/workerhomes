@@ -91,6 +91,7 @@ export default function useMessenger(
   }, [selectedThread]);
 
   useEffect(() => {
+    if (page !== "messenger") return;
     const messagesListener = supabase
       .channel("public:messages")
       .on(
@@ -119,7 +120,7 @@ export default function useMessenger(
     return () => {
       messagesListener.unsubscribe();
     };
-  }, [messages, selectedThread]);
+  }, [messages, selectedThread, page]);
 
   useEffect(() => {
     console.log("selectedThread", selectedThread);
