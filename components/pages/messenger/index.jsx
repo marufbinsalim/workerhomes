@@ -21,7 +21,6 @@ const MessengerPage = ({ locale }) => {
 
   const searchParams = useSearchParams();
   useEffect(() => {
-    console.log("router.searchParams", searchParams);
     let thread_id = searchParams.get("thread") || null;
     setThreadId(thread_id);
   }, [searchParams]);
@@ -41,24 +40,18 @@ const MessengerPage = ({ locale }) => {
     searchQuery,
     isPhoneScreen,
     session,
-    locale
+    locale,
   );
-
-  useEffect(() => {
-    console.log("messengerData", messengerData);
-  }, [messengerData]);
 
   const threads = messengerData?.threads || [];
   let selectedThread = messengerData?.selectedThread || null;
   let setselectedThread = messengerData?.setselectedThread || null;
   let messages = messengerData?.messages || [];
   messages = messages.sort(
-    (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
+    (a, b) => new Date(a.timestamp) - new Date(b.timestamp),
   );
   const property = messengerData?.property || null;
   const propertyLoading = messengerData?.propertyLoading || false;
-
-  console.log("messengerData", messengerData);
 
   const [newMessage, setNewMessage] = useState("");
   const [isMobileView, setIsMobileView] = useState(false);
@@ -144,21 +137,21 @@ const MessengerPage = ({ locale }) => {
     setNewMessage(""); // Clear the text input after sending
 
     let polishListingTitle = selectedThread.dwelling_titles.find(
-      (title) => title.locale === "pl"
+      (title) => title.locale === "pl",
     )?.value;
 
     let polishSlug = selectedThread.dwelling_slugs.find(
-      (slug) => slug.locale === "pl"
+      (slug) => slug.locale === "pl",
     )?.value;
 
-    let span = `<a href="https://workerhomes-two.vercel.app/pl/listings/${polishSlug}" 
+    let span = `<a href="https://workerhomes-two.vercel.app/pl/listings/${polishSlug}"
   style="color: #ff5a5f; font-weight: bold; text-decoration: none;">${polishListingTitle}</a>`;
 
     let html = `
   <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 40px 20px; text-align: center;">
-    <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 8px; 
+    <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: left;">
-      
+
       <!-- Logo -->
       <div style="text-align: center; margin-bottom: 20px;">
         <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=256&q=75"
@@ -194,18 +187,18 @@ const MessengerPage = ({ locale }) => {
       <!-- Button -->
       <div style="text-align: center;">
         <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${
-      selectedThread.thread_id
-    }"
+          selectedThread.thread_id
+        }"
           style="display: inline-block; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px 20px;
           border-radius: 5px; font-size: 16px; margin-top: 20px;">
           Reply to the chat
         </a>
       </div>
-      
+
       <!-- Footer -->
       <div style="border-top: 1px solid #ddd; margin-top: 30px; padding-top: 20px; text-align: center;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-          
+
           <!-- Left side: Logo + Company Address -->
           <div style="text-align: left;">
             <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=128&q=75"
@@ -225,7 +218,7 @@ const MessengerPage = ({ locale }) => {
               <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X" width="30"/>
             </a>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -394,7 +387,7 @@ const MessengerPage = ({ locale }) => {
               {[...threads]
                 .toSorted(
                   (a, b) =>
-                    new Date(b.lastMessageTime) - new Date(a.lastMessageTime)
+                    new Date(b.lastMessageTime) - new Date(a.lastMessageTime),
                 )
                 .map((thread) => {
                   const isUnread = !thread.seen;
@@ -431,7 +424,7 @@ const MessengerPage = ({ locale }) => {
                             </h5>
                             <p>
                               {new Date(
-                                thread.lastMessageTime
+                                thread.lastMessageTime,
                               ).toLocaleDateString()}
                             </p>
                           </div>
@@ -689,7 +682,7 @@ const MessengerPage = ({ locale }) => {
                                   chat.type === "image"
                                     ? chat.message
                                     : imageUrl,
-                                  "_blank"
+                                  "_blank",
                                 )
                               }
                             />
@@ -820,7 +813,7 @@ const MessengerPage = ({ locale }) => {
                       width="30"
                       height="30"
                       fill="currentColor"
-                      class="bi bi-card-image"
+                      className="bi bi-card-image"
                       viewBox="0 0 16 16"
                     >
                       <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
@@ -1013,6 +1006,7 @@ const MessengerPage = ({ locale }) => {
                   {property?.data?.prices?.length > 0 &&
                     property?.data?.prices.map((p, idx) => (
                       <PricingCard
+                        key={idx}
                         adults={p.adult}
                         amountNote={p.note}
                         guests={p.guest}

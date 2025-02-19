@@ -188,7 +188,6 @@ export const filterSidebarContent = (
         { event: "*", schema: "public", table: "threads" },
         (payload) => {
           let currentThreads = [...threads];
-          console.log("Change received!", payload);
           if (payload.eventType === "INSERT") {
             currentThreads = [payload.new, ...currentThreads];
           } else if (payload.eventType === "UPDATE") {

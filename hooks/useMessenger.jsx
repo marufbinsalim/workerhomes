@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { api } from "@/config";
 import { useRef } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
@@ -30,8 +31,6 @@ export default function useMessenger(
       .from("threads")
       .update({ seen: true })
       .eq("thread_id", threadID);
-
-    console.log(data, error);
   }
 
   useEffect(() => {
@@ -48,7 +47,6 @@ export default function useMessenger(
         { event: "*", schema: "public", table: "threads" },
         (payload) => {
           let currentThreads = [...threads];
-          console.log("Change received!", payload);
           if (payload.eventType === "INSERT") {
             currentThreads = [payload.new, ...currentThreads];
           } else if (payload.eventType === "UPDATE") {
@@ -75,8 +73,6 @@ export default function useMessenger(
     if (!selectedThread) return;
 
     async function seenThread() {
-      console.log(selectedThread);
-
       let isRecipient =
         session?.user.email !== selectedThread.lastMessageSender;
 
@@ -99,10 +95,7 @@ export default function useMessenger(
         { event: "INSERT", schema: "public", table: "messages" },
         (payload) => {
           let currentMessages = [...messages];
-          console.log("Change received!", payload);
           if (payload.eventType === "INSERT") {
-            console.log("new message", payload.new);
-            console.log("selected thread", selectedThread);
             if (payload.new.thread_id === selectedThread.thread_id) {
               currentMessages = [payload.new, ...currentMessages];
               currentMessages = currentMessages.sort((a, b) => {
@@ -123,10 +116,8 @@ export default function useMessenger(
   }, [messages, selectedThread, page]);
 
   useEffect(() => {
-    console.log("selectedThread", selectedThread);
     if (page === "messenger" && selectedThread) {
       const fetchMessages = async () => {
-        console.log("fetching messages");
         const { data, error } = await supabase
           .from("messages")
           .select("*")
@@ -159,7 +150,6 @@ export default function useMessenger(
     };
 
     if (page === "messenger" && selectedThread) {
-      console.log("fetching property", selectedThread);
       fetchListingBySlug(
         selectedThread.dwelling_slugs?.find((slug) => slug.locale === locale)
           ?.value,
@@ -185,7 +175,7 @@ export default function useMessenger(
           });
 
           let currentThread = data.find((thread) => {
-            return thread.thread_id === selectedThread?.thread_id;
+            return thread.thread_id === threadID;
           });
 
           if (!isPhone) {
@@ -203,7 +193,22 @@ export default function useMessenger(
       };
       fetchThreads();
     }
-  }, [page, session, isPhone, refreshThreads]);
+  }, [page, session, isPhone, refreshThreads, threadID]);
+
+  // on change of selected thread, change the search param
+
+  const searchParams = useSearchParams();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (selectedThread) {
+      const params = new URLSearchParams(searchParams);
+      params.set("thread", selectedThread.thread_id);
+
+      router.push(`?${params.toString()}`, { scroll: false });
+    }
+  }, [selectedThread, router, searchParams]);
 
   async function createThread(thread) {
     const { data, error } = await supabase
