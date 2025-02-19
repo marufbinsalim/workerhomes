@@ -181,7 +181,9 @@ const ContactForm = ({ dwelling, onSuccess }) => {
             ],
             user: {
               email: session ? session.user.email : formattedValues.email,
-              username: session ? session.user.name : formattedValues.name,
+              username: session
+                ? session.user.name
+                : formattedValues.name_or_company,
             },
             owner: {
               email: fetchedDwelling.owner.email,

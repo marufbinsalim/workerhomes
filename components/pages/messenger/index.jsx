@@ -885,7 +885,7 @@ const MessengerPage = ({ locale }) => {
                     placeholder={imageFile ? "" : t("write")}
                     value={newMessage}
                     onChange={(e) => {
-                      setNewMessage(e.target.value.slice(0, 800));
+                      setNewMessage(e.target.value.slice(0, 4096));
                     }}
                     style={{
                       width: "100%",
@@ -926,7 +926,7 @@ const MessengerPage = ({ locale }) => {
                         width: "max",
                       }}
                     >
-                      {newMessage.length}/800
+                      {newMessage.length}/4096
                     </div>
 
                     <button
