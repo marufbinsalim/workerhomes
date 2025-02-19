@@ -159,10 +159,10 @@ const MessengerPage = ({ locale }) => {
       </div>
 
       <!-- Title (Listing Name) -->
-      <h2 style="color: #333; font-size: 18px; font-weight: bold; margin-bottom: 15px;">${span}</h2>
+      <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">You have recieved a new message in Workerhomes for ${span}</h2>
 
       <!-- Reply Name -->
-      <p style="font-size: 16px; font-weight: bold; color: #555;">John Doe</p>
+      <p style="font-size: 16px; font-weight: bold; color: #555;"> ${selectedThread.name} </p>
 
       <!-- Message Content -->
       <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
@@ -197,7 +197,7 @@ const MessengerPage = ({ locale }) => {
 
       <!-- Footer -->
       <div style="border-top: 1px solid #ddd; margin-top: 30px; padding-top: 20px; text-align: center;">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; width: 600px;">
 
           <!-- Left side: Logo + Company Address -->
           <div style="text-align: left;">
@@ -207,14 +207,14 @@ const MessengerPage = ({ locale }) => {
           </div>
 
           <!-- Right side: Social Media Icons -->
-          <div style="display: flex; gap: 10px;">
-            <a href="https://facebook.com" style="text-decoration: none;">
+          <div style="display: flex; margin-left: auto; gap: 10px;">
+            <a href="https://facebook.com" style="text-decoration: none; margin-left: 10px;">
               <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" width="30"/>
             </a>
-            <a href="https://instagram.com" style="text-decoration: none;">
+            <a href="https://instagram.com" style="text-decoration: none; margin-left: 10px;">
               <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="30"/>
             </a>
-            <a href="https://x.com" style="text-decoration: none;">
+            <a href="https://x.com" style="text-decoration: none; margin-left: 10px;">
               <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X" width="30"/>
             </a>
           </div>
