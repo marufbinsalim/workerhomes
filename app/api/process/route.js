@@ -166,7 +166,10 @@ export async function POST(req) {
         email.from === thread.user.email
           ? thread.owner.email
           : thread.user.email,
-      from: `${thread.thread_id}@parse.workerhomes.pl`,
+      from: {
+        email: `${thread.thread_id}@parse.workerhomes.pl`,
+        name: "Workerhomes",
+      },
       subject: email.subject.includes("Re:")
         ? email.subject.substring(4)
         : email.subject,
