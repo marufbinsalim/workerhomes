@@ -167,12 +167,22 @@ export default function useMessenger(
         if (data) {
           setThreads(data);
 
-          let firstThread = data.find((thread) => {
+          let userThreads = data.filter((thread) => {
             return (
               thread.user.email === session?.user.email ||
               thread.owner.email === session?.user.email
             );
           });
+
+          // get the first thread where the last message was sent the most recently
+
+          let firstThread =
+            userThreads.toSorted((a, b) => {
+              return (
+                new Date(b.last_message.timestamp) -
+                new Date(a.last_message.timestamp)
+              );
+            })[0] || null;
 
           let currentThread = data.find((thread) => {
             return thread.thread_id === threadID;
