@@ -41,7 +41,7 @@ const MessengerPage = ({ locale }) => {
     searchQuery,
     isPhoneScreen,
     session,
-    locale,
+    locale
   );
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const MessengerPage = ({ locale }) => {
   let setselectedThread = messengerData?.setselectedThread || null;
   let messages = messengerData?.messages || [];
   messages = messages.sort(
-    (a, b) => new Date(a.timestamp) - new Date(b.timestamp),
+    (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
   );
   const property = messengerData?.property || null;
   const propertyLoading = messengerData?.propertyLoading || false;
@@ -144,53 +144,95 @@ const MessengerPage = ({ locale }) => {
     setNewMessage(""); // Clear the text input after sending
 
     let polishListingTitle = selectedThread.dwelling_titles.find(
-      (title) => title.locale === "pl",
+      (title) => title.locale === "pl"
     )?.value;
 
     let polishSlug = selectedThread.dwelling_slugs.find(
-      (slug) => slug.locale === "pl",
+      (slug) => slug.locale === "pl"
     )?.value;
 
-    let span = `<span style="color: #ff5a5f; font-weight: bold;"><a href="https://workerhomes-two.vercel.app/pl/listings/${polishSlug}">${polishListingTitle}</a></span>`;
+    let span = `<a href="https://workerhomes-two.vercel.app/pl/listings/${polishSlug}" 
+  style="color: #ff5a5f; font-weight: bold; text-decoration: none;">${polishListingTitle}</a>`;
 
-    // Now, send the email notification
     let html = `
-    <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
-      <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=256&q=75" alt="Workerhomes" style="max-width: 200px; margin: 0 auto; display: block; margin-bottom: 20px;"/>
-      <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-        <p style="font-size: 14px; color: #777;">
-          You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from ${span}
-        </p>
-  `;
-
-    if (imageUrl) {
-      html += `
-      <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
-        <img src="${imageUrl}" alt="Sent image" style="max-width: 40%; border-radius: 8px; cursor: pointer; display: block; border: 1px solid #ccc; padding: 5px;"/>
+  <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 40px 20px; text-align: center;">
+    <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 8px; 
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: left;">
+      
+      <!-- Logo -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=256&q=75"
+          alt="Workerhomes" style="max-width: 200px; display: block; margin: 0 auto;"/>
       </div>
-    `;
-    }
 
-    if (newMessage.trim()) {
-      html += `
-      <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
-        <p>${newMessage}</p>
+      <!-- Title (Listing Name) -->
+      <h2 style="color: #333; font-size: 18px; font-weight: bold; margin-bottom: 15px;">${span}</h2>
+
+      <!-- Reply Name -->
+      <p style="font-size: 16px; font-weight: bold; color: #555;">John Doe</p>
+
+      <!-- Message Content -->
+      <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+        ${
+          newMessage
+            ? `<p style="margin: 0; font-size: 14px; color: #333;">${newMessage}</p>`
+            : ""
+        }
       </div>
-    `;
-    }
 
-    html += `
-        <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
-          style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+      <!-- Image (if any) -->
+      ${
+        imageUrl
+          ? `
+        <div style="margin-bottom: 20px; text-align: center;">
+          <img src="${imageUrl}" alt="Sent image" style="max-width: 40%; border-radius: 8px; border: 1px solid #ccc; padding: 5px;"/>
+        </div>
+      `
+          : ""
+      }
+
+      <!-- Button -->
+      <div style="text-align: center;">
+        <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${
+      selectedThread.thread_id
+    }"
+          style="display: inline-block; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px 20px;
+          border-radius: 5px; font-size: 16px; margin-top: 20px;">
           Reply to the chat
         </a>
-        <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
-          You can reply to this email to participate in the conversation
-        </p>
+      </div>
+      
+      <!-- Footer -->
+      <div style="border-top: 1px solid #ddd; margin-top: 30px; padding-top: 20px; text-align: center;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+          
+          <!-- Left side: Logo + Company Address -->
+          <div style="text-align: left;">
+            <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=128&q=75"
+              alt="Workerhomes" style="max-width: 100px;"/>
+            <p style="font-size: 12px; color: #888; margin-top: 5px;">123 Placeholder Street, City, Country</p>
+          </div>
+
+          <!-- Right side: Social Media Icons -->
+          <div style="display: flex; gap: 10px;">
+            <a href="https://facebook.com" style="text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" width="30"/>
+            </a>
+            <a href="https://instagram.com" style="text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="30"/>
+            </a>
+            <a href="https://x.com" style="text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X" width="30"/>
+            </a>
+          </div>
+          
+        </div>
       </div>
     </div>
-  `;
+  </div>
+`;
 
+    // Sending the email
     await fetch("/api/send-email", {
       method: "POST",
       headers: {
@@ -247,7 +289,9 @@ const MessengerPage = ({ locale }) => {
       >
         {/* Left Section */}
         <div
-          className={`col-12 overflow-hidden col-md-3 bg-white d-flex flex-column ${isMobileView ? "d-none " : ""}`}
+          className={`col-12 overflow-hidden col-md-3 bg-white d-flex flex-column ${
+            isMobileView ? "d-none " : ""
+          }`}
           style={{ height: "calc(100vh - 90px)" }}
         >
           <div
@@ -268,7 +312,9 @@ const MessengerPage = ({ locale }) => {
                 type="text"
                 placeholder="Search"
                 aria-label="Search"
-                className={`search-input ${isSearchExpanded ? "show-searchbar" : "hide-searchbar"}`}
+                className={`search-input ${
+                  isSearchExpanded ? "show-searchbar" : "hide-searchbar"
+                }`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -308,7 +354,9 @@ const MessengerPage = ({ locale }) => {
 
           <div className="d-flex mb-3 pl-10">
             <button
-              className={`btn px-6 py-1 ${selectedFilter === "all" ? "btn-black" : "btn-white"}`}
+              className={`btn px-6 py-1 ${
+                selectedFilter === "all" ? "btn-black" : "btn-white"
+              }`}
               onClick={() => setSelectedFilter("all")}
               style={{
                 backgroundColor: selectedFilter === "all" ? "black" : "white",
@@ -322,7 +370,9 @@ const MessengerPage = ({ locale }) => {
               {t("all")}
             </button>
             <button
-              className={`btn px-3 py-1 ${selectedFilter === "unread" ? "btn-black" : "btn-white"}`}
+              className={`btn px-3 py-1 ${
+                selectedFilter === "unread" ? "btn-black" : "btn-white"
+              }`}
               onClick={() => setSelectedFilter("unread")}
               style={{
                 backgroundColor:
@@ -344,7 +394,7 @@ const MessengerPage = ({ locale }) => {
               {[...threads]
                 .toSorted(
                   (a, b) =>
-                    new Date(b.lastMessageTime) - new Date(a.lastMessageTime),
+                    new Date(b.lastMessageTime) - new Date(a.lastMessageTime)
                 )
                 .map((thread) => {
                   const isUnread = !thread.seen;
@@ -381,7 +431,7 @@ const MessengerPage = ({ locale }) => {
                             </h5>
                             <p>
                               {new Date(
-                                thread.lastMessageTime,
+                                thread.lastMessageTime
                               ).toLocaleDateString()}
                             </p>
                           </div>
@@ -429,7 +479,9 @@ const MessengerPage = ({ locale }) => {
         {/* Middle Section */}
         <div
           ref={middleSectionRef || null}
-          className={`col-12 col-md-6 d-flex flex-column ${isMobileView || selectedThread ? "" : "d-none"}`}
+          className={`col-12 col-md-6 d-flex flex-column ${
+            isMobileView || selectedThread ? "" : "d-none"
+          }`}
           style={{
             opacity: isMobileView || selectedThread ? 1 : 0,
             borderLeft: ".5px solid #E5E7EB",
@@ -576,7 +628,11 @@ const MessengerPage = ({ locale }) => {
                   return (
                     <div
                       key={index}
-                      className={`mb-3 d-flex ${chat.direction === "sent" ? "justify-content-end" : "justify-content-start"}`}
+                      className={`mb-3 d-flex ${
+                        chat.direction === "sent"
+                          ? "justify-content-end"
+                          : "justify-content-start"
+                      }`}
                     >
                       <div
                         style={{
@@ -633,7 +689,7 @@ const MessengerPage = ({ locale }) => {
                                   chat.type === "image"
                                     ? chat.message
                                     : imageUrl,
-                                  "_blank",
+                                  "_blank"
                                 )
                               }
                             />
@@ -655,7 +711,11 @@ const MessengerPage = ({ locale }) => {
                                 <p className="mb-0">{textContent}</p>
                                 {/* Render timestamp */}
                                 <div
-                                  className={`text-muted ml-auto ${chat.direction !== "sent" ? "text-start" : "text-end"}`}
+                                  className={`text-muted ml-auto ${
+                                    chat.direction !== "sent"
+                                      ? "text-start"
+                                      : "text-end"
+                                  }`}
                                   style={{
                                     fontSize: "0.75rem",
                                     width: "100%",
@@ -676,7 +736,11 @@ const MessengerPage = ({ locale }) => {
                               >
                                 {/* Render timestamp */}
                                 <div
-                                  className={`text-muted ml-auto ${chat.direction !== "sent" ? "text-start" : "text-end"}`}
+                                  className={`text-muted ml-auto ${
+                                    chat.direction !== "sent"
+                                      ? "text-start"
+                                      : "text-end"
+                                  }`}
                                   style={{
                                     fontSize: "0.75rem",
                                     width: "100%",
@@ -705,7 +769,11 @@ const MessengerPage = ({ locale }) => {
                           >
                             <p className="mb-0">{chat.message}</p>
                             <div
-                              className={`text-muted ml-auto ${chat.direction !== "sent" ? "text-start" : "text-end"}`}
+                              className={`text-muted ml-auto ${
+                                chat.direction !== "sent"
+                                  ? "text-start"
+                                  : "text-end"
+                              }`}
                               style={{
                                 fontSize: "0.75rem",
                                 width: "100%",
