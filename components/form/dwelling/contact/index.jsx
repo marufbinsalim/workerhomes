@@ -270,7 +270,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
             <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">You have recieved a new message in Workerhomes for ${span}</h2>
 
             <!-- Reply Name -->
-            <p style="font-size: 16px; font-weight: bold; color: #555;"> ${session ? session.user.name : "Guest"} </p>
+            <p style="font-size: 16px; font-weight: bold; color: #555;"> ${session ? session.user.name : formattedValues.name_or_company}</p>
 
             <!-- Message Content -->
             <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
