@@ -251,6 +251,74 @@ const ContactForm = ({ dwelling, onSuccess }) => {
 
           let span = `<span style="color: #ff5a5f; font-weight: bold;"><a href="https://workerhomes-two.vercel.app/pl/listings/${polishSlug}">${polishTitle}</a></span>`;
 
+          let html = `
+        <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 40px 20px; text-align: center;">
+          <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: left;">
+
+            <!-- Logo -->
+            <div style="text-align: center; margin-bottom: 20px;">
+              <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=256&q=75"
+                alt="Workerhomes" style="max-width: 200px; display: block; margin: 0 auto;"/>
+            </div>
+
+            <!-- Title (Listing Name) -->
+            <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">You have recieved a new message in Workerhomes for ${span}</h2>
+
+            <!-- Reply Name -->
+            <p style="font-size: 16px; font-weight: bold; color: #555;"> ${session ? session.user.name : "Guest"} </p>
+
+            <!-- Message Content -->
+            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+              <p>Name / Company: ${formattedValues.name_or_company}</p>
+              <p>Phone: ${formattedValues.phone}</p>
+              <p>Check-in: ${formattedValues.check_in}</p>
+              <p>Check-out: ${formattedValues.check_out}</p>
+              <p>Guests: ${formattedValues.guests}</p>
+              <p>Additional information: ${formattedValues.additional_information}</p>
+            </div>
+
+
+            <!-- Button -->
+            <div style="text-align: center;">
+              <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${
+                thread.thread_id
+              }"
+                style="display: inline-block; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px 20px;
+                border-radius: 5px; font-size: 16px; margin-top: 20px;">
+                Reply to the chat
+              </a>
+            </div>
+
+            <!-- Footer -->
+            <div style="border-top: 1px solid #ddd; margin-top: 30px; padding-top: 20px; text-align: center;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; width: 600px;">
+
+                <!-- Left side: Logo + Company Address -->
+                <div style="text-align: left;">
+                  <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=128&q=75"
+                    alt="Workerhomes" style="max-width: 100px;"/>
+                  <p style="font-size: 12px; color: #888; margin-top: 5px;">123 Placeholder Street, City, Country</p>
+                </div>
+
+                <!-- Right side: Social Media Icons -->
+                <div style="display: flex; margin-left: auto; gap: 10px;">
+                  <a href="https://facebook.com" style="text-decoration: none; margin-left: 10px;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" width="30"/>
+                  </a>
+                  <a href="https://instagram.com" style="text-decoration: none; margin-left: 10px;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="30"/>
+                  </a>
+                  <a href="https://x.com" style="text-decoration: none; margin-left: 10px;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X" width="30"/>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
           await functions.sendMessage(message);
 
           await fetch("/api/send-email", {
@@ -277,33 +345,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
                 `Guests: ${formattedValues.guests}` +
                 "\n" +
                 `Additional information: ${formattedValues.additional_information}`,
-              html: `
-                  <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
-                    <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-
-                      <p style="font-size: 14px; color: #777;">
-                       You have recieved a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> for ${span}
-
-                      <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
-                       <p>Name / Company: ${formattedValues.name_or_company}</p>
-                        <p>Phone: ${formattedValues.phone}</p>
-                        <p>Check-in: ${formattedValues.check_in}</p>
-                        <p>Check-out: ${formattedValues.check_out}</p>
-                        <p>Guests: ${formattedValues.guests}</p>
-                        <p>Additional information: ${formattedValues.additional_information}</p>
-                      </div>
-
-                      <a href="https://workerhomes-two.vercel.app/pl/dashboard/messenger?thread=${thread.thread_id}"
-                      style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
-                        Reply to the chat
-                      </a>
-
-                      <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
-                        You can reply to this email to participate in the conversation
-                      </p>
-                    </div>
-                  </div>
-                `,
+              html: html,
             }),
           });
 
