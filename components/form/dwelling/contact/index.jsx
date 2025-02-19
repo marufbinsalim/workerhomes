@@ -181,7 +181,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
             ],
             user: {
               email: session ? session.user.email : formattedValues.email,
-              username: session ? session.user.name : "Guest",
+              username: session ? session.user.name : formattedValues.name,
             },
             owner: {
               email: fetchedDwelling.owner.email,
@@ -192,7 +192,9 @@ const ContactForm = ({ dwelling, onSuccess }) => {
               type: "text",
               sender: {
                 email: session ? session.user.email : formattedValues.email,
-                username: session ? session.user.name : "Guest",
+                username: session
+                  ? session.user.name
+                  : formattedValues.name_or_company,
               },
               content:
                 `Name / Company: ${formattedValues.name_or_company}` +
