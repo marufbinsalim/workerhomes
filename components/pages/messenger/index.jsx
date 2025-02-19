@@ -240,7 +240,7 @@ const MessengerPage = ({ locale }) => {
           email: `${selectedThread.thread_id}@parse.workerhomes.pl`,
           name: "Workerhomes",
         },
-        subject: `You received a new message in Workerhomes for "${polishListingTitle}"`,
+        subject: `RE: You received a new message from Workerhomes for "${polishListingTitle}"`,
         text: imageUrl
           ? imageUrl + (newMessage ? `\n\n${newMessage}` : "")
           : newMessage,
