@@ -144,52 +144,83 @@ const MessengerPage = ({ locale }) => {
     setNewMessage(""); // Clear the text input after sending
 
     let polishListingTitle = selectedThread.dwelling_titles.find(
-      (title) => title.locale === "pl",
+      (title) => title.locale === "pl"
     )?.value;
 
     let polishSlug = selectedThread.dwelling_slugs.find(
-      (slug) => slug.locale === "pl",
+      (slug) => slug.locale === "pl"
     )?.value;
 
-    let span = `<span style="color: #ff5a5f; font-weight: bold;"><a href="https://workerhomes-two.vercel.app/pl/listings/${polishSlug}">${polishListingTitle}</a></span>`;
+    let span = `<a href="https://workerhomes-two.vercel.app/pl/listings/${polishSlug}" style="color: #ff5a5f; font-weight: bold; text-decoration: none;">${polishListingTitle}</a>`;
 
-    // Now, send the email notification
+    let userName = "John Doe"; // Dummy name for now
+
     let html = `
-    <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px;">
-      <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=256&q=75" alt="Workerhomes" style="max-width: 200px; margin: 0 auto; display: block; margin-bottom: 20px;"/>
-      <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-        <p style="font-size: 14px; color: #777;">
-          You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from ${span}
-        </p>
-  `;
+  <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 40px 0; text-align: center;">
+    <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin: auto;">
 
-    if (imageUrl) {
-      html += `
+      <!-- Logo -->
+      <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=256&q=75" 
+        alt="Workerhomes" 
+        style="max-width: 150px; display: block; margin: 0 auto 20px;"/>
+
+      <!-- Listing Title -->
+      <h2 style="color: #333; font-size: 20px; margin-bottom: 15px;">${span}</h2>
+
+      <!-- User Reply -->
+      <p style="font-size: 14px; color: #777;">
+        You have received a new message in <span style="color: #ff5a5f; font-weight: bold;">Workerhomes</span> from <strong>${userName}</strong>
+      </p>
+
+      ${imageUrl ? `
       <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
         <img src="${imageUrl}" alt="Sent image" style="max-width: 40%; border-radius: 8px; cursor: pointer; display: block; border: 1px solid #ccc; padding: 5px;"/>
-      </div>
-    `;
-    }
+      </div>` : ""}
 
-    if (newMessage.trim()) {
-      html += `
+      ${newMessage.trim() ? `
       <div style="margin-top: 15px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
         <p>${newMessage}</p>
-      </div>
-    `;
-    }
+      </div>` : ""}
 
-    html += `
-        <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
-          style="display: block; text-align: center; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
-          Reply to the chat
-        </a>
-        <p style="font-size: 14px; color: #888; text-align: left; margin-top: 15px;">
-          You can reply to this email to participate in the conversation
-        </p>
+      <!-- Reply Button -->
+      <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id}"
+        style="display: inline-block; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+        Reply to the chat
+      </a>
+
+      <p style="font-size: 14px; color: #888; text-align: center; margin-top: 15px;">
+        You can reply to this email to participate in the conversation
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div style="max-width: 600px; margin: auto; margin-top: 20px; text-align: left; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        
+        <!-- Footer Logo -->
+        <div>
+          <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=256&q=75" 
+            alt="Workerhomes" 
+            style="max-width: 100px;"/>
+          <p style="font-size: 12px; color: #777; margin-top: 5px;">Company Address Here</p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div style="display: flex; gap: 10px;">
+          <a href="#" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: #3b5998; border-radius: 50%; text-decoration: none;">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 20px;"/>
+          </a>
+          <a href="#" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: #e1306c; border-radius: 50%; text-decoration: none;">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" style="width: 20px;"/>
+          </a>
+          <a href="#" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: #000000; border-radius: 50%; text-decoration: none;">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X" style="width: 20px;"/>
+          </a>
+        </div>
       </div>
     </div>
-  `;
+  </div>
+`;
 
     await fetch("/api/send-email", {
       method: "POST",
@@ -209,6 +240,7 @@ const MessengerPage = ({ locale }) => {
         html: html,
       }),
     });
+
   };
 
   const handlethreadselect = (thread) => {
