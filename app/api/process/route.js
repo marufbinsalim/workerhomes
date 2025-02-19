@@ -163,7 +163,7 @@ export async function POST(req) {
 
       <!-- Button -->
       <div style="text-align: center;">
-        <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${
+        <a href="https://workerhomes-two.vercel.app/pl/dashboard/messenger?thread=${
           newMessage.thread_id
         }"
           style="display: inline-block; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px 20px;
