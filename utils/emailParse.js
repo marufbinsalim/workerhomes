@@ -2032,8 +2032,8 @@ var EmailParser = (function (t) {
 
 function extractRelevantText(input) {
   // Define patterns for different types of test cases
-  const outlookPattern = /(.+?)\n\nGesendet von Outlook für Android/;
-  const gmailPattern = /(.+?)\n\n.*? schrieb am/;
+  const outlookPattern = /(.+?)\n+Gesendet von Outlook für Android/;
+  const gmailPattern = /(.+?)\n+.*? schrieb am/;
 
   // Try matching Outlook pattern
   let match = input.match(outlookPattern);
