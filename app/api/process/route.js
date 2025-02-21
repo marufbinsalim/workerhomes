@@ -219,7 +219,7 @@ export async function POST(req) {
       headers: {
         "Message-ID": `<${email.thread_id}@workerhomes.pl>`,
         "In-Reply-To": `<${email.thread_id}@workerhomes.pl>`,
-        References: `<${email.thread}@workerhomes.pl>`,
+        References: `<${email.thread_id}@workerhomes.pl>`,
       },
     };
 
