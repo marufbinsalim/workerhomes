@@ -217,8 +217,8 @@ export async function POST(req) {
       text: email.content,
       html: html,
       headers: {
-        "Message-ID": `<${email.thread}@workerhomes.pl>`,
-        "In-Reply-To": `<${email.thread}@workerhomes.pl>`,
+        "Message-ID": `<${email.thread_id}@workerhomes.pl>`,
+        "In-Reply-To": `<${email.thread_id}@workerhomes.pl>`,
         References: `<${email.thread}@workerhomes.pl>`,
       },
     };
