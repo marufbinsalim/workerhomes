@@ -29,7 +29,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export async function POST(req) {
   try {
-    const { to, from, subject, text, html } = await req.json();
+    const { to, from, subject, text, html, headers } = await req.json();
 
     console.log(to, from, subject, text, html);
 
@@ -58,10 +58,15 @@ export async function POST(req) {
       html,
     };
 
-    await sgMail.send(msg);
+    if (headers) {
+      msg.headers = headers;
+    }
+
+    let data = await sgMail.send(msg);
     return NextResponse.json({
       success: true,
       message: "Email sent successfully",
+      data,
     });
   } catch (error) {
     return NextResponse.json(

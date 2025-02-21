@@ -325,12 +325,15 @@ const ContactForm = ({ dwelling, onSuccess }) => {
       `;
           await functions.sendMessage(message);
 
-          await fetch("/api/send-email", {
+          const data = await fetch("/api/send-email", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
+              headers: {
+                "Message-ID": `<${combined_id}-${thread.owner.email}@workerhomes.pl>`,
+              },
               to: fetchedDwelling.owner.email,
               from: {
                 email: `${combined_id}@parse.workerhomes.pl`,
@@ -352,6 +355,9 @@ const ContactForm = ({ dwelling, onSuccess }) => {
               html: html,
             }),
           });
+
+          let JSONdata = await data.json();
+          console.log(JSONdata);
 
           onSuccess && onSuccess();
           resetForm();

@@ -216,6 +216,23 @@ export async function POST(req) {
         : "Re: " + email.subject,
       text: email.content,
       html: html,
+      headers: {
+        "Message-ID": `<${email.thread}-${
+          email.from === thread.user.email
+            ? thread.owner.email
+            : thread.user.email
+        }@workerhomes.pl>`,
+        "In-Reply-To": `<${email.thread}-${
+          email.from === thread.user.email
+            ? thread.owner.email
+            : thread.user.email
+        }@workerhomes.pl>`,
+        References: `<${email.thread}-${
+          email.from === thread.user.email
+            ? thread.owner.email
+            : thread.user.email
+        }@workerhomes.pl>`,
+      },
     };
 
     await sgMail.send(msg);
