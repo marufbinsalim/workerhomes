@@ -3,6 +3,7 @@ import { simpleParser } from "mailparser";
 import { NextResponse } from "next/server";
 
 import * as sgMail from "@sendgrid/mail";
+import { extractReplyContent } from "@/utils/emailParse";
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -23,22 +24,14 @@ export async function POST(req) {
 
     console.log("Parsed Email:", parsed);
 
-    if (parsed.subject.includes("Re:")) {
-      let endIndex = emailBody.indexOf("On ");
-      emailBody = emailBody.substring(0, endIndex);
-    }
-
-    function extractEmail(from) {
-      const match = from.match(/<(.*?)>/);
-      return match ? match[1] : from;
-    }
+    let message = extractReplyContent(emailBody);
 
     let email = {
       thread_id: parsed.to?.text.split("@")[0]?.split("<")[1],
       subject: parsed.subject,
       from: extractEmail(parsed.from.text || ""),
       to: parsed.to?.text || "",
-      content: emailBody.trim() || "No Reply Found",
+      content: message,
     };
     console.log("Received Email:", email);
 
