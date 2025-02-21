@@ -225,11 +225,6 @@ const MessengerPage = ({ locale }) => {
   </div>
 `;
 
-    let sendTo =
-      session.user.email === selectedThread.owner.email
-        ? selectedThread.user.email
-        : selectedThread.owner.email;
-
     // Sending the email
     await fetch("/api/send-email", {
       method: "POST",
@@ -238,9 +233,9 @@ const MessengerPage = ({ locale }) => {
       },
       body: JSON.stringify({
         headers: {
-          "Message-ID": `<${selectedThread.thread_id}-${sendTo}@workerhomes.pl>`,
-          "In-Reply-To": `<${selectedThread.thread_id}-${sendTo}@workerhomes.pl>`,
-          References: `<${selectedThread.thread_id}-${sendTo}@workerhomes.pl>`,
+          "Message-ID": `<${selectedThread.thread_id}@workerhomes.pl>`,
+          "In-Reply-To": `<${selectedThread.thread_id}@workerhomes.pl>`,
+          References: `<${selectedThread.thread_id}@workerhomes.pl>`,
         },
         to:
           session.user.email === selectedThread.owner.email

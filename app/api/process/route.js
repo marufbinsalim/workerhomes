@@ -217,21 +217,9 @@ export async function POST(req) {
       text: email.content,
       html: html,
       headers: {
-        "Message-ID": `<${email.thread}-${
-          email.from === thread.user.email
-            ? thread.owner.email
-            : thread.user.email
-        }@workerhomes.pl>`,
-        "In-Reply-To": `<${email.thread}-${
-          email.from === thread.user.email
-            ? thread.owner.email
-            : thread.user.email
-        }@workerhomes.pl>`,
-        References: `<${email.thread}-${
-          email.from === thread.user.email
-            ? thread.owner.email
-            : thread.user.email
-        }@workerhomes.pl>`,
+        "Message-ID": `<${email.thread}@workerhomes.pl>`,
+        "In-Reply-To": `<${email.thread}@workerhomes.pl>`,
+        References: `<${email.thread}@workerhomes.pl>`,
       },
     };
 

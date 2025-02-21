@@ -332,7 +332,9 @@ const ContactForm = ({ dwelling, onSuccess }) => {
             },
             body: JSON.stringify({
               headers: {
-                "Message-ID": `<${combined_id}-${thread.owner.email}@workerhomes.pl>`,
+                "Message-ID": `<${combined_id}@workerhomes.pl>`,
+                "In-Reply-To": `<${combined_id}@workerhomes.pl>`,
+                References: `<${combined_id}@workerhomes.pl>`,
               },
               to: fetchedDwelling.owner.email,
               from: {
