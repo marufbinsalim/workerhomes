@@ -29,7 +29,7 @@ export async function POST(req) {
     let email = {
       thread_id: parsed.to?.text.split("@")[0]?.split("<")[1],
       subject: parsed.subject,
-      from: extractEmail(parsed.from.text || ""),
+      from: parsed.from.text || "",
       to: parsed.to?.text || "",
       content: message,
     };
