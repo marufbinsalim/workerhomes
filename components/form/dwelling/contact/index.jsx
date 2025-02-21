@@ -262,7 +262,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
 
             <!-- Logo -->
             <div style="text-align: center; margin-bottom: 20px;">
-              <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=256&q=75"
+              <img src="https://lrfrmfqpppxjbxetsgcu.supabase.co/storage/v1/object/public/chat-images//test.webp"
                 alt="Workerhomes" style="max-width: 200px; display: block; margin: 0;"/>
             </div>
 
@@ -300,7 +300,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
 
                 <!-- Left side: Logo + Company Address -->
                 <div style="text-align: left;">
-                  <img src="https://workerhomes.pl/_next/image?url=https%3A%2F%2Fapi.workerhomes.pl%2Fuploads%2FArtboard_20_56c27e13e1.png&w=128&q=75"
+                  <img src="https://lrfrmfqpppxjbxetsgcu.supabase.co/storage/v1/object/public/chat-images//test.webp"
                     alt="Workerhomes" style="max-width: 100px;"/>
                   <p style="font-size: 12px; color: #888; margin-top: 5px;">123 Placeholder Street, City, Country</p>
                 </div>
