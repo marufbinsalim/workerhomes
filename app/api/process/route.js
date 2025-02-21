@@ -26,10 +26,15 @@ export async function POST(req) {
 
     let message = extractReplyContent(emailBody);
 
+    function extractEmail(from) {
+      const match = from.match(/<(.*?)>/);
+      return match ? match[1] : from;
+    }
+
     let email = {
       thread_id: parsed.to?.text.split("@")[0]?.split("<")[1],
       subject: parsed.subject,
-      from: parsed.from.text || "",
+      from: extractEmail(parsed.from.text || ""),
       to: parsed.to?.text || "",
       content: message,
     };
