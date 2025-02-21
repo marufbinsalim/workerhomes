@@ -154,7 +154,7 @@ const MessengerPage = ({ locale }) => {
 
       <!-- Logo -->
       <div style="text-align: center; margin-bottom: 20px;">
-        <img src="https://lrfrmfqpppxjbxetsgcu.supabase.co/storage/v1/object/public/chat-images//test.webp"
+        <img src="https://lrfrmfqpppxjbxetsgcu.supabase.co/storage/v1/object/public/chat-images//test.png"
           alt="Workerhomes" style="max-width: 200px; display: block; margin: 0;"/>
       </div>
 
@@ -201,7 +201,7 @@ const MessengerPage = ({ locale }) => {
 
           <!-- Left side: Logo + Company Address -->
           <div style="text-align: left;">
-            <img src="https://lrfrmfqpppxjbxetsgcu.supabase.co/storage/v1/object/public/chat-images//test.webp"
+            <img src="https://lrfrmfqpppxjbxetsgcu.supabase.co/storage/v1/object/public/chat-images//test.png"
               alt="Workerhomes" style="max-width: 100px;"/>
             <p style="font-size: 12px; color: #888; margin-top: 5px;">123 Placeholder Street, City, Country</p>
           </div>
