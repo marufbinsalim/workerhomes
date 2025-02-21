@@ -2030,10 +2030,28 @@ var EmailParser = (function (t) {
   },
 ]);
 
+function extractRelevantText(input) {
+  // Define patterns for different types of test cases
+  const outlookPattern = /(.+?)\n\nGesendet von Outlook für Android/;
+  const gmailPattern = /(.+?)\n\n.*? schrieb am/;
+
+  // Try matching Outlook pattern
+  let match = input.match(outlookPattern);
+  if (match) return match[1].trim();
+
+  // Try matching Gmail pattern
+  match = input.match(gmailPattern);
+  if (match) return match[1].trim();
+
+  // If no pattern matches, return original input (or handle as needed)
+  return input.trim();
+}
+
 function extractReplyContent(message) {
   const email = EmailParser(message);
   const reply = email.getFragments()[0].getContent().trim();
-  return reply;
+
+  return extractRelevantText(reply);
 }
 
 export { extractReplyContent };
