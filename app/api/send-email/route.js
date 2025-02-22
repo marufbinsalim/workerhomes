@@ -63,6 +63,7 @@ export async function POST(req) {
     }
 
     let data = await sgMail.send(msg);
+    console.log(data);
     return NextResponse.json({
       success: true,
       message: "Email sent successfully",
