@@ -45,11 +45,15 @@ const ContactForm = ({ dwelling, onSuccess }) => {
           keys: [""],
         },
   );
-  let phone = data?.phone;
+  let phone = data?.phone || "";
 
   return (
     <Formik
-      initialValues={initDwellingContact({ email: email, phone: phone })}
+      initialValues={initDwellingContact({
+        email: email,
+        phone: phone,
+        additional_information: "",
+      })}
       enableReinitialize={true}
       validationSchema={dwellingContactSchema()}
       onSubmit={async (values, { resetForm }) => {
@@ -395,6 +399,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
                 type="email"
                 name="email"
                 label={t("form.email")}
+                disabled={session ? true : false}
                 required
               />
             </div>
@@ -404,6 +409,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
                 type="phone"
                 name="phone"
                 label={t("form.phone")}
+                disabled={session ? (phone ? true : false) : false}
                 required
               />
             </div>
