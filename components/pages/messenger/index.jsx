@@ -1003,6 +1003,10 @@ const MessengerPage = ({ locale }) => {
                 )}
               </Link>
 
+              {property?.location && (
+                <p className="mx-auto">{property.location}</p>
+              )}
+
               {property?.data?.prices?.length > 0 && (
                 <div
                   style={{
@@ -1027,9 +1031,6 @@ const MessengerPage = ({ locale }) => {
                       />
                     ))}
                 </div>
-              )}
-              {property?.location && (
-                <p className="mx-auto">{property.location}</p>
               )}
             </div>
           )}
