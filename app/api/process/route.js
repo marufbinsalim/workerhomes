@@ -206,6 +206,58 @@ export async function POST(req) {
   </div>
 `;
 
+    async function addEmailToDatabase(id, thread_id, toOwner) {
+      const { error } = await supabase.from("emails").insert([
+        {
+          id: id,
+          thread_id: thread_id,
+          toOwner: toOwner,
+        },
+      ]);
+
+      return error;
+    }
+
+    function randomString(length) {
+      var result = [];
+      var characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      var charactersLength = characters.length;
+      for (var i = 0; i < length; i++) {
+        result.push(
+          characters.charAt(Math.floor(Math.random() * charactersLength)),
+        );
+      }
+      return result.join("");
+    }
+
+    async function getEmailHeader(emailThreadID, toOwner) {
+      let messageId = `<${randomString(15)}@workerhomes.pl>`;
+
+      const { data, error } = await supabase
+        .from("emails")
+        .select("*")
+        .eq("toOwner", toOwner)
+        .eq("thread_id", emailThreadID)
+        .order("created_at", { ascending: false });
+
+      if (error || !data || data.length === 0) {
+        return {
+          "Message-ID": messageId,
+        };
+      }
+      let referenceId = data[0]?.id;
+      await addEmailToDatabase(messageId, emailThreadID, toOwner);
+
+      return {
+        "Message-ID": messageId,
+        "In-Reply-To": referenceId,
+        References: referenceId,
+      };
+    }
+    let toOwner = email.from !== thread.owner.email;
+    let emailHeaders = await getEmailHeader(email.thread_id, toOwner);
+
     const msg = {
       to:
         email.from === thread.user.email
@@ -220,11 +272,7 @@ export async function POST(req) {
         : "Re: " + email.subject,
       text: email.content,
       html: html,
-      headers: {
-        "Message-ID": `<${email.thread_id}@workerhomes.pl>`,
-        "In-Reply-To": `<${email.thread_id}@workerhomes.pl>`,
-        References: `<${email.thread_id}@workerhomes.pl>`,
-      },
+      headers: emailHeaders || {},
     };
 
     await sgMail.send(msg);

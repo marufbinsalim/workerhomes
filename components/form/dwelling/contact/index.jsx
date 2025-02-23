@@ -329,6 +329,8 @@ const ContactForm = ({ dwelling, onSuccess }) => {
         </div>
       `;
           await functions.sendMessage(message);
+          let messageId = `<${randomString(15)}@workerhomes.pl>`;
+          await functions.addEmailToDatabase(messageId, combined_id, true);
 
           const data = await fetch("/api/send-email", {
             method: "POST",
@@ -337,9 +339,9 @@ const ContactForm = ({ dwelling, onSuccess }) => {
             },
             body: JSON.stringify({
               headers: {
-                "Message-ID": `<${combined_id}@workerhomes.pl>`,
-                "In-Reply-To": `<${combined_id}@workerhomes.pl>`,
-                References: `<${combined_id}@workerhomes.pl>`,
+                "Message-ID": messageId,
+                // "In-Reply-To": `<${combined_id}@workerhomes.pl>`,
+                // References: `<${combined_id}@workerhomes.pl>`,
               },
               to: fetchedDwelling.owner.email,
               from: {

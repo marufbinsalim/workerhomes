@@ -57,8 +57,6 @@ const MessengerPage = ({ locale }) => {
   const [isMobileView, setIsMobileView] = useState(false);
 
   const middleSectionRef = useRef(null);
-
-  const { data } = useMessenger("messages");
   const [imageFile, setImageFile] = useState(null); // New state for image file
 
   const expandSearch = () => {
@@ -229,6 +227,14 @@ const MessengerPage = ({ locale }) => {
   </div>
 `;
 
+    let toOwner = session.user.email !== selectedThread.owner.email;
+    let emailHeaders = await functions.getEmailHeader(
+      selectedThread.thread_id,
+      toOwner,
+    );
+
+    console.log("Email Headers: ", emailHeaders);
+
     // Sending the email
     await fetch("/api/send-email", {
       method: "POST",
@@ -236,11 +242,7 @@ const MessengerPage = ({ locale }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        headers: {
-          "Message-ID": `<${selectedThread.thread_id}@workerhomes.pl>`,
-          "In-Reply-To": `<${selectedThread.thread_id}@workerhomes.pl>`,
-          References: `<${selectedThread.thread_id}@workerhomes.pl>`,
-        },
+        headers: emailHeaders || {},
         to:
           session.user.email === selectedThread.owner.email
             ? selectedThread.user.email
