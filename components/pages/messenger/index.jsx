@@ -84,13 +84,26 @@ const MessengerPage = ({ locale }) => {
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    if (file && file.size <= 8 * 1024 * 1024) {
-      // Check for max size of 8MB
+    if (file) {
+      const validImageTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/gif",
+        "image/webp",
+      ];
+      if (!validImageTypes.includes(file.type)) {
+        alert("Only image files (JPG, PNG, GIF, WEBP) are allowed.");
+        event.target.value = null; // Reset input field
+        return;
+      }
+      if (file.size > 8 * 1024 * 1024) {
+        alert("Image size should not exceed 8MB.");
+        event.target.value = null; // Reset input field
+        return;
+      }
       setImageFile(file);
-    } else {
-      alert("Image size should not exceed 8MB.");
     }
-    event.target.value = null; // Reset the input field after selecting the image
+    event.target.value = null; // Reset input field after selecting the image
   };
 
   const handleImageRemove = () => {
