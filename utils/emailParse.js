@@ -2047,11 +2047,35 @@ function extractRelevantText(input) {
   return input.trim();
 }
 
+function extractTextBetweenAmAndTo(text) {
+  const startKeyword = "Am";
+  const endKeyword = ":";
+
+  // Find the position of "Am"
+  const startIndex = text.indexOf(startKeyword);
+  if (startIndex === -1) return text; // "Am" not found
+
+  // Find the position of the last ":"
+  const endIndex = text.lastIndexOf(endKeyword);
+  if (endIndex === -1) return text; // ":" not found
+
+  // Extract the substring between "Am" and the last ":"
+  const substring = text
+    .slice(startIndex + startKeyword.length, endIndex)
+    .trim();
+
+  // Check if "@parse.workerhomes.pl" is in the substring
+  if (substring.includes("@parse.workerhomes.pl")) {
+    return text.slice(0, startIndex).trim();
+  } else {
+    return text;
+  }
+}
+
 function extractReplyContent(message) {
   const email = EmailParser(message);
   const reply = email.getFragments()[0].getContent().trim();
-
-  return extractRelevantText(reply);
+  return extractTextBetweenAmAndTo(extractRelevantText(reply));
 }
 
 export { extractReplyContent };
