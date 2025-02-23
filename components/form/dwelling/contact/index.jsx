@@ -253,7 +253,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
 
           console.log("message", message);
 
-          let span = `<span style="color: #ff5a5f; font-weight: bold;"><a href="https://workerhomes-two.vercel.app/pl/listings/${polishSlug}">${polishTitle}</a></span>`;
+          let span = `<span style="color: #F59024; font-weight: bold;"><a href="https://workerhomes-two.vercel.app/pl/listings/${polishSlug}">${polishTitle}</a></span>`;
 
           let html = `
         <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 40px 20px; text-align: center;">
@@ -288,7 +288,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
               <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${
                 thread.thread_id
               }"
-                style="display: inline-block; background-color: #ff5a5f; color: white; text-decoration: none; padding: 12px 20px;
+                style="display: inline-block; background-color: #F59024; color: white; text-decoration: none; padding: 12px 20px;
                 border-radius: 5px; font-size: 16px; margin-top: 20px;">
                 Reply to the chat
               </a>
@@ -302,7 +302,12 @@ const ContactForm = ({ dwelling, onSuccess }) => {
                 <div style="text-align: left;">
                   <img src="https://lrfrmfqpppxjbxetsgcu.supabase.co/storage/v1/object/public/chat-images//test.png"
                     alt="Workerhomes" style="max-width: 100px;"/>
-                  <p style="font-size: 12px; color: #888; margin-top: 5px;">123 Placeholder Street, City, Country</p>
+                  <p style="font-size: 12px; color: #888; margin-top: 5px;">   Workerhomes Placeholder UC,
+                  <br/>
+                  8 Test Street,
+                  <br/>
+                  Munich, Germany</p>
+
                 </div>
 
                 <!-- Right side: Social Media Icons -->
