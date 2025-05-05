@@ -23,6 +23,7 @@ const publicPages = [
   "/terms",
   "/about",
   "/email-verified",
+  "/test",
 ];
 
 // Dynamic route patterns
