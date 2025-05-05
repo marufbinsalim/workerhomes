@@ -1,5 +1,4 @@
-/* 
-*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
 @import "tailwindcss" prefix(tw);
 
 :root {
@@ -10,23 +9,29 @@
   --main-color-transparent: #e484070e;
   --sub-color: #051036;
 
-  --color-primary : #44648E;
-  --color-white-light : #FAFBFC;
-  --color-white-grey : #F8F9FB;
-  --color-white : #FFFFFF;
-  --color-black : #1E201E;
+  --color-primary: #44648e;
+  --color-white-light: #fafbfc;
+  --color-white-grey: #f8f9fb;
+  --color-white: #ffffff;
+  --color-black: #1e201e;
 
-  --color-border-light : #D8E0ED;
-  --color-font-light : #B7B7B7;
-  --color-font-regular : #797979;
-  --color-font-dark : #3B3B3B;
+  --color-border-light: #d8e0ed;
+  --color-font-light: #b7b7b7;
+  --color-font-regular: #797979;
+  --color-font-dark: #3b3b3b;
 
-  --color-green : #0CAA1B;
-  --color-green-light : #DAF2DC;
-  --color-yellow : #FFAB00;
-  --color-yellow-light : #FFFBC9;
-  --color-red : #FE475B;
-  --color-red-light : #FFDADE;
+  --color-green: #0caa1b;
+  --color-green-light: #daf2dc;
+  --color-yellow: #ffab00;
+  --color-yellow-light: #fffbc9;
+  --color-red: #fe475b;
+  --color-red-light: #ffdade;
+}
+
+.font-primary {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 .text-underline-hover {
