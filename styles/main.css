@@ -9,6 +9,24 @@
   --main-color-4: #ff1504;
   --main-color-transparent: #e484070e;
   --sub-color: #051036;
+
+  --color-primary : #44648E;
+  --color-white-light : #FAFBFC;
+  --color-white-grey : #F8F9FB;
+  --color-white : #FFFFFF;
+  --color-black : #1E201E;
+
+  --color-border-light : #D8E0ED;
+  --color-font-light : #B7B7B7;
+  --color-font-regular : #797979;
+  --color-font-dark : #3B3B3B;
+
+  --color-green : #0CAA1B;
+  --color-green-light : #DAF2DC;
+  --color-yellow : #FFAB00;
+  --color-yellow-light : #FFFBC9;
+  --color-red : #FE475B;
+  --color-red-light : #FFDADE;
 }
 
 .text-underline-hover {
