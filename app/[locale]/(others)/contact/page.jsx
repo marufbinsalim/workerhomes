@@ -12,6 +12,7 @@ import ContactForm from "@/components/contact-page-v2/form";
 import ReCaptchaProvider from "@/context/ReCaptchaProvider";
 import Header3 from "@/components/header/header-3";
 import Footer3 from "@/components/footer/footer-3";
+import ContactInfo from "@/components/contact-page-v2/info";
 
 export const metadata = {
   title: "Contact || Wokerhomes",
@@ -26,6 +27,7 @@ const Contact = async () => {
       <div className="tw:relative tw:flex tw:flex-col tw:items-center tw:justify-center tw:py-10 tw:text-center tw:gap-2 font-primary">
         <img
           src={"/assets/contact/pattern.png"}
+          alt="pattern"
           className="tw:absolute tw:right-0 tw:bottom-0 tw:w-[60dvw] tw:md:w-auto"
         />
         <h1 className="tw:font-semibold tw:text-5xl tw:text-[var(--color-font-dark)] tw:max-w-4xl">
@@ -37,7 +39,10 @@ const Contact = async () => {
         </p>
       </div>
 
-      <ContactForm />
+      <div className="tw:flex tw:flex-col-reverse tw:gap-10 tw:md:flex-row tw:px-10 tw:py-5 tw:md:px-20 tw:md:py-10">
+        <ContactInfo />
+        <ContactForm />
+      </div>
       <Footer3 />
     </div>
   );
