@@ -100,6 +100,10 @@
     }
   },
   "footer": {
+    "top": "back to top",
+    "about": "WorkerHome connects property owners with renters, making apartment and house renting easy and hassle-free.",
+    "need": "Need live support?",
+    "rights": "©2025 By Workerhomes.pl. All Rights Reserved",
     "hosting": {
       "title": "Hosting",
       "host": "List your property",
@@ -152,9 +156,9 @@
         "by": "By",
         "brand": "Workerhomes.pl"
       },
-      "privacy": "Privacy",
-      "terms": "Terms",
-      "sitemap": "Site Map"
+      "privacy": "Privacy Policy",
+      "terms": "Terms & Conditions",
+      "sitemap": "Sitemap"
     },
     "default": {
       "contact": {
