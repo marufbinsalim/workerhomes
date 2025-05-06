@@ -7,16 +7,16 @@ export default function Footer() {
         <img
           src="/assets/logo.png"
           alt="workerhomes"
-          className="tw:w-[200px] tw:h-[41px] tw:mb-6"
+          className="tw:w-[200px] tw:h-[41px] tw:mb-[30px]"
         />
         <div className="tw:flex tw:flex-col tw:lg:flex-row tw:items-start tw:justify-between tw:gap-8">
           <div className="tw:lg:w-1/4 tw:w-full ">
-            <p className="tw:mb-6 tw:w-[345px] tw:h-[72px] tw:text-[18px] tw:leading-[24px]  tw:text-[var(--color-font-dark)] tw:font-medium">
+            <p className="tw:mb-[30px] tw:w-[345px] tw:h-[72px] tw:text-[18px] tw:leading-[24px]  tw:text-[var(--color-font-dark)] tw:font-medium">
               WorkerHome connects property owners with renters, making apartment
               and house renting easy and hassle-free.
             </p>
 
-            <div className="tw:space-y-3">
+            <div className="tw:space-y-2">
               <div>
                 <h3 className="tw:font-semibold tw:text-[14px] tw:text-[var(--color-font-dark)]">
                   Need live support?
@@ -36,7 +36,7 @@ export default function Footer() {
               <h3 className="tw:font-semibold tw:text-[14px] tw:text-[var(--color-font-dark)] tw:mb-4">
                 Company
               </h3>
-              <ul className="tw:space-y-2 font-normal tw:text-[14px] tw:text-[var(--color-font-regular)]">
+              <ul className="tw:space-y-4 font-normal tw:text-[14px] tw:text-[var(--color-font-regular)]">
                 <li>
                   <Link href="#" className="tw:hover:underline">
                     About
@@ -60,7 +60,7 @@ export default function Footer() {
             <h3 className="tw:font-semibold tw:text-[14px] tw:text-[var(--color-font-dark)] tw:mb-4">
               Hosting
             </h3>
-            <ul className="tw:space-y-2 font-normal tw:text-[14px] tw:text-[var(--color-font-regular)]">
+            <ul className="tw:space-y-4 font-normal tw:text-[14px] tw:text-[var(--color-font-regular)]">
               <li>
                 <Link href="#" className="tw:hover:underline">
                   List your property
@@ -93,7 +93,7 @@ export default function Footer() {
             <h3 className="tw:font-semibold tw:text-[14px] tw:text-[var(--color-font-dark)] tw:mb-4">
               Follow us on social media
             </h3>
-            <div className="tw:flex tw:gap-4 tw:text-2xl">
+            <div className="tw:flex tw:gap-5 tw:text-2xl">
               <Link href="#" className="tw:hover:opacity-75">
                 <img
                   src="/assets/facebook.png"
@@ -127,7 +127,7 @@ export default function Footer() {
             <div className="tw:text-[var(--color-font-regular)] tw:text-[14px]">
               ©2025 By Workerhomes.pl. All Rights Reserved
             </div>
-            <div className="tw:flex tw:gap-4 tw:flex-wrap tw:font-semibold tw:text-[16px] tw:text-[var(--color-font-dark)]">
+            <div className="tw:flex tw:gap-5 tw:flex-wrap tw:font-semibold tw:text-[16px] tw:text-[var(--color-font-dark)]">
               <Link href="#" className="tw:hover:underline">
                 Privacy
               </Link>
