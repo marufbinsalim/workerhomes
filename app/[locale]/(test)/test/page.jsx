@@ -5,7 +5,7 @@ export default function Test() {
   return (
     <div>
       <Navbar />
-      <Footer />
+     
     </div>
   );
 }
