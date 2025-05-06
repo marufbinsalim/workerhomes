@@ -27,11 +27,11 @@ export default function ContactInfo() {
         </p>
       </div>
 
-      <div>
+      <div className="tw:flex tw:gap-2 tw:flex-col">
         <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-[14px]">
           Follow us on social media
         </p>
-        <div>
+        <div className="tw:flex tw:gap-5">
           <img
             src={"/assets/facebook.png"}
             alt="facebook"
