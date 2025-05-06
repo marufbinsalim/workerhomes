@@ -23,14 +23,14 @@ body {
 .transition {
   transition: 0.3s;
 }
-select,
-input:not([type="range"]),
-textarea {
-  border: 0;
-  outline: none;
-  width: 100%;
-  background-color: transparent;
-}
+// select,
+// input:not([type="range"]),
+// textarea {
+//   border: 0;
+//   outline: none;
+//   width: 100%;
+//   // background-color: transparent;
+// }
 
 main {
   overflow: hidden;
