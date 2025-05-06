@@ -1,6 +1,8 @@
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function Footer() {
+  const t = useTranslations("footer");
   return (
     <div className="tw:bg-[#F7F7F7] font-primary tw:text-gray-800 tw:py-8 ">
       <div className="tw:max-w-8xl tw:px-10 tw:md:px-20 tw:mx-auto">
@@ -11,15 +13,14 @@ export default function Footer() {
         />
         <div className="tw:flex tw:flex-col tw:lg:flex-row tw:items-start tw:justify-between tw:gap-8">
           <div className="tw:lg:w-1/4 tw:w-full ">
-            <p className="tw:mb-[30px] tw:w-[345px] tw:h-[72px] tw:text-[18px] tw:leading-[24px]  tw:text-[var(--color-font-dark)] tw:font-medium">
-              WorkerHome connects property owners with renters, making apartment
-              and house renting easy and hassle-free.
+            <p className="tw:mb-[30px] tw:w-[345px] tw:text-[18px] tw:leading-[24px]  tw:text-[var(--color-font-dark)] tw:font-medium">
+              {t("about")}
             </p>
 
             <div className="tw:space-y-2">
               <div>
                 <h3 className="tw:font-semibold tw:text-[14px] tw:text-[var(--color-font-dark)]">
-                  Need live support?
+                  {t("need")}
                 </h3>
                 <a
                   href="mailto:info@workerhomes.pl"
@@ -34,22 +35,22 @@ export default function Footer() {
           <div className="tw:w-full tw:lg:w-[250px] tw:flex tw:gap-8">
             <div>
               <h3 className="tw:font-semibold tw:text-[14px] tw:text-[var(--color-font-dark)] tw:mb-4">
-                Company
+                {t("company.title")}
               </h3>
               <ul className="tw:space-y-4 font-normal tw:text-[14px] tw:text-[var(--color-font-regular)]">
                 <li>
                   <Link href="#" className="tw:hover:underline">
-                    About
+                    {t("company.links.about")}
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="tw:hover:underline">
-                    Contact
+                    {t("company.links.contact")}
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="tw:hover:underline">
-                    FAQs
+                    {t("company.links.faqs")}
                   </Link>
                 </li>
               </ul>
@@ -58,32 +59,32 @@ export default function Footer() {
 
           <div className="tw:w-full tw:lg:w-[250px] tw:gap-8">
             <h3 className="tw:font-semibold tw:text-[14px] tw:text-[var(--color-font-dark)] tw:mb-4">
-              Hosting
+              {t("hosting.title")}
             </h3>
             <ul className="tw:space-y-4 font-normal tw:text-[14px] tw:text-[var(--color-font-regular)]">
               <li>
                 <Link href="#" className="tw:hover:underline">
-                  List your property
+                  {t("hosting.host")}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="tw:hover:underline">
-                  Hosting Resources
+                  {t("hosting.resource")}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="tw:hover:underline">
-                  Tips and Tricks/Advices/Guide
+                  {t("hosting.guide")}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="tw:hover:underline">
-                  You could earn
+                  {t("hosting.earn")}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="tw:hover:underline">
-                  Blog
+                  {t("hosting.blog")}
                 </Link>
               </li>
             </ul>
@@ -91,7 +92,7 @@ export default function Footer() {
 
           <div className="tw:w-full tw:lg:w-[244px]">
             <h3 className="tw:font-semibold tw:text-[14px] tw:text-[var(--color-font-dark)] tw:mb-4">
-              Follow us on social media
+              {t("follow.title")}
             </h3>
             <div className="tw:flex tw:gap-5 tw:text-2xl">
               <Link href="#" className="tw:hover:opacity-75">
@@ -125,22 +126,22 @@ export default function Footer() {
         <div className="tw:border-t-2 tw:mt-8 tw:border-[var(--color-font-regular)] tw:pt-6">
           <div className="tw:flex tw:flex-col tw:md:flex-row tw:items-start tw:md:items-center tw:justify-between tw:gap-4">
             <div className="tw:text-[var(--color-font-regular)] tw:text-[14px]">
-              ©2025 By Workerhomes.pl. All Rights Reserved
+              {t("rights")}
             </div>
             <div className="tw:flex tw:gap-5 tw:flex-wrap tw:font-semibold tw:text-[16px] tw:text-[var(--color-font-dark)]">
               <Link href="#" className="tw:hover:underline">
-                Privacy
+                {t("copy.privacy")}
               </Link>
               <Link href="#" className="tw:hover:underline">
-                Terms & condition
+                {t("copy.terms")}
               </Link>
               <Link href="#" className="tw:hover:underline">
-                Sitemap
+                {t("copy.sitemap")}
               </Link>
             </div>
             <div className="tw:mt-2 tw:md:mt-0 tw:text-[var(--color-font-regular)] tw:text-[16px]">
               <Link href="#" className="tw:hover:underline">
-                Back to top
+                {t("top")}
               </Link>
             </div>
           </div>

@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "@iconify/react";
 import { useState } from "react";
 
 export default function ContactForm() {
@@ -50,6 +51,10 @@ export default function ContactForm() {
         alert("Failed to send email.");
       } else {
         alert("Email sent successfully!");
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setMessage("");
       }
     } catch (e) {
       console.error("Fetch error:", e);
@@ -123,9 +128,9 @@ export default function ContactForm() {
       <button
         disabled={sending}
         onClick={handleSubmit}
-        className="tw:w-max tw:bg-[var(--color-primary)] tw:disabled:opacity-50 tw:text-white tw:py-[10px] tw:px-5  hover:tw:bg-blue-700 focus:tw:outline-none focus:tw:ring-2 focus:tw:ring-orange-500 focus:tw:ring-offset-2"
+        className="tw:w-max tw:bg-[var(--color-primary)] tw:disabled:opacity-85 tw:text-white tw:py-[10px] tw:px-5  hover:tw:bg-blue-700 focus:tw:outline-none focus:tw:ring-2 focus:tw:ring-orange-500 focus:tw:ring-offset-2"
       >
-        Send to a message
+        {"Send to a message "}
       </button>
     </div>
   );
