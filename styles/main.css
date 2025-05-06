@@ -29,6 +29,10 @@
   --color-red-light: #ffdade;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .font-primary {
   font-family: "Roboto Slab", serif;
   font-optical-sizing: auto;
