@@ -6,7 +6,7 @@ export default function ContactInfo() {
       </p>
       <div>
         <p className="tw:text-[var(--color-font-regular)]">Address</p>
-        <p className="tw:text-[var(--color-font-dark)] tw:font-semibold">
+        <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-xl">
           328 Queensberry Street, North Melbourne VIC 3051, Australia.
         </p>
       </div>
@@ -14,7 +14,7 @@ export default function ContactInfo() {
         <p className="tw:text-[var(--color-font-regular)]">
           Toll Free Customer Care
         </p>
-        <p className="tw:text-[var(--color-font-dark)] tw:font-semibold">
+        <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-xl">
           +47 333 78 901
         </p>
       </div>
@@ -22,12 +22,34 @@ export default function ContactInfo() {
         <p className="tw:text-[var(--color-font-regular)]">
           Need live support?
         </p>
-        <p className="tw:text-[var(--color-font-dark)] tw:font-semibold">
+        <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-xl">
           hi@gotrip.com
         </p>
       </div>
 
-      <div>Social</div>
+      <div>
+        <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-[14px]">
+          Follow us on social media
+        </p>
+        <div>
+          <img
+            src={"/assets/facebook.png"}
+            alt="facebook"
+            className="h-[46px]"
+          />
+          <img
+            src={"/assets/linkedin.png"}
+            alt="linkedin"
+            className="h-[46px]"
+          />
+          <img src={"/assets/twitter.png"} alt="twitter" className="h-[46px]" />
+          <img
+            src={"/assets/instagram.png"}
+            alt="instagram"
+            className="h-[46px]"
+          />
+        </div>
+      </div>
     </div>
   );
 }
