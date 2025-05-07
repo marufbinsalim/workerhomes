@@ -4,6 +4,43 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check } from 'lucide-react';
 
 
+
+const Dropdown = ({ languageOptions, selected, setSelected, open, setOpen }) => {
+    return (
+        <div>
+            {/* Dropdown menu */}
+            {open && (
+                <div className="tw:absolute tw:bottom-full tw:mb-4 tw:left-0 tw:md:bottom-auto tw:md:mb-0 tw:md:mt-4 tw:w-[275px] tw:bg-white tw:rounded-lg tw:p-5 tw:shadow-lg tw:z-10 tw:md:left-auto tw:-translate-x-[60vw] tw:md:-translate-x-[14vw]">
+
+                    {languageOptions.map(lang => (
+                        <div
+                            key={lang.label}
+                            onClick={() => {
+                                setSelected(lang.label);
+                                setOpen(false);
+                            }}
+                            className="tw:flex tw:items-center tw:gap-[14px] tw:mt-2 tw:justify-between tw:mb-2 tw:cursor-pointer"
+                        >
+                            <div className="tw:flex tw:items-center tw:gap-3">
+                                <img
+                                    src={lang.flag}
+                                    alt={`${lang.label} flag`}
+                                    className="tw:w-[32px] tw:h-[22px] tw:rounded-sm"
+                                />
+                                <span className="tw-text-black tw:font-[14px]">{lang.label}</span>
+                            </div>
+                            {selected === lang.label && (
+                                <Check className="tw-w-5 tw-h-5 tw-text-black" />
+                            )}
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
+
+
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,21 +48,11 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState('English');
 
-
     const languageOptions = [
         { label: 'English', flag: '/assets/flag-uk.png', code: 'en' },
         { label: 'German', flag: '/assets/flag-de.png', code: 'de' },
         { label: 'Polish', flag: '/assets/flag-pl.png', code: 'pl' },
     ];
-
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 10);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     const toggleMenu = () => {
         if (!isMenuOpen) {
@@ -37,7 +64,6 @@ const Navbar = () => {
         }
     };
 
-
     const closeMenu = () => {
         setIsMenuOpen(false);
         setTimeout(() => {
@@ -46,10 +72,11 @@ const Navbar = () => {
         document.body.style.overflow = '';
     };
 
-
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY;
+            setIsScrolled(scrollTop > 10);
+
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrollPercent = Math.min(scrollTop / docHeight, 1);
 
@@ -65,7 +92,6 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-
     return (
         <>
             {/* Main Navbar */}
@@ -77,7 +103,7 @@ const Navbar = () => {
                 ${isScrolled ? 'tw:shadow-md' : 'tw:shadow-none'}
             `}>
                 {/* Logo */}
-                <div className="md:tw:px-8">
+                <div className="tw:md:px-8">
                     <img
                         src="/assets/logo.png"
                         alt="workerhomes"
@@ -100,61 +126,35 @@ const Navbar = () => {
 
                 {/* Desktop Right Section */}
                 <div className="tw:hidden tw:md:flex tw:items-center tw:gap-4">
-                    <button className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:w-[150px] tw:h-[33px] tw:text-sm tw:font-medium tw:hover:bg-orange-600">
+                    <button className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:w-[150px] tw:h-[33px] tw:text-sm tw:font-medium">
                         Sign In / Register
                     </button>
 
                     {/* Language Selector */}
                     <div className="tw:flex tw:items-center tw:gap-2">
-                        {/* Flag */}
                         <img
                             src={languageOptions.find(lang => lang.label === selected)?.flag}
                             alt="flag"
-                            className="tw:w-[32px] tw:h-[32px] tw:rounded-full"
+                            className="tw:w-[32px] tw:h-[32px] tw:border tw:border-[var(--color-font-regular)] tw:rounded-full"
                         />
 
-                        {/* Icon and Dropdown */}
                         <div className="tw:relative">
-                            {/* Trigger icon */}
                             <img
                                 src="/assets/dropdown.png"
                                 alt="dropdown"
                                 className="tw:w-[13px] tw:h-[8px] tw:cursor-pointer"
                                 onClick={() => setOpen(prev => !prev)}
                             />
-
-                            {/* Dropdown */}
-                            {open && (
-                                <div className="tw:absolute  tw:-translate-x-[14vw]  tw:mt-4 tw:w-[275px] tw:bg-white tw:rounded-lg tw:p-5 tw:shadow-lg tw:z-10">
-                                    {languageOptions.map(lang => (
-                                        <div
-                                            key={lang.label}
-                                            onClick={() => {
-                                                setSelected(lang.label);
-                                                setOpen(false);
-                                            }}
-                                            className="tw:flex tw:items-center tw:gap-[14px] tw:mt-2 tw:justify-between tw:mb-2 tw:cursor-pointer "
-                                        >
-                                            <div className="tw:flex tw:items-center tw:gap-3">
-                                                <img
-                                                    src={lang.flag}
-                                                    alt={`${lang.label} flag`}
-                                                    className="tw:w-[32px] tw:h-[22px] tw:rounded-sm"
-                                                />
-                                                <span className="tw-text-black tw:font-[14px]">{lang.label}</span>
-                                            </div>
-                                            {selected === lang.label && (
-                                                <Check className="tw-w-5 tw-h-5 tw-text-black" />
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
+                            <Dropdown
+                                languageOptions={languageOptions}
+                                selected={selected}
+                                setSelected={setSelected}
+                                open={open}
+                                setOpen={setOpen}
+                            />
                         </div>
                     </div>
                 </div>
-
-
 
                 {/* Mobile Menu Button */}
                 <button
@@ -236,13 +236,34 @@ const Navbar = () => {
                                     Contact
                                 </a>
 
-                                <div className="tw:flex tw:items-center tw:justify-between tw:gap-2 tw:cursor-pointer">
-                                    <span className="tw:text-[var(--color-font-dark)] tw:text-lg">Change Language</span>
+                                <div
+                                    className="tw:flex tw:items-center tw:justify-between tw:gap-2 tw:cursor-pointer">
+                                    <span className="tw-text-[var(--color-font-dark)] tw-text-lg">Change Language</span>
                                     <div className="tw:flex tw:items-center tw:gap-2">
-                                        <img src="/assets/flag1.png" alt="UK Flag" className="tw:w-[32px] tw:h-[32px] tw:rounded-full" />
-                                        <img src="/assets/dropdown.png" alt="icon" className="tw:w-[13px] tw:h-[8px] tw:rounded-full" />
+                                        <img
+                                            src={languageOptions.find(lang => lang.label === selected)?.flag}
+                                            alt="flag"
+                                            className="tw:w-[32px] tw:h-[32px] tw:border tw:border-[var(--color-font-regular)] tw:rounded-full"
+                                        />
+                                        <div className="tw:relative">
+                                            {/* Trigger icon */}
+                                            <img
+                                                src="/assets/dropdown.png"
+                                                alt="dropdown"
+                                                className="tw:w-[13px] tw:h-[8px] tw:cursor-pointer"
+                                                onClick={() => setOpen(prev => !prev)}
+                                            />
+                                            <Dropdown
+                                                languageOptions={languageOptions}
+                                                selected={selected}
+                                                setSelected={setSelected}
+                                                open={open}
+                                                setOpen={setOpen}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
+
 
                                 <button className="tw:w-full tw:py-3 tw:mt-2  tw:relative  tw:text-lg tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border">
                                     List your property
@@ -256,6 +277,7 @@ const Navbar = () => {
                     </motion.div>
                 </AnimatePresence>
             )}
+
         </>
     );
 };
