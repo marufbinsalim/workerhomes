@@ -1,11 +1,22 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Check } from 'lucide-react';
+
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [shouldRenderMenu, setShouldRenderMenu] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [selected, setSelected] = useState('English');
+
+
+    const languageOptions = [
+        { label: 'English', flag: '/assets/flag-uk.png', code: 'en' },
+        { label: 'German', flag: '/assets/flag-de.png', code: 'de' },
+        { label: 'Polish', flag: '/assets/flag-pl.png', code: 'pl' },
+    ];
 
 
     useEffect(() => {
@@ -66,7 +77,7 @@ const Navbar = () => {
                 ${isScrolled ? 'tw:shadow-md' : 'tw:shadow-none'}
             `}>
                 {/* Logo */}
-                <div className="tw:px-8">
+                <div className="md:tw:px-8">
                     <img
                         src="/assets/logo.png"
                         alt="workerhomes"
@@ -93,11 +104,57 @@ const Navbar = () => {
                         Sign In / Register
                     </button>
 
-                    <div className="tw:flex tw:items-center tw:gap-2 tw:cursor-pointer">
-                        <img src="/assets/flag1.png" alt="UK Flag" className="tw:w-[32px] tw:h-[32px] tw:rounded-full" />
-                        <img src="/assets/dropdown.png" alt="icon" className="tw:w-[13px] tw:h-[8px] tw:rounded-full" />
+                    {/* Language Selector */}
+                    <div className="tw:flex tw:items-center tw:gap-2">
+                        {/* Flag */}
+                        <img
+                            src={languageOptions.find(lang => lang.label === selected)?.flag}
+                            alt="flag"
+                            className="tw:w-[32px] tw:h-[32px] tw:rounded-full"
+                        />
+
+                        {/* Icon and Dropdown */}
+                        <div className="tw:relative">
+                            {/* Trigger icon */}
+                            <img
+                                src="/assets/dropdown.png"
+                                alt="dropdown"
+                                className="tw:w-[13px] tw:h-[8px] tw:cursor-pointer"
+                                onClick={() => setOpen(prev => !prev)}
+                            />
+
+                            {/* Dropdown */}
+                            {open && (
+                                <div className="tw:absolute  tw:-translate-x-[14vw]  tw:mt-4 tw:w-[275px] tw:bg-white tw:rounded-lg tw:p-5 tw:shadow-lg tw:z-10">
+                                    {languageOptions.map(lang => (
+                                        <div
+                                            key={lang.label}
+                                            onClick={() => {
+                                                setSelected(lang.label);
+                                                setOpen(false);
+                                            }}
+                                            className="tw:flex tw:items-center tw:gap-[14px] tw:mt-2 tw:justify-between tw:mb-2 tw:cursor-pointer "
+                                        >
+                                            <div className="tw:flex tw:items-center tw:gap-3">
+                                                <img
+                                                    src={lang.flag}
+                                                    alt={`${lang.label} flag`}
+                                                    className="tw:w-[32px] tw:h-[22px] tw:rounded-sm"
+                                                />
+                                                <span className="tw-text-black tw:font-[14px]">{lang.label}</span>
+                                            </div>
+                                            {selected === lang.label && (
+                                                <Check className="tw-w-5 tw-h-5 tw-text-black" />
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
+
+
 
                 {/* Mobile Menu Button */}
                 <button
