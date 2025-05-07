@@ -37,6 +37,7 @@
         "framer-motion": "^12.10.0",
         "google-map-react": "^2.2.1",
         "js-generate-password": "^1.0.0",
+        "lucide-react": "^0.507.0",
         "mailparser": "^3.7.2",
         "micro": "^10.0.1",
         "moment": "^2.30.1",
