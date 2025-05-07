@@ -9,6 +9,7 @@ import Header3 from "@/components/header/header-3";
 import Footer from "@/components/common-v2/footer";
 import Link from "next/link";
 import SignInForm from "@/components/authentication-v2/signin/signinForm";
+import Navbar from "@/components/common-v2/nav";
 
 export const metadata = {
   title: `Login || WorkerHomes`,
@@ -20,7 +21,7 @@ const LogIn = async ({ params }) => {
 
   return (
     <div className="tw:pt-[90px] font-primary">
-      <Header3 />
+      <Navbar />
       <div className="tw:flex tw:flex-col tw:md:flex-row tw:p-4 tw:md:p-20 tw:gap-10">
         <div className="tw:md:flex-2/3 tw:flex tw:flex-col tw:items-center">
           <div className="tw:flex tw:flex-col tw:gap-4 tw:text-center">
