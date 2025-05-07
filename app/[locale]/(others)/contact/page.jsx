@@ -14,6 +14,7 @@ import Header3 from "@/components/header/header-3";
 import Footer3 from "@/components/footer/footer-3";
 import ContactInfo from "@/components/contact-page-v2/info";
 import Footer from "@/components/common-v2/footer";
+import Navbar from "@/components/common-v2/nav";
 
 export const metadata = {
   title: "Contact || Wokerhomes",
@@ -24,7 +25,7 @@ const Contact = async () => {
   const t = await getTranslations("contact");
   return (
     <div className="tw:pt-[90px]">
-      <Header3 />
+      <Navbar />
       <div className="tw:relative tw:flex tw:flex-col tw:items-center tw:justify-center tw:py-10 tw:text-center tw:gap-2 font-primary tw:px-10">
         <img
           src={"/assets/contact/pattern.png"}
