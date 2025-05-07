@@ -13,7 +13,7 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { toast } from "react-toastify";
 
 const ForgotPasswordForm = ({ locale }) => {
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  // const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -57,30 +57,30 @@ const ForgotPasswordForm = ({ locale }) => {
     onSubmit: async (values) => {
       setIsLoading(true);
 
-      if (!executeRecaptcha) {
-        setIsLoading(false);
-        return toast.error(t("messages.recaptcha-not-ready"));
-      }
+      // if (!executeRecaptcha) {
+      //   setIsLoading(false);
+      //   return toast.error(t("messages.recaptcha-not-ready"));
+      // }
 
       try {
-        const token = await executeRecaptcha("login");
+        // const token = await executeRecaptcha("login");
 
-        const recaptchaResponse = await fetch("/api/recaptcha", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token }),
-        });
+        // const recaptchaResponse = await fetch("/api/recaptcha", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({ token }),
+        // });
 
-        const recaptchaData = await recaptchaResponse.json();
+        // const recaptchaData = await recaptchaResponse.json();
 
-        if (!recaptchaData.success) {
-          setIsLoading(false);
-          return toast.error(t("messages.recaptcha-failed"));
-        }
+        // if (!recaptchaData.success) {
+        //   setIsLoading(false);
+        //   return toast.error(t("messages.recaptcha-failed"));
+        // }
 
-        toast.success(t("messages.recaptcha-success"));
+        // toast.success(t("messages.recaptcha-success"));
 
         const isVerified = await handleVerifyAccount(values?.email);
 

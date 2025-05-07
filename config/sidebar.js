@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
 const adminSidebarContent = (locale, t, unreadCount) => [
@@ -136,7 +136,7 @@ const adminSidebarContent = (locale, t, unreadCount) => [
 const hasPermission = (permissions, action, path, userRoles) => {
   const pathWithOutLocale = path.replace(/\/\w{2}/, "");
   return permissions[action]?.[pathWithOutLocale]?.some((role) =>
-    userRoles.includes(role),
+    userRoles.includes(role)
   );
 };
 
@@ -145,7 +145,7 @@ export const filterSidebarContent = (
   t,
   permissions,
   userRoles,
-  session,
+  session
 ) => {
   const checkPermission = (routePath) => {
     const action = "read";
@@ -175,8 +175,8 @@ export const filterSidebarContent = (
             ? "seen by recipient"
             : "sent"
           : thread.seen
-            ? "seen by you"
-            : "unread",
+          ? "seen by you"
+          : "unread",
     };
   }
 
@@ -192,16 +192,16 @@ export const filterSidebarContent = (
             currentThreads = [payload.new, ...currentThreads];
           } else if (payload.eventType === "UPDATE") {
             const index = currentThreads.findIndex(
-              (thread) => thread.thread_id === payload.new.thread_id,
+              (thread) => thread.thread_id === payload.new.thread_id
             );
             currentThreads[index] = payload.new;
           } else if (payload.eventType === "DELETE") {
             currentThreads = currentThreads.filter(
-              (thread) => thread.thread_id !== payload.old.thread_id,
+              (thread) => thread.thread_id !== payload.old.thread_id
             );
           }
           setThreads(currentThreads);
-        },
+        }
       )
       .subscribe();
 
@@ -219,7 +219,7 @@ export const filterSidebarContent = (
   }, []);
 
   useEffect(() => {
-    if (threads.length > 0) {
+    if (threads && threads.length > 0) {
       const unread = threads.map(generateThreadType).filter((thread) => {
         return (
           thread.status === "unread" &&
@@ -240,7 +240,7 @@ export const filterSidebarContent = (
 
       if (item.submenu) {
         item.submenu = item.submenu.filter((subItem) =>
-          checkPermission(subItem.routePath),
+          checkPermission(subItem.routePath)
         );
       }
 
