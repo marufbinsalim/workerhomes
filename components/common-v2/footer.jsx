@@ -123,7 +123,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="tw:border-t-2 tw:mt-8 tw:border-[var(--color-font-regular)] tw:pt-6">
+        <div className="tw:border-t-2 tw:mt-8 tw:border-[var(--color-border-light)] tw:pt-6">
           <div className="tw:flex tw:flex-col tw:md:flex-row tw:items-start tw:md:items-center tw:justify-between tw:gap-4">
             <div className="tw:text-[var(--color-font-regular)] tw:text-[14px]">
               {t("rights")}

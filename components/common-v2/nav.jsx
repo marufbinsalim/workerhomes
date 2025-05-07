@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -112,77 +113,91 @@ const Navbar = () => {
 
             {/* Mobile Menu Overlay */}
             {shouldRenderMenu && (
-                <div className="tw:fixed tw:inset-0 tw:z-50 tw:overflow-hidden">
-                    {/* Backdrop */}
-                    <div className={`
-                    tw:absolute tw:inset-0 tw:bg-black 
-                    ${isMenuOpen ? 'tw:opacity-50' : 'tw:opacity-0'}
-                    tw:transition-opacity tw:duration-300
-                    `} onClick={closeMenu}
-                    />
-
-                    {/* Menu Content */}
-                    <div
-                        id="scroll-menu"
-                        className={`
-                        tw:absolute tw:top-0 tw:left-0 tw:h-full tw:bg-white tw:shadow-xl
-                        tw:transform tw:transition-transform tw:duration-300 tw:ease-out
-                        ${isMenuOpen ? 'tw:translate-x-0' : '-tw:translate-x-[90vw]'}
-                        tw:overflow-y-auto
-                    `}
-                        style={{ width: '90vw', maxWidth: '90vw' }}
+                <AnimatePresence>
+                    <motion.div
+                        className="tw:fixed tw:inset-0 tw:z-50 tw:overflow-hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                     >
-                        <div className="tw:px-8">
-                            <img
-                                src="/assets/logo.png"
-                                alt="workerhomes"
-                                className="tw:w-[200px] tw:h-[41px]"
-                            />
-                        </div>
-                        {/* Close Button */}
-                        <button
-                            className="tw:absolute tw:top-4 tw:right-4 tw:p-2 tw:text-gray-700"
+                        {/* Backdrop */}
+                        <motion.div
+                            className="tw:absolute tw:inset-0 tw:bg-black"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 0.5 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
                             onClick={closeMenu}
-                            aria-label="Close menu"
+                        />
+
+                        {/* Menu Content */}
+                        <motion.div
+                            id="scroll-menu"
+                            className="tw:absolute font-primary tw:top-0 tw:left-0 tw:h-full tw:bg-white tw:shadow-xl tw:overflow-y-auto"
+                            style={{ width: '90vw', maxWidth: '90vw' }}
+                            initial={{ x: '-90vw' }}
+                            animate={{ x: isMenuOpen ? 0 : '-90vw' }}
+                            exit={{ x: '-90vw' }}
+                            transition={{ type: 'tween', duration: 0.3 }}
                         >
-                            <svg className="tw:w-6 tw:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
+                            <div className="tw:relative tw:border-b tw:border-[var(--color-border-light)] tw:pb-5 tw:px-4 tw:pt-5">
+                                {/* Logo */}
+                                <img
+                                    src="/assets/logo.png"
+                                    alt="workerhomes"
+                                    className="tw:w-[150px] tw:h-[30px]"
+                                />
 
-                        {/* Scrollable Menu Content */}
-                        <div className="tw:flex tw:flex-col tw:p-6 tw:space-y-6 tw:mt-16">
-                            <a href="#" className="tw:text-[var(--color-font-dark)] tw:hover:text-[var(--color-primary)] tw:hover:font-medium tw:text-lg" onClick={closeMenu}>
-                                Home
-                            </a>
-                            <a href="#" className="tw:text-[var(--color-font-dark)] tw:hover:text-[var(--color-primary)] tw:text-lg" onClick={closeMenu}>
-                                Pricing
-                            </a>
-                            <a href="#" className="tw:text-[var(--color-font-dark)] tw:hover:text-[var(--color-primary)] tw:text-lg" onClick={closeMenu}>
-                                Bookmarks
-                            </a>
-                            <a href="#" className="tw:text-[var(--color-font-dark)] tw:hover:text-[var(--color-primary)] tw:text-lg" onClick={closeMenu}>
-                                Blogs
-                            </a>
-                            <a href="#" className="tw:text-[var(--color-font-dark)] tw:hover:text-[var(--color-primary)] tw:text-lg" onClick={closeMenu}>
-                                Contact
-                            </a>
-
-                            <button className="tw:w-full tw:py-3 tw:text-sm tw:font-medium tw:text-[var(--color-primary)] tw:border tw:border-[var(--color-primary)] animated-border  tw:mt-4">
-                                List your property
-                            </button>
-
-                            <button className="tw:w-full tw:py-3 tw:text-sm tw:font-medium tw:text-white tw:bg-[#040342] ">
-                                Sign In / Register
-                            </button>
-
-                            <div className="tw:flex tw:items-center tw:gap-2 tw:cursor-pointer tw:mt-4">
-                                <img src="/assets/flag1.png" alt="UK Flag" className="tw:w-[32px] tw:h-[32px] tw:rounded-full" />
-                                <span className="tw:text-[var(--color-font-dark)] tw:text-lg">Language</span>
+                                {/* Close Button */}
+                                <button
+                                    className="tw:absolute tw:top-4 tw:right-4 tw:p-2 tw:text-gray-700"
+                                    onClick={closeMenu}
+                                    aria-label="Close menu"
+                                >
+                                    <svg className="tw:w-6 tw:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
                             </div>
-                        </div>
-                    </div>
-                </div>
+
+
+                            {/* Scrollable Menu Content */}
+                            <div className="tw:flex tw:flex-col tw:p-6 tw:space-y-6 tw:mt-4">
+                                <a href="#" className="tw:text-[var(--color-primary)] tw:text-lg" onClick={closeMenu}>
+                                    Home
+                                </a>
+                                <a href="#" className="tw:text-[var(--color-primary)] tw:text-lg" onClick={closeMenu}>
+                                    Pricing
+                                </a>
+                                <a href="#" className="tw:text-[var(--color-primary)] tw:text-lg" onClick={closeMenu}>
+                                    Bookmarks
+                                </a>
+                                <a href="#" className="tw:text-[var(--color-primary)] tw:text-lg" onClick={closeMenu}>
+                                    Blogs
+                                </a>
+                                <a href="#" className="tw:text-[var(--color-primary)] tw:text-lg" onClick={closeMenu}>
+                                    Contact
+                                </a>
+
+                                <div className="tw:flex tw:items-center tw:justify-between tw:gap-2 tw:cursor-pointer">
+                                    <span className="tw:text-[var(--color-font-dark)] tw:text-lg">Change Language</span>
+                                    <div className="tw:flex tw:items-center tw:gap-2">
+                                        <img src="/assets/flag1.png" alt="UK Flag" className="tw:w-[32px] tw:h-[32px] tw:rounded-full" />
+                                        <img src="/assets/dropdown.png" alt="icon" className="tw:w-[13px] tw:h-[8px] tw:rounded-full" />
+                                    </div>
+                                </div>
+
+                                <button className="tw:w-full tw:py-3 tw:mt-2  tw:relative  tw:text-lg tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border">
+                                    List your property
+                                </button>
+
+                                <button className="tw:w-full tw:py-3 tw:text-lg tw:font-medium tw:text-white tw:bg-[#040342] ">
+                                    Sign In / Register
+                                </button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                </AnimatePresence>
             )}
         </>
     );
