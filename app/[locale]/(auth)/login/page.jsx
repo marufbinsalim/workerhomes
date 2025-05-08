@@ -31,6 +31,11 @@ const LogIn = async ({ params }) => {
               </p>
             </div>
             <div className="tw:md:hidden">
+              <img
+                src="/assets/login-illustration.png"
+                alt="login illustration"
+                className="tw:h-[200px] tw:m-auto tw:my-2.5"
+              />
               <SignInForm locale={params.locale} />
             </div>
             <p className="tw:text-[var(--color-font-regular)]">
@@ -50,7 +55,7 @@ const LogIn = async ({ params }) => {
         </div>
 
         {/* sign in form */}
-        <div className="tw:hidden tw:md:block tw:flex-1/3">
+        <div className="tw:hidden tw:md:block tw:flex-1/3 tw:pt-28">
           <SignInForm />
         </div>
       </div>
