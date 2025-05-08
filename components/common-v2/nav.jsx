@@ -47,12 +47,26 @@ const Navbar = () => {
     const [shouldRenderMenu, setShouldRenderMenu] = useState(false);
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState('English');
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
 
     const languageOptions = [
         { label: 'English', flag: '/assets/flag-uk.png', code: 'en' },
         { label: 'German', flag: '/assets/flag-de.png', code: 'de' },
         { label: 'Polish', flag: '/assets/flag-pl.png', code: 'pl' },
     ];
+
+    const dummyUser = {
+        name: 'Abraham Lincoln',
+    };
+
+    const getInitials = (name) => {
+        return name
+            .split(' ')
+            .map((n) => n[0])
+            .join('')
+            .toUpperCase();
+    };
+
 
     const toggleMenu = () => {
         if (!isMenuOpen) {
@@ -126,9 +140,22 @@ const Navbar = () => {
 
                 {/* Desktop Right Section */}
                 <div className="tw:hidden tw:md:flex tw:items-center tw:gap-4">
-                    <button className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:w-[150px] tw:h-[33px] tw:text-sm tw:font-medium">
-                        Sign In / Register
-                    </button>
+                    {isLoggedIn ? (
+                        // Logged-in UI (Initials + Name)
+                        <div className="tw:flex tw:items-center tw:gap-2 tw:mr-4">
+                            <div className="tw:w-8 tw:h-8 tw:bg-orange-500  tw:text-white tw:rounded-full tw:flex tw:items-center tw:justify-center tw:font-bold tw:text-sm">
+                                {getInitials(dummyUser.name)}
+                            </div>
+                            <span className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+                                {dummyUser.name}
+                            </span>
+                        </div>
+                    ) : (
+                        // Sign In / Register Button
+                        <button className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:w-[150px] tw:h-[33px] tw:font-medium">
+                            Sign In / Register
+                        </button>
+                    )}
 
                     {/* Language Selector */}
                     <div className="tw:flex tw:items-center tw:gap-2">
