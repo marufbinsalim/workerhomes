@@ -15,6 +15,7 @@ const SignInForm = (params) => {
   const router = useRouter();
 
   async function onSubmit(locale) {
+    console.log(locale, "locale");
     setIsLoading(true);
 
     const result = await signIn("credentials", {
@@ -28,7 +29,7 @@ const SignInForm = (params) => {
     if (!result.ok) {
       alert("Invalid credentials. Please try again.");
     } else {
-      router.replace(`/${locale}/dashboard/statistics`);
+      router.push(`/${locale}/dashboard/statistics`);
     }
   }
 
