@@ -4,9 +4,6 @@ import LoginWithSocial from "@/components/common/LoginWithSocial";
 import Wrapper from "@/components/layout/Wrapper";
 import { getTranslations } from "next-intl/server";
 import dynamic from "next/dynamic";
-import ReCaptchaProvider from "@/context/ReCaptchaProvider";
-import Header3 from "@/components/header/header-3";
-import Footer from "@/components/common-v2/footer";
 import Link from "next/link";
 import SignInForm from "@/components/authentication-v2/signin/signinForm";
 import Navbar from "@/components/common-v2/nav";
@@ -34,7 +31,8 @@ const LogIn = async ({ params }) => {
               </p>
             </div>
             <div className="tw:md:hidden">
-              <SignInForm />
+              {JSON.stringify(params)}
+              <SignInForm locale={params.locale} />
             </div>
             <p className="tw:text-[var(--color-font-regular)]">
               Don't Have an account?

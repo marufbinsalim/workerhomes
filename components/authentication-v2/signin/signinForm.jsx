@@ -2,14 +2,35 @@
 
 import { Icon } from "@iconify/react";
 import { Eye, EyeClosed } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
 
-export default function SignInForm() {
+const SignInForm = (params) => {
   const [isEyeClosed, setIsEyeClosed] = useState(true);
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
   const [remember, setRemember] = useState(false);
+  const [loading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  async function onSubmit(locale) {
+    setIsLoading(true);
+
+    const result = await signIn("credentials", {
+      redirect: false,
+      email: email,
+      password: passWord,
+    });
+
+    setIsLoading(false);
+
+    if (!result.ok) {
+      alert("Invalid credentials. Please try again.");
+    } else {
+      router.replace(`/${locale}/dashboard/statistics`);
+    }
+  }
 
   return (
     <div className="tw:flex-1/3 tw:w-full tw:text-left tw:flex tw:flex-col tw:gap-5">
@@ -17,6 +38,7 @@ export default function SignInForm() {
         <label className="tw:block tw:text-[var(--color-font-dark)] tw:mb-[10px] tw:font-semibold">
           Email <span className="tw:text-[var(--color-red)]">*</span>
         </label>
+
         <input
           value={email}
           onChange={(e) => {
@@ -92,7 +114,12 @@ export default function SignInForm() {
           </p>
         </div>
       </div>
-      <button className="tw:text-white tw:bg-[var(--color-primary)] tw:py-2.5 tw:px-5 tw:font-medium tw:w-max tw:min-w-[156px]">
+      <button
+        onClick={async () => {
+          await onSubmit(params.locale);
+        }}
+        className="tw:text-white tw:bg-[var(--color-primary)] tw:py-2.5 tw:px-5 tw:font-medium tw:w-max tw:min-w-[156px]"
+      >
         Login
       </button>
       <div className="tw:flex tw:items-center tw:gap-2">
@@ -108,4 +135,5 @@ export default function SignInForm() {
       </button>
     </div>
   );
-}
+};
+export default SignInForm;
