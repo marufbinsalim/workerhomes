@@ -34,7 +34,7 @@ const LogIn = async ({ params }) => {
               <img
                 src="/assets/login-illustration.png"
                 alt="login illustration"
-                className="tw:h-[200px] tw:m-auto tw:my-2.5"
+                className="tw:h-[20dvh] tw:m-auto tw:my-2.5"
               />
               <SignInForm locale={params.locale} />
             </div>
