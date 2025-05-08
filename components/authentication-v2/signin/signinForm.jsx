@@ -1,5 +1,6 @@
 "use client";
 
+import { Icon } from "@iconify/react";
 import { Eye, EyeClosed } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -8,6 +9,7 @@ export default function SignInForm() {
   const [isEyeClosed, setIsEyeClosed] = useState(true);
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
+  const [remember, setRemember] = useState(false);
 
   return (
     <div className="tw:flex-1/3 tw:w-full tw:text-left tw:flex tw:flex-col tw:gap-5">
@@ -71,27 +73,38 @@ export default function SignInForm() {
           </div>
         )}
       </div>
-      <div className="tw:flex tw:items-center tw:justify-between tw:bg-amber-300">
-        <div className="tw:flex tw:gap-2 tw:bg-amber-50">
+      <div className="tw:flex tw:items-center tw:justify-between ">
+        <div className="tw:flex tw:gap-2 ">
           <input
             type="checkbox"
             id="remember"
             name="remember"
             value="remember"
             onChange={(e) => {
-              console.log(e);
+              setRemember(e.target.checked);
             }}
           />
           <label for="remember"> Remember Me</label>
         </div>
-        <div className="tw:bg-blue-50 tw:flex tw:items-center tw:justify-center tw:h-min">
-          <p className="tw:bg-red-500 tw:block tw:mt-auto">
+        <div className="tw:h-full tw:flex tw:items-center tw:justify-center">
+          <p className="tw:m-0 tw:text-[var(--color-font-regular)] tw:underline">
             Forgot your password?
           </p>
         </div>
       </div>
       <button className="tw:text-white tw:bg-[var(--color-primary)] tw:py-2.5 tw:px-5 tw:font-medium tw:w-max tw:min-w-[156px]">
         Login
+      </button>
+      <div className="tw:flex tw:items-center tw:gap-2">
+        <div className="tw:flex-1 tw:h-[1px] tw:bg-[var(--color-border-light)]" />
+        <p className="tw:m-0 tw:text-[16px] tw:text-[var(--color-font-light)]">
+          or
+        </p>
+        <div className="tw:flex-1 tw:h-[1px] tw:bg-[var(--color-border-light)]" />
+      </div>
+      <button className="tw:rounded-[36px] tw:bg-[var(--color-white-grey)] tw:flex tw:items-center tw:justify-center tw:h-10">
+        <Icon icon="devicon:google" className="mr-10" />
+        Login With Google
       </button>
     </div>
   );
