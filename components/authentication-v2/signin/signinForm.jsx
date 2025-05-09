@@ -3,6 +3,7 @@
 import { Icon } from "@iconify/react";
 import { Eye, EyeClosed } from "lucide-react";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 
@@ -47,7 +48,7 @@ const SignInForm = (params) => {
           }}
           placeholder="Email"
           type="text"
-          className="tw:w-full tw:bg-[var(--color-white-grey)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1 tw:focus:ring-[var(--color-primary)] tw:rounded-xl"
+          className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
         />
       </div>
       <div className="tw:w-full tw:flex tw:flex-col">
@@ -63,7 +64,7 @@ const SignInForm = (params) => {
               }}
               placeholder="Password"
               type="text"
-              className="tw:w-full tw:bg-[var(--color-white-grey)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1 tw:focus:ring-[var(--color-primary)] tw:rounded-xl"
+              className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
             />
             <div className="tw:absolute tw:right-2 tw:top-1/2 tw:-translate-1/2">
               <EyeClosed
@@ -83,7 +84,7 @@ const SignInForm = (params) => {
               }}
               placeholder="Password"
               type="password"
-              className="tw:w-full tw:bg-[var(--color-white-grey)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1 tw:focus:ring-[var(--color-primary)] tw:rounded-xl"
+              className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
             />
             <div className="tw:absolute tw:right-2 tw:top-1/2 tw:-translate-1/2">
               <Eye
@@ -110,9 +111,11 @@ const SignInForm = (params) => {
           <label for="remember"> Remember Me</label>
         </div>
         <div className="tw:h-full tw:flex tw:items-center tw:justify-center">
-          <p className="tw:m-0 tw:text-[var(--color-font-regular)] tw:underline">
-            Forgot your password?
-          </p>
+          <Link href="/forgot-password">
+            <p className="tw:m-0 tw:text-[var(--color-font-regular)] tw:underline">
+              Forgot your password?
+            </p>
+          </Link>
         </div>
       </div>
       <button

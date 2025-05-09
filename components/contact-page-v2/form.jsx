@@ -77,7 +77,7 @@ export default function ContactForm() {
             }}
             placeholder="First Name"
             type="text"
-            className="tw:w-full tw:bg-[var(--color-white-grey)] tw:px-3 tw:py-2 tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1 tw:focus:ring-[var(--color-primary)] "
+            className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:px-3 tw:py-2 tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  "
           />
         </div>
         <div>
@@ -91,7 +91,7 @@ export default function ContactForm() {
             }}
             placeholder="Last Name"
             type="text"
-            className="tw:w-full tw:bg-[var(--color-white-grey)] tw:px-3 tw:py-2 tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1 tw:focus:ring-[var(--color-primary)] "
+            className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:px-3 tw:py-2 tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  "
           />
         </div>
       </div>
@@ -107,7 +107,7 @@ export default function ContactForm() {
           }}
           placeholder="youremail@gmail.com"
           type="email"
-          className="tw:w-full tw:bg-[var(--color-white-grey)] tw:px-3 tw:py-2 tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1 tw:focus:ring-[var(--color-primary)] "
+          className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:px-3 tw:py-2 tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  "
         />
       </div>
 
@@ -120,7 +120,7 @@ export default function ContactForm() {
           onChange={(e) => {
             setMessage(e.target.value);
           }}
-          className="tw:w-full tw:bg-[var(--color-white-grey)] tw:px-3 tw:py-2 tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1 tw:focus:ring-[var(--color-primary)]  tw:h-32"
+          className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:px-3 tw:py-2 tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1   tw:h-32"
           placeholder="Leave a message for us..."
         ></textarea>
       </div>

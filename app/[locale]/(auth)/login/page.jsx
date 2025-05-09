@@ -26,7 +26,7 @@ const LogIn = async ({ params }) => {
               <h2 className="tw:text-[var(--color-font-dark)] tw:font-medium tw:text-[40px]">
                 Login to your account
               </h2>
-              <p className="tw:text-[var(--color-font-regular)]">
+              <p className="tw:text-[var(--color-font-regular)] tw:m-0">
                 Login to your account to get started with our service
               </p>
             </div>
@@ -38,9 +38,9 @@ const LogIn = async ({ params }) => {
               />
               <SignInForm locale={params.locale} />
             </div>
-            <p className="tw:text-[var(--color-font-regular)]">
+            <p className="tw:text-[var(--color-font-regular)] tw:m-0">
               Don't Have an account?
-              <Link href="sign-up">
+              <Link href="/signup">
                 <span className="tw:text-[var(--color-primary)] tw:hover:underline tw:ml-1">
                   Sign up now
                 </span>
@@ -56,7 +56,7 @@ const LogIn = async ({ params }) => {
 
         {/* sign in form */}
         <div className="tw:hidden tw:md:block tw:flex-1/3 tw:pt-28">
-          <SignInForm />
+          <SignInForm locale={params.locale} />
         </div>
       </div>
     </div>
