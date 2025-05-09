@@ -133,7 +133,10 @@ const SignInForm = (params) => {
         </p>
         <div className="tw:flex-1 tw:h-[1px] tw:bg-[var(--color-border-light)]" />
       </div>
-      <button className="tw:rounded-[36px] tw:bg-[var(--color-white-grey)] tw:flex tw:items-center tw:justify-center tw:h-10">
+      <button
+        className="tw:rounded-[36px] tw:bg-[var(--color-white-grey)] tw:flex tw:items-center tw:justify-center tw:h-10"
+        onClick={() => signIn("google", { callbackUrl: `/${params.locale}` })}
+      >
         <Icon icon="devicon:google" className="mr-10" />
         Login With Google
       </button>
