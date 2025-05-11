@@ -112,8 +112,8 @@ const Navbar = () => {
             <div className={`
                 tw:fixed tw:top-0 tw:left-0 tw:right-0 tw:z-40
                 tw:flex tw:items-center tw:justify-between 
-                tw:px-6 tw:py-2 tw:bg-white
-                tw:transition-all tw:duration-300
+                tw:px-6 tw:py-4 tw:bg-white
+                tw:transition-all tw:duration-300 
                 ${isScrolled ? 'tw:shadow-md' : 'tw:shadow-none'}
             `}>
                 {/* Logo */}
@@ -290,8 +290,6 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <button className="tw:w-full tw:py-3 tw:mt-2  tw:relative  tw:text-lg tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border">
                                     List your property
                                 </button>
