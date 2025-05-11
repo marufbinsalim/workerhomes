@@ -6,6 +6,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
+import { useTranslations } from 'next-intl';
 
 const SignInForm = (params) => {
   const [isEyeClosed, setIsEyeClosed] = useState(true);
@@ -14,6 +15,8 @@ const SignInForm = (params) => {
   const [remember, setRemember] = useState(false);
   const [loading, setIsLoading] = useState(false);
   const router = useRouter();
+
+  const t = useTranslations('authentication.signin');
 
   async function onSubmit(locale) {
     console.log(locale, "locale");
@@ -28,7 +31,7 @@ const SignInForm = (params) => {
     setIsLoading(false);
 
     if (!result.ok) {
-      alert("Invalid credentials. Please try again.");
+      alert(t('invalidCredentials'));
     } else {
       router.push(`/${locale}/dashboard/statistics`);
     }
@@ -38,7 +41,7 @@ const SignInForm = (params) => {
     <div className="tw:flex-1/3 tw:w-full tw:text-left tw:flex tw:flex-col tw:gap-5">
       <div className="tw:w-full tw:flex tw:flex-col">
         <label className="tw:block tw:text-[var(--color-font-dark)] tw:mb-[10px] tw:font-semibold">
-          Email <span className="tw:text-[var(--color-red)]">*</span>
+          {t('email')} <span className="tw:text-[var(--color-red)]">*</span>
         </label>
 
         <input
@@ -46,14 +49,14 @@ const SignInForm = (params) => {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-          placeholder="Email"
+          placeholder={t('emailPlaceholder')}
           type="text"
           className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
         />
       </div>
       <div className="tw:w-full tw:flex tw:flex-col">
         <label className="tw:block tw:text-[var(--color-font-dark)] tw:mb-[10px] tw:font-semibold">
-          Password <span className="tw:text-[var(--color-red)]">*</span>
+          {t('password')} <span className="tw:text-[var(--color-red)]">*</span>
         </label>
         {isEyeClosed === false ? (
           <div className="tw:relative">
@@ -62,7 +65,7 @@ const SignInForm = (params) => {
               onChange={(e) => {
                 setPassWord(e.target.value);
               }}
-              placeholder="Password"
+              placeholder={t('passwordPlaceholder')}
               type="text"
               className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
             />
@@ -82,7 +85,7 @@ const SignInForm = (params) => {
               onChange={(e) => {
                 setPassWord(e.target.value);
               }}
-              placeholder="Password"
+              placeholder={t('passwordPlaceholder')}
               type="password"
               className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
             />
@@ -108,12 +111,12 @@ const SignInForm = (params) => {
               setRemember(e.target.checked);
             }}
           />
-          <label for="remember"> Remember Me</label>
+          <label htmlFor="remember">{t('rememberMe')}</label>
         </div>
         <div className="tw:h-full tw:flex tw:items-center tw:justify-center">
           <Link href="/forgot-password">
             <p className="tw:m-0 tw:text-[var(--color-font-regular)] tw:underline">
-              Forgot your password?
+              {t('forgotPassword')}
             </p>
           </Link>
         </div>
@@ -124,12 +127,22 @@ const SignInForm = (params) => {
         }}
         className="tw:text-white tw:bg-[var(--color-primary)] tw:py-2.5 tw:px-5 tw:font-medium tw:w-max tw:min-w-[156px]"
       >
-        Login
+        {t('loginButton')}
       </button>
+
+      <p className="tw:text-[var(--color-font-regular)] tw:m-0 tw:my-2.5">
+        {t('dontHaveAccount')}
+        <Link href="/signup">
+          <span className="tw:text-[var(--color-primary)] tw:hover:underline tw:ml-1">
+            {t('signup')}
+          </span>
+        </Link>
+      </p>
+
       <div className="tw:flex tw:items-center tw:gap-2">
         <div className="tw:flex-1 tw:h-[1px] tw:bg-[var(--color-border-light)]" />
         <p className="tw:m-0 tw:text-[16px] tw:text-[var(--color-font-light)]">
-          or
+          {t('or')}
         </p>
         <div className="tw:flex-1 tw:h-[1px] tw:bg-[var(--color-border-light)]" />
       </div>
@@ -138,9 +151,10 @@ const SignInForm = (params) => {
         onClick={() => signIn("google", { callbackUrl: `/${params.locale}` })}
       >
         <Icon icon="devicon:google" className="mr-10" />
-        Login With Google
+        {t('loginWithGoogle')}
       </button>
     </div>
   );
 };
+
 export default SignInForm;

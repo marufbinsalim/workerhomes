@@ -1,4 +1,49 @@
 {
+
+  "authentication": {
+    "signup": {
+      "firstname": "First Name",
+      "lastname": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "firstnamePlaceholder": "Enter your first name",
+      "lastnamePlaceholder": "Enter your last name",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Enter your password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "missingFields": "Please fill out all fields.",
+      "passwordMismatch": "Passwords do not match.",
+      "registrationSuccess": "Registration successful!",
+      "registrationFailed": "Registration failed",
+      "signupButton": "Sign Up",
+      "alreadyHaveAccount": "Already have an account?",
+      "login": "Log in",
+      "or": "or",
+      "loginWithGoogle": "Login with Google",
+      "signupTitle": "Create your account",
+      "signupSubtitle": "Let’s get you started with your account"
+    },
+    "signin": {
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "rememberMe": "Remember Me",
+      "forgotPassword": "Forgot your password?",
+      "loginButton": "Login",
+      "invalidCredentials": "Invalid credentials. Please try again.",
+      "or": "or",
+      "loginWithGoogle": "Login with Google",
+      "dontHaveAccount": "Don't have an account?",
+      "signup": "Sign up",
+      "loginTitle": "Login to your account",
+      "loginSubtitle": "Login to your account to get started with our service",
+      "signupNow": "Sign up now"
+    }
+  },
+
+   
   "brand": {
     "title": "Hello world!",
     "description": "This is a simple example of a brand object."

@@ -18,7 +18,7 @@ export const metadata = {
 };
 
 const SignUp = async ({ params }) => {
-  const t = await getTranslations("register");
+  const t = await getTranslations("authentication.signup");
 
   return (
     <div className="tw:pt-[90px] font-primary">
@@ -28,10 +28,10 @@ const SignUp = async ({ params }) => {
           <div className="tw:flex tw:flex-col tw:gap-4 tw:text-center">
             <div className="tw:flex tw:flex-col tw:gap-1">
               <h2 className="tw:text-[var(--color-font-dark)] tw:font-medium tw:text-[40px]">
-                Create your account
+                {t("signupTitle")}
               </h2>
               <p className="tw:text-[var(--color-font-regular)] tw:m-0">
-                Let’s get you started with your account
+                {t("signupSubtitle")}
               </p>
             </div>
             <div className="tw:md:hidden">

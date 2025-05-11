@@ -1,4 +1,48 @@
 {
+
+  "authentication": {
+    "signup": {
+      "firstname": "Vorname",
+      "lastname": "Nachname",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "confirmPassword": "Passwort bestätigen",
+      "firstnamePlaceholder": "Gib deinen Vornamen ein",
+      "lastnamePlaceholder": "Gib deinen Nachnamen ein",
+      "emailPlaceholder": "Gib deine E-Mail-Adresse ein",
+      "passwordPlaceholder": "Gib dein Passwort ein",
+      "confirmPasswordPlaceholder": "Bestätige dein Passwort",
+      "missingFields": "Bitte fülle alle Felder aus.",
+      "passwordMismatch": "Passwörter stimmen nicht überein.",
+      "registrationSuccess": "Registrierung erfolgreich!",
+      "registrationFailed": "Registrierung fehlgeschlagen",
+      "signupButton": "Registrieren",
+      "alreadyHaveAccount": "Du hast schon ein Konto?",
+      "login": "Anmelden",
+      "or": "oder",
+      "loginWithGoogle": "Mit Google anmelden",
+      "signupTitle": "Erstellen Sie Ihr Konto",
+      "signupSubtitle": "Lassen Sie uns mit der Erstellung Ihres Kontos beginnen"
+    },
+    "signin": {
+      "email": "E-mail",
+      "emailPlaceholder": "Wprowadź swój e-mail",
+      "password": "Hasło",
+      "passwordPlaceholder": "Wprowadź swoje hasło",
+      "rememberMe": "Zapamiętaj mnie",
+      "forgotPassword": "Zapomniałeś hasła?",
+      "loginButton": "Zaloguj się",
+      "invalidCredentials": "Nieprawidłowe dane logowania. Spróbuj ponownie.",
+      "or": "lub",
+      "loginWithGoogle": "Zaloguj się przez Google",
+      "dontHaveAccount": "Nie masz konta?",
+      "signup": "Zarejestruj się",
+      "loginTitle": "Melden Sie sich bei Ihrem Konto an",
+      "loginSubtitle": "Melden Sie sich an, um unseren Service zu nutzen",
+      "signupNow": "Jetzt registrieren"
+    }
+  },
+
   "brand": {
     "title": "Hallo Welt!",
     "description": "Dies ist ein einfaches Beispiel eines Markenobjekts."
