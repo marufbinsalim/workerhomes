@@ -1,4 +1,48 @@
 {
+
+  "authentication": {
+    "signup": {
+      "firstname": "Imię",
+      "lastname": "Nazwisko",
+      "email": "Email",
+      "password": "Hasło",
+      "confirmPassword": "Potwierdź hasło",
+      "firstnamePlaceholder": "Wprowadź swoje imię",
+      "lastnamePlaceholder": "Wprowadź swoje nazwisko",
+      "emailPlaceholder": "Wprowadź swój email",
+      "passwordPlaceholder": "Wprowadź swoje hasło",
+      "confirmPasswordPlaceholder": "Potwierdź swoje hasło",
+      "missingFields": "Proszę wypełnić wszystkie pola.",
+      "passwordMismatch": "Hasła nie są zgodne.",
+      "registrationSuccess": "Rejestracja zakończona sukcesem!",
+      "registrationFailed": "Rejestracja nie powiodła się",
+      "signupButton": "Zarejestruj się",
+      "alreadyHaveAccount": "Masz już konto?",
+      "login": "Zaloguj się",
+      "or": "lub",
+      "loginWithGoogle": "Zaloguj się przez Google",
+      "signupTitle": "Utwórz swoje konto",
+      "signupSubtitle": "Zacznijmy od utworzenia Twojego konta"
+    },
+    "signin": {
+      "email": "E-mail",
+      "emailPlaceholder": "Wprowadź swój e-mail",
+      "password": "Hasło",
+      "passwordPlaceholder": "Wprowadź swoje hasło",
+      "rememberMe": "Zapamiętaj mnie",
+      "forgotPassword": "Zapomniałeś hasła?",
+      "loginButton": "Zaloguj się",
+      "invalidCredentials": "Nieprawidłowe dane logowania. Spróbuj ponownie.",
+      "or": "lub",
+      "loginWithGoogle": "Zaloguj się przez Google",
+      "dontHaveAccount": "Nie masz konta?",
+      "signup": "Zarejestruj się",
+      "loginTitle": "Zaloguj się na swoje konto",
+      "loginSubtitle": "Zaloguj się, aby rozpocząć korzystanie z naszej usługi",
+      "signupNow": "Zarejestruj się teraz"
+    }
+  },
+
   "brand": {
     "title": "Witaj świecie!",
     "description": "To jest prosty przykład obiektu marki."

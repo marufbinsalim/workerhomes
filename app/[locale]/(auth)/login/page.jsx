@@ -14,7 +14,7 @@ export const metadata = {
 };
 
 const LogIn = async ({ params }) => {
-  const t = await getTranslations("login");
+  const t = await getTranslations("authentication.signin");
 
   return (
     <div className="tw:pt-[90px] font-primary">
@@ -24,10 +24,10 @@ const LogIn = async ({ params }) => {
           <div className="tw:flex tw:flex-col tw:gap-4 tw:text-center">
             <div className="tw:flex tw:flex-col tw:gap-1">
               <h2 className="tw:text-[var(--color-font-dark)] tw:font-medium tw:text-[40px]">
-                Login to your account
+                {t("loginTitle")}
               </h2>
               <p className="tw:text-[var(--color-font-regular)] tw:m-0">
-                Login to your account to get started with our service
+                {t("loginSubtitle")}
               </p>
             </div>
             <div className="tw:md:hidden">
@@ -39,10 +39,10 @@ const LogIn = async ({ params }) => {
               <SignInForm locale={params.locale} />
             </div>
             <p className="tw:text-[var(--color-font-regular)] tw:m-0">
-              Don't Have an account?
+              {t("dontHaveAccount")}
               <Link href="/signup">
                 <span className="tw:text-[var(--color-primary)] tw:hover:underline tw:ml-1">
-                  Sign up now
+                  {t("signupNow")}
                 </span>
               </Link>
             </p>

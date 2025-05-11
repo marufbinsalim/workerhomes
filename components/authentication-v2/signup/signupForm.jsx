@@ -7,6 +7,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
+import { useTranslations } from 'next-intl'
 
 const SignUpForm = (params) => {
   const [isEyeClosed, setIsEyeClosed] = useState(true);
@@ -19,14 +20,16 @@ const SignUpForm = (params) => {
   const [loading, setIsLoading] = useState(false);
   const router = useRouter();
 
+  const t = useTranslations('authentication.signup');
+
   async function onSubmit(locale) {
     if (!firstName || !lastName || !email || !passWord || !confirmPassWord) {
-      alert("Please fill out all fields.");
+      alert(t('missingFields'));
       return;
     }
 
     if (passWord !== confirmPassWord) {
-      alert("Passwords do not match.");
+      alert(t('passwordMismatch'));
       return;
     }
 
@@ -46,11 +49,11 @@ const SignUpForm = (params) => {
         throw new Error("Something went wrong");
       }
 
-      alert("Registration successful!");
+      alert(t('registrationSuccess'));
       router.push(`/${locale}/dashboard`); // Redirect after successful registration
     } catch (error) {
       console.error(error);
-      alert(`Registration failed: ${error.message}`);
+      alert(`${t('registrationFailed')}: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
@@ -61,14 +64,14 @@ const SignUpForm = (params) => {
       <div className="tw:w-full tw:flex tw:gap-5">
         <div className="tw:w-full tw:flex tw:flex-col">
           <label className="tw:block tw:text-[var(--color-font-dark)] tw:mb-[10px] tw:font-semibold">
-            First Name <span className="tw:text-[var(--color-red)]">*</span>
+            {t('firstname')} <span className="tw:text-[var(--color-red)]">*</span>
           </label>
           <input
             value={firstName}
             onChange={(e) => {
               setFirstName(e.target.value);
             }}
-            placeholder="First Name"
+            placeholder={t('firstnamePlaceholder')}
             type="text"
             className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
           />
@@ -76,14 +79,14 @@ const SignUpForm = (params) => {
 
         <div className="tw:w-full tw:flex tw:flex-col">
           <label className="tw:block tw:text-[var(--color-font-dark)] tw:mb-[10px] tw:font-semibold">
-            Last Name <span className="tw:text-[var(--color-red)]">*</span>
+            {t('lastname')} <span className="tw:text-[var(--color-red)]">*</span>
           </label>
           <input
             value={lastName}
             onChange={(e) => {
               setLastName(e.target.value);
             }}
-            placeholder="Last Name"
+            placeholder={t('lastnamePlaceholder')}
             type="text"
             className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
           />
@@ -92,7 +95,7 @@ const SignUpForm = (params) => {
 
       <div className="tw:w-full tw:flex tw:flex-col">
         <label className="tw:block tw:text-[var(--color-font-dark)] tw:mb-[10px] tw:font-semibold">
-          Email <span className="tw:text-[var(--color-red)]">*</span>
+          {t('email')} <span className="tw:text-[var(--color-red)]">*</span>
         </label>
 
         <input
@@ -100,14 +103,14 @@ const SignUpForm = (params) => {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-          placeholder="Email"
+          placeholder={t('emailPlaceholder')}
           type="text"
           className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
         />
       </div>
       <div className="tw:w-full tw:flex tw:flex-col">
         <label className="tw:block tw:text-[var(--color-font-dark)] tw:mb-[10px] tw:font-semibold">
-          Password <span className="tw:text-[var(--color-red)]">*</span>
+          {t('password')} <span className="tw:text-[var(--color-red)]">*</span>
         </label>
         {isEyeClosed === false ? (
           <div className="tw:relative">
@@ -116,7 +119,7 @@ const SignUpForm = (params) => {
               onChange={(e) => {
                 setPassWord(e.target.value);
               }}
-              placeholder="Password"
+              placeholder={t('passwordPlaceholder')}
               type="text"
               className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
             />
@@ -136,7 +139,7 @@ const SignUpForm = (params) => {
               onChange={(e) => {
                 setPassWord(e.target.value);
               }}
-              placeholder="Password"
+              placeholder={t('passwordPlaceholder')}
               type="password"
               className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
             />
@@ -153,7 +156,7 @@ const SignUpForm = (params) => {
       </div>
       <div className="tw:w-full tw:flex tw:flex-col">
         <label className="tw:block tw:text-[var(--color-font-dark)] tw:mb-[10px] tw:font-semibold">
-          Confirm Password <span className="tw:text-[var(--color-red)]">*</span>
+          {t('confirmPassword')} <span className="tw:text-[var(--color-red)]">*</span>
         </label>
         {isEyeClosedConfirm === false ? (
           <div className="tw:relative">
@@ -162,7 +165,7 @@ const SignUpForm = (params) => {
               onChange={(e) => {
                 setConfirmPassWord(e.target.value);
               }}
-              placeholder="Confirm Password"
+              placeholder={t('confirmPasswordPlaceholder')}
               type="text"
               className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
             />
@@ -182,7 +185,7 @@ const SignUpForm = (params) => {
               onChange={(e) => {
                 setConfirmPassWord(e.target.value);
               }}
-              placeholder="Confirm Password"
+              placeholder={t('confirmPasswordPlaceholder')}
               type="password"
               className="tw:w-full tw:bg-[var(--color-white-grey)] tw:focus:ring-[var(--color-primary)] tw:text-[var(--color-font-regular)] tw:p-[10px] tw:border tw:border-gray-300  tw:focus:outline-none tw:focus:ring-1  tw:rounded-xl"
             />
@@ -204,14 +207,14 @@ const SignUpForm = (params) => {
         }}
         className="tw:text-white tw:bg-[var(--color-primary)] tw:py-2.5 tw:px-5 tw:font-medium tw:w-max tw:min-w-[156px]"
       >
-        Sign Up
+        {t('signupButton')}
       </button>
 
       <p className="tw:text-[var(--color-font-regular)] tw:m-0 tw:my-2.5">
-        Already Have an Account?
+        {t('alreadyHaveAccount')}
         <Link href="/login">
           <span className="tw:text-[var(--color-primary)] tw:hover:underline tw:ml-1">
-            Log in
+            {t('login')}
           </span>
         </Link>
       </p>
@@ -219,7 +222,7 @@ const SignUpForm = (params) => {
       <div className="tw:flex tw:items-center tw:gap-2">
         <div className="tw:flex-1 tw:h-[1px] tw:bg-[var(--color-border-light)]" />
         <p className="tw:m-0 tw:text-[16px] tw:text-[var(--color-font-light)]">
-          or
+          {t('or')}
         </p>
         <div className="tw:flex-1 tw:h-[1px] tw:bg-[var(--color-border-light)]" />
       </div>
@@ -228,7 +231,7 @@ const SignUpForm = (params) => {
         onClick={() => signIn("google", { callbackUrl: `/${params.locale}` })}
       >
         <Icon icon="devicon:google" className="mr-10" />
-        Login With Google
+        {t('loginWithGoogle')}
       </button>
     </div>
   );
