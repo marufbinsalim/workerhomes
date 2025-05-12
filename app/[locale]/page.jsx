@@ -34,14 +34,12 @@ export const metadata = {
 };
 
 export default async function Main() {
-  const waitFor = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-  await waitFor(1000);
+  const session = await getCurrentUser();
 
   return (
     <Suspense fallback={<Loading />}>
       <div className="tw:flex tw:flex-col tw:min-h-screen">
-        <Navbar session={null} />
+        <Navbar session={session} />
         <main className="tw:flex-grow tw:pt-16">
           <Dashboard />
         </main>
