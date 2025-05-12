@@ -1,9 +1,126 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
+import { FiChevronDown } from "react-icons/fi";
+import { GoMoveToEnd } from "react-icons/go";
+import { LuUser } from "react-icons/lu";
+import { MdLogout } from "react-icons/md";
+
+
+
+
+
+
+
+
+const UserDropdown = ({ session }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const router = useRouter();
+
+  
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const getInitials = (name) => {
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
+
+  const handleNavigation = (path) => {
+    router.push(path);
+    setIsOpen(false);
+  };
+
+  
+  return (
+    <div className="tw:relative" ref={dropdownRef}>
+      <button
+        className="tw:flex tw:items-center tw:gap-2 tw:group tw:p-2 tw:rounded tw:hover:bg-gray-200 tw:transition-colors"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="true"
+        aria-expanded={isOpen}
+        aria-label="User menu"
+      >
+        {/* User avatar and name */}
+        <div className="tw:w-8 tw:h-8 tw:bg-orange-500 tw:text-white tw:rounded-full tw:flex tw:items-center tw:justify-center tw:font-bold tw:text-sm">
+          {getInitials(session.user.name)}
+        </div>
+        <span className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+          {session.user.name}
+        </span>
+        {/* Chevron icon - hidden by default, visible on hover */}
+        <FiChevronDown
+          className={`tw:w-6 tw:h-6 tw:text-gray-500 tw:transition-transform ${isOpen ? 'tw:rotate-180' : ''
+            } ${isOpen ? 'tw:opacity-100' : 'tw:opacity-0 tw:group-hover:opacity-100'}`}
+          aria-hidden="true"
+        />
+      </button>
+
+      {isOpen && (
+        <div
+          className="tw:absolute tw:top-full tw:right-0 tw:mt-2 tw:w-[174px] tw:bg-white tw:rounded tw:shadow-dropdown tw:z-50 tw:py-2"
+          role="menu"
+        >
+          {/* Dashboard */}
+          <div
+            className="tw:flex tw:items-center tw:gap-2 tw:px-4 tw:py-2 tw:hover:bg-gray-100 tw:cursor-pointer"
+            onClick={() => handleNavigation('/dashboard')}
+          >
+            <GoMoveToEnd className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
+            <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">
+              Go to dashboard
+            </p>
+          </div>
+
+        
+          {/* Profile */}
+          <div
+            className="tw:flex tw:items-center tw:gap-2 tw:px-4 tw:py-2 tw:hover:bg-gray-100 tw:cursor-pointer"
+            onClick={() => handleNavigation('/profile')}
+          >
+            <LuUser className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
+            <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">My profile</p>
+          </div>
+
+          {/* Logout */}
+          <div
+            className="tw:flex tw:items-center tw:gap-2 tw:px-4 tw:py-2 tw:hover:bg-gray-100 tw:cursor-pointer"
+          >
+            <MdLogout className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]"/>
+            <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">Logout</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 
 const Dropdown = ({
   languageOptions,
@@ -41,12 +158,12 @@ const Dropdown = ({
                   alt={`${lang.label} flag`}
                   className="tw:w-[32px] tw:h-[22px] tw:rounded-sm"
                 />
-                <span className="tw-text-black tw:font-[14px]">
+                <span className="tw:text-black tw:font-[14px]">
                   {lang.label}
                 </span>
               </div>
               {selected === lang.label && (
-                <Check className="tw-w-5 tw-h-5 tw-text-black" />
+                <Check className="tw:w-5 tw:h-5 tw:text-black" />
               )}
             </div>
           ))}
@@ -66,8 +183,15 @@ const Navbar = ({ session }) => {
   const pathName = usePathname();
   const locale = pathName.split("/")[1];
   const [selected, setSelected] = useState(t(`locales.${locale}.language`));
+  const router = useRouter();
+  const pathname = usePathname()
+  
+
   console.log("session : ", session);
 
+  
+  
+  
   const languageOptions = [
     {
       id: 1,
@@ -92,19 +216,7 @@ const Navbar = ({ session }) => {
     },
   ];
 
-  const dummyUser = {
-    name: "Abraham Lincoln",
-  };
-
-  const getInitials = (name) => {
-    return name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 2);
-  };
-
+  
   const toggleMenu = () => {
     if (!isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -168,35 +280,45 @@ const Navbar = ({ session }) => {
         {/* Desktop Navigation */}
         <div className="tw:hidden tw:md:flex tw:text-[var(--color-font-dark)] tw:font-normal tw:items-center tw:gap-6 tw:text-[14px]">
           <a
-            href="#"
-            className="tw:hover:text-[var(--color-primary)] tw:hover:font-medium"
+            href={`/${locale}`}
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}` ? 'tw:text-[var(--color-primary)] tw:font-medium' : ''
+              }`}
           >
-            Home
+            {t('links.home')}
           </a>
+
           <a
-            href="#"
-            className="tw:hover:text-[var(--color-primary)] tw:hover:font-medium"
+            href={`/${locale}/pricing`}
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/pricing` ? 'tw:text-[var(--color-primary)] tw:font-medium' : ''
+              }`}
           >
-            Pricing
+            {t('links.pricing')}
           </a>
+
           <a
-            href="#"
-            className="tw:hover:text-[var(--color-primary)] tw:hover:font-medium"
+            href={`/${locale}/bookmarks`}
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/bookmarks` ? 'tw:text-[var(--color-primary)] tw:font-medium' : ''
+              }`}
           >
-            Bookmarks
+            {t('links.bookmarks')}
           </a>
+
           <a
-            href="#"
-            className="tw:hover:text-[var(--color-primary)] tw:hover:font-medium"
+            href={`/${locale}/blogs`}
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/blogs` ? 'tw:text-[var(--color-primary)] tw:font-medium' : ''
+              }`}
           >
-            Blogs
+            {t('links.blogs')}
           </a>
+
           <a
-            href="#"
-            className="tw:hover:text-[var(--color-primary)] tw:hover:font-medium"
+            href={`/${locale}/contact`}
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/contact` ? 'tw:text-[var(--color-primary)] tw:font-medium' : ''
+              }`}
           >
-            Contact
+            {t('links.contact')}
           </a>
+
 
           <button className="tw:relative tw:w-[150px] tw:h-[33px] tw:text-sm tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border">
             List your property
@@ -205,19 +327,15 @@ const Navbar = ({ session }) => {
 
         {/* Desktop Right Section */}
         <div className="tw:hidden tw:md:flex tw:items-center tw:gap-4">
-          {session && session?.user ? (
-            // Logged-in UI (Initials + Name)
-            <div className="tw:flex tw:items-center tw:gap-2 tw:mr-4">
-              <div className="tw:w-8 tw:h-8 tw:bg-orange-500  tw:text-white tw:rounded-full tw:flex tw:items-center tw:justify-center tw:font-bold tw:text-sm">
-                {getInitials(session.user.name)}
-              </div>
-              <span className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
-                {session.user.name}
-              </span>
-            </div>
+          {session && session.user ? (
+            // Logged-in UI with dropdown
+            <UserDropdown session={session} />
           ) : (
             // Sign In / Register Button
-            <button className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:w-[150px] tw:h-[33px] tw:font-medium">
+            <button
+              onClick={() => router.push('/login')}
+              className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:w-[150px] tw:h-[33px] tw:font-medium"
+            >
               Sign In / Register
             </button>
           )}
@@ -376,7 +494,7 @@ const Navbar = ({ session }) => {
                 </a>
 
                 <div className="tw:flex tw:items-center tw:justify-between tw:gap-2 tw:cursor-pointer">
-                  <span className="tw-text-[var(--color-font-dark)] tw-text-lg">
+                  <span className="tw:text-[var(--color-font-dark)] tw:text-lg">
                     Change Language
                   </span>
                   <div className="tw:flex tw:items-center tw:gap-2">
