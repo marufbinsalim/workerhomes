@@ -91,7 +91,7 @@ const Dashboard = () => {
     const t = useTranslations('heroSection');
 
 
-     
+
 
     const toggleFavorite = (id) => {
         setFavorites((prev) => ({
@@ -331,11 +331,11 @@ const Dashboard = () => {
             {/* what we are section */}
             <section className="tw:w-full font-primary tw:py-[40px] tw:bg-[#F8F9FB]">
                 <div className="tw:max-w-[1280px] tw:mx-auto tw:flex tw:flex-col">
-                    <div className="tw:mb-[20px] tw:flex tw:flex-col tw:items-center tw:md:items-start">
+                    <div className="tw:mb-[20px]  tw:flex tw:flex-col tw:items-center tw:md:items-start">
                         <h2 className="tw:text-[32px] tw:font-semibold tw:text-[var(--color-font-dark)]">
                             {t('whoWeAreSection.title')}
                         </h2>
-                        <p className="tw:text-[18px] tw:text-[var(--color-font-regular)]">
+                        <p className="tw:text-[18px] tw:font-normal tw:text-[var(--color-font-regular)] tw:leading-[100%] tw:text-center tw:px-4 tw:md:px-0">
                             {t('whoWeAreSection.subtitle')}
                         </p>
                     </div>
