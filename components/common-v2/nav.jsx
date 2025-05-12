@@ -3,34 +3,24 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { FiChevronDown } from "react-icons/fi";
 import { GoMoveToEnd } from "react-icons/go";
 import { LuUser } from "react-icons/lu";
 import { MdLogout } from "react-icons/md";
-
-
-
-
-
-
+import { signOut } from "next-auth/react";
 
 
 const UserDropdown = ({ session }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const router = useRouter();
+  const locale = useParams().locale;
 
   
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    const handleEscape = (event) => {
-      if (event.key === 'Escape') {
         setIsOpen(false);
       }
     };
@@ -90,7 +80,7 @@ const UserDropdown = ({ session }) => {
           {/* Dashboard */}
           <div
             className="tw:flex tw:items-center tw:gap-2 tw:px-4 tw:py-2 tw:hover:bg-gray-100 tw:cursor-pointer"
-            onClick={() => handleNavigation('/dashboard')}
+            onClick={() => handleNavigation('/dashboard/dwellings')}
           >
             <GoMoveToEnd className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
             <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">
@@ -102,14 +92,19 @@ const UserDropdown = ({ session }) => {
           {/* Profile */}
           <div
             className="tw:flex tw:items-center tw:gap-2 tw:px-4 tw:py-2 tw:hover:bg-gray-100 tw:cursor-pointer"
-            onClick={() => handleNavigation('/profile')}
+            onClick={() => handleNavigation('/dashboard/me')}
           >
             <LuUser className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
             <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">My profile</p>
           </div>
 
           {/* Logout */}
-          <div
+          <div onClick={async () => {
+                                  await signOut({
+                                    redirect: true,
+                                    callbackUrl: `/${locale}`,
+                                  });
+                                }}
             className="tw:flex tw:items-center tw:gap-2 tw:px-4 tw:py-2 tw:hover:bg-gray-100 tw:cursor-pointer"
           >
             <MdLogout className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]"/>

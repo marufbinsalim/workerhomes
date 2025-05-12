@@ -43,6 +43,72 @@
     }
   },
 
+  "heroSection": {
+    "title": "Steigern Sie Ihr Arbeitserlebnis während des Aufenthalts.",
+    "subtitle": "Genießen Sie Komfort, Bequemlichkeit und Produktivität während Ihres Aufenthalts.",
+    "form": {
+      "where": "Wo",
+      "wherePlaceholder": "Zielort suchen",
+      "checkIn": "Einchecken",
+      "checkOut": "Auschecken",
+      "who": "Wer",
+      "whoPlaceholder": "Gäste hinzufügen",
+      "addDate": "Datum hinzufügen"
+    },
+
+    "popularCitiesSection": {
+      "title": "Beliebte Städte",
+      "subtitle": "Entdecken Sie die besten Orte zum Arbeiten in diesen Städten.",
+      "seeAllButton": "Alle ansehen",
+      "cities": {
+        "frankfurt": {
+          "name": "Frankfurt",
+          "country": "Deutschland"
+        },
+        "munich": {
+          "name": "München",
+          "country": "Deutschland"
+        },
+        "warsaw": {
+          "name": "Warschau",
+          "country": "Polen"
+        },
+        "hamburg": {
+          "name": "Hamburg",
+          "country": "Deutschland"
+        },
+        "edinburgh": {
+          "name": "Edinburgh",
+          "country": "Vereinigtes Königreich"
+        }
+      }
+    },
+    "whoWeAreSection": {
+      "title": "Wer wir sind & was wir tun",
+      "subtitle": "Erfahren Sie mehr über unsere Identität und die Dienstleistungen, die wir anbieten.",
+      "cards": {
+        "extensiveListings": {
+          "title": "Umfangreiche Angebote",
+          "description": "Sie brauchen eine Unterkunft für Tage, Wochen oder Monate? WorkerHomes bietet eine Vielzahl an Unterkünften – von gemütlichen Zimmern bis hin zu ganzen Häusern – in verschiedenen Regionen!"
+        },
+        "easyToUse": {
+          "title": "Benutzerfreundliche Plattform",
+          "description": "Für Sie entwickelt! Durchsuchen Sie mühelos Angebote, filtern Sie nach Ihren Bedürfnissen und treten Sie direkt mit Vermietern in Kontakt – alles mit nur wenigen Klicks."
+        },
+        "flexibleSolutions": {
+          "title": "Flexible Lösungen",
+          "description": "Wir wissen, dass sich Arbeitspläne ändern können. Deshalb bieten wir flexible Mietoptionen für Kurzzeit- und Langzeitaufenthalte."
+        }
+      }
+    },
+    "featuredListingsSection": {
+      "title": "Empfohlene Inserate",
+      "subtitle": "Das sind die beliebtesten Reiseziele der Welt.",
+      "seeAllButton": "Alle ansehen"
+    }
+
+  },
+
   "brand": {
     "title": "Hallo Welt!",
     "description": "Dies ist ein einfaches Beispiel eines Markenobjekts."

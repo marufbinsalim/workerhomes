@@ -10,6 +10,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useTranslations } from 'next-intl'
+import useFetch from '@/hooks/useFetch'
+
 
 const Dashboard = () => {
 
@@ -18,6 +21,7 @@ const Dashboard = () => {
     const [destination, setDestination] = useState('');
     const [guests, setGuests] = useState('');
     const [favorites, setFavorites] = useState({});
+
 
 
     const CustomInput = ({ value, onClick }) => {
@@ -47,7 +51,7 @@ const Dashboard = () => {
                     </>
                 ) : (
                     <div className="tw:text-[16px]  tw:text-[var(--color-font-light)]">
-                        Add dates
+                        {t('form.addDate')}
                     </div>
                 )}
             </div>
@@ -84,6 +88,10 @@ const Dashboard = () => {
         },
     ];
 
+    const t = useTranslations('heroSection');
+
+
+     
 
     const toggleFavorite = (id) => {
         setFavorites((prev) => ({
@@ -124,11 +132,11 @@ const Dashboard = () => {
                 </div>
 
                 {/* Content */}
-                <div className="tw:relative tw:z-20 tw:max-w-[1280px] tw:mx-auto tw:my-4 tw:md:my-0 tw:text-white">
+                <div className="tw:relative tw:z-20 tw:max-w-full tw:mx-auto tw:my-4 tw:md:my-0 tw:text-white">
                     <div className="tw:mb-8 tw:md:mt-0 tw:mt-4 tw:md:mb-10 tw:text-center">
-                        <h1 className="tw:text-[36px] tw:md:text-[68px] tw:font-semibold">Elevate Your Work Stay Experience.</h1>
+                        <h1 className="tw:text-[36px] tw:md:text-[68px] tw:font-semibold">{t('title')}</h1>
                         <p className="tw:text-[16px] tw:md:text-[20px] tw:font-semibold tw:mb-6 tw:md:mb-8">
-                            Enjoy Comfort, Convenience and Productivity During Your Stay.
+                            {t('subtitle')}
                         </p>
                     </div>
 
@@ -138,17 +146,17 @@ const Dashboard = () => {
 
                                 {/* Where */}
                                 <div className="tw:flex-1 tw:px-0 tw:md:px-4 tw:flex tw:flex-col">
-                                    <label className="tw:font-bold tw:text-[var(--color-font-regular)]">Where</label>
+                                    <label className="tw:font-bold tw:text-[var(--color-font-regular)]">{t('form.where')}</label>
                                     <input
                                         type="text"
-                                        placeholder="Search destination"
+                                        placeholder={t('form.wherePlaceholder')}
                                         className="tw:border-none tw:outline-none tw:text-[18px] tw:md:text-[24px] tw:leading-tight tw:font-semibold tw:text-[var(--color-font-dark)] tw:placeholder:text-[14px] tw:md:placeholder:text-[16px] tw:placeholder-[var(--color-font-light)]"
                                     />
                                 </div>
 
                                 {/* Check-in */}
                                 <div className="tw:flex-1 tw:px-0 tw:md:px-4 tw:flex tw:flex-col tw:border-t-2 tw:md:border-t-0 tw:md:border-l-2 tw:border-[var(--color-border-light)]">
-                                    <label className="tw:font-bold tw:text-[var(--color-font-regular)] tw:mb-2">Check in</label>
+                                    <label className="tw:font-bold tw:text-[var(--color-font-regular)] tw:mb-2">{t('form.checkIn')}</label>
                                     <DatePicker
                                         selected={checkInDate}
                                         onChange={(date) => setCheckInDate(date)}
@@ -162,7 +170,7 @@ const Dashboard = () => {
 
                                 {/* Check-out */}
                                 <div className="tw:flex-1 tw:px-0 tw:md:px-4 tw:flex tw:flex-col tw:border-t-2 tw:md:border-t-0 tw:md:border-l-2 tw:border-[var(--color-border-light)]">
-                                    <label className="tw:font-bold tw:text-[var(--color-font-regular)] tw:mb-2">Check out</label>
+                                    <label className="tw:font-bold tw:text-[var(--color-font-regular)] tw:mb-2">{t('form.checkOut')}</label>
                                     <DatePicker
                                         selected={checkOutDate}
                                         onChange={(date) => setCheckOutDate(date)}
@@ -177,11 +185,11 @@ const Dashboard = () => {
 
                                 {/* Guests */}
                                 <div className="tw:flex-1 tw:px-0 tw:md:px-4 tw:flex tw:flex-col tw:border-t-2 tw:md:border-t-0 tw:md:border-l-2 tw:border-[var(--color-border-light)]">
-                                    <label className="tw:font-bold tw:text-[var(--color-font-regular)]">Who</label>
+                                    <label className="tw:font-bold tw:text-[var(--color-font-regular)]">{t('form.who')}</label>
                                     <input
                                         type="number"
                                         min="0"
-                                        placeholder="Add guests"
+                                        placeholder={t('form.whoPlaceholder')}
                                         className="tw:border-none tw:outline-none tw:text-[18px] tw:md:text-[24px] tw:leading-tight tw:font-semibold tw:text-[var(--color-font-dark)] tw:placeholder:text-[14px] tw:md:placeholder:text-[16px] tw:placeholder-[var(--color-font-light)]"
                                     />
                                 </div>
@@ -218,13 +226,13 @@ const Dashboard = () => {
                 <div className="tw:w-full">
                     <div className="tw:flex tw:flex-col tw:md:flex-row tw:justify-between tw:items-start tw:md:items-center tw:w-full tw:max-w-[1280px] tw:mx-auto tw:gap-4">
                         <div>
-                            <h1 className="tw:text-[28px] tw:md:text-[32px] tw:text-[var(--color-font-dark)] tw:font-semibold">Popular Cities</h1>
+                            <h1 className="tw:text-[28px] tw:md:text-[32px] tw:text-[var(--color-font-dark)] tw:font-semibold"> {t('popularCitiesSection.title')} </h1>
                             <p className="tw:text-[16px] tw:md:text-[18px] tw:text-[var(--color-font-regular)] tw:mt-2">
-                                Discover the best places to work in these cities.
+                                {t('popularCitiesSection.subtitle')}
                             </p>
                         </div>
                         <button className="tw:text-[14px] tw:font-bold tw:text-[var(--color-font-dark)] tw:hover:underline tw:self-end tw:md:self-auto">
-                            See All
+                            {t('popularCitiesSection.seeAllButton')}
                         </button>
                     </div>
                 </div>
@@ -243,8 +251,8 @@ const Dashboard = () => {
                             />
                             <div className="tw:absolute tw:inset-0 tw:bg-black/30 tw:flex tw:items-start tw:justify-start tw:p-4 tw:md:p-8">
                                 <div>
-                                    <h2 className="tw:text-lg tw:sm:text-[22px] tw:md:text-[28px] tw:font-bold tw:text-white tw:mb-0">Frankfurt</h2>
-                                    <p className="tw:text-base tw:sm:text-[18px] tw:md:text-[24px] tw:text-[#fafbfc]">Germany</p>
+                                    <h2 className="tw:text-lg tw:sm:text-[22px] tw:md:text-[28px] tw:font-bold tw:text-white tw:mb-0">{t('popularCitiesSection.cities.frankfurt.name')}</h2>
+                                    <p className="tw:text-base tw:sm:text-[18px] tw:md:text-[24px] tw:text-[#fafbfc]">{t('popularCitiesSection.cities.frankfurt.country')}</p>
                                 </div>
                             </div>
                         </div>
@@ -259,8 +267,8 @@ const Dashboard = () => {
                             />
                             <div className="tw:absolute tw:inset-0 tw:bg-black/30 tw:flex tw:items-start tw:justify-start tw:p-4 tw:md:p-8">
                                 <div>
-                                    <h2 className="tw:text-lg tw:sm:text-[22px] tw:md:text-[28px] tw:font-bold tw:text-white tw:mb-0">Munich</h2>
-                                    <p className="tw:text-base tw:sm:text-[18px] tw:md:text-[24px] tw:text-[#fafbfc]">Germany</p>
+                                    <h2 className="tw:text-lg tw:sm:text-[22px] tw:md:text-[28px] tw:font-bold tw:text-white tw:mb-0">{t('popularCitiesSection.cities.munich.name')}</h2>
+                                    <p className="tw:text-base tw:sm:text-[18px] tw:md:text-[24px] tw:text-[#fafbfc]">{t('popularCitiesSection.cities.munich.country')}</p>
                                 </div>
                             </div>
                         </div>
@@ -278,8 +286,8 @@ const Dashboard = () => {
                             />
                             <div className="tw:absolute tw:inset-0 tw:bg-black/30 tw:flex tw:items-start tw:justify-start tw:p-4 tw:md:p-8">
                                 <div>
-                                    <h2 className="tw:text-lg tw:sm:text-[22px] tw:md:text-[28px] tw:font-bold tw:text-white tw:mb-0">Warsaw</h2>
-                                    <p className="tw:text-base tw:sm:text-[18px] tw:md:text-[24px] tw:text-[#fafbfc]">Poland</p>
+                                    <h2 className="tw:text-lg tw:sm:text-[22px] tw:md:text-[28px] tw:font-bold tw:text-white tw:mb-0">{t('popularCitiesSection.cities.warsaw.name')}</h2>
+                                    <p className="tw:text-base tw:sm:text-[18px] tw:md:text-[24px] tw:text-[#fafbfc]">{t('popularCitiesSection.cities.warsaw.country')}</p>
                                 </div>
                             </div>
                         </div>
@@ -294,8 +302,8 @@ const Dashboard = () => {
                             />
                             <div className="tw:absolute tw:inset-0 tw:bg-black/30 tw:flex tw:items-start tw:justify-start tw:p-4 tw:md:p-8">
                                 <div>
-                                    <h2 className="tw:text-lg tw:sm:text-[22px] tw:md:text-[28px] tw:font-bold tw:text-white tw:mb-0">Hamburg</h2>
-                                    <p className="tw:text-base tw:sm:text-[18px] tw:md:text-[24px] tw:text-[#fafbfc]">Germany</p>
+                                    <h2 className="tw:text-lg tw:sm:text-[22px] tw:md:text-[28px] tw:font-bold tw:text-white tw:mb-0">{t('popularCitiesSection.cities.hamburg.name')}</h2>
+                                    <p className="tw:text-base tw:sm:text-[18px] tw:md:text-[24px] tw:text-[#fafbfc]">{t('popularCitiesSection.cities.hamburg.country')}</p>
                                 </div>
                             </div>
                         </div>
@@ -310,8 +318,8 @@ const Dashboard = () => {
                             />
                             <div className="tw:absolute tw:inset-0 tw:bg-black/30 tw:flex tw:items-start tw:justify-start tw:p-4 tw:md:p-8">
                                 <div>
-                                    <h2 className="tw:text-lg tw:sm:text-[22px] tw:md:text-[28px] tw:font-bold tw:text-white tw:mb-0">Edinburgh</h2>
-                                    <p className="tw:text-base tw:sm:text-[18px] tw:md:text-[24px] tw:text-[#fafbfc]">United Kingdom</p>
+                                    <h2 className="tw:text-lg tw:sm:text-[22px] tw:md:text-[28px] tw:font-bold tw:text-white tw:mb-0">{t('popularCitiesSection.cities.edinburgh.name')}</h2>
+                                    <p className="tw:text-base tw:sm:text-[18px] tw:md:text-[24px] tw:text-[#fafbfc]">{t('popularCitiesSection.cities.edinburgh.country')}</p>
                                 </div>
                             </div>
                         </div>
@@ -325,10 +333,10 @@ const Dashboard = () => {
                 <div className="tw:max-w-[1280px] tw:mx-auto tw:flex tw:flex-col">
                     <div className="tw:mb-[20px] tw:flex tw:flex-col tw:items-center tw:md:items-start">
                         <h2 className="tw:text-[32px] tw:font-semibold tw:text-[var(--color-font-dark)]">
-                            Who are we & What we do
+                            {t('whoWeAreSection.title')}
                         </h2>
                         <p className="tw:text-[18px] tw:text-[var(--color-font-regular)]">
-                            Learn about our identity and the services we provide.
+                            {t('whoWeAreSection.subtitle')}
                         </p>
                     </div>
 
@@ -341,10 +349,10 @@ const Dashboard = () => {
                                 className="tw:w-[302px] tw:h-[250px] tw:object-contain"
                             />
                             <h3 className="tw:text-[28px] tw:font-semibold tw:text-[var(--color-font-dark)] tw:leading-[100%]">
-                                Extensive Listings
+                                {t('whoWeAreSection.cards.extensiveListings.title')}
                             </h3>
                             <p className="tw:text-[18px] tw:font-normal tw:text-[var(--color-font-regular)] tw:leading-[100%] tw:text-center tw:px-4">
-                                Need a place for days, weeks, or months? WorkerHomes has you covered with a range of stays—from cozy rooms to full homes—across multiple regions!
+                                {t('whoWeAreSection.cards.extensiveListings.description')}
                             </p>
                         </div>
 
@@ -356,10 +364,10 @@ const Dashboard = () => {
                                 className="tw:w-[375px] tw:h-[250px] tw:object-contain"
                             />
                             <h3 className="tw:text-[28px] tw:font-semibold tw:text-[var(--color-font-dark)] tw:leading-[100%]">
-                                Easy-to-Use Platform
+                                {t('whoWeAreSection.cards.easyToUse.title')}
                             </h3>
                             <p className="tw:text-[18px] tw:font-normal tw:text-[var(--color-font-regular)] tw:text-center tw:px-4">
-                                Designed for you! Easily browse listings, filter to match your needs, and connect directly with property owners—all in a few clicks.
+                                {t('whoWeAreSection.cards.easyToUse.description')}
                             </p>
                         </div>
 
@@ -371,10 +379,10 @@ const Dashboard = () => {
                                 className="tw:w-[250px] tw:h-[250px] tw:object-contain"
                             />
                             <h3 className="tw:text-[28px] tw:font-semibold tw:text-[var(--color-font-dark)] tw:leading-[100%]">
-                                Flexible Solutions
+                                {t('whoWeAreSection.cards.flexibleSolutions.title')}
                             </h3>
                             <p className="tw:text-[18px] tw:font-normal tw:text-[var(--color-font-regular)] tw:leading-[100%] tw:text-center tw:px-4">
-                                We understand that work schedules can change, so we offer flexible rental options that cater to both short-term and long-term stays.
+                                {t('whoWeAreSection.cards.flexibleSolutions.description')}
                             </p>
                         </div>
                     </div>
@@ -388,16 +396,16 @@ const Dashboard = () => {
                     {/* Section Header */}
                     <div className='tw:w-full'>
                         <div className="tw:flex tw:flex-col tw:md:flex-row tw:justify-between tw:items-start tw:md:items-center tw:w-full tw:max-w-[1280px] tw:mx-auto tw:gap-4">
-                            <div c >
+                            <div >
                                 <h2 className="tw:text-[28px] tw:md:text-[32px] tw:font-semibold tw:text-[var(--color-font-dark)]">
-                                    Featured Listings
+                                    {t('featuredListingsSection.title')}
                                 </h2>
                                 <p className="tw:text-[16px] tw:md:text-[18px] tw:text-[var(--color-font-regular)] tw:mt-2">
-                                    These are the most popular destinations in the world.
+                                    {t('featuredListingsSection.subtitle')}
                                 </p>
                             </div>
                             <button className="tw:text-[14px] tw:font-bold tw:text-[var(--color-font-dark)] tw:hover:underline tw:self-end tw:md:self-auto">
-                                See all
+                                {t('featuredListingsSection.seeAllButton')}
                             </button>
                         </div>
                     </div>

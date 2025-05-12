@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import Loading from './loading'
 
+
 export const metadata = {
   title: 'Workerhomes | Home Rentals - Find Your Perfect Home for Rent',
   description:

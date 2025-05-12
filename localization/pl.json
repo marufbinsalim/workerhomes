@@ -1,5 +1,4 @@
 {
-
   "authentication": {
     "signup": {
       "firstname": "Imię",
@@ -42,6 +41,71 @@
       "signupNow": "Zarejestruj się teraz"
     }
   },
+  "heroSection": {
+    "title": "Podnieś komfort swojej pracy podczas pobytu.",
+    "subtitle": "Ciesz się wygodą, komfortem i produktywnością podczas pobytu.",
+    "form": {
+      "where": "Gdzie",
+      "wherePlaceholder": "Wyszukaj miejsce",
+      "checkIn": "Zameldowanie",
+      "checkOut": "Wymeldowanie",
+      "who": "Kto",
+      "whoPlaceholder": "Dodaj gości",
+      "addDate": "Dodaj datę"
+    },
+    
+      "popularCitiesSection": {
+        "title": "Popularne miasta",
+        "subtitle": "Odkryj najlepsze miejsca do pracy w tych miastach.",
+        "seeAllButton": "Zobacz wszystkie",
+        "cities": {
+          "frankfurt": {
+            "name": "Frankfurt",
+            "country": "Niemcy"
+          },
+          "munich": {
+            "name": "Monachium",
+            "country": "Niemcy"
+          },
+          "warsaw": {
+            "name": "Warszawa",
+            "country": "Polska"
+          },
+          "hamburg": {
+            "name": "Hamburg",
+            "country": "Niemcy"
+          },
+          "edinburgh": {
+            "name": "Edynburg",
+            "country": "Wielka Brytania"
+          }
+        }
+      },
+      "whoWeAreSection": {
+        "title": "Kim jesteśmy i co robimy",
+        "subtitle": "Dowiedz się, kim jesteśmy i jakie usługi oferujemy.",
+        "cards": {
+          "extensiveListings": {
+            "title": "Szeroka oferta",
+            "description": "Potrzebujesz miejsca na kilka dni, tygodni lub miesięcy? WorkerHomes oferuje różnorodne zakwaterowanie – od przytulnych pokoi po całe domy – w wielu regionach!"
+          },
+          "easyToUse": {
+            "title": "Łatwa w obsłudze platforma",
+            "description": "Stworzona z myślą o Tobie! Przeglądaj oferty, filtruj według swoich potrzeb i kontaktuj się bezpośrednio z właścicielami – wszystko w kilku kliknięciach."
+          },
+          "flexibleSolutions": {
+            "title": "Elastyczne rozwiązania",
+            "description": "Rozumiemy, że harmonogramy pracy mogą się zmieniać, dlatego oferujemy elastyczne opcje wynajmu – zarówno krótkoterminowego, jak i długoterminowego."
+          }
+        }
+      },
+      "featuredListingsSection": {
+        "title": "Polecane ogłoszenia",
+        "subtitle": "To są najpopularniejsze miejsca na świecie.",
+        "seeAllButton": "Zobacz wszystkie"
+      }
+  },
+
 
   "brand": {
     "title": "Witaj świecie!",
@@ -315,7 +379,6 @@
       "recaptcha-success": "Zostałeś zweryfikowany jako człowiek."
     }
   },
-
   "claim": {
     "title": "Złóż roszczenie do tej nieruchomości.",
     "description": "Twoje zgłoszenie zostanie wysłane do administratora i będzie zatwierdzone po jego akceptacji.",
@@ -367,7 +430,6 @@
     "title": "Zakładki",
     "description": "To są najpopularniejsze destynacje na świecie.",
     "button": "Więcej",
-
     "message": {
       "empty": "Nie masz jeszcze zakładek.",
       "empty2": "Możesz dodać zakładki, klikając ikonę zakładki na liście."
@@ -406,7 +468,6 @@
       "found": "znalezione nieruchomości"
     }
   },
-
   "register": {
     "title": "Witamy - Zarejestruj się za darmo",
     "message": {
@@ -497,7 +558,6 @@
       "created": "Utworzono"
     }
   },
-
   "profile": {
     "title": "Profil",
     "description": "To są najpopularniejsze miejsca na świecie.",
@@ -575,7 +635,6 @@
       }
     }
   },
-
   "settings": {
     "title": "Ustawienia",
     "description": "To są najpopularniejsze miejsca na świecie."
@@ -1317,7 +1376,6 @@
     "pl": "Polski",
     "de": "Niemiecki"
   },
-
   "listings": {
     "title": "Oferty",
     "description": "Znajdź swój wymarzony dom w naszych ofertach.",
@@ -1657,7 +1715,6 @@
       "confirmPassword": "Potwierdź nowe hasło"
     }
   },
-
   "about": {
     "title": {
       "main": "O nas",
@@ -2058,7 +2115,6 @@
         "text": "Zamierzasz dokonać uaktualnienia do ",
         "text2": ". Po zakończeniu płatności Twoje konto zostanie natychmiast uaktualnione, a Ty uzyskasz natychmiastowy dostęp do wszystkich funkcji premium i korzyści nowego planu."
       },
-
       "downgrade": {
         "title": "Nachylenie",
         "text": "Drogi Kliencie, Twój abonament ",

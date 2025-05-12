@@ -1,5 +1,4 @@
 {
-
   "authentication": {
     "signup": {
       "firstname": "First Name",
@@ -43,7 +42,71 @@
     }
   },
 
-   
+  "heroSection": {
+    "title": "Elevate Your Work Stay Experience.",
+    "subtitle": "Enjoy Comfort, Convenience and Productivity During Your Stay.",
+    "form": {
+      "where": "Where",
+      "wherePlaceholder": "Search destination",
+      "checkIn": "Check in",
+      "checkOut": "Check out",
+      "who": "Who",
+      "whoPlaceholder": "Add guests",
+      "addDate": "Add date"
+    },
+    "popularCitiesSection": {
+      "title": "Popular Cities",
+      "subtitle": "Discover the best places to work in these cities.",
+      "seeAllButton": "See All",
+      "cities": {
+        "frankfurt": {
+          "name": "Frankfurt",
+          "country": "Germany"
+        },
+        "munich": {
+          "name": "Munich",
+          "country": "Germany"
+        },
+        "warsaw": {
+          "name": "Warsaw",
+          "country": "Poland"
+        },
+        "hamburg": {
+          "name": "Hamburg",
+          "country": "Germany"
+        },
+        "edinburgh": {
+          "name": "Edinburgh",
+          "country": "United Kingdom"
+        }
+      }
+    },
+
+    "whoWeAreSection": {
+      "title": "Who are we & What we do",
+      "subtitle": "Learn about our identity and the services we provide.",
+      "cards": {
+        "extensiveListings": {
+          "title": "Extensive Listings",
+          "description": "Need a place for days, weeks, or months? WorkerHomes has you covered with a range of stays—from cozy rooms to full homes—across multiple regions!"
+        },
+        "easyToUse": {
+          "title": "Easy-to-Use Platform",
+          "description": "Designed for you! Easily browse listings, filter to match your needs, and connect directly with property owners—all in a few clicks."
+        },
+        "flexibleSolutions": {
+          "title": "Flexible Solutions",
+          "description": "We understand that work schedules can change, so we offer flexible rental options that cater to both short-term and long-term stays."
+        }
+      }
+    },
+    "featuredListingsSection": {
+      "title": "Featured Listings",
+      "subtitle": "These are the most popular destinations in the world.",
+      "seeAllButton": "See all"
+    }
+  },
+
   "brand": {
     "title": "Hello world!",
     "description": "This is a simple example of a brand object."
@@ -56,7 +119,6 @@
     "all": "All",
     "unread": "Unread"
   },
-
   "subscribe": {
     "title": "Subscribe to our newsletter",
     "description": "Sign up and we'll send the best deals to you",
@@ -297,7 +359,6 @@
   "claim": {
     "title": "Create your claim to this property.",
     "description": "You request will be send to admin, and it will be approved after admin approval.",
-
     "form": {
       "first_name": "First Name",
       "last_name": "Last Name",
@@ -369,7 +430,6 @@
     "title": "Bookmarks",
     "description": "These are the most popular destinations in the world.",
     "button": "More",
-
     "message": {
       "empty": "You have no bookmarks yet.",
       "empty2": "You can add bookmarks by clicking the bookmark icon on the listings."
@@ -512,7 +572,6 @@
       "google": "Google"
     }
   },
-
   "profile": {
     "title": "Profile",
     "description": "These are the most popular destinations in the world.",
@@ -1155,7 +1214,6 @@
       "translate": "Gallery has been translated successfully."
     }
   },
-
   "prices": {
     "title": "Prices & Conditions",
     "description": "These are the most popular destinations in the world.",
@@ -1483,14 +1541,12 @@
       }
     }
   },
-
   "validation": {
     "required": "This field is required.",
     "minLength": "This field must be at least {min} characters long.",
     "maxLength": "This field must be at most {max} characters long.",
     "email": "This must be a valid email address.",
     "matches": "Password must include at least one uppercase letter, one number, and one symbol.",
-
     "password": {
       "min": "Password must be at least 6 characters long.",
       "matches": "Password must include at least one uppercase letter, one number, and one symbol.",
@@ -1500,7 +1556,6 @@
       "required": "Please confirm your password.",
       "oneOf": "Passwords must match."
     },
-
     "dwelling": {
       "title": "Title is required.",
       "description": {
@@ -2006,21 +2061,17 @@
     "description": "Your email has been verified successfully. You can now login to your account.",
     "button": "Click here to login"
   },
-
   "upgrade": {
     "message": "Your package has been successfully changed. You can now enjoy the benefits of your new package.",
-
     "upgrade": "Upgrade your plan",
     "process": "Processing...",
     "downgrade": "Downgrade your plan",
-
     "confirm": {
       "upgrade": {
         "title": "Upgrade",
         "text": "You’re about to upgrade to ",
         "text2": "Once the payment is completed, your account will be immediately upgraded, and you’ll gain instant access to all the premium features and benefits of your new plan."
       },
-
       "downgrade": {
         "title": "Downgrade",
         "text": "Dear customer, your ",
@@ -2106,17 +2157,14 @@
       "no-features": "No features found.",
       "amenities": "Amenities",
       "no-amenities": "No amenities found.",
-
       "prices": "Prices and types",
       "price": "Price: ",
       "min": "Minimum stay: ",
       "guest": "Number of guests: ",
       "no-price": "No prices found.",
       "type": "Type: ",
-
       "remove-from": "Remove from recommended list",
       "add-to": "Add to recommended list",
-
       "available": "Set to pending",
       "approve": "Approve",
       "rent": "Rent",
@@ -2125,10 +2173,8 @@
   },
   "checkout": {
     "buy": "Buy a plan",
-
     "trail": "Get your first 3 months free trail",
     "process": "Processing...",
-
     "free-success": "Your free plan was created successfully.",
     "trial-success": "Your trial package has been created and is active for 3 months."
   },
