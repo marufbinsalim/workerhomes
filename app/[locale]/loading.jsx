@@ -1,29 +1,29 @@
-'use client'
+"use client";
 
-import { Icon } from '@iconify/react'
-import React from 'react'
+import Footer from "@/components/common-v2/footer";
+import Navbar from "@/components/common-v2/nav";
+import Dashboard from "@/components/dashboard-v2/dashboard";
+import { Icon } from "@iconify/react";
+import { CircleDashed, CircleDotDashed } from "lucide-react";
+import React from "react";
 
 const Loading = () => {
   return (
     <div
       style={{
-        width: '100%',
-        height: '100vh',
+        width: "100dvw",
+        height: "100dvh",
       }}
-      className='d-flex justify-content-center align-items-center'
+      className="tw:flex tw:items-center tw:justify-center"
     >
-      <div className='d-flex justify-content-center align-items-center'>
-        <Icon
-          icon='line-md:loading-loop'
-          className='ml-10'
-          width={30}
-          height={30}
+      <div className="tw:flex tw:flex-col tw:items-center">
+        <CircleDashed
+          size={40}
+          className="tw:animate-spin tw:duration-500  tw:text-[var(--color-primary)]"
         />
-        {/* <br />
-        <p>Loading...</p> */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Loading
+export default Loading;
