@@ -33,34 +33,18 @@ export const metadata = {
   },
 };
 
-export default async function Main() {
-  const waitFor = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-  await waitFor(1000);
+export default async function Main({ params }) {
+  const session = await getCurrentUser();
 
   return (
     <Suspense fallback={<Loading />}>
       <div className="tw:flex tw:flex-col tw:min-h-screen">
         <Navbar session={null} />
         <main className="tw:flex-grow tw:pt-16">
-          <Dashboard />
+          <Dashboard locale={params.locale} />
         </main>
         <Footer />
       </div>
     </Suspense>
   );
 }
-
-// export default dynamic(
-//   () =>
-//     Promise.resolve(({ params }) => (
-//       <div className="tw:flex tw:flex-col tw:min-h-screen">
-//         <Navbar session={getCurrentUser()} />
-//         <main className="tw:flex-grow tw:pt-16">
-//           <Dashboard />
-//         </main>
-//         <Footer />
-//       </div>
-//     )),
-//   { ssr: false },
-// );
