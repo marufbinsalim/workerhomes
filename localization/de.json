@@ -59,11 +59,11 @@
     "title": "Steigern Sie Ihr Arbeitserlebnis während des Aufenthalts.",
     "subtitle": "Genießen Sie Komfort, Bequemlichkeit und Produktivität während Ihres Aufenthalts.",
     "form": {
-      "where": "Wo",
+      "location": "Standort",
       "wherePlaceholder": "Zielort suchen",
       "checkIn": "Einchecken",
       "checkOut": "Auschecken",
-      "who": "Wer",
+      "guests": "Anzahl der Gäste",
       "whoPlaceholder": "Gäste hinzufügen",
       "addDate": "Datum hinzufügen"
     },

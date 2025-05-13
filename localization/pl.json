@@ -59,11 +59,11 @@
     "title": "Podnieś komfort swojej pracy podczas pobytu.",
     "subtitle": "Ciesz się wygodą, komfortem i produktywnością podczas pobytu.",
     "form": {
-      "where": "Gdzie",
+      "location": "Lokalizacja",
       "wherePlaceholder": "Wyszukaj miejsce",
       "checkIn": "Zameldowanie",
       "checkOut": "Wymeldowanie",
-      "who": "Kto",
+      "guests": "Liczba gości",
       "whoPlaceholder": "Dodaj gości",
       "addDate": "Dodaj datę"
     },
