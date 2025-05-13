@@ -22,7 +22,14 @@
       "or": "oder",
       "loginWithGoogle": "Mit Google anmelden",
       "signupTitle": "Erstellen Sie Ihr Konto",
-      "signupSubtitle": "Lassen Sie uns mit der Erstellung Ihres Kontos beginnen"
+      "signupSubtitle": "Lassen Sie uns mit der Erstellung Ihres Kontos beginnen",
+      "toast": {
+        "missingFields": "Bitte füllen Sie alle erforderlichen Felder aus!",
+        "passwordMismatch": "Passwörter stimmen nicht überein!",
+        "success": "Registrierung erfolgreich!",
+        "error": "Registrierung fehlgeschlagen! Bitte versuchen Sie es erneut.",
+        "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein!"
+      }
     },
     "signin": {
       "email": "E-mail",
@@ -39,7 +46,12 @@
       "signup": "Zarejestruj się",
       "loginTitle": "Melden Sie sich bei Ihrem Konto an",
       "loginSubtitle": "Melden Sie sich an, um unseren Service zu nutzen",
-      "signupNow": "Jetzt registrieren"
+      "signupNow": "Jetzt registrieren",
+      "toast": {
+        "success": "Anmeldung erfolgreich!",
+        "error": "Ungültige E-Mail oder Passwort!",
+        "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein!"
+      }
     }
   },
 
@@ -107,6 +119,37 @@
       "seeAllButton": "Alle ansehen"
     }
 
+  },
+
+  "contactUs": {
+    "title": "Wir haben ein ganzes dediziertes Team, um Sie und Ihr Unternehmen zu unterstützen",
+    "subtitle": "Ein dediziertes Expertenteam, bereit, Sie und Ihr Unternehmen auf jedem Schritt des Weges zu unterstützen",
+    "toast": {
+      "missingFields": "Bitte füllen Sie alle erforderlichen Felder aus!",
+      "failedEmail": "E-Mail konnte nicht gesendet werden! Bitte versuchen Sie es erneut.",
+      "successEmail": "E-Mail wurde erfolgreich gesendet!",
+      "error": "Beim Senden der E-Mail ist ein Fehler aufgetreten!",
+      "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein!"
+    },
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "firstNamePlaceholder": "Gib deinen Vornamen ein",
+    "lastNamePlaceholder": "Gib deinen Nachnamen ein",
+    "emailPlaceholder": "deinemail@gmail.com",
+    "messagePlaceholder": "Hinterlasse uns eine Nachricht...",
+    "sendButton": "Nachricht senden",
+    "info": {
+      "title": "Kontaktieren Sie uns",
+      "addressLabel": "Adresse",
+      "address": "328 Queensberry Street, North Melbourne VIC 3051, Australien.",
+      "customerCareLabel": "Kostenlose Kundenbetreuung",
+      "customerCare": "+47 333 78 901",
+      "liveSupportLabel": "Brauchen Sie Live-Unterstützung?",
+      "liveSupport": "info@workerhomes.pl",
+      "followUsLabel": "Folgen Sie uns in sozialen Medien"
+    }
   },
 
   "brand": {

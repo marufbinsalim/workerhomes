@@ -16,14 +16,17 @@ import ContactInfo from "@/components/contact-page-v2/info";
 import Footer from "@/components/common-v2/footer";
 import Navbar from "@/components/common-v2/nav";
 import { getCurrentUser } from "@/lib/session";
+import { useTranslations } from "next-intl";
+
 
 export const metadata = {
   title: "Contact || Wokerhomes",
   description: "Contact Workerhomes Support Team!",
 };
 
+
 const Contact = async () => {
-  const t = await getTranslations("contact");
+  const t = await getTranslations("contactUs");
   const session = (await getCurrentUser()) || null;
 
   return (
@@ -36,11 +39,10 @@ const Contact = async () => {
           className="tw:absolute tw:right-0 tw:bottom-0 tw:w-[60dvw] tw:md:w-auto"
         />
         <h1 className="tw:font-semibold tw:text-5xl tw:text-[var(--color-font-dark)] tw:max-w-4xl">
-          We have got a entire dedicated team to support you & your business
+          {t("title")}
         </h1>
         <p className="tw:text-[var(--color-font-regular)]">
-          A Dedicated Team of Experts, Ready to Support You and Your Business
-          Every Step of the Way
+          {t("subtitle")}
         </p>
       </div>
 

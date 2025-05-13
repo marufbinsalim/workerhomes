@@ -21,7 +21,14 @@
       "or": "lub",
       "loginWithGoogle": "Zaloguj się przez Google",
       "signupTitle": "Utwórz swoje konto",
-      "signupSubtitle": "Zacznijmy od utworzenia Twojego konta"
+      "signupSubtitle": "Zacznijmy od utworzenia Twojego konta",
+      "toast": {
+        "missingFields": "Proszę wypełnić wszystkie wymagane pola!",
+        "passwordMismatch": "Hasła nie są zgodne!",
+        "success": "Rejestracja zakończona sukcesem!",
+        "error": "Rejestracja nie powiodła się! Spróbuj ponownie.",
+        "invalidEmail": "Proszę wprowadzić poprawny adres e-mail!"
+      }
     },
     "signin": {
       "email": "E-mail",
@@ -38,7 +45,14 @@
       "signup": "Zarejestruj się",
       "loginTitle": "Zaloguj się na swoje konto",
       "loginSubtitle": "Zaloguj się, aby rozpocząć korzystanie z naszej usługi",
-      "signupNow": "Zarejestruj się teraz"
+      "signupNow": "Zarejestruj się teraz",
+      
+        "toast": {
+          "success": "Logowanie zakończone sukcesem!",
+          "error": "Nieprawidłowy adres e-mail lub hasło!",
+          "invalidEmail": "Proszę wprowadzić poprawny adres e-mail!"
+        }
+      
     }
   },
   "heroSection": {
@@ -104,6 +118,37 @@
         "subtitle": "To są najpopularniejsze miejsca na świecie.",
         "seeAllButton": "Zobacz wszystkie"
       }
+  },
+
+  "contactUs": {
+    "title": "Mamy cały dedykowany zespół, aby wspierać Ciebie i Twoją firmę",
+    "subtitle": "Dedykowany zespół ekspertów, gotowy wspierać Ciebie i Twoją firmę na każdym kroku",
+    "toast": {
+      "missingFields": "Proszę wypełnić wszystkie wymagane pola!",
+      "failedEmail": "Nie udało się wysłać e-maila! Proszę spróbować ponownie.",
+      "successEmail": "E-mail został pomyślnie wysłany!",
+      "error": "Wystąpił błąd podczas wysyłania e-maila!",
+      "invalidEmail": "Proszę wprowadzić poprawny adres e-mail!"
+    },
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "email": "Email",
+    "message": "Wiadomość",
+    "firstNamePlaceholder": "Podaj imię",
+    "lastNamePlaceholder": "Podaj nazwisko",
+    "emailPlaceholder": "twojemail@gmail.com",
+    "messagePlaceholder": "Zostaw nam wiadomość...",
+    "sendButton": "Wyślij wiadomość",
+    "info":{
+      "title": "Skontaktuj się z nami",
+      "addressLabel": "Adres",
+      "address": "328 Queensberry Street, North Melbourne VIC 3051, Australia.",
+      "customerCareLabel": "Bezpośrednia obsługa klienta",
+      "customerCare": "+47 333 78 901",
+      "liveSupportLabel": "Potrzebujesz wsparcia na żywo?",
+      "liveSupport": "info@workerhomes.pl",
+      "followUsLabel": "Śledź nas w mediach społecznościowych"
+    }
   },
 
 
