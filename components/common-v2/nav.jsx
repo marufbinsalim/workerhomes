@@ -10,14 +10,12 @@ import { LuUser } from "react-icons/lu";
 import { MdLogout } from "react-icons/md";
 import { signOut } from "next-auth/react";
 
-
 const UserDropdown = ({ session }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const router = useRouter();
   const locale = useParams().locale;
 
-  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -25,10 +23,10 @@ const UserDropdown = ({ session }) => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -41,13 +39,11 @@ const UserDropdown = ({ session }) => {
       .slice(0, 2);
   };
 
-
   const handleNavigation = (path) => {
     router.push(path);
     setIsOpen(false);
   };
 
-  
   return (
     <div className="tw:relative" ref={dropdownRef}>
       <button
@@ -66,8 +62,9 @@ const UserDropdown = ({ session }) => {
         </span>
         {/* Chevron icon - hidden by default, visible on hover */}
         <FiChevronDown
-          className={`tw:w-6 tw:h-6 tw:text-gray-500 tw:transition-transform ${isOpen ? 'tw:rotate-180' : ''
-            } ${isOpen ? 'tw:opacity-100' : 'tw:opacity-0 tw:group-hover:opacity-100'}`}
+          className={`tw:w-6 tw:h-6 tw:text-gray-500 tw:transition-transform ${
+            isOpen ? "tw:rotate-180" : ""
+          } ${isOpen ? "tw:opacity-100" : "tw:opacity-0 tw:group-hover:opacity-100"}`}
           aria-hidden="true"
         />
       </button>
@@ -80,7 +77,7 @@ const UserDropdown = ({ session }) => {
           {/* Dashboard */}
           <div
             className="tw:flex tw:items-center tw:gap-2 tw:px-4 tw:py-2 tw:hover:bg-gray-100 tw:cursor-pointer"
-            onClick={() => handleNavigation('/dashboard/dwellings')}
+            onClick={() => handleNavigation("/dashboard/dwellings")}
           >
             <GoMoveToEnd className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
             <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">
@@ -88,34 +85,37 @@ const UserDropdown = ({ session }) => {
             </p>
           </div>
 
-        
           {/* Profile */}
           <div
             className="tw:flex tw:items-center tw:gap-2 tw:px-4 tw:py-2 tw:hover:bg-gray-100 tw:cursor-pointer"
-            onClick={() => handleNavigation('/dashboard/me')}
+            onClick={() => handleNavigation("/dashboard/me")}
           >
             <LuUser className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
-            <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">My profile</p>
+            <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">
+              My profile
+            </p>
           </div>
 
           {/* Logout */}
-          <div onClick={async () => {
-                                  await signOut({
-                                    redirect: true,
-                                    callbackUrl: `/${locale}`,
-                                  });
-                                }}
+          <div
+            onClick={async () => {
+              await signOut({
+                redirect: true,
+                callbackUrl: `/${locale}`,
+              });
+            }}
             className="tw:flex tw:items-center tw:gap-2 tw:px-4 tw:py-2 tw:hover:bg-gray-100 tw:cursor-pointer"
           >
-            <MdLogout className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]"/>
-            <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">Logout</p>
+            <MdLogout className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
+            <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">
+              Logout
+            </p>
           </div>
         </div>
       )}
     </div>
   );
 };
-
 
 const Dropdown = ({
   languageOptions,
@@ -179,14 +179,10 @@ const Navbar = ({ session }) => {
   const locale = pathName.split("/")[1];
   const [selected, setSelected] = useState(t(`locales.${locale}.language`));
   const router = useRouter();
-  const pathname = usePathname()
-  
+  const pathname = usePathname();
 
   console.log("session : ", session);
 
-  
-  
-  
   const languageOptions = [
     {
       id: 1,
@@ -211,7 +207,6 @@ const Navbar = ({ session }) => {
     },
   ];
 
-  
   const toggleMenu = () => {
     if (!isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -266,9 +261,10 @@ const Navbar = ({ session }) => {
         {/* Logo */}
         <div className="tw:md:px-8">
           <img
+            onClick={() => router.push(`/${locale}`)}
             src="/assets/logo.png"
             alt="workerhomes"
-            className="tw:w-[200px] tw:h-[41px]"
+            className="tw:w-[200px] tw:h-[41px] tw:cursor-pointer"
           />
         </div>
 
@@ -276,44 +272,58 @@ const Navbar = ({ session }) => {
         <div className="tw:hidden tw:md:flex tw:text-[var(--color-font-dark)] tw:font-normal tw:items-center tw:gap-6 tw:text-[14px]">
           <a
             href={`/${locale}`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}` ? 'tw:text-[var(--color-primary)] tw:font-medium' : ''
-              }`}
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
+              pathname === `/${locale}`
+                ? "tw:text-[var(--color-primary)] tw:font-medium"
+                : ""
+            }`}
           >
-            {t('links.home')}
+            {t("links.home")}
           </a>
 
           <a
             href={`/${locale}/pricing`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/pricing` ? 'tw:text-[var(--color-primary)] tw:font-medium' : ''
-              }`}
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
+              pathname === `/${locale}/pricing`
+                ? "tw:text-[var(--color-primary)] tw:font-medium"
+                : ""
+            }`}
           >
-            {t('links.pricing')}
+            {t("links.pricing")}
           </a>
 
           <a
             href={`/${locale}/bookmarks`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/bookmarks` ? 'tw:text-[var(--color-primary)] tw:font-medium' : ''
-              }`}
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
+              pathname === `/${locale}/bookmarks`
+                ? "tw:text-[var(--color-primary)] tw:font-medium"
+                : ""
+            }`}
           >
-            {t('links.bookmarks')}
+            {t("links.bookmarks")}
           </a>
 
           <a
             href={`/${locale}/blogs`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/blogs` ? 'tw:text-[var(--color-primary)] tw:font-medium' : ''
-              }`}
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
+              pathname === `/${locale}/blogs`
+                ? "tw:text-[var(--color-primary)] tw:font-medium"
+                : ""
+            }`}
           >
-            {t('links.blogs')}
+            {t("links.blogs")}
           </a>
 
           <a
             href={`/${locale}/contact`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/contact` ? 'tw:text-[var(--color-primary)] tw:font-medium' : ''
-              }`}
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
+              pathname === `/${locale}/contact`
+                ? "tw:text-[var(--color-primary)] tw:font-medium"
+                : ""
+            }`}
           >
-            {t('links.contact')}
+            {t("links.contact")}
           </a>
-
 
           <button className="tw:relative tw:w-[150px] tw:h-[33px] tw:text-sm tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border">
             List your property
@@ -328,7 +338,7 @@ const Navbar = ({ session }) => {
           ) : (
             // Sign In / Register Button
             <button
-              onClick={() => router.push('/login')}
+              onClick={() => router.push("/login")}
               className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:w-[150px] tw:h-[33px] tw:font-medium"
             >
               Sign In / Register
