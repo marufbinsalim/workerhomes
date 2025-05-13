@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { useTranslations } from 'next-intl';
+import { showToast } from "@/components/toast/Toast";
 
 const SignInForm = (params) => {
   const [isEyeClosed, setIsEyeClosed] = useState(true);
@@ -15,11 +16,25 @@ const SignInForm = (params) => {
   const [remember, setRemember] = useState(false);
   const [loading, setIsLoading] = useState(false);
   const router = useRouter();
+  const [emailError, setEmailError] = useState('');
+
 
   const t = useTranslations('authentication.signin');
 
+  const validateEmailFormat = (email) => {
+    // Basic regex for email format validation
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+
+
   async function onSubmit(locale) {
     console.log(locale, "locale");
+
+    if (!validateEmailFormat(email)) {
+      showToast('info', t('toast.invalidEmail')); 
+      return;
+    }
     setIsLoading(true);
 
     const result = await signIn("credentials", {
@@ -31,8 +46,9 @@ const SignInForm = (params) => {
     setIsLoading(false);
 
     if (!result.ok) {
-      alert(t('invalidCredentials'));
+      showToast('failure', t('toast.error'));
     } else {
+      showToast('success', t('toast.success'));
       router.push(`/${locale}/dashboard/statistics`);
     }
   }

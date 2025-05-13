@@ -1258,7 +1258,7 @@
   margin-top: 5px;
 }
 
-.Toastify__toast-container {
+/* .Toastify__toast-container {
   width: 600px !important;
 }
 
@@ -1266,7 +1266,7 @@
   .Toastify__toast-container {
     width: 100% !important;
   }
-}
+} */
 
 .city-card-container {
   height: 120px !important;
@@ -1354,3 +1354,5 @@
   height: 8px !important;
   border-radius: 8px !important;
 }
+
+

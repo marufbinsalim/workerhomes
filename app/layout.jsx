@@ -63,17 +63,12 @@ const MainProvider = ({ children }) => {
           <SessionProvider>
             <NextTopLoader color="#ff7504" />
             <ToastContainer
-              position="top-center"
-              stacked
-              hideProgressBar
-              newestOnTop
-              // style={{
-              //   minHeight: '300px',
-              // }}
-              bodyStyle={{
-                minHeight: "100px",
-                textAlign: "center",
-              }}
+              position="bottom-right"
+              autoClose={3000}
+              closeOnClick
+              pauseOnHover
+              theme="colored"
+              
             />
             <Provider store={store}>
               <SupBaseProvider>{children}</SupBaseProvider>

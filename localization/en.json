@@ -21,7 +21,13 @@
       "or": "or",
       "loginWithGoogle": "Login with Google",
       "signupTitle": "Create your account",
-      "signupSubtitle": "Let’s get you started with your account"
+      "signupSubtitle": "Let’s get you started with your account",
+      "toast": {
+        "missingFields": "Please fill in all the required fields!",
+        "passwordMismatch": "Passwords do not match!",
+        "success": "Registration successful!",
+        "error": "Registration failed! Please try again."
+      }
     },
     "signin": {
       "email": "Email",
@@ -38,7 +44,12 @@
       "signup": "Sign up",
       "loginTitle": "Login to your account",
       "loginSubtitle": "Login to your account to get started with our service",
-      "signupNow": "Sign up now"
+      "signupNow": "Sign up now",
+      "toast": {
+        "success": "Login successful!",
+        "error": "Invalid email or password!",
+        "invalidEmail": "Please enter a valid email address!"
+      }
     }
   },
 
@@ -104,6 +115,36 @@
       "title": "Featured Listings",
       "subtitle": "These are the most popular destinations in the world.",
       "seeAllButton": "See all"
+    }
+  },
+
+  "contactUs": {
+    "title": " We have got a entire dedicated team to support you & your business",
+    "subtitle": "A Dedicated Team of Experts, Ready to Support You and Your Business Every Step of the Way",
+    "toast": {
+      "missingFields": "Please fill in all required fields!",
+      "failedEmail": "Failed to send email! Please try again.",
+      "successEmail": "Email sent successfully!",
+      "error": "An error occurred while sending the email!"
+    },
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "message": "Message",
+    "firstNamePlaceholder": "First Name",
+    "lastNamePlaceholder": "Last Name",
+    "emailPlaceholder": "youremail@gmail.com",
+    "messagePlaceholder": "Leave a message for us...",
+    "sendButton": "Send a message",
+    "info": {
+      "title": "Contact Us",
+      "addressLabel": "Address",
+      "address": "328 Queensberry Street, North Melbourne VIC 3051, Australia.",
+      "customerCareLabel": "Toll Free Customer Care",
+      "customerCare": "+47 333 78 901",
+      "liveSupportLabel": "Need live support?",
+      "liveSupport": "info@workerhomes.pl",
+      "followUsLabel": "Follow us on social media"
     }
   },
 

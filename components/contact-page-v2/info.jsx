@@ -1,35 +1,38 @@
+import { useTranslations } from "next-intl";
+
 export default function ContactInfo() {
+  const t = useTranslations('contactUs');
   return (
     <div className="tw:flex-1 tw:h-full tw:flex tw:flex-col tw:gap-8 font-primary">
       <p className="tw:mb-2.5 tw:text-[var(--color-font-dark)] tw:text-[32px] tw:font-semibold">
-        Contact Us
+        {t('info.title')}
       </p>
       <div>
-        <p className="tw:text-[var(--color-font-regular)]">Address</p>
+        <p className="tw:text-[var(--color-font-regular)]"> {t('info.addressLabel')} </p>
         <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-xl">
-          328 Queensberry Street, North Melbourne VIC 3051, Australia.
+          {t('info.address')}
         </p>
       </div>
       <div>
         <p className="tw:text-[var(--color-font-regular)]">
-          Toll Free Customer Care
+          {t('info.customerCareLabel')}
         </p>
         <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-xl">
-          +47 333 78 901
+          {t('info.customerCare')}
         </p>
       </div>
       <div>
         <p className="tw:text-[var(--color-font-regular)]">
-          Need live support?
+          {t('info.liveSupportLabel')}
         </p>
         <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-xl">
-          info@workerhomes.pl
+          {t('info.liveSupport')}
         </p>
       </div>
 
       <div className="tw:flex tw:gap-2 tw:flex-col">
         <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-[14px]">
-          Follow us on social media
+          {t('info.followUsLabel')}
         </p>
         <div className="tw:flex tw:gap-5">
           <img

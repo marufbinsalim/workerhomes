@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { useTranslations } from 'next-intl'
+import { showToast } from "@/components/toast/Toast";
 
 const SignUpForm = (params) => {
   const [isEyeClosed, setIsEyeClosed] = useState(true);
@@ -24,12 +25,12 @@ const SignUpForm = (params) => {
 
   async function onSubmit(locale) {
     if (!firstName || !lastName || !email || !passWord || !confirmPassWord) {
-      alert(t('missingFields'));
+      showToast('info', t('toast.missingFields'));
       return;
     }
 
     if (passWord !== confirmPassWord) {
-      alert(t('passwordMismatch'));
+      showToast('info', t('toast.passwordMismatch'));
       return;
     }
 
@@ -49,11 +50,11 @@ const SignUpForm = (params) => {
         throw new Error("Something went wrong");
       }
 
-      alert(t('registrationSuccess'));
+      showToast('success', t('toast.success'));
       router.push(`/${locale}/dashboard`); // Redirect after successful registration
     } catch (error) {
       console.error(error);
-      alert(`${t('registrationFailed')}: ${error.message}`);
+      showToast('failure', t('toast.error'));
     } finally {
       setIsLoading(false);
     }
