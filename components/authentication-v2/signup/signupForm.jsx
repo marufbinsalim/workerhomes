@@ -23,6 +23,11 @@ const SignUpForm = (params) => {
 
   const t = useTranslations('authentication.signup');
 
+  const validateEmailFormat = (email) => {
+    // Basic regex for email format validation
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
   async function onSubmit(locale) {
     if (!firstName || !lastName || !email || !passWord || !confirmPassWord) {
       showToast('info', t('toast.missingFields'));
@@ -31,6 +36,11 @@ const SignUpForm = (params) => {
 
     if (passWord !== confirmPassWord) {
       showToast('info', t('toast.passwordMismatch'));
+      return;
+    }
+
+    if (!validateEmailFormat(email)) {
+      showToast('info', t('toast.invalidEmail'));
       return;
     }
 

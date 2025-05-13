@@ -26,7 +26,8 @@
         "missingFields": "Proszę wypełnić wszystkie wymagane pola!",
         "passwordMismatch": "Hasła nie są zgodne!",
         "success": "Rejestracja zakończona sukcesem!",
-        "error": "Rejestracja nie powiodła się! Spróbuj ponownie."
+        "error": "Rejestracja nie powiodła się! Spróbuj ponownie.",
+        "invalidEmail": "Proszę wprowadzić poprawny adres e-mail!"
       }
     },
     "signin": {
@@ -126,7 +127,8 @@
       "missingFields": "Proszę wypełnić wszystkie wymagane pola!",
       "failedEmail": "Nie udało się wysłać e-maila! Proszę spróbować ponownie.",
       "successEmail": "E-mail został pomyślnie wysłany!",
-      "error": "Wystąpił błąd podczas wysyłania e-maila!"
+      "error": "Wystąpił błąd podczas wysyłania e-maila!",
+      "invalidEmail": "Proszę wprowadzić poprawny adres e-mail!"
     },
     "firstName": "Imię",
     "lastName": "Nazwisko",

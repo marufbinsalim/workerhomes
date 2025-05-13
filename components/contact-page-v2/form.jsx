@@ -11,13 +11,22 @@ export default function ContactForm() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
-  
+
   const t = useTranslations('contactUs');
 
 
+  const validateEmailFormat = (email) => {
+    // Basic regex for email format validation
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
   async function handleSubmit() {
     if (!firstName || !lastName || !email || !message) {
-     showToast('info', t('toast.missingFields'));
+      showToast('info', t('toast.missingFields'));
+      return;
+    }
+    if (!validateEmailFormat(email)) {
+      showToast('info', t('toast.invalidEmail'));
       return;
     }
 

@@ -26,7 +26,8 @@
         "missingFields": "Please fill in all the required fields!",
         "passwordMismatch": "Passwords do not match!",
         "success": "Registration successful!",
-        "error": "Registration failed! Please try again."
+        "error": "Registration failed! Please try again.",
+        "invalidEmail": "Please enter a valid email address!"
       }
     },
     "signin": {
@@ -125,7 +126,8 @@
       "missingFields": "Please fill in all required fields!",
       "failedEmail": "Failed to send email! Please try again.",
       "successEmail": "Email sent successfully!",
-      "error": "An error occurred while sending the email!"
+      "error": "An error occurred while sending the email!",
+      "invalidEmail": "Please enter a valid email address!"
     },
     "firstName": "First name",
     "lastName": "Last name",
