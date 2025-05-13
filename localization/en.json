@@ -58,11 +58,11 @@
     "title": "Elevate Your Work Stay Experience.",
     "subtitle": "Enjoy Comfort, Convenience and Productivity During Your Stay.",
     "form": {
-      "where": "Where",
+      "location": "Location",
       "wherePlaceholder": "Search destination",
       "checkIn": "Check in",
       "checkOut": "Check out",
-      "who": "Who",
+      "guests": "Number of Guests",
       "whoPlaceholder": "Add guests",
       "addDate": "Add date"
     },
