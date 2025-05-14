@@ -26,7 +26,7 @@ const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
 
         {/* Favorite Icon */}
         <div
-          onClick={() => toggleFavorite(listing.id)}
+          onClick={async () => await toggleFavorite(listing.id)}
           className="tw:absolute tw:top-4 tw:right-4 tw:cursor-pointer tw:border tw:border-[#1b1b1b10] tw:rounded-md tw:p-[2px]"
         >
           <HeartIcon
@@ -56,10 +56,12 @@ const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
         </div>
         <div className="tw:flex tw:flex-wrap tw:items-center tw:text-gray-600 tw:gap-4">
           {listing.features.map((feature, index) => (
-            <div className="tw:flex tw:gap-4 tw:items-center ">
+            <div
+              className="tw:flex tw:gap-4 tw:items-center "
+              key={`${index}-${feature.title}`}
+            >
               <div className="tw:flex tw:gap-2">
                 <img
-                  key={index}
                   src={exactPath(feature.icon)}
                   alt={feature.title}
                   className="tw:w-5 tw:h-5"

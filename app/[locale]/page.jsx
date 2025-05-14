@@ -37,14 +37,24 @@ export default async function Main({ params }) {
   const session = await getCurrentUser();
 
   return (
-    <Suspense fallback={<Loading />}>
-      <div className="tw:flex tw:flex-col tw:min-h-screen">
-        <Navbar session={null} />
-        <main className="tw:flex-grow tw:pt-16">
-          <Dashboard locale={params.locale} />
-        </main>
-        <Footer />
-      </div>
-    </Suspense>
+    <Wrapper defaultFooter>
+      <main className="tw:flex-grow tw:pt-16">
+        <Dashboard locale={params.locale} session={session} />
+      </main>
+    </Wrapper>
   );
 }
+
+// export default dynamic(
+//   () =>
+//     Promise.resolve(({ params }) => (
+//       <Wrapper defaultFooter>
+//         <main className="tw:flex-grow tw:pt-16">
+//           <Dashboard locale={params.locale} />
+//         </main>
+//       </Wrapper>
+//     )),
+//   {
+//     ssr: false,
+//   },
+// );
