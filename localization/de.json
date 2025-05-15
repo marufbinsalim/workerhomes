@@ -117,6 +117,12 @@
       "title": "Empfohlene Inserate",
       "subtitle": "Das sind die beliebtesten Reiseziele der Welt.",
       "seeAllButton": "Alle ansehen"
+    },
+    "toast": {
+      "favoriteInfo": "Du musst eingeloggt sein, um Favoriten zu speichern!",
+      "favoriteAdded": "Zu deinen Favoriten hinzugefügt!",
+      "favoriteError": "Etwas ist schiefgelaufen.",
+      "favoriteRemoved": "Aus deinen Favoriten entfernt!"
     }
 
   },
@@ -474,8 +480,10 @@
   },
 
   "bookmark": {
-    "title": "Lesezeichen",
-    "description": "Dies sind die beliebtesten Reiseziele weltweit.",
+    "title": "Gefällt dir ein Ort? Setze ein Lesezeichen!",
+    "description": "Dies sind die beliebtesten Reiseziele weltweit. Speichere und besuche deine Lieblingsangebote ganz einfach erneut!",
+    "bookmarks": "Lesezeichen",
+    "subtitle": "Gespeicherte Immobilien",
     "button": "Mehr",
 
     "message": {

@@ -1,8 +1,9 @@
 import Wrapper from "@/components/layout/Wrapper";
-import BookmarkPage from "@/components/pages/website/bookmarks";
+// import BookmarkPage from "@/components/pages/website/bookmarks";
 import { getCurrentUser } from "@/lib/session";
 import { getTranslations } from "next-intl/server";
 import dynamic from "next/dynamic";
+import BookmarkPage from "../../../../components/pages/website/bookmarks-V2/page";
 
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslations({ locale, namespace: "bookmark" });
@@ -16,7 +17,8 @@ export default async function BookMark({ params: { locale } }) {
   const session = await getCurrentUser();
   return (
     <Wrapper>
-      <BookmarkPage session={session} />
+      {/* <BookmarkPage session={session} /> */}
+      <BookmarkPage session={ session } />
     </Wrapper>
   );
 }

@@ -4,6 +4,9 @@ import { Icon } from "@iconify/react";
 import { useBookmarks } from "@/context/BookmarkProvider";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { HeartIcon } from "lucide-react";
+import { showToast } from "@/components/toast/Toast";
+import { useTranslations } from "next-intl";
 
 const BookmarkButton = ({ item }) => {
   const router = useRouter();
@@ -11,6 +14,8 @@ const BookmarkButton = ({ item }) => {
     useBookmarks();
   const locale = useParams().locale;
   const { data: session } = useSession();
+
+  const t = useTranslations("heroSection");
 
   const handleBookmark = async (e) => {
     e.stopPropagation();
@@ -20,7 +25,22 @@ const BookmarkButton = ({ item }) => {
       return;
     } else {
       if (!item) return;
-      await toggleBookmark(item.id, session?.id); // Use the new toggleBookmark function
+
+      try {
+        const currentStatus = isBookmarked(item.id);
+        await toggleBookmark(item.id, session?.id); // Use the new toggleBookmark function
+
+
+        if (currentStatus) {
+          showToast("success", t("toast.favoriteRemoved"));
+        }
+       
+      }
+      catch (error) {
+        console.error("Error toggling bookmark:", error);
+        showToast("error", "Failed to toggle bookmark");
+      }
+      
     }
   };
 
@@ -28,15 +48,16 @@ const BookmarkButton = ({ item }) => {
     <button
       disabled={isLoading}
       onClick={handleBookmark}
-      className="button -blue-1 bg-white size-30 rounded-full shadow-2"
-      style={{}}
+      className="tw:inline-flex tw:items-center tw:justify-center tw:w-10 tw:h-10 tw:bg-black/40 tw:rounded-full"
     >
-      {item && isBookmarked(item.id) ? (
-        <Icon icon="fluent-emoji:red-heart" />
-      ) : (
-        <Icon icon="octicon:heart-24" />
-      )}
+      <HeartIcon
+        className={`tw:w-6 tw:h-6 ${item && isBookmarked(item.id)
+            ? "tw:fill-[var(--color-primary)]"
+            : "tw:fill-none"
+          } tw:stroke-white tw:stroke-2`}
+      />
     </button>
+
   );
 };
 

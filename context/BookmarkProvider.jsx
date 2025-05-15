@@ -81,16 +81,19 @@ export const BookmarkProvider = ({ children, userId }) => {
       }
 
       // Toggle bookmark by calling the API
-      const response = await axios.post(`/api/bookmarks/${listingId}/${id}`)
-      const { status, data } = response
+      const response = await axios.post(`/api/bookmarks/${listingId}/${id}`);
+      
+      const { status, data } = response;
 
       if (status === 200) {
         // Refetch bookmarks after a successful toggle
         await fetchBookmarks()
-        toast.success('Bookmark updated successfully')
+        return data;
+        
       }
     } catch (error) {
       console.error('Error toggling bookmark:', error)
+      throw error;
     } finally {
       setIsLoading(false)
     }

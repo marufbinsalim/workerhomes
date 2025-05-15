@@ -14,6 +14,8 @@ import { useTranslations } from "next-intl";
 import useFetch from "@/hooks/useFetch";
 import useFeatured from "@/hooks/useFeatured";
 import { useBookmarks } from "@/context/BookmarkProvider";
+import { showToast } from "@/components/toast/Toast";
+
 
 const Dashboard = ({ locale, session }) => {
   const [checkInDate, setCheckInDate] = useState(null);
@@ -23,6 +25,8 @@ const Dashboard = ({ locale, session }) => {
   const [favorites, setFavorites] = useState({});
   const { featuredListings, featuredListingsError, featuredListingsLoading } =
     useFeatured(locale);
+  const [isBookmarkedItem, setIsBookmarkedItem] = useState(false);
+
 
   const CustomInput = ({ value, onClick }) => {
     const formatDate = (date) => {
@@ -58,36 +62,7 @@ const Dashboard = ({ locale, session }) => {
     );
   };
 
-  const listings = [
-    {
-      id: 1,
-      title: "Minimax House",
-      image: "/assets/bedroom.jpg",
-      location: "Hamburg, Germany",
-      price: "$220 / Per Night",
-      features: "4 bedrooms",
-      thumbs: "4 bedrooms",
-    },
-    {
-      id: 2,
-      title: "Oceanview Retreat",
-      image: "/assets/bedroom.jpg",
-      location: "Malibu, USA",
-      price: "$350 / Per Night",
-      features: "3 bedrooms",
-      thumbs: "5 stars",
-    },
-    {
-      id: 3,
-      title: "Mountain Cabin",
-      image: "/assets/bedroom.jpg",
-      location: "Zermatt, Switzerland",
-      price: "$180 / Per Night",
-      features: "2 bedrooms",
-      thumbs: "Cozy & warm",
-    },
-  ];
-
+  
   const {
     toggleBookmark,
     isBookmarked: isBookmarkedInDB,
@@ -104,11 +79,30 @@ const Dashboard = ({ locale, session }) => {
     return isListingBookmarked ? true : false;
   };
 
+  const t = useTranslations("heroSection");
+
+
   const toggleFavorite = async (id) => {
-    await toggleBookmark(id, session.id);
+    if (!session?.id) {
+      showToast("info", t("toast.favoriteInfo"));
+      return;
+    }
+
+    try {
+      await toggleBookmark(id, session.id); // Call the toggle
+
+      // Refresh actual bookmark state
+      const isNowBookmarked =  isBookmarked(id);
+      setIsBookmarkedItem(isNowBookmarked);
+
+      showToast("success",
+        isNowBookmarked ? t("toast.favoriteRemoved") : t("toast.favoriteAdded")
+      );
+    } catch (err) {
+      showToast("error", t("toast.favoriteError"));
+    }
   };
 
-  const t = useTranslations("heroSection");
 
   const isMobile = useIsMobile();
   function useIsMobile(breakpoint = 768) {

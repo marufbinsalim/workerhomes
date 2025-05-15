@@ -29,11 +29,13 @@ const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
           onClick={async () => await toggleFavorite(listing.id)}
           className="tw:absolute tw:top-4 tw:right-4 tw:cursor-pointer tw:border tw:border-[#1b1b1b10] tw:rounded-md tw:p-[2px]"
         >
-          <HeartIcon
-            className={`tw:w-6 tw:h-6 ${
-              isFavorite ? "tw:fill-[var(--color-primary)]" : "tw:fill-none"
-            } tw:stroke-white tw:stroke-2`}
-          />
+          <div className="tw:inline-flex tw:items-center tw:justify-center tw:w-10 tw:h-10 tw:bg-black/40 tw:rounded-full">
+            <HeartIcon
+              className={`tw:w-6 tw:h-6 ${isFavorite ? "tw:fill-[var(--color-primary)]" : "tw:fill-none"
+                } tw:stroke-white tw:stroke-2`}
+            />
+          </div>
+
         </div>
 
         {/* Price */}

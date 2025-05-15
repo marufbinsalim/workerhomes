@@ -116,6 +116,12 @@
       "title": "Featured Listings",
       "subtitle": "These are the most popular destinations in the world.",
       "seeAllButton": "See all"
+    },
+    "toast": {
+      "favoriteInfo": "You must be logged in to save favorites!",
+      "favoriteAdded": "Added to your favorites!",
+      "favoriteError": "Something went wrong.",
+      "favoriteRemoved": "Removed from your favorites!"
     }
   },
 
@@ -149,6 +155,8 @@
       "followUsLabel": "Follow us on social media"
     }
   },
+
+
 
   "brand": {
     "title": "Hello world!",
@@ -470,12 +478,14 @@
     }
   },
   "bookmark": {
-    "title": "Bookmarks",
-    "description": "These are the most popular destinations in the world.",
+    "title": " Like a place? Bookmark it!",
+    "description": "These are the most popular destinations in the world. Easily Save and Revisit Your Favourite Listings!",
+    "bookmarks": "Bookmarks",
+    "subtitle": "Saved Properties",
     "button": "More",
     "message": {
       "empty": "You have no bookmarks yet.",
-      "empty2": "You can add bookmarks by clicking the bookmark icon on the listings."
+      "empty2": "You can add bookmarks by clicking the bookmark icon on the listings. "
     }
   },
   "listings": {

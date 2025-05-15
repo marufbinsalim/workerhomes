@@ -46,13 +46,11 @@
       "loginTitle": "Zaloguj się na swoje konto",
       "loginSubtitle": "Zaloguj się, aby rozpocząć korzystanie z naszej usługi",
       "signupNow": "Zarejestruj się teraz",
-      
-        "toast": {
-          "success": "Logowanie zakończone sukcesem!",
-          "error": "Nieprawidłowy adres e-mail lub hasło!",
-          "invalidEmail": "Proszę wprowadzić poprawny adres e-mail!"
-        }
-      
+      "toast": {
+        "success": "Logowanie zakończone sukcesem!",
+        "error": "Nieprawidłowy adres e-mail lub hasło!",
+        "invalidEmail": "Proszę wprowadzić poprawny adres e-mail!"
+      }
     }
   },
   "heroSection": {
@@ -67,59 +65,63 @@
       "whoPlaceholder": "Dodaj gości",
       "addDate": "Dodaj datę"
     },
-    
-      "popularCitiesSection": {
-        "title": "Popularne miasta",
-        "subtitle": "Odkryj najlepsze miejsca do pracy w tych miastach.",
-        "seeAllButton": "Zobacz wszystkie",
-        "cities": {
-          "frankfurt": {
-            "name": "Frankfurt",
-            "country": "Niemcy"
-          },
-          "munich": {
-            "name": "Monachium",
-            "country": "Niemcy"
-          },
-          "warsaw": {
-            "name": "Warszawa",
-            "country": "Polska"
-          },
-          "hamburg": {
-            "name": "Hamburg",
-            "country": "Niemcy"
-          },
-          "edinburgh": {
-            "name": "Edynburg",
-            "country": "Wielka Brytania"
-          }
+    "popularCitiesSection": {
+      "title": "Popularne miasta",
+      "subtitle": "Odkryj najlepsze miejsca do pracy w tych miastach.",
+      "seeAllButton": "Zobacz wszystkie",
+      "cities": {
+        "frankfurt": {
+          "name": "Frankfurt",
+          "country": "Niemcy"
+        },
+        "munich": {
+          "name": "Monachium",
+          "country": "Niemcy"
+        },
+        "warsaw": {
+          "name": "Warszawa",
+          "country": "Polska"
+        },
+        "hamburg": {
+          "name": "Hamburg",
+          "country": "Niemcy"
+        },
+        "edinburgh": {
+          "name": "Edynburg",
+          "country": "Wielka Brytania"
         }
-      },
-      "whoWeAreSection": {
-        "title": "Kim jesteśmy i co robimy",
-        "subtitle": "Dowiedz się, kim jesteśmy i jakie usługi oferujemy.",
-        "cards": {
-          "extensiveListings": {
-            "title": "Szeroka oferta",
-            "description": "Potrzebujesz miejsca na kilka dni, tygodni lub miesięcy? WorkerHomes oferuje różnorodne zakwaterowanie – od przytulnych pokoi po całe domy – w wielu regionach!"
-          },
-          "easyToUse": {
-            "title": "Łatwa w obsłudze platforma",
-            "description": "Stworzona z myślą o Tobie! Przeglądaj oferty, filtruj według swoich potrzeb i kontaktuj się bezpośrednio z właścicielami – wszystko w kilku kliknięciach."
-          },
-          "flexibleSolutions": {
-            "title": "Elastyczne rozwiązania",
-            "description": "Rozumiemy, że harmonogramy pracy mogą się zmieniać, dlatego oferujemy elastyczne opcje wynajmu – zarówno krótkoterminowego, jak i długoterminowego."
-          }
-        }
-      },
-      "featuredListingsSection": {
-        "title": "Polecane ogłoszenia",
-        "subtitle": "To są najpopularniejsze miejsca na świecie.",
-        "seeAllButton": "Zobacz wszystkie"
       }
+    },
+    "whoWeAreSection": {
+      "title": "Kim jesteśmy i co robimy",
+      "subtitle": "Dowiedz się, kim jesteśmy i jakie usługi oferujemy.",
+      "cards": {
+        "extensiveListings": {
+          "title": "Szeroka oferta",
+          "description": "Potrzebujesz miejsca na kilka dni, tygodni lub miesięcy? WorkerHomes oferuje różnorodne zakwaterowanie – od przytulnych pokoi po całe domy – w wielu regionach!"
+        },
+        "easyToUse": {
+          "title": "Łatwa w obsłudze platforma",
+          "description": "Stworzona z myślą o Tobie! Przeglądaj oferty, filtruj według swoich potrzeb i kontaktuj się bezpośrednio z właścicielami – wszystko w kilku kliknięciach."
+        },
+        "flexibleSolutions": {
+          "title": "Elastyczne rozwiązania",
+          "description": "Rozumiemy, że harmonogramy pracy mogą się zmieniać, dlatego oferujemy elastyczne opcje wynajmu – zarówno krótkoterminowego, jak i długoterminowego."
+        }
+      }
+    },
+    "featuredListingsSection": {
+      "title": "Polecane ogłoszenia",
+      "subtitle": "To są najpopularniejsze miejsca na świecie.",
+      "seeAllButton": "Zobacz wszystkie"
+    },
+    "toast": {
+      "favoriteInfo": "Musisz być zalogowany, aby zapisywać ulubione!",
+      "favoriteAdded": "Dodano do ulubionych!",
+      "favoriteError": "Coś poszło nie tak.",
+      "favoriteRemoved": "Usunięto z ulubionych!"
+    }
   },
-
   "contactUs": {
     "title": "Mamy cały dedykowany zespół, aby wspierać Ciebie i Twoją firmę",
     "subtitle": "Dedykowany zespół ekspertów, gotowy wspierać Ciebie i Twoją firmę na każdym kroku",
@@ -139,7 +141,7 @@
     "emailPlaceholder": "twojemail@gmail.com",
     "messagePlaceholder": "Zostaw nam wiadomość...",
     "sendButton": "Wyślij wiadomość",
-    "info":{
+    "info": {
       "title": "Skontaktuj się z nami",
       "addressLabel": "Adres",
       "address": "328 Queensberry Street, North Melbourne VIC 3051, Australia.",
@@ -150,8 +152,6 @@
       "followUsLabel": "Śledź nas w mediach społecznościowych"
     }
   },
-
-
   "brand": {
     "title": "Witaj świecie!",
     "description": "To jest prosty przykład obiektu marki."
@@ -472,8 +472,10 @@
     }
   },
   "bookmark": {
-    "title": "Zakładki",
-    "description": "To są najpopularniejsze destynacje na świecie.",
+    "title": "Podoba Ci się miejsce? Dodaj je do zakładek!",
+    "description": "To są najpopularniejsze destynacje na świecie. Łatwo zapisuj i wracaj do swoich ulubionych ogłoszeń!",
+    "bookmarks": "Zakładki",
+    "subtitle": "Zapisane nieruchomości",
     "button": "Więcej",
     "message": {
       "empty": "Nie masz jeszcze zakładek.",
