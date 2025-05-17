@@ -215,6 +215,7 @@
   "plan": {
     "title": "Plany cenowe",
     "description": "Wybierz najlepszy plan dla siebie.",
+    "coreFeature": "Główne funkcje obejmują:",
     "button": "Wybierz plan",
     "date": "Wybierz zakres dat",
     "options": {
@@ -244,9 +245,9 @@
         "visibility": "Zasięg pokrycia"
       },
       "position": {
-        "first": "Wymienione powyżej darmowych, srebrnych i złotych",
-        "second": "Wymienione powyżej darmowych i srebrnych",
-        "third": "Wymienione powyżej darmowych",
+        "first": "Powyżej darmowego, srebrnego i złotego",
+        "second": "Powyżej darmowego i srebrnego",
+        "third": "Powyżej darmowych",
         "last": "Ostatni"
       }
     }
@@ -483,8 +484,8 @@
     }
   },
   "pricing": {
-    "title": "Cennik",
-    "description": "Zwiększ swój wskaźnik sukcesu i wydajność dzięki jednemu z naszych pakietów korzyści.",
+    "title": "Wybierz plan dopasowany do swoich potrzeb",
+    "description": "Zwiększ swój współczynnik sukcesu i wydajność dzięki jednemu z naszych korzystnych pakietów.",
     "button": "Więcej"
   },
   "blog": {

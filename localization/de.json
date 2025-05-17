@@ -1,5 +1,4 @@
 {
-
   "authentication": {
     "signup": {
       "firstname": "Vorname",
@@ -54,7 +53,6 @@
       }
     }
   },
-
   "heroSection": {
     "title": "Steigern Sie Ihr Arbeitserlebnis während des Aufenthalts.",
     "subtitle": "Genießen Sie Komfort, Bequemlichkeit und Produktivität während Ihres Aufenthalts.",
@@ -67,7 +65,6 @@
       "whoPlaceholder": "Gäste hinzufügen",
       "addDate": "Datum hinzufügen"
     },
-
     "popularCitiesSection": {
       "title": "Beliebte Städte",
       "subtitle": "Entdecken Sie die besten Orte zum Arbeiten in diesen Städten.",
@@ -124,9 +121,7 @@
       "favoriteError": "Etwas ist schiefgelaufen.",
       "favoriteRemoved": "Aus deinen Favoriten entfernt!"
     }
-
   },
-
   "contactUs": {
     "title": "Wir haben ein ganzes dediziertes Team, um Sie und Ihr Unternehmen zu unterstützen",
     "subtitle": "Ein dediziertes Expertenteam, bereit, Sie und Ihr Unternehmen auf jedem Schritt des Weges zu unterstützen",
@@ -157,7 +152,6 @@
       "followUsLabel": "Folgen Sie uns in sozialen Medien"
     }
   },
-
   "brand": {
     "title": "Hallo Welt!",
     "description": "Dies ist ein einfaches Beispiel eines Markenobjekts."
@@ -221,6 +215,7 @@
   "plan": {
     "title": "Preise Pläne",
     "description": "Wählen Sie den besten Plan für Sie.",
+    "coreFeature": "Zentrale Funktionen umfassen:",
     "button": "Plan wählen",
     "date": "Datumsbereich auswählen",
     "options": {
@@ -249,11 +244,10 @@
         "featured": "Empfohlener Abschnitt",
         "visibility": "Abdeckungsradius"
       },
-
       "position": {
-        "first": "Über kostenlos, Silber und Gold gelistet",
-        "second": "Über kostenlos und Silber gelistet",
-        "third": "Über kostenlos gelistet",
+        "first": "Über kostenlos, Silber und Gold",
+        "second": "Über kostenlos und Silber",
+        "third": "Über kostenlos",
         "last": "Letzte"
       }
     }
@@ -478,22 +472,20 @@
       "recaptcha-success": "Sie wurden als Mensch verifiziert."
     }
   },
-
   "bookmark": {
     "title": "Gefällt dir ein Ort? Setze ein Lesezeichen!",
     "description": "Dies sind die beliebtesten Reiseziele weltweit. Speichere und besuche deine Lieblingsangebote ganz einfach erneut!",
     "bookmarks": "Lesezeichen",
     "subtitle": "Gespeicherte Immobilien",
     "button": "Mehr",
-
     "message": {
       "empty": "Sie haben noch keine Lesezeichen.",
       "empty2": "Sie können Lesezeichen hinzufügen, indem Sie auf das Lesezeichensymbol in den Einträgen klicken."
     }
   },
   "pricing": {
-    "title": "Preise",
-    "description": "Steigern Sie Ihre Erfolgsrate und Leistung mit einem unserer Vorteilspakete.",
+    "title": "Wählen Sie einen Plan nach Ihrem Geschmack",
+    "description": "Steigern Sie Ihre Erfolgsquote und Leistung mit einem unserer Vorteilspakete.",
     "button": "Mehr"
   },
   "blog": {
@@ -524,7 +516,6 @@
       "found": "Eigenschaften gefunden"
     }
   },
-
   "register": {
     "title": "Willkommen - Melden Sie sich kostenlos an",
     "message": {
@@ -1433,7 +1424,6 @@
     "pl": "Polnisch",
     "de": "Deutsch"
   },
-
   "listings": {
     "title": "Anzeigen",
     "description": "Finden Sie Ihr Traumhaus in unseren Angeboten.",
@@ -1604,7 +1594,6 @@
     "minLength": "Dieses Feld muss mindestens {min} Zeichen lang sein.",
     "maxLength": "Dieses Feld darf höchstens {max} Zeichen lang sein.",
     "matches": "Das Passwort muss mindestens einen Großbuchstaben, eine Zahl und ein Symbol enthalten.",
-
     "email": "Dies muss eine gültige E-Mail-Adresse sein.",
     "password": {
       "min": "Das Passwort muss mindestens 6 Zeichen lang sein.",
@@ -1774,7 +1763,6 @@
       "confirmPassword": "Bestätige neues Passwort"
     }
   },
-
   "about": {
     "title": {
       "main": "Über uns",
@@ -2004,7 +1992,6 @@
       }
     }
   },
-
   "terms": {
     "title": "AAllgemeine Geschäftsbedingungen (AGB) für WorkerHomes",
     "date": "Stand: 22.09.2024",
@@ -2167,14 +2154,12 @@
     "upgrade": "Aktualisiere deinen Plan",
     "process": "Wird verarbeitet...",
     "downgrade": "Stufe deinen Plan herab",
-
     "confirm": {
       "upgrade": {
         "title": "Aktualisierung",
         "text": "Sie sind dabei, auf ",
         "text2": ". Sobald die Zahlung abgeschlossen ist, wird Ihr Konto sofort hochgestuft und Sie erhalten sofortigen Zugriff auf alle Premiumfunktionen und Vorteile Ihres neuen Plans."
       },
-
       "downgrade": {
         "title": "Herabstufung",
         "text": "Sehr geehrter Kunde, Ihr ",
