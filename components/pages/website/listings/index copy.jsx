@@ -2,26 +2,19 @@
 
 import MapComponent from '@/components/common/MapComponent'
 import DropdownSelectBar from '@/components/hotel-list/common/DropdownSelectBar'
-import RangeFilterBar from '@/components/hotel-list/common/RangeFilterBar'
 import HotelProperties from '@/components/hotel-list/hotel-list-v3/HotelProperties'
 import TopHeaderFilter from '@/components/hotel-list/hotel-list-v3/TopHeaderFilter'
 import { google_key } from '@/config'
 import { updateFilter } from '@/lib/services/dwelling'
 import { exactPath } from '@/utils'
-import { useTranslations } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
-import { FaFilter } from 'react-icons/fa6'
 
 const ListingPage = ({ locale }) => {
   const [foundedLocation, setFoundedLocation] = useState(null)
   const [locationLoading, setLocationLoading] = useState(false)
   const p = useSearchParams()
   const [filteredLocations, setFilteredLocations] = useState()
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-
-  const t = useTranslations('listings')
-
   const [sort, setSort] = useState({
     price: '',
     distance: '',
@@ -262,79 +255,109 @@ const ListingPage = ({ locale }) => {
 
   return (
     <>
-      <div className="tw:flex tw:flex-col tw:overflow-auto tw:items-center tw:px-4 tw:md:px-30 tw:gap-5 tw:mt-10 tw:w-full tw:py-10 tw:md:py-20">
-        {/* Map Section - Fixed dimensions */}
-        <div className="tw:w-full tw:h-[300px] tw:md:h-[400px] tw:bg-gray-200 tw:rounded-[10px] tw:overflow-hidden tw:shadow-md">
-          <MapComponent
-            defaultCenter={distanceSorted?.[0]}
-            setLocations={location => setFoundedLocation(location)}
-            locations={locations}
-            apiKey={google_key}
-            zoom={11}
-            locale={locale}
-          />
-        </div>
+      <div className='header-margin'></div>
+      <section className='halfMap'>
+        <div className='halfMap__content'>
+          <div className='row x-gap-10 y-gap-10 '>
+            <DropdownSelectBar
+              setMinStayValue={v =>
+                setFilter(prev => ({
+                  ...prev,
+                  stay: v,
+                  guest: {
+                    id: 0,
+                    text: 'All',
+                    value: 'ALL',
+                  },
+                  price: {
+                    id: 0,
+                    text: 'All Prices',
+                    value: 'ALL',
+                  },
+                }))
+              }
+              minStayValue={filter.stay}
+              guestValue={filter.guest}
+              setGuestNumber={v =>
+                setFilter(prev => ({
+                  ...prev,
+                  guest: v,
+                  price: {
+                    id: 0,
+                    text: 'All Prices',
+                    value: 'ALL',
+                  },
+                  stay: {
+                    id: 0,
+                    text: 'All',
+                    value: 'ALL',
+                  },
+                }))
+              }
+              priceValue={filter.price}
+              setPriceValue={v =>
+                setFilter(prev => ({
+                  ...prev,
+                  price: v,
+                  guest: {
+                    id: 0,
+                    text: 'All',
+                    value: 'ALL',
+                  },
+                  stay: {
+                    id: 0,
+                    text: 'All',
+                    value: 'ALL',
+                  },
+                }))
+              }
+            />
+          </div>
+          {/* End .row */}
 
-        {/* Filters Section - Full width */}
-        <div className="tw:w-full tw:bg-white">
-          <div className="tw:flex tw:flex-row tw:justify-between tw:items-center tw:py-4 tw:gap-2 tw:mb-4">
-            {/* Total properties and sort buttons - shown first on mobile */}
+          <div className='row y-gap-10 justify-between items-center pt-20'>
             <TopHeaderFilter
-              sort={sort}
               handAscDesc={() => {
                 setSort(prev => ({
                   distance: '',
                   price: prev.price === 'asc' ? 'desc' : 'asc',
-                }));
+                }))
               }}
               handleDistanceAscDesc={() => {
                 setSort(prev => ({
                   price: '',
                   distance: prev.distance === 'asc' ? 'desc' : 'asc',
-                }));
+                }))
               }}
               total={distanceSorted?.length || 0}
             />
+          </div>
+          {/* End .row */}
 
-            {/* Filter Button & Dropdown - flex on mobile */}
-            <div className="tw:relative tw:flex tw:mt-9 tw:md:m-auto">
-              <button
-                onClick={() => setIsFilterOpen(prev => !prev)}
-                className="tw:flex tw:items-center tw:underline tw:gap-1 tw:text-sm tw:font-semibold tw:px-2"
-              >
-                <span>{t('filter')}</span>
-                <FaFilter className="tw:w-3 tw:h-3" />
-              </button>
-
-              {isFilterOpen && (
-                <div
-                  className="tw:absolute tw:z-30 tw:right-[1vw] tw:sm:right-0 tw:mt-8 tw:w-[90vw] tw:sm:w-[446px] tw:bg-white tw:rounded-md tw:border tw:border-gray-200"
-                  style={{ boxShadow: '0px 0px 16px 0px #00000014' }}
-                >
-                  <RangeFilterBar
-                    priceValue={filter.price}
-                    setPriceValue={v => setFilter(prev => ({ ...prev, price: v }))}
-                    guestValue={filter.guest}
-                    setGuestNumber={v => setFilter(prev => ({ ...prev, guest: v }))}
-                    minStayValue={filter.stay}
-                    setMinStayValue={v => setFilter(prev => ({ ...prev, stay: v }))}
-                    onClose={() => setIsFilterOpen(false)}
-                  />
-                </div>
-              )}
-            </div>
+          <div className='row y-gap-20 pt-20'>
+            <HotelProperties
+              data={sort.distance ? distanceSorted : priceSorted}
+              isLoading={locationLoading}
+            />
+          </div>
+          {/* End .row */}
+        </div>
+        {/* End .halfMap__content */}
+        <div className='halfMap__map'>
+          <div className='map'>
+            <MapComponent
+              defaultCenter={distanceSorted?.[0]}
+              setLocations={location => setFoundedLocation(location)}
+              locations={locations}
+              apiKey={google_key}
+              zoom={11}
+              locale={locale}
+            />
           </div>
         </div>
-
-        {/* Properties List - Full width */}
-        <div className="tw:w-full tw:flex tw:flex-col tw:gap-5">
-          <HotelProperties
-            data={sort.distance ? distanceSorted : priceSorted}
-            isLoading={locationLoading}
-          />
-        </div>
-      </div>
-
+        {/* End halfMap__map */}
+      </section>
+      {/* End halfMap content */}
     </>
   )
 }

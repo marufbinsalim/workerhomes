@@ -1427,8 +1427,22 @@
   "listings": {
     "title": "Anzeigen",
     "description": "Finden Sie Ihr Traumhaus in unseren Angeboten.",
-    "button": "Mehr",
+    "filter": "Filtern",
+    "resetFilters": "Filter zurücksetzen",
+    "labels": {
+      "min": "Min",
+      "max": "Max",
+      "minPerson": "Min (Personen)",
+      "maxPerson": "Max (Personen)",
+      "minDays": "Min (Tage)",
+      "maxDays": "Max (Tage)",
+      "minPrice": "Min (€)",
+      "maxPrice": "Max (€)"
+    },
     "filters": {
+      "price": "Preis",
+      "guest": "Gäste",
+      "stay": "Mindestaufenthalt",
       "0": {
         "title": "Filtern nach Preis",
         "options": {

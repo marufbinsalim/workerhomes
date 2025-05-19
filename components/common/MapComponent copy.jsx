@@ -10,8 +10,6 @@ import { LocationContext } from '@/context/LocationProvider'
 import { useTranslations } from 'next-intl'
 import Link from '@/components/common/Link'
 import { toast } from 'react-toastify'
-import { FiSearch } from 'react-icons/fi'
-import { MapPin } from 'lucide-react'
 
 const libraries = ['places']
 
@@ -160,12 +158,30 @@ const LocationFinder = ({
   const language = locale
 
   return (
-    <div className="tw:relative font-primary tw:h-full tw:w-full">
+    <div>
+      <Autocomplete
+        onLoad={auto => setAutocomplete(auto)}
+        onPlaceChanged={handlePlaceChanged}
+        fields={['geometry', 'formatted_address', 'address_components']}
+      >
+        <input
+          type='search'
+          placeholder={t('search.placeholder')}
+          className='location-search-input'
+          value={inputValue}
+          onChange={handleInput}
 
-      {/* Google Map */}
+          onKeyDown={e => {
+            if (e.key === 'Enter') {
+              e.preventDefault()
+              alert('Not allowed; select your location from the dropdown')
+            }
+          }}
+        />
+      </Autocomplete>
+
       <GoogleMap
         onLoad={mapInstance => setMap(mapInstance)}
-        
         onZoomChanged={handleZoomChanged}
         zoom={zoom}
         center={
@@ -174,23 +190,9 @@ const LocationFinder = ({
             ? { lat: locations[0].lat, lng: locations[0].lng }
             : defaultCenter || { lat: 0, lng: 0 })
         }
-        mapContainerStyle={{
-          height: '100%',
-          width: '100%',
-          paddingBottom: '50px'
-        }}
+        mapContainerStyle={{ height: '86.5vh', width: '100%' }}
         options={{
-          mapTypeControl: true,
-          mapTypeControlOptions: {
-            position: window.google.maps.ControlPosition.TOP_RIGHT,
-            style: window.google.maps.MapTypeControlStyle.DEFAULT,
-          },
-          streetViewControl: true, // Enable Street View
-          streetViewControlOptions: {
-            position: window.google.maps.ControlPosition.RIGHT_BOTTOM,
-          },
-          gestureHandling: 'greedy', // This enables dragging on all devices
-          language: locale,
+          language: locale, // Set the language parameter here
         }}
       >
         {/* Center Marker */}
@@ -227,21 +229,25 @@ const LocationFinder = ({
                 position={{ lat: location.lat, lng: location.lng }}
                 onCloseClick={() => setSelectedMarker(null)}
               >
-                <div className="tw:max-w-xs">
+                <div className='location-card'>
                   <img
+                    className='location-card-img'
                     src={location.image}
                     alt={location.name}
-                    className="tw:w-full tw:h-32 tw:object-cover tw:rounded-t"
+                    style={{
+                      width: '200px',
+                      height: '150px',
+                    }}
                   />
-                  <div className="tw:p-3">
-                    <h3 className="tw:font-bold tw:text-lg">{location.name}</h3>
-                    <p className="tw:text-gray-600 tw:text-sm">{location?.address}</p>
-                    <a
+                  <div className='location-content'>
+                    <p className='location-card-title'>{location.name}</p>
+                    <p className='location-card-address'>{location?.address}</p>
+                    <Link
+                      className='location-card-link'
                       href={`/listings/${location?.slug}`}
-                      className="tw:mt-2 tw:inline-block tw:text-blue-600 tw:hover:text-blue-800"
                     >
                       View Details
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </InfoWindow>
@@ -249,37 +255,6 @@ const LocationFinder = ({
           </Marker>
         ))}
       </GoogleMap>
-      <div className="tw:absolute tw:bottom-4 tw:left-0 tw:right-0 tw:z-[20] tw:flex tw:justify-center">
-        <div className="tw:relative">
-          <Autocomplete
-            onLoad={setAutocomplete}
-            onPlaceChanged={handlePlaceChanged}
-            fields={['geometry', 'formatted_address']}
-          >
-            <div className="tw:relative">
-              <div className="tw:absolute tw:inset-y-0 tw:left-0 tw:flex tw:items-center tw:pl-3 tw:pointer-events-none">
-                <FiSearch className="tw:text-white tw:text-opacity-70 tw:w-6 tw:h-6" />
-              </div>
-              <input
-                type="search"
-                placeholder="See more on map"
-                className="tw:w-[199px] tw:h-[44px] tw:pl-10 tw:pr-4 tw:py-2 tw:placeholder:text-white tw:bg-[#040342] tw:shadow-[0px_4px_16px_0px_#0000000F] tw:text-white tw:placeholder:text-lg tw:placeholder:leading-none tw:placeholder:text-center tw:placeholder:align-middle"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-              />
-            </div>
-          </Autocomplete>
-        </div>
-      </div>
-
-      {/* {inputValue && (
-        <div className="tw:absolute tw:hidden tw:sm:flex tw:items-center tw:top-4 tw:left-4 tw:z-[1000] tw:bg-white tw:shadow tw:rounded tw:p-[10px] tw:w-[224px] tw:h-[44px] tw:gap-[10px]">
-          <MapPin className="tw:flex-shrink-0 tw:text-[var(--color-font-regular)]" />
-          <span className="tw:text-[var(--color-font-dark)] tw:truncate tw:text-[18px] tw:font-semibold">{inputValue}</span>
-        </div>
-      )} */}
-
-
     </div>
   )
 }

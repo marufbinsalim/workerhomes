@@ -492,10 +492,25 @@
   "listings": {
     "title": "Listings",
     "description": "Find your dream home form our listings.",
-    "button": "More",
+    "filter": "Filter",
+    "resetFilters": "Reset Filters",
+    "labels": {
+      "min": "Min",
+      "max": "Max",
+      "minPerson": "Min (Person)",
+      "maxPerson": "Max (Person)",
+      "minDays": "Min (days)",
+      "maxDays": "Max (days)",
+      "minPrice": "Min ($)",
+      "maxPrice": "Max ($)"
+    },
     "filters": {
+      "price": "Price",
+      "guest": "Guests",
+      "stay": "Minimum Stay",
+      
       "0": {
-        "title": "Filter By Price",
+        "title": "Price",
         "options": {
           "0": "All Prices",
           "1": "Less than zł 500",
@@ -506,7 +521,7 @@
         }
       },
       "1": {
-        "title": "Filter By Guests",
+        "title": "Guests",
         "options": {
           "0": "All",
           "1": "Lower then 5",
@@ -516,7 +531,7 @@
         }
       },
       "2": {
-        "title": "Filter By Min stay",
+        "title": "Minimum Stay",
         "options": {
           "0": "All",
           "1": "Less then 5 days",
