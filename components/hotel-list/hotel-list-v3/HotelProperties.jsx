@@ -107,7 +107,7 @@ const HotelProperties = ({ data, isLoading }) => {
                           return (
                             <div key={`listing-${idx}`}>
                               <div className="tw:bg-[#ffffff9f] tw:z-20 tw:border tw:border-[#1b1b1b20] tw:absolute tw:bottom-2 tw:md:bottom-4 tw:left-2 tw:md:left-4 tw:w-[120px] tw:md:w-[165px] tw:h-[36px] tw:md:h-[46px] tw:flex tw:items-center tw:justify-center tw:gap-[8px] tw:p-[8px]">
-                                <span className="tw:font-semibold tw:text-[14px] tw:md:text-[18px]">
+                                <span className="tw:font-medium tw:text-[14px] tw:md:text-[18px]">
                                   {listing?.price}$/ Per Night
                                 </span>
                               </div>
@@ -155,9 +155,9 @@ const HotelProperties = ({ data, isLoading }) => {
                     <Link
                       href={`/listings/${item?.slug}`}
                       onClick={async () => await handleRedirect(item)}
-                      className="tw:w-full tw:h-11 tw:md:h-12 tw:bg-[var(--color-primary)] tw:text-white tw:flex tw:items-center tw:justify-center tw:rounded-md tw:transition-colors tw:font-semibold tw:text-[13px] tw:md:text-[14px]"
+                      className="tw:w-full tw:h-11 tw:md:h-12 tw:bg-[var(--color-primary)] tw:text-white tw:flex tw:items-center tw:justify-center tw:font-semibold tw:text-[13px] tw:md:text-[14px]"
                     >
-                      Visit Property
+                      {t("visit")}
                     </Link>
                   </div>
                 </div>
@@ -167,9 +167,13 @@ const HotelProperties = ({ data, isLoading }) => {
           );
         })
       ) : data?.length === 0 && !isLoading ? (
-        <div className="col-12">{t("not-found")}</div>
+        <div className="tw:flex tw:items-center tw:justify-center tw:h-[200px] tw:w-full">
+          {t("not-found")}
+        </div>
       ) : (
-        <div className="col-12">{t("loading")}...</div>
+        <div className="tw:flex tw:items-center tw:justify-center tw:h-[200px] tw:w-full">
+          {t("loading")}...
+        </div>
       )}
     </>
   );

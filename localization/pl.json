@@ -1427,8 +1427,22 @@
   "listings": {
     "title": "Oferty",
     "description": "Znajdź swój wymarzony dom w naszych ofertach.",
-    "button": "Więcej",
+    "filter": "Filtruj",
+    "resetFilters": "Resetuj filtry",
+    "labels": {
+      "min": "Min",
+      "max": "Maks",
+      "minPerson": "Min (osób)",
+      "maxPerson": "Maks (osób)",
+      "minDays": "Min (dni)",
+      "maxDays": "Maks (dni)",
+      "minPrice": "Min (zł)",
+      "maxPrice": "Maks (zł)"
+    },
     "filters": {
+      "price": "Cena",
+      "guest": "Goście",
+      "stay": "Minimalny pobyt",
       "0": {
         "title": "Filtruj według ceny",
         "options": {
