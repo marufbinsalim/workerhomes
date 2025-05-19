@@ -1,7 +1,9 @@
 "use client";
 
+import { google_key } from "@/config";
 import { exactPath } from "@/utils";
 import { MapPin, Phone, Pin, Send } from "lucide-react";
+import MapComponent from "@/components/common/MapComponent";
 import { useTranslations } from "next-intl";
 
 function ImageGrid({ images }) {
@@ -221,6 +223,17 @@ export default function ListingDetail({ data, locale }) {
         </div>
       </div>
       {JSON.stringify(data)}
+      <div className="tw:w-full tw:h-[300px] tw:md:h-[600px] tw:bg-gray-200 tw:rounded-[10px] tw:overflow-hidden tw:shadow-md">
+        <MapComponent
+          defaultCenter={data?.location[0]?.geo}
+          setLocations={() => {}}
+          locations={[]}
+          apiKey={google_key}
+          zoom={11}
+          locale={locale}
+          search={false}
+        />
+      </div>
     </div>
   );
 }
