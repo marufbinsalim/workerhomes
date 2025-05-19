@@ -12,31 +12,28 @@ const PackageSelector = ({ value, onChange }) => {
   })
 
   return (
-    <div className="tw:w-full tw:max-w-[1200px] tw:min-h-[591px] tw:px-4 tw:md:px-0">
-      <div className="tw:flex tw:flex-col tw:items-center tw:md:flex-row tw:gap-6 tw:md:gap-[30px]">
+    <div className=''>
+      <div className='row x-gap-10'>
         {isLoading ? (
-          <div className="tw:w-full tw:text-center">
-            {/* Loading spinner can be added here */}
+          <div>
+            <Icon icon='line-md:loading-twotone-loop' />
           </div>
         ) : data?.length > 0 && !isLoading ? (
-          data.map(plan => (
-            <div
-              key={plan.id}
-              className="tw:md:w-[288px] tw:w-full tw:max-w-full"
-            >
+          data?.map(plan => (
+            <div key={plan.id} className='col-sm-12 col-md-6 col-lg-3'>
               <PackageSelectCard
                 item={plan}
                 value={value}
                 onChange={onChange}
+                className='col-auto'
               />
             </div>
           ))
         ) : (
-          <div className="tw:w-full tw:text-center">No plans available</div>
+          <div>No plans available</div>
         )}
       </div>
     </div>
-
   )
 }
 

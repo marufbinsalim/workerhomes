@@ -116,6 +116,12 @@
       "title": "Featured Listings",
       "subtitle": "These are the most popular destinations in the world.",
       "seeAllButton": "See all"
+    },
+    "toast": {
+      "favoriteInfo": "You must be logged in to save favorites!",
+      "favoriteAdded": "Added to your favorites!",
+      "favoriteError": "Something went wrong.",
+      "favoriteRemoved": "Removed from your favorites!"
     }
   },
 
@@ -149,6 +155,8 @@
       "followUsLabel": "Follow us on social media"
     }
   },
+
+
 
   "brand": {
     "title": "Hello world!",
@@ -213,6 +221,7 @@
   "plan": {
     "title": "Pricing Plans",
     "description": "Choose the best plan for you.",
+    "coreFeature": "Core features include:",
     "button": "Choose Plan",
     "date": "Select date range",
     "options": {
@@ -224,7 +233,7 @@
     "features": {
       "title": "Features",
       "recommended": "Recommended",
-      "month": "Month",
+      "month": "per month",
       "button": {
         "create": "Create a listing",
         "buy": "Proceed to Payment",
@@ -242,9 +251,9 @@
         "visibility": "Coverage Radius"
       },
       "position": {
-        "first": "Listed above free, silver and gold",
-        "second": "Listed above free and silver",
-        "third": "Listed above free",
+        "first": "Above free, silver and gold",
+        "second": "Above free and silver",
+        "third": "Above free",
         "last": "Last"
       }
     }
@@ -470,12 +479,14 @@
     }
   },
   "bookmark": {
-    "title": "Bookmarks",
-    "description": "These are the most popular destinations in the world.",
+    "title": " Like a place? Bookmark it!",
+    "description": "These are the most popular destinations in the world. Easily Save and Revisit Your Favourite Listings!",
+    "bookmarks": "Bookmarks",
+    "subtitle": "Saved Properties",
     "button": "More",
     "message": {
       "empty": "You have no bookmarks yet.",
-      "empty2": "You can add bookmarks by clicking the bookmark icon on the listings."
+      "empty2": "You can add bookmarks by clicking the bookmark icon on the listings. "
     }
   },
   "listings": {
@@ -526,7 +537,7 @@
     }
   },
   "pricing": {
-    "title": "Pricing",
+    "title": "Select a plan to your liking",
     "description": "Increase your success rate and performance with one of our advantage packages.",
     "button": "More"
   },

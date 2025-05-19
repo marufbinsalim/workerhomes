@@ -16,36 +16,30 @@ const PricingPage = () => {
 
   return (
     <>
-      <div className='header-margin'></div>
-      {/* header top margin */}
-      <section className='layout-pt-md layout-pb-lg'>
-        <div className='container'>
-          <div className='row justify-center text-center'>
-            <div className='col-auto'>
-              <div className='sectionTitle -md'>
-                <h2 className='sectionTitle__title'>{t('title')}</h2>
-                <p className=' sectionTitle__text mt-5 sm:mt-0'>
-                  {t('description')}
-                </p>
-              </div>
-            </div>
-          </div>
+
+      <section className="tw:w-full font-primary tw:max-w-[1440px]  tw:md:h-[189px] tw:gap-1 tw:px-4 tw:sm:px-8 tw:md:px-20 tw:mt-22 tw:md:mt-0 tw:md:py-30 tw:mx-auto">
+        <div className="tw:flex tw:flex-col tw:items-center tw:text-center">
+          <h2 className="tw:text-[32px] tw:sm:text-[40px] tw:md:text-[48px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+            {t('title')}
+          </h2>
+          <p className="tw:text-[14px] tw:sm:text-[16px] tw:text-[var(--color-font-regular)] tw:max-w-[90%] tw:sm:max-w-[500px]">
+            {t('description')}
+          </p>
         </div>
       </section>
 
-      <section className=' layout-pb-lg'>
-        <div className='container'>
-          <div className='row justify-center text-center'>
+      <section className="tw:max-w-[1440px] tw:w-full tw:md:min-h-[751px] tw:mx-auto tw:py-4 tw:md:py-[80px] tw:flex tw:justify-center tw:items-center">
+        <div className="tw:w-full tw:px-4 tw:md:px-4">
+          <div className="tw:flex tw:flex-col tw:md:flex-row tw:justify-center tw:items-center  tw:gap-4 tw:md:gap-[30px]">
             <PackageSelector
               onChange={plan => {
                 if (!session) {
-                  router.push(`/${locale}/login`)
-                  return
+                  router.push(`/${locale}/login`);
+                  return;
                 }
-
                 router.push(
                   `/${locale}/dashboard/dwellings/form?step=1&plan=${plan.id}`
-                )
+                );
               }}
               value={null}
             />
