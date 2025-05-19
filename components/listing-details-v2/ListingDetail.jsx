@@ -36,7 +36,7 @@ function ImageGrid({ images }) {
 
   if (images.length === 3) {
     return (
-      <div className="tw:flex tw:gap-4 tw:h-[300px] tw:flex-[70%]">
+      <div className="tw:flex tw:gap-4 tw:h-[600px] tw:flex-[70%]">
         {/* Left: Large image */}
         <div className="tw:flex-[2] tw:h-full">
           <img
@@ -47,15 +47,15 @@ function ImageGrid({ images }) {
         </div>
 
         {/* Right: Two stacked images */}
-        <div className="tw:flex-[1] tw:flex tw:flex-col tw:gap-4">
-          <div className="tw:h-1/2">
+        <div className="tw:flex tw:flex-col tw:gap-4 tw:h-full">
+          <div className="tw:h-[292px]">
             <img
               src={images[1]}
               alt="img-1"
               className="tw:w-full tw:h-full tw:rounded-lg tw:object-cover"
             />
           </div>
-          <div className="tw:h-1/2">
+          <div className="tw:h-[292px]">
             <img
               src={images[2]}
               alt="img-2"
@@ -131,7 +131,6 @@ export default function ListingDetail({ data, locale }) {
   console.log("ListingDetail", data, locale);
   return (
     <div className="tw:text-black tw:flex tw:flex-col tw:mt-[40px] tw:px-[80px] tw:py-[80px]">
-      <h1>Listing Detail</h1>
       <div className="tw:flex tw:gap-5">
         <ImageGrid
           images={[
@@ -142,6 +141,7 @@ export default function ListingDetail({ data, locale }) {
         />
         <div className="tw:flex-[30%]"> a sdsd</div>
       </div>
+      {JSON.stringify(data, null, 2)}
     </div>
   );
 }
