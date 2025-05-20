@@ -60,7 +60,6 @@ const LocationFinder = ({
             [loc.lat, loc.lng]
           ) <= loc.coverageArea
       )
-
       setFilteredLocations(updatedFilteredLocations)
       setLocations(updatedFilteredLocations)
       if (circleRef.current) {

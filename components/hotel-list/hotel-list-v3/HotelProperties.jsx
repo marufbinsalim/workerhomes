@@ -43,29 +43,47 @@ const HotelProperties = ({ data, isLoading }) => {
 
   return (
     <>
-      {data?.length > 0 && !isLoading ? (
-        data?.map((item, idx) => {
-          const location = item?.location?.[0];
-          const minPrice = item?.prices?.sort((a, b) => a.price - b.price)?.[0];
-          const icon =
-            item?.subscription?.package?.name === "Platinum"
-              ? PLATINUM_ICON
-              : item?.subscription?.package?.name === "Gold"
-                ? GOLD_ICON
-                : item?.subscription?.package?.name === "Silver"
-                  ? SILVER_ICON
-                  : null;
+      <div className="tw:w-full tw:min-h-[600px]">
+        {/* Loading State */}
+        {isLoading && (
+          <div className="tw:flex tw:items-center tw:justify-center tw:h-[200px]">
+            {t("loading")}...
+          </div>
+        )}
+
+        {/* Empty State */}
+        {!isLoading && data?.length === 0 && (
+          <div className="tw:flex tw:items-center tw:justify-center tw:h-[200px]">
+            {t("not-found")}
+          </div>
+        )}
+
+        {/* Data State */}
+        {!isLoading && data?.length > 0 && (
+          <div className="tw:space-y-10">
+            {data.map((item, idx) => {
+              const location = item?.location?.[0];
+              const minPrice = item?.prices?.sort((a, b) => a.price - b.price)?.[0];
+              const icon =
+                item?.subscription?.package?.name === "Platinum"
+                  ? PLATINUM_ICON
+                  : item?.subscription?.package?.name === "Gold"
+                    ? GOLD_ICON
+                    : item?.subscription?.package?.name === "Silver"
+                      ? SILVER_ICON
+                      : null;
+
 
 
           return (
             <>
 
-              <div className="tw:flex tw:justify-center tw:mb-10" key={idx}>
+              <div className="tw:flex font-primary tw:justify-center tw:gap-10" key={idx}>
                 {/* Responsive Card Container */}
-                <div className="tw:w-full tw:md:w-[1200px] tw:flex tw:flex-col tw:md:flex-row tw:shadow-md tw:overflow-hidden tw:relative">
+                <div className="tw:w-full tw:md:w-full tw:flex tw:flex-col tw:md:flex-row tw:shadow-md tw:overflow-hidden tw:relative">
 
                   {/* Left Image Section */}
-                  <div className="tw:w-full tw:md:w-[750px] tw:h-[250px] tw:md:h-[400px] tw:relative">
+                  <div className="tw:w-full tw:md:w-[980px] tw:h-[280px] tw:md:h-[550px] tw:relative">
                     <div className="tw:absolute tw:inset-0">
                       <div className="tw:w-full tw:h-full tw:relative tw:overflow-hidden">
                         <Swiper
@@ -78,45 +96,44 @@ const HotelProperties = ({ data, isLoading }) => {
                             item.galleries
                               .sort((a, b) => a.order - b.order)
                               .map((slide, i) => (
-                                <SwiperSlide key={i} className="!tw:relative !tw:w-full !tw:h-full">
+                                <SwiperSlide key={i} className="tw:relative tw:w-full tw:h-full">
                                   <Image
                                     fill
-                                    className="tw:object-cover"
+                                    className=""
                                     src={exactPath(slide?.image?.url)}
                                     alt="property image"
                                     priority
+                                    sizes="(max-width: 768px) 100vw, 850px"
                                   />
                                 </SwiperSlide>
                               ))
                           ) : (
-                            <SwiperSlide className="!tw:relative !tw:w-full !tw:h-full">
+                            <SwiperSlide className="tw:relative tw:w-full tw:h-full">
                               <Image
                                 fill
-                                className="tw:object-cover"
+                                className=""
                                 src={exactPath("/uploads/demo_cbcb7e3dc1.png")}
                                 alt="default property image"
                                 priority
+                                sizes="(max-width: 768px) 100vw, 850px"
                               />
                             </SwiperSlide>
                           )}
                         </Swiper>
 
                         {/* Starting Price Tag */}
-                        {featuredListings?.map((listing, idx) => {
-                          console.log(`Listing ${idx}:`, listing);
-                          return (
-                            <div key={`listing-${idx}`}>
-                              <div className="tw:bg-[#ffffff9f] tw:z-20 tw:border tw:border-[#1b1b1b20] tw:absolute tw:bottom-2 tw:md:bottom-4 tw:left-2 tw:md:left-4 tw:w-[120px] tw:md:w-[165px] tw:h-[36px] tw:md:h-[46px] tw:flex tw:items-center tw:justify-center tw:gap-[8px] tw:p-[8px]">
-                                <span className="tw:font-medium tw:text-[14px] tw:md:text-[18px]">
-                                  {listing?.price}$/ Per Night
-                                </span>
-                              </div>
+                        {featuredListings?.map((listing, idx) => (
+                          <div key={`listing-${idx}`}>
+                            <div className="tw:bg-[#ffffff9f] tw:z-20 tw:border tw:border-[#1b1b1b20] tw:absolute tw:bottom-3 tw:md:bottom-5 tw:left-3 tw:md:left-5 tw:w-[130px] tw:md:w-[180px] tw:h-[40px] tw:md:h-[50px] tw:flex tw:items-center tw:justify-center tw:gap-2 tw:p-2">
+                              <span className="tw:font-medium tw:text-[15px] tw:md:text-[20px]">
+                                {listing?.price}$ / Per Night
+                              </span>
                             </div>
-                          );
-                        })}
+                          </div>
+                        ))}
 
                         {/* Bookmark */}
-                        <div className="tw:absolute tw:top-2 tw:md:top-5 tw:right-2 tw:md:right-5 tw:z-10">
+                        <div className="tw:absolute tw:top-3 tw:md:top-6 tw:right-3 tw:md:right-6 tw:z-10">
                           <BookmarkButton item={item || null} />
                         </div>
                       </div>
@@ -124,7 +141,7 @@ const HotelProperties = ({ data, isLoading }) => {
                   </div>
 
                   {/* Right Info Section */}
-                  <div className="tw:w-full tw:md:w-[450px] tw:h-auto tw:md:h-full tw:flex tw:flex-col tw:p-4 tw:md:p-6 tw:justify-between">
+                  <div className="tw:w-full tw:md:w-[700px] tw:h-auto tw:md:h-full tw:flex tw:flex-col tw:p-4 tw:md:p-6 tw:justify-between">
                     <div>
                       <h3 className="tw:text-[20px] tw:md:text-[28px] tw:font-semibold tw:mb-3 tw:text-[var(--color-font-dark)] tw:truncate tw:whitespace-nowrap tw:overflow-hidden tw:max-w-full">
                         {item?.title}
@@ -152,29 +169,25 @@ const HotelProperties = ({ data, isLoading }) => {
                     </div>
 
                     {/* Button */}
-                    <Link
-                      href={`/listings/${item?.slug}`}
-                      onClick={async () => await handleRedirect(item)}
-                      className="tw:w-full tw:h-11 tw:md:h-12 tw:bg-[var(--color-primary)] tw:text-white tw:flex tw:items-center tw:justify-center tw:font-semibold tw:text-[13px] tw:md:text-[14px]"
-                    >
-                      {t("visit")}
-                    </Link>
+                    <div className="tw:w-full"> {/* Full-width wrapper */}
+                      <Link
+                        href={`/listings/${item?.slug}`}
+                        onClick={async () => await handleRedirect(item)}
+                        className="tw:w-full tw:h-11 tw:md:h-12 tw:bg-[var(--color-primary)] tw:text-white tw:flex tw:items-center tw:justify-center tw:font-semibold tw:text-[16px] tw:md:text-[18px]"
+                      >
+                        {t("visit")}
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
 
             </>
-          );
-        })
-      ) : data?.length === 0 && !isLoading ? (
-        <div className="tw:flex tw:items-center tw:justify-center tw:h-[200px] tw:w-full">
-          {t("not-found")}
-        </div>
-      ) : (
-        <div className="tw:flex tw:items-center tw:justify-center tw:h-[200px] tw:w-full">
-          {t("loading")}...
-        </div>
-      )}
+              );
+            })}
+          </div>
+        )}
+      </div>
     </>
   );
 };

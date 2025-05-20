@@ -27,10 +27,10 @@ const BookmarkPage = () => {
 
   return (
     <section className="tw:py-30 font-primary tw:bg-white">
-      <div className="tw:container tw:mx-auto tw:px-4">
+      <div className="tw:px-30  tw:mx-auto tw:px-4">
         {/* Header Section */}
         <div className="tw:flex tw:flex-col tw:mb-10 tw:items-center tw:px-2">
-          <div className="tw:w-full tw:sm:w-[650px] tw:h-auto tw:flex tw:items-center tw:justify-center">
+          <div className="tw:md:w-full tw:w-[650px] tw:h-auto tw:flex tw:items-center tw:justify-center">
             <h1 className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:text-[32px] tw:sm:text-[48px] tw:tracking-normal tw:text-center">
               {t('title')}
             </h1>
@@ -43,7 +43,7 @@ const BookmarkPage = () => {
         {data.length > 0 ? (
           <div className="tw:grid tw:gap-6 md:tw:gap-2">
             {/* Bookmark Title Section */}
-            <div className="tw:text-start tw:mx-auto tw:w-full tw:sm:w-[1200px] tw:px-2">
+            <div className="tw:text-start tw:mx-auto tw:w-full  ">
               <h1 className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-[24px] tw:sm:text-[32px]">
                 {t('bookmarks')}
               </h1>
