@@ -47,13 +47,13 @@ const ListingPage = ({ locale }) => {
   const uniqueLocations =
     filteredLocations?.length > 0
       ? filteredLocations?.reduce((acc, current) => {
-          // Check if the current object's id is already in the accumulator array
-          const isDuplicate = acc.some(item => item.id === current.id)
-          if (!isDuplicate) {
-            acc.push(current)
-          }
-          return acc
-        }, [])
+        // Check if the current object's id is already in the accumulator array
+        const isDuplicate = acc.some(item => item.id === current.id)
+        if (!isDuplicate) {
+          acc.push(current)
+        }
+        return acc
+      }, [])
       : []
 
   const locations = uniqueLocations?.map(d => {
@@ -74,11 +74,9 @@ const ListingPage = ({ locale }) => {
           : '/uploads/demo_cbcb7e3dc1.png'
       ),
       name: d.title,
-      address: `${d?.location?.[0]?.street_one} ${
-        d?.location?.[0]?.street_one
-      }, ${d?.location?.[0]?.zip_code || ''}, ${
-        d?.location?.[0]?.city || ''
-      }, ${d?.location?.[0]?.country || ''}`,
+      address: `${d?.location?.[0]?.street_one} ${d?.location?.[0]?.street_one
+        }, ${d?.location?.[0]?.zip_code || ''}, ${d?.location?.[0]?.city || ''
+        }, ${d?.location?.[0]?.country || ''}`,
       slug: d?.slug,
       icon,
       coverageArea: visibility,
@@ -108,8 +106,8 @@ const ListingPage = ({ locale }) => {
   const defaultLocation =
     uniqueLocations?.length > 0
       ? uniqueLocations?.filter(location => {
-          return realIdes?.includes(location.id)
-        })
+        return realIdes?.includes(location.id)
+      })
       : []
 
   let realData = [...defaultLocation]
@@ -308,9 +306,20 @@ const ListingPage = ({ locale }) => {
 
               {isFilterOpen && (
                 <div
-                  className="tw:absolute tw:z-30 tw:right-[1vw] tw:sm:right-0 tw:mt-8 tw:w-[90vw] tw:sm:w-[446px] tw:bg-white tw:rounded-md tw:border tw:border-gray-200"
+                  className="
+                      tw:fixed tw:sm:absolute
+                      tw:z-30
+                      tw:left-1/2 tw:sm:left-auto
+                      tw:-translate-x-1/2 tw:sm:translate-x-0
+                      tw:-translate-y-1/2 tw:sm:translate-y-0
+                      tw:sm:right-0
+                      tw:w-[95vw] tw:sm:w-[446px]
+                      tw:mt-24 tw:sm:mt-8
+                      tw:bg-white tw:rounded-md tw:border tw:border-gray-200
+                    "
                   style={{ boxShadow: '0px 0px 16px 0px #00000014' }}
                 >
+
                   <RangeFilterBar
                     priceValue={filter.price}
                     setPriceValue={v => setFilter(prev => ({ ...prev, price: v }))}

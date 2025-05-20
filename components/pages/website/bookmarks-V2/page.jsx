@@ -26,38 +26,38 @@ const BookmarkPage = () => {
   }, [data, isLoading]);
 
   return (
-    <section className="tw:py-30 font-primary tw:bg-white">
-      <div className="tw:px-30  tw:mx-auto tw:px-4">
+    <section className="tw:py-20 tw:sm:py-20 tw:mt-4 font-primary tw:bg-white">
+      <div className="tw:px-4 tw:sm:px-30 tw:mx-auto">
         {/* Header Section */}
-        <div className="tw:flex tw:flex-col tw:mb-10 tw:items-center tw:px-2">
-          <div className="tw:md:w-full tw:w-[650px] tw:h-auto tw:flex tw:items-center tw:justify-center">
-            <h1 className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:text-[32px] tw:sm:text-[48px] tw:tracking-normal tw:text-center">
+        <div className="tw:flex tw:flex-col tw:mb-8 tw:items-center tw:px-2">
+          <div className="tw:w-full tw:sm:w-[650px] tw:h-auto tw:flex tw:items-center tw:justify-center">
+            <h1 className="tw:font-semibold tw:text-[24px] tw:sm:text-[32px] tw:md:text-[48px] tw:text-[var(--color-font-dark)] tw:tracking-normal tw:text-center">
               {t('title')}
             </h1>
           </div>
-          <p className="tw:mt-2 tw:w-full tw:sm:w-[400px] tw:text-[14px] tw:sm:text-[16px] tw:font-normal tw:text-[var(--color-font-regular)] tw:text-center">
+          <p className="tw:w-full tw:sm:w-[400px] tw:text-[14px] tw:sm:text-[16px] tw:font-normal tw:text-[var(--color-font-regular)] tw:text-center">
             {t('description')}
           </p>
         </div>
 
         {data.length > 0 ? (
-          <div className="tw:grid tw:gap-6 md:tw:gap-2">
+          <div className="tw:grid tw:gap-6 tw:md:gap-2">
             {/* Bookmark Title Section */}
-            <div className="tw:text-start tw:mx-auto tw:w-full  ">
-              <h1 className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-[24px] tw:sm:text-[32px]">
+            <div className="tw:text-start tw:mx-auto tw:w-full">
+              <h1 className="tw:text-[20px] tw:sm:text-[24px] tw:md:text-[32px] tw:font-semibold tw:text-[var(--color-font-dark)]">
                 {t('bookmarks')}
               </h1>
-              <p className="tw:flex tw:mt-2 tw:text-[var(--color-font-regular)] tw:items-center tw:gap-2 tw:font-normal tw:text-[14px] tw:sm:text-[16px]">
+              <p className="tw:flex tw:mt-2 tw:text-[14px] tw:sm:text-[16px] tw:items-center tw:gap-2 tw:font-normal tw:text-[var(--color-font-regular)]">
                 <HeartIcon className="tw:fill-[var(--color-red)] tw:w-5 tw:h-5 tw:stroke-none" />
-                {favoriteCount}  {t('subtitle')}
+                {favoriteCount} {t('subtitle')}
               </p>
             </div>
 
             {/* Property Cards */}
-            <HotelProperties data={data} isLoading={isLoading}/>
+            <HotelProperties data={data} isLoading={isLoading} />
           </div>
         ) : (
-          <div className="tw:flex tw:flex-col tw:items-center tw:justify-center tw:py-20 tw:text-center tw:px-4">
+          <div className="tw:flex tw:flex-col tw:items-center tw:justify-center tw:py-16 tw:sm:py-20 tw:text-center tw:px-4">
             <h6 className="tw:text-base tw:sm:text-lg tw:font-semibold tw:mb-2">
               {t('message.empty')}
             </h6>
@@ -68,6 +68,7 @@ const BookmarkPage = () => {
         )}
       </div>
     </section>
+
 
   );
 };

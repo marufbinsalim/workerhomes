@@ -43,7 +43,7 @@ const HotelProperties = ({ data, isLoading }) => {
 
   return (
     <>
-      <div className="tw:w-full tw:min-h-[600px]">
+      <div className="tw:min-h-[calc(100vh-80px)] tw:w-full">
         {/* Loading State */}
         {isLoading && (
           <div className="tw:flex tw:items-center tw:justify-center tw:h-[200px]">
@@ -72,7 +72,6 @@ const HotelProperties = ({ data, isLoading }) => {
                     : item?.subscription?.package?.name === "Silver"
                       ? SILVER_ICON
                       : null;
-
 
 
           return (
