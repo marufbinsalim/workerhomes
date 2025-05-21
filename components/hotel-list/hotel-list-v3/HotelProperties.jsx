@@ -77,12 +77,12 @@ const HotelProperties = ({ data, isLoading }) => {
           return (
             <>
 
-              <div className="tw:flex font-primary tw:justify-center tw:gap-10" key={idx}>
+              <div className="tw:flex tw:font-primary tw:justify-center tw:gap-6 tw:flex-wrap" key={idx}>
                 {/* Responsive Card Container */}
-                <div className="tw:w-full tw:md:w-full tw:flex tw:flex-col tw:md:flex-row tw:shadow-md tw:overflow-hidden tw:relative">
+                <div className="tw:w-full tw:min-w-[300px] tw:max-w-[1280px] tw:flex tw:flex-col tw:md:flex-row tw:shadow-md tw:overflow-hidden tw:rounded-lg tw:relative tw:m-2">
 
-                  {/* Left Image Section */}
-                  <div className="tw:w-full tw:md:w-[980px] tw:h-[280px] tw:md:h-[550px] tw:relative">
+                  {/* Left Image Section with min-width */}
+                  <div className="tw:w-full tw:min-w-[300px] tw:md:min-w-[400px] tw:md:max-w-[750px] tw:h-[280px] tw:md:h-[400px] tw:relative">
                     <div className="tw:absolute tw:inset-0">
                       <div className="tw:w-full tw:h-full tw:relative tw:overflow-hidden">
                         <Swiper
@@ -98,11 +98,11 @@ const HotelProperties = ({ data, isLoading }) => {
                                 <SwiperSlide key={i} className="tw:relative tw:w-full tw:h-full">
                                   <Image
                                     fill
-                                    className=""
+                                    className="tw:object-cover"
                                     src={exactPath(slide?.image?.url)}
                                     alt="property image"
                                     priority
-                                    sizes="(max-width: 768px) 100vw, 850px"
+                                    sizes="(max-width: 639px) 100vw, (min-width: 640px) 50vw, 750px"
                                   />
                                 </SwiperSlide>
                               ))
@@ -110,11 +110,11 @@ const HotelProperties = ({ data, isLoading }) => {
                             <SwiperSlide className="tw:relative tw:w-full tw:h-full">
                               <Image
                                 fill
-                                className=""
+                                className="tw:object-cover"
                                 src={exactPath("/uploads/demo_cbcb7e3dc1.png")}
                                 alt="default property image"
                                 priority
-                                sizes="(max-width: 768px) 100vw, 850px"
+                                sizes="(max-width: 639px) 100vw, (min-width: 640px) 50vw, 750px"
                               />
                             </SwiperSlide>
                           )}
@@ -140,15 +140,15 @@ const HotelProperties = ({ data, isLoading }) => {
                   </div>
 
                   {/* Right Info Section */}
-                  <div className="tw:w-full tw:md:w-[700px] tw:h-auto tw:md:h-full tw:flex tw:flex-col tw:p-4 tw:md:p-6 tw:justify-between">
+                  <div className="tw:w-full tw:md:w-auto tw:md:flex-1 tw:min-w-[300px] tw:md:min-w-[350px] tw:max-w-[600px] tw:h-auto tw:flex tw:flex-col tw:p-4 tw:md:p-6 tw:justify-between">
                     <div>
-                      <h3 className="tw:text-[20px] tw:md:text-[28px] tw:font-semibold tw:mb-3 tw:text-[var(--color-font-dark)] tw:truncate tw:whitespace-nowrap tw:overflow-hidden tw:max-w-full">
+                      <h3 className="tw:text-[20px] tw:md:text-[28px] tw:font-semibold tw:mb-3 tw:text-[var(--color-font-dark)] tw:line-clamp-2">
                         {item?.title}
                       </h3>
 
                       <div className="tw:flex tw:items-start tw:md:items-center tw:gap-2 tw:md:gap-4 tw:mb-4 tw:text-[16px] tw:md:text-[20px] tw:font-normal tw:text-[var(--color-font-regular)]">
                         <MapPin className="tw:w-5 tw:md:w-6 tw:h-5 tw:md:h-6 tw:text-[var(--color-font-regular)]" />
-                        <span className="tw:truncate">
+                        <span className="tw:line-clamp-2">
                           {`${location?.street_one} ${location?.street_two}, ${location?.city || ""}, ${location?.country || ""}`}
                         </span>
                       </div>
@@ -168,11 +168,11 @@ const HotelProperties = ({ data, isLoading }) => {
                     </div>
 
                     {/* Button */}
-                    <div className="tw:w-full"> {/* Full-width wrapper */}
+                    <div className="tw:w-full">
                       <Link
                         href={`/listings/${item?.slug}`}
                         onClick={async () => await handleRedirect(item)}
-                        className="tw:w-full tw:h-11 tw:md:h-12 tw:bg-[var(--color-primary)] tw:text-white tw:flex tw:items-center tw:justify-center tw:font-semibold tw:text-[16px] tw:md:text-[18px]"
+                        className="tw:w-full tw:h-11 tw:md:h-12 tw:bg-[var(--color-primary)] tw:text-white tw:flex tw:items-center tw:justify-center tw:font-semibold tw:text-[16px] tw:md:text-[18px] hover:tw:bg-[var(--color-primary-dark)] tw:transition-colors"
                       >
                         {t("visit")}
                       </Link>
