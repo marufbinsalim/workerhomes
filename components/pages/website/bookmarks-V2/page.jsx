@@ -26,8 +26,8 @@ const BookmarkPage = () => {
   }, [data, isLoading]);
 
   return (
-    <section className="tw:py-20 tw:mt-4 font-primary tw:bg-white">
-      <div className="tw:px-4 tw:md:px-30 tw:mx-auto">
+    <section className="tw:py-20 tw:md:py-25  tw:flex tw:flex-col tw:justify-center tw:mt-4 font-primary tw:white">
+      <div className="">
         {/* Header Section */}
         <div className="tw:flex tw:flex-col tw:mb-8 tw:items-center tw:px-2">
           <div className="tw:w-full tw:md:w-[650px] tw:h-auto tw:flex tw:items-center tw:justify-center">
@@ -41,13 +41,13 @@ const BookmarkPage = () => {
         </div>
 
         {data.length > 0 ? (
-          <div className="tw:grid tw:gap-6 tw:md:gap-2">
+          <div className="tw:grid tw:p-2 ">
             {/* Bookmark Title Section */}
-            <div className="tw:text-start tw:mx-auto tw:w-full tw:md:max-w-[1280px]">
+            <div className="tw:text-start tw:pl-2 tw:md:pl-0 tw:mx-auto tw:w-full tw:md:max-w-[1280px]">
               <h1 className="tw:text-[20px] tw:md:text-[24px] tw:lg:text-[32px] tw:font-semibold tw:text-[var(--color-font-dark)]">
                 {t('bookmarks')}
               </h1>
-              <p className="tw:flex tw:mt-2 tw:text-[14px] tw:md:text-[16px] tw:items-center tw:gap-2 tw:font-normal tw:text-[var(--color-font-regular)]">
+              <p className="tw:flex  tw:text-[14px] tw:md:text-[16px] tw:items-center tw:gap-2 tw:font-normal tw:text-[var(--color-font-regular)]">
                 <HeartIcon className="tw:fill-[var(--color-red)] tw:w-5 tw:h-5 tw:stroke-none" />
                 {favoriteCount} {t('subtitle')}
               </p>
