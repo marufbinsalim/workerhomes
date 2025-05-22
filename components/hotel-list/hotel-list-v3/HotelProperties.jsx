@@ -79,7 +79,7 @@ const HotelProperties = ({ data, isLoading }) => {
 
               <div className="tw:flex tw:font-primary tw:justify-center tw:gap-6 " key={idx}>
                 {/* Responsive Card Container */}
-                <div className="tw:w-full tw:max-w-[1280px] tw:flex tw:flex-col tw:md:flex-row tw:shadow-md tw:overflow-hidden tw:relative tw:m-2">
+                <div className="tw:w-full tw:max-w-[1280px] tw:flex tw:flex-col tw:felx-wrap tw:md:flex-row tw:shadow-md tw:overflow-hidden tw:relative tw:m-2">
 
                   {/* Left Image Section with min-width */}
                   <div className="tw:w-full tw:min-w-[300px] tw:max-w-full tw:min-h-[280px] tw:h-auto tw:md:max-w-[750px] tw:md:h-[400px] tw:relative">
@@ -124,8 +124,8 @@ const HotelProperties = ({ data, isLoading }) => {
                         {/* Starting Price Tag */}
                         {featuredListings?.map((listing, idx) => (
                           <div key={`listing-${idx}`}>
-                            <div className="tw:bg-[#ffffff9f] tw:z-20 tw:border tw:border-[#1b1b1b20] tw:absolute tw:bottom-3 tw:md:bottom-5 tw:left-3 tw:md:left-5 tw:w-[130px] tw:md:w-[180px] tw:h-[40px] tw:md:h-[50px] tw:flex tw:items-center tw:justify-center tw:gap-2 tw:p-2">
-                              <span className="tw:font-medium tw:text-[15px] tw:md:text-[20px]">
+                            <div className="tw:bg-white tw:z-20 tw:border tw:border-[#1b1b1b20] tw:absolute tw:bottom-3 tw:md:bottom-5 tw:left-3 tw:md:left-5 tw:w-[130px] tw:text-[var(--color-font-dark)] tw:md:w-[180px] tw:h-[40px] tw:md:h-[50px] tw:flex tw:items-center tw:justify-center tw:gap-2 tw:p-2">
+                              <span className="tw:font-medium tw:text-[15px] tw:md:text-[18px]">
                                 {listing?.price}$ / Per Night
                               </span>
                             </div>

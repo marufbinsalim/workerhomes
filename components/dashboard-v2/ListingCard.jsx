@@ -39,7 +39,7 @@ const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
         </div>
 
         {/* Price */}
-        <div className="tw:bg-[#ffffff80] tw:border tw:border-[#1b1b1b20] tw:absolute tw:bottom-4 tw:right-4 tw:w-[140px] sm:w-[165px] tw:h-[40px] sm:h-[46px] tw:flex tw:items-center tw:justify-center tw:gap-[10px] tw:p-[10px]">
+        <div className="tw:bg-white tw:border tw:border-[#1b1b1b20] tw:absolute tw:bottom-4 tw:right-4 tw:w-[140px] sm:w-[165px] tw:h-[40px] sm:h-[46px] tw:flex tw:items-center tw:justify-center tw:gap-[10px] tw:p-[10px]">
           <span className="tw:font-semibold tw:text-[16px] sm:text-[18px]">
             ${listing.price} / Per Night
           </span>

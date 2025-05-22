@@ -260,81 +260,81 @@ const ListingPage = ({ locale }) => {
 
   return (
     <>
-      <div className="tw:flex tw:flex-col tw:overflow-auto tw:items-center tw:px-4 tw:md:px-30 tw:gap-5 tw:mt-10 tw:w-full tw:py-10 tw:md:py-20">
+      <div className="tw:flex tw:flex-col tw:overflow-auto  tw:md:px-30 tw:items-center tw:px-4 tw:mt-10 tw:w-full tw:py-10 tw:md:py-20">
         {/* Map Section */}
-        <div className="tw:w-full tw:h-[300px] tw:md:h-[400px] tw:bg-gray-200 tw:rounded-[10px] tw:overflow-hidden tw:shadow-md">
-          <MapComponent
-            defaultCenter={distanceSorted?.[0]}
-            setLocations={location => setFoundedLocation(location)}
-            locations={locations}
-            apiKey={google_key}
-            zoom={11}
-            locale={locale}
-          />
-        </div>
-
-        {/* Filters Section */}
-        <div className="tw:w-full tw:bg-white">
-          <div className="tw:flex tw:flex-row tw:flex-wrap tw:justify-between tw:items-center tw:py-4 tw:gap-2 tw:mb-4">
-            {/* Total properties and sort buttons */}
-            <TopHeaderFilter
-              sort={sort}
-              handAscDesc={() => {
-                setSort(prev => ({
-                  distance: '',
-                  price: prev.price === 'asc' ? 'desc' : 'asc',
-                }));
-              }}
-              handleDistanceAscDesc={() => {
-                setSort(prev => ({
-                  price: '',
-                  distance: prev.distance === 'asc' ? 'desc' : 'asc',
-                }));
-              }}
-              total={distanceSorted?.length || 0}
+        <div className='tw:w-full  tw:flex tw:flex-col  tw:gap-5'>
+          <div className="tw:w-full tw:h-[300px] tw:md:h-[400px]  tw:bg-gray-200 tw:rounded-[10px] tw:overflow-hidden tw:shadow-md">
+            <MapComponent
+              defaultCenter={distanceSorted?.[0]}
+              setLocations={location => setFoundedLocation(location)}
+              locations={locations}
+              apiKey={google_key}
+              zoom={11}
+              locale={locale}
             />
+          </div>
 
-            {/* Filter Button & Dropdown */}
-            <div className="tw:relative tw:flex tw:mt-9 tw:md:mt-0">
-              <button
-                onClick={() => setIsFilterOpen(prev => !prev)}
-                className="tw:flex tw:items-center tw:underline tw:gap-1 tw:text-sm tw:font-semibold tw:px-2"
-              >
-                <span>{t('filter')}</span>
-                <FaFilter className="tw:w-3 tw:h-3" />
-              </button>
+          {/* Filters Section */}
+          <div className="tw:w-full tw:bg-white">
+            <div className="tw:flex tw:flex-row tw:flex-nowrap tw:justify-between tw:items-center tw:py-4 tw:gap-2 tw:mb-4">
+              {/* Total properties and sort buttons */}
+              <TopHeaderFilter
+                sort={sort}
+                handAscDesc={() => {
+                  setSort(prev => ({
+                    distance: '',
+                    price: prev.price === 'asc' ? 'desc' : 'asc',
+                  }));
+                }}
+                handleDistanceAscDesc={() => {
+                  setSort(prev => ({
+                    price: '',
+                    distance: prev.distance === 'asc' ? 'desc' : 'asc',
+                  }));
+                }}
+                total={distanceSorted?.length || 0}
+              />
 
-              {isFilterOpen && (
-                <div
-                  className="
-              tw:fixed tw:z-30
-              tw:left-1/2 tw:md:left-auto
-              tw:-translate-x-1/2 tw:md:translate-x-0
-              tw:-translate-y-1/2 tw:md:translate-y-0
-              tw:md:right-0
-              tw:w-[95vw] tw:md:w-[446px]
-              tw:mt-24 tw:md:mt-8
-              tw:bg-white tw:rounded-md tw:border tw:border-gray-200
-            "
-                  style={{ boxShadow: '0px 0px 16px 0px #00000014' }}
+              {/* Filter Button & Dropdown */}
+              <div className="tw:relative tw:flex tw:mt-8 tw:md:mt-0 tw:items-center">
+                <button
+                  onClick={() => setIsFilterOpen(prev => !prev)}
+                  className="tw:flex tw:items-center tw:underline tw:gap-1 tw:text-sm tw:font-semibold tw:px-2"
                 >
-                  <RangeFilterBar
-                    priceValue={filter.price}
-                    setPriceValue={v => setFilter(prev => ({ ...prev, price: v }))}
-                    guestValue={filter.guest}
-                    setGuestNumber={v => setFilter(prev => ({ ...prev, guest: v }))}
-                    minStayValue={filter.stay}
-                    setMinStayValue={v => setFilter(prev => ({ ...prev, stay: v }))}
-                    onClose={() => setIsFilterOpen(false)}
-                  />
-                </div>
-              )}
+                  <span>{t('filter')}</span>
+                  <FaFilter className="tw:w-3 tw:h-3" />
+                </button>
+
+                {isFilterOpen && (
+                  <div
+                    className="
+                      tw:absolute tw:z-30
+                      tw:top-full tw:mt-4 tw:md:mt-3 tw:right-0
+                      
+                       tw:min-w-[400px] tw:md:w-[446px]
+                      tw:bg-white tw:rounded-md tw:border tw:border-gray-200
+                    "
+                    style={{ boxShadow: '0px 0px 16px 0px #00000014' }}
+                  >
+                    <RangeFilterBar
+                      priceValue={filter.price}
+                      setPriceValue={v => setFilter(prev => ({ ...prev, price: v }))}
+                      guestValue={filter.guest}
+                      setGuestNumber={v => setFilter(prev => ({ ...prev, guest: v }))}
+                      minStayValue={filter.stay}
+                      setMinStayValue={v => setFilter(prev => ({ ...prev, stay: v }))}
+                      onClose={() => setIsFilterOpen(false)}
+                    />
+                  </div>
+                )}
+              </div>
+
             </div>
           </div>
         </div>
 
         {/* Properties List */}
-        <div className="tw:w-full tw:flex tw:flex-col tw:gap-5">
+        <div className="tw:w-full tw:flex tw:flex-col  tw:gap-5">
           <HotelProperties
             data={sort.distance ? distanceSorted : priceSorted}
             isLoading={locationLoading}

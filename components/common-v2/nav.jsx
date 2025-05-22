@@ -259,12 +259,15 @@ const Navbar = ({ session }) => {
             `}
       >
         {/* Logo */}
-        <div className="tw:md:px-8">
+        <div className="tw:px-4 tw:md:px-8">
           <img
             onClick={() => router.push(`/${locale}`)}
             src="/assets/logo.png"
             alt="workerhomes"
-            className="tw:w-[200px] tw:h-[41px] tw:cursor-pointer"
+            className="tw:min-w-[140px] tw:min-h-[30px] 
+             tw:w-[160px] tw:h-[33px]
+             tw:md:w-[200px] tw:md:h-[41px]
+             tw:cursor-pointer tw:object-contain"
           />
         </div>
 
