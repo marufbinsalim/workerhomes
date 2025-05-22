@@ -83,7 +83,6 @@ const HotelProperties = ({ data, isLoading }) => {
 
                   {/* Left Image Section with min-width */}
                   <div className="tw:w-full tw:min-w-[300px] tw:max-w-full tw:min-h-[280px] tw:h-auto tw:md:max-w-[750px] tw:md:h-[400px] tw:relative">
-
                     <div className="tw:absolute tw:inset-0">
                       <div className="tw:w-full tw:h-full tw:relative tw:overflow-hidden">
                         <Swiper
@@ -99,7 +98,7 @@ const HotelProperties = ({ data, isLoading }) => {
                                 <SwiperSlide key={i} className="tw:relative tw:w-full tw:h-full">
                                   <Image
                                     fill
-                                    className="tw:object-cover"
+                                    className=""
                                     src={exactPath(slide?.image?.url)}
                                     alt="property image"
                                     priority
@@ -111,7 +110,7 @@ const HotelProperties = ({ data, isLoading }) => {
                             <SwiperSlide className="tw:relative tw:w-full tw:h-full">
                               <Image
                                 fill
-                                className="tw:object-cover"
+                                className=""
                                 src={exactPath("/uploads/demo_cbcb7e3dc1.png")}
                                 alt="default property image"
                                 priority
