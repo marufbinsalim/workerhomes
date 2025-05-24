@@ -2,11 +2,14 @@
 
 import { google_key } from "@/config";
 import { exactPath } from "@/utils";
-import { MapPin, Phone, Pin, Send } from "lucide-react";
+import { MapPin, Phone, Send } from "lucide-react";
 import MapComponent from "@/components/common/MapComponent";
 import { useTranslations } from "next-intl";
+import GenericModal from "./GenericModal";
+import { useState } from "react";
+import ImageSlider from "./imageSlider";
 
-function ImageGrid({ images }) {
+function ImageGrid({ images, setOpen }) {
   let imagesToShow = images ? [...images].slice(0, 4) : [];
 
   if (!imagesToShow || imagesToShow.length === 0) {
@@ -17,7 +20,10 @@ function ImageGrid({ images }) {
 
   if (imagesToShow.length === 1) {
     return (
-      <div className="tw:grid tw:grid-cols-1 tw:gap-4 tw:flex-[80%]">
+      <div
+        className="tw:grid tw:grid-cols-1 tw:gap-4 tw:flex-[80%]"
+        onClick={() => setOpen(true)}
+      >
         <img
           src={imagesToShow[0]}
           alt="img-1"
@@ -29,7 +35,10 @@ function ImageGrid({ images }) {
 
   if (imagesToShow.length === 2) {
     return (
-      <div className="tw:grid tw:grid-cols-2 tw:gap-4 tw:flex-[80%]">
+      <div
+        className="tw:grid tw:grid-cols-2 tw:gap-4 tw:flex-[80%]"
+        onClick={() => setOpen(true)}
+      >
         {imagesToShow.map((img, index) => (
           <img
             key={index}
@@ -44,7 +53,10 @@ function ImageGrid({ images }) {
 
   if (imagesToShow.length === 3) {
     return (
-      <div className="tw:flex tw:gap-4 tw:h-[600px] tw:flex-[80%]">
+      <div
+        className="tw:flex tw:gap-4 tw:h-[600px] tw:flex-[80%]"
+        onClick={() => setOpen(true)}
+      >
         {/* Left: Large image */}
         <div className="tw:flex-[2] tw:h-full">
           <img
@@ -77,7 +89,10 @@ function ImageGrid({ images }) {
 
   if (imagesToShow.length === 4) {
     return (
-      <div className="tw:flex tw:gap-4 tw:h-[600px] tw:bg-red-200 tw:flex-[80%]">
+      <div
+        className="tw:flex tw:gap-4 tw:h-[600px] tw:bg-red-200 tw:flex-[80%]"
+        onClick={() => setOpen(true)}
+      >
         {/* Right stacked section */}
         <div className="tw:flex-[1] tw:flex tw:flex-col tw:gap-4">
           {/* Bottom wide image */}
@@ -123,6 +138,8 @@ function ImageGrid({ images }) {
 export default function ListingDetail({ data, locale }) {
   console.log("ListingDetail", data, locale);
   const ht = useTranslations("header");
+
+  const [isImageSliderOpen, setIsImageSliderOpen] = useState(false);
 
   function getFormatedLocationString(locations) {
     if (!locations || locations.length === 0) return "";
@@ -178,7 +195,13 @@ export default function ListingDetail({ data, locale }) {
         </p>
       </div>
       <div className="tw:flex tw:flex-col tw:md:flex-row tw:gap-5">
-        <ImageGrid images={extractThumbnailUrls(data.galleries) || []} />
+        <ImageGrid
+          images={extractThumbnailUrls(data.galleries) || []}
+          setOpen={setIsImageSliderOpen}
+        />
+        <GenericModal isOpen={isImageSliderOpen} setOpen={setIsImageSliderOpen}>
+          <ImageSlider imageUrls={extractThumbnailUrls(data.galleries) || []} />
+        </GenericModal>
         <div className="tw:flex-[20%] tw:bg-[var(--color-white-light)] tw:p-7 tw:flex tw:flex-col tw:justify-between">
           <div className="tw:flex-1 tw:mb-6 tw:w-full">
             <img
