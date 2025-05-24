@@ -72,13 +72,7 @@ const ProfilePage = ({ locale }) => {
   };
 
   return (
-    <div className="tw:space-y-6 tw:mt-4">
-      {isLoading && (
-        <CircleDashed className="tw:animate-spin tw:w-6 tw:h-6 tw:mx-auto" />
-      )}
-
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-
+    <div className="tw:max-h-[calc(100dvh-100px)] tw:overflow-y-auto overflow-x-hidden tw:mx-4 tw:mt-[70px]">
       <div className="tw:py-8 tw:rounded-lg tw:bg-white tw:shadow-md tw:px-10">
         <>
           <ProfileForm formData={data} onSuccess={() => signOut()} />
