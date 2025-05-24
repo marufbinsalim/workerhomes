@@ -96,7 +96,7 @@ const InvoicePage = ({ locale }) => {
         ]}
       />
 
-      <div className="tw:bg-red-500 tw:rounded-lg tw:min-h-[calc(100dvh-70px)] tw:max-h-[calc(100dvh-70px)] tw:p-6 tw:flex tw:flex-col">
+      <div className=" tw:rounded-lg tw:min-h-[calc(100dvh-70px)] tw:max-h-[calc(100dvh-70px)] tw:p-6 tw:flex tw:flex-col">
         <Table isLoading={loading} data={invoices || []} columns={columns} />
       </div>
     </>

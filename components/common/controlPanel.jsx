@@ -40,7 +40,7 @@ const ControlPanel = ({
         </div> */}
       </div>
 
-      <div className='tw:w-full tw:flex tw:flex-col tw:md:flex-row tw:justify-between tw:items-start tw:gap-4'>
+      <div className='tw:w-full  tw:flex tw:flex-col tw:md:flex-row tw:justify-between tw:items-start tw:gap-4'>
         <div className='tw:w-full tw:md:w-2/3'>
           <div className='tw:w-1/4 tw:mb-8'>
             {actions &&

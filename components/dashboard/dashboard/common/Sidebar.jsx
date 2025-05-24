@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl";
 import { useParams, usePathname } from "next/navigation";
 import { PiChartLineUpBold } from "react-icons/pi";
 import { createClient } from "@supabase/supabase-js";
+import { CircleDashed } from "lucide-react";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -67,7 +68,14 @@ const Sidebar = () => {
                   <item.icon className="tw:w-5 tw:h-5 tw:mr-[15px]" />
                   {item.name}
                 </div>
-                {item.submenu?.length > 0 && (
+                {isPending && clickedId === item.id ? (
+                  <CircleDashed
+                    className="tw:animate-spin"
+                    color="var(--color-primary)"
+                    width={20}
+                    height={20}
+                  />
+                ) : item.submenu?.length > 0 ? (
                   <Icon
                     icon={
                       open === item.id
@@ -77,7 +85,7 @@ const Sidebar = () => {
                     width={20}
                     height={20}
                   />
-                )}
+                ) : null}
               </div>
             </div>
             {item.submenu && (

@@ -291,7 +291,7 @@ const Navbar = ({ session }) => {
               />
             </div>
           )}
-          <h1 className="tw:text-xl tw:font-medium tw:my-auto tw:text-[var(--color-font-regular)] tw:ml-5">
+          <h1 className="tw:text-xl tw:font-medium tw:my-auto tw:text-[var(--color-font-regular)] tw:ml-4">
             {pageTitle || "Dashboard"}
           </h1>
         </div>
