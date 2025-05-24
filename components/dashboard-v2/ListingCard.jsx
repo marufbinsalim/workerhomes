@@ -2,18 +2,6 @@ import React from "react";
 import { HeartIcon, MapPin, BedDoubleIcon, Bath } from "lucide-react";
 import { exactPath } from "@/utils";
 
-/**
-typeof listing = {
-    id: number,
-    image: string,
-    title: string,
-    location: string,
-    price: string,
-    features: string,
-    thumbs: string
-}
-**/
-
 const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
   return (
     <div className="tw:w-full tw:max-w-[90dvw] tw:md:max-w-[413px] tw:h-auto tw:flex tw:flex-col tw:bg-white tw:shadow-lg tw:mt-6 tw:md:mt-2">
@@ -31,11 +19,11 @@ const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
         >
           <div className="tw:inline-flex tw:items-center tw:justify-center tw:w-10 tw:h-10 tw:bg-black/40 tw:rounded-full">
             <HeartIcon
-              className={`tw:w-6 tw:h-6 ${isFavorite ? "tw:fill-[var(--color-primary)]" : "tw:fill-none"
-                } tw:stroke-white tw:stroke-2`}
+              className={`tw:w-6 tw:h-6 ${
+                isFavorite ? "tw:fill-[var(--color-primary)]" : "tw:fill-none"
+              } tw:stroke-white tw:stroke-2`}
             />
           </div>
-
         </div>
 
         {/* Price */}

@@ -2,7 +2,7 @@
 
 import { google_key } from "@/config";
 import { exactPath } from "@/utils";
-import { MapPin, Phone, Send } from "lucide-react";
+import { MapPin, Phone, Send, XIcon } from "lucide-react";
 import MapComponent from "@/components/common/MapComponent";
 import { useTranslations } from "next-intl";
 import GenericModal from "./GenericModal";
@@ -17,6 +17,7 @@ import { showToast } from "../toast/Toast";
 import { useBookmarks } from "@/context/BookmarkProvider";
 import ContactButton from "../common/ContactButton";
 import ContactForm from "../form/dwelling/contact/contactForm-V2";
+import Facilities from "../cruise-single/Facilities";
 
 function ImageGrid({ images, setOpen }) {
   let imagesToShow = images ? [...images].slice(0, 4) : [];
@@ -150,6 +151,8 @@ export default function ListingDetail({ data, locale, session }) {
 
   const [isImageSliderOpen, setIsImageSliderOpen] = useState(false);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+  const [isShowDescriptionOpen, setIsShowDescriptionOpen] = useState(false);
+  const [isShowFeaturesOpen, setIsShowFeaturesOpen] = useState(false);
   const { featuredListings, featuredListingsError, featuredListingsLoading } =
     useFeatured(locale);
   const [isBookmarkedItem, setIsBookmarkedItem] = useState(false);
@@ -236,6 +239,16 @@ export default function ListingDetail({ data, locale, session }) {
     return languages.join(", ");
   }
 
+  const formattedFeatures = data?.features.map((f) => ({
+    title: f.title,
+    icon: f.icon?.url || "",
+  }));
+
+  const formattedAmenities = data?.amenities.map((f) => ({
+    title: f.title,
+    icon: f.icon?.url || "",
+  }));
+
   return (
     <div className="tw:text-black tw:flex tw:flex-col tw:mt-[40px] tw:p-8 tw:py-20 tw:md:px-[60px] tw:md:py-[80px]">
       <h1 className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:text-3xl">
@@ -303,7 +316,120 @@ export default function ListingDetail({ data, locale, session }) {
           </div>
         </div>
       </div>
-      {JSON.stringify(data)}
+
+      <div className="tw:flex tw:flex-col tw:md:flex-row tw:gap-4 tw:mt-8 tw:md:max-h-[350px] tw:max-w-dvw">
+        <div className="tw:flex-3/5 tw:relative">
+          <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+            Property Overview
+          </h2>
+          <p className="tw:md:max-w-[80%] tw:line-clamp-6 tw:text-justify">
+            {data.description?.replace(/<\/?[^>]+(>|$)/g, "") ||
+              "No description available for this property."}
+          </p>
+          <div className="fade-true tw:w-full tw:md:max-w-[80%] tw:absolute tw:bottom-0 p-4 tw:flex tw:items-center tw:justify-center tw:z-30">
+            <button
+              className="tw:bg-[#040342] tw:text-white tw:py-2 tw:px-4"
+              onClick={() => {
+                setIsShowDescriptionOpen(true);
+              }}
+            >
+              Show More
+            </button>
+          </div>
+        </div>
+        <div className="tw:flex-2/5">
+          <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+            Features & Amenities
+          </h2>
+          <div className="tw:relative tw:grid tw:grid-cols-2 tw:gap-4">
+            {[...formattedFeatures, ...formattedAmenities]
+              .slice(0, 10)
+              .map((f, idx) => (
+                <div className="tw:flex tw:gap-2" key={idx}>
+                  <div className="tw:flex tw:gap-2">
+                    <img
+                      src={exactPath(f.icon)}
+                      alt={f.title}
+                      className="tw:w-5 tw:h-5"
+                    />
+                    <span className="tw:font-normal tw:text-[14px] sm:tw:text-[16px] tw:text-[var(--color-font-light)]">
+                      {f.title}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            <div className="fade-true tw:w-full tw:absolute tw:bottom-0 tw:flex tw:items-center tw:justify-center tw:z-30 tw:h-[20px]"></div>
+          </div>
+
+          <div className="tw:w-full tw:flex tw:items-center tw:justify-center tw:mt-6 tw:max-w-[80%]">
+            <button
+              className="tw:bg-[#040342] tw:text-white tw:py-2 tw:px-4"
+              onClick={() => {
+                setIsShowFeaturesOpen(true);
+              }}
+            >
+              Show More Amenities & Features
+            </button>
+          </div>
+        </div>
+      </div>
+      <GenericModal
+        setOpen={setIsShowDescriptionOpen}
+        isOpen={isShowDescriptionOpen}
+      >
+        <div className="tw:bg-white tw:max-w-[40dvw] tw:rounded-2xl">
+          <div className="tw:flex tw:justify-between tw:bg-[#FAFBFC] tw:p-4 tw:rounded-2xl">
+            <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+              {`Property Overview`}
+            </h2>
+
+            <XIcon
+              size={24}
+              onClick={() => setIsShowDescriptionOpen(false)}
+              className="tw:cursor-pointer"
+            />
+          </div>
+          <div className="tw:p-4 tw:max-h-[60dvh] tw:overflow-y-auto">
+            <p className="tw:text-justify">
+              {data.description?.replace(/<\/?[^>]+(>|$)/g, "") +
+                data.description?.replace(/<\/?[^>]+(>|$)/g, "") ||
+                data.description?.replace(/<\/?[^>]+(>|$)/g, "") ||
+                data.description?.replace(/<\/?[^>]+(>|$)/g, "") ||
+                "No description available for this property."}
+            </p>
+          </div>
+        </div>
+      </GenericModal>
+
+      <GenericModal isOpen={isShowFeaturesOpen} setOpen={setIsShowFeaturesOpen}>
+        <div className="tw:bg-white tw:min-w-[40dvw] tw:max-w-[40dvw] tw:rounded-2xl">
+          <div className="tw:flex tw:justify-between tw:bg-[#FAFBFC] tw:p-4 tw:rounded-2xl">
+            <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+              {`Features & Amenities`}
+            </h2>
+
+            <XIcon
+              size={24}
+              onClick={() => setIsShowFeaturesOpen(false)}
+              className="tw:cursor-pointer"
+            />
+          </div>
+          <div className="tw:p-4 tw:max-h-[60dvh] tw:overflow-y-auto">
+            {[...formattedFeatures, ...formattedAmenities].map((f, idx) => (
+              <div className="tw:flex tw:gap-2 tw:mb-2" key={idx}>
+                <img
+                  src={exactPath(f.icon)}
+                  alt={f.title}
+                  className="tw:w-5 tw:h-5"
+                />
+                <p className="tw:font-normal tw:text-[14px] sm:tw:text-[16px] tw:text-[var(--color-font-light)]">
+                  {f.title}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </GenericModal>
 
       {data?.prices?.length > 0 && (
         <section className="tw:pt-12 tw:pb-20">
