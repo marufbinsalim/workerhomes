@@ -2,11 +2,19 @@
 
 import { google_key } from "@/config";
 import { exactPath } from "@/utils";
-import { MapPin, Phone, Send, XIcon } from "lucide-react";
+import {
+  ChevronLeft,
+  HeartIcon,
+  MapPin,
+  Phone,
+  Send,
+  Share2,
+  XIcon,
+} from "lucide-react";
 import MapComponent from "@/components/common/MapComponent";
 import { useTranslations } from "next-intl";
 import GenericModal from "./GenericModal";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ImageSlider from "./imageSlider";
 import PricingCard from "../common/card/price-card";
 import useFeatured from "@/hooks/useFeatured";
@@ -18,6 +26,7 @@ import { useBookmarks } from "@/context/BookmarkProvider";
 import ContactButton from "../common/ContactButton";
 import ContactForm from "../form/dwelling/contact/contactForm-V2";
 import Facilities from "../cruise-single/Facilities";
+import { useRouter } from "next/navigation";
 
 function ImageGrid({ images, setOpen }) {
   let imagesToShow = images ? [...images].slice(0, 4) : [];
@@ -149,6 +158,11 @@ export default function ListingDetail({ data, locale, session }) {
   console.log("ListingDetail", data, locale);
   const ht = useTranslations("header");
 
+  const router = useRouter();
+
+  const overviewRef = useRef();
+  const pricingRef = useRef();
+  const locationRef = useRef();
   const [isImageSliderOpen, setIsImageSliderOpen] = useState(false);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [isShowDescriptionOpen, setIsShowDescriptionOpen] = useState(false);
@@ -156,6 +170,7 @@ export default function ListingDetail({ data, locale, session }) {
   const { featuredListings, featuredListingsError, featuredListingsLoading } =
     useFeatured(locale);
   const [isBookmarkedItem, setIsBookmarkedItem] = useState(false);
+  const [selectedButton, setSelectedButton] = useState("default");
 
   const {
     toggleBookmark,
@@ -251,7 +266,110 @@ export default function ListingDetail({ data, locale, session }) {
 
   return (
     <div className="tw:text-black tw:flex tw:flex-col tw:mt-[40px] tw:p-8 tw:py-20 tw:md:px-[60px] tw:md:py-[80px]">
-      <h1 className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:text-3xl">
+      <div
+        className="tw:flex tw:cursor-pointer tw:py-2"
+        onClick={() => {
+          router.push(`/${locale}/listings`);
+        }}
+      >
+        <ChevronLeft
+          size={24}
+          color="#FF780B"
+          className="tw:cursor-pointer tw:mb-4"
+        />
+        <p className="tw:text-[#FF780B]">Go Back</p>
+      </div>
+      <div className="tw:flex tw:items-center tw:justify-between tw:mb-6">
+        <div className="tw:flex tw:gap-4">
+          <button
+            className={`tw:font-semibold tw:text-sm tw:px-4 tw:py-1 ${
+              selectedButton === "overview"
+                ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-black tw:text-white"
+                : "border"
+            }`}
+            onClick={() => {
+              setSelectedButton("overview");
+              overviewRef.current.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+            }}
+          >
+            Overview
+          </button>
+          <button
+            className={`tw:font-semibold tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${
+              selectedButton === "features"
+                ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-black tw:text-white"
+                : "border"
+            }`}
+            onClick={() => {
+              setSelectedButton("features");
+              pricingRef.current.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+            }}
+          >
+            Prices & Conditions
+          </button>
+          <button
+            className={`tw:font-semibold tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${
+              selectedButton === "location"
+                ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-black tw:text-white"
+                : "border"
+            }`}
+            onClick={() => {
+              setSelectedButton("location");
+              locationRef.current.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+            }}
+          >
+            Location
+          </button>
+        </div>
+
+        <div className="tw:flex tw:gap-4">
+          <div className="tw:flex tw:cursor-pointer tw:py-2 tw:gap-1">
+            {isBookmarked(data.id) ? (
+              <HeartIcon
+                size={24}
+                fill="#FF780B"
+                color="#FF780B"
+                className="tw:cursor-pointer tw:mb-4"
+                onClick={() => toggleFavorite(data.id)}
+              />
+            ) : (
+              <HeartIcon
+                size={24}
+                color="#797979"
+                className="tw:cursor-pointer tw:mb-4"
+                onClick={() => toggleFavorite(data.id)}
+              />
+            )}
+
+            <p className="tw:text-[#797979]">Bookmark</p>
+          </div>
+          <div
+            className="tw:flex tw:cursor-pointer tw:py-2 tw:gap-1"
+            onClick={() => {
+              // copy the URL to clipboard
+              navigator.clipboard.writeText(window.location.href);
+              showToast("info", t("toast.shareInfo"));
+            }}
+          >
+            <Share2
+              size={24}
+              color="#797979"
+              className="tw:cursor-pointer tw:mb-4"
+            />
+            <p className="tw:text-[#797979]">Share</p>
+          </div>
+        </div>
+      </div>
+      <h1 className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:flex tw:items-center tw:text-3xl">
         {data.title}
       </h1>
       <div className="tw:flex tw:gap-2">
@@ -317,7 +435,10 @@ export default function ListingDetail({ data, locale, session }) {
         </div>
       </div>
 
-      <div className="tw:flex tw:flex-col tw:md:flex-row tw:gap-4 tw:mt-8 tw:md:max-h-[350px] tw:max-w-dvw">
+      <div
+        className="tw:flex tw:flex-col tw:md:flex-row tw:gap-4 tw:mt-8 tw:md:max-h-[350px] tw:max-w-dvw"
+        ref={overviewRef}
+      >
         <div className="tw:flex-3/5 tw:relative">
           <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
             Property Overview
@@ -432,7 +553,7 @@ export default function ListingDetail({ data, locale, session }) {
       </GenericModal>
 
       {data?.prices?.length > 0 && (
-        <section className="tw:pt-12 tw:pb-20">
+        <section className="tw:pt-12 tw:pb-20" ref={pricingRef}>
           <div className="mx-auto">
             <div className="tw:flex tw:flex-col tw:items-center">
               <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
@@ -464,7 +585,10 @@ export default function ListingDetail({ data, locale, session }) {
         </section>
       )}
 
-      <div className="tw:w-full tw:h-[300px] tw:md:h-[600px] tw:rounded-[10px] tw:overflow-hidden">
+      <div
+        className="tw:w-full tw:h-[300px] tw:md:h-[600px] tw:rounded-[10px] tw:overflow-hidden"
+        ref={locationRef}
+      >
         <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
           {`Location`}
         </h2>
