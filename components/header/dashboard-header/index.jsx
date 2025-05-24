@@ -63,8 +63,13 @@ const UserDropdown = ({ session }) => {
         </span>
         {/* Chevron icon - hidden by default, visible on hover */}
         <FiChevronDown
-          className={`tw:w-6 tw:h-6 tw:text-gray-500 tw:transition-transform ${isOpen ? "tw:rotate-180" : ""
-            } ${isOpen ? "tw:opacity-100" : "tw:opacity-0 tw:group-hover:opacity-100"}`}
+          className={`tw:w-6 tw:h-6 tw:text-gray-500 tw:transition-transform ${
+            isOpen ? "tw:rotate-180" : ""
+          } ${
+            isOpen
+              ? "tw:opacity-100"
+              : "tw:opacity-0 tw:group-hover:opacity-100"
+          }`}
           aria-hidden="true"
         />
       </button>
@@ -74,7 +79,6 @@ const UserDropdown = ({ session }) => {
           className="tw:absolute tw:top-full tw:right-0 tw:mt-2 tw:w-[174px] tw:bg-white tw:rounded tw:shadow-dropdown tw:z-50 tw:py-2"
           role="menu"
         >
-
           {/* Profile */}
           <div
             className="tw:flex tw:items-center tw:gap-2 tw:px-4 tw:py-2 tw:hover:bg-gray-100 tw:cursor-pointer"
@@ -127,7 +131,8 @@ const Dropdown = ({
     <div className="tw:relative">
       {/* Dropdown menu */}
       {open && (
-        <div className={`
+        <div
+          className={`
             tw:absolute 
             tw:w-[275px] 
             tw:bg-white 
@@ -136,11 +141,13 @@ const Dropdown = ({
             tw:z-50
             tw:p-4
             font-tertiary
-            ${isMobileView ?
-            'tw:right-0 tw:top-full tw:mt-2' :  // Mobile: appears below
-            'tw:right-0 tw:top-full tw:mt-2' // Desktop: appears below
-          }
-        `}>
+            ${
+              isMobileView
+                ? "tw:right-0 tw:top-full tw:mt-2" // Mobile: appears below
+                : "tw:right-0 tw:top-full tw:mt-2" // Desktop: appears below
+            }
+        `}
+        >
           {languageOptions.map((lang) => (
             <div
               key={lang.label}
@@ -182,7 +189,6 @@ const Dropdown = ({
 };
 
 const Navbar = ({ session }) => {
-
   const [open, setOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const t = useTranslations("header");
@@ -195,8 +201,6 @@ const Navbar = ({ session }) => {
   const params = useParams();
 
   const pageTitle = getPageTitle(pathName, locale);
-
-
 
   const [isOpen, setIsOpen] = useState(true);
   const [isMobileView, setIsMobileView] = useState(false);
@@ -268,8 +272,7 @@ const Navbar = ({ session }) => {
   return (
     <>
       {/* Main Navbar */}
-      <div className="font-primary tw:right-0 tw:bg-white tw:md:bg-transparent tw:z-40 tw:flex tw:items-center tw:justify-between tw:px-4 tw:md:px-6 tw:py-5">
-
+      <div className="font-primary tw:fixed tw:top-0 tw:left-0 tw:right-0 tw:bg-white tw:md:bg-transparent tw:z-40 tw:flex tw:items-center tw:justify-between tw:px-4 tw:md:px-6 tw:py-5">
         {/* Left side - menu button and logo */}
         <div className="tw:flex tw:items-center  tw:gap-2">
           {session && (
@@ -289,7 +292,7 @@ const Navbar = ({ session }) => {
             </div>
           )}
           <h1 className="tw:text-xl tw:font-medium tw:my-auto tw:text-[var(--color-font-regular)] tw:ml-5">
-            {pageTitle || 'Dashboard'}
+            {pageTitle || "Dashboard"}
           </h1>
         </div>
 
@@ -305,7 +308,9 @@ const Navbar = ({ session }) => {
               className="tw:flex tw:items-center tw:gap-1"
             >
               <img
-                src={languageOptions.find((lang) => lang.label === selected)?.flag}
+                src={
+                  languageOptions.find((lang) => lang.label === selected)?.flag
+                }
                 alt="flag"
                 className="tw:w-7 tw:h-7 tw:rounded-full tw:border tw:border-gray-200"
               />
@@ -324,7 +329,7 @@ const Navbar = ({ session }) => {
                   setSelected={setSelected}
                   open={open}
                   setOpen={setOpen}
-                  isMobileView={isMobileView}  // Add this prop
+                  isMobileView={isMobileView} // Add this prop
                 />
               </div>
             </div>
@@ -347,7 +352,9 @@ const Navbar = ({ session }) => {
             <div className="tw:flex tw:items-center tw:gap-1 tw:lg:gap-2">
               <img
                 onClick={() => setOpen(!open)}
-                src={languageOptions.find((lang) => lang.label === selected)?.flag}
+                src={
+                  languageOptions.find((lang) => lang.label === selected)?.flag
+                }
                 alt="flag"
                 className="tw:w-7 tw:lg:w-8 tw:h-7 tw:lg:h-8 tw:border tw:border-gray-300 tw:rounded-full tw:cursor-pointer"
               />
@@ -370,7 +377,6 @@ const Navbar = ({ session }) => {
           </div>
         </div>
       </div>
-
     </>
   );
 };
