@@ -12,19 +12,16 @@ const Table = ({
   const t = useTranslations('table')
   return (
     <div
-      className="tw:bg-green-500 tw:h-[90vh] tw:max-h-[70vh] tw:overflow-auto  "
+      className={`overflow-auto bg-white scroll-bar-1 ${
+        bordered ? 'border rounded' : ''
+      } ${fullHeight ? 'min-h-screen' : 'min-h-20'} $}`}
     >
-      
-      <table className='tw:w-full'>
-        <thead className='tw:bg-gray-50'>
+      <table className='table-2 col-12'>
+        <thead className='bg-light-2'>
           <tr>
             {columns.map((column, index) => {
               return column.hidden ? null : (
-                <th
-                  key={index}
-                  colSpan={column.colSpan || 1}
-                  className='tw:p-3 tw:text-left tw:font-medium tw:text-gray-700'
-                >
+                <th key={index} colSpan={column.colSpan || 1}>
                   {column.Header}
                 </th>
               )
@@ -37,7 +34,7 @@ const Table = ({
               <td
                 colSpan={columns.length + 1}
                 rowSpan={4}
-                className='tw:p-4 tw:text-center tw:text-gray-500'
+                className='text-center'
               >
                 {t('loading')}
               </td>
@@ -47,7 +44,7 @@ const Table = ({
               <td
                 colSpan={columns.length + 1}
                 rowSpan={4}
-                className='tw:p-4 tw:text-center tw:text-gray-500'
+                className='text-center'
               >
                 {t('no-data')}
               </td>
@@ -59,22 +56,20 @@ const Table = ({
               <tr
                 key={rowIndex}
                 onClick={onClick && (() => onClick(row))}
-                className='tw:hover:bg-gray-50 tw:border-t tw:border-gray-100'
+                className='table-row'
               >
                 {columns.map((column, colIndex) => {
                   return column.hidden ? null : (
-                    <td
-                      key={colIndex}
-                      colSpan={column.colSpan || 1}
-                      className='tw:p-3 tw:text-gray-600'
-                    >
+                    <td key={colIndex} colSpan={column.colSpan || 1}>
                       {column.accessor
-                        ? typeof column.accessor === 'function'
+                        ? // Support JSX in accessor
+                          typeof column.accessor === 'function'
                           ? column.accessor(row)
                           : row[column.accessor]
-                        : typeof column.Cell === 'function'
-                          ? column.Cell(row)
-                          : row[column.id]}
+                        : // Support JSX in Cell
+                        typeof column.Cell === 'function'
+                        ? column.Cell(row)
+                        : row[column.id]}
                     </td>
                   )
                 })}

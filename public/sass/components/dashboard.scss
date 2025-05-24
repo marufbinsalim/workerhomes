@@ -32,7 +32,6 @@
             left: 0;
             right: 0;
             background-color: rgba(black, 0.5);
-
             transition: all 0.5s $easeOutCubic;
             pointer-events: none;
             opacity: 0;
@@ -49,11 +48,12 @@
 
     &__content {
         width: 100%;
-        padding: 60px;
+        height: 100vh;
+        padding: 10px;
         padding-bottom: 0;
 
         @include media-below(md) {
-            padding: 30px;
+            padding: 10px;
             padding-bottom: 0;
         }
 
@@ -256,6 +256,7 @@ body.-is-sidebar-open {
 
 .chart_responsive {
     @media (max-width: 1800px) {
+
         .col-xl-7,
         .col-xl-5 {
             width: 100%;
@@ -268,10 +269,12 @@ body.-is-sidebar-open {
 .tabs.-underline-2 .tabs__controls .tabs__button:hover {
     color: var(--color-blue-1) !important;
 }
+
 .tabs.-underline-2 .tabs__controls .tabs__button {
     position: relative;
     transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
 .tabs.-underline-2 .tabs__controls .tabs__button:after {
     content: "";
     position: absolute;
@@ -283,6 +286,7 @@ body.-is-sidebar-open {
     transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
     opacity: 0;
 }
+
 .tabs.-underline-2 .tabs__controls .tabs__button.is-tab-el-active:after {
     opacity: 1;
 }

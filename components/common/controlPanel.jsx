@@ -28,16 +28,16 @@ const ControlPanel = ({
   }, [])
 
   return (
-    <div className='tw:w-full tw:space-y-2 tw:flex tw:flex-col tw:pb-2'>
+    <div className='tw:w-full  tw:space-y-2 tw:flex tw:flex-col tw:pb-2'>
       <div className='tw:flex tw:justify-between tw:items-center'>
         <div>
           {/* <h1 className='tw:text-3xl tw:font-semibold'>{title || 'Dashboard'}</h1> */}
           {/* {description && <p className='tw:text-gray-600'>{description}</p>} */}
         </div>
 
-        <div className='tw:pt-3 tw:px-3'>
+        {/* <div className='tw:pt-3 tw:px-3'>
           <Breadcrumbs />
-        </div>
+        </div> */}
       </div>
 
       <div className='tw:w-full tw:flex tw:flex-col tw:md:flex-row tw:justify-between tw:items-start tw:gap-4'>
