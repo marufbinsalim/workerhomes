@@ -1528,6 +1528,16 @@
       "created": "Created At"
     }
   },
+
+  "navbarTitle": {
+    "statistics": "Statistics",
+    "listings": "Listings",
+    "profile": "Profile",
+    "contact": "Contact",
+    "invoices": "Invoices",
+    "messages": "Messages"
+  },
+
   "statistics": {
     "title": "Statistics",
     "description": "These are the most popular destinations in the world.",

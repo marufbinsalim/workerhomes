@@ -606,6 +606,15 @@
       "created": "Erstellt am"
     }
   },
+
+  "navbarTitle": {
+  "statistics": "Statistiken",
+  "listings": "Anzeigen",
+  "profile": "Profil",
+  "contact": "Kontakt",
+  "invoices": "Rechnungen",
+  "messages": "Nachrichten"
+},
   "profile": {
     "title": "Profil",
     "description": "Dies sind die beliebtesten Reiseziele der Welt.",

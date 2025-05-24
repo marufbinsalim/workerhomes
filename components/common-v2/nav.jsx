@@ -45,7 +45,7 @@ const UserDropdown = ({ session }) => {
   };
 
   return (
-    <div className="tw:relative" ref={dropdownRef}>
+    <div className="tw:relative font-secondary" ref={dropdownRef}>
       <button
         className="tw:flex tw:items-center tw:gap-2 tw:group tw:p-2 tw:rounded tw:hover:bg-gray-200 tw:transition-colors"
         onClick={() => setIsOpen(!isOpen)}
@@ -136,7 +136,7 @@ const Dropdown = ({
     <div>
       {/* Dropdown menu */}
       {open && (
-        <div className="tw:absolute tw:bottom-full tw:mb-4 tw:left-0 tw:md:bottom-auto tw:md:mb-0 tw:md:mt-4 tw:w-[275px] tw:bg-white tw:rounded-lg tw:p-5 tw:shadow-lg tw:z-10 tw:md:left-auto tw:-translate-x-[60vw] tw:md:-translate-x-[14vw]">
+        <div className="tw:absolute font-tertiary tw:bottom-full tw:mb-4 tw:left-0 tw:md:bottom-auto tw:md:mb-0 tw:md:mt-4 tw:w-[275px] tw:bg-white tw:rounded-lg tw:p-5 tw:shadow-lg tw:z-10 tw:md:left-auto tw:-translate-x-[60vw] tw:md:-translate-x-[14vw]">
           {languageOptions.map((lang) => (
             <div
               key={lang.label}
@@ -251,121 +251,112 @@ const Navbar = ({ session }) => {
       {/* Main Navbar */}
       <div
         className={`
-                tw:fixed tw:top-0 tw:left-0 tw:right-0 tw:z-40
-                tw:flex tw:items-center tw:justify-between
-                tw:px-6 tw:py-4 tw:bg-white
-                tw:transition-all tw:duration-300
-                ${isScrolled ? "tw:shadow-md" : "tw:shadow-none"}
-            `}
+    tw:fixed tw:top-0 tw:left-0 tw:right-0 tw:z-40
+    tw:flex tw:items-center tw:justify-between
+    tw:px-4 tw:md:px-6 tw:py-4 tw:bg-white
+    tw:transition-all tw:duration-300 font-primary
+    ${isScrolled ? "tw:shadow-md" : "tw:shadow-none"}
+  `}
       >
-        {/* Logo */}
-        <div className="tw:px-4 tw:md:px-8">
+        {/* Logo - Adjusted for medium screens */}
+        <div className="tw:px-2 tw:md:px-4 tw:lg:px-8">
           <img
             onClick={() => router.push(`/${locale}`)}
             src="/assets/logo.png"
             alt="workerhomes"
-            className="tw:min-w-[140px] tw:min-h-[30px] 
-             tw:w-[160px] tw:h-[33px]
-             tw:md:w-[200px] tw:md:h-[41px]
-             tw:cursor-pointer tw:object-contain"
+            className="tw:min-w-[120px] tw:md:min-w-[140px] tw:min-h-[25px] tw:md:min-h-[30px] 
+               tw:w-[140px] tw:md:w-[160px] tw:lg:w-[200px] 
+               tw:h-[28px] tw:md:h-[33px] tw:lg:h-[41px]
+               tw:cursor-pointer tw:object-contain"
           />
         </div>
 
-        {/* Desktop Navigation */}
-        <div className="tw:hidden tw:md:flex tw:text-[var(--color-font-dark)] tw:font-normal tw:items-center tw:gap-6 tw:text-[14px]">
+        {/* Desktop Navigation - Show from md upwards */}
+        <div className="tw:hidden tw:md:flex tw:text-[var(--color-font-dark)] tw:font-normal tw:items-center tw:gap-4 tw:lg:gap-6 tw:text-[13px] tw:lg:text-[14px]">
           <a
             href={`/${locale}`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
-              pathname === `/${locale}`
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}`
                 ? "tw:text-[var(--color-primary)] tw:font-medium"
                 : ""
-            }`}
+              }`}
           >
             {t("links.home")}
           </a>
 
           <a
             href={`/${locale}/pricing`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
-              pathname === `/${locale}/pricing`
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/pricing`
                 ? "tw:text-[var(--color-primary)] tw:font-medium"
                 : ""
-            }`}
+              }`}
           >
             {t("links.pricing")}
           </a>
 
           <a
             href={`/${locale}/bookmarks`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
-              pathname === `/${locale}/bookmarks`
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/bookmarks`
                 ? "tw:text-[var(--color-primary)] tw:font-medium"
                 : ""
-            }`}
+              }`}
           >
             {t("links.bookmarks")}
           </a>
 
           <a
             href={`/${locale}/blogs`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
-              pathname === `/${locale}/blogs`
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/blogs`
                 ? "tw:text-[var(--color-primary)] tw:font-medium"
                 : ""
-            }`}
+              }`}
           >
             {t("links.blogs")}
           </a>
 
           <a
             href={`/${locale}/contact`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
-              pathname === `/${locale}/contact`
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/contact`
                 ? "tw:text-[var(--color-primary)] tw:font-medium"
                 : ""
-            }`}
+              }`}
           >
             {t("links.contact")}
           </a>
 
-          <button className="tw:relative tw:w-[150px] tw:h-[33px] tw:text-sm tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border">
+          <button className="tw:relative tw:w-[130px] tw:lg:w-[150px] tw:h-[30px] tw:lg:h-[33px] tw:text-xs tw:lg:text-sm tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border">
             List your property
           </button>
         </div>
 
-        {/* Desktop Right Section */}
-        <div className="tw:hidden tw:md:flex tw:items-center tw:gap-4">
+        {/* Desktop Right Section - Adjusted for medium screens */}
+        <div className="tw:hidden tw:md:flex tw:items-center tw:gap-3 tw:lg:gap-4">
           {session && session.user ? (
-            // Logged-in UI with dropdown
             <UserDropdown session={session} />
           ) : (
-            // Sign In / Register Button
             <button
               onClick={() => router.push("/login")}
-              className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:w-[150px] tw:h-[33px] tw:font-medium"
+              className="tw:bg-[#040342] tw:text-white tw:text-[13px] tw:lg:text-[14px] tw:w-[130px] tw:lg:w-[150px] tw:h-[30px] tw:lg:h-[33px] tw:font-medium"
             >
               Sign In / Register
             </button>
           )}
 
-          {/* Language Selector */}
-          <div className="tw:flex tw:items-center tw:gap-2">
+          {/* Language Selector - Adjusted for medium screens */}
+          <div className="tw:flex tw:items-center tw:gap-1 tw:lg:gap-2">
             <img
               onClick={(e) => {
                 setOpen((prev) => !prev);
               }}
-              src={
-                languageOptions.find((lang) => lang.label === selected)?.flag
-              }
+              src={languageOptions.find((lang) => lang.label === selected)?.flag}
               alt="flag"
-              className="tw:w-[32px] tw:h-[32px] tw:border tw:border-[var(--color-font-regular)] tw:rounded-full"
+              className="tw:w-[28px] tw:lg:w-[32px] tw:h-[28px] tw:lg:h-[32px] tw:border tw:border-[var(--color-font-regular)] tw:rounded-full"
             />
 
             <div className="tw:relative">
               <img
                 src="/assets/dropdown.png"
                 alt="dropdown"
-                className="tw:w-[13px] tw:h-[8px] tw:cursor-pointer"
+                className="tw:w-[11px] tw:lg:w-[13px] tw:h-[7px] tw:lg:h-[8px] tw:cursor-pointer"
                 onClick={(e) => {
                   setOpen((prev) => !prev);
                 }}
@@ -381,6 +372,7 @@ const Navbar = ({ session }) => {
             </div>
           </div>
         </div>
+
 
         {/* Mobile Menu Button */}
         <button

@@ -2,6 +2,12 @@ import useMessenger from "@/hooks/useMessenger";
 import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 import { useEffect } from "react";
+import { PiChartLineUpBold } from "react-icons/pi";
+import { IoHomeOutline } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa6";
+import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
+import { TbMessage } from "react-icons/tb";
+
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -17,13 +23,13 @@ const adminSidebarContent = (locale, t, unreadCount) => [
   },
   {
     id: 11,
-    icon: "wpf:statistics",
+    icon: PiChartLineUpBold,
     name: t("statistics"),
     routePath: `/${locale}/dashboard/statistics`,
   },
   {
     id: 2,
-    icon: "solar:home-broken",
+    icon: IoHomeOutline,
     name: t("dwellings"),
     routePath: `/${locale}/dashboard/dwellings`,
     submenu: [
@@ -113,22 +119,40 @@ const adminSidebarContent = (locale, t, unreadCount) => [
   },
   {
     id: 9,
-    icon: "iconamoon:profile-light",
+    icon: FaRegUser,
     name: t("profile"),
     routePath: `/${locale}/dashboard/me`,
   },
 
   {
     id: 10,
-    icon: "ph:invoice-duotone",
+    icon: LiaFileInvoiceDollarSolid,
     name: t("invoice"),
     routePath: `/${locale}/dashboard/invoices`,
   },
 
   {
     id: 100,
-    icon: "ph:chat",
-    name: t("messenger") + ` (${unreadCount})`,
+    icon: TbMessage,
+    name: (
+      <div className="tw:flex tw:items-center tw:gap-[10px]">
+        {t("messenger")}
+        
+          <span className="
+            tw:flex tw:items-center tw:justify-center
+            tw:w-6 tw:h-6
+            tw:bg-[#FF780B] 
+            tw:font-secondary
+            tw:text-white 
+            tw:text-[14px] tw:font-semibold
+            tw:pt-1 tw:pr-2 tw:pb-1 tw:pl-2
+            tw:rounded-lg
+          ">
+            {unreadCount}
+          </span>
+     
+      </div>
+    ),
     routePath: `/${locale}/dashboard/messenger`,
   },
 ];

@@ -8,19 +8,19 @@ import { PermissionsProvider } from "@/context/PermissionProvider";
 import { getCurrentUser } from "@/lib/session";
 
 const DashboardLayout = async ({ params, children }) => {
- const session = await getCurrentUser();
- 
+//  const session = await getCurrentUser();
+ const user = await getCurrentUser();
 
   return (
     <BreadcrumbProvider>
       <PermissionsProvider locale={params?.locale}>
         <div className=""></div>
 
-        <Header session={session} />
+        {/* <Header user={user} /> */}
         {/* <Navbar session={session} /> */}
 
-        <div className="dashboard ">
-          <div className="dashboard__sidebar tw:bg-white tw:flex tw:justify-center tw:overflow-auto scroll-bar-1 ">
+        <div className="dashboard tw:bg-green-500">
+          <div className="dashboard__sidebar bg-white scroll-bar-1 ">
             <Sidebar />
           </div>
 

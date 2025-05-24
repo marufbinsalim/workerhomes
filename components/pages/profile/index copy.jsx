@@ -71,7 +71,7 @@ const ProfilePage = ({ locale }) => {
   }
 
   return (
-    <div className='tw:space-y-6'>
+    <div className=''>
       <ControlPanel
         title={t('title')}
         description={t('messages.ok')}
@@ -82,7 +82,7 @@ const ProfilePage = ({ locale }) => {
         isSearchable={false}
       />
 
-      <div className='tw:py-8 tw:rounded-lg tw:bg-white tw:shadow-md tw:px-10'>
+      <div className='py-30  rounded-4 bg-white shadow-3 px-40'>
         {isLoading ? (
           <div>{t('messages.loading')}</div>
         ) : (
@@ -91,7 +91,7 @@ const ProfilePage = ({ locale }) => {
 
             <Divider side='center' title={t('form.field.payment-methods')} />
 
-            <div className='tw:col-span-2 tw:flex tw:justify-between tw:items-center'>
+            <div className='col-span-2 row justify-between items-center '>
               <CustomerCard
                 customer={session?.stripe_customer_id}
                 locale={locale}
@@ -102,7 +102,7 @@ const ProfilePage = ({ locale }) => {
 
             {session?.provider === 'credentials' && (
               <button
-                className='tw:inline-flex tw:items-center tw:px-4 tw:py-2 tw:text-sm tw:font-medium tw:rounded-md tw:bg-red-500 tw:text-white'
+                className='col-auto button -sm bg-danger'
                 onClick={() =>
                   setOpen({
                     password: true,
@@ -116,7 +116,7 @@ const ProfilePage = ({ locale }) => {
             )}
 
             <button
-              className='tw:inline-flex tw:items-center tw:px-4 tw:py-2 tw:mt-4 tw:text-sm tw:font-medium tw:rounded-md tw:bg-red-500 tw:text-white'
+              className='col-auto button -sm bg-danger mt-10'
               onClick={() =>
                 setOpen({
                   delete: true,
@@ -174,6 +174,18 @@ const ProfilePage = ({ locale }) => {
               formData={data}
               onSuccess={async () => {
                 await handleDelete()
+                // await signOut({
+                //   redirect: true,
+                //   callbackUrl: `/${locale}`,
+                // })
+
+                // Clear cookies
+                // document.cookie = 'next-auth.session-token=; Max-Age=0; path=/'
+                // document.cookie =
+                //   '__Secure-next-auth.session-token=; Max-Age=0; path=/; Secure'
+
+                // // Clear localStorage
+                // localStorage?.removeItem('next-auth.session-token')
               }}
             />
           </Modal>
@@ -225,8 +237,8 @@ const ProfilePage = ({ locale }) => {
         isLoading={loading}
       >
         <p>{t('messages.delete.1')}</p>
-        <p className='tw:mt-2'>{t('message.delete.2')}</p>
-        <ul className='tw:mb-6'>
+        <p className='mt-2'>{t('message.delete.2')}</p>
+        <ul className='mb-10'>
           <li>
             <strong>1:</strong> {t('messages.delete.list.1')}
           </li>
@@ -238,7 +250,7 @@ const ProfilePage = ({ locale }) => {
           </li>
         </ul>
         <p>{t('messages.delete.3')}</p>
-        <p className='tw:mt-4'>
+        <p className='mt-4'>
           <i>{t('messages.delete.4')}</i>
         </p>
       </ConfirmModal>

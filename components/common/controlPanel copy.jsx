@@ -28,28 +28,28 @@ const ControlPanel = ({
   }, [])
 
   return (
-    <div className='tw:w-full tw:space-y-2 tw:flex tw:flex-col tw:pb-2'>
-      <div className='tw:flex tw:justify-between tw:items-center'>
+    <div className='container-main row y-gap-20 justify-between align-items-center pb-20'>
+      <div className='d-flex justify-content-between align-items-center'>
         <div>
-          {/* <h1 className='tw:text-3xl tw:font-semibold'>{title || 'Dashboard'}</h1> */}
-          {/* {description && <p className='tw:text-gray-600'>{description}</p>} */}
+          <h1 className='text-30 fw-600'>{title || 'Dashboard'}</h1>
+          {description && <p>{description}</p>}
         </div>
 
-        <div className='tw:pt-3 tw:px-3'>
+        <div className='pt-3 px-3'>
           <Breadcrumbs />
         </div>
       </div>
 
-      <div className='tw:w-full tw:flex tw:flex-col tw:md:flex-row tw:justify-between tw:items-start tw:gap-4'>
-        <div className='tw:w-full tw:md:w-2/3'>
-          <div className='tw:w-1/4 tw:mb-8'>
+      <div className='col-12 row  d-flex justify-content-between align-items-start'>
+        <div className='col-8'>
+          <div className='col-2 mb-30'>
             {actions &&
               actions?.map((action, index) => {
                 if (!action?.hidden) {
                   return action?.href ? (
                     <Link
                       href={action?.href}
-                      className='tw:inline-flex tw:items-center tw:px-4 tw:py-2 tw:text-sm tw:font-medium tw:rounded-md tw:bg-blue-600 tw:text-white hover:tw:bg-blue-700 tw:mr-2'
+                      className='button -sm -dark-1 bg-blue-1 text-white  col-auto'
                       key={index}
                     >
                       {action?.label}
@@ -59,13 +59,14 @@ const ControlPanel = ({
                       key={index}
                       onClick={action?.onClick}
                       type={action?.type || 'button'}
-                      className='tw:inline-flex tw:items-center tw:px-4 tw:py-2 tw:text-sm tw:font-medium tw:rounded-md tw:bg-blue-600 tw:text-white hover:tw:bg-blue-700 tw:mr-2'
+                      className='button -sm -dark-1 bg-blue-1 text-white  col-auto'
                     >
                       {action?.label}
                     </button>
                   )
+                } else {
+                  return null
                 }
-                return null;
               })}
           </div>
           {filterItems?.length > 0 && (
@@ -77,31 +78,56 @@ const ControlPanel = ({
           )}
         </div>
 
-        <div className='tw:w-full tw:md:w-1/3 tw:flex tw:flex-wrap tw:gap-2 tw:items-end tw:justify-end'>
+        <div className='col-4 row gap-1 items-end justify-end '>
           {childrenSide === 'left' && children}
 
           {isSearchable && (
-            <div className='tw:flex-shrink-0'>
-              <div className='tw:relative tw:flex tw:items-center tw:md:hidden'>
+            <div className='col-auto'>
+              <div className='single-field relative d-flex items-center md:d-none '>
                 <input
                   onChange={e => setSearch(e.target.value)}
                   value={search}
-                  className='tw:pl-12 tw:border tw:border-gray-300 tw:text-gray-800 tw:rounded-lg tw:py-2 tw:pr-3 focus:tw:outline-none focus:tw:ring-2 focus:tw:ring-blue-500 focus:tw:border-blue-500'
+                  className='pl-50 border-light text-dark-1 rounded-8'
                   style={{
                     height: '40px',
                   }}
                   type='search'
                   placeholder={searchPlaceholder || 'Search...'}
                 />
-                <button className='tw:absolute tw:inset-y-0 tw:left-0 tw:flex tw:items-center tw:pl-3'>
-                  <i className='icon-search tw:text-xl tw:text-gray-500'></i>
+                <button className='absolute d-flex items-center h-full'>
+                  <i className='icon-search text-20 px-15 text-dark-1'></i>
                 </button>
               </div>
             </div>
           )}
 
+          {/* {actions &&
+            actions?.map((action, index) => {
+              if (!action?.hidden) {
+                return action?.href ? (
+                  <Link
+                    href={action?.href}
+                    className='button -sm -dark-1 bg-blue-1 text-white  col-auto'
+                    key={index}
+                  >
+                    {action?.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={index}
+                    onClick={action?.onClick}
+                    type={action?.type || 'button'}
+                    className='button -sm -dark-1 bg-blue-1 text-white  col-auto'
+                  >
+                    {action?.label}
+                  </button>
+                )
+              } else {
+                return null
+              }
+            })} */}
           {children && childrenSide === 'right' && (
-            <div className='tw:flex-shrink-0'>
+            <div className='col-auto'>
               {childrenSide === 'right' && children}
             </div>
           )}

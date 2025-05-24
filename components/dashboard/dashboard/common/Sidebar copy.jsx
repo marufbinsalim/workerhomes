@@ -12,8 +12,6 @@ import { useParams, usePathname } from "next/navigation";
 import { useState } from "react";
 import { useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
-import { PiChartLineUpBold } from "react-icons/pi";
-
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -25,7 +23,6 @@ const Sidebar = () => {
   const t = useTranslations("dashboard-sidebar");
   const pathname = usePathname();
   const { data } = useSession();
-  const [loadingItem, setLoadingItem] = useState(null);
 
   const isMessengerPage = pathname.includes("/messenger");
 
@@ -39,28 +36,31 @@ const Sidebar = () => {
   const [open, setOpen] = useState(isMessengerPage ? 0 : 1);
 
   return (
-    <div className="tw:space-y-2 font-secondary">
+    <div className="sidebar -dashboard tw:bg-red-500 ">
       {sidebarContent.map((item) => (
-        <div className="" key={item.id}>
+        <div className="sidebar__item" key={item.id}>
           <div
-            className={`tw:w-[270px] tw:h-[64px] tw:gap-[16px] tw:font-normal tw:text-[var(--color-font-dark)] tw:p-[20px] tw:transition-all tw:duration-100 ${isActiveLink(item.routePath, pathname) || open === item.id
-                ? "tw:border-2 tw:border-[var(--color-primary)] tw:font-semibold tw:text-[var(--color-primary)]"
-                : "tw:border-2 tw:border-transparent" // Maintains layout consistency
-              }`}
-            onClick={() => {
-              setOpen(item.id); // Immediately update state
-              
-            }}
+            className={`${
+              isActiveLink(item.routePath, pathname) ||
+              (item?.submenu && open === item.id)
+                ? "-is-active"
+                : ""
+            } sidebar__button `}
+            onClick={() => setOpen(item.id)}
           >
             <Link
               href={item.routePath}
-              className="tw:flex tw:items-center tw:justify-between tw:text-[15px] tw:leading-[1] tw:w-full"
+              className="d-flex items-center justify-between text-15 lh-1 w-100"
             >
-              <div className="tw:flex tw:items-center">
-                <item.icon className="tw:w-5 tw:h-5 tw:mr-[15px]" />
+              <div className="d-flex items-center">
+                <Icon
+                  icon={item.icon}
+                  className="mr-15"
+                  width={20}
+                  height={20}
+                />
                 {item.name}
               </div>
-
               {item.submenu?.length > 0 && (
                 <Icon
                   icon={
@@ -85,6 +85,24 @@ const Sidebar = () => {
           </div>
         </div>
       ))}
+
+      {/* <div className='sidebar__item'>
+        <div className='sidebar__button' onClick={signOut}>
+          <span className='d-flex items-center text-15 lh-1 fw-500'>
+            <a href='#'>
+              <div className='d-flex items-center'>
+                <Icon
+                  icon='solar:logout-3-outline'
+                  className='mr-15'
+                  width={20}
+                  height={20}
+                />
+                {t('logout')}
+              </div>
+            </a>
+          </span>
+        </div>
+      </div> */}
     </div>
   );
 };
@@ -93,7 +111,7 @@ export default Sidebar;
 
 const SubMenuItem = ({ open, items, pathname }) => {
   return (
-    <div className={`sidebar__submenu${open ? "--active" : ""}tw:w-full`}>
+    <div className={`sidebar__submenu${open ? "--active" : ""}`}>
       <div className="sidebar__submenu__content">
         {items?.length > 0 &&
           items?.map((item, i) => (

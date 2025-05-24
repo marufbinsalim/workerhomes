@@ -606,6 +606,16 @@
       "created": "Utworzono"
     }
   },
+
+  "navbarTitle": {
+    "statistics": "Statystyki",
+    "listings": "Ogłoszenia",
+    "profile": "Profil",
+    "contact": "Kontakt",
+    "invoices": "Faktury",
+    "messages": "Wiadomości"
+  },
+  
   "profile": {
     "title": "Profil",
     "description": "To są najpopularniejsze miejsca na świecie.",
