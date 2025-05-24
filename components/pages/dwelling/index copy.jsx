@@ -486,214 +486,212 @@ const DwellingsPage = ({ locale }) => {
 
   return (
     <>
-      <div className="tw:bg-red-500 tw:rounded-lg tw:min-h-[calc(100dvh-70px)] tw:max-h-[calc(100dvh-70px)] tw:p-6 tw:flex tw:flex-col">
-        {!userProfileLoading && (
-          <CustomerNotification user={userProfile} locale={locale} />
-        )}
+      {!userProfileLoading && (
+        <CustomerNotification user={userProfile} locale={locale} />
+      )}
 
-        <ControlPanel
-          title={t('title')}
-          description={t('description')}
-          actions={actions}
-          search={search}
-          setSearch={setSearch}
-          searchPlaceholder={t('control-panel.search')}
-          breadcrumbs={[
-            t('control-panel.breadcrumb.1'),
-            t('control-panel.breadcrumb.2'),
-          ]}
-          filterItems={session?.role === roles.user ? [] : filterItems}
-          selectedFilter={filter}
-          setSelectedFilter={value => setFilter(value)}
-          childrenSide='left'
+      <ControlPanel
+        title={t('title')}
+        description={t('description')}
+        actions={actions}
+        search={search}
+        setSearch={setSearch}
+        searchPlaceholder={t('control-panel.search')}
+        breadcrumbs={[
+          t('control-panel.breadcrumb.1'),
+          t('control-panel.breadcrumb.2'),
+        ]}
+        filterItems={session?.role === roles.user ? [] : filterItems}
+        selectedFilter={filter}
+        setSelectedFilter={value => setFilter(value)}
+        childrenSide='left'
+      >
+        <button
+          onClick={() => {
+            setSort(sort === 'asc' ? 'desc' : 'asc')
+          }}
+          className=' button -sm -dark-1 bg-blue-1 text-white  col-auto'
         >
-          <button
-            onClick={() => {
-              setSort(sort === 'asc' ? 'desc' : 'asc')
-            }}
-            className=' button -sm -dark-1 bg-blue-1 text-white  col-auto'
-          >
-            {sort === 'desc'
-              ? t('control-panel.filters.old')
-              : t('control-panel.filters.new')}
-          </button>
-        </ControlPanel>
+          {sort === 'desc'
+            ? t('control-panel.filters.old')
+            : t('control-panel.filters.new')}
+        </button>
+      </ControlPanel>
 
-        <div className='py-30 px-30 rounded-4 bg-white shadow-3'>
-          <Table isLoading={isLoading} data={data} columns={columns} />
+      <div className='py-30 px-30 rounded-4 bg-white shadow-3'>
+        <Table isLoading={isLoading} data={data} columns={columns} />
 
-          <Pagination
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            totalPages={pagination?.total ?? 0}
-            pageCount={pagination?.pageCount ?? 0}
-          />
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={pagination?.total ?? 0}
+          pageCount={pagination?.pageCount ?? 0}
+        />
+      </div>
 
-        <Modal
-          open={open.create || open.edit}
-          setOpen={value => handleOnClose(value)}
-          title={selected?.id ? t('modal.update.title') : t('modal.create.title')}
-        >
-          <DwellingFormStep
-            formState={formState}
-            setFormState={setFormState}
-            formData={selected}
-            dwellingId={formId}
-            translate={open.translate}
-            locale={locale}
-            onSuccess={() => {
-              setOpen(prev => ({ ...prev, create: false, edit: false }))
-              setSelected(null)
-              reFetch()
-            }}
-          />
-        </Modal>
-
-        <Modal
-          open={open.translate}
-          setOpen={value => {
-            setOpen(prev => ({ ...prev, translate: value }))
+      <Modal
+        open={open.create || open.edit}
+        setOpen={value => handleOnClose(value)}
+        title={selected?.id ? t('modal.update.title') : t('modal.create.title')}
+      >
+        <DwellingFormStep
+          formState={formState}
+          setFormState={setFormState}
+          formData={selected}
+          dwellingId={formId}
+          translate={open.translate}
+          locale={locale}
+          onSuccess={() => {
+            setOpen(prev => ({ ...prev, create: false, edit: false }))
             setSelected(null)
             reFetch()
           }}
-          title={t('modal.translate.title')}
-          description={t('modal.translate.description')}
-        >
-          <DwellingForm
-            translation={open.translate}
-            locale={locale}
-            formData={selected}
-            session={session}
-            onSuccess={data => {
-              setOpen(prev => ({ ...prev, translate: false }))
-              setSelected(null)
-              reFetch()
-            }}
-          />
-        </Modal>
+        />
+      </Modal>
 
-        <Modal
-          open={open.review}
-          setOpen={value => {
-            setOpen(prev => ({ ...prev, review: value }))
+      <Modal
+        open={open.translate}
+        setOpen={value => {
+          setOpen(prev => ({ ...prev, translate: value }))
+          setSelected(null)
+          reFetch()
+        }}
+        title={t('modal.translate.title')}
+        description={t('modal.translate.description')}
+      >
+        <DwellingForm
+          translation={open.translate}
+          locale={locale}
+          formData={selected}
+          session={session}
+          onSuccess={data => {
+            setOpen(prev => ({ ...prev, translate: false }))
             setSelected(null)
+            reFetch()
           }}
-          title={t('modal.review.title')}
-          description={t('modal.review.description')}
-        >
-          <ReviewDwelling
-            item={selected}
-            onSuccess={() => {
-              setOpen(prev => ({ ...prev, review: false }))
-              setSelected(null)
-              reFetch()
-            }}
-          />
-        </Modal>
+        />
+      </Modal>
 
-        <Modal
-          open={open.preview}
-          size='lg'
-          setOpen={value => {
-            setOpen(prev => ({ ...prev, preview: value }))
+      <Modal
+        open={open.review}
+        setOpen={value => {
+          setOpen(prev => ({ ...prev, review: value }))
+          setSelected(null)
+        }}
+        title={t('modal.review.title')}
+        description={t('modal.review.description')}
+      >
+        <ReviewDwelling
+          item={selected}
+          onSuccess={() => {
+            setOpen(prev => ({ ...prev, review: false }))
             setSelected(null)
+            reFetch()
           }}
-          title={t('modal.preview.title')}
-          description={t('modal.preview.description')}
-        >
-          <PreviewDwelling data={selected} />
-        </Modal>
+        />
+      </Modal>
 
-        <Modal
-          open={open.claim}
-          size='lg'
-          setOpen={value => {
-            setOpen(prev => ({ ...prev, claim: value }))
+      <Modal
+        open={open.preview}
+        size='lg'
+        setOpen={value => {
+          setOpen(prev => ({ ...prev, preview: value }))
+          setSelected(null)
+        }}
+        title={t('modal.preview.title')}
+        description={t('modal.preview.description')}
+      >
+        <PreviewDwelling data={selected} />
+      </Modal>
+
+      <Modal
+        open={open.claim}
+        size='lg'
+        setOpen={value => {
+          setOpen(prev => ({ ...prev, claim: value }))
+          setSelected(null)
+        }}
+        title={t('modal.claims.title')}
+        description={t('modal.claims.description')}
+      >
+        <DwellingClaimsPage
+          data={selected}
+          onSuccess={() => {
+            setOpen(prev => ({ ...prev, claim: false }))
             setSelected(null)
+            reFetch()
           }}
-          title={t('modal.claims.title')}
-          description={t('modal.claims.description')}
-        >
-          <DwellingClaimsPage
-            data={selected}
-            onSuccess={() => {
-              setOpen(prev => ({ ...prev, claim: false }))
-              setSelected(null)
-              reFetch()
-            }}
-          />
-        </Modal>
+        />
+      </Modal>
 
-        <Modal
-          open={open.upgrade || open.downgrade}
-          size='lg'
-          setOpen={value => {
-            setOpen(prev => ({ ...prev, upgrade: value, downgrade: value }))
+      <Modal
+        open={open.upgrade || open.downgrade}
+        size='lg'
+        setOpen={value => {
+          setOpen(prev => ({ ...prev, upgrade: value, downgrade: value }))
+          setSelected(null)
+        }}
+        title={
+          open.upgrade ? t('modal.upgrade.title') : t('modal.downgrade.title')
+        }
+        description={
+          open.upgrade
+            ? t('modal.upgrade.description')
+            : t('modal.downgrade.description')
+        }
+        description2={
+          open.upgrade
+            ? t('modal.upgrade.description2')
+            : t('modal.downgrade.description2')
+        }
+      >
+        <SubscriptionUpgrade
+          item={selected}
+          state={open.upgrade ? 'upgrade' : 'downgrade'}
+          onSuccess={() => {
+            setOpen(prev => ({ ...prev, upgrade: false, downgrade: false }))
             setSelected(null)
+            reFetch()
           }}
-          title={
-            open.upgrade ? t('modal.upgrade.title') : t('modal.downgrade.title')
-          }
-          description={
-            open.upgrade
-              ? t('modal.upgrade.description')
-              : t('modal.downgrade.description')
-          }
-          description2={
-            open.upgrade
-              ? t('modal.upgrade.description2')
-              : t('modal.downgrade.description2')
-          }
-        >
-          <SubscriptionUpgrade
-            item={selected}
-            state={open.upgrade ? 'upgrade' : 'downgrade'}
-            onSuccess={() => {
-              setOpen(prev => ({ ...prev, upgrade: false, downgrade: false }))
-              setSelected(null)
-              reFetch()
-            }}
-          />
-        </Modal>
+        />
+      </Modal>
 
-        <ConfirmModal
-          title={t('modal.delete.title')}
-          open={open.delete}
-          onCancel={value => {
-            setOpen(prev => ({ ...prev, delete: value }))
-            setSelected(null)
-          }}
-          onSuccess={handleDelete}
-          isLoading={loading}
-          yesTitle={t('modal.delete.yes')}
-          noTitle={t('modal.delete.no')}
-        >
-          <div>
-            <ul className='mt-1 mb-3'>
-              <li>
-                <b>{t('modal.delete.list.0.bold')}</b>
-                {t('modal.delete.list.0.text')}
-              </li>
-              <li>
-                <b>{t('modal.delete.list.1.bold')}</b>
-                {t('modal.delete.list.1.text')}
-              </li>
-            </ul>
+      <ConfirmModal
+        title={t('modal.delete.title')}
+        open={open.delete}
+        onCancel={value => {
+          setOpen(prev => ({ ...prev, delete: value }))
+          setSelected(null)
+        }}
+        onSuccess={handleDelete}
+        isLoading={loading}
+        yesTitle={t('modal.delete.yes')}
+        noTitle={t('modal.delete.no')}
+      >
+        <div>
+          <ul className='mt-1 mb-3'>
+            <li>
+              <b>{t('modal.delete.list.0.bold')}</b>
+              {t('modal.delete.list.0.text')}
+            </li>
+            <li>
+              <b>{t('modal.delete.list.1.bold')}</b>
+              {t('modal.delete.list.1.text')}
+            </li>
+          </ul>
 
-            <h5 className='d-flex align-items-center gap-2'>
-              <Icon icon='openmoji:warning' />
-              {t('modal.delete.notice.title')}
-            </h5>
+          <h5 className='d-flex align-items-center gap-2'>
+            <Icon icon='openmoji:warning' />
+            {t('modal.delete.notice.title')}
+          </h5>
 
-            <span className=''>{t('modal.delete.notice.text')}</span>
+          <span className=''>{t('modal.delete.notice.text')}</span>
 
-            <br />
+          <br />
 
-            <span>{t('modal.delete.description')}</span>
-          </div>
-        </ConfirmModal>
-     </div>
+          <span>{t('modal.delete.description')}</span>
+        </div>
+      </ConfirmModal>
     </>
   )
 }
