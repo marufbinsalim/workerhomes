@@ -1,7 +1,7 @@
 "use client";
 
 import ConfirmModal from "@/components/common/ConfirmModal";
-import CustomerCard from "@/components/common/CustomerCard";
+import CustomerCard from "./customerCard-v2";
 import Divider from "@/components/common/Divider";
 import Modal from "@/components/common/Modal";
 import ProfileForm from "@/components/form/profile";
@@ -12,7 +12,7 @@ import { url } from "@/config";
 import useFetch from "@/hooks/useFetch";
 import { remove, update } from "@/lib/services/user";
 import axios from "axios";
-import { CircleDashed, Edit, Lock } from "lucide-react";
+import { CircleDashed, Edit, Lock, Trash } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
@@ -82,17 +82,25 @@ const ProfilePage = ({ locale }) => {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="tw:max-h-[calc(100dvh-100px)] tw:overflow-y-auto overflow-x-hidden tw:md:mx-4 tw:mt-[70px]">
+        {/* basic information card */}
+        <div className="tw:py-4 tw:md:py-8 tw:rounded-lg tw:bg-white tw:shadow-md tw:px-4 tw:md:px-10">
+          <div className="tw:flex tw:justify-center tw:items-center tw:h-[60dvh]">
+            <CircleDashed className="tw:animate-spin tw:w-6 tw:h-6 tw:text-gray-500" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="tw:max-h-[calc(100dvh-100px)] tw:overflow-y-auto overflow-x-hidden tw:md:mx-4 tw:mt-[70px]">
       {/* basic information card */}
       <div className="tw:py-4 tw:md:py-8 tw:rounded-lg tw:bg-white tw:shadow-md tw:px-4 tw:md:px-10">
-        {isLoading && (
-          <div className="tw:flex tw:justify-center tw:items-center tw:h-[60dvh]">
-            <CircleDashed className="tw:animate-spin tw:w-6 tw:h-6 tw:text-gray-500" />
-          </div>
-        )}
         <>
-          {!isLoading && !isEditing && (
+          {!isEditing && (
             <ProfileInfo
               data={data}
               isBusiness={isBusiness}
@@ -103,7 +111,7 @@ const ProfilePage = ({ locale }) => {
             />
           )}
 
-          {!isLoading && isEditing && (
+          {isEditing && (
             <ProfileEdit
               data={data}
               onSubmit={() => {}}
@@ -115,11 +123,6 @@ const ProfilePage = ({ locale }) => {
             />
           )}
 
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-          <ProfileForm formData={data} onSuccess={() => signOut()} />
-
-          <Divider side="center" title={t("form.field.payment-methods")} />
-
           <div className="tw:col-span-2 tw:flex tw:justify-between tw:items-center">
             <CustomerCard
               customer={session?.stripe_customer_id}
@@ -127,35 +130,44 @@ const ProfilePage = ({ locale }) => {
             />
           </div>
 
-          <Divider side="center" title={t("messages.auth")} />
+          {/* <Divider side="center" title={t("messages.auth")} /> */}
 
-          {session?.provider === "credentials" && (
-            <button
-              className="tw:inline-flex tw:items-center tw:px-4 tw:py-2 tw:text-sm tw:font-medium tw:rounded-md tw:bg-red-500 tw:text-white"
-              onClick={() =>
-                setOpen({
-                  password: true,
-                  deleteConfirm: false,
-                  delete: false,
-                })
-              }
-            >
-              {t("control-panel.password")}
-            </button>
-          )}
+          <div className="tw:flex tw:flex-col tw:gap-4 tw:w-full tw:border tw:border-[#D8E0ED] tw:p-4 tw:mt-8 ">
+            <h2 className="tw:text-lg tw:font-semibold tw:mb-4 tw:pb-4 tw:border-b tw:border-b-[#FE475B] tw:text-[#FE475B]">
+              Danger Zone:
+            </h2>
 
-          <button
-            className="tw:inline-flex tw:items-center tw:px-4 tw:py-2 tw:mt-4 tw:text-sm tw:font-medium tw:rounded-md tw:bg-red-500 tw:text-white"
-            onClick={() =>
-              setOpen({
-                delete: true,
-                deleteConfirm: false,
-                password: false,
-              })
-            }
-          >
-            {t("control-panel.deleteAccount")}
-          </button>
+            <div className="tw:flex tw:gap-4">
+              {/* {session?.provider === "credentials" && (
+                <button
+                  className="tw:mb-2 tw:bg-orange-500 tw:text-white tw:px-4 tw:py-2 tw:rounded-md tw:w-max tw:font-medium tw:flex tw:items-center"
+                  onClick={() =>
+                    setOpen({
+                      password: true,
+                      deleteConfirm: false,
+                      delete: false,
+                    })
+                  }
+                >
+                  {t("control-panel.password")}
+                </button>
+              )} */}
+
+              <button
+                className="tw:mr-4 tw:mb-2 tw:bg-[#FE475B] tw:text-white tw:px-4 tw:py-2 tw:rounded-md tw:w-max tw:font-medium tw:flex tw:items-center"
+                onClick={() =>
+                  setOpen({
+                    delete: true,
+                    deleteConfirm: false,
+                    password: false,
+                  })
+                }
+              >
+                <Trash className="tw-inline tw:mr-2" />
+                {t("control-panel.deleteAccount")}
+              </button>
+            </div>
+          </div>
         </>
       </div>
 

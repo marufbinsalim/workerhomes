@@ -24,7 +24,7 @@ export default function profileInfo({
 
   return (
     <div className="tw:border tw:border-[#D8E0ED] tw:px-3 tw:md:px-5 tw:py-4 tw:md:py-7 tw:w-full">
-      <h2 className="tw:text-lg tw:font-semibold tw:mb-4">
+      <h2 className="tw:text-lg tw:font-semibold tw:mb-4 tw:pb-4 tw:border-b tw:border-b-gray-200 tw:text-[var(--color-font-regular)]">
         Basic Information{isBusiness ? " (Business Account)" : ""}
       </h2>
 
