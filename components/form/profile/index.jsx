@@ -168,14 +168,6 @@ const ProfileForm = ({ formData, onSuccess }) => {
               />
             </div>
 
-            {/* <div className='col-6'>
-              <Input
-                type='text'
-                name='address.street_two'
-                label={t('form.field.second_line')}
-              />
-            </div> */}
-
             <div className="col-4">
               <Input
                 type="text"
