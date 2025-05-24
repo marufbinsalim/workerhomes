@@ -8,6 +8,15 @@ import { useTranslations } from "next-intl";
 import GenericModal from "./GenericModal";
 import { useState } from "react";
 import ImageSlider from "./imageSlider";
+import PricingCard from "../common/card/price-card";
+import useFeatured from "@/hooks/useFeatured";
+import ListingCard from "../dashboard-v2/ListingCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
+import { showToast } from "../toast/Toast";
+import { useBookmarks } from "@/context/BookmarkProvider";
+import ContactButton from "../common/ContactButton";
+import ContactForm from "../form/dwelling/contact/contactForm-V2";
 
 function ImageGrid({ images, setOpen }) {
   let imagesToShow = images ? [...images].slice(0, 4) : [];
@@ -135,11 +144,55 @@ function ImageGrid({ images, setOpen }) {
   }
 }
 
-export default function ListingDetail({ data, locale }) {
+export default function ListingDetail({ data, locale, session }) {
   console.log("ListingDetail", data, locale);
   const ht = useTranslations("header");
 
   const [isImageSliderOpen, setIsImageSliderOpen] = useState(false);
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+  const { featuredListings, featuredListingsError, featuredListingsLoading } =
+    useFeatured(locale);
+  const [isBookmarkedItem, setIsBookmarkedItem] = useState(false);
+
+  const {
+    toggleBookmark,
+    isBookmarked: isBookmarkedInDB,
+    isLoading,
+  } = useBookmarks();
+
+  const isBookmarked = (id) => {
+    if (isLoading) return false; // Return false if loading
+    if (!id) return false; // Return false if id is not provided
+
+    let isListingBookmarked = isBookmarkedInDB(id);
+    console.log("listing id", id);
+    console.log("isBookmarked", isListingBookmarked);
+    return isListingBookmarked ? true : false;
+  };
+
+  const t = useTranslations("heroSection");
+
+  const toggleFavorite = async (id) => {
+    if (!session?.id) {
+      showToast("info", t("toast.favoriteInfo"));
+      return;
+    }
+
+    try {
+      await toggleBookmark(id, session.id); // Call the toggle
+
+      // Refresh actual bookmark state
+      const isNowBookmarked = isBookmarked(id);
+      setIsBookmarkedItem(isNowBookmarked);
+
+      showToast(
+        "success",
+        isNowBookmarked ? t("toast.favoriteRemoved") : t("toast.favoriteAdded"),
+      );
+    } catch (err) {
+      showToast("error", t("toast.favoriteError"));
+    }
+  };
 
   function getFormatedLocationString(locations) {
     if (!locations || locations.length === 0) return "";
@@ -238,7 +291,12 @@ export default function ListingDetail({ data, locale }) {
               />
               <p className="tw:text-[var(--color-brand-secondary)] m-0">Call</p>
             </button>
-            <button className="tw:flex tw:items-center tw:justify-center tw:bg-[var(--color-primary)] tw:gap-2 tw:px-5 tw:py-2">
+            <button
+              className="tw:flex tw:items-center tw:justify-center tw:bg-[var(--color-primary)] tw:gap-2 tw:px-5 tw:py-2"
+              onClick={() => {
+                setIsContactFormOpen(true);
+              }}
+            >
               <Send size={20} className="tw:text-white" />
               <p className="tw:text-white m-0">Message</p>
             </button>
@@ -246,7 +304,44 @@ export default function ListingDetail({ data, locale }) {
         </div>
       </div>
       {JSON.stringify(data)}
-      <div className="tw:w-full tw:h-[300px] tw:md:h-[600px] tw:bg-gray-200 tw:rounded-[10px] tw:overflow-hidden tw:shadow-md">
+
+      {data?.prices?.length > 0 && (
+        <section className="tw:pt-12 tw:pb-20">
+          <div className="mx-auto">
+            <div className="tw:flex tw:flex-col tw:items-center">
+              <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+                {`Prices & Conditions`}
+              </h2>
+            </div>
+            <div className="tw:grid tw:grid-cols-1 tw:md:grid-cols-4 tw:gap-6">
+              {data?.prices.map((p, idx) => (
+                <div
+                  key={idx}
+                  className="tw:bg-[#FAFBFC] tw:rounded-md tw:shadow-sm tw:p-4"
+                >
+                  <p className="tw:font-bold tw:text-lg tw:text-[#FF780B]">
+                    ${p.amount}{" "}
+                    <span className="">
+                      / {p.total ? `${p.total} x ${p.type}` : p.type}
+                    </span>
+                  </p>
+                  <p className="tw:text-sm tw:mt-2 tw:text-[#797979]">
+                    Number of Guests:{" "}
+                    <span className="tw:font-semibold tw:text-black">
+                      {p.guest}
+                    </span>
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <div className="tw:w-full tw:h-[300px] tw:md:h-[600px] tw:rounded-[10px] tw:overflow-hidden">
+        <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+          {`Location`}
+        </h2>
         <MapComponent
           defaultCenter={data?.location[0]?.geo}
           setLocations={() => {}}
@@ -256,6 +351,58 @@ export default function ListingDetail({ data, locale }) {
           locale={locale}
           search={false}
         />
+      </div>
+
+      <div>
+        <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full tw:mt-10">
+          Similar Listing
+        </h2>
+
+        {/* Grid for Desktop */}
+        <div className="tw:hidden tw:md:flex tw:gap-[30px] tw:pb-4">
+          {featuredListings.map((listing, index) => (
+            <ListingCard
+              key={`listing-${index}`}
+              listing={listing}
+              toggleFavorite={toggleFavorite}
+              isFavorite={isBookmarked(listing.id)}
+            />
+          ))}
+        </div>
+
+        <GenericModal isOpen={isContactFormOpen} setOpen={setIsContactFormOpen}>
+          <ContactForm
+            dwelling={data}
+            onSuccess={() => {
+              setIsContactFormOpen(false);
+            }}
+          />
+        </GenericModal>
+
+        {/* Carousel for Mobile */}
+        <div className="tw:block tw:md:hidden">
+          <Swiper
+            spaceBetween={20}
+            pagination={{ clickable: true }}
+            modules={[Pagination]}
+            className="tw:pb-10 tw:swiper-pagination-bullet "
+          >
+            {featuredListings.map((listing, index) => (
+              <SwiperSlide
+                key={`listing-swipe-${index}`}
+                className="tw:flex tw:justify-center tw:w-full"
+              >
+                <div className="tw:mb-4">
+                  <ListingCard
+                    listing={listing}
+                    toggleFavorite={toggleFavorite}
+                    isFavorite={isBookmarked(listing.id)}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </div>
   );

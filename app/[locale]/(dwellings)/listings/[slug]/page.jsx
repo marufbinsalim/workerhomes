@@ -2,6 +2,7 @@ import Wrapper from "@/components/layout/Wrapper";
 import ListingDetail from "@/components/listing-details-v2/ListingDetail";
 import SingleListing from "@/components/pages/website/single-listing/page";
 import { api } from "@/config";
+import { getCurrentUser } from "@/lib/session";
 import { exactPath } from "@/utils";
 import { getTranslations } from "next-intl/server";
 import dynamic from "next/dynamic";
@@ -24,6 +25,7 @@ const fetchListingBySlug = async (slug, locale) => {
 export async function generateMetadata({ params: { locale, slug } }) {
   const t = await getTranslations({ locale, namespace: "listings" });
   const data = await fetchListingBySlug(slug, locale);
+  const session = await getCurrentUser();
 
   const seo = data?.seo?.[0];
 
@@ -55,19 +57,30 @@ export async function generateMetadata({ params: { locale, slug } }) {
   };
 }
 
-export default dynamic(
-  () =>
-    Promise.resolve(async ({ params }) => {
-      const data = await fetchListingBySlug(params.slug, params.locale);
+// export default dynamic(
+//   () =>
+//     Promise.resolve(async ({ params }) => {
+//       const data = await fetchListingBySlug(params.slug, params.locale);
 
-      return (
-        <Wrapper>
-          <ListingDetail data={data} locale={params.locale} />
-          {/* <SingleListing data={data} locale={params.locale} /> */}
-        </Wrapper>
-      );
-    }),
-  {
-    ssr: false,
-  },
-);
+//       return (
+//         <Wrapper>
+//           <ListingDetail data={data} locale={params.locale} session={session} />
+//           {/* <SingleListing data={data} locale={params.locale} /> */}
+//         </Wrapper>
+//       );
+//     }),
+//   {
+//     ssr: false,
+//   },
+// );
+
+export default async function Main({ params }) {
+  const session = await getCurrentUser();
+  const data = await fetchListingBySlug(params.slug, params.locale);
+
+  return (
+    <Wrapper>
+      <ListingDetail data={data} locale={params.locale} session={session} />
+    </Wrapper>
+  );
+}
