@@ -9,7 +9,7 @@ export const getPageTitle = (pathname, locale = 'en') => {
     const titleMap = {
         "/dashboard/me": (t("profile")),
         "/dashboard/statistics": (t("statistics")),
-        "/dashboard/invoices": (t("invoice")),
+        "/dashboard/invoices": (t("invoices")),
         "/dashboard/messenger": (t("messenger")),
         "/dashboard/dwellings" : (t("listings")),
     };

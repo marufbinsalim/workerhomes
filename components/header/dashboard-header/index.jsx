@@ -268,7 +268,7 @@ const Navbar = ({ session }) => {
   return (
     <>
       {/* Main Navbar */}
-      <div className="tw:fixed tw:top-0 tw:left-0 font-primary tw:right-0 tw:bg-white tw:md:bg-transparent tw:z-40 tw:flex tw:items-center tw:justify-between tw:px-4 tw:md:px-6 tw:py-5">
+      <div className="font-primary tw:right-0 tw:bg-white tw:md:bg-transparent tw:z-40 tw:flex tw:items-center tw:justify-between tw:px-4 tw:md:px-6 tw:py-5">
 
         {/* Left side - menu button and logo */}
         <div className="tw:flex tw:items-center  tw:gap-2">
@@ -288,7 +288,7 @@ const Navbar = ({ session }) => {
               />
             </div>
           )}
-          <h1 className="tw:text-xl tw:font-medium tw:my-auto tw:text-[var(--color-font-regular)] tw:ml-4">
+          <h1 className="tw:text-xl tw:font-medium tw:my-auto tw:text-[var(--color-font-regular)] tw:ml-5">
             {pageTitle || 'Dashboard'}
           </h1>
         </div>

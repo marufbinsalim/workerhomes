@@ -96,7 +96,7 @@ const InvoicePage = ({ locale }) => {
         ]}
       />
 
-      <div className='py-30 px-30 rounded-4 bg-white shadow-3'>
+      <div className=" tw:p-[30px] tw:bg-red-500 tw:rounded-lg ">
         <Table isLoading={loading} data={invoices || []} columns={columns} />
       </div>
     </>
