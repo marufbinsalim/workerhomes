@@ -413,7 +413,7 @@ export default function useMessenger(
 
       image_url: `${api}${property?.galleries?.[0]?.image?.url}` || "",
       location:
-        property?.location.length !== 0
+        property?.location && property.location.length > 0
           ? `${property.location[0].street_one}, ${property.location[0].zip_code || ""}, ${property.location[0].city || ""}, ${property.location[0].country || ""}`
           : "",
     };
