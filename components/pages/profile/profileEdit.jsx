@@ -1,0 +1,369 @@
+"use client";
+import { update } from "@/lib/services/user";
+import { useFormik } from "formik";
+import { Check, XIcon } from "lucide-react";
+
+export default function ProfileEdit({
+  data,
+  onSubmit,
+  onCancel,
+  t,
+  reFetch,
+  isBusiness, // Add isBusiness prop
+  setEditing, // Add setEditing prop
+}) {
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      first_name: data?.first_name || "",
+      last_name: data?.last_name || "",
+      email: data?.email || "",
+      phone: data?.phone || "",
+      street_one: data?.address?.street_one || "",
+      city: data?.address?.city || "",
+      country: data?.address?.country || "",
+      zip_code: data?.address?.zip_code || "",
+      locale: data?.locale || "",
+      newsletter: false,
+      company: data?.company || "", // Add company field
+      vat_number: data?.vat_number || "", // Add VAT number field
+    },
+    onSubmit: async (values, { setErrors }) => {
+      const errors = {};
+
+      // Manual validation
+      if (!values.first_name) {
+        errors.first_name = t("validation.firstNameRequired");
+      }
+      if (!values.last_name) {
+        errors.last_name = t("validation.lastNameRequired");
+      }
+      if (!values.email) {
+        errors.email = t("validation.emailRequired");
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
+        errors.email = t("validation.invalidEmail");
+      }
+      if (!values.phone) {
+        errors.phone = t("validation.phoneRequired");
+      }
+      // Optional: Add validation for business fields
+      if (isBusiness && !values.company) {
+        errors.company = t("validation.companyRequired");
+      }
+      if (isBusiness && !values.vat_number) {
+        errors.vat_number = t("validation.vatNumberRequired");
+      }
+
+      if (Object.keys(errors).length > 0) {
+        setErrors(errors);
+      } else {
+        console.log("Form submitted with values:", values);
+
+        let formattedValues = {
+          ...data,
+          first_name: values.first_name,
+          last_name: values.last_name,
+          name: `${values.first_name} ${values.last_name}`,
+          email: values.email,
+          phone: values.phone,
+          address: {
+            street_one: values.street_one,
+            city: values.city,
+            country: values.country,
+            zip_code: values.zip_code,
+          },
+          locale: values.locale,
+          businessAccount: isBusiness, // Include business account status
+          ...(isBusiness && {
+            company: values.company,
+            vat_number: values.vat_number,
+          }), // Conditionally include business fields
+        };
+
+        const res = await update(formattedValues, t("messages.update"));
+        reFetch();
+        onSubmit(values);
+        setEditing(false); // Close the edit form after submission
+      }
+    },
+  });
+
+  return (
+    <div className="tw:border tw:border-[#D8E0ED] tw:px-3 tw:md:px-5 tw:py-4 tw:md:py-7 tw:w-full">
+      <h2 className="tw:text-lg tw:font-semibold tw:mb-4">
+        {t("profile.basicInformation")}
+        {isBusiness ? " (Business Account)" : ""}
+      </h2>
+
+      <form onSubmit={formik.handleSubmit}>
+        <div className="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:gap-y-4 tw:gap-x-8 tw:mb-6">
+          {/* First Name */}
+          <div>
+            <label className="tw:text-sm tw:text-gray-500">
+              {t("profile.firstName")}
+            </label>
+            <input
+              type="text"
+              name="first_name"
+              value={formik.values.first_name}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
+                formik.touched.first_name && formik.errors.first_name
+                  ? "tw:border-red-500"
+                  : ""
+              }`}
+            />
+            {formik.touched.first_name && formik.errors.first_name && (
+              <p className="tw:text-red-500 tw:text-xs tw:mt-1">
+                {formik.errors.first_name}
+              </p>
+            )}
+          </div>
+
+          {/* Last Name */}
+          <div>
+            <label className="tw:text-sm tw:text-gray-500">
+              {t("profile.lastName")}
+            </label>
+            <input
+              type="text"
+              name="last_name"
+              value={formik.values.last_name}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
+                formik.touched.last_name && formik.errors.last_name
+                  ? "tw:border-red-500"
+                  : ""
+              }`}
+            />
+            {formik.touched.last_name && formik.errors.last_name && (
+              <p className="tw:text-red-500 tw:text-xs tw:mt-1">
+                {formik.errors.last_name}
+              </p>
+            )}
+          </div>
+
+          {/* Business Fields */}
+          {isBusiness && (
+            <>
+              {/* Company Name */}
+              <div>
+                <label className="tw:text-sm tw:text-gray-500">
+                  {t("profile.companyName")}
+                </label>
+                <input
+                  type="text"
+                  name="company"
+                  value={formik.values.company}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
+                    formik.touched.company && formik.errors.company
+                      ? "tw:border-red-500"
+                      : ""
+                  }`}
+                />
+                {formik.touched.company && formik.errors.company && (
+                  <p className="tw:text-red-500 tw:text-xs tw:mt-1">
+                    {formik.errors.company}
+                  </p>
+                )}
+              </div>
+
+              {/* VAT Number */}
+              <div>
+                <label className="tw:text-sm tw:text-gray-500">
+                  {t("profile.vatNumber")}
+                </label>
+                <input
+                  type="text"
+                  name="vat_number"
+                  value={formik.values.vat_number}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
+                    formik.touched.vat_number && formik.errors.vat_number
+                      ? "tw:border-red-500"
+                      : ""
+                  }`}
+                />
+                {formik.touched.vat_number && formik.errors.vat_number && (
+                  <p className="tw:text-red-500 tw:text-xs tw:mt-1">
+                    {formik.errors.vat_number}
+                  </p>
+                )}
+              </div>
+            </>
+          )}
+
+          {/* Email */}
+          <div>
+            <label className="tw:text-sm tw:text-gray-500">
+              {t("profile.email")}
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
+                formik.touched.email && formik.errors.email
+                  ? "tw:border-red-500"
+                  : ""
+              }`}
+            />
+            {formik.touched.email && formik.errors.email && (
+              <p className="tw:text-red-500 tw:text-xs tw:mt-1">
+                {formik.errors.email}
+              </p>
+            )}
+          </div>
+
+          {/* Phone No. */}
+          <div>
+            <label className="tw:text-sm tw:text-gray-500">
+              {t("profile.phoneNo")}
+            </label>
+            <input
+              type="text"
+              name="phone"
+              value={formik.values.phone}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
+                formik.touched.phone && formik.errors.phone
+                  ? "tw:border-red-500"
+                  : ""
+              }`}
+            />
+            {formik.touched.phone && formik.errors.phone && (
+              <p className="tw:text-red-500 tw:text-xs tw:mt-1">
+                {formik.errors.phone}
+              </p>
+            )}
+          </div>
+
+          {/* Street & House No. */}
+          <div>
+            <label className="tw:text-sm tw:text-gray-500">
+              {t("profile.streetAndHouseNo")}
+            </label>
+            <input
+              type="text"
+              name="street_one"
+              value={formik.values.street_one}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50"
+            />
+          </div>
+
+          {/* City */}
+          <div>
+            <label className="tw:text-sm tw:text-gray-500">
+              {t("profile.city")}
+            </label>
+            <input
+              type="text"
+              name="city"
+              value={formik.values.city}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50"
+            />
+          </div>
+
+          {/* Country */}
+          <div>
+            <label className="tw:text-sm tw:text-gray-500">
+              {t("profile.country")}
+            </label>
+            <input
+              type="text"
+              name="country"
+              value={formik.values.country}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50"
+            />
+          </div>
+
+          {/* Postal Code */}
+          <div>
+            <label className="tw:text-sm tw:text-gray-500">
+              {t("profile.postalCode")}
+            </label>
+            <input
+              type="text"
+              name="zip_code"
+              value={formik.values.zip_code}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50"
+            />
+          </div>
+
+          {/* Language */}
+          <div>
+            <label className="tw:text-sm tw:text-gray-500">
+              {t("profile.language")}
+            </label>
+            <select
+              name="locale"
+              value={formik.values.locale}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50"
+            >
+              <option value="" disabled>
+                {t("profile.selectOne")}
+              </option>
+              <option value="en">English</option>
+              <option value="pl">Polish</option>
+              <option value="de">German</option>
+              {/* Add more languages as needed */}
+            </select>
+          </div>
+        </div>
+
+        {/* Newsletter Checkbox */}
+        <div className="tw:mb-6">
+          <label className="tw:flex tw:items-center tw:text-sm">
+            <input
+              type="checkbox"
+              name="newsletter"
+              checked={formik.values.newsletter}
+              onChange={formik.handleChange}
+              className="tw:mr-2 tw:accent-orange-500"
+            />
+            {t("profile.subscribeNewsletter")}
+          </label>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="tw:flex tw:gap-3">
+          <button
+            type="button"
+            onClick={() => {
+              setEditing(false);
+            }}
+            className="tw:bg-white tw:text-gray-700 tw:border tw:border-gray-300 tw:px-4 tw:py-2 tw:rounded tw:text-sm tw:hover:bg-gray-100 tw:transition"
+          >
+            {t("profile.cancel")}{" "}
+            <XIcon size={16} className="tw:inline tw:ml-1" />
+          </button>
+          <button
+            type="submit"
+            className="tw:bg-orange-500 tw:text-white tw:px-4 tw:py-2 tw:rounded tw:text-sm tw:hover:bg-orange-600 tw:transition"
+          >
+            {t("profile.confirm")}
+            <Check size={16} className="tw:inline tw:ml-1" />
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
