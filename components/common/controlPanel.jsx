@@ -5,6 +5,7 @@ import Breadcrumbs from './Breadcrumb'
 import { useEffect } from 'react'
 import ListFilter from './ListFilter'
 import Link from './Link'
+import { FiPlus } from 'react-icons/fi'
 
 const ControlPanel = ({
   title,
@@ -28,30 +29,20 @@ const ControlPanel = ({
   }, [])
 
   return (
-    <div className='tw:w-full  tw:space-y-2 tw:flex tw:flex-col tw:pb-2'>
-      <div className='tw:flex tw:justify-between tw:items-center'>
-        <div>
-          {/* <h1 className='tw:text-3xl tw:font-semibold'>{title || 'Dashboard'}</h1> */}
-          {/* {description && <p className='tw:text-gray-600'>{description}</p>} */}
-        </div>
-
-        {/* <div className='tw:pt-3 tw:px-3'>
-          <Breadcrumbs />
-        </div> */}
-      </div>
-
-      <div className='tw:w-full  tw:flex tw:flex-col tw:md:flex-row tw:justify-between tw:items-start tw:gap-4'>
-        <div className='tw:w-full tw:md:w-2/3'>
-          <div className='tw:w-1/4 tw:mb-8'>
+    <div className='tw:w-full  tw:mt-18 font-secondary tw:px-[20px] tw:flex tw:flex-col '>
+      <div className='tw:w-full tw:flex tw:flex-col tw:md:flex-row tw:justify-between tw:items-start '>
+        <div className=''>
+          <div className=' '>
             {actions &&
               actions?.map((action, index) => {
                 if (!action?.hidden) {
                   return action?.href ? (
                     <Link
                       href={action?.href}
-                      className='tw:inline-flex tw:items-center tw:px-4 tw:py-2 tw:text-sm tw:font-medium tw:rounded-md tw:bg-blue-600 tw:text-white hover:tw:bg-blue-700 tw:mr-2'
+                      className="tw:inline-flex tw:items-center tw:gap-[8px] tw:w-[174px] tw:h-[40px] tw:pt-[8px] tw:pr-[20px] tw:pb-[8px] tw:pl-[20px] tw:text-sm tw:font-semibold tw:bg-[#FF780B] tw:text-white hover:tw:bg-[#E56B08] tw:justify-center"
                       key={index}
                     >
+                      <FiPlus className="tw:w-6 tw:h-6" /> {/* Adjust size as needed */}
                       {action?.label}
                     </Link>
                   ) : (

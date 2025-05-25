@@ -1,93 +1,84 @@
-import { Icon } from '@iconify/react'
-import { useEffect, useRef, useState } from 'react'
-import Link from './Link'
+// import { Icon } from '@iconify/react';
+import { useEffect, useRef, useState } from 'react';
+import Link from './Link';
 
-const Dropdown = ({ options, label, side = 'left' }) => {
-  const [selectedOption, setSelectedOption] = useState(null)
-  const [isOpen, setIsOpen] = useState(false)
-  const dropdownRef = useRef(null)
+const DropdownMenu = ({ options, label, side = 'left', trigger }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
-  const toggleDropdown = e => {
-    e.stopPropagation()
-    setIsOpen(!isOpen)
-  }
+  const toggleDropdown = (e) => {
+    e.stopPropagation();
+    setIsOpen(!isOpen);
+  };
 
-  const handleClickOutside = event => {
+  const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      setIsOpen(false)
+      setIsOpen(false);
     }
-  }
+  };
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside)
-
+    document.addEventListener('click', handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside)
-    }
-  }, [])
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   return (
-    <div
-      className={`dropdown ${label ? 'w-100' : ''}  ${isOpen ? 'open' : ''}`}
-      ref={dropdownRef}
-    >
-      <div className='dropdown-button w-100' onClick={toggleDropdown}>
-        {label ? (
-          <span className='col-12 -dark-1 bg-blue-1 text-white py-1 px-4 rounded-4'>
-            {label}
-          </span>
-        ) : (
-          <Icon icon='charm:menu-kebab' />
+    <div className="tw:relative font-secondary" ref={dropdownRef}>
+      <button
+        onClick={toggleDropdown}
+        className="tw:flex tw:items-center tw:justify-center tw:p-2 tw:rounded-full hover:tw:bg-gray-100"
+      >
+        {trigger || (
+          label ? (
+            <span className="tw:py-1 tw:px-4 tw:rounded tw:bg-blue-600 tw:text-white">
+              {label}
+            </span>
+          ) : (
+            <Icon icon="charm:menu-kebab" className="tw:text-gray-500 hover:tw:text-gray-700" />
+          )
         )}
-      </div>
+      </button>
+
       {isOpen && (
-        <div
-          className={`dropdown-menu ${
-            dropdownRef.current
-              ? dropdownRef.current.getBoundingClientRect().bottom + 200 >
-                window.innerHeight
-                ? `dropdown-menu-top dropdown-menu-${side}`
-                : `dropdown-menu-${side}`
-              : ''
-          }`}
-        >
-          {options.map(option => {
-            if (option?.disabled) return null
+        <div className="
+         tw:absolute tw:z-50 tw:mt-2 tw:py-1 tw:w-48 tw:bg-white
+         tw:rounded-sm tw:shadow-md 
+         tw:right-0
+       ">
+          {options.map((option) => {
+            if (option?.disabled) return null;
+
+            const commonProps = {
+              key: option.value,
+              className: `
+          tw:flex tw:items-center tw:w-full tw:px-4 tw:py-2 tw:text-sm
+          tw:text-[var(--color-font-dark)] tw:font-normal
+          ${option.divider ? 'tw:border-t tw:border-orange-500 tw:mt-1' : ''}
+        `,
+              onClick: () => {
+                option?.onClick?.();
+                setIsOpen(false);
+              }
+            };
 
             return option?.href ? (
-              <Link
-                key={option.value}
-                className='dropdown-item'
-                disabled={option.disabled}
-                href={option?.href}
-              >
-                {option?.icon && <Icon icon={option.icon} />}
+              <Link {...commonProps} href={option.href}>
+                {option.icon && <span className="tw:mr-2">{option.icon}</span>}
                 {option.label}
               </Link>
             ) : (
-              <button
-                key={option.value}
-                className='dropdown-item'
-                style={{
-                  borderTop: option.divider ? '2px solid #fc4a1a' : 'none',
-                  marginTop: option.divider ? '5px' : '0',
-                  // paddingBottom: option.divider ? '5px' : '0',
-                }}
-                disabled={option.disabled}
-                onClick={() => {
-                  option?.onClick && option?.onClick(option)
-                  setIsOpen(false)
-                }}
-              >
-                {option?.icon && <Icon icon={option.icon} />}
+              <button {...commonProps} disabled={option.disabled}>
+                {option.icon && <span className="tw:mr-2">{option.icon}</span>}
                 {option.label}
               </button>
-            )
+            );
           })}
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Dropdown
+export default DropdownMenu;

@@ -25,6 +25,16 @@ import { toast } from 'react-toastify'
 import DwellingClaimsPage from './claim'
 import axios from 'axios'
 import CustomerNotification from '@/components/common/customerNotification'
+import { FaRegArrowAltCircleDown, FaRegEdit, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
+import { IoWarningOutline } from 'react-icons/io5'
+import { FiEye } from 'react-icons/fi'
+import { GrUpgrade } from "react-icons/gr";
+import { BsThreeDots } from "react-icons/bs";
+import { RiDeleteBin7Line, RiDeleteBinLine } from "react-icons/ri";
+import Link from 'next/link'
+
+
+
 
 const DwellingsPage = ({ locale }) => {
   const { data: session } = useSession()
@@ -89,8 +99,8 @@ const DwellingsPage = ({ locale }) => {
         status: {
           $eq:
             filter?.key === 'PENDING' ||
-            filter?.key === 'RENT' ||
-            filter?.key === 'AVAILABLE'
+              filter?.key === 'RENT' ||
+              filter?.key === 'AVAILABLE'
               ? filter?.key
               : undefined,
         },
@@ -169,263 +179,218 @@ const DwellingsPage = ({ locale }) => {
 
   const columns = [
     {
-      Header: t('table.image'),
-      Cell: item => {
-        const url = item?.galleries?.[0]?.image?.url
-          ? item?.galleries?.[0]?.image?.url
-          : '/uploads/demo_cbcb7e3dc1.png'
-        return (
-          <span
-            style={{
-              width: '50px',
-              height: '50px',
-              display: 'block',
-              position: 'relative',
-
-            }}
-          >
-            <Image
-              src={exactPath(url)}
-              alt={item?.title}
-              fill
-              style={{ objectFit: 'cover' }}
-              className='border rounded-4'
-            />
-          </span>
-        )
-      },
-    },
-    {
       Header: t('table.title'),
       Cell: item => (
-        <span className='text-truncate'>
-          {item?.title?.length > 20
-            ? `${item?.title?.slice(0, 20)}...`
-            : item?.title || 'N/A'}
-        </span>
+        <div className="tw:flex tw:items-center tw:gap-3">
+          <div
+            className="tw:relative tw:w-[100px] tw:h-[100px] tw:p-[4.84px] tw:border-2 tw:border-solid tw:border-gray-200 tw:rounded-md"
+          >
+            <Image
+              src={exactPath(item?.galleries?.[0]?.image?.url
+                ? item?.galleries?.[0]?.image?.url
+                : '/uploads/demo_cbcb7e3dc1.png')}
+              alt={item?.title}
+              fill
+              className="tw:object-cover tw:rounded"
+            />
+          </div>
+          <span className="tw:text-sm tw:font-normal tw:text-[var(--color-font-dark)] ">
+            {item?.title?.length > 20
+              ? `${item?.title?.slice(0, 20)}...`
+              : item?.title || 'N/A'}
+          </span>
+        </div>
       ),
     },
     {
       Header: t('table.status'),
-      Cell: item => (
-        <span className=''>
-          {tStatus(item?.status) || 'N/A'}
-          <br />
-          <span className='d-flex align-items-center gap-2 text-blue-1 text-12'>
-            {item?.status === 'PENDING' && <Icon icon='formkit:warning' />}
-            {item?.status === 'PENDING'
-              ? tStatus('needs-admin-approval')
-              : null}
-          </span>
-        </span>
-      ),
+      Cell: item => {
+        let statusClass = '';
+        if (item?.status === 'AVAILABLE') {
+          statusClass = 'tw:bg-[var(--color-green-light)] tw:font-normal tw:text-[var(--color-green)]';
+        } else if (item?.status === 'PENDING') {
+          statusClass = 'tw:bg-[#FFECD1] tw:text-amber-600';
+        } else if (item?.status === 'CANCELLED') {
+          statusClass = 'tw:bg-[#FFDADE] tw:text-red-600';
+        }
+
+        return (
+          <div className="tw:flex tw:flex-col tw:gap-2">
+            <span className={`tw:inline-flex tw:items-center tw:justify-center tw:w-[76px] tw:h-[32px] tw:p-2 tw:rounded-lg tw:text-sm tw:font-medium ${statusClass}`}>
+              {item?.status === 'AVAILABLE' ? 'Approved' : tStatus(item?.status)}
+            </span>
+            {item?.status === 'PENDING' && (
+              <span className="tw:flex tw:items-center tw:gap-2 tw:text-blue-500 tw:text-xs">
+                <Icon icon='formkit:warning' />
+                {tStatus('needs-admin-approval')}
+              </span>
+            )}
+          </div>
+        );
+      },
     },
     {
       Header: t('table.owner'),
       Cell: item => {
         if (!item?.owner?.id) {
-          return <span className='badge w-100'>N/A</span>
+          return <span className='tw:badge'>N/A</span>;
         }
-
         return (
-          <span>
+          <span className='tw:text-sm tw:font-normal tw:text-[var(--color-font-dark)]'>
             {item?.owner?.name || ''}
             <br />
-            <span className='text-blue-1 text-12 lowercase'>
-              {item?.owner?.email ? item?.owner?.email : null}
+            <span className='tw:text-[var(--color-font-light)] tw:text-xs tw:lowercase'>
+              {item?.owner?.email || null}
             </span>
           </span>
-        )
+        );
       },
     },
     {
       Header: t('table.plan'),
       Cell: item => {
         if (!item?.subscription?.id) {
-          return <span className='badge w-100'>N/A</span>
-        } else {
-          return (
-            <span>
-              {tPlan(
-                `options.${item?.subscription?.package?.name?.toLowerCase()}`
-              ) || 'N/A'}
-              <span className='text-sm'>
-                {item?.subscription?.end_date &&
-                  ` (${formatDate(
-                    item?.subscription?.end_date,
-                    null,
-                    locale
-                  )})`}
-              </span>
-              <br />
-              <span
-                style={{
-                  display: 'flex',
-                  justifyContent: 'flex-start',
-                  alignItems: 'center',
-                  gap: '5px',
-                  color: 'orange',
-                  fontSize: '0.7rem',
-                }}
-              >
-                <Icon icon='pepicons-pop:reload' />
-                {item?.subscription?.end_date
-                  ? calculateRemainingTime(item?.subscription?.end_date)
-                  : 'Unlimited'}
-              </span>
-            </span>
-          )
-        }
-      },
-    },
-    {
-      Header: t('table.claims'),
-      Cell: item => (
-        <span>{item?.claims?.length > 0 ? item?.claims?.length : 'N/A'}</span>
-      ),
-    },
-    {
-      Header: t('table.created'),
-      Cell: item => <span>{formatDate(item?.createdAt, false, locale)}</span>,
-    },
-    {
-      Header: t('table.created_by'),
-      Cell: item => {
-        if (!item?.subscription?.user?.id) {
-          return <span className='badge w-100'>N/A</span>
+          return <span className='tw:badge'>N/A</span>;
         }
 
         return (
-          <span>
-            {item?.subscription?.user?.name || ''}
-            <br />
-            <span className='text-blue-1 text-12 lowercase'>
-              {item?.subscription?.user?.email
-                ? item?.subscription?.user?.email
-                : null}
+          <div className="tw:relative tw:group">
+            <span className='tw:text-[var(--color-primary)] tw:text-sm tw:font-normal'>
+              {tPlan(`options.${item?.subscription?.package?.name?.toLowerCase()}`) || 'N/A'}
+              {item?.subscription?.end_date &&
+                ` (${formatDate(item?.subscription?.end_date, null, locale)})`}
             </span>
-          </span>
-        )
+            {item?.status === 'PENDING' && (
+              <>
+                <IoWarningOutline className="tw:inline tw:ml-2 tw:text-yellow-500" />
+                <span className="tw:absolute tw:left-0 tw:bottom-full tw:mb-1 tw:p-2 tw:bg-white tw:shadow-md tw:rounded tw:text-xs tw:text-gray-600 tw:hidden group-tw:hover:block tw:z-10 tw:w-40">
+                  Needs admin approval
+                </span>
+              </>
+            )}
+          </div>
+        );
       },
-      hidden: session?.role === roles.user,
     },
     {
-      Header: t('table.translation'),
-      Cell: item =>
-        item?.localizations?.length > 0
-          ? item?.localizations?.map((lng, i) => (
-              <span key={i} className='capitalize'>
-                {lng.locale},{' '}
-              </span>
-            ))
-          : 'N/A',
-    },
-    {
-      Header: t('table.options'),
+      Header: t('table.created'),
       Cell: item => (
-        <div className=''>
-          <span className=''>
-            <DropdownMenu
-              label={t('control-panel.menu')}
-              options={[
-                {
-                  label: t('control-panel.edit'),
-                  value: 'edit',
-                  icon: 'fluent:edit-16-filled',
-                  href: `/dashboard/dwellings/form/${item?.id}?step=1`,
-                  disabled:
-                    item?.subscription?.user?.id === session?.id ||
-                    item?.owner?.id === session?.id
-                      ? false
-                      : true,
-                },
-
-                {
-                  label: t('control-panel.preview'),
-                  value: 'preview',
-                  icon: 'fluent:preview-link-20-regular',
-                  onClick: () => {
-                    setOpen(prev => ({ ...prev, preview: true }))
-                    setSelected(item)
-                  },
-                },
-                {
-                  label: t('control-panel.claims'),
-                  value: 'claims',
-                  icon: 'fluent:preview-link-20-regular',
-                  disabled: item?.owner?.id ? true : false,
-                  onClick: () => {
-                    setOpen(prev => ({ ...prev, claim: true }))
-                    setSelected(item)
-                  },
-                },
-                {
-                  label: t('control-panel.downgrade'),
-                  value: 'downgrade',
-                  icon: 'game-icons:armor-downgrade',
-                  disabled:
-                    session?.id !== item?.owner?.id ||
-                    !item?.subscription?.id ||
-                    !item?.subscription?.package?.name === 'Free'
-                      ? true
-                      : false,
-                  onClick: () => {
-                    if (item?.subscription?.pending_subscription?.id) {
-                      return toast.warn(t('messages.pending-subscription'))
-                    }
-                    setOpen(prev => ({ ...prev, downgrade: true }))
-                    setSelected(item)
-                  },
-                },
-                {
-                  label: t('control-panel.delete'),
-                  value: 'delete',
-                  icon: 'fluent:delete-16-filled',
-                  onClick: () => {
-                    // if (item?.subscription?.pending_subscription?.id) {
-                    //   return toast.warn(t('messages.pending-subscription'))
-                    // }
-
-                    setOpen(prev => ({ ...prev, delete: true }))
-                    setSelected(item)
-                  },
-                },
-
-                {
-                  label: t('control-panel.current-state'),
-                  value: 'status',
-                  icon: 'mdi:list-status',
-                  onClick: () => {
-                    setOpen(prev => ({ ...prev, review: true }))
-                    setSelected(item)
-                  },
-                },
-              ]}
-            />
-          </span>
-          {!item?.subscription?.id ? null : (item?.subscription?.user?.id ===
-              session?.id &&
-              item?.subscription?.package?.name !== 'Platinum') ||
-            (item?.owner?.id === session?.id &&
-              item?.subscription?.package?.name !== 'Platinum') ? (
-            <button
-              onClick={() => {
-                if (item?.subscription?.pending_subscription?.id) {
-                  return toast.warn(t('messages.pending-subscription'))
-                }
-
-                setOpen(prev => ({ ...prev, upgrade: true }))
-                setSelected(item)
-              }}
-              className='-dark-1 bg-blue-1 text-white  py-1 px-4 rounded-4 mt-5'
-            >
-              {t('control-panel.upgrade')}
-            </button>
-          ) : null}
-        </div>
+        <span className='tw:text-[var(--color-font-dark)] tw:font-normal tw:text-[14px] '>{formatDate(item?.createdAt, false, locale)}</span>
       ),
     },
-  ]
+    {
+      Header: "Action",
+      Cell: item => (
+        <div className="tw:flex tw:items-center tw:justify-end tw:gap-4">
+          {(!item?.subscription?.id ||
+            (item?.subscription?.user?.id === session?.id &&
+              item?.subscription?.package?.name !== 'Platinum') ||
+            (item?.owner?.id === session?.id &&
+              item?.subscription?.package?.name !== 'Platinum')) && (
+              <div className="tw:relative tw:group">
+                <button
+                  onClick={() => {
+                    if (item?.subscription?.pending_subscription?.id) {
+                      return toast.warn(t('messages.pending-subscription'));
+                    }
+                    setOpen(prev => ({ ...prev, upgrade: true }));
+                    setSelected(item);
+                  }}
+                  className="tw:text-[var(--color-red)] "
+                >
+                  <GrUpgrade size={24} />
+                </button>
+                <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10 
+                  tw:bottom-full tw:left-1/2 tw:-translate-x-[50%] tw:mb-2
+                  tw:w-[88px] tw:h-[36px] tw:px-6 tw:py-[10px]
+                  tw:items-center tw:justify-center tw:bg-white
+                  tw:rounded tw:shadow-sm tw:whitespace-nowrap 
+                  tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center">
+                  Upgrade
+                </div>
+              </div>
+            )}
+
+          <div className="tw:relative tw:group">
+
+            <Link href={`/dashboard/dwellings/form/${item?.id}?step=1`}>
+              <button className="tw:text-[var(--color-font-dark)]">
+                <FaRegEdit size={24} />
+              </button>
+            </Link>
+
+            <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10 
+                  tw:bottom-full tw:left-1/2 tw:-translate-x-[50%] tw:mb-2
+                  tw:w-[88px] tw:h-[36px] tw:px-6 tw:py-[10px]
+                  tw:items-center tw:justify-center tw:bg-white
+                  tw:rounded tw:shadow-sm tw:whitespace-nowrap 
+                  tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center">
+              Edit
+            </div>
+          </div>
+
+          <div className="tw:relative tw:group">
+            <button
+              onClick={() => {
+                setOpen(prev => ({ ...prev, preview: true }));
+                setSelected(item);
+              }}
+              className="tw:text-[var(--color-font-dark)] hover:tw:text-gray-700"
+            >
+              <FiEye size={24} />
+            </button>
+            <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10 
+                  tw:bottom-full tw:left-1/2 tw:-translate-x-1/2 tw:mb-2
+                  tw:w-[88px] tw:h-[36px] tw:px-6 tw:py-[10px]
+                  tw:items-center tw:justify-center tw:bg-white
+                  tw:rounded tw:shadow-sm tw:whitespace-nowrap 
+                  tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center">
+              View
+            </div>
+          </div>
+
+          <div className="tw:relative tw:group">
+            <DropdownMenu
+              trigger={
+                <BsThreeDots size={24} className="tw:text-[var(--color-font-dark)] " />
+              }
+              options={[
+                {
+                  value: 'downgrade',
+                  label: 'Downgrade',
+                  icon: <FaRegArrowAltCircleDown size={24} className="tw:text-[var(--color-font-dark)] " />,
+                  onClick: () => {
+                    if (item?.subscription?.pending_subscription?.id) {
+                      return toast.warn(t('messages.pending-subscription'));
+                    }
+                    setOpen(prev => ({ ...prev, downgrade: true }));
+                    setSelected(item);
+                  }
+                },
+                {
+                  value: 'delete',
+                  label: 'Delete',
+                  icon: <RiDeleteBinLine size={24} className="tw:text-[var(--color-font-dark)] " />,
+                  onClick: () => {
+                    setOpen(prev => ({ ...prev, delete: true }));
+                    setSelected(item);
+                  }
+                }
+              ]}
+            />
+            <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10 
+                  tw:bottom-full tw:left-1/2 tw:-translate-x-[50%] tw:mb-2
+                  tw:w-[88px] tw:h-[36px] tw:px-6 tw:py-[10px]
+                  tw:items-center tw:justify-center tw:bg-white
+                  tw:rounded tw:shadow-sm tw:whitespace-nowrap 
+                  tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center">
+              More
+            </div>
+          </div>
+        </div>
+      ),
+    }
+  ];
 
   const filterItems = [
     {
@@ -477,16 +442,16 @@ const DwellingsPage = ({ locale }) => {
   const actions =
     !userProfileLoading && userProfile?.address && userProfile?.phone
       ? [
-          {
-            label: t('control-panel.create'),
-            href: `/dashboard/dwellings/form?step=0`,
-          },
-        ]
+        {
+          label: "Create a listing",
+          href: `/dashboard/dwellings/form?step=0`,
+        },
+      ]
       : []
 
   return (
     <>
-      <div className="tw:bg-red-500 tw:rounded-lg tw:min-h-[calc(100dvh-70px)] tw:max-h-[calc(100dvh-70px)] tw:p-6 tw:flex tw:flex-col">
+      <div className="tw:p-2">
         {!userProfileLoading && (
           <CustomerNotification user={userProfile} locale={locale} />
         )}
@@ -507,19 +472,27 @@ const DwellingsPage = ({ locale }) => {
           setSelectedFilter={value => setFilter(value)}
           childrenSide='left'
         >
+
+
           <button
             onClick={() => {
-              setSort(sort === 'asc' ? 'desc' : 'asc')
+              setSort(sort === 'asc' ? 'desc' : 'asc');
             }}
-            className=' button -sm -dark-1 bg-blue-1 text-white  col-auto'
+            className="tw:inline-flex tw:items-center tw:justify-center tw:w-[170px] tw:h-[40px] tw:gap-2 tw:pt-2 tw:pr-5 tw:pb-2 tw:pl-5 tw:text-sm tw:font-semibold tw:rounded-lg tw:border tw:border-solid tw:border-[#FF780B] tw:text-[#FF780B] tw:hover:bg-[#FF780B]/10 tw:transition-all tw:duration-200"
           >
             {sort === 'desc'
               ? t('control-panel.filters.old')
               : t('control-panel.filters.new')}
+
+            {sort === 'asc' ? (
+              <FaSortAmountUp className="tw:w-4 tw:h-4 tw:ml-1" />
+            ) : (
+              <FaSortAmountDown className="tw:w-4 tw:h-4 tw:ml-1" />
+            )}
           </button>
         </ControlPanel>
 
-        <div className='py-30 px-30 rounded-4 bg-white shadow-3'>
+        <div className='tw:rounded-lg tw:min-h-[calc(100dvh-150px)] tw:max-h-[calc(100dvh-150px)] tw:gap-[30px] tw:p-4 tw:flex tw:flex-col'>
           <Table isLoading={isLoading} data={data} columns={columns} />
 
           <Pagination
@@ -693,7 +666,7 @@ const DwellingsPage = ({ locale }) => {
             <span>{t('modal.delete.description')}</span>
           </div>
         </ConfirmModal>
-     </div>
+      </div>
     </>
   )
 }

@@ -25,60 +25,78 @@ const Table = ({
             alt="No invoices"
             className="tw:w-[300px] tw:h-[300px] tw:object-contain"
           />
-            <div className="tw:text-center font-secondary ">
-              <h3 className="tw:text-[24px] tw:font-medium tw:text-[var(--color-font-dark)] tw:mb-2">
+          <div className="tw:text-center font-secondary ">
+            <h3 className="tw:text-[24px] tw:font-medium tw:text-[var(--color-font-dark)] tw:mb-2">
               No invoice found
             </h3>
-              <p className="tw:text-[var(--color-font-regular)] tw:text-[16px] tw:font-normal">
+            <p className="tw:text-[var(--color-font-regular)] tw:text-[16px] tw:font-normal">
               Your invoice list is currently empty. Once invoices are generated, they'll appear here.
             </p>
           </div>
         </div>
       ) : (
-        <table className="tw:w-full">
-          <thead className="tw:bg-gray-50">
-            <tr>
-              {columns.map((column, index) => {
-                return column.hidden ? null : (
-                  <th
-                    key={index}
-                    colSpan={column.colSpan || 1}
-                    className="tw:p-3 tw:text-left tw:font-medium tw:text-gray-700"
+            <table className="tw:w-full font-secondary">
+              <thead>
+                <tr className="tw:border-b tw:border-[#D8E0ED]">
+                  {columns.map((column, index) => {
+                    return column.hidden ? null : (
+                      <th
+                        key={index}
+                        colSpan={column.colSpan || 1}
+                                    className={`
+                          tw:w-[1102px] 
+                          tw:h-[68px] 
+                          tw:p-[26px] 
+                          tw:bg-[#FAFBFC]
+                          tw:font-normal 
+                          tw:text-[14px]
+                         tw:text-[var(--color-font-regular)]
+                          tw:border-b 
+                          tw:border-[#D8E0ED]
+                          ${column.Header === 'Action' ? 'tw:text-right' : 'tw:text-left'}
+                        `}
+                      >
+                        {column.Header}
+                      </th>
+                    );
+                  })}
+                </tr>
+              </thead>
+              <tbody>
+                {data?.map((row, rowIndex) => (
+                  <tr
+                    key={rowIndex}
+                    onClick={onClick && (() => onClick(row))}
+                    className="
+                      tw:w-[1102px]
+                      tw:h-[152px]
+                      tw:gap-[30px]
+                      tw:bg-white
+                      tw:border-b
+                      tw:border-gray-200
+                      hover:tw:bg-gray-50
+                    "
                   >
-                    {column.Header}
-                  </th>
-                );
-              })}
-            </tr>
-          </thead>
-          <tbody>
-            {data?.map((row, rowIndex) => (
-              <tr
-                key={rowIndex}
-                onClick={onClick && (() => onClick(row))}
-                className="tw:hover:bg-gray-50 tw:border-t tw:border-gray-100"
-              >
-                {columns.map((column, colIndex) => {
-                  return column.hidden ? null : (
-                    <td
-                      key={colIndex}
-                      colSpan={column.colSpan || 1}
-                      className="tw:p-3 tw:text-gray-600"
-                    >
-                      {column.accessor
-                        ? typeof column.accessor === "function"
-                          ? column.accessor(row)
-                          : row[column.accessor]
-                        : typeof column.Cell === "function"
-                          ? column.Cell(row)
-                          : row[column.id]}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                    {columns.map((column, colIndex) => (
+                      !column.hidden && (
+                        <td
+                          key={colIndex}
+                          colSpan={column.colSpan || 1}
+                          className=" tw:p-[26px]  tw:text-gray-600" >
+                          {column.accessor
+                            ? typeof column.accessor === "function"
+                              ? column.accessor(row)
+                              : row[column.accessor]
+                            : typeof column.Cell === "function"
+                              ? column.Cell(row)
+                              : row[column.id]}
+                        </td>
+                      )
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
       )}
     </div>
   );

@@ -86,17 +86,17 @@ const InvoicePage = ({ locale }) => {
   ];
   return (
     <>
-      <ControlPanel
+      {/* <ControlPanel
         title={t("title")}
-        // description={t('description')}
+        description={t('description')}
         isSearchable={false}
         breadcrumbs={[
           t("control-panel.breadcrumb.1"),
           t("control-panel.breadcrumb.2"),
         ]}
-      />
+      /> */}
 
-      <div className=" tw:rounded-lg tw:min-h-[calc(100dvh-70px)] tw:max-h-[calc(100dvh-70px)] tw:p-6 tw:flex tw:flex-col">
+      <div className=" tw:rounded-lg tw:min-h-[calc(100dvh-70px)] tw:mt-12 tw:max-h-[calc(100dvh-70px)] tw:p-6 tw:flex tw:flex-col">
         <Table isLoading={loading} data={invoices || []} columns={columns} />
       </div>
     </>
