@@ -50,7 +50,7 @@ export default function TextEditor({
   ];
 
   return (
-    <div className="tw:relative tw:flex tw:flex-col tw:gap-2">
+    <div className="tw:relative tw:flex tw:flex-col tw:gap-2 max-w-1/2">
       <ReactQuill
         modules={modules}
         formats={formats}

@@ -183,7 +183,7 @@ const DwellingForm = ({
 
             <div className="tw:flex tw:flex-col tw:md:flex-row tw:w-full tw:gap-6 font-secondary">
               {/* Left Column */}
-              <div className="tw:flex tw:flex-col tw:gap-6 tw:flex-1">
+              <div className="tw:flex tw:flex-col tw:gap-6 tw:flex-1 tw:max-w-[74vw] tw:md:max-w-[35vw] tw:h-min">
                 {translation && (
                   <div className="tw:w-full">
                     <Input
