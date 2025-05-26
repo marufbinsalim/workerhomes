@@ -451,7 +451,7 @@ const DwellingsPage = ({ locale }) => {
 
   return (
     <>
-      <div className="tw:p-2">
+      <div className="">
         {!userProfileLoading && (
           <CustomerNotification user={userProfile} locale={locale} />
         )}
@@ -473,26 +473,25 @@ const DwellingsPage = ({ locale }) => {
           childrenSide='left'
         >
 
+            <button
+              onClick={() => {
+                setSort(sort === 'asc' ? 'desc' : 'asc');
+              }}
+              className="tw:inline-flex tw:items-center tw:justify-center tw:min-w-[180px] tw:h-[40px] tw:gap-2 tw:pt-2 tw:pr-5 tw:pb-2 tw:pl-5 tw:text-sm tw:font-semibold tw:rounded-lg tw:border tw:border-solid tw:border-[#FF780B] tw:text-[#FF780B] tw:hover:bg-[#FF780B]/10 tw:transition-all tw:duration-200"
+            >
+              {sort === 'desc'
+                ? t('control-panel.filters.old')
+                : t('control-panel.filters.new')}
 
-          <button
-            onClick={() => {
-              setSort(sort === 'asc' ? 'desc' : 'asc');
-            }}
-            className="tw:inline-flex tw:items-center tw:justify-center tw:w-[170px] tw:h-[40px] tw:gap-2 tw:pt-2 tw:pr-5 tw:pb-2 tw:pl-5 tw:text-sm tw:font-semibold tw:rounded-lg tw:border tw:border-solid tw:border-[#FF780B] tw:text-[#FF780B] tw:hover:bg-[#FF780B]/10 tw:transition-all tw:duration-200"
-          >
-            {sort === 'desc'
-              ? t('control-panel.filters.old')
-              : t('control-panel.filters.new')}
-
-            {sort === 'asc' ? (
-              <FaSortAmountUp className="tw:w-4 tw:h-4 tw:ml-1" />
-            ) : (
-              <FaSortAmountDown className="tw:w-4 tw:h-4 tw:ml-1" />
-            )}
-          </button>
+              {sort === 'asc' ? (
+                <FaSortAmountUp className="tw:w-4 tw:h-4 tw:ml-1" />
+              ) : (
+                <FaSortAmountDown className="tw:w-4 tw:h-4 tw:ml-1" />
+              )}
+            </button>
         </ControlPanel>
 
-        <div className='tw:rounded-lg tw:min-h-[calc(100dvh-150px)] tw:max-h-[calc(100dvh-150px)] tw:gap-[30px] tw:p-4 tw:flex tw:flex-col'>
+        <div className='tw:rounded-lg tw:min-h-[calc(100dvh-150px)] tw:max-h-[calc(100dvh-150px)] tw:gap-[30px] tw:md:p-4 tw:flex tw:flex-col'>
           <Table isLoading={isLoading} data={data} columns={columns} />
 
           <Pagination
@@ -508,6 +507,7 @@ const DwellingsPage = ({ locale }) => {
           setOpen={value => handleOnClose(value)}
           title={selected?.id ? t('modal.update.title') : t('modal.create.title')}
         >
+          
           <DwellingFormStep
             formState={formState}
             setFormState={setFormState}

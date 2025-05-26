@@ -307,7 +307,7 @@
 
 /* CUSTOM FORM STYLES */
 
-.form-page-container {
+/* .form-page-container {
     width: 100%;
     margin: 10px auto;
     min-height: 100dvh;
@@ -318,7 +318,7 @@
         margin: 0 auto;
         width: 100%;
     }
-}
+} */
 
 @media screen and (min-width: 1024px) {
     .form-page-container {
@@ -381,12 +381,12 @@
     border: 2px solid #dc3545 !important;
 }
 
-.form-select {
+/* .form-select {
     padding: 0.75rem !important;
     background-image: none !important;
     min-height: 80px;
     border-radius: 3px;
-}
+} */
 
 /* TABLE STYLES */
 .table-row {
@@ -594,8 +594,7 @@
 
 /* FORM STEP TAB STYLES */
 
-.stepper {
-    /* overflow: hidden; */
+/* .stepper {
     width: 100%;
 }
 
@@ -606,7 +605,6 @@
 
 .tab {
     padding: 10px 15px;
-    /* cursor: pointer; */
     background-color: #f9f9f9;
     width: 100%;
     text-align: center;
@@ -628,7 +626,7 @@
     align-items: center;
     padding: 10px 0px;
     gap: 10px;
-}
+} */
 
 .buttons button {
     padding: 8px 16px;
@@ -722,7 +720,7 @@
 
 /* FORM WRAPPER STYLES */
 
-.form-wrapper-container {
+/* .form-wrapper-container {
     height: 100%;
     width: 100%;
 }
@@ -756,7 +754,7 @@
 
 .form-wrapper-body-header svg {
     cursor: pointer;
-}
+} */
 
 /* DIVIDER STYLES */
 
@@ -1368,3 +1366,4 @@
     height: 8px !important;
     border-radius: 8px !important;
 }
+

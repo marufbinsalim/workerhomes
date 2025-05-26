@@ -79,19 +79,27 @@ const DwellingFormStep = ({
       }}
     >
       {formState?.id || plan ? null : (
-        <Step actions title={t('form.tabs.package')}>
-          <PackageSelector
-            onChange={plan => {
-              setFormState(prevState => ({
-                ...prevState,
-                package: plan,
-              }))
+        <Step actions title={t('form.tabs.package')} >
+          <div className='tw:flex tw:flex-col'>
+            <div className='tw:mb-8 font-secondary'>
+              <h1 className='tw:text-[20px] tw:font-semibold tw:mb-2 tw:text-[var(--color-font-dark)]'>Choose a plan</h1>
+              <p className='tw:text-[var(--color-font-regular)] tw:text-[14px] tw:font-normal'>Choose a plan that's best suited for your need.</p>
+            </div>
+            <PackageSelector
+              onChange={plan => {
+                setFormState(prevState => ({
+                  ...prevState,
+                  package: plan,
+                }))
 
-              setStep(1)
-              router.push(pathname + '?' + createQueryString('step', 1))
-            }}
-            value={formState?.package}
-          />
+                setStep(1)
+                router.push(pathname + '?' + createQueryString('step', 1))
+              }}
+              value={formState?.package}
+            />
+          </div>
+
+
         </Step>
       )}
       <Step actions title={t('form.tabs.listing')}>

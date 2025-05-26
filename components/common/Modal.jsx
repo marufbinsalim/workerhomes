@@ -8,7 +8,7 @@ const Modal = ({
   children,
 }) => {
   return (
-    <div className={`modal ${open ? 'open' : ''}`}>
+    <div className={`modal  ${open ? 'open' : ''}`}>
       <div className='modal-overlay' onClick={() => setOpen(false)}></div>
       <div
         className='modal-content'
@@ -42,7 +42,7 @@ const Modal = ({
             <i className='icon-close' />
           </button>
         </div>
-        <div className='modal-body px-30 py-30 sm:px-15 sm:py-15'>
+        <div className='modal-body  px-30 py-30 sm:px-15 sm:py-15'>
           {children}
         </div>
       </div>

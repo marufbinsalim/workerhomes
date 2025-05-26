@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { FiDownload } from "react-icons/fi";
 
 const InvoicePage = ({ locale }) => {
   const t = useTranslations("invoice");
@@ -43,7 +44,7 @@ const InvoicePage = ({ locale }) => {
     {
       Header: t("table.date"),
       Cell: (item) => (
-        <span>
+        <span className="tw:text-sm tw:ml-1 tw:font-normal tw:text-[var(--color-font-dark)]">
           {item?.period_start
             ? formatDate(moment(item?.period_start * 1000), false, locale)
             : "N/A"}
@@ -51,9 +52,27 @@ const InvoicePage = ({ locale }) => {
       ),
     },
     {
-      Header: t("table.name"),
+      Header: "Name",
+      Cell: (item) => {
+        // Handle empty/null/undefined title cases
+        const displayTitle = item?.title?.trim(); // Remove whitespace if exists
+        console.log("Display Title:", displayTitle);
+        return (
+          <span className="tw:text-sm tw:font-normal tw:ml-1 tw:text-[var(--color-font-dark)]">
+            {displayTitle && displayTitle.length > 0
+              ? (displayTitle.length > 20
+                ? `${displayTitle.slice(0, 20)}...`
+                : displayTitle)
+              : 'N/A'}
+          </span>
+        );
+      },
+    },
+
+    {
+      Header: "Package Name",
       Cell: (item) => (
-        <span>
+        <span className="tw:text-sm tw:font-normal tw:ml-1 tw:text-[var(--color-font-dark)]">
           {item?.lines?.map((lineItem) => (
             <p key={lineItem.id} className="text-brand">
               {lineItem.price.product.name}
@@ -65,7 +84,7 @@ const InvoicePage = ({ locale }) => {
     {
       Header: t("table.cost"),
       Cell: (item) => (
-        <span className="text-brand">
+        <span className="text-brand tw:ml-1 tw:text-sm tw:font-normal tw:text-[var(--color-font-dark)]">
           {item?.amount_paid ? item?.amount_paid / 100 : 0}{" "}
           <span className="uppercase">{item?.currency}</span>
         </span>
@@ -79,7 +98,7 @@ const InvoicePage = ({ locale }) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {t("table.download")}
+          <FiDownload size={24} />
         </Link>
       ),
     },
@@ -96,8 +115,26 @@ const InvoicePage = ({ locale }) => {
         ]}
       /> */}
 
-      <div className=" tw:rounded-lg tw:min-h-[calc(100dvh-70px)] tw:mt-12 tw:max-h-[calc(100dvh-70px)] tw:p-6 tw:flex tw:flex-col">
-        <Table isLoading={loading} data={invoices || []} columns={columns} />
+      <div className=" tw:rounded-lg tw:min-h-[calc(100dvh-70px)] tw:mt-12 tw:max-h-[calc(100dvh-70px)] tw:md:p-6 tw:gap-[30px] tw:flex tw:flex-col">
+        <Table isLoading={loading} data={invoices || []} columns={columns}
+          emptyState={
+            <div className="tw:h-full tw:flex tw:flex-col tw:items-center tw:justify-center tw:gap-4 tw:p-8">
+              <img
+                src="/assets/invoiceNotFound.png"
+                alt="No invoices"
+                className="tw:w-[300px] tw:h-[300px] tw:object-contain"
+              />
+              <div className="tw:text-center font-secondary">
+                <h3 className="tw:text-[24px] tw:font-medium tw:text-[var(--color-font-dark)] tw:mb-2">
+                  No invoices found
+                </h3>
+                <p className="tw:text-[var(--color-font-regular)] tw:text-[16px] tw:font-normal">
+                  Your invoice list is currently empty...
+                </p>
+              </div>
+            </div>
+        }
+        />
       </div>
     </>
   );

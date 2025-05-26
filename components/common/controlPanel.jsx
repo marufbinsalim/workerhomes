@@ -29,36 +29,39 @@ const ControlPanel = ({
   }, [])
 
   return (
-    <div className='tw:w-full  tw:mt-18 font-secondary tw:px-[20px] tw:flex tw:flex-col '>
-      <div className='tw:w-full tw:flex tw:flex-col tw:md:flex-row tw:justify-between tw:items-start '>
-        <div className=''>
-          <div className=' '>
-            {actions &&
-              actions?.map((action, index) => {
-                if (!action?.hidden) {
-                  return action?.href ? (
-                    <Link
-                      href={action?.href}
-                      className="tw:inline-flex tw:items-center tw:gap-[8px] tw:w-[174px] tw:h-[40px] tw:pt-[8px] tw:pr-[20px] tw:pb-[8px] tw:pl-[20px] tw:text-sm tw:font-semibold tw:bg-[#FF780B] tw:text-white hover:tw:bg-[#E56B08] tw:justify-center"
-                      key={index}
-                    >
-                      <FiPlus className="tw:w-6 tw:h-6" /> {/* Adjust size as needed */}
-                      {action?.label}
-                    </Link>
-                  ) : (
-                    <button
-                      key={index}
-                      onClick={action?.onClick}
-                      type={action?.type || 'button'}
-                      className='tw:inline-flex tw:items-center tw:px-4 tw:py-2 tw:text-sm tw:font-medium tw:rounded-md tw:bg-blue-600 tw:text-white hover:tw:bg-blue-700 tw:mr-2'
-                    >
-                      {action?.label}
-                    </button>
-                  )
-                }
-                return null;
-              })}
+    <div className='tw:w-full tw:mt-18 font-secondary tw:md:px-[20px] tw:flex tw:flex-col'>
+      <div className='tw:w-full tw:flex  tw:flex-row tw:gap-4 tw:md:justify-between tw:md:items-start'>
+        {/* Left Section - Actions and Filters */}
+        <div className='tw:flex tw:flex-col  tw:gap-4 tw:sm:flex-row tw:sm:items-center tw:sm:gap-2'>
+          {/* Actions */}
+          <div className='tw:flex tw:flex-wrap tw:gap-2'>
+            {actions?.map((action, index) => {
+              if (!action?.hidden) {
+                return action?.href ? (
+                  <Link
+                    href={action?.href}
+                    className="tw:inline-flex tw:items-center tw:justify-center tw:gap-2 tw:min-w-[174px] tw:h-[40px] tw:px-5 tw:py-2 tw:text-sm tw:font-semibold tw:rounded-lg tw:bg-[#FF780B] tw:text-white hover:tw:bg-[#E56B08]"
+                    key={index}
+                  >
+                    <FiPlus className="tw:w-5 tw:h-5" />
+                    {action?.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={index}
+                    onClick={action?.onClick}
+                    type={action?.type || 'button'}
+                    className='tw:inline-flex tw:items-center tw:justify-center tw:px-4 tw:py-2 tw:text-sm tw:font-medium tw:rounded-md tw:bg-blue-600 tw:text-white hover:tw:bg-blue-700'
+                  >
+                    {action?.label}
+                  </button>
+                );
+              }
+              return null;
+            })}
           </div>
+
+          {/* Filters */}
           {filterItems?.length > 0 && (
             <ListFilter
               items={filterItems}
@@ -68,19 +71,24 @@ const ControlPanel = ({
           )}
         </div>
 
-        <div className='tw:w-full tw:md:w-1/3 tw:flex tw:flex-wrap tw:gap-2 tw:items-end tw:justify-end'>
-          {childrenSide === 'left' && children}
+        {/* Right Section - Search and Children */}
+        <div className='tw:flex tw:flex-col tw:gap-4  tw:mb-3 tw:md:mb-0 tw:sm:flex-row tw:sm:items-center tw:sm:justify-end tw:md:w-1/3'>
+          {/* Children on left (mobile first) */}
+          {childrenSide === 'left' && (
+            <div className='tw:w-full tw:sm:w-auto'>
+              {children}
+            </div>
+          )}
 
+          {/* Search */}
           {isSearchable && (
-            <div className='tw:flex-shrink-0'>
-              <div className='tw:relative tw:flex tw:items-center tw:md:hidden'>
+            <div className='tw:w-full tw:sm:w-auto'>
+              <div className='tw:relative tw:flex tw:items-center'>
                 <input
                   onChange={e => setSearch(e.target.value)}
                   value={search}
-                  className='tw:pl-12 tw:border tw:border-gray-300 tw:text-gray-800 tw:rounded-lg tw:py-2 tw:pr-3 focus:tw:outline-none focus:tw:ring-2 focus:tw:ring-blue-500 focus:tw:border-blue-500'
-                  style={{
-                    height: '40px',
-                  }}
+                  className='tw:w-full tw:sm:w-64 tw:pl-10 tw:border tw:border-gray-300 tw:text-gray-800 tw:rounded-lg tw:py-2 tw:pr-3 tw:focus:outline-none tw:focus:ring-1 tw:focus:ring-[var(--color-primary)] tw:focus:border-[var(--color-primary)]'
+                  style={{ height: '40px' }}
                   type='search'
                   placeholder={searchPlaceholder || 'Search...'}
                 />
@@ -91,15 +99,16 @@ const ControlPanel = ({
             </div>
           )}
 
-          {children && childrenSide === 'right' && (
-            <div className='tw:flex-shrink-0'>
-              {childrenSide === 'right' && children}
+          {/* Children on right */}
+          {childrenSide === 'right' && (
+            <div className='tw:w-full tw:sm:w-auto'>
+              {children}
             </div>
           )}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default ControlPanel
