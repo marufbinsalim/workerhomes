@@ -33,6 +33,26 @@
     --color-red-light: #ffdade;
 }
 
+.hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+.hide-scrollbar ::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+/* hide scroll should work above 768px */
+
+@media (max-width: 768px) {
+    .hide-scrollbar {
+        scrollbar-width: auto; /* Firefox */
+        -ms-overflow-style: auto; /* Internet Explorer 10+ */
+    }
+    .hide-scrollbar ::-webkit-scrollbar {
+        display: block; /* Safari and Chrome */
+    }
+}
+
 * {
     box-sizing: border-box;
 }
@@ -1366,4 +1386,3 @@
     height: 8px !important;
     border-radius: 8px !important;
 }
-

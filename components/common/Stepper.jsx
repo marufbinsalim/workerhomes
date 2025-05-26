@@ -1,114 +1,130 @@
-'use client'
+"use client";
 
-import { Icon } from '@iconify/react'
-import { useTranslations } from 'next-intl'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import React, { useCallback, useEffect, useState } from 'react'
+import { Icon } from "@iconify/react";
+import { useTranslations } from "next-intl";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import React, { useCallback, useEffect, useState } from "react";
 import { GoHorizontalRule } from "react-icons/go";
 
-
 const Stepper = ({ children, onStepChange, error }) => {
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const activeStep = parseInt(searchParams.get('step')) || 0
-  const isFirstStep = activeStep === 0
-  const isLastStep = activeStep === children.length - 1
-  const t = useTranslations('dwellings')
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const activeStep = parseInt(searchParams.get("step")) || 0;
+  const isFirstStep = activeStep === 0;
+  const isLastStep = activeStep === children.length - 1;
+  const t = useTranslations("dwellings");
 
   const createQueryString = useCallback(
     (name, value) => {
-      const params = new URLSearchParams(searchParams.toString())
-      params.set(name, value)
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
 
-      return params.toString()
+      return params.toString();
     },
-    [searchParams]
-  )
+    [searchParams],
+  );
 
   const handlePrevStep = () => {
-    if (activeStep === 0 || isFirstStep) return
-    onStepChange(activeStep - 1)
-    router.push(pathname + '?' + createQueryString('step', activeStep - 1))
-  }
+    if (activeStep === 0 || isFirstStep) return;
+    onStepChange(activeStep - 1);
+    router.push(pathname + "?" + createQueryString("step", activeStep - 1));
+  };
 
   const handleNextStep = () => {
-    if (activeStep === children.length - 1 || isLastStep || error) return
-    onStepChange(activeStep + 1)
-    router.push(pathname + '?' + createQueryString('step', activeStep + 1))
-  }
+    if (activeStep === children.length - 1 || isLastStep || error) return;
+    onStepChange(activeStep + 1);
+    router.push(pathname + "?" + createQueryString("step", activeStep + 1));
+  };
 
-  const currentStep = children[activeStep]
-  const currentStepActions = currentStep?.props?.actions
-  const currentStepTitle = currentStep?.props?.title
+  const currentStep = children[activeStep];
+  const currentStepActions = currentStep?.props?.actions;
+  const currentStepTitle = currentStep?.props?.title;
 
   useEffect(() => {
     if (error) {
-      onStepChange(1)
-      router.push(pathname + '?' + createQueryString('step', 0))
+      onStepChange(1);
+      router.push(pathname + "?" + createQueryString("step", 0));
     }
-  }, [error])
+  }, [error]);
 
   return (
-    <div className="tw:relative font-secondary tw:w-full  tw:bg-white ">
-      {/* Fixed position container that doesn't move */}
-      <div className="tw:fixed  tw:left-[var(--dashboard-width)] tw:overflow-auto tw:right-0 tw:top-0 tw:bottom-0  tw:transition-all tw:duration-500 tw:ease-out-cubic">
-        <div className="tw:max-w-[1600px]  tw:mx-auto tw:px-4 tw:py-4">
-          {/* Stepper header */}
-          <div className='tw:bg-white tw:flex tw:flex-col tw:items-center tw:my-15 tw:rounded-lg tw:px-10 tw:py-4'>
-            <div className='tw:w-full tw:flex tw:gap-1 tw:pb-4 tw:overflow-x-auto'>
-              {children.map((child, index) => {
-                if (!child) return null
-                return (
+    // <div className="tw:relative font-secondary tw:w-full tw:bg-red-400">
+    // {/* Fixed position container that doesn't move */}
+    <div className="tw:left-[var(--dashboard-width)] tw:overflow-auto tw:transition-all tw:duration-500 tw:ease-out-cubic">
+      <div className="tw:mx-auto tw:px-4 tw:py-4">
+        {/* Stepper header */}
+        <div
+          className={`tw:bg-white tw:flex tw:flex-col tw:items-center tw:my-15 tw:rounded-lg tw:px-10 tw:py-4 tw:max-h-[calc(100dvh-100px)]
+            tw:overflow-auto
+            ${activeStep === 0 ? "hide-scrollbar" : ""}
+            `}
+        >
+          <div className="tw:w-full tw:flex tw:gap-1 tw:pb-4 tw:overflow-x-auto tw:min-h-[100px]">
+            {children.map((child, index) => {
+              if (!child) return null;
+              return (
+                <div
+                  key={index}
+                  className={`tw:flex tw:items-center tw:flex-shrink-0 ${activeStep === index ? "tw:font-medium " : "tw:text-[#B7B7B7] tw:text-[16px] tw:font-medium "}`}
+                >
                   <div
-                    key={index}
-                    className={`tw:flex tw:items-center tw:flex-shrink-0 ${activeStep === index ? 'tw:font-medium ' : 'tw:text-[#B7B7B7] tw:text-[16px] tw:font-medium '}`}
+                    className={`tw:flex tw:items-center tw:justify-center tw:mr-2 ${
+                      activeStep === index
+                        ? "tw:w-10 tw:h-10 tw:gap-[10px] tw:p-[10px] tw:border tw:border-solid tw:border-[var(--color-primary)]  tw:rounded-[20px] tw:bg-white tw:text-[var(--color-primary)]"
+                        : "tw:w-10 tw:h-10 tw:border tw:border-[#D8E0ED] tw:rounded-full tw:bg-white"
+                    }`}
                   >
-                    <div className={`tw:flex tw:items-center tw:justify-center tw:mr-2 ${activeStep === index
-                      ? 'tw:w-10 tw:h-10 tw:gap-[10px] tw:p-[10px] tw:border tw:border-solid tw:border-[var(--color-primary)]  tw:rounded-[20px] tw:bg-white tw:text-[var(--color-primary)]'
-                      : 'tw:w-10 tw:h-10 tw:border tw:border-[#D8E0ED] tw:rounded-full tw:bg-white'
-                      }`}>
-                      {index + 1}
+                    {index + 1}
+                  </div>
+                  <span
+                    className={`tw:text-lg ${activeStep === index ? "tw:text-[var(--color-primary)] tw:font-medium tw:text-[15px]" : "tw:text-[#B7B7B7] tw:font-medium tw:text-[15px]"}`}
+                  >
+                    {child?.props?.title || ""}
+                  </span>
+                  {index < children.length - 1 && (
+                    <div className="tw:mx-2">
+                      <div className="tw:w-[50px] tw:h-[2px] tw:bg-[#D8E0ED]"></div>
                     </div>
-                    <span className={`tw:text-lg ${activeStep === index ? 'tw:text-[var(--color-primary)] tw:font-medium tw:text-[15px]' : 'tw:text-[#B7B7B7] tw:font-medium tw:text-[15px]'}`}>
-                      {child?.props?.title || ''}
-                    </span>
-                    {index < children.length - 1 && (
-                      <div className='tw:mx-2'>
-                        <div className='tw:w-[50px] tw:h-[2px] tw:bg-[#D8E0ED]'></div>
-                      </div>
-                    )}
+                  )}
                 </div>
-                )
-              })}
-            </div>
-            {currentStep}
+              );
+            })}
           </div>
-         
           {/* Prev button */}
           {!isFirstStep && (
-            <div className='tw:mt-8'>
+            <div className="tw:mt-8">
               <button
-                className='tw:flex tw:items-center tw:justify-center tw:text-blue-600 tw:hover:text-blue-800 tw:font-medium tw:text-lg'
+                className="tw:flex tw:items-center tw:justify-center tw:text-blue-600 tw:hover:text-blue-800 tw:font-medium tw:text-lg"
                 onClick={handlePrevStep}
               >
-                <Icon icon='akar-icons:arrow-left' className='tw:mr-2' width={24} />
-                {t('control-panel.prev')}
+                <Icon
+                  icon="akar-icons:arrow-left"
+                  className="tw:mr-2"
+                  width={24}
+                />
+                {t("control-panel.prev")}
               </button>
             </div>
           )}
+          {currentStep}
         </div>
       </div>
     </div>
-  )
-}
+    // </div>
+  );
+};
 
-export default Stepper
+export default Stepper;
 
 export const Step = ({ children, title, actions = false }) => {
   return (
-    <div className='tw:rounded-lg tw:w-full tw:flex tw:justify-start tw:py-[30px]' data-title={title} data-actions={actions}>
+    <div
+      className="tw:rounded-lg tw:w-full tw:flex tw:justify-start tw:py-[30px]"
+      data-title={title}
+      data-actions={actions}
+    >
       {children}
     </div>
-  )
-}
+  );
+};
