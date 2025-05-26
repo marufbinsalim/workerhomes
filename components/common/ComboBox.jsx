@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import useFetch from '@/hooks/useFetch'
-import { Icon } from '@iconify/react'
+import { useEffect, useState } from "react";
+import useFetch from "@/hooks/useFetch";
+import { Icon } from "@iconify/react";
 
 const ComboBox = ({
   label,
@@ -9,7 +9,7 @@ const ComboBox = ({
   onChange,
   error,
   placeholder,
-  locale = 'en',
+  locale = "en",
   value,
   keyValue,
   extraKeys = [],
@@ -22,17 +22,16 @@ const ComboBox = ({
   symbol,
   ...rest
 }) => {
-  const [changed, setChanged] = useState(false)
-
-  const [searchTerm, setSearchTerm] = useState('')
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [changed, setChanged] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const buildNestedFilter = (keyPath, value) => {
-    const keys = keyPath.split('.')
+    const keys = keyPath.split(".");
     return keys.reduceRight((acc, key) => ({ [key]: acc }), {
       $containsi: value,
-    })
-  }
+    });
+  };
 
   const {
     data: MainData,
@@ -47,282 +46,129 @@ const ComboBox = ({
         ...params?.filters,
         ...buildNestedFilter(keyValue, searchTerm || undefined),
       },
-
       locale,
-      sort: ['id:desc'],
+      sort: ["id:desc"],
     },
-  })
+  });
 
-  const data = isRole ? MainData?.roles : MainData
+  const data = isRole ? MainData?.roles : MainData;
 
   useEffect(() => {
     if (value) {
-      setSearchTerm(getNestedValue(value, keyValue) ?? '')
+      setSearchTerm(getNestedValue(value, keyValue) ?? "");
     }
-  }, [value])
+  }, [value]);
 
   const getNestedValue = (obj, path) => {
-    return path.split('.').reduce((acc, part) => acc && acc[part], obj)
-  }
+    return path.split(".").reduce((acc, part) => acc && acc[part], obj);
+  };
 
-  const handleItemClick = item => {
+  const handleItemClick = (item) => {
     if (multiple) {
       // Handle multiple selection logic here if needed
     } else {
       if (item?.id === value?.id) {
-        // If the item is already selected, deselect it
-        onChange(null)
-        setSearchTerm('')
+        onChange(null);
+        setSearchTerm("");
       } else {
-        // Otherwise, select the item
-        onChange(item)
-        setSearchTerm(getNestedValue(item, keyValue))
+        onChange(item);
+        setSearchTerm(getNestedValue(item, keyValue));
       }
     }
-    setIsDropdownOpen(false)
-  }
+    setIsDropdownOpen(false);
+  };
 
   useEffect(() => {
     if (selectedFirstItem && data) {
-      onChange(data?.[0])
+      onChange(data?.[0]);
     }
-  }, [selectedFirstItem, data])
+  }, [selectedFirstItem, data]);
 
   return (
-    <div>
-      <div
-        className={
-          error ? 'combobox-container has-error-border' : 'combobox-container'
-        }
-      >
-        <label className='lh-1 text-16 text-light-1' htmlFor={name}>
+    <div className="tw:mb-4 tw:w-full">
+      <div className={`tw:rounded tw:bg-white tw:w-full`}>
+        <label
+          className="tw:mb-1 tw:block tw:text-base tw:font-medium tw:text-gray-700"
+          htmlFor={name}
+        >
           {label}
-          {required && <span className='text-danger px-2'>*</span>}
+          {required && <span className="tw:text-red-500 tw:ml-1">*</span>}
         </label>
-        <div className='combobox-input-container'>
+        <div className="tw:relative">
           <input
-            type='text'
+            type="text"
             id={name}
             name={name}
-            onChange={e => {
-              setSearchTerm(e.target.value)
-              setIsDropdownOpen(true)
-              setChanged(true)
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setIsDropdownOpen(true);
+              setChanged(true);
             }}
             onClick={() => {
-              setIsDropdownOpen(!isDropdownOpen)
+              setIsDropdownOpen(!isDropdownOpen);
             }}
-            onBlur={e => {
+            onBlur={(e) => {
               if (!e.target.value) {
-                onChange(null)
-                setTouched && setTouched({ [name]: true })
+                onChange(null);
+                setTouched && setTouched({ [name]: true });
               }
-              setTimeout(() => setIsDropdownOpen(false), 200)
+              setTimeout(() => setIsDropdownOpen(false), 200);
             }}
             value={searchTerm}
             required={required}
-            placeholder={placeholder ?? 'Select an item'}
-            className='combobox-input capitalize'
+            placeholder={placeholder ?? "Select an item"}
+            className="tw:w-full tw:capitalize tw:rounded tw:border tw:border-gray-300 tw:p-2 tw:text-base tw:outline-none tw:focus:border-blue-500 tw:focus:ring-1 tw:focus:ring-blue-500"
             {...rest}
           />
           {isDropdownOpen && (
-            <div className='combobox-dropdown'>
+            <div className="tw:absolute tw:z-10 tw:mt-1 tw:w-full tw:max-h-60 tw:overflow-y-auto tw:rounded tw:border tw:border-gray-300 tw:bg-white tw:shadow-lg">
               {data?.length <= 0 ? (
-                <div className='combobox-dropdown-item' disabled>
+                <div className="tw:cursor-not-allowed tw:p-3 tw:text-gray-500">
                   No Items | Search for something
                 </div>
               ) : data?.length > 0 && !isLoading ? (
                 data?.map((item, index) => (
                   <div
                     key={index}
-                    className={`combobox-dropdown-item capitalize ${
-                      item?.id === value?.id ? 'selected' : ''
+                    className={`tw:capitalize tw:cursor-pointer tw:p-3 tw:hover:bg-gray-100 ${
+                      item?.id === value?.id ? "tw:bg-blue-50" : ""
                     }`}
                     onClick={() => {
-                      handleItemClick(item)
-                      setChanged(true)
+                      handleItemClick(item);
+                      setChanged(true);
                     }}
                   >
                     <span>
-                      {getNestedValue(item, keyValue)}{' '}
+                      {getNestedValue(item, keyValue)}{" "}
                       {extraKeys.map((key, i) => (
                         <span key={i}>
-                          <Icon icon='radix-icons:dot' />
+                          <Icon icon="radix-icons:dot" className="tw:inline" />
                           {getNestedValue(item, key)
                             ? `${symbol} ${getNestedValue(item, key)}`
-                            : 'Unlimited'}
+                            : "Unlimited"}
                         </span>
                       ))}
                     </span>
-                    {item?.id === value?.id && <Icon icon='charm:cross' />}
+                    {item?.id === value?.id && (
+                      <Icon
+                        icon="charm:cross"
+                        className="tw:ml-2 tw:inline tw:text-red-500"
+                      />
+                    )}
                   </div>
                 ))
               ) : (
-                <div className='combobox-dropdown-item'>Loading...</div>
+                <div className="tw:p-3 tw:text-gray-500">Loading...</div>
               )}
             </div>
           )}
         </div>
       </div>
-      {error && <div className='combobox-error'>{error}</div>}
+      {error && (
+        <div className="tw:mt-2 tw:text-sm tw:text-[#B7B7B7]">{error}</div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default ComboBox
-
-// import { useEffect, useState } from 'react'
-// import useFetch from '@/hooks/useFetch'
-// import { Icon } from '@iconify/react'
-
-// const ComboBox = ({
-//   label,
-//   name,
-//   url,
-//   onChange,
-//   error,
-//   placeholder,
-//   locale = 'en',
-//   value,
-//   keyValue,
-//   extraKeys = [],
-//   multiple = false,
-//   params,
-//   isRole = false,
-//   required = false,
-//   setTouched,
-//   selectedId,
-//   ...rest
-// }) => {
-//   const [searchTerm, setSearchTerm] = useState('')
-//   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-
-//   const buildNestedFilter = (keyPath, value) => {
-//     const keys = keyPath.split('.')
-//     return keys.reduceRight((acc, key) => ({ [key]: acc }), {
-//       $containsi: value,
-//     })
-//   }
-
-//   const {
-//     data: MainData,
-//     isLoading,
-//     reFetch,
-//   } = useFetch({
-//     url,
-//     keys: [locale],
-//     query: {
-//       ...params,
-//       filters: {
-//         ...params?.filters,
-//         ...buildNestedFilter(keyValue, searchTerm || undefined),
-//       },
-//       locale,
-//       sort: ['id'],
-//     },
-//   })
-
-//   const data = isRole ? MainData?.roles : MainData
-
-//   useEffect(() => {
-//     if (value) {
-//       setSearchTerm(getNestedValue(value, keyValue) ?? '')
-//     }
-//   }, [value])
-
-//   const getNestedValue = (obj, path) => {
-//     return path.split('.').reduce((acc, part) => acc && acc[part], obj)
-//   }
-
-//   useEffect(() => {
-//     if (selectedId && data) {
-//       const selected = data?.find(k => k.id === parseInt(selectedId))
-
-//       onChange(selected)
-//       setSearchTerm(getNestedValue(selected, keyValue))
-//     }
-//   }, [selectedId, data])
-
-//   return (
-//     <div>
-//       <div
-//         className={
-//           error ? 'combobox-container has-error-border' : 'combobox-container'
-//         }
-//       >
-//         <label className='lh-1 text-16 text-light-1' htmlFor={name}>
-//           {'Select ' + label}
-//           {required && <span className='text-danger px-2'>*</span>}
-//         </label>
-//         <div className='combobox-input-container'>
-//           <input
-//             type='text'
-//             id={name}
-//             name={name}
-//             onChange={e => {
-//               setSearchTerm(e.target.value)
-//               setIsDropdownOpen(true)
-//             }}
-//             onClick={() => {
-//               setIsDropdownOpen(!isDropdownOpen)
-//             }}
-//             onBlur={e => {
-//               if (!e.target.value) {
-//                 // If the input is blurred without a value, set the error
-//                 onChange(null)
-//                 setTouched && setTouched({ [name]: true })
-//               }
-//               setTimeout(() => setIsDropdownOpen(false), 200)
-//             }}
-//             value={searchTerm}
-//             required={required}
-//             placeholder={placeholder ?? 'Select an item'}
-//             className='combobox-input'
-//             {...rest}
-//           />
-//           {isDropdownOpen && (
-//             <div className='combobox-dropdown'>
-//               {data?.length <= 0 ? (
-//                 <div className='combobox-dropdown-item' disabled>
-//                   No Items | Search for something
-//                 </div>
-//               ) : data?.length > 0 && !isLoading ? (
-//                 data?.map((item, index) => (
-//                   <div
-//                     key={index}
-//                     className={`combobox-dropdown-item ${
-//                       item?.id === value?.id ? 'selected' : ''
-//                     }`}
-//                     onClick={() => {
-//                       onChange(item)
-//                       setSearchTerm(getNestedValue(item, keyValue))
-//                       setIsDropdownOpen(false)
-//                     }}
-//                   >
-//                     <span>
-//                       {getNestedValue(item, keyValue)}{' '}
-//                       {extraKeys.map((key, i) => (
-//                         <span key={i}>
-//                           <Icon icon='radix-icons:dot' />
-//                           {getNestedValue(item, key) || 'Unlimited'}
-//                         </span>
-//                       ))}
-//                     </span>
-//                     {item?.id === value?.id && (
-//                       <Icon icon='hugeicons:tick-01' />
-//                     )}
-//                   </div>
-//                 ))
-//               ) : (
-//                 <div className='combobox-dropdown-item'>Loading...</div>
-//               )}
-//             </div>
-//           )}
-//         </div>
-//       </div>
-//       {error && <div className='combobox-error'>{error}</div>}
-//     </div>
-//   )
-// }
-
-// export default ComboBox
+export default ComboBox;

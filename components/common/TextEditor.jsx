@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
+import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function TextEditor({
   initialData,
@@ -10,67 +10,68 @@ export default function TextEditor({
   error,
   ignoreMediaImport = false,
 }) {
-  const media = ignoreMediaImport ? ['link'] : ['link', 'image', 'video']
+  const media = ignoreMediaImport ? ["link"] : ["link", "image", "video"];
 
   const modules = {
     toolbar: [
-      [{ header: '1' }, { header: '2' }, { font: [] }],
+      [{ header: "1" }, { header: "2" }, { font: [] }],
       [{ size: [] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      ["bold", "italic", "underline", "strike", "blockquote"],
       [
-        { list: 'ordered' },
-        { list: 'bullet' },
-        { indent: '-1' },
-        { indent: '+1' },
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
       ],
       media,
-      ['clean'],
+      ["clean"],
     ],
     clipboard: {
       // toggle to add extra line breaks when pasting HTML:
       matchVisual: false,
     },
-  }
+  };
 
   const formats = [
-    'header',
-    'font',
-    'size',
-    'bold',
-    'italic',
-    'underline',
-    'strike',
-    'blockquote',
-    'list',
-    'bullet',
-    'indent',
-    'link',
-    'image',
-    'video',
-  ]
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "video",
+  ];
 
   return (
-    <div>
+    <div className="tw:relative tw:flex tw:flex-col tw:gap-2">
       <ReactQuill
         modules={modules}
         formats={formats}
         style={{
-          height: '300px',
-          marginBottom: '40px',
-          borderRadius: '5px',
+          maxHeight: "300px",
+          height: "300px",
+          borderRadius: "10px",
         }}
-        theme='snow'
+        theme="snow"
         value={initialData}
         onChange={onChange}
-        onBlur={r => {
+        onBlur={(r) => {
           if (r.index === 0) {
-            onChange('')
-            setTouched && setTouched({ [name]: true })
+            onChange("");
+            setTouched && setTouched({ [name]: true });
           }
         }}
         readOnly={disabled}
       />
-      {error && <span className='text-red-1 pt-10'>{error}</span>}
+
+      <p className="tw:text-[#b7b7b7]">{error}</p>
     </div>
-  )
+  );
 }

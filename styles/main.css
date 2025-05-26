@@ -1101,10 +1101,16 @@
 
 /* EDITOR STYLE */
 
+.quill {
+    display: flex;
+    flex-direction: column;
+}
+
 .ql-container {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     background: #fefcfc;
+    flex: 1;
 }
 
 /* Snow Theme */
@@ -1122,7 +1128,6 @@
 }
 
 .ql-editor {
-    min-height: 18em;
 }
 
 .themeSwitcher {

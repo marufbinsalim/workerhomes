@@ -1,19 +1,18 @@
-import Checkbox from '@/components/common/Checkbox'
-import ComboBox from '@/components/common/ComboBox'
-import Input from '@/components/common/Input'
-import MultipleSelect from '@/components/common/MultipleSelect'
-import SelectableOptions from '@/components/common/selectableOptions'
-import TextEditor from '@/components/common/TextEditor'
-import { api, roles } from '@/config'
-import { create, translate, update } from '@/lib/services/dwelling'
-import { create as CreateSubscription } from '@/lib/services/subscription'
-import { dwellingSchema, initDwelling } from '@/lib/validation/dwelling'
-import { genSlug, getLocales } from '@/utils'
-import { Icon } from '@iconify/react'
-import { Form, Formik } from 'formik'
-import { useTranslations } from 'next-intl'
-import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import Checkbox from "@/components/common/Checkbox";
+import ComboBox from "@/components/common/ComboBox";
+import Input from "@/components/common/Input";
+import SelectableOptions from "@/components/common/selectableOptions";
+import TextEditor from "@/components/common/TextEditor";
+import { api, roles } from "@/config";
+import { create, translate, update } from "@/lib/services/dwelling";
+import { create as CreateSubscription } from "@/lib/services/subscription";
+import { dwellingSchema, initDwelling } from "@/lib/validation/dwelling";
+import { genSlug, getLocales } from "@/utils";
+import { Icon } from "@iconify/react";
+import { Form, Formik } from "formik";
+import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const DwellingForm = ({
   formData,
@@ -24,74 +23,73 @@ const DwellingForm = ({
   defaultPackage,
   plan,
 }) => {
-  const [initData, setInitData] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
-  const t = useTranslations('dwelling-equipments')
-  const tDwellings = useTranslations('dwellings')
-  const tStatus = useTranslations('status')
-  const localeT = useTranslations('localizations')
-  const subscriptionId = useSearchParams().get('subscription')
+  const [initData, setInitData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const t = useTranslations("dwelling-equipments");
+  const tDwellings = useTranslations("dwellings");
+  const tStatus = useTranslations("status");
+  const localeT = useTranslations("localizations");
+  const subscriptionId = useSearchParams().get("subscription");
 
-  const localeOptions = getLocales(locale, formData?.localizations, localeT)
+  const localeOptions = getLocales(locale, formData?.localizations, localeT);
   const statusOptions = [
-    { label: 'Select Item', value: '', selected: true },
-    { label: tStatus('PENDING'), value: 'PENDING' },
-    { label: tStatus('AVAILABLE'), value: 'AVAILABLE' },
-    { label: tStatus('RENT'), value: 'RENT' },
-  ]
+    { label: "Select Item", value: "", selected: true },
+    { label: tStatus("PENDING"), value: "PENDING" },
+    { label: tStatus("AVAILABLE"), value: "AVAILABLE" },
+    { label: tStatus("RENT"), value: "RENT" },
+  ];
 
-  const handleSubmit = async values => {
-    setIsLoading(true)
+  const handleSubmit = async (values) => {
+    setIsLoading(true);
 
     try {
       const formattedValues = {
         ...values,
         id: formData?.id ? formData?.id : null,
-
         guidline: values.guidline ? values?.guidline : null,
-        isApproved: values?.status === 'AVAILABLE' ? values?.isApproved : false,
+        isApproved: values?.status === "AVAILABLE" ? values?.isApproved : false,
         isFree: values?.subscription?.isFree,
-        service_lang: session?.locale || 'pl',
+        service_lang: session?.locale || "pl",
         owner:
           session?.role === roles.user
             ? session?.id
             : values?.amIOwner
-            ? session?.id
-            : null,
+              ? session?.id
+              : null,
         seo: [
           {
             metaTitle: values.title,
             metaDescription: values.description?.slice(0, 160),
             metaImage: values?.images?.[0] || null,
             keywords: values.title,
-            canonicalURL: api + '/dwellings/' + values.slug,
+            canonicalURL: api + "/dwellings/" + values.slug,
             locale: values.locale,
           },
         ],
-      }
+      };
 
       if (!formattedValues?.subscription?.id) {
-        delete formattedValues?.subscription
+        delete formattedValues?.subscription;
       }
 
       if (!formattedValues?.amenities) {
-        delete formattedValues?.amenities
+        delete formattedValues?.amenities;
       }
 
-      let res = null
+      let res = null;
 
       if (formData?.id && !translation) {
-        res = await update(formattedValues, t('messages.update'))
+        res = await update(formattedValues, t("messages.update"));
       } else if (formData?.id && translation) {
         res = await translate(
           {
             ...initData,
             ...formattedValues,
           },
-          t('messages.translate')
-        )
+          t("messages.translate"),
+        );
       } else {
-        let subId = null
+        let subId = null;
 
         if (
           values?.package?.id &&
@@ -105,14 +103,14 @@ const DwellingForm = ({
             end_date: null,
             stripe_product_id: values?.package?.stripe_product_id,
             stripe_customer_id: session?.stripe_customer_id,
-            payment_status: 'active',
-            payment_currency: 'PLN',
-            payment_method: 'automatic',
-            payment_amount: '0',
+            payment_status: "active",
+            payment_currency: "PLN",
+            payment_method: "automatic",
+            payment_amount: "0",
             isFree: true,
-          })
+          });
 
-          subId = data?.data?.id
+          subId = data?.data?.id;
         }
 
         res = await create(
@@ -120,40 +118,40 @@ const DwellingForm = ({
             ...formattedValues,
             locale,
             isMainItem: true,
-            status: 'PENDING',
+            status: "PENDING",
             user: session?.id,
             subscription: subId ? subId : null,
           },
-          t('messages.create')
-        )
+          t("messages.create"),
+        );
       }
 
       if (res.status === 200 || res.status === 201) {
-        onSuccess && onSuccess(res?.data?.data)
+        onSuccess && onSuccess(res?.data?.data);
       }
     } catch (error) {
-      console.log('error', error)
+      console.log("error", error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     if (formData?.id && translation) {
       const newObject = {
         ...formData,
-      }
+      };
 
-      delete newObject?.category
-      delete newObject?.amenities
-      delete newObject?.features
-      delete newObject?.title
-      delete newObject?.description
-      delete newObject?.slug
+      delete newObject?.category;
+      delete newObject?.amenities;
+      delete newObject?.features;
+      delete newObject?.title;
+      delete newObject?.description;
+      delete newObject?.slug;
 
-      setInitData(newObject)
+      setInitData(newObject);
     }
-  }, [formData?.id])
+  }, [formData?.id]);
 
   return (
     <Formik
@@ -178,201 +176,197 @@ const DwellingForm = ({
       }) => {
         return (
           <Form>
-            <div className='row x-gap-20 y-gap-20'>
-              {translation && (
-                <div className='col-12'>
-                  <Input
-                    label={tDwellings('form.field.translate')}
-                    name='locale'
-                    type='select'
-                    options={localeOptions}
+            <div>
+              <h2 className="tw:mb-0">Listing Details</h2>
+              <p className="tw:mb-4">Provide your details for the listing</p>
+            </div>
+
+            <div className="tw:flex tw:flex-col tw:md:flex-row tw:w-full tw:gap-6 font-secondary">
+              {/* Left Column */}
+              <div className="tw:flex tw:flex-col tw:gap-6 tw:flex-1">
+                {translation && (
+                  <div className="tw:w-full">
+                    <Input
+                      label={tDwellings("form.field.translate")}
+                      name="locale"
+                      type="select"
+                      options={localeOptions}
+                      required
+                    />
+                  </div>
+                )}
+
+                {(values?.package?.id && !formData?.id) ||
+                !values?.package?.id ? (
+                  <div className="tw:w-full">
+                    {!plan && (
+                      <ComboBox
+                        onChange={(item) => setFieldValue("package", item)}
+                        label={tDwellings("form.field.plan")}
+                        value={values?.package}
+                        placeholder={tDwellings("form.field.search")}
+                        url="/api/packages"
+                        name="package"
+                        keyValue="name"
+                        symbol="zł"
+                        params={{
+                          sort: ["order:desc"],
+                        }}
+                        disabled={defaultPackage ? true : false}
+                        extraKeys={["price"]}
+                        setTouched={setTouched}
+                        error={
+                          errors.package && touched.package
+                            ? errors.package
+                            : ""
+                        }
+                        required
+                      />
+                    )}
+                  </div>
+                ) : null}
+
+                <div className="tw:w-full">
+                  <ComboBox
+                    onChange={(item) => setFieldValue("category", item)}
+                    label={tDwellings("form.field.category")}
+                    value={values?.category}
+                    placeholder={tDwellings("form.field.search2")}
+                    url="/api/categories"
+                    locale={values?.locale || locale}
+                    name="category"
+                    keyValue="title"
+                    setTouched={setTouched}
+                    error={
+                      errors.category && touched.category ? errors.category : ""
+                    }
                     required
                   />
                 </div>
-              )}
 
-              {(values?.package?.id && !formData?.id) ||
-              !values?.package?.id ? (
-                <div className='col-6'>
-                  {!plan && (
-                    <ComboBox
-                      onChange={item => setFieldValue('package', item)}
-                      label={tDwellings('form.field.plan')}
-                      value={values?.package}
-                      placeholder={tDwellings('form.field.search')}
-                      url='/api/packages'
-                      name='package'
-                      keyValue='name'
-                      symbol='zł'
-                      params={{
-                        sort: ['order:desc'],
-                      }}
-                      disabled={defaultPackage ? true : false}
-                      extraKeys={['price']}
-                      setTouched={setTouched}
-                      error={
-                        errors.package && touched.package ? errors.package : ''
-                      }
-                      required
-                    />
-                  )}
-                </div>
-              ) : null}
-              <div className='col-6'>
-                <ComboBox
-                  onChange={item => setFieldValue('category', item)}
-                  label={tDwellings('form.field.category')}
-                  value={values?.category}
-                  placeholder={tDwellings('form.field.search2')}
-                  url='/api/categories'
-                  locale={values?.locale || locale}
-                  name='category'
-                  keyValue='title'
-                  setTouched={setTouched}
-                  error={
-                    errors.category && touched.category ? errors.category : ''
-                  }
-                  required
-                />
-              </div>
-
-              <div className={'col-12'}>
-                <Input
-                  type='text'
-                  name='title'
-                  label={tDwellings('form.field.title')}
-                  onChange={e => {
-                    setFieldValue('slug', genSlug(e.target.value))
-                    setFieldValue('title', e.target.value)
-                  }}
-                  required
-                />
-              </div>
-
-              <div className='col-12'>
-                <div className='col-12 d-flex w-100 justify-content-between align-items-center'>
-                  <span>{tDwellings('form.field.description')}</span>
-                  <span className='text-brand'>
-                    {tDwellings('form.field.description-info')}
-                  </span>
-                </div>
-                <TextEditor
-                  ignoreMediaImport
-                  initialData={values?.description}
-                  name='description'
-                  onChange={value => setFieldValue('description', value)}
-                  error={errors?.description ? errors?.description : ''}
-                  setTouched={setTouched}
-                />
-              </div>
-              {/* <MultipleSelect
-                onChange={item => setFieldValue('features', item)}
-                label={tDwellings('form.field.equipments')}
-                values={values?.features}
-                url='/api/features'
-                locale={values?.locale || locale}
-                name='features'
-                keyValue='title'
-                error={
-                  errors?.features && touched?.features ? errors?.features : ''
-                }
-                setTouched={setTouched}
-                required
-              /> */}
-              {/* <MultipleSelect
-                onChange={item => setFieldValue('amenities', item)}
-                label={tDwellings('form.field.amenities')}
-                values={values?.amenities}
-                url='/api/amenities'
-                locale={values?.locale || locale}
-                name='amenities'
-                keyValue='title'
-                error={errors?.amenities}
-              /> */}
-              <div className='col-12'>
-                <SelectableOptions
-                  onChange={item => setFieldValue('features', item)}
-                  label={tDwellings('form.field.equipments')}
-                  values={values?.features}
-                  url='/api/features'
-                  locale={values?.locale || locale}
-                  name='features'
-                  keyValue='title'
-                  error={
-                    errors?.features && touched?.features
-                      ? errors?.features
-                      : ''
-                  }
-                  setTouched={setTouched}
-                  required
-                />
-              </div>
-
-              <div className='col-12'>
-                <SelectableOptions
-                  onChange={item => setFieldValue('amenities', item)}
-                  label={tDwellings('form.field.amenities')}
-                  values={values?.amenities}
-                  url='/api/amenities'
-                  locale={values?.locale || locale}
-                  name='amenities'
-                  keyValue='title'
-                  error={errors?.amenities}
-                />
-              </div>
-
-              {!formData?.owner?.id && session?.role === roles.admin && (
-                <div className={'col-6'}>
-                  <Checkbox
-                    name='amIOwner'
-                    label={tDwellings('form.field.owner')}
-                    value={values?.amIOwner}
-                    onChange={value => {
-                      setFieldValue('amIOwner', value)
+                <div className="tw:w-full">
+                  <Input
+                    type="text"
+                    name="title"
+                    label={tDwellings("form.field.title")}
+                    onChange={(e) => {
+                      setFieldValue("slug", genSlug(e.target.value));
+                      setFieldValue("title", e.target.value);
                     }}
                     required
                   />
                 </div>
-              )}
 
-              <div className='modal-footer'>
-                <button type='reset' className='col-auto button -sm border'>
-                  {tDwellings('control-panel.reset')}
-                  <Icon icon='bi:arrow-counterclockwise' className='ml-10' />
-                </button>
-                <button
-                  disabled={Object.keys(errors).length > 0 || isLoading}
-                  onClick={() => {
-                    if (!dirty && !formData?.id) {
-                      onSuccess && onSuccess()
-                    } else {
-                      submitForm()
-                    }
-                  }}
-                  type='button'
-                  className='col-auto button -sm bg-blue-1 text-white ml-10'
-                >
-                  {tDwellings('control-panel.next2')}
-                  <Icon
-                    icon={
-                      isLoading
-                        ? 'line-md:loading-loop'
-                        : initData?.id
-                        ? 'mage:edit-fill'
-                        : 'ph:plus-bold'
-                    }
-                    className='ml-10'
-                    width={15}
-                    height={15}
+                <div className="tw:w-full">
+                  <div className="tw:flex tw:justify-between tw:items-center tw:w-full">
+                    <span>{tDwellings("form.field.description")}</span>
+                  </div>
+                  <TextEditor
+                    ignoreMediaImport
+                    initialData={values?.description}
+                    name="description"
+                    onChange={(value) => setFieldValue("description", value)}
+                    error={errors?.description ? errors?.description : ""}
+                    setTouched={setTouched}
                   />
-                </button>
+                </div>
+
+                {!formData?.owner?.id && session?.role === roles.admin && (
+                  <div className="tw:w-full">
+                    <Checkbox
+                      name="amIOwner"
+                      label={tDwellings("form.field.owner")}
+                      value={values?.amIOwner}
+                      onChange={(value) => {
+                        setFieldValue("amIOwner", value);
+                      }}
+                      required
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* Right Column */}
+              <div className="tw:flex-1 tw:flex tw:flex-col tw:gap-6">
+                <div className="tw:w-full">
+                  <div className="tw:mb-2">
+                    <label className="tw:font-medium">
+                      Select Features and Amenities
+                    </label>
+                    <p className="tw:text-sm tw:text-gray-500">
+                      Choose amenities and Features you want to add to your
+                      listing
+                    </p>
+                  </div>
+                  <div className="tw:flex tw:flex-col tw:gap-3">
+                    <SelectableOptions
+                      onChange={(item) => setFieldValue("features", item)}
+                      label=""
+                      values={values?.features}
+                      url="/api/features"
+                      locale={values?.locale || locale}
+                      name="features"
+                      keyValue="title"
+                      error={
+                        errors?.features && touched?.features
+                          ? errors?.features
+                          : ""
+                      }
+                      setTouched={setTouched}
+                      required
+                    />
+                    <SelectableOptions
+                      onChange={(item) => setFieldValue("amenities", item)}
+                      label=""
+                      values={values?.amenities}
+                      url="/api/amenities"
+                      locale={values?.locale || locale}
+                      name="amenities"
+                      keyValue="title"
+                      error={errors?.amenities}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
+
+            {/* Footer Buttons */}
+            <div className="tw:flex tw:justify-start tw:gap-3 tw:mt-6">
+              <button
+                type="reset"
+                className="tw:flex tw:items-center tw:px-4 tw:py-2 tw:border tw:border-gray-300 tw:rounded tw:text-sm tw:hover:bg-gray-100"
+              >
+                {tDwellings("control-panel.reset")}
+                <Icon icon="bi:x" className="tw:ml-2" />
+              </button>
+              <button
+                disabled={Object.keys(errors).length > 0 || isLoading}
+                onClick={() => {
+                  if (!dirty && !formData?.id) {
+                    onSuccess && onSuccess();
+                  } else {
+                    submitForm();
+                  }
+                }}
+                type="button"
+                className="tw:flex tw:items-center tw:px-4 tw:py-2 tw:bg-orange-500 tw:text-white tw:rounded tw:text-sm tw:hover:bg-orange-600 tw:disabled:bg-gray-400"
+              >
+                {tDwellings("control-panel.next2")}
+                <Icon
+                  icon={
+                    isLoading ? "line-md:loading-loop" : "ph:arrow-right-bold"
+                  }
+                  className="tw:ml-2"
+                  width={15}
+                  height={15}
+                />
+              </button>
+            </div>
           </Form>
-        )
+        );
       }}
     </Formik>
-  )
-}
+  );
+};
 
-export default DwellingForm
+export default DwellingForm;

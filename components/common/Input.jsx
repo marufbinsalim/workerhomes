@@ -1,20 +1,22 @@
-import { Icon } from '@iconify/react'
-import { useField } from 'formik'
+import { Icon } from "@iconify/react";
+import { useField } from "formik";
 
 const Input = ({ label, type, ...props }) => {
-  const [field, meta] = useField(props)
-  const isError = meta.touched && meta.error
+  const [field, meta] = useField(props);
+  const isError = meta.touched && meta.error;
 
   const inputProps = {
-    className: `${isError ? 'is-invalid' : ''}`,
+    className: `tw:w-full tw:rounded tw:border tw:p-2 tw:text-base tw:outline-none tw:focus:border-blue-500 tw:focus:ring-1 tw:focus:ring-blue-500 ${
+      isError ? "tw:border-red-500" : "tw:border-gray-300"
+    }`,
     ...field,
     ...props,
-  }
+  };
 
   const inputField =
-    type === 'textarea' ? (
+    type === "textarea" ? (
       <textarea {...inputProps} />
-    ) : type === 'select' ? (
+    ) : type === "select" ? (
       <select {...inputProps}>
         {props?.options?.map((option, index) => (
           <option
@@ -29,43 +31,39 @@ const Input = ({ label, type, ...props }) => {
       </select>
     ) : (
       <input type={type} {...inputProps} />
-    )
+    );
 
   return (
-    <div
-      className={` ${
-        isError ? 'has-error input-container' : 'input-container'
-      }`}
-    >
-      <div className={`${type === 'select' ? 'form-select' : 'form-input'}`}>
-        {type !== 'select' && inputField}
-        {label && (
-          <label
-            className='lh-1 text-16 text-light-1 w-100 d-flex justify-content-between'
-            htmlFor={props.id || props.name}
-          >
-            <span>
-              {label}{' '}
-              <span className='text-danger'>{props?.required && '*'}</span>
-            </span>
-
+    <div className="tw:mb-4">
+      {label && (
+        <label
+          className="tw:mb-1 tw:block tw:text-base tw:font-medium tw:text-gray-700"
+          htmlFor={props.id || props.name}
+        >
+          {label}
+          {props?.required && (
+            <span className="tw:text-red-500 tw:ml-1">*</span>
+          )}
+          {props?.action?.icon && (
             <Icon
               style={{
-                pointerEvents: 'all',
+                pointerEvents: "all",
               }}
               icon={props?.action?.icon}
               onClick={props?.action?.onClick}
-              className='ml-10 pointer'
+              className="tw:ml-2 tw:inline tw:cursor-pointer"
               width={20}
               height={20}
             />
-          </label>
-        )}
-        {type === 'select' && inputField}
-      </div>
-      {isError && <div className='invalid-feedback'>{meta.error}</div>}
+          )}
+        </label>
+      )}
+      {inputField}
+      {isError && (
+        <div className="tw:mt-2 tw:text-sm tw:text-[#B7B7B7]">{meta.error}</div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;

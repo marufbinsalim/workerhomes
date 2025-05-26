@@ -52,10 +52,10 @@ const Stepper = ({ children, onStepChange, error }) => {
     // <div className="tw:relative font-secondary tw:w-full tw:bg-red-400">
     // {/* Fixed position container that doesn't move */}
     <div className="tw:left-[var(--dashboard-width)] tw:overflow-auto tw:transition-all tw:duration-500 tw:ease-out-cubic">
-      <div className="tw:mx-auto tw:px-4 tw:py-4">
+      <div className="tw:md:px-4 tw:py-4">
         {/* Stepper header */}
         <div
-          className={`tw:bg-white tw:flex tw:flex-col tw:items-center tw:my-15 tw:rounded-lg tw:px-10 tw:py-4 tw:max-h-[calc(100dvh-100px)]
+          className={`tw:bg-white tw:flex tw:flex-col tw:items-center tw:my-15 tw:rounded-lg tw:px-6 tw:py-4  tw:md:px-10 tw:md:py-4 tw:max-h-[calc(100dvh-100px)]
             tw:overflow-auto
             ${activeStep === 0 ? "hide-scrollbar" : ""}
             `}
@@ -93,9 +93,9 @@ const Stepper = ({ children, onStepChange, error }) => {
           </div>
           {/* Prev button */}
           {!isFirstStep && (
-            <div className="tw:mt-8">
+            <div className="tw:w-full">
               <button
-                className="tw:flex tw:items-center tw:justify-center tw:text-blue-600 tw:hover:text-blue-800 tw:font-medium tw:text-lg"
+                className="tw:flex tw:items-center tw:text-[var(--color-primary)] tw:font-medium tw:text-lg"
                 onClick={handlePrevStep}
               >
                 <Icon
@@ -103,7 +103,7 @@ const Stepper = ({ children, onStepChange, error }) => {
                   className="tw:mr-2"
                   width={24}
                 />
-                {t("control-panel.prev")}
+                {/* {t("control-panel.prev")} */}
               </button>
             </div>
           )}
