@@ -86,9 +86,9 @@ const ComboBox = ({
 
   return (
     <div className="tw:mb-4 tw:w-full">
-      <div className={`tw:rounded tw:bg-white tw:w-full`}>
+      <div className={`tw:rounded  tw:w-full`}>
         <label
-          className="tw:mb-1 tw:block tw:text-base tw:font-medium tw:text-gray-700"
+          className="tw:mb-1 tw:white tw:text-base tw:font-medium tw:text-[14px] tw:text-[var(--color-font-dark)]"
           htmlFor={name}
         >
           {label}
@@ -117,7 +117,7 @@ const ComboBox = ({
             value={searchTerm}
             required={required}
             placeholder={placeholder ?? "Select an item"}
-            className="tw:w-full tw:capitalize tw:rounded tw:border tw:border-gray-300 tw:p-2 tw:text-base tw:outline-none tw:focus:border-blue-500 tw:focus:ring-1 tw:focus:ring-blue-500"
+            className="tw:w-full tw:capitalize tw:rounded tw:border tw:font-normal tw:text-[14px] tw:border-[var(--color-border-light)] tw:p-2 tw:text-base tw:outline-none tw:text-[var(--color-primary)] tw:focus:border-blue-500 tw:focus:ring-1 tw:focus:ring-blue-500"
             {...rest}
           />
           {isDropdownOpen && (

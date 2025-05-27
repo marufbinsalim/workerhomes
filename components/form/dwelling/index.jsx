@@ -176,16 +176,15 @@ const DwellingForm = ({
       }) => {
         return (
           <Form>
-            <div>
-              <h2 className="tw:mb-0">Listing Details</h2>
-              <p className="tw:mb-4">Provide your details for the listing</p>
+            <div className="tw:mb-8 font-secondary">
+              <h2 className="tw:text-[20px] tw:font-semibold tw:mb-2 tw:text-[var(--color-font-dark)]">Listing Details</h2>
+              <p className="tw:text-[var(--color-font-regular)] tw:text-[14px] tw:font-normal">Provide your details for the listing</p>
             </div>
-
             <div className="tw:flex tw:flex-col tw:md:flex-row tw:w-full tw:gap-6 font-secondary">
               {/* Left Column */}
               <div className="tw:flex tw:flex-col tw:gap-6 tw:flex-1 tw:max-w-[74vw] tw:md:max-w-[35vw] tw:h-min">
                 {translation && (
-                  <div className="tw:w-full">
+                  <div className="tw:w-full ">
                     <Input
                       label={tDwellings("form.field.translate")}
                       name="locale"
@@ -198,7 +197,7 @@ const DwellingForm = ({
 
                 {(values?.package?.id && !formData?.id) ||
                 !values?.package?.id ? (
-                  <div className="tw:w-full">
+                  <div className="tw:w-full ">
                     {!plan && (
                       <ComboBox
                         onChange={(item) => setFieldValue("package", item)}
@@ -259,7 +258,9 @@ const DwellingForm = ({
 
                 <div className="tw:w-full">
                   <div className="tw:flex tw:justify-between tw:items-center tw:w-full">
-                    <span>{tDwellings("form.field.description")}</span>
+                    <span className="tw:font-medium tw:text-[14px] tw:text-[var(--color-font-dark)]">{tDwellings("form.field.description")}
+                      <span className="tw:text-red-500 tw:ml-1">*</span>
+                    </span>
                   </div>
                   <TextEditor
                     ignoreMediaImport
@@ -287,13 +288,14 @@ const DwellingForm = ({
               </div>
 
               {/* Right Column */}
-              <div className="tw:flex-1 tw:flex tw:flex-col tw:gap-6">
+              <div className="tw:flex-1 tw:flex tw:flex-col font-secondary tw:gap-6">
                 <div className="tw:w-full">
                   <div className="tw:mb-2">
-                    <label className="tw:font-medium">
+                    <label className="tw:font-medium tw:text-[14px] tw:text-[var(--color-font-dark)]">
                       Select Features and Amenities
+                      <span className="tw:text-red-500 tw:ml-1">*</span>
                     </label>
-                    <p className="tw:text-sm tw:text-gray-500">
+                    <p className="tw:font-normal tw:text-[14px] tw:text-[var(--color-font-regular)]">
                       Choose amenities and Features you want to add to your
                       listing
                     </p>
@@ -331,13 +333,14 @@ const DwellingForm = ({
             </div>
 
             {/* Footer Buttons */}
-            <div className="tw:flex tw:justify-start tw:gap-3 tw:mt-6">
+            <div className="tw:flex font-secondary tw:justify-start tw:gap-3 tw:mt-6">
               <button
                 type="reset"
-                className="tw:flex tw:items-center tw:px-4 tw:py-2 tw:border tw:border-gray-300 tw:rounded tw:text-sm tw:hover:bg-gray-100"
+                className="tw:flex tw:items-center tw:px-4 tw:py-2 tw:border tw:border--[var(--color-primary)] tw:font-semibold tw:text-[14px] tw:text-[var(--color-primary)]"
               >
                 {tDwellings("control-panel.reset")}
-                <Icon icon="bi:x" className="tw:ml-2" />
+                <Icon icon="bi:x" className="tw:ml-2 tw:font-bold" width={28}
+                  height={28} />
               </button>
               <button
                 disabled={Object.keys(errors).length > 0 || isLoading}
@@ -349,16 +352,16 @@ const DwellingForm = ({
                   }
                 }}
                 type="button"
-                className="tw:flex tw:items-center tw:px-4 tw:py-2 tw:bg-orange-500 tw:text-white tw:rounded tw:text-sm tw:hover:bg-orange-600 tw:disabled:bg-gray-400"
+                className="tw:flex tw:items-center tw:px-4 tw:py-2 tw:bg-orange-500 tw:text-white  tw:font-semibold tw:text-[14px]tw:hover:bg-orange-600 tw:disabled:bg-gray-400"
               >
                 {tDwellings("control-panel.next2")}
                 <Icon
                   icon={
                     isLoading ? "line-md:loading-loop" : "ph:arrow-right-bold"
                   }
-                  className="tw:ml-2"
-                  width={15}
-                  height={15}
+                  className="tw:ml-2  tw:font-bold"
+                  width={24}
+                  height={24}
                 />
               </button>
             </div>

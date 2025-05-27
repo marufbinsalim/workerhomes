@@ -6,7 +6,7 @@ const Input = ({ label, type, ...props }) => {
   const isError = meta.touched && meta.error;
 
   const inputProps = {
-    className: `tw:w-full tw:rounded tw:border tw:p-2 tw:text-base tw:outline-none tw:focus:border-blue-500 tw:focus:ring-1 tw:focus:ring-blue-500 ${
+    className: `tw:w-full tw:rounded tw:border tw:p-2 tw:text-base tw:font-medium tw:text-[14px] tw:text-[var(--color-font-dark)] tw:outline-none tw:focus:border-blue-500 tw:focus:ring-1 tw:focus:ring-blue-500 ${
       isError ? "tw:border-red-500" : "tw:border-gray-300"
     }`,
     ...field,
@@ -34,10 +34,10 @@ const Input = ({ label, type, ...props }) => {
     );
 
   return (
-    <div className="tw:mb-4">
+    <div className="tw:mb-4 font-secondary">
       {label && (
         <label
-          className="tw:mb-1 tw:block tw:text-base tw:font-medium tw:text-gray-700"
+          className="tw:mb-1 tw:block tw:text-base tw:font-medium tw:text-[14px] tw:text-[var(--color-font-dark)]"
           htmlFor={props.id || props.name}
         >
           {label}

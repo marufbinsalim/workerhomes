@@ -10,7 +10,7 @@ const Checkbox = ({
 }) => {
   return (
     <div className={`checkbox-container ${error ? 'has-error' : ''}`}>
-      <span className='lh-1 text-16 text-light-1'>{label}</span>
+      <span className='lh-1 text-14 text-light-1'>{label}</span>
       <div className='checkbox-item-container'>
         <div
           className={`checkbox-item ${value === true ? 'checkbox-active' : ''}`}

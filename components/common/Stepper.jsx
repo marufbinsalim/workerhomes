@@ -55,7 +55,7 @@ const Stepper = ({ children, onStepChange, error }) => {
       <div className="tw:md:px-4 tw:py-4">
         {/* Stepper header */}
         <div
-          className={`tw:bg-white tw:flex tw:flex-col tw:items-center tw:my-15 tw:rounded-lg tw:px-6 tw:py-4  tw:md:px-10 tw:md:py-4 tw:max-h-[calc(100dvh-100px)]
+          className={`tw:bg-white tw:flex tw:flex-col tw:items-center tw:my-15 tw:rounded-lg tw:px-6 tw:py-4  tw:md:px-10 tw:md:py-1 tw:max-h-[calc(100dvh-100px)]
             tw:overflow-auto
             ${activeStep === 0 ? "hide-scrollbar" : ""}
             `}
@@ -120,7 +120,7 @@ export default Stepper;
 export const Step = ({ children, title, actions = false }) => {
   return (
     <div
-      className="tw:rounded-lg tw:w-full tw:flex tw:justify-start tw:py-[30px]"
+      className="tw:rounded-lg tw:w-full tw:flex tw:justify-start tw:py-[10px]"
       data-title={title}
       data-actions={actions}
     >

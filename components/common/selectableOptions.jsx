@@ -59,7 +59,7 @@ const SelectableOptions = ({
     <div className="bg-white border px-20 py-20">
       {label && (
         <label
-          className="lh-1 text-18 fw-900 text-light-1 mb-20"
+          className="lh-1 tw:font-normal  tw:text-[14px] tw:text-[var(--color-font-regular)] mb-20"
           htmlFor={name}
         >
           {label}
@@ -108,8 +108,8 @@ export default SelectableOptions;
 const SelectableCard = ({ item, onClick, isActive }) => {
   return (
     <div
-      className={`col-auto button -sm border pointer mx-1 my-1 ${
-        isActive ? "bg-blue-1 text-white" : ""
+      className={`col-auto button -sm border pointer tw:font-medium tw:text-[14px]  mx-1 my-1 ${
+        isActive ? "bg-blue-1 text-white " : "tw:text-[var(--color-font-dark)]"
       }`}
       style={{
         color: "white !important",
@@ -118,7 +118,7 @@ const SelectableCard = ({ item, onClick, isActive }) => {
     >
       {item?.icon?.url && (
         <Image
-          className="mr-10"
+          className={`mr-10 ${isActive ? "tw:filter tw:brightness-0 tw:invert" : ""}`}
           src={exactPath(item?.icon?.url)}
           width={20}
           height={20}
