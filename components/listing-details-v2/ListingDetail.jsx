@@ -33,7 +33,7 @@ function ImageGrid({ images, setOpen }) {
 
   if (!imagesToShow || imagesToShow.length === 0) {
     return (
-      <p className="tw:text-center tw:text-gray-500">No images available</p>
+      <p className="tw:text-center font-primary tw:text-gray-500">No images available</p>
     );
   }
 
@@ -265,9 +265,9 @@ export default function ListingDetail({ data, locale, session }) {
   }));
 
   return (
-    <div className="tw:text-black tw:flex tw:flex-col tw:mt-[40px] tw:p-8 tw:py-20 tw:md:px-[60px] tw:md:py-[80px]">
+    <div className="tw:text-black tw:flex tw:flex-col tw:mt-[40px] font-primary tw:p-8 tw:py-20 tw:md:px-[60px] tw:md:py-[80px]">
       <div
-        className="tw:flex tw:cursor-pointer tw:py-2"
+        className="tw:flex tw:cursor-pointer tw:items-center tw:gap-1 tw:py-2"
         onClick={() => {
           router.push(`/${locale}/listings`);
         }}
@@ -277,16 +277,15 @@ export default function ListingDetail({ data, locale, session }) {
           color="#FF780B"
           className="tw:cursor-pointer tw:mb-4"
         />
-        <p className="tw:text-[#FF780B]">Go Back</p>
+        <p className="tw:text-[#FF780B] tw:text-[14px] tw:font-medium">Go Back</p>
       </div>
       <div className="tw:flex tw:items-center tw:justify-between tw:mb-6">
         <div className="tw:flex tw:gap-4">
           <button
-            className={`tw:font-semibold tw:text-sm tw:px-4 tw:py-1 ${
-              selectedButton === "overview"
-                ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-black tw:text-white"
-                : "border"
-            }`}
+            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-2 ${selectedButton === "overview"
+              ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
+              : "border"
+              }`}
             onClick={() => {
               setSelectedButton("overview");
               overviewRef.current.scrollIntoView({
@@ -298,11 +297,10 @@ export default function ListingDetail({ data, locale, session }) {
             Overview
           </button>
           <button
-            className={`tw:font-semibold tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${
-              selectedButton === "features"
-                ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-black tw:text-white"
-                : "border"
-            }`}
+            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${selectedButton === "features"
+              ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
+              : "border"
+              }`}
             onClick={() => {
               setSelectedButton("features");
               pricingRef.current.scrollIntoView({
@@ -314,11 +312,10 @@ export default function ListingDetail({ data, locale, session }) {
             Prices & Conditions
           </button>
           <button
-            className={`tw:font-semibold tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${
-              selectedButton === "location"
-                ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-black tw:text-white"
-                : "border"
-            }`}
+            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${selectedButton === "location"
+              ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
+              : "border"
+              }`}
             onClick={() => {
               setSelectedButton("location");
               locationRef.current.scrollIntoView({
@@ -344,13 +341,14 @@ export default function ListingDetail({ data, locale, session }) {
             ) : (
               <HeartIcon
                 size={24}
-                color="#797979"
-                className="tw:cursor-pointer tw:mb-4"
+                strokeWidth={2}
+                fill="#7979791A"
+                className="tw:cursor-pointer tw:text-[var(--color-font-light)]  tw:mb-4"
                 onClick={() => toggleFavorite(data.id)}
               />
             )}
 
-            <p className="tw:text-[#797979]">Bookmark</p>
+            <p className="tw:text-[#797979] tw:text-[14px] tw:font-normal">Bookmark</p>
           </div>
           <div
             className="tw:flex tw:cursor-pointer tw:py-2 tw:gap-1"
@@ -362,22 +360,24 @@ export default function ListingDetail({ data, locale, session }) {
           >
             <Share2
               size={24}
-              color="#797979"
-              className="tw:cursor-pointer tw:mb-4"
+              strokeWidth={2}
+              className="tw:cursor-pointer tw:text-[var(--color-font-light)] tw:mb-4"
             />
-            <p className="tw:text-[#797979]">Share</p>
+            <p className="tw:text-[#797979] tw:text-[14px] tw:font-normal">Share</p>
           </div>
         </div>
       </div>
-      <h1 className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:flex tw:items-center tw:text-3xl">
-        {data.title}
-      </h1>
-      <div className="tw:flex tw:gap-2">
-        <MapPin size={20} className="tw:text-[var(--color-font-regular)]" />
-        <p className="tw:text-[var(--color-font-regular)]">
-          {getFormatedLocationString(data.location)}
-        </p>
-      </div>
+      <div className="tw:flex tw:flex-col tw:mb-4">
+        <h1 className="tw:font-semibold tw:text-[var(--color-font-dark)]  tw:text-[28px] ">
+          {data.title}
+        </h1>
+        <div className="tw:flex tw:gap-2 tw:items-center">
+          <MapPin size={24} className="tw:text-[var(--color-font-regular)] tw:mb-4" />
+          <p className="tw:text-[var(--color-font-regular)] tw:text-[20px] tw:font-normal">
+            {getFormatedLocationString(data.location)}
+          </p>
+        </div>
+     </div>
       <div className="tw:flex tw:flex-col tw:md:flex-row tw:gap-5">
         <ImageGrid
           images={extractThumbnailUrls(data.galleries) || []}
@@ -429,7 +429,7 @@ export default function ListingDetail({ data, locale, session }) {
               }}
             >
               <Send size={20} className="tw:text-white" />
-              <p className="tw:text-white m-0">Message</p>
+              <p className="tw:text-white  tw:font-semibold m-0">Message</p>
             </button>
           </div>
         </div>
@@ -440,26 +440,26 @@ export default function ListingDetail({ data, locale, session }) {
         ref={overviewRef}
       >
         <div className="tw:flex-3/5 tw:relative">
-          <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+          <h2 className="tw:text-[24px] tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
             Property Overview
           </h2>
-          <p className="tw:md:max-w-[80%] tw:line-clamp-6 tw:text-justify">
+          <p className="tw:md:max-w-[80%] tw:line-clamp-6 tw:text-[16px] tw:text-[#797979] tw:font-normal tw:text-justify">
             {data.description?.replace(/<\/?[^>]+(>|$)/g, "") ||
               "No description available for this property."}
           </p>
           <div className="fade-true tw:w-full tw:md:max-w-[80%] tw:absolute tw:bottom-0 p-4 tw:flex tw:items-center tw:justify-center tw:z-30">
             <button
-              className="tw:bg-[#040342] tw:text-white tw:py-2 tw:px-4"
+              className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:font-semibold tw:py-2 tw:px-4"
               onClick={() => {
                 setIsShowDescriptionOpen(true);
               }}
             >
-              Show More
+              Read More
             </button>
           </div>
         </div>
         <div className="tw:flex-2/5">
-          <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+          <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
             Features & Amenities
           </h2>
           <div className="tw:relative tw:grid tw:grid-cols-2 tw:gap-4">
@@ -471,9 +471,9 @@ export default function ListingDetail({ data, locale, session }) {
                     <img
                       src={exactPath(f.icon)}
                       alt={f.title}
-                      className="tw:w-5 tw:h-5"
+                      className="tw:w-5 tw:h-5 tw:filter tw:brightness-0 tw:opacity-50"
                     />
-                    <span className="tw:font-normal tw:text-[14px] sm:tw:text-[16px] tw:text-[var(--color-font-light)]">
+                    <span className="tw:font-normal tw:text-[14px] tw:sm:text-[16px] tw:text-[var(--color-font-regular)]">
                       {f.title}
                     </span>
                   </div>
@@ -484,7 +484,7 @@ export default function ListingDetail({ data, locale, session }) {
 
           <div className="tw:w-full tw:flex tw:items-center tw:justify-center tw:mt-6 tw:max-w-[80%]">
             <button
-              className="tw:bg-[#040342] tw:text-white tw:py-2 tw:px-4"
+              className="tw:bg-[#040342] tw:text-[14px] tw:font-semibold tw:text-white tw:py-2 tw:px-4"
               onClick={() => {
                 setIsShowFeaturesOpen(true);
               }}
@@ -556,7 +556,7 @@ export default function ListingDetail({ data, locale, session }) {
         <section className="tw:pt-12 tw:pb-20" ref={pricingRef}>
           <div className="mx-auto">
             <div className="tw:flex tw:flex-col tw:items-center">
-              <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+              <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
                 {`Prices & Conditions`}
               </h2>
             </div>
@@ -564,17 +564,17 @@ export default function ListingDetail({ data, locale, session }) {
               {data?.prices.map((p, idx) => (
                 <div
                   key={idx}
-                  className="tw:bg-[#FAFBFC] tw:rounded-md tw:shadow-sm tw:p-4"
+                  className="tw:bg-[#FAFBFC] tw:border tw:border-[#D8E0ED]  tw:p-4"
                 >
-                  <p className="tw:font-bold tw:text-lg tw:text-[#FF780B]">
-                    ${p.amount}{" "}
-                    <span className="">
+                  <p className="tw:font-semibold  tw:text-[#FF780B]">
+                    <span className="tw:text-[24px]"> ${p.amount}{" "}</span>
+                    <span className="tw:text-[18px">
                       / {p.total ? `${p.total} x ${p.type}` : p.type}
                     </span>
                   </p>
-                  <p className="tw:text-sm tw:mt-2 tw:text-[#797979]">
+                  <p className="tw:text-[14px] tw:font-normal tw:mt-2 tw:text-[#797979]">
                     Number of Guests:{" "}
-                    <span className="tw:font-semibold tw:text-black">
+                    <span className="tw:font-medium tw:text-[#3B3B3B]">
                       {p.guest}
                     </span>
                   </p>
@@ -589,12 +589,12 @@ export default function ListingDetail({ data, locale, session }) {
         className="tw:w-full tw:h-[300px] tw:md:h-[600px] tw:rounded-[10px] tw:overflow-hidden"
         ref={locationRef}
       >
-        <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+        <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
           {`Location`}
         </h2>
         <MapComponent
           defaultCenter={data?.location[0]?.geo}
-          setLocations={() => {}}
+          setLocations={() => { }}
           locations={[]}
           apiKey={google_key}
           zoom={11}
@@ -604,7 +604,7 @@ export default function ListingDetail({ data, locale, session }) {
       </div>
 
       <div>
-        <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full tw:mt-10">
+        <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full tw:mt-10">
           Similar Listing
         </h2>
 
