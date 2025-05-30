@@ -621,7 +621,11 @@
     "description": "To są najpopularniejsze miejsca na świecie.",
     "button":{
       "cancel": "Anuluj",
-      "confirm": "Potwierdź"
+      "confirm": "Potwierdź",
+      "edit": "Edytuj",
+      "password": "Zmień swoje hasło",
+      "turnOnBusinessAccount": "Włącz konto firmowe",
+      "turnOffBusinessAccount": "Wyłącz konto firmowe"
     },
     "messages": {
       "delete-account": "Ważna informacja - Twoje konto i subskrypcje",
@@ -650,8 +654,8 @@
       "payment-method": "Metoda płatności została pomyślnie zaktualizowana."
     },
     "control-panel": {
-      "edit": "Zaktualizuj",
       "delete": "Usuń",
+      "edit": "Zaktualizuj",
       "password": "Zmień swoje hasło",
       "deleteAccount": "Usuń moje konto",
       "change-payment": "Zmień metodę płatności",

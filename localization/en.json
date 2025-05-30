@@ -646,7 +646,11 @@
     "description": "These are the most popular destinations in the world.",
     "button":{
       "cancel": "Cancel",
-      "confirm": "Confirm"
+      "confirm": "Confirm",
+      "edit": "Edit",
+      "password": "Change Your Password",
+      "turnOnBusinessAccount": "Turn on business account",
+      "turnOffBusinessAccount": "Turn off business account"
     },
     "messages": {
       "delete-account": "Important Notice - Your Account and Subscriptions",
@@ -676,9 +680,9 @@
 
     },
     "control-panel": {
-      "edit": "Update",
       "delete": "Delete",
       "submit": "Submit",
+      "edit": "Update",
       "password": "Change Your Password",
       "deleteAccount": "Delete My Account",
       "change-payment": "Change payment method",

@@ -620,7 +620,11 @@
     "description": "Dies sind die beliebtesten Reiseziele der Welt.",
     "button":{
       "cancel": "Abbrechen",
-      "confirm": "Bestätigen"
+      "confirm": "Bestätigen",
+      "edit": "Bearbeiten",
+      "password": "Ändere dein Passwort",
+      "turnOnBusinessAccount": "Geschäftskonto aktivieren",
+      "turnOffBusinessAccount": "Geschäftskonto deaktivieren"
     },
     "messages": {
       "delete-account": "Wichtiger Hinweis - Ihr Konto und Abonnements",
@@ -649,9 +653,9 @@
       "payment-method": "Zahlungsmethode wurde erfolgreich aktualisiert."
     },
     "control-panel": {
-      "edit": "Aktualisieren",
       "delete": "Löschen",
       "submit": "Einreichen",
+      "edit": "Aktualisieren",
       "password": "Ändere dein Passwort",
       "deleteAccount": "Mein Konto löschen",
       "change-payment": "Zahlungsmethode ändern",
