@@ -3782,7 +3782,7 @@ li {
 }
 @media (max-width: 767px) {
   .dashboard__content {
-    padding: 30px;
+    padding: 10px;
     padding-bottom: 0;
   }
 }
@@ -3805,6 +3805,7 @@ li {
   padding-bottom: 40px;
   will-change: transform;
   transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  box-shadow: 4px 0px 16px 0px rgba(0, 0, 0, 0.0588235294);
 }
 @media (max-width: 991px) {
   .dashboard__sidebar {
@@ -10151,33 +10152,6 @@ div[data-slider] > input[type=range]::-ms-tooltip {
   transform: unset;
   bottom: 30px;
   right: 30px;
-}
-
-.form-input {
-  position: relative;
-  display: flex;
-}
-.form-input label {
-  position: absolute;
-  top: 0;
-  top: 26px;
-  padding: 0 15px;
-  pointer-events: none;
-  font-size: 14px;
-}
-.form-input textarea,
-.form-input input {
-  border: 1px solid var(--color-border);
-}
-.form-input textarea:focus,
-.form-input input:focus {
-  border: 2px solid #051036 !important;
-}
-.form-input textarea ~ label,
-.form-input textarea ~ label,
-.form-input input ~ label,
-.form-input input ~ label {
-  transform: translateY(-10px);
 }
 
 .sidebar.-blog > * + * {

@@ -2,6 +2,7 @@
 import { update } from "@/lib/services/user";
 import { useFormik } from "formik";
 import { Check, XIcon } from "lucide-react";
+import { useState } from "react";
 
 export default function ProfileEdit({
   data,
@@ -87,6 +88,20 @@ export default function ProfileEdit({
       }
     },
   });
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const languages = [
+    { value: 'en', label: 'English' },
+    { value: 'pl', label: 'Polish' },
+    { value: 'de', label: 'German' },
+    // Add more languages as needed
+  ];
+
+  const handleOptionClick = (value) => {
+    formik.setFieldValue('locale', value);
+    setIsOpen(false); // Close dropdown after selection
+  };
 
   return (
     <div className="tw:border font-secondary tw:border-[#D8E0ED] tw:px-3 tw:md:px-5 tw:py-4 tw:md:py-7 tw:w-full">
@@ -301,25 +316,52 @@ export default function ProfileEdit({
           </div>
 
           {/* Language */}
-          <div>
+          <div className="tw:relative">
             <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
-              {t("form.field.language")}
+              {t('form.field.language')}
             </label>
-            <select
-              name="locale"
-              value={formik.values.locale}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className="tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB]"
+            <div
+              className="tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)] tw:mt-1 tw:bg-[#F8F9FB] tw:cursor-pointer"
+              onClick={() => setIsOpen(!isOpen)}
             >
-              <option value="" disabled>
-                {t("profile.selectOne")}
-              </option>
-              <option value="en">English</option>
-              <option value="pl">Polish</option>
-              <option value="de">German</option>
-              {/* Add more languages as needed */}
-            </select>
+              {formik.values.locale
+                ? languages.find((lang) => lang.value === formik.values.locale)?.label
+                : t('profile.selectOne')}
+            </div>
+            {isOpen && (
+              <div className="tw:absolute tw:w-[280px] tw:h-[202px] tw:right-0 tw:bg-[#F8F9FB] tw:border tw:border-[#D8E0ED] tw:shadow-lg tw:z-10">
+                <div className="tw:flex tw:flex-col tw:gap-2 tw:p-2 tw:h-full tw:overflow-y-auto">
+                  {languages.map((lang) => (
+                    <div
+                      key={lang.value}
+                      className="tw:flex tw:items-center tw:cursor-pointer hover:tw:bg-gray-100 tw:p-2"
+                      onClick={() => handleOptionClick(lang.value)}
+                    >
+                      <div className="tw:relative tw:mr-2 tw:flex-shrink-0 tw:flex tw:items-center">
+                        <input
+                          type="checkbox"
+                          name={`locale-${lang.value}`}
+                          checked={formik.values.locale === lang.value}
+                          onChange={() => handleOptionClick(lang.value)}
+                          className="tw:appearance-none tw:w-[18px] tw:h-[18px] tw:rounded-[4px] tw:bg-white tw:border tw:border-gray-300 tw:checked:bg-[#FF780B]"
+                        />
+                        <svg
+                          className={`tw:absolute tw:top-0 tw:left-0 tw:w-[18px] tw:h-[18px] tw:pointer-events-none ${formik.values.locale === lang.value ? 'tw:visible' : 'tw:invisible'}`}
+                          viewBox="0 0 16 16"
+                          fill="white"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M6.75 11.25L3.5 8l1.414-1.414L6.75 8.586l4.586-4.586L12.75 5.414z" />
+                        </svg>
+                      </div>
+                      <span className="tw:text-[14px] tw:font-normal tw:text-[var(--color-font-dark)] tw:leading-[18px]">
+                        {lang.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+            </div>
+            )}
           </div>
         </div>
 
