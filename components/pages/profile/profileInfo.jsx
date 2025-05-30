@@ -25,7 +25,7 @@ export default function profileInfo({
   };
 
   return (
-    <div className="tw:border font-secondary tw:border-[#D8E0ED] tw:px-3 tw:md:px-5 tw:py-4 tw:md:py-7 tw:w-full">
+    <div className="tw:border font-secondary tw:border-[#D8E0ED] tw:px-3 tw:md:px-5 tw:py-4 tw:md:py-7  tw:w-full">
       <h2 className="tw:text-[18px] tw:font-semibold tw:mb-4 tw:pb-4 tw:border-b tw:border-b-gray-200 tw:text-[var(--color-font-regular)]">
         Basic Information{isBusiness ? " (Business Account)" : ""}
       </h2>
@@ -57,56 +57,97 @@ export default function profileInfo({
         </div>
 
         {/* User Info Grid */}
-        <div className="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:gap-y-4 tw:gap-x-8 tw:mb-6">
-          <div >
-            <p className="tw:text-[16px] tw:text-[var(--color-font-regular)]">First Name</p>
-            <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)]">{data?.first_name || ""}</p>
+        <div className="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:gap-y-4 tw:gap-x-10 tw:mb-6">
+          {/* First Name */}
+          <div className="tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2">
+            <p className="tw:text-[16px] tw:text-[var(--color-font-regular)] tw:m-0">First Name</p>
+            <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)] tw:m-0 tw:font-medium">
+              {data?.first_name || "-"}
+            </p>
           </div>
-          <div>
-            <p className="tw:text-sm tw:text-gray-500">Last Name</p>
-            <p className="tw:text-base">{data?.last_name || ""}</p>
+
+          {/* Last Name */}
+          <div className="tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2">
+            <p className="tw:text-[16px] tw:text-[var(--color-font-regular)] tw:m-0">Last Name</p>
+            <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)] tw:m-0 tw:font-medium">
+              {data?.last_name || "-"}
+            </p>
           </div>
 
           {isBusiness && (
             <>
-              <div>
-                <p className="tw:text-sm tw:text-gray-500">Company Name</p>
-                <p className="tw:text-base">{data?.company || ""}</p>
+              {/* Company Name */}
+              <div className="tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2">
+                <p className="tw:text-[16px] tw:text-[var(--color-font-regular)] tw:m-0">Company Name</p>
+                <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)] tw:m-0 tw:font-medium">
+                  {data?.company || "-"}
+                </p>
               </div>
-              <div>
-                <p className="tw:text-sm tw:text-gray-500">Vat No.</p>
-                <p className="tw:text-base">{data?.vat_number || ""}</p>
+
+              {/* VAT Number */}
+              <div className="tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2">
+                <p className="tw:text-[16px] tw:text-[var(--color-font-regular)] tw:m-0">VAT No.</p>
+                <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)] tw:m-0 tw:font-medium">
+                  {data?.vat_number || "-"}
+                </p>
               </div>
             </>
           )}
 
-          <div>
-            <p className="tw:text-sm tw:text-gray-500">Email</p>
-            <p className="tw:text-base">{data?.email || ""}</p>
+          {/* Email */}
+          <div className="tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2">
+            <p className="tw:text-[16px] tw:text-[var(--color-font-regular)] tw:m-0">Email</p>
+            <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)] tw:m-0 tw:font-medium">
+              {data?.email || "-"}
+            </p>
           </div>
-          <div>
-            <p className="tw:text-sm tw:text-gray-500">Phone No.</p>
-            <p className="tw:text-base">{data?.phone || ""}</p>
+
+          {/* Phone */}
+          <div className="tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2">
+            <p className="tw:text-[16px] tw:text-[var(--color-font-regular)] tw:m-0">Phone No.</p>
+            <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)] tw:m-0 tw:font-medium">
+              {data?.phone || "-"}
+            </p>
           </div>
-          <div>
-            <p className="tw:text-sm tw:text-gray-500">Street & House No.</p>
-            <p className="tw:text-base">{data?.address?.street_one || ""}</p>
+
+          {/* Street & House No. - Full width */}
+          <div className="tw:col-span-1 tw:md:col-span-2 tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2 tw:min-h-[90px]">
+            <p className="tw:text-[16px] tw:text-[var(--color-font-regular)] tw:m-0">Street & House No.</p>
+            <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)] tw:m-0 tw:font-medium">
+              {data?.address?.street_one || "-"}
+            </p>
           </div>
-          <div>
-            <p className="tw:text-sm tw:text-gray-500">City</p>
-            <p className="tw:text-base">{data?.address?.city || ""}</p>
+
+          {/* City */}
+          <div className="tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2">
+            <p className="tw:text-[16px] tw:text-[var(--color-font-regular)] tw:m-0">City</p>
+            <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)] tw:m-0 tw:font-medium">
+              {data?.address?.city || "-"}
+            </p>
           </div>
-          <div>
-            <p className="tw:text-sm tw:text-gray-500">Country</p>
-            <p className="tw:text-base">{data?.address?.country || ""}</p>
+
+          {/* Country */}
+          <div className="tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2">
+            <p className="tw:text-[16px] tw:text-[var(--color-font-regular)] tw:m-0">Country</p>
+            <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)] tw:m-0 tw:font-medium">
+              {data?.address?.country || "-"}
+            </p>
           </div>
-          <div>
-            <p className="tw:text-sm tw:text-gray-500">Postal Code</p>
-            <p className="tw:text-base">{data?.address?.zip_code || ""}</p>
+
+          {/* Postal Code */}
+          <div className="tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2">
+            <p className="tw:text-[16px] tw:text-[var(--color-font-regular)] tw:m-0">Postal Code</p>
+            <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)] tw:m-0 tw:font-medium">
+              {data?.address?.zip_code || "-"}
+            </p>
           </div>
-          <div>
-            <p className="tw:text-sm tw:text-gray-500">Languages</p>
-            <p className="tw:text-base">{data?.locale?.toUpperCase() || ""}</p>
+
+          {/* Languages */}
+          <div className="tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2">
+            <p className="tw:text-[16px] tw:text-[var(--color-font-regular)] tw:m-0">Languages</p>
+            <p className="tw:text-base tw:text-[16px] tw:text-[var(--color-font-dark)] tw:m-0 tw:font-medium">
+              {data?.locale?.toUpperCase() || "-"}
+            </p>
           </div>
         </div>
 

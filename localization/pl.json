@@ -619,6 +619,10 @@
   "profile": {
     "title": "Profil",
     "description": "To są najpopularniejsze miejsca na świecie.",
+    "button":{
+      "cancel": "Anuluj",
+      "confirm": "Potwierdź"
+    },
     "messages": {
       "delete-account": "Ważna informacja - Twoje konto i subskrypcje",
       "delete": {
@@ -662,21 +666,22 @@
         "password": "Hasło",
         "current-password": "Aktualne hasło",
         "confirm-password": "Potwierdź hasło",
-        "business-account": "Konto firmowe",
+        "businessAccount": "Konto firmowe",
         "private-account": "Konto prywatne",
         "company": "Nazwa firmy",
-        "phone": "Telefon",
+        "phone": "Numer telefonu",
         "address": "Adres",
         "vat": "Numer VAT",
         "email": "Adres e-mail",
         "first_name": "Imię",
         "last_name": "Nazwisko",
-        "first_line": "Ulica i numer domu",
+        "streetAndHouseNo": "Ulica i numer domu",
         "second_line": "Druga Linia Adresowa",
         "city": "Miasto",
-        "zip": "Kod Pocztowy",
+        "zip": "Kod pocztowy",
         "country": "Kraj",
-        "spoken-language": "Język mówiony",
+        "language": "Język",
+        "subscribeNewsletter": "Zapisz się do naszego newslettera",
         "paypal": "Paypal",
         "card": "Karta kredytowa",
         "yes": "Tak",

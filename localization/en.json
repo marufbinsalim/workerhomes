@@ -644,6 +644,10 @@
   "profile": {
     "title": "Profile",
     "description": "These are the most popular destinations in the world.",
+    "button":{
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
     "messages": {
       "delete-account": "Important Notice - Your Account and Subscriptions",
       "delete": {
@@ -669,6 +673,7 @@
       "invalid-password": "Invalid password, please try again.",
       "no-card": "You need to select a least one payment method.",
       "payment-method": "Payment method has been updated successfully."
+
     },
     "control-panel": {
       "edit": "Update",
@@ -687,21 +692,23 @@
         "password": "Password",
         "current-password": "Current Password",
         "confirm-password": "Confirm Password",
-        "business-account": "Business Account",
+        "businessAccount": "Business Account",
         "private-account": "Private Account",
+        "basicInformation": "Basic Information",
         "company": "Company Name",
-        "phone": "Phone",
+        "phone": "Phone No.",
         "address": "Address",
         "vat": "VAT Number",
         "email": "Email Address",
         "first_name": "First Name",
         "last_name": "Last Name",
-        "first_line": "Street and house number",
+        "streetAndHouseNo": "Street & House No",
         "second_line": "Second Address Line",
         "city": "City",
-        "zip": "Zip Code",
+        "postalCode": "Postal Code",
         "country": "Country",
-        "spoken-language": "Spoken Language",
+        "language": "Language",
+        "subscribeNewsletter": "Subscribe to our newsletter",
         "paypal": "Paypal",
         "card": "Credit Card",
         "yes": "Yes",

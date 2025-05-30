@@ -618,6 +618,10 @@
   "profile": {
     "title": "Profil",
     "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "button":{
+      "cancel": "Abbrechen",
+      "confirm": "Bestätigen"
+    },
     "messages": {
       "delete-account": "Wichtiger Hinweis - Ihr Konto und Abonnements",
       "delete": {
@@ -661,21 +665,22 @@
         "password": "Passwort",
         "current-password": "Aktuelles Passwort",
         "confirm-password": "Passwort bestätigen",
-        "business-account": "Geschäftskonto",
+        "businessAccount": "Geschäftskonto",
         "private-account": "Privatkonto",
         "company": "Firmenname",
-        "phone": "Telefon",
+        "phone": "Telefonnummer",
         "address": "Adresse",
         "vat": "USt-IdNr.",
         "email": "E-Mail-Adresse",
         "first_name": "Vorname",
         "last_name": "Nachname",
-        "first_line": "Straße und Hausnummer",
+        "streetAndHouseNo": "Straße und Hausnummer",
         "second_line": "Zweite Adresszeile",
         "city": "Stadt",
         "zip": "Postleitzahl",
         "country": "Land",
-        "spoken-language": "Gesprochene Sprache",
+        "language": "Sprache",
+        "subscribeNewsletter": "Abonniere unseren Newsletter",
         "paypal": "Paypal",
         "card": "Kreditkarte",
         "yes": "Ja",

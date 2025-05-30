@@ -89,18 +89,18 @@ export default function ProfileEdit({
   });
 
   return (
-    <div className="tw:border tw:border-[#D8E0ED] tw:px-3 tw:md:px-5 tw:py-4 tw:md:py-7 tw:w-full">
-      <h2 className="tw:text-lg tw:font-semibold tw:mb-4">
-        {t("profile.basicInformation")}
-        {isBusiness ? " (Business Account)" : ""}
+    <div className="tw:border font-secondary tw:border-[#D8E0ED] tw:px-3 tw:md:px-5 tw:py-4 tw:md:py-7 tw:w-full">
+      <h2 className="tw:text-[18px] tw:font-medium tw:text-[var(--color-font-regular)] tw:mb-4">
+        {t("form.field.basicInformation")}
+        {isBusiness ? t("form.field.businessAccount") : ""}
       </h2>
 
       <form onSubmit={formik.handleSubmit}>
         <div className="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:gap-y-4 tw:gap-x-8 tw:mb-6">
           {/* First Name */}
           <div>
-            <label className="tw:text-sm tw:text-gray-500">
-              {t("profile.firstName")}
+            <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+              {t("form.field.first_name")}
             </label>
             <input
               type="text"
@@ -108,11 +108,10 @@ export default function ProfileEdit({
               value={formik.values.first_name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
-                formik.touched.first_name && formik.errors.first_name
+              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.first_name && formik.errors.first_name
                   ? "tw:border-red-500"
                   : ""
-              }`}
+                }`}
             />
             {formik.touched.first_name && formik.errors.first_name && (
               <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -123,8 +122,8 @@ export default function ProfileEdit({
 
           {/* Last Name */}
           <div>
-            <label className="tw:text-sm tw:text-gray-500">
-              {t("profile.lastName")}
+            <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+              {t("form.field.last_name")}
             </label>
             <input
               type="text"
@@ -132,11 +131,10 @@ export default function ProfileEdit({
               value={formik.values.last_name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
-                formik.touched.last_name && formik.errors.last_name
+              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.last_name && formik.errors.last_name
                   ? "tw:border-red-500"
                   : ""
-              }`}
+                }`}
             />
             {formik.touched.last_name && formik.errors.last_name && (
               <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -150,8 +148,8 @@ export default function ProfileEdit({
             <>
               {/* Company Name */}
               <div>
-                <label className="tw:text-sm tw:text-gray-500">
-                  {t("profile.companyName")}
+                <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+                  {t("form.field.company")}
                 </label>
                 <input
                   type="text"
@@ -159,11 +157,10 @@ export default function ProfileEdit({
                   value={formik.values.company}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
-                    formik.touched.company && formik.errors.company
+                  className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.company && formik.errors.company
                       ? "tw:border-red-500"
                       : ""
-                  }`}
+                    }`}
                 />
                 {formik.touched.company && formik.errors.company && (
                   <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -174,8 +171,8 @@ export default function ProfileEdit({
 
               {/* VAT Number */}
               <div>
-                <label className="tw:text-sm tw:text-gray-500">
-                  {t("profile.vatNumber")}
+                <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+                  {t("form.field.vat")}
                 </label>
                 <input
                   type="text"
@@ -183,11 +180,10 @@ export default function ProfileEdit({
                   value={formik.values.vat_number}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
-                    formik.touched.vat_number && formik.errors.vat_number
+                  className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.vat_number && formik.errors.vat_number
                       ? "tw:border-red-500"
                       : ""
-                  }`}
+                    }`}
                 />
                 {formik.touched.vat_number && formik.errors.vat_number && (
                   <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -200,8 +196,8 @@ export default function ProfileEdit({
 
           {/* Email */}
           <div>
-            <label className="tw:text-sm tw:text-gray-500">
-              {t("profile.email")}
+            <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+              {t("form.field.email")}
             </label>
             <input
               type="email"
@@ -209,11 +205,10 @@ export default function ProfileEdit({
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
-                formik.touched.email && formik.errors.email
+              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.email && formik.errors.email
                   ? "tw:border-red-500"
                   : ""
-              }`}
+                }`}
             />
             {formik.touched.email && formik.errors.email && (
               <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -224,8 +219,8 @@ export default function ProfileEdit({
 
           {/* Phone No. */}
           <div>
-            <label className="tw:text-sm tw:text-gray-500">
-              {t("profile.phoneNo")}
+            <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+              {t("form.field.phone")}
             </label>
             <input
               type="text"
@@ -233,11 +228,10 @@ export default function ProfileEdit({
               value={formik.values.phone}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className={`tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50 ${
-                formik.touched.phone && formik.errors.phone
+              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.phone && formik.errors.phone
                   ? "tw:border-red-500"
                   : ""
-              }`}
+                }`}
             />
             {formik.touched.phone && formik.errors.phone && (
               <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -247,24 +241,24 @@ export default function ProfileEdit({
           </div>
 
           {/* Street & House No. */}
-          <div>
-            <label className="tw:text-sm tw:text-gray-500">
-              {t("profile.streetAndHouseNo")}
+          <div className="tw:col-span-1 tw:md:col-span-2 tw:flex tw:flex-col tw:gap-1 tw:justify-center tw:py-2">
+            <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+              {t("form.field.streetAndHouseNo")}
             </label>
-            <input
-              type="text"
+            <textarea
               name="street_one"
               value={formik.values.street_one}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50"
+              className="tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:min-h-[90px] tw:font-normal tw:text-[var(--color-font-regular)] tw:mt-1 tw:bg-[#F8F9FB] tw:resize-none"
             />
           </div>
 
+
           {/* City */}
           <div>
-            <label className="tw:text-sm tw:text-gray-500">
-              {t("profile.city")}
+            <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+              {t("form.field.city")}
             </label>
             <input
               type="text"
@@ -272,14 +266,14 @@ export default function ProfileEdit({
               value={formik.values.city}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50"
+              className="tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB]"
             />
           </div>
 
           {/* Country */}
           <div>
-            <label className="tw:text-sm tw:text-gray-500">
-              {t("profile.country")}
+            <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+              {t("form.field.country")}
             </label>
             <input
               type="text"
@@ -287,14 +281,14 @@ export default function ProfileEdit({
               value={formik.values.country}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50"
+              className="tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB]"
             />
           </div>
 
           {/* Postal Code */}
           <div>
-            <label className="tw:text-sm tw:text-gray-500">
-              {t("profile.postalCode")}
+            <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+              {t("form.field.postalCode")}
             </label>
             <input
               type="text"
@@ -302,21 +296,21 @@ export default function ProfileEdit({
               value={formik.values.zip_code}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50"
+              className="tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB]"
             />
           </div>
 
           {/* Language */}
           <div>
-            <label className="tw:text-sm tw:text-gray-500">
-              {t("profile.language")}
+            <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+              {t("form.field.language")}
             </label>
             <select
               name="locale"
               value={formik.values.locale}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="tw:w-full tw:p-2 tw:border tw:border-gray-300 tw:rounded tw:mt-1 tw:bg-gray-50"
+              className="tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB]"
             >
               <option value="" disabled>
                 {t("profile.selectOne")}
@@ -331,15 +325,25 @@ export default function ProfileEdit({
 
         {/* Newsletter Checkbox */}
         <div className="tw:mb-6">
-          <label className="tw:flex tw:items-center tw:text-sm">
-            <input
-              type="checkbox"
-              name="newsletter"
-              checked={formik.values.newsletter}
-              onChange={formik.handleChange}
-              className="tw:mr-2 tw:accent-orange-500"
-            />
-            {t("profile.subscribeNewsletter")}
+          <label className="tw:flex tw:items-center tw:text-[var(--color-font-dark)] tw:font-normal tw:text-[14px]">
+            <div className="tw:relative tw:mr-2 tw:w-[18px] tw:h-[18px]">
+              <input
+                type="checkbox"
+                name="newsletter"
+                checked={formik.values.newsletter}
+                onChange={formik.handleChange}
+                className="tw:appearance-none tw:w-[18px] tw:h-[18px] tw:rounded-[4px] tw:bg-white tw:border tw:border-gray-300 tw:checked:bg-[#FF780B]"
+              />
+              <svg
+                className={`tw:absolute tw:top-0 tw:left-0 tw:w-[18px] tw:h-[18px] tw:pointer-events-none ${formik.values.newsletter ? 'tw:visible' : 'tw:invisible'}`}
+                viewBox="0 0 16 16"
+                fill="white"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M6.75 11.25L3.5 8l1.414-1.414L6.75 8.586l4.586-4.586L12.75 5.414z" />
+              </svg>
+            </div>
+            {t("form.field.subscribeNewsletter")}
           </label>
         </div>
 
@@ -350,17 +354,18 @@ export default function ProfileEdit({
             onClick={() => {
               setEditing(false);
             }}
-            className="tw:bg-white tw:text-gray-700 tw:border tw:border-gray-300 tw:px-4 tw:py-2 tw:rounded tw:text-sm tw:hover:bg-gray-100 tw:transition"
+            className="tw:bg-white tw:text-[var(--color-primary)] tw:font-semibold tw:border tw:border-[var(--color-primary)] tw:px-4 tw:py-2 tw:text-[14px] "
           >
-            {t("profile.cancel")}{" "}
-            <XIcon size={16} className="tw:inline tw:ml-1" />
+            <XIcon size={24} className="tw:inline tw:mr-1" />
+            {t("button.cancel")}{" "}
+
           </button>
           <button
             type="submit"
-            className="tw:bg-orange-500 tw:text-white tw:px-4 tw:py-2 tw:rounded tw:text-sm tw:hover:bg-orange-600 tw:transition"
+            className="tw:bg-[var(--color-primary)] tw:text-white tw:font-semibold tw:px-4 tw:py-2 tw:rounded tw:text-[14px] "
           >
-            {t("profile.confirm")}
-            <Check size={16} className="tw:inline tw:ml-1" />
+            <Check size={24} className="tw:inline tw:mr-1" />
+            {t("button.confirm")}
           </button>
         </div>
       </form>
