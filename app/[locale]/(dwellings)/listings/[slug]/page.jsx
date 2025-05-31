@@ -78,8 +78,25 @@ export default async function Main({ params }) {
   const session = await getCurrentUser();
   const data = await fetchListingBySlug(params.slug, params.locale);
 
+  let slugMap = [
+    {
+      locale: data.locale,
+      slug: data.slug,
+    },
+  ];
+
+  if (data.localizations) {
+    let localizationsSlugs = data.localizations.map((item) => ({
+      locale: item.locale,
+      slug: item.slug,
+    }));
+    slugMap = [...slugMap, ...localizationsSlugs];
+  }
+
+  console.log(slugMap);
+
   return (
-    <Wrapper>
+    <Wrapper slugMap={slugMap}>
       <ListingDetail data={data} locale={params.locale} session={session} />
     </Wrapper>
   );
