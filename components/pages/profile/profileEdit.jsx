@@ -92,14 +92,14 @@ export default function ProfileEdit({
   const [isOpen, setIsOpen] = useState(false);
 
   const languages = [
-    { value: 'en', label: 'English' },
-    { value: 'pl', label: 'Polish' },
-    { value: 'de', label: 'German' },
+    { value: "en", label: "English" },
+    { value: "pl", label: "Polish" },
+    { value: "de", label: "German" },
     // Add more languages as needed
   ];
 
   const handleOptionClick = (value) => {
-    formik.setFieldValue('locale', value);
+    formik.setFieldValue("locale", value);
     setIsOpen(false); // Close dropdown after selection
   };
 
@@ -123,10 +123,11 @@ export default function ProfileEdit({
               value={formik.values.first_name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.first_name && formik.errors.first_name
+              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${
+                formik.touched.first_name && formik.errors.first_name
                   ? "tw:border-red-500"
                   : ""
-                }`}
+              }`}
             />
             {formik.touched.first_name && formik.errors.first_name && (
               <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -146,10 +147,11 @@ export default function ProfileEdit({
               value={formik.values.last_name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.last_name && formik.errors.last_name
+              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${
+                formik.touched.last_name && formik.errors.last_name
                   ? "tw:border-red-500"
                   : ""
-                }`}
+              }`}
             />
             {formik.touched.last_name && formik.errors.last_name && (
               <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -172,10 +174,11 @@ export default function ProfileEdit({
                   value={formik.values.company}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.company && formik.errors.company
+                  className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${
+                    formik.touched.company && formik.errors.company
                       ? "tw:border-red-500"
                       : ""
-                    }`}
+                  }`}
                 />
                 {formik.touched.company && formik.errors.company && (
                   <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -195,10 +198,11 @@ export default function ProfileEdit({
                   value={formik.values.vat_number}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.vat_number && formik.errors.vat_number
+                  className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${
+                    formik.touched.vat_number && formik.errors.vat_number
                       ? "tw:border-red-500"
                       : ""
-                    }`}
+                  }`}
                 />
                 {formik.touched.vat_number && formik.errors.vat_number && (
                   <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -220,10 +224,11 @@ export default function ProfileEdit({
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.email && formik.errors.email
+              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${
+                formik.touched.email && formik.errors.email
                   ? "tw:border-red-500"
                   : ""
-                }`}
+              }`}
             />
             {formik.touched.email && formik.errors.email && (
               <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -243,10 +248,11 @@ export default function ProfileEdit({
               value={formik.values.phone}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${formik.touched.phone && formik.errors.phone
+              className={`tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)]  tw:mt-1 tw:bg-[#F8F9FB] ${
+                formik.touched.phone && formik.errors.phone
                   ? "tw:border-red-500"
                   : ""
-                }`}
+              }`}
             />
             {formik.touched.phone && formik.errors.phone && (
               <p className="tw:text-red-500 tw:text-xs tw:mt-1">
@@ -268,7 +274,6 @@ export default function ProfileEdit({
               className="tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:min-h-[90px] tw:font-normal tw:text-[var(--color-font-regular)] tw:mt-1 tw:bg-[#F8F9FB] tw:resize-none"
             />
           </div>
-
 
           {/* City */}
           <div>
@@ -318,15 +323,16 @@ export default function ProfileEdit({
           {/* Language */}
           <div className="tw:relative">
             <label className="tw:text-[16px] tw:font-semibold tw:text-[var(--color-font-dark)]">
-              {t('form.field.language')}
+              {t("form.field.language")}
             </label>
             <div
               className="tw:w-full tw:p-2 tw:border tw:border-[#D8E0ED] tw:text-[14px] tw:font-normal tw:text-[var(--color-font-regular)] tw:mt-1 tw:bg-[#F8F9FB] tw:cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
             >
               {formik.values.locale
-                ? languages.find((lang) => lang.value === formik.values.locale)?.label
-                : t('profile.selectOne')}
+                ? languages.find((lang) => lang.value === formik.values.locale)
+                    ?.label
+                : t("profile.selectOne")}
             </div>
             {isOpen && (
               <div className="tw:absolute tw:w-[280px] tw:h-[202px] tw:right-0 tw:bg-[#F8F9FB] tw:border tw:border-[#D8E0ED] tw:shadow-lg tw:z-10">
@@ -346,7 +352,7 @@ export default function ProfileEdit({
                           className="tw:appearance-none tw:w-[18px] tw:h-[18px] tw:rounded-[4px] tw:bg-white tw:border tw:border-gray-300 tw:checked:bg-[#FF780B]"
                         />
                         <svg
-                          className={`tw:absolute tw:top-0 tw:left-0 tw:w-[18px] tw:h-[18px] tw:pointer-events-none ${formik.values.locale === lang.value ? 'tw:visible' : 'tw:invisible'}`}
+                          className={`tw:absolute tw:top-0 tw:left-0 tw:w-[18px] tw:h-[18px] tw:pointer-events-none ${formik.values.locale === lang.value ? "tw:visible" : "tw:invisible"}`}
                           viewBox="0 0 16 16"
                           fill="white"
                           xmlns="http://www.w3.org/2000/svg"
@@ -360,7 +366,7 @@ export default function ProfileEdit({
                     </div>
                   ))}
                 </div>
-            </div>
+              </div>
             )}
           </div>
         </div>
@@ -377,7 +383,7 @@ export default function ProfileEdit({
                 className="tw:appearance-none tw:w-[18px] tw:h-[18px] tw:rounded-[4px] tw:bg-white tw:border tw:border-gray-300 tw:checked:bg-[#FF780B]"
               />
               <svg
-                className={`tw:absolute tw:top-0 tw:left-0 tw:w-[18px] tw:h-[18px] tw:pointer-events-none ${formik.values.newsletter ? 'tw:visible' : 'tw:invisible'}`}
+                className={`tw:absolute tw:top-0 tw:left-0 tw:w-[18px] tw:h-[18px] tw:pointer-events-none ${formik.values.newsletter ? "tw:visible" : "tw:invisible"}`}
                 viewBox="0 0 16 16"
                 fill="white"
                 xmlns="http://www.w3.org/2000/svg"
@@ -400,7 +406,6 @@ export default function ProfileEdit({
           >
             <XIcon size={24} className="tw:inline tw:mr-1" />
             {t("button.cancel")}{" "}
-
           </button>
           <button
             type="submit"

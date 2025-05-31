@@ -9,7 +9,7 @@ import { url } from "@/config";
 import useFetch from "@/hooks/useFetch";
 import { remove } from "@/lib/services/user";
 import axios from "axios";
-import { CircleDashed, Trash } from "lucide-react";
+import { CircleDashed, Key, Trash } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
@@ -30,6 +30,7 @@ const ProfilePage = ({ locale }) => {
   });
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isDeleteConfirmed, setIsDeleteConfirmed] = useState(false);
+  const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false);
   const [isUserVerified, setIsUserVerified] = useState(false);
   const [selected, setSelected] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -104,6 +105,9 @@ const ProfilePage = ({ locale }) => {
               setIsBusiness={setIsBusiness}
               reFetch={reFetch}
               setEditing={setIsEditing}
+              changePassword={() => {
+                setIsChangePasswordOpen(true);
+              }}
               t={t}
             />
           )}
@@ -202,6 +206,37 @@ const ProfilePage = ({ locale }) => {
           }}
         />
       </Modal>
+
+      <GenericModal
+        isOpen={isChangePasswordOpen && session?.provider === "credentials"}
+        setOpen={setIsChangePasswordOpen}
+      >
+        <div className="tw:py-4 tw:px-6 tw:bg-white tw:rounded-lg tw:shadow-md tw:w-[90dvw] tw:md:max-w-2xl tw:flex tw:flex-col">
+          <div>
+            <Key className="tw:w-12 tw:h-12 tw:mb-4 tw:text-gray-500" />
+
+            <h2 className="tw:text-lg tw:font-semibold tw:mb-4 tw:w-[80%]">
+              Change Password?
+            </h2>
+          </div>
+          <PasswordForm
+            formData={data}
+            onSuccess={() => {
+              setIsChangePasswordOpen(false);
+            }}
+            cancelButton={
+              <button
+                className="tw:bg-white border tw:text-black tw:px-4 tw:py-2 tw:rounded-md tw:mr-2"
+                onClick={() => {
+                  setIsChangePasswordOpen(false);
+                }}
+              >
+                Cancel
+              </button>
+            }
+          />
+        </div>
+      </GenericModal>
 
       <GenericModal isOpen={isDeleteOpen} setOpen={setIsDeleteOpen}>
         <div className="tw:py-4 tw:px-6 tw:bg-white tw:rounded-lg tw:shadow-md tw:w-[90dvw] tw:md:max-w-2xl tw:flex tw:flex-col">
