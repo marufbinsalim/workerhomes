@@ -10,8 +10,7 @@ import { LuUser } from "react-icons/lu";
 import { MdLogout } from "react-icons/md";
 import { signOut } from "next-auth/react";
 
-const UserDropdown = ({ session }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const UserDropdown = ({ session, isOpen, setIsOpen }) => {
   const dropdownRef = useRef(null);
   const router = useRouter();
   const locale = useParams().locale;
@@ -188,15 +187,13 @@ const Navbar = ({ session, slugMap = null }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [shouldRenderMenu, setShouldRenderMenu] = useState(false);
   const [open, setOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const t = useTranslations("header");
   const pathName = usePathname();
   const locale = pathName.split("/")[1];
   const [selected, setSelected] = useState(t(`locales.${locale}.language`));
   const router = useRouter();
   const pathname = usePathname();
-
-  console.log("session : ", session);
 
   const languageOptions = [
     {
@@ -221,6 +218,18 @@ const Navbar = ({ session, slugMap = null }) => {
       flag: "/assets/flag-pl.png",
     },
   ];
+
+  useEffect(() => {
+    if (open) {
+      setUserDropdownOpen(false);
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (userDropdownOpen) {
+      setOpen(false);
+    }
+  }, [userDropdownOpen]);
 
   const toggleMenu = () => {
     if (!isMenuOpen) {
@@ -351,7 +360,11 @@ const Navbar = ({ session, slugMap = null }) => {
         {/* Desktop Right Section - Adjusted for medium screens */}
         <div className="tw:hidden tw:md:flex tw:items-center tw:gap-3 tw:lg:gap-4">
           {session && session.user ? (
-            <UserDropdown session={session} />
+            <UserDropdown
+              session={session}
+              setIsOpen={setUserDropdownOpen}
+              isOpen={userDropdownOpen}
+            />
           ) : (
             <button
               onClick={() => router.push("/login")}
