@@ -219,12 +219,7 @@ const DwellingsPage = ({ locale }) => {
             <span className={`tw:inline-flex tw:items-center tw:justify-center tw:w-[76px] tw:h-[32px] tw:p-2 tw:rounded-lg tw:text-sm tw:font-medium ${statusClass}`}>
               {item?.status === 'AVAILABLE' ? 'Approved' : tStatus(item?.status)}
             </span>
-            {item?.status === 'PENDING' && (
-              <span className="tw:flex tw:items-center tw:gap-2 tw:text-blue-500 tw:text-xs">
-                <Icon icon='formkit:warning' />
-                {tStatus('needs-admin-approval')}
-              </span>
-            )}
+            
           </div>
         );
       },
@@ -262,8 +257,8 @@ const DwellingsPage = ({ locale }) => {
             </span>
             {item?.status === 'PENDING' && (
               <>
-                <IoWarningOutline className="tw:inline tw:ml-2 tw:text-yellow-500" />
-                <span className="tw:absolute tw:left-0 tw:bottom-full tw:mb-1 tw:p-2 tw:bg-white tw:shadow-md tw:rounded tw:text-xs tw:text-gray-600 tw:hidden group-tw:hover:block tw:z-10 tw:w-40">
+                <IoWarningOutline size={24} strokeWidth={2} className="tw:inline tw:ml-6  tw:text-[#FFAB00]" />
+                <span className="tw:absolute tw:left-0 tw:bottom-full tw:mb-1 tw:p-2 tw:bg-white tw:rounded-[4px] tw:shadow-[0px_0px_26px_0px_#0000000F] tw:text-[14px] tw:text-[var(--color-primary)] tw:hidden tw:group-hover:block tw:z-10 tw:w-40">
                   Needs admin approval
                 </span>
               </>
