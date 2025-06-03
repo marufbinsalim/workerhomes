@@ -3,12 +3,13 @@ import { verifyPassword } from "@/lib/services/user";
 import { profilePWDVerifySchema } from "@/lib/validation/profile";
 import { Icon } from "@iconify/react";
 import { Form, Formik } from "formik";
+import { Trash } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const PasswordVerifiedForm = ({ formData, onSuccess }) => {
+const PasswordVerifiedForm = ({ formData, onSuccess, cancelButton }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState({
     currentPassword: false,
@@ -16,8 +17,6 @@ const PasswordVerifiedForm = ({ formData, onSuccess }) => {
     confirmPassword: false,
   });
   const t = useTranslations("profile");
-  const localeT = useTranslations("localizations");
-  const { data: session } = useSession();
 
   return (
     <Formik
@@ -29,11 +28,6 @@ const PasswordVerifiedForm = ({ formData, onSuccess }) => {
       validationSchema={profilePWDVerifySchema()}
       onSubmit={async (values, { resetForm }) => {
         setIsLoading(true);
-
-        const formattedValues = {
-          password: values.password,
-          id: formData?.id,
-        };
 
         try {
           const isPasswordValid = await verifyPassword({
@@ -50,7 +44,7 @@ const PasswordVerifiedForm = ({ formData, onSuccess }) => {
             resetForm();
           }
         } catch (error) {
-          if (error.response.status === 400) {
+          if (error.response?.status === 400) {
             toast.error(t("messages.invalid-password"));
             resetForm();
           }
@@ -59,10 +53,10 @@ const PasswordVerifiedForm = ({ formData, onSuccess }) => {
         }
       }}
     >
-      {({ dirty, values, errors, setFieldValue }) => (
+      {({ dirty, errors }) => (
         <Form>
-          <div className="row x-gap-20 y-gap-20">
-            <div className="col-12">
+          <div className={"tw:grid tw:grid-cols-1"}>
+            <div>
               <Input
                 action={{
                   icon: showPassword.currentPassword
@@ -81,19 +75,18 @@ const PasswordVerifiedForm = ({ formData, onSuccess }) => {
                 required
               />
             </div>
-            <div className="modal-footer">
+
+            <div className={"tw:flex tw:justify-end"}>
+              {cancelButton}
               <button
                 disabled={!dirty || Object.keys(errors).length > 0 || isLoading}
                 type="submit"
-                className="col-auto button -sm bg-blue-1 text-white"
+                className={
+                  "tw:bg-[#FE475B] tw:text-white tw:px-4 tw:py-2 tw:rounded-md tw:mr-2 tw:flex tw:items-center"
+                }
               >
-                {t("control-panel.submit")}
-                <Icon
-                  icon={isLoading ? "line-md:loading-loop" : "ph:check-bold"}
-                  className="ml-10"
-                  width={20}
-                  height={20}
-                />
+                <Trash className="tw:mr-2" size={16} />
+                Confirm Delete
               </button>
             </div>
           </div>

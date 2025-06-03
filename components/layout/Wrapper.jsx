@@ -5,12 +5,12 @@ import { getCurrentUser } from "@/lib/session";
 import Navbar from "../common-v2/nav";
 import Footer from "../common-v2/footer";
 
-const Wrapper = async ({ children, disableFooter = false }) => {
+const Wrapper = async ({ children, disableFooter = false, slugMap = null }) => {
   const session = await getCurrentUser();
 
   return (
     <div className="tw:min-h-dvh tw:flex tw:flex-col">
-      <Navbar session={session} />
+      <Navbar session={session} slugMap={slugMap} />
       {children}
       {disableFooter ? null : <Footer />}
     </div>

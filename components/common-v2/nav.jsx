@@ -10,8 +10,7 @@ import { LuUser } from "react-icons/lu";
 import { MdLogout } from "react-icons/md";
 import { signOut } from "next-auth/react";
 
-const UserDropdown = ({ session }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const UserDropdown = ({ session, isOpen, setIsOpen }) => {
   const dropdownRef = useRef(null);
   const router = useRouter();
   const locale = useParams().locale;
@@ -118,6 +117,7 @@ const UserDropdown = ({ session }) => {
 };
 
 const Dropdown = ({
+  slugMap,
   languageOptions,
   selected,
   setSelected,
@@ -128,6 +128,20 @@ const Dropdown = ({
   const pathname = usePathname();
 
   const changeLocale = (locale) => {
+    console.log("Changing locale to:", locale);
+    console.log("slug Map", slugMap);
+
+    if (slugMap && Array.isArray(slugMap)) {
+      const matchedSlug = slugMap.find((item) => item.locale === locale);
+
+      if (matchedSlug) {
+        // Replace the current locale and slug with the new ones
+        router.push(`/${locale}/listings/${matchedSlug.slug}`);
+        return;
+      }
+    }
+
+    // Fallback: keep slug but change locale in path
     const exactPath = pathname.replace(/^\/[a-z]{2}/, "");
     router.push(`/${locale}${exactPath}`);
   };
@@ -168,20 +182,18 @@ const Dropdown = ({
   );
 };
 
-const Navbar = ({ session }) => {
+const Navbar = ({ session, slugMap = null }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [shouldRenderMenu, setShouldRenderMenu] = useState(false);
   const [open, setOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const t = useTranslations("header");
   const pathName = usePathname();
   const locale = pathName.split("/")[1];
   const [selected, setSelected] = useState(t(`locales.${locale}.language`));
   const router = useRouter();
   const pathname = usePathname();
-
-  console.log("session : ", session);
 
   const languageOptions = [
     {
@@ -206,6 +218,18 @@ const Navbar = ({ session }) => {
       flag: "/assets/flag-pl.png",
     },
   ];
+
+  useEffect(() => {
+    if (open) {
+      setUserDropdownOpen(false);
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (userDropdownOpen) {
+      setOpen(false);
+    }
+  }, [userDropdownOpen]);
 
   const toggleMenu = () => {
     if (!isMenuOpen) {
@@ -264,8 +288,8 @@ const Navbar = ({ session }) => {
             onClick={() => router.push(`/${locale}`)}
             src="/assets/logo.png"
             alt="workerhomes"
-            className="tw:min-w-[120px] tw:md:min-w-[140px] tw:min-h-[25px] tw:md:min-h-[30px] 
-               tw:w-[140px] tw:md:w-[160px] tw:lg:w-[200px] 
+            className="tw:min-w-[120px] tw:md:min-w-[140px] tw:min-h-[25px] tw:md:min-h-[30px]
+               tw:w-[140px] tw:md:w-[160px] tw:lg:w-[200px]
                tw:h-[28px] tw:md:h-[33px] tw:lg:h-[41px]
                tw:cursor-pointer tw:object-contain"
           />
@@ -275,50 +299,55 @@ const Navbar = ({ session }) => {
         <div className="tw:hidden tw:md:flex tw:text-[var(--color-font-dark)] tw:font-normal tw:items-center tw:gap-4 tw:lg:gap-6 tw:text-[13px] tw:lg:text-[14px]">
           <a
             href={`/${locale}`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}`
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
+              pathname === `/${locale}`
                 ? "tw:text-[var(--color-primary)] tw:font-medium"
                 : ""
-              }`}
+            }`}
           >
             {t("links.home")}
           </a>
 
           <a
             href={`/${locale}/pricing`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/pricing`
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
+              pathname === `/${locale}/pricing`
                 ? "tw:text-[var(--color-primary)] tw:font-medium"
                 : ""
-              }`}
+            }`}
           >
             {t("links.pricing")}
           </a>
 
           <a
             href={`/${locale}/bookmarks`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/bookmarks`
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
+              pathname === `/${locale}/bookmarks`
                 ? "tw:text-[var(--color-primary)] tw:font-medium"
                 : ""
-              }`}
+            }`}
           >
             {t("links.bookmarks")}
           </a>
 
           <a
             href={`/${locale}/blogs`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/blogs`
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
+              pathname === `/${locale}/blogs`
                 ? "tw:text-[var(--color-primary)] tw:font-medium"
                 : ""
-              }`}
+            }`}
           >
             {t("links.blogs")}
           </a>
 
           <a
             href={`/${locale}/contact`}
-            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${pathname === `/${locale}/contact`
+            className={`tw:hover:text-[var(--color-primary)] tw:hover:font-medium ${
+              pathname === `/${locale}/contact`
                 ? "tw:text-[var(--color-primary)] tw:font-medium"
                 : ""
-              }`}
+            }`}
           >
             {t("links.contact")}
           </a>
@@ -331,7 +360,11 @@ const Navbar = ({ session }) => {
         {/* Desktop Right Section - Adjusted for medium screens */}
         <div className="tw:hidden tw:md:flex tw:items-center tw:gap-3 tw:lg:gap-4">
           {session && session.user ? (
-            <UserDropdown session={session} />
+            <UserDropdown
+              session={session}
+              setIsOpen={setUserDropdownOpen}
+              isOpen={userDropdownOpen}
+            />
           ) : (
             <button
               onClick={() => router.push("/login")}
@@ -347,7 +380,9 @@ const Navbar = ({ session }) => {
               onClick={(e) => {
                 setOpen((prev) => !prev);
               }}
-              src={languageOptions.find((lang) => lang.label === selected)?.flag}
+              src={
+                languageOptions.find((lang) => lang.label === selected)?.flag
+              }
               alt="flag"
               className="tw:w-[28px] tw:lg:w-[32px] tw:h-[28px] tw:lg:h-[32px] tw:border tw:border-[var(--color-font-regular)] tw:rounded-full"
             />
@@ -368,11 +403,11 @@ const Navbar = ({ session }) => {
                 setSelected={setSelected}
                 open={open}
                 setOpen={setOpen}
+                slugMap={slugMap}
               />
             </div>
           </div>
         </div>
-
 
         {/* Mobile Menu Button */}
         <button
@@ -520,6 +555,7 @@ const Navbar = ({ session }) => {
                         setSelected={setSelected}
                         open={open}
                         setOpen={setOpen}
+                        slugMap={slugMap}
                       />
                     </div>
                   </div>
