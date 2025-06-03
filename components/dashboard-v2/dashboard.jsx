@@ -135,16 +135,16 @@ const Dashboard = ({ locale, session }) => {
 
         {/* Content */}
         <div className="tw:relative tw:z-20 tw:max-w-full tw:mx-auto tw:my-4 tw:md:my-0 tw:text-white">
-          <div className="tw:mb-8 tw:md:mt-0 tw:mt-4 tw:md:mb-10 tw:text-center">
-            <h1 className="tw:text-[36px] tw:md:text-[68px] tw:font-semibold">
+          <div className="tw:mb-8 tw:md:mt-0 tw:mt-4 tw:md:mb-8 tw:text-center">
+            <p className="tw:text-[36px] tw:md:text-[68px] tw:font-semibold">
               {t("title")}
-            </h1>
+            </p>
             <p className="tw:text-[16px] tw:md:text-[20px] tw:font-semibold tw:mb-6 tw:md:mb-8">
               {t("subtitle")}
             </p>
           </div>
 
-          <div className="tw:relative tw:z-20 tw:mt-6 tw:md:mt-[60px]">
+          <div className="tw:relative tw:z-20 tw:mt-6 tw:md:mt-[40px]">
             <div className="tw:flex tw:justify-center">
               <div className="tw:w-full tw:md:w-[1280px] tw:bg-white tw:rounded-sm tw:flex tw:flex-col tw:md:flex-row tw:gap-4 tw:md:justify-between tw:p-4 tw:md:p-5 tw:shadow-sm">
                 {/* Where */}
