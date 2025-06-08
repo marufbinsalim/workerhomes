@@ -9,12 +9,12 @@ export default function Content({ children }) {
         <>
             {
                 isMessengerPage ? (
-                    <div>{children}</div>
+                    <div className = "dashboard__content bg-light-2 ">{children}</div>
                 ) : (
                     <div className="dashboard__content bg-light-2 ">{children}</div>
                 )
             }
         </>
-      
+
   );
 }

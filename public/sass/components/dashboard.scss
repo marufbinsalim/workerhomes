@@ -76,7 +76,7 @@
         padding-bottom: 40px;
         will-change: transform;
         transition: all 0.5s $easeOutCubic;
-        box-shadow: 4px 0px 16px 0px #0000000f;
+        // box-shadow: 4px 0px 16px 0px #0000000f;
 
         @include media-below(lg) {
             transform: translateX(-100%);

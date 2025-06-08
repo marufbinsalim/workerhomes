@@ -298,40 +298,32 @@ const MessengerPage = ({ locale }) => {
 
   return (
     <>
-      <div
-        className="d-flex flex-row"
-        style={{
-          height: "calc(100vh - 90px)",
-        }}
-      >
+     <div
+        className="tw:flex tw:flex-row  tw:max-h-[calc(100vh_-_90px)] tw:mt-20  tw:bg-white "
+>
         {/* Left Section */}
         <div
-          className={`col-12 overflow-hidden col-md-3 bg-white d-flex flex-column ${
-            isMobileView ? "d-none " : ""
-          }`}
+          className={`tw:w-full font-secondary tw:md:w-[600px] tw:flex tw:flex-col ${isMobileView ? "" : "tw:hidden"
+            }`}
           style={{ height: "calc(100vh - 90px)" }}
         >
           <div
-            className="p-1 d-flex align-items-center"
-            style={{
-              borderTop: "1px solid #E5E7EB",
-            }}
+            className="tw:flex tw:items-center  tw:h-[72px] tw:bg-[#FAFBFC]"
           >
             <h4
-              className={`me-3 pl-10 ${isSearchExpanded ? "d-none" : ""}`}
-              style={{ flex: 1 }}
+              className={`tw:mt-2 tw:font-semibold tw:text-[18px] tw:text-[var(--color-font-regular)] tw:pl-4 ${isSearchExpanded ? "tw:hidden" : ""}`}
+
             >
               {t("title")}
             </h4>
 
-            <div className="position-relative flex-grow-1 mb-2">
+            <div className="tw:relative tw:flex-grow ">
               <input
                 type="text"
                 placeholder="Search"
                 aria-label="Search"
-                className={`search-input ${
-                  isSearchExpanded ? "show-searchbar" : "hide-searchbar"
-                }`}
+                className={`search-input ${isSearchExpanded ? "show-searchbar" : "hide-searchbar"
+                  }`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -339,9 +331,9 @@ const MessengerPage = ({ locale }) => {
               <svg
                 onClick={expandSearch}
                 xmlns="http://www.w3.org/2000/svg"
-                width="20px"
-                height="20px"
-                fill="currentColor"
+                width="24px"
+                height="24px"
+                fill="#B7B7B7"
                 className="search-icon bi bi-search"
                 viewBox="0 0 16 16"
               >
@@ -351,7 +343,7 @@ const MessengerPage = ({ locale }) => {
               {/* Cancel Button */}
               {isSearchExpanded && (
                 <button
-                  className="btn btn-link position-absolute"
+                  className="tw:btn tw:btn-link tw:absolute"
                   onClick={hideSearch}
                   style={{
                     right: "10px",
@@ -360,7 +352,7 @@ const MessengerPage = ({ locale }) => {
                     fontSize: "1rem",
                     padding: 0,
                     textDecoration: "none",
-                    color: "black",
+                    color: "#B7B7B7",
                   }}
                 >
                   Cancel
@@ -369,16 +361,13 @@ const MessengerPage = ({ locale }) => {
             </div>
           </div>
 
-          <div className="d-flex mb-3 pl-10">
+          <div className="tw:flex tw:mb-3 tw:mt-2 tw:pl-4">
             <button
-              className={`btn px-6 py-1 ${
-                selectedFilter === "all" ? "btn-black" : "btn-white"
-              }`}
+              className={`tw:btn tw:px-6 tw:py-1 ${selectedFilter === "all" ? "tw:bg-[#FF780B] tw:text-white" : "tw:bg-white tw:text-[#FF780B]"
+                }`}
               onClick={() => setSelectedFilter("all")}
               style={{
-                backgroundColor: selectedFilter === "all" ? "black" : "white",
-                color: selectedFilter === "all" ? "white" : "black",
-                border: "1px solid #D1D5DB",
+                border: "1px solid #FF780B",
                 borderRadius: "16px",
                 fontSize: "14px",
                 padding: "6px 18px",
@@ -387,27 +376,22 @@ const MessengerPage = ({ locale }) => {
               {t("all")}
             </button>
             <button
-              className={`btn px-3 py-1 ${
-                selectedFilter === "unread" ? "btn-black" : "btn-white"
-              }`}
+              className={`tw:btn tw:px-3 tw:py-1 tw:ml-2 ${selectedFilter === "unread" ? "tw:bg-[#FF780B] tw:text-white" : "tw:bg-white tw:text-[#FF780B]"
+                }`}
               onClick={() => setSelectedFilter("unread")}
               style={{
-                backgroundColor:
-                  selectedFilter === "unread" ? "black" : "white",
-                color: selectedFilter === "unread" ? "white" : "black",
-                border: "1px solid #D1D5DB",
+                border: "1px solid #FF780B",
                 borderRadius: "16px",
                 fontSize: "14px",
                 padding: "6px 12px",
-                marginLeft: "8px",
               }}
             >
               {t("unread")}
             </button>
           </div>
 
-          <div className="flex-grow-1 overflow-y-auto">
-            <ul className="list-group overflow-hidden">
+          <div className="tw:flex-grow tw:overflow-y-auto">
+            <ul className="tw:p-2 tw:overflow-hidden">
               {[...threads]
                 .toSorted(
                   (a, b) =>
@@ -415,76 +399,74 @@ const MessengerPage = ({ locale }) => {
                 )
                 .map((thread) => {
                   const isUnread = !thread.seen;
+                  const initials = thread.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")
+                    .toUpperCase()
+                    .slice(0, 2);
                   return (
                     <li
                       key={thread.thread_id}
-                      className={`list-group-item list-group-item-action border-0 rounded ${
-                        selectedThread?.thread_id === thread.thread_id
-                          ? "selected-bg"
-                          : ""
-                      }`}
-                      style={{
-                        backgroundColor:
-                          selectedThread?.thread_id === thread.thread_id
-                            ? "#f7f7f7"
-                            : "#fff",
-                      }}
+                      className={`tw:flex tw:items-start tw:p-2 tw:rounded-lg tw:cursor-pointer ${selectedThread?.thread_id === thread.thread_id
+                          ? "tw:bg-[#FFEBDD] tw:border tw:border-[#FF780B]"
+                          : "tw:bg-white"
+                        }`}
                       onClick={() => handlethreadselect(thread)}
                     >
-                      <div className="d-flex align-items-center">
-                        <div style={{ width: "100%" }}>
-                          <div className="d-flex align-items-center justify-content-between w-100">
-                            <h5
-                              className="mt-2 fw-500 text-truncate"
-                              style={{
-                                maxWidth: "70%",
-                                whiteSpace: "nowrap",
-                                overflow: "hidden",
-                                textOverflow: "ellipsis",
-                              }}
-                              title={thread.dwelling_title}
-                            >
-                              {thread.dwelling_title}
-                            </h5>
-                            <p>
-                              {new Date(
-                                thread.lastMessageTime,
-                              ).toLocaleDateString()}
+                      {/* Avatar */}
+                      <div className={`tw:w-[40px] tw:h-[40px] tw:rounded-full tw:border ${selectedThread?.thread_id === thread.thread_id
+                          ? "tw:border-[#FF780B] tw:text-[#FF780B]"
+                          : "tw:border-[#D8E0ED] tw:text-[var(--color-font-regular)]"
+                        } tw:bg-[#F8F9FB] tw:flex tw:items-center tw:justify-center tw:text-[14px] tw:font-medium tw:mr-3 tw:flex-shrink-0`}>
+                        {initials}
+                      </div>
+
+                      {/* Content */}
+                      <div className="tw:flex-1 tw:min-w-0">
+
+                        <h5
+                          className={`tw:text-[18px] tw:font-medium ${selectedThread?.thread_id === thread.thread_id
+                              ? "tw:text-[#FF780B]"
+                              : "tw:text-[var(--color-font-dark)]"
+                            } tw:truncate`}
+                          title={thread.dwelling_title}
+                        >
+                          {thread.dwelling_title}
+                        </h5>
+
+
+                        <div className="tw:flex tw:justify-between tw:items-baseline">
+                          <h5 className="tw:text-[16px] tw:font-medium tw:text-[var(--color-font-regular)] tw:truncate">
+                            {thread.name}
+                          </h5>
+                          <div className="tw:flex tw:items-center tw:gap-2">
+                            <p className="tw:text-[14px] tw:text-[var(--color-font-light)] tw:font-medium tw:whitespace-nowrap tw:leading-none">
+                              {new Date(thread.lastMessageTime).toLocaleTimeString([], {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                hour12: true,
+                              })}
                             </p>
                           </div>
-                          <div style={{ width: "100%" }}>
-                            <strong>{thread.name}</strong>
-                          </div>
-                          <div className="text-muted text-wrap">
+                        </div>
+
+                        <div className="tw:flex tw:justify-between">
+                          <div className="tw:text-[16px] tw:font-medium tw:text-[var(--color-font-regular)] tw:truncate">
                             {thread?.lastMessage?.includes("https")
                               ? "Attachment"
                               : thread.lastMessage.slice(0, 40) + "..."}
                           </div>
+                          <div className="tw:pl-2">
+                            {isUnread ? (
+                              <span className="tw:inline-block tw:w-2 tw:h-2 tw:bg-blue-500 tw:rounded-full"></span>
+                            ) : (
+                              <p className="tw:text-xs tw:text-gray-500">
+                                {thread.status}
+                              </p>
+                            )}
+                          </div>
                         </div>
-                      </div>
-
-                      <div
-                        className="mt-auto text-end "
-                        style={{ fontSize: "0.75rem" }}
-                      >
-                        {isUnread ? (
-                          <span
-                            style={{
-                              width: "8px",
-                              height: "8px",
-                              backgroundColor: "blue",
-                              borderRadius: "50%",
-                              display: "inline-block",
-                            }}
-                          ></span>
-                        ) : (
-                          <p
-                            className="mb-0 text-muted"
-                            style={{ fontSize: "0.75rem" }}
-                          >
-                            {thread.status}
-                          </p>
-                        )}
                       </div>
                     </li>
                   );
@@ -496,51 +478,37 @@ const MessengerPage = ({ locale }) => {
         {/* Middle Section */}
         <div
           ref={middleSectionRef || null}
-          className={`col-12 col-md-6 d-flex flex-column ${
-            isMobileView || selectedThread ? "" : "d-none"
-          }`}
+          className={`tw:w-full  tw:flex tw:flex-col ${isMobileView || selectedThread ? "" : "tw:hidden"
+            }`}
           style={{
             opacity: isMobileView || selectedThread ? 1 : 0,
-            borderLeft: ".5px solid #E5E7EB",
-            borderRight: ".5px solid #E5E7EB",
-            borderTop: "1px solid #E5E7EB",
           }}
         >
           {selectedThread && (
             <>
-              <div className="d-flex p-3 align-items-center  border-bottom ">
-                <button
-                  className="btn  d-md-none"
-                  onClick={handleBack}
-                  style={{
-                    padding: "5px",
-                    borderRadius: "10px",
-                    marginRight: "5px",
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-chevron-left"
-                    viewBox="0 0 16 16"
-                    style={{
-                      transform: "scale(1.2)",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
-                    />
+              <div className="tw:flex tw:p-3 tw:items-center ">
+                {/* Back button */}
+                <button className="tw:btn tw:md:hidden" onClick={handleBack}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
                   </svg>
                 </button>
+
+                {/* Avatar in middle section header */}
+                <div className="tw:w-[40px] tw:h-[40px] tw:rounded-full tw:border tw:border-[#D8E0ED] tw:text-[var(--color-font-regular)] tw:bg-[#F8F9FB] tw:flex tw:items-center tw:justify-center tw:text-[14px] tw:font-medium tw:mr-3 tw:flex-shrink-0">
+                  {selectedThread.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")
+                    .toUpperCase()
+                    .slice(0, 2)}
+                </div>
+
                 <strong>{selectedThread.name}</strong>
               </div>
 
               <div
-                className="p-2 mobile-only "
+                className="tw:p-2 tw:md:hidden"
                 style={{
                   borderBottom: "1px solid #E5E7EB",
                   backgroundColor: "#EFEFEF",
@@ -551,7 +519,7 @@ const MessengerPage = ({ locale }) => {
                 {property &&
                   selectedThread.dwelling_title === property.title && (
                     <div
-                      className="d-flex align-items-center text-start"
+                      className="tw:flex tw:items-center tw:text-start"
                       style={{
                         gap: "10px",
                         flexWrap: "wrap",
@@ -562,7 +530,7 @@ const MessengerPage = ({ locale }) => {
                         <img
                           src={property.image_url}
                           alt="Property Image"
-                          className="img-fluid"
+                          className="tw:img-fluid"
                           style={{
                             width: "80px",
                             height: "60px",
@@ -575,7 +543,7 @@ const MessengerPage = ({ locale }) => {
                         />
                       )}
                       <h6
-                        className="mb-0 "
+                        className="tw:mb-0"
                         style={{
                           wordBreak: "break-word",
                           flex: 1,
@@ -627,7 +595,29 @@ const MessengerPage = ({ locale }) => {
                   )}
               </div>
 
-              <div className="flex-grow-1 p-3" style={{ overflowY: "auto" }}>
+              <p style={{
+                fontFamily: 'Roboto',
+                fontWeight: 500,
+                fontSize: '12px',
+                lineHeight: '100%',
+                letterSpacing: '0.3em',
+                verticalAlign: 'middle',
+                color: '#808080',
+                marginTop: '24px',
+                textAlign: 'center'
+              }}>
+                {new Date(selectedThread.created_at).toLocaleDateString('en-US', {
+                  weekday: 'short',
+                  month: 'short',
+                  day: 'numeric',
+                })}, {new Date(selectedThread.created_at).toLocaleTimeString('en-US', {
+                  hour: 'numeric',
+                  minute: '2-digit',
+                  hour12: true
+                })}
+              </p>
+
+              <div className="tw:flex-grow tw:p-3" style={{ overflowY: "auto" }}>
                 {messages.map((chat, index) => {
                   let imageUrl = null;
                   let textContent = null;
@@ -645,23 +635,20 @@ const MessengerPage = ({ locale }) => {
                   return (
                     <div
                       key={index}
-                      className={`mb-3 d-flex ${
-                        chat.direction === "sent"
-                          ? "justify-content-end"
-                          : "justify-content-start"
-                      }`}
+                      className={`tw:mb-3 tw:flex ${chat.direction === "sent"
+                          ? "tw:justify-end"
+                          : "tw:justify-start"
+                        }`}
                     >
                       <div
                         style={{
                           maxWidth: "60%",
                           padding:
-                            chat.type === "image" ||
-                            chat.type === "image_and_text"
+                            chat.type === "image" || chat.type === "image_and_text"
                               ? "0"
                               : "0",
                           borderRadius:
-                            chat.type === "image" ||
-                            chat.type === "image_and_text"
+                            chat.type === "image" || chat.type === "image_and_text"
                               ? "0"
                               : "10px",
                           display: "inline-block",
@@ -673,23 +660,17 @@ const MessengerPage = ({ locale }) => {
                           textAlign: "left",
                         }}
                       >
-                        {/* Render image if type is "image" or "image_and_text" */}
-                        {(chat.type === "image" ||
-                          chat.type === "image_and_text") && (
+                        {(chat.type === "image" || chat.type === "image_and_text") && (
                           <div
                             style={{
                               display: "flex",
                               flexDirection: "column",
                               alignItems:
-                                chat.direction === "sent"
-                                  ? "flex-end"
-                                  : "flex-start",
+                                chat.direction === "sent" ? "flex-end" : "flex-start",
                             }}
                           >
                             <img
-                              src={
-                                chat.type === "image" ? chat.message : imageUrl
-                              }
+                              src={chat.type === "image" ? chat.message : imageUrl}
                               alt="Sent image"
                               style={{
                                 maxWidth: "40%",
@@ -703,36 +684,29 @@ const MessengerPage = ({ locale }) => {
                               }}
                               onClick={() =>
                                 window.open(
-                                  chat.type === "image"
-                                    ? chat.message
-                                    : imageUrl,
+                                  chat.type === "image" ? chat.message : imageUrl,
                                   "_blank",
                                 )
                               }
                             />
 
-                            {/* Render text if type is "image_and_text" */}
                             {chat.type === "image_and_text" && (
                               <div
+                                className={`tw:p-2 tw:rounded ${chat.direction === "sent"
+                                    ? "tw:bg-blue-100"
+                                    : "tw:bg-gray-100"
+                                  }`}
                                 style={{
-                                  backgroundColor:
-                                    chat.direction === "sent"
-                                      ? "#d1e7ff"
-                                      : "#f1f1f1",
-                                  padding: "10px",
-                                  borderRadius: "10px",
                                   width: "max-content",
                                   maxWidth: "100%",
                                 }}
                               >
-                                <p className="mb-0">{textContent}</p>
-                                {/* Render timestamp */}
+                                <p className="tw:mb-0">{textContent}</p>
                                 <div
-                                  className={`text-muted ml-auto ${
-                                    chat.direction !== "sent"
-                                      ? "text-start"
-                                      : "text-end"
-                                  }`}
+                                  className={`tw:text-gray-500 ${chat.direction !== "sent"
+                                      ? "tw:text-start"
+                                      : "tw:text-end"
+                                    }`}
                                   style={{
                                     fontSize: "0.75rem",
                                     width: "100%",
@@ -751,13 +725,11 @@ const MessengerPage = ({ locale }) => {
                                   maxWidth: "100%",
                                 }}
                               >
-                                {/* Render timestamp */}
                                 <div
-                                  className={`text-muted ml-auto ${
-                                    chat.direction !== "sent"
-                                      ? "text-start"
-                                      : "text-end"
-                                  }`}
+                                  className={`tw:text-gray-500 ${chat.direction !== "sent"
+                                      ? "tw:text-start"
+                                      : "tw:text-end"
+                                    }`}
                                   style={{
                                     fontSize: "0.75rem",
                                     width: "100%",
@@ -770,27 +742,23 @@ const MessengerPage = ({ locale }) => {
                           </div>
                         )}
 
-                        {/* Render text if type is "text" */}
                         {chat.type === "text" && (
                           <div
+                            className={`tw:p-2 tw:rounded ${chat.direction === "sent"
+                                ? "tw:bg-blue-100"
+                                : "tw:bg-gray-100"
+                              }`}
                             style={{
-                              backgroundColor:
-                                chat.direction === "sent"
-                                  ? "#d1e7ff"
-                                  : "#f1f1f1",
-                              padding: "10px",
-                              borderRadius: "10px",
                               width: "max-content",
                               maxWidth: "100%",
                             }}
                           >
-                            <p className="mb-0">{chat.message}</p>
+                            <p className="tw:mb-0">{chat.message}</p>
                             <div
-                              className={`text-muted ml-auto ${
-                                chat.direction !== "sent"
-                                  ? "text-start"
-                                  : "text-end"
-                              }`}
+                              className={`tw:text-gray-500 ${chat.direction !== "sent"
+                                  ? "tw:text-start"
+                                  : "tw:text-end"
+                                }`}
                               style={{
                                 fontSize: "0.75rem",
                                 width: "100%",
@@ -808,9 +776,9 @@ const MessengerPage = ({ locale }) => {
                 <div ref={messengerData.scrollRef}></div>
               </div>
 
-              <div className="p-3">
+              <div className="tw:p-3">
                 <div
-                  className="position-relative d-flex align-items-center"
+                  className="tw:relative tw:flex tw:items-center"
                   style={{
                     border: "1px solid #ccc",
                     borderRadius: "8px",
@@ -824,7 +792,7 @@ const MessengerPage = ({ locale }) => {
                 >
                   <label
                     htmlFor="imageUpload"
-                    className="me-2"
+                    className="tw:me-2"
                     style={{
                       cursor: "pointer",
                       position: "absolute",
@@ -854,15 +822,12 @@ const MessengerPage = ({ locale }) => {
 
                   {imageFile && (
                     <div
-                      className="position-absolute"
+                      className="tw:absolute"
                       style={{
                         top: "10px",
                         left: "10px",
                         width: "70px",
                         height: "70px",
-                        // backgroundImage: `url(${URL.createObjectURL(imageFile)})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
                         borderRadius: "5px",
                         border: "1px solid #ddd",
                         cursor: "pointer",
@@ -905,7 +870,7 @@ const MessengerPage = ({ locale }) => {
                   )}
 
                   <textarea
-                    className="flex-grow-1"
+                    className="tw:flex-grow"
                     placeholder={imageFile ? "" : t("write")}
                     value={newMessage}
                     onChange={(e) => {
@@ -932,7 +897,7 @@ const MessengerPage = ({ locale }) => {
                   />
 
                   <div
-                    className="d-flex align-items-center"
+                    className="tw:flex tw:items-center"
                     style={{
                       position: "absolute",
                       bottom: "10px",
@@ -943,7 +908,7 @@ const MessengerPage = ({ locale }) => {
                     }}
                   >
                     <div
-                      className="text-muted"
+                      className="tw:text-gray-500"
                       style={{
                         fontSize: "0.75rem",
                         textAlign: "right",
@@ -954,7 +919,7 @@ const MessengerPage = ({ locale }) => {
                     </div>
 
                     <button
-                      className="btn btn-primary"
+                      className="tw:btn tw:bg-blue-500 tw:text-white"
                       onClick={handleSendMessage}
                       disabled={newMessage.length === 0 && !imageFile}
                       style={{
@@ -982,12 +947,12 @@ const MessengerPage = ({ locale }) => {
           )}
         </div>
 
-        {property &&
+        {/* {property &&
           selectedThread &&
           selectedThread.dwelling_title === property.title &&
           !propertyLoading && (
             <div
-              className="col-md-3 bg-white border-end d-flex flex-column p-4 d-none d-md-block"
+              className="tw:md:w-3/12 tw:bg-white tw:border-r tw:flex tw:flex-col tw:p-4 tw:hidden tw:md:block"
               style={{
                 height: "calc(100vh - 90px)",
                 overflowY: "auto",
@@ -995,7 +960,7 @@ const MessengerPage = ({ locale }) => {
               }}
             >
               {property?.title && (
-                <h4 className=" text-start mb-10 fw-500">{property.title}</h4>
+                <h4 className="tw:text-start tw:mb-10 tw:font-medium">{property.title}</h4>
               )}
               <Link
                 href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
@@ -1004,7 +969,7 @@ const MessengerPage = ({ locale }) => {
                   <img
                     src={property.image_url}
                     alt="Property Image"
-                    className="img-fluid mb-3 property-image"
+                    className="tw:img-fluid tw:mb-3"
                     style={{
                       width: "400px",
                       height: "200px",
@@ -1017,19 +982,12 @@ const MessengerPage = ({ locale }) => {
               </Link>
 
               {property?.location && (
-                <p className="mx-auto">{property.location}</p>
+                <p className="tw:mx-auto">{property.location}</p>
               )}
 
               {property?.data?.prices?.length > 0 && (
                 <div
-                  style={{
-                    width: "100%",
-                    padding: "0px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "20px",
-                    marginTop: "20px",
-                  }}
+                  className="tw:w-full tw:p-0 tw:flex tw:flex-col tw:gap-5 tw:mt-5"
                 >
                   {property?.data?.prices?.length > 0 &&
                     property?.data?.prices.map((p, idx) => (
@@ -1046,8 +1004,9 @@ const MessengerPage = ({ locale }) => {
                 </div>
               )}
             </div>
-          )}
+          )} */}
       </div>
+
 
       <style jsx>
         {`
