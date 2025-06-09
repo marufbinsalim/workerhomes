@@ -8,6 +8,11 @@ import useMessenger from "@/hooks/useMessenger";
 import { ImageUpload } from "ckeditor5";
 import PricingCard from "@/components/common/card/price-card";
 import { useSearchParams } from "next/navigation";
+import { MdOutlineAttachFile } from "react-icons/md";
+import { LuSend } from "react-icons/lu";
+import { IoMdClose } from "react-icons/io";
+
+
 
 const MessengerPage = ({ locale }) => {
   const t = useTranslations("messenger");
@@ -18,6 +23,37 @@ const MessengerPage = ({ locale }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isPhoneScreen, setIsPhoneScreen] = useState(true);
   const [threadID, setThreadId] = useState(null);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isActive, setIsActive] = useState(false); // NEW
+
+  const toggleDetailsModal = () => {
+    if (isAnimating) return;
+
+    setIsAnimating(true);
+
+    if (!showDetailsModal) {
+      // Start open process
+      setShowDetailsModal(true); // Mount modal first
+
+      setTimeout(() => {
+        setIsActive(true); // Trigger entry animation
+      }, 20);
+
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 500);
+    } else {
+      // Start closing
+      setIsActive(false); // Remove active class (starts slide-out)
+
+      setTimeout(() => {
+        setShowDetailsModal(false); // Unmount after animation
+        setIsAnimating(false);
+      }, 500);
+    }
+  };
+
 
   const searchParams = useSearchParams();
   useEffect(() => {
@@ -299,11 +335,11 @@ const MessengerPage = ({ locale }) => {
   return (
     <>
      <div
-        className="tw:flex tw:flex-row  tw:max-h-[calc(100vh_-_90px)] tw:mt-20  tw:bg-white "
+        className="tw:flex tw:flex-row tw:gap-4 tw:max-h-[calc(100vh_-_90px)] font-secondary tw:mt-20  tw:bg-white "
 >
         {/* Left Section */}
         <div
-          className={`tw:w-full font-secondary tw:md:w-[600px] tw:flex tw:flex-col ${isMobileView ? "" : "tw:hidden"
+          className={`tw:w-full font-secondary tw:md:w-[600px] tw:shadow-[4px_0px_16px_0px_rgba(0,0,0,0.06)] tw:flex tw:flex-col ${isMobileView ? "" : "tw:hidden"
             }`}
           style={{ height: "calc(100vh - 90px)" }}
         >
@@ -482,20 +518,40 @@ const MessengerPage = ({ locale }) => {
             }`}
           style={{
             opacity: isMobileView || selectedThread ? 1 : 0,
+            boxShadow: '-4px 0px 16px 0px rgba(0,0,0,0.06)',
           }}
         >
           {selectedThread && (
             <>
-              <div className="tw:flex tw:p-3 tw:items-center ">
-                {/* Back button */}
-                <button className="tw:btn tw:md:hidden" onClick={handleBack}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+              <div className="tw:flex tw:p-4 tw:items-center tw:h-[72px] tw:bg-[#FAFBFC]">
+                <button
+                  className="tw:btn tw:md:hidden"
+                  onClick={handleBack}
+                  style={{
+                    padding: "5px",
+                    borderRadius: "10px",
+                    marginRight: "5px",
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-chevron-left"
+                    viewBox="0 0 16 16"
+                    style={{
+                      transform: "scale(1.2)",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+                    />
                   </svg>
                 </button>
-
-                {/* Avatar in middle section header */}
-                <div className="tw:w-[40px] tw:h-[40px] tw:rounded-full tw:border tw:border-[#D8E0ED] tw:text-[var(--color-font-regular)] tw:bg-[#F8F9FB] tw:flex tw:items-center tw:justify-center tw:text-[14px] tw:font-medium tw:mr-3 tw:flex-shrink-0">
+                <div className="tw:w-[40px] tw:h-[40px] tw:rounded-full tw:border tw:border-[#D8E0ED] tw:bg-[#F8F9FB] tw:flex tw:items-center tw:justify-center tw:text-[12px] tw:text-[var(--color-font-regular)] tw:font-medium tw:mr-3 tw:flex-shrink-0">
                   {selectedThread.name
                     .split(" ")
                     .map((n) => n[0])
@@ -504,8 +560,100 @@ const MessengerPage = ({ locale }) => {
                     .slice(0, 2)}
                 </div>
 
-                <strong>{selectedThread.name}</strong>
+                <strong className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:text-[14px] tw:flex-grow">
+                  {selectedThread.name}
+                </strong>
+                <div
+                  className="tw:text-[#040342] tw:font-medium tw:text-[16px] tw:ml-auto tw:cursor-pointer"
+                  onClick={toggleDetailsModal}
+                >
+                  Details
+                </div>
               </div>
+
+              {(showDetailsModal || isAnimating) && (
+                <div className={`modal-container ${isActive ? 'active' : 'closing'}`}>
+                  {/* Overlay */}
+                  <div className="modal-overlay" onClick={toggleDetailsModal}></div>
+
+                  {/* Drawer */}
+                  <div className="modal-drawer">
+                    <div className="tw:flex tw:items-center tw:justify-between  tw:p-4">
+                      <h3 className="tw:text-[18px] tw:font-semibold ">
+                        Details
+                      </h3>
+                      <button
+                        className="close-button"
+                        onClick={toggleDetailsModal}
+                      >
+                        <IoMdClose size={24} />
+                      </button>
+                    </div>
+
+                    <div className="modal-content">
+                      {/* Property details */}
+                      {property &&
+                        selectedThread &&
+                        selectedThread.dwelling_title === property.title &&
+                        !propertyLoading && (
+                          <div
+                            className="modal-content tw:w-full tw:bg-white tw:flex tw:flex-col tw:md:block"
+                            style={{
+                              height: "calc(100vh - 90px)",
+                              overflowY: "auto",
+                            }}
+                          >
+                            <Link
+                              href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
+                            >
+                              {property.image_url && (
+                                <img
+                                  src={property.image_url}
+                                  alt="Property Image"
+                                  className="tw:img-fluid tw:mb-3"
+                                  style={{
+                                    width: "400px",
+                                    height: "200px",
+                                    borderRadius: "10px",
+                                    boxShadow: "0 0 15px rgba(0, 0, 0, 0.3)",
+                                    transition: "transform 0.4s ease-in-out",
+                                  }}
+                                />
+                              )}
+                            </Link>
+                            {property?.title && (
+                              <h4 className="tw:text-start tw:mb-4 tw:font-medium">{property.title}</h4>
+                            )}
+
+                            {property?.location && (
+                              <p className="tw:mx-auto">{property.location}</p>
+                            )}
+
+                            {property?.data?.prices?.length > 0 && (
+                              <div
+                                className="tw:w-full tw:p-0 tw:flex tw:flex-col tw:gap-5 tw:mt-5"
+                              >
+                                {property?.data?.prices?.length > 0 &&
+                                  property?.data?.prices.map((p, idx) => (
+                                    <PricingCard
+                                      key={idx}
+                                      adults={p.adult}
+                                      amountNote={p.note}
+                                      guests={p.guest}
+                                      minStay={p.min_stay}
+                                      price={p.amount}
+                                      type={p.total ? `${p.total} X ${p.type}` : p.type}
+                                    />
+                                  ))}
+                              </div>
+                            )}
+                          </div>
+                        )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
 
               <div
                 className="tw:p-2 tw:md:hidden"
@@ -776,14 +924,13 @@ const MessengerPage = ({ locale }) => {
                 <div ref={messengerData.scrollRef}></div>
               </div>
 
-              <div className="tw:p-3">
+              <div className="tw:pb-2">
                 <div
                   className="tw:relative tw:flex tw:items-center"
                   style={{
-                    border: "1px solid #ccc",
-                    borderRadius: "8px",
+                    borderTop: "1px solid #D8E0ED",
                     padding: "10px",
-                    backgroundColor: "#fff",
+                    backgroundColor: "#ffffff",
                     height: "140px",
                     display: "flex",
                     flexDirection: "column",
@@ -800,17 +947,8 @@ const MessengerPage = ({ locale }) => {
                       left: "10px",
                     }}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="30"
-                      height="30"
-                      fill="currentColor"
-                      className="bi bi-card-image"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                      <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z" />
-                    </svg>
+                    <MdOutlineAttachFile size={24} className="tw:text-[#B7B7B7]"/>
+
                   </label>
                   <input
                     type="file"
@@ -870,7 +1008,7 @@ const MessengerPage = ({ locale }) => {
                   )}
 
                   <textarea
-                    className="tw:flex-grow"
+                    className="tw:flex-grow tw:placeholder:text-[14px] tw:placeholder:font-normal tw:placeholder:text-[#B7B7B7] tw:font-normal tw:text-[14px] tw:text-[#333]"
                     placeholder={imageFile ? "" : t("write")}
                     value={newMessage}
                     onChange={(e) => {
@@ -919,26 +1057,19 @@ const MessengerPage = ({ locale }) => {
                     </div>
 
                     <button
-                      className="tw:btn tw:bg-blue-500 tw:text-white"
+                      className="tw:bg-[#FF780B] tw:text-white"
                       onClick={handleSendMessage}
                       disabled={newMessage.length === 0 && !imageFile}
                       style={{
                         height: "40px",
-                        padding: "0 15px",
-                        borderRadius: "10px",
+                        paddingTop: "10px",
+                        paddingRight: "25px",
+                        paddingBottom: "10px",
+                        paddingLeft: "25px",
                       }}
                     >
-                      <span style={{ marginRight: "6px" }}>{t("send")}</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-send"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.356 3.748 3.038-7.457-3.773 1.033-2.047 2.457Z" />
-                      </svg>
+                      <LuSend size={20}/>
+
                     </button>
                   </div>
                 </div>
@@ -1085,6 +1216,77 @@ const MessengerPage = ({ locale }) => {
           .property-image:hover {
             transform: scale(1.01);
           }
+
+
+          .modal-container {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  display: block;
+  pointer-events: none;
+}
+
+.modal-container.active {
+  pointer-events: auto;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.modal-container.active .modal-overlay {
+  opacity: 1;
+}
+
+.modal-drawer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 500px;
+  background: white;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+
+.modal-container.active .modal-drawer {
+  transform: translateX(0);
+}
+
+/* Closing animation */
+.modal-container.closing .modal-overlay {
+  opacity: 0;
+}
+
+.modal-container.closing .modal-drawer {
+  transform: translateX(100%);
+}
+
+.close-button {
+  padding: 0.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.modal-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+
 
           @media (max-width: 768px) {
             /* Initially hide the middle section off-screen */
