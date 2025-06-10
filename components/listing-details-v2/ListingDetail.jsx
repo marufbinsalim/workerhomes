@@ -569,7 +569,7 @@ export default function ListingDetail({ data, locale, session }) {
                   <p className="tw:font-semibold  tw:text-[#FF780B]">
                     <span className="tw:text-[24px]"> ${p.amount}{" "}</span>
                     <span className="tw:text-[18px">
-                      / {p.total ? `${p.total} x ${p.type}` : p.type}
+                      / {p.total ? `${p.total} X ${p.type}` : p.type}
                     </span>
                   </p>
                   <p className="tw:text-[14px] tw:font-normal tw:mt-2 tw:text-[#797979]">

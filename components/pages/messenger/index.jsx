@@ -578,7 +578,7 @@ const MessengerPage = ({ locale }) => {
 
                   {/* Drawer */}
                   <div className="modal-drawer">
-                    <div className="tw:flex tw:items-center tw:justify-between  tw:p-4">
+                    <div className="tw:flex tw:items-center tw:bg-[#FAFBFC] tw:justify-between  tw:p-4">
                       <h3 className="tw:text-[18px] tw:font-semibold ">
                         Details
                       </h3>
@@ -590,14 +590,14 @@ const MessengerPage = ({ locale }) => {
                       </button>
                     </div>
 
-                    <div className="modal-content">
+                    <div className="tw:flex tw:p-6 tw:flex-col tw:justify-center tw:items-center">
                       {/* Property details */}
                       {property &&
                         selectedThread &&
                         selectedThread.dwelling_title === property.title &&
                         !propertyLoading && (
                           <div
-                            className="modal-content tw:w-full tw:bg-white tw:flex tw:flex-col tw:md:block"
+                            className=" tw:bg-white tw:md:block tw:pr-1"
                             style={{
                               height: "calc(100vh - 90px)",
                               overflowY: "auto",
@@ -610,28 +610,27 @@ const MessengerPage = ({ locale }) => {
                                 <img
                                   src={property.image_url}
                                   alt="Property Image"
-                                  className="tw:img-fluid tw:mb-3"
+                                  className="tw:mb-4 "
                                   style={{
-                                    width: "400px",
-                                    height: "200px",
-                                    borderRadius: "10px",
-                                    boxShadow: "0 0 15px rgba(0, 0, 0, 0.3)",
-                                    transition: "transform 0.4s ease-in-out",
+                                    width: "456px",
+                                    height: "220px",
                                   }}
                                 />
                               )}
                             </Link>
+                          <div className="tw:gap-2 tw:flex tw:flex-col">
                             {property?.title && (
-                              <h4 className="tw:text-start tw:mb-4 tw:font-medium">{property.title}</h4>
+                              <h4 className="tw:text-start tw:font-semibold tw:text-[16px] tw:text-[#3B3B3B]">{property.title}</h4>
                             )}
 
                             {property?.location && (
-                              <p className="tw:mx-auto">{property.location}</p>
+                              <p className="tw:mx-auto tw:font-normal tw:text-[14px] tw:text-[#797979]">{property.location}</p>
                             )}
+                            </div>
 
                             {property?.data?.prices?.length > 0 && (
                               <div
-                                className="tw:w-full tw:p-0 tw:flex tw:flex-col tw:gap-5 tw:mt-5"
+                                className="tw:w-full tw:p-0 tw:flex tw:flex-col tw:gap-5 tw:mt-5 tw:mb-5"
                               >
                                 {property?.data?.prices?.length > 0 &&
                                   property?.data?.prices.map((p, idx) => (
@@ -1254,6 +1253,9 @@ const MessengerPage = ({ locale }) => {
   transform: translateX(100%);
   transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
   will-change: transform;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  overflow: hidden; /* This ensures child elements respect the border radius */
 }
 
 .modal-container.active .modal-drawer {
@@ -1278,7 +1280,6 @@ const MessengerPage = ({ locale }) => {
   align-items: center;
   justify-content: center;
 }
-
 
 
 .modal-content {

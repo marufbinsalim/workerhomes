@@ -25,25 +25,27 @@ const PricingCard = ({ price, minStay, type, adults, guests, amountNote }) => {
   const generatedType = getType(locale, type)
 
   return (
-    <div className='pricing-card'>
-      <div className='pricing-card-header'>
-        <h6>{t('per-night')}</h6>
-        <p className='price'>{price} zł</p>
-      </div>
-      <div className='pricing-card-body '>
-        <p className='d-flex justify-content-between align-items-center'>
-          {t('min-stay')}:{' '}
-          <span className='badge'>
-            {minStay} {t('per-night')}
-          </span>
-        </p>
-        <p className='d-flex justify-content-between align-items-center'>
-          {t('guests')}: <span className='badge'>{guests}</span>
-        </p>
-      </div>
-      <div className='pricing-card-footer text-brand'>
-        <h6>{generatedType}</h6>
-      </div>
+    <div
+      className="tw:bg-[#FAFBFC] tw:border tw:border-[#D8E0ED]  tw:p-4"
+    >
+      <p className="tw:font-semibold  tw:text-[#FF780B]">
+        <span className="tw:text-[24px]"> ${price}{" "}</span>
+        <span className="tw:text-[18px">
+          / {generatedType}
+        </span>
+      </p>
+      <p className="tw:text-[14px] tw:font-normal tw:mt-2 tw:text-[#797979]">
+        Number of Guests:{" "}
+        <span className="tw:font-medium tw:text-[#3B3B3B]">
+          {guests}
+        </span>
+      </p>
+      <p className="tw:text-[14px] tw:font-normal tw:mt-2 tw:text-[#797979]">
+        Minimum Stay:{" "}
+        <span className="tw:font-medium tw:text-[#3B3B3B]">
+          {minStay}
+        </span>
+      </p>
     </div>
   )
 }
