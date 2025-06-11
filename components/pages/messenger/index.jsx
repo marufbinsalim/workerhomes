@@ -749,7 +749,7 @@ const MessengerPage = ({ locale }) => {
                 lineHeight: '100%',
                 letterSpacing: '0.3em',
                 verticalAlign: 'middle',
-                color: '#808080',
+                color: '#3B3B3B',
                 marginTop: '24px',
                 textAlign: 'center'
               }}>
@@ -840,8 +840,8 @@ const MessengerPage = ({ locale }) => {
                             {chat.type === "image_and_text" && (
                               <div
                                 className={`tw:p-2 tw:rounded ${chat.direction === "sent"
-                                    ? "tw:bg-blue-100"
-                                    : "tw:bg-gray-100"
+                                  ? "tw:bg-[#FAFBFC]"
+                                  : "tw:bg-[#FAFBFC]"
                                   }`}
                                 style={{
                                   width: "max-content",
@@ -850,12 +850,11 @@ const MessengerPage = ({ locale }) => {
                               >
                                 <p className="tw:mb-0">{textContent}</p>
                                 <div
-                                  className={`tw:text-gray-500 ${chat.direction !== "sent"
+                                  className={`tw:text-[#797979] tw:font-normal tw:text-[12px] ${chat.direction !== "sent"
                                       ? "tw:text-start"
                                       : "tw:text-end"
                                     }`}
                                   style={{
-                                    fontSize: "0.75rem",
                                     width: "100%",
                                   }}
                                 >
@@ -873,12 +872,11 @@ const MessengerPage = ({ locale }) => {
                                 }}
                               >
                                 <div
-                                  className={`tw:text-gray-500 ${chat.direction !== "sent"
+                                  className={`tw:text-[#797979] tw:font-normal tw:text-[12px] ${chat.direction !== "sent"
                                       ? "tw:text-start"
                                       : "tw:text-end"
                                     }`}
                                   style={{
-                                    fontSize: "0.75rem",
                                     width: "100%",
                                   }}
                                 >
@@ -890,28 +888,30 @@ const MessengerPage = ({ locale }) => {
                         )}
 
                         {chat.type === "text" && (
-                          <div
-                            className={`tw:p-2 tw:rounded ${chat.direction === "sent"
-                                ? "tw:bg-blue-100"
-                                : "tw:bg-gray-100"
-                              }`}
-                            style={{
-                              width: "max-content",
-                              maxWidth: "100%",
-                            }}
-                          >
-                            <p className="tw:mb-0">{chat.message}</p>
+                          <div>
                             <div
-                              className={`tw:text-gray-500 ${chat.direction !== "sent"
+                              className={`tw:text-[#B7B7B7]  tw:font-medium tw:text-[12px] ${chat.direction !== "sent"
                                   ? "tw:text-start"
                                   : "tw:text-end"
                                 }`}
                               style={{
-                                fontSize: "0.75rem",
                                 width: "100%",
                               }}
                             >
                               {chat.time}
+                            </div>
+                            <div
+                              className={`tw:p-2 tw:text-[#797979]  tw:font-normal tw:text-[12px] tw:rounded ${chat.direction === "sent"
+                                ? "tw:bg-[#FAFBFC]"
+                                : "tw:bg-[#FAFBFC]"
+                                }`}
+                              style={{
+                                width: "max-content",
+                                maxWidth: "100%",
+                              }}
+                            >
+                              <p className="tw:mb-0">{chat.message}</p>
+
                             </div>
                           </div>
                         )}
@@ -984,21 +984,22 @@ const MessengerPage = ({ locale }) => {
                         onClick={handleImageRemove}
                         style={{
                           position: "absolute",
-                          top: "1px",
-                          right: "1px",
+                          top: "-8px",
+                          right: "-8px",
                           background: "red",
                           color: "white",
                           borderRadius: "50%",
                           cursor: "pointer",
-                          width: "18px",
-                          height: "18px",
+                          width: "20px",
+                          height: "20px",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
                           fontSize: "12px",
                           fontWeight: "bold",
-                          border: "2px solid white",
+                          border: "1px solid white",
                           zIndex: 10,
+                          lineHeight: "1",
                         }}
                       >
                         ✕
@@ -1171,9 +1172,7 @@ const MessengerPage = ({ locale }) => {
             right: 10px;
             transform: translateY(-50%);
             cursor: pointer;
-            background-color: #f5f5f5;
             padding: 8px;
-            border-radius: 50%;
             width: 35px;
             height: 35px;
           }
