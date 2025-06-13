@@ -183,7 +183,7 @@ const DwellingsPage = ({ locale }) => {
       Cell: item => (
         <div className="tw:flex tw:items-center tw:gap-3">
           <div
-            className="tw:relative tw:w-[100px] tw:h-[100px] tw:p-[4.84px] tw:border-2 tw:border-solid tw:border-gray-200 tw:rounded-md"
+            className="tw:relative tw:w-[100px] tw:h-[100px] tw:p-[5px] tw:border-2 tw:border-solid tw:border-gray-200 tw:rounded-md"
           >
             <Image
               src={exactPath(item?.galleries?.[0]?.image?.url
@@ -207,7 +207,7 @@ const DwellingsPage = ({ locale }) => {
       Cell: item => {
         let statusClass = '';
         if (item?.status === 'AVAILABLE') {
-          statusClass = 'tw:bg-[var(--color-green-light)] tw:font-normal tw:text-[var(--color-green)]';
+          statusClass = 'tw:bg-[var(--color-green-light)]  tw:font-normal tw:text-[var(--color-green)]';
         } else if (item?.status === 'PENDING') {
           statusClass = 'tw:bg-[#FFECD1] tw:text-amber-600';
         } else if (item?.status === 'CANCELLED') {
@@ -216,10 +216,10 @@ const DwellingsPage = ({ locale }) => {
 
         return (
           <div className="tw:flex tw:flex-col tw:gap-2">
-            <span className={`tw:inline-flex tw:items-center tw:justify-center tw:w-[76px] tw:h-[32px] tw:p-2 tw:rounded-lg tw:text-sm tw:font-medium ${statusClass}`}>
+            <span className={`tw:inline-flex tw:items-center tw:justify-center tw:w-[82px] tw:h-[32px] tw:rounded-lg tw:text-sm tw:font-medium ${statusClass}`}>
               {item?.status === 'AVAILABLE' ? 'Approved' : tStatus(item?.status)}
             </span>
-            
+
           </div>
         );
       },
@@ -295,11 +295,11 @@ const DwellingsPage = ({ locale }) => {
                 >
                   <GrUpgrade size={24} />
                 </button>
-                <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10 
+                <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10
                   tw:bottom-full tw:left-1/2 tw:-translate-x-[50%] tw:mb-2
                   tw:w-[88px] tw:h-[36px] tw:px-6 tw:py-[10px]
                   tw:items-center tw:justify-center tw:bg-white
-                  tw:rounded tw:shadow-sm tw:whitespace-nowrap 
+                  tw:rounded tw:shadow-sm tw:whitespace-nowrap
                   tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center">
                   Upgrade
                 </div>
@@ -314,11 +314,11 @@ const DwellingsPage = ({ locale }) => {
               </button>
             </Link>
 
-            <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10 
+            <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10
                   tw:bottom-full tw:left-1/2 tw:-translate-x-[50%] tw:mb-2
                   tw:w-[88px] tw:h-[36px] tw:px-6 tw:py-[10px]
                   tw:items-center tw:justify-center tw:bg-white
-                  tw:rounded tw:shadow-sm tw:whitespace-nowrap 
+                  tw:rounded tw:shadow-sm tw:whitespace-nowrap
                   tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center">
               Edit
             </div>
@@ -334,11 +334,11 @@ const DwellingsPage = ({ locale }) => {
             >
               <FiEye size={24} />
             </button>
-            <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10 
+            <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10
                   tw:bottom-full tw:left-1/2 tw:-translate-x-1/2 tw:mb-2
                   tw:w-[88px] tw:h-[36px] tw:px-6 tw:py-[10px]
                   tw:items-center tw:justify-center tw:bg-white
-                  tw:rounded tw:shadow-sm tw:whitespace-nowrap 
+                  tw:rounded tw:shadow-sm tw:whitespace-nowrap
                   tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center">
               View
             </div>
@@ -373,11 +373,11 @@ const DwellingsPage = ({ locale }) => {
                 }
               ]}
             />
-            <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10 
+            <div className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10
                   tw:bottom-full tw:left-1/2 tw:-translate-x-[50%] tw:mb-2
                   tw:w-[88px] tw:h-[36px] tw:px-6 tw:py-[10px]
                   tw:items-center tw:justify-center tw:bg-white
-                  tw:rounded tw:shadow-sm tw:whitespace-nowrap 
+                  tw:rounded tw:shadow-sm tw:whitespace-nowrap
                   tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center">
               More
             </div>
@@ -502,7 +502,7 @@ const DwellingsPage = ({ locale }) => {
           setOpen={value => handleOnClose(value)}
           title={selected?.id ? t('modal.update.title') : t('modal.create.title')}
         >
-          
+
           <DwellingFormStep
             formState={formState}
             setFormState={setFormState}

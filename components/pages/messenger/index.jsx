@@ -180,6 +180,8 @@ const MessengerPage = ({ locale }) => {
       }
     }
 
+
+
     setImageFile(null); // Clear the image after sending
     setNewMessage(""); // Clear the text input after sending
 
@@ -331,6 +333,17 @@ const MessengerPage = ({ locale }) => {
       middleSectionRef.current.classList.remove("show-middle");
     }
   };
+
+  function shouldShowTime(currentChat, previousChat) {
+    if (!previousChat) return true; // Always show for the first message
+
+    // Extract minute from timestamps (assuming `time` is in "HH:MM" format)
+    const currentMinute = currentChat.time?.substring(3, 5); // "MM" part
+    const previousMinute = previousChat.time?.substring(3, 5);
+
+    // Show only if the minute has changed
+    return currentMinute !== previousMinute;
+  }
 
   return (
     <>
@@ -768,6 +781,8 @@ const MessengerPage = ({ locale }) => {
                 {messages.map((chat, index) => {
                   let imageUrl = null;
                   let textContent = null;
+                  const prevChat = index > 0 ? messages[index - 1] : null;
+
 
                   if (chat.type === "image_and_text") {
                     try {
@@ -808,100 +823,99 @@ const MessengerPage = ({ locale }) => {
                         }}
                       >
                         {(chat.type === "image" || chat.type === "image_and_text") && (
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems:
-                                chat.direction === "sent" ? "flex-end" : "flex-start",
-                            }}
-                          >
-                            <img
-                              src={chat.type === "image" ? chat.message : imageUrl}
-                              alt="Sent image"
+                          <div>
+                            <div
+                              className={`tw:text-[#B7B7B7] tw:font-medium tw:text-[12px] ${chat.direction !== "sent" ? "tw:text-start" : "tw:text-end"
+                                }`}
                               style={{
-                                maxWidth: "40%",
-                                borderRadius: "8px",
-                                cursor: "pointer",
-                                transition: "transform 0.2s",
-                                display: "block",
-                                border: "1px solid #ccc",
-                                padding: "5px",
-                                marginBottom: "5px",
+                                width: "100%",
+                                // Hide if the previous message has the same minute
+                                display: shouldShowTime(chat, prevChat) ? "block" : "none",
                               }}
-                              onClick={() =>
-                                window.open(
-                                  chat.type === "image" ? chat.message : imageUrl,
-                                  "_blank",
-                                )
-                              }
-                            />
-
-                            {chat.type === "image_and_text" && (
-                              <div
-                                className={`tw:p-2 tw:rounded ${chat.direction === "sent"
-                                  ? "tw:bg-[#FAFBFC]"
-                                  : "tw:bg-[#FAFBFC]"
-                                  }`}
+                            >
+                              {chat.time}
+                            </div>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems:
+                                  chat.direction === "sent" ? "flex-end" : "flex-start",
+                              }}
+                            >
+                              <img
+                                src={chat.type === "image" ? chat.message : imageUrl}
+                                alt="Sent image"
                                 style={{
-                                  width: "max-content",
-                                  maxWidth: "100%",
+                                  maxWidth: "40%",
+                                  borderRadius: "8px",
+                                  cursor: "pointer",
+                                  transition: "transform 0.2s",
+                                  display: "block",
+                                  border: "1px solid #ccc",
+                                  padding: "5px",
+                                  marginBottom: "5px",
                                 }}
-                              >
-                                <p className="tw:mb-0">{textContent}</p>
-                                <div
-                                  className={`tw:text-[#797979] tw:font-normal tw:text-[12px] ${chat.direction !== "sent"
-                                      ? "tw:text-start"
-                                      : "tw:text-end"
-                                    }`}
-                                  style={{
-                                    width: "100%",
-                                  }}
-                                >
-                                  {chat.time}
-                                </div>
-                              </div>
-                            )}
+                                onClick={() =>
+                                  window.open(
+                                    chat.type === "image" ? chat.message : imageUrl,
+                                    "_blank",
+                                  )
+                                }
+                              />
 
-                            {chat.type === "image" && (
-                              <div
-                                style={{
-                                  borderRadius: "10px",
-                                  width: "max-content",
-                                  maxWidth: "100%",
-                                }}
-                              >
-                                <div
-                                  className={`tw:text-[#797979] tw:font-normal tw:text-[12px] ${chat.direction !== "sent"
-                                      ? "tw:text-start"
-                                      : "tw:text-end"
-                                    }`}
-                                  style={{
-                                    width: "100%",
-                                  }}
-                                >
-                                  {chat.time}
+                              {chat.type === "image_and_text" && (
+                                <div>
+
+                                  <div
+                                    className={`tw:p-2 tw:rounded ${chat.direction === "sent"
+                                      ? "tw:bg-[#FAFBFC]"
+                                      : "tw:bg-[#FAFBFC]"
+                                      }`}
+                                    style={{
+                                      width: "max-content",
+                                      maxWidth: "100%",
+                                    }}
+                                  >
+                                    <p className="tw:mb-0">{textContent}</p>
+
+                                  </div>
                                 </div>
-                              </div>
-                            )}
+                              )}
+
+                              {chat.type === "image" && (
+
+                                <div>
+
+                                  <div
+                                    style={{
+                                      borderRadius: "10px",
+                                      width: "max-content",
+                                      maxWidth: "100%",
+                                    }}
+                                  >
+                                  </div>
+                                </div>
+                              )}
+                            </div>
                           </div>
                         )}
 
                         {chat.type === "text" && (
                           <div>
                             <div
-                              className={`tw:text-[#B7B7B7]  tw:font-medium tw:text-[12px] ${chat.direction !== "sent"
-                                  ? "tw:text-start"
-                                  : "tw:text-end"
+                              className={`tw:text-[#B7B7B7] tw:font-medium tw:text-[12px] ${chat.direction !== "sent" ? "tw:text-start" : "tw:text-end"
                                 }`}
                               style={{
                                 width: "100%",
+                                // Hide if the previous message has the same minute
+                                display: shouldShowTime(chat, prevChat) ? "block" : "none",
                               }}
                             >
                               {chat.time}
                             </div>
                             <div
-                              className={`tw:p-2 tw:text-[#797979]  tw:font-normal tw:text-[12px] tw:rounded ${chat.direction === "sent"
+                              className={`tw:p-[10px] tw:text-[#797979]  tw:font-normal tw:text-[12px] tw:rounded ${chat.direction === "sent"
                                 ? "tw:bg-[#FAFBFC]"
                                 : "tw:bg-[#FAFBFC]"
                                 }`}
