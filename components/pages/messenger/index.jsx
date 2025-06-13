@@ -215,29 +215,26 @@ const MessengerPage = ({ locale }) => {
 
       <!-- Message Content -->
       <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-        ${
-          newMessage
-            ? `<p style="margin: 0; font-size: 14px; color: #333;">${newMessage}</p>`
-            : ""
-        }
+        ${newMessage
+        ? `<p style="margin: 0; font-size: 14px; color: #333;">${newMessage}</p>`
+        : ""
+      }
       </div>
 
       <!-- Image (if any) -->
-      ${
-        imageUrl
-          ? `
+      ${imageUrl
+        ? `
         <div style="margin-bottom: 20px; text-align: center;">
           <img src="${imageUrl}" alt="Sent image" style="max-width: 40%; border-radius: 8px; border: 1px solid #ccc; padding: 5px;"/>
         </div>
       `
-          : ""
+        : ""
       }
 
       <!-- Button -->
       <div style="text-align: center;">
-        <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${
-          selectedThread.thread_id
-        }"
+        <a href="https://workerhomes-two.vercel.app/${locale}/dashboard/messenger?thread=${selectedThread.thread_id
+      }"
           style="display: inline-block; background-color: #F59024; color: white; text-decoration: none; padding: 12px 20px;
           border-radius: 5px; font-size: 16px; margin-top: 20px;">
           Reply to the chat
@@ -334,22 +331,12 @@ const MessengerPage = ({ locale }) => {
     }
   };
 
-  function shouldShowTime(currentChat, previousChat) {
-    if (!previousChat) return true; // Always show for the first message
-
-    // Extract minute from timestamps (assuming `time` is in "HH:MM" format)
-    const currentMinute = currentChat.time?.substring(3, 5); // "MM" part
-    const previousMinute = previousChat.time?.substring(3, 5);
-
-    // Show only if the minute has changed
-    return currentMinute !== previousMinute;
-  }
 
   return (
     <>
-     <div
+      <div
         className="tw:flex tw:flex-row tw:gap-4 tw:max-h-[calc(100vh_-_90px)] font-secondary tw:mt-20  tw:bg-white "
->
+      >
         {/* Left Section */}
         <div
           className={`tw:w-full font-secondary tw:md:w-[600px] tw:shadow-[4px_0px_16px_0px_rgba(0,0,0,0.06)] tw:flex tw:flex-col ${isMobileView ? "" : "tw:hidden"
@@ -458,15 +445,15 @@ const MessengerPage = ({ locale }) => {
                     <li
                       key={thread.thread_id}
                       className={`tw:flex tw:items-start tw:p-2 tw:rounded-lg tw:cursor-pointer ${selectedThread?.thread_id === thread.thread_id
-                          ? "tw:bg-[#FFEBDD] tw:border tw:border-[#FF780B]"
-                          : "tw:bg-white"
+                        ? "tw:bg-[#FFEBDD] tw:border tw:border-[#FF780B]"
+                        : "tw:bg-white"
                         }`}
                       onClick={() => handlethreadselect(thread)}
                     >
                       {/* Avatar */}
                       <div className={`tw:w-[40px] tw:h-[40px] tw:rounded-full tw:border ${selectedThread?.thread_id === thread.thread_id
-                          ? "tw:border-[#FF780B] tw:text-[#FF780B]"
-                          : "tw:border-[#D8E0ED] tw:text-[var(--color-font-regular)]"
+                        ? "tw:border-[#FF780B] tw:text-[#FF780B]"
+                        : "tw:border-[#D8E0ED] tw:text-[var(--color-font-regular)]"
                         } tw:bg-[#F8F9FB] tw:flex tw:items-center tw:justify-center tw:text-[14px] tw:font-medium tw:mr-3 tw:flex-shrink-0`}>
                         {initials}
                       </div>
@@ -476,8 +463,8 @@ const MessengerPage = ({ locale }) => {
 
                         <h5
                           className={`tw:text-[18px] tw:font-medium ${selectedThread?.thread_id === thread.thread_id
-                              ? "tw:text-[#FF780B]"
-                              : "tw:text-[var(--color-font-dark)]"
+                            ? "tw:text-[#FF780B]"
+                            : "tw:text-[var(--color-font-dark)]"
                             } tw:truncate`}
                           title={thread.dwelling_title}
                         >
@@ -508,7 +495,7 @@ const MessengerPage = ({ locale }) => {
                           </div>
                           <div className="tw:pl-2">
                             {isUnread ? (
-                              <span className="tw:inline-block tw:w-2 tw:h-2 tw:bg-blue-500 tw:rounded-full"></span>
+                              <span className="tw:inline-block tw:w-2 tw:h-2 tw:bg-[#FF780B] tw:rounded-full"></span>
                             ) : (
                               <p className="tw:text-xs tw:text-gray-500">
                                 {thread.status}
@@ -534,7 +521,7 @@ const MessengerPage = ({ locale }) => {
             boxShadow: '-4px 0px 16px 0px rgba(0,0,0,0.06)',
           }}
         >
-          {selectedThread && (
+          {selectedThread ? (
             <>
               <div className="tw:flex tw:p-4 tw:items-center tw:h-[72px] tw:bg-[#FAFBFC]">
                 <button
@@ -577,7 +564,7 @@ const MessengerPage = ({ locale }) => {
                   {selectedThread.name}
                 </strong>
                 <div
-                  className="tw:text-[#040342] tw:font-medium tw:text-[16px] tw:ml-auto tw:cursor-pointer"
+                  className="tw:text-[#040342] tw:font-medium tw:text-[16px] tw:hover:underline tw:ml-auto tw:cursor-pointer"
                   onClick={toggleDetailsModal}
                 >
                   Details
@@ -631,14 +618,14 @@ const MessengerPage = ({ locale }) => {
                                 />
                               )}
                             </Link>
-                          <div className="tw:gap-2 tw:flex tw:flex-col">
-                            {property?.title && (
-                              <h4 className="tw:text-start tw:font-semibold tw:text-[16px] tw:text-[#3B3B3B]">{property.title}</h4>
-                            )}
+                            <div className="tw:gap-2 tw:flex tw:flex-col">
+                              {property?.title && (
+                                <h4 className="tw:text-start tw:font-semibold tw:text-[16px] tw:text-[#3B3B3B]">{property.title}</h4>
+                              )}
 
-                            {property?.location && (
-                              <p className="tw:mx-auto tw:font-normal tw:text-[14px] tw:text-[#797979]">{property.location}</p>
-                            )}
+                              {property?.location && (
+                                <p className="tw:mx-auto tw:font-normal tw:text-[14px] tw:text-[#797979]">{property.location}</p>
+                              )}
                             </div>
 
                             {property?.data?.prices?.length > 0 && (
@@ -755,33 +742,13 @@ const MessengerPage = ({ locale }) => {
                   )}
               </div>
 
-              <p style={{
-                fontFamily: 'Roboto',
-                fontWeight: 500,
-                fontSize: '12px',
-                lineHeight: '100%',
-                letterSpacing: '0.3em',
-                verticalAlign: 'middle',
-                color: '#3B3B3B',
-                marginTop: '24px',
-                textAlign: 'center'
-              }}>
-                {new Date(selectedThread.created_at).toLocaleDateString('en-US', {
-                  weekday: 'short',
-                  month: 'short',
-                  day: 'numeric',
-                })}, {new Date(selectedThread.created_at).toLocaleTimeString('en-US', {
-                  hour: 'numeric',
-                  minute: '2-digit',
-                  hour12: true
-                })}
-              </p>
-
-              <div className="tw:flex-grow tw:p-3" style={{ overflowY: "auto" }}>
+              <div className="tw:flex-grow tw:p-4" style={{ overflowY: "auto" }}>
                 {messages.map((chat, index) => {
                   let imageUrl = null;
                   let textContent = null;
                   const prevChat = index > 0 ? messages[index - 1] : null;
+                  const currentDate = new Date(chat.timestamp).toDateString();
+                  const prevDate = prevChat ? new Date(prevChat.timestamp).toDateString() : null;
 
 
                   if (chat.type === "image_and_text") {
@@ -795,140 +762,196 @@ const MessengerPage = ({ locale }) => {
                   }
 
                   return (
-                    <div
-                      key={index}
-                      className={`tw:mb-3 tw:flex ${chat.direction === "sent"
+                    <div key={index}>
+                      {(!prevChat || currentDate !== prevDate) && (
+                        <p style={{
+                          fontFamily: 'Roboto',
+                          fontWeight: 500,
+                          fontSize: '12px',
+                          lineHeight: '100%',
+                          letterSpacing: '0.3em',
+                          color: '#3B3B3B',
+                          margin: '24px 0',
+                          textAlign: 'center'
+                        }}>
+                          {new Date(chat.timestamp).toLocaleDateString('en-US', {
+                            weekday: 'short',
+                            month: 'short',
+                            day: 'numeric',
+                          })}, {new Date(chat.timestamp).toLocaleTimeString('en-US', {
+                            hour: 'numeric',
+                            minute: '2-digit',
+                            hour12: true
+                          })}
+                        </p>
+                      )}
+                      <div
+
+                        className={`tw:mb-3 tw:flex ${chat.direction === "sent"
                           ? "tw:justify-end"
                           : "tw:justify-start"
-                        }`}
-                    >
-                      <div
-                        style={{
-                          maxWidth: "60%",
-                          padding:
-                            chat.type === "image" || chat.type === "image_and_text"
-                              ? "0"
-                              : "0",
-                          borderRadius:
-                            chat.type === "image" || chat.type === "image_and_text"
-                              ? "0"
-                              : "10px",
-                          display: "inline-block",
-                          fontSize: "0.875rem",
-                          backgroundColor: "transparent",
-                          wordWrap: "break-word",
-                          overflowWrap: "break-word",
-                          whiteSpace: "pre-wrap",
-                          textAlign: "left",
-                        }}
+                          }`}
                       >
-                        {(chat.type === "image" || chat.type === "image_and_text") && (
-                          <div>
-                            <div
-                              className={`tw:text-[#B7B7B7] tw:font-medium tw:text-[12px] ${chat.direction !== "sent" ? "tw:text-start" : "tw:text-end"
-                                }`}
-                              style={{
-                                width: "100%",
-                                // Hide if the previous message has the same minute
-                                display: shouldShowTime(chat, prevChat) ? "block" : "none",
-                              }}
-                            >
-                              {chat.time}
-                            </div>
-                            <div
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems:
-                                  chat.direction === "sent" ? "flex-end" : "flex-start",
-                              }}
-                            >
-                              <img
-                                src={chat.type === "image" ? chat.message : imageUrl}
-                                alt="Sent image"
+                        <div
+                          style={{
+                            maxWidth: "60%",
+                            padding:
+                              chat.type === "image" || chat.type === "image_and_text"
+                                ? "0"
+                                : "0",
+                            borderRadius:
+                              chat.type === "image" || chat.type === "image_and_text"
+                                ? "0"
+                                : "10px",
+                            display: "inline-block",
+                            fontSize: "0.875rem",
+                            backgroundColor: "transparent",
+                            wordWrap: "break-word",
+                            overflowWrap: "break-word",
+                            whiteSpace: "pre-wrap",
+                            textAlign: "left",
+                          }}
+                        >
+                          {(chat.type === "image" || chat.type === "image_and_text") && (
+                            <div>
+                              {chat.direction !== "sent" && (
+                                <div className="tw:flex tw:items-baseline tw:gap-2">
+                                  <h5 className="tw:text-[16px] tw:text-[#3B3B3B] tw:font-semibold">
+                                    {selectedThread.name}
+                                  </h5>
+                                  <div
+                                    className="tw:text-[#B7B7B7] tw:font-medium tw:text-[12px] tw:mt-[2px]"
+                                  >
+                                    {chat.time}
+                                  </div>
+                                </div>
+                              )}
+
+                              {chat.direction === "sent" && (
+                                <div
+                                  className="tw:text-[#B7B7B7] tw:font-medium tw:text-[12px] tw:text-end"
+                                >
+                                  {chat.time} <span className="tw:text-[16px] tw:ml-2 tw:text-[#3B3B3B] tw:font-semibold">You</span>
+                                </div>
+                              )}
+
+                              <div
                                 style={{
-                                  maxWidth: "40%",
-                                  borderRadius: "8px",
-                                  cursor: "pointer",
-                                  transition: "transform 0.2s",
-                                  display: "block",
-                                  border: "1px solid #ccc",
-                                  padding: "5px",
-                                  marginBottom: "5px",
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  alignItems:
+                                    chat.direction === "sent" ? "flex-end" : "flex-start",
                                 }}
-                                onClick={() =>
-                                  window.open(
-                                    chat.type === "image" ? chat.message : imageUrl,
-                                    "_blank",
-                                  )
-                                }
-                              />
+                              >
+                                <img
+                                  src={chat.type === "image" ? chat.message : imageUrl}
+                                  alt="Sent image"
+                                  style={{
+                                    maxWidth: "40%",
+                                    borderRadius: "8px",
+                                    cursor: "pointer",
+                                    transition: "transform 0.2s",
+                                    display: "block",
+                                    border: "1px solid #ccc",
+                                    padding: "5px",
+                                    marginBottom: "5px",
+                                  }}
+                                  onClick={() =>
+                                    window.open(
+                                      chat.type === "image" ? chat.message : imageUrl,
+                                      "_blank",
+                                    )
+                                  }
+                                />
 
-                              {chat.type === "image_and_text" && (
-                                <div>
+                                {chat.type === "image_and_text" && (
+                                  <div>
 
+                                    <div
+                                      className={`tw:p-2 tw:rounded ${chat.direction === "sent"
+                                        ? "tw:bg-[#FAFBFC]"
+                                        : "tw:bg-[#FAFBFC]"
+                                        }`}
+                                      style={{
+                                        width: "max-content",
+                                        maxWidth: "100%",
+                                      }}
+                                    >
+                                      <p className="tw:mb-0">{textContent}</p>
+
+                                    </div>
+                                  </div>
+                                )}
+
+                                {chat.type === "image" && (
+
+                                  <div>
+
+                                    <div
+                                      style={{
+                                        borderRadius: "10px",
+                                        width: "max-content",
+                                        maxWidth: "100%",
+                                      }}
+                                    >
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          )}
+
+                          {chat.type === "text" && (
+                            <div>
+                              {/* Received Messages (left-aligned) */}
+                              {chat.direction !== "sent" && (
+                                <div className="tw:flex tw:items-baseline tw:gap-2">
+                                  <h5 className="tw:text-[16px] tw:text-[#3B3B3B] tw:font-semibold">
+                                    {selectedThread.name}
+                                  </h5>
                                   <div
-                                    className={`tw:p-2 tw:rounded ${chat.direction === "sent"
-                                      ? "tw:bg-[#FAFBFC]"
-                                      : "tw:bg-[#FAFBFC]"
-                                      }`}
+                                    className="tw:text-[#B7B7B7] tw:font-medium tw:text-[12px] tw:mt-[2px]"
+                                  >
+                                    {chat.time}
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* Sent Messages (right-aligned) */}
+                              {chat.direction === "sent" && (
+                                <div className="tw:flex tw:flex-col tw:items-end">
+                                  <div
+                                    className="tw:text-[#B7B7B7] tw:font-medium tw:text-[12px] tw:mb-1"
+                                  >
+                                    {chat.time} <span className="tw:text-[16px] tw:ml-2 tw:text-[#3B3B3B] tw:font-semibold">You</span>
+                                  </div>
+                                  <div
+                                    className={`tw:p-[10px] tw:text-[#797979] tw:font-normal tw:text-[12px] tw:rounded tw:bg-[#FAFBFC]`}
                                     style={{
                                       width: "max-content",
                                       maxWidth: "100%",
                                     }}
                                   >
-                                    <p className="tw:mb-0">{textContent}</p>
-
+                                    <p className="tw:mb-0">{chat.message}</p>
                                   </div>
                                 </div>
                               )}
 
-                              {chat.type === "image" && (
-
-                                <div>
-
-                                  <div
-                                    style={{
-                                      borderRadius: "10px",
-                                      width: "max-content",
-                                      maxWidth: "100%",
-                                    }}
-                                  >
-                                  </div>
+                              {/* Received Message Bubble (only if not sent) */}
+                              {chat.direction !== "sent" && (
+                                <div
+                                  className={`tw:p-[10px] tw:text-[#797979] tw:font-normal tw:text-[12px] tw:rounded tw:bg-[#FAFBFC]`}
+                                  style={{
+                                    width: "max-content",
+                                    maxWidth: "100%",
+                                  }}
+                                >
+                                  <p className="tw:mb-0">{chat.message}</p>
                                 </div>
                               )}
                             </div>
-                          </div>
-                        )}
-
-                        {chat.type === "text" && (
-                          <div>
-                            <div
-                              className={`tw:text-[#B7B7B7] tw:font-medium tw:text-[12px] ${chat.direction !== "sent" ? "tw:text-start" : "tw:text-end"
-                                }`}
-                              style={{
-                                width: "100%",
-                                // Hide if the previous message has the same minute
-                                display: shouldShowTime(chat, prevChat) ? "block" : "none",
-                              }}
-                            >
-                              {chat.time}
-                            </div>
-                            <div
-                              className={`tw:p-[10px] tw:text-[#797979]  tw:font-normal tw:text-[12px] tw:rounded ${chat.direction === "sent"
-                                ? "tw:bg-[#FAFBFC]"
-                                : "tw:bg-[#FAFBFC]"
-                                }`}
-                              style={{
-                                width: "max-content",
-                                maxWidth: "100%",
-                              }}
-                            >
-                              <p className="tw:mb-0">{chat.message}</p>
-
-                            </div>
-                          </div>
-                        )}
+                          )}
+                        </div>
                       </div>
                     </div>
                   );
@@ -960,7 +983,7 @@ const MessengerPage = ({ locale }) => {
                       left: "10px",
                     }}
                   >
-                    <MdOutlineAttachFile size={24} className="tw:text-[#B7B7B7]"/>
+                    <MdOutlineAttachFile size={24} className="tw:text-[#B7B7B7]" />
 
                   </label>
                   <input
@@ -1082,13 +1105,28 @@ const MessengerPage = ({ locale }) => {
                         paddingLeft: "25px",
                       }}
                     >
-                      <LuSend size={20}/>
+                      <LuSend size={20} />
 
                     </button>
                   </div>
                 </div>
               </div>
             </>
+          ) : (
+            // Show placeholder when no thread is selected
+            <div className="tw:flex tw:flex-col tw:items-center tw:justify-center tw:text-center tw:mt-[80px]">
+              <img
+                src="/assets/IllustrationsForEmptyMessage.png"
+                alt="No conversation selected"
+                className="tw:w-[300px] tw:h-[300px] "
+              />
+              <h3 className="tw:text-[14px] tw:font-medium tw:text-[#3B3B3B] tw:mb-[10px]">
+                No conversation chosen
+              </h3>
+              <p className="tw:text-[14px] tw:font-medium tw:text-[#797979] ">
+                Select a conversation from the list to start chatting
+              </p>
+            </div>
           )}
         </div>
 

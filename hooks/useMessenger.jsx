@@ -191,9 +191,7 @@ export default function useMessenger(
           if (!isPhone) {
             if (currentThread) {
               setselectedThread(generateThreadType(currentThread));
-            } else {
-              setselectedThread(generateThreadType(firstThread));
-            }
+            } 
           } else {
             if (currentThread) {
               setselectedThread(generateThreadType(currentThread));
@@ -377,10 +375,10 @@ export default function useMessenger(
       status:
         session?.user.email === thread?.last_message?.sender?.email
           ? thread.seen
-            ? "seen by recipient"
+            ? "seen"
             : "sent"
           : thread.seen
-            ? "seen by you"
+            ? "seen"
             : "unread",
     };
   }
