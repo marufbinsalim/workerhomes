@@ -11,6 +11,8 @@ import { useSearchParams } from "next/navigation";
 import { MdOutlineAttachFile } from "react-icons/md";
 import { LuSend } from "react-icons/lu";
 import { IoMdClose } from "react-icons/io";
+import { FaChevronLeft } from "react-icons/fa6";
+
 
 
 
@@ -339,9 +341,9 @@ const MessengerPage = ({ locale }) => {
       >
         {/* Left Section */}
         <div
-          className={`tw:w-full font-secondary tw:md:w-[600px] tw:shadow-[4px_0px_16px_0px_rgba(0,0,0,0.06)] tw:flex tw:flex-col ${isMobileView ? "tw:shadow-none tw:px-4" : ""
+          className={`tw:w-full tw:md:w-[600px] tw:shadow-[4px_0px_16px_0px_rgba(0,0,0,0.06)] tw:flex tw:flex-col ${isMobileView ? "tw:hidden tw:md:flex" : "tw:flex"
             }`}
-          style={{ height: isMobileView ? "auto" : "calc(100vh - 90px)" }}
+          style={{ height: "calc(100vh - 90px)" }}
         >
           <div
             className="tw:flex tw:items-center  tw:h-[72px] tw:bg-[#FAFBFC]"
@@ -514,11 +516,12 @@ const MessengerPage = ({ locale }) => {
         {/* Middle Section */}
         <div
           ref={middleSectionRef || null}
-          className={`tw:w-full  tw:flex tw:flex-col ${isMobileView || selectedThread ? "" : "tw:hidden"
+          className={`tw:flex tw:flex-col ${isMobileView ? "tw:flex tw:w-full" : "tw:hidden tw:md:flex tw:md:flex-1"
             }`}
           style={{
             opacity: isMobileView || selectedThread ? 1 : 0,
-            boxShadow: '-4px 0px 16px 0px rgba(0,0,0,0.06)',
+            boxShadow: "-4px 0px 16px 0px rgba(0,0,0,0.06)",
+            height: "calc(100vh - 90px)",
           }}
         >
           {selectedThread ? (
@@ -533,23 +536,8 @@ const MessengerPage = ({ locale }) => {
                     marginRight: "5px",
                   }}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-chevron-left"
-                    viewBox="0 0 16 16"
-                    style={{
-                      transform: "scale(1.2)",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
-                    />
-                  </svg>
+                  <FaChevronLeft size={24} className="tw:text-[#B7B7B7]" />
+
                 </button>
                 <div className="tw:w-[40px] tw:h-[40px] tw:rounded-full tw:border tw:border-[#D8E0ED] tw:bg-[#F8F9FB] tw:flex tw:items-center tw:justify-center tw:text-[12px] tw:text-[var(--color-font-regular)] tw:font-medium tw:mr-3 tw:flex-shrink-0">
                   {selectedThread.name
@@ -652,95 +640,6 @@ const MessengerPage = ({ locale }) => {
                   </div>
                 </div>
               )}
-
-
-              <div
-                className="tw:p-2 tw:md:hidden"
-                style={{
-                  borderBottom: "1px solid #E5E7EB",
-                  backgroundColor: "#EFEFEF",
-                  boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
-                  border: "1px solid rgba(233, 233, 233, 0.1)",
-                }}
-              >
-                {property &&
-                  selectedThread.dwelling_title === property.title && (
-                    <div
-                      className="tw:flex tw:items-center tw:text-start"
-                      style={{
-                        gap: "10px",
-                        flexWrap: "wrap",
-                        position: "relative",
-                      }}
-                    >
-                      {property.image_url && (
-                        <img
-                          src={property.image_url}
-                          alt="Property Image"
-                          className="tw:img-fluid"
-                          style={{
-                            width: "80px",
-                            height: "60px",
-                            borderRadius: "8px",
-                            objectFit: "cover",
-                            boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-                            flexShrink: 0,
-                            minWidth: "80px",
-                          }}
-                        />
-                      )}
-                      <h6
-                        className="tw:mb-0"
-                        style={{
-                          wordBreak: "break-word",
-                          flex: 1,
-                          whiteSpace: "normal",
-                          position: "relative",
-                          width: "80%",
-                          maxWidth: "calc(100% - 90px)",
-                          display: "-webkit-box",
-                          WebkitBoxOrient: "vertical",
-                          WebkitLineClamp: 2,
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          marginRight: "30px",
-                        }}
-                      >
-                        {property.title}
-                      </h6>
-                      <Link
-                        href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
-                        style={{
-                          position: "absolute",
-                          right: "0",
-                          top: "50%",
-                          transform: "translateY(-50%)",
-                          fontSize: "18px",
-                          color: "#333",
-                          textDecoration: "none",
-                        }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-chevron-right"
-                          viewBox="0 0 16 16"
-                          style={{
-                            transform: "scale(1.5)",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M4.646 1.646a.5.5 0 0 1 .708 0L10.293 8l-5.647 5.646a.5.5 0 0 1-.708-.708l5-5a.5.5 0 0 1 0-.708l-5-5a.5.5 0 0 1 0-.708z"
-                          />
-                        </svg>
-                      </Link>
-                    </div>
-                  )}
-              </div>
 
               <div className="tw:flex-grow tw:p-4" style={{ overflowY: "auto" }}>
                 {messages.map((chat, index) => {
@@ -1114,7 +1013,7 @@ const MessengerPage = ({ locale }) => {
             </>
           ) : (
             // Show placeholder when no thread is selected
-            <div className="tw:flex tw:flex-col tw:items-center tw:justify-center tw:text-center tw:mt-[80px]">
+            <div className="tw:md:flex tw:hidden  tw:flex-col tw:items-center tw:justify-center tw:text-center tw:mt-[80px]">
               <img
                 src="/assets/IllustrationsForEmptyMessage.png"
                 alt="No conversation selected"
@@ -1130,64 +1029,6 @@ const MessengerPage = ({ locale }) => {
           )}
         </div>
 
-        {/* {property &&
-          selectedThread &&
-          selectedThread.dwelling_title === property.title &&
-          !propertyLoading && (
-            <div
-              className="tw:md:w-3/12 tw:bg-white tw:border-r tw:flex tw:flex-col tw:p-4 tw:hidden tw:md:block"
-              style={{
-                height: "calc(100vh - 90px)",
-                overflowY: "auto",
-                borderTop: "1px solid #E5E7EB",
-              }}
-            >
-              {property?.title && (
-                <h4 className="tw:text-start tw:mb-10 tw:font-medium">{property.title}</h4>
-              )}
-              <Link
-                href={`/${locale}/listings/${selectedThread.dwelling_slug}`}
-              >
-                {property.image_url && (
-                  <img
-                    src={property.image_url}
-                    alt="Property Image"
-                    className="tw:img-fluid tw:mb-3"
-                    style={{
-                      width: "400px",
-                      height: "200px",
-                      borderRadius: "10px",
-                      boxShadow: "0 0 15px rgba(0, 0, 0, 0.3)",
-                      transition: "transform 0.4s ease-in-out",
-                    }}
-                  />
-                )}
-              </Link>
-
-              {property?.location && (
-                <p className="tw:mx-auto">{property.location}</p>
-              )}
-
-              {property?.data?.prices?.length > 0 && (
-                <div
-                  className="tw:w-full tw:p-0 tw:flex tw:flex-col tw:gap-5 tw:mt-5"
-                >
-                  {property?.data?.prices?.length > 0 &&
-                    property?.data?.prices.map((p, idx) => (
-                      <PricingCard
-                        key={idx}
-                        adults={p.adult}
-                        amountNote={p.note}
-                        guests={p.guest}
-                        minStay={p.min_stay}
-                        price={p.amount}
-                        type={p.total ? `${p.total} X ${p.type}` : p.type}
-                      />
-                    ))}
-                </div>
-              )}
-            </div>
-          )} */}
       </div>
 
 
@@ -1208,10 +1049,11 @@ const MessengerPage = ({ locale }) => {
             transform-origin: left;
             transform: scaleX(0);
             position: relative;
+            margin-left: 14px; /* Adjust padding for mobile view */
           }
 
           .show-searchbar {
-            width: calc(100% - 70px); /* Adjust based on padding/margins */
+            width: calc(100% - 90px); /* Adjust based on padding/margins */
             opacity: 1;
             padding-left: 40px;
             transform: scaleX(1);
@@ -1231,7 +1073,7 @@ const MessengerPage = ({ locale }) => {
 
           /* Move Search Icon Inside the Input When Expanded */
           .show-searchbar ~ .search-icon {
-            left: 12px; /* Moves inside the search bar */
+            left: 26px; /* Moves inside the search bar */
             right: auto;
             background: transparent;
             padding: 0;
@@ -1246,22 +1088,7 @@ const MessengerPage = ({ locale }) => {
             transition: none;
           }
 
-          /* View Details Button */
-          .view-details-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            cursor: pointer;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 10px;
-            background-color: #ff7504;
-          }
+
 
           .property-image:hover {
             transform: scale(1.01);
@@ -1269,74 +1096,83 @@ const MessengerPage = ({ locale }) => {
 
 
           .modal-container {
+              position: fixed;
+              inset: 0;
+              z-index: 50;
+              overflow: hidden;
+              display: block;
+              pointer-events: none;
+            }
+
+            .modal-container.active {
+              pointer-events: auto;
+            }
+
+            .modal-overlay {
+              position: absolute;
+              inset: 0;
+              background: rgba(0, 0, 0, 0.3);
+              opacity: 0;
+              transition: opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+            }
+
+            .modal-container.active .modal-overlay {
+              opacity: 1;
+            }
+
+            .modal-drawer {
   position: fixed;
-  inset: 0;
-  z-index: 50;
-  overflow: hidden;
-  display: block;
-  pointer-events: none;
-}
-
-.modal-container.active {
-  pointer-events: auto;
-}
-
-.modal-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1);
-}
-
-.modal-container.active .modal-overlay {
-  opacity: 1;
-}
-
-.modal-drawer {
-  position: absolute;
-  right: 0;
   top: 0;
   height: 100%;
-  width: 500px;
   background: white;
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
   transform: translateX(100%);
   transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
   will-change: transform;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  overflow: hidden; /* This ensures child elements respect the border radius */
+  overflow: hidden;
+
+  /* Mobile styles (default) */
+  right: 0;
+  width: 100%;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+
+  /* Desktop styles */
+  @media (min-width: 768px) {
+    width: 500px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
 }
 
-.modal-container.active .modal-drawer {
-  transform: translateX(0);
-}
+            .modal-container.active .modal-drawer {
+              transform: translateX(0);
+            }
 
-/* Closing animation */
-.modal-container.closing .modal-overlay {
-  opacity: 0;
-}
+            /* Closing animation */
+            .modal-container.closing .modal-overlay {
+              opacity: 0;
+            }
 
-.modal-container.closing .modal-drawer {
-  transform: translateX(100%);
-}
+            .modal-container.closing .modal-drawer {
+              transform: translateX(100%);
+            }
 
-.close-button {
-  padding: 0.25rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+            .close-button {
+              padding: 0.25rem;
+              background: transparent;
+              border: none;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
 
 
-.modal-content {
-  height: 100%;
-  overflow-y: auto;
-}
+            .modal-content {
+              height: 100%;
+              overflow-y: auto;
+            }
 
 
 
@@ -1360,8 +1196,10 @@ const MessengerPage = ({ locale }) => {
               padding: 0 !important; /* Remove padding from the container */
             }
             .show-searchbar {
-              width: 320px; /* Adjust width for mobile view */
+              width: 280px; /* Adjust width for mobile view */
+              margin-left: 10px; /* Adjust padding for mobile view */
             }
+
           }
             @media (min-width: 769px) {
               .mobile-only {
