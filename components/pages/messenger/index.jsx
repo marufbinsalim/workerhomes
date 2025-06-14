@@ -339,9 +339,9 @@ const MessengerPage = ({ locale }) => {
       >
         {/* Left Section */}
         <div
-          className={`tw:w-full font-secondary tw:md:w-[600px] tw:shadow-[4px_0px_16px_0px_rgba(0,0,0,0.06)] tw:flex tw:flex-col ${isMobileView ? "" : "tw:hidden"
+          className={`tw:w-full font-secondary tw:md:w-[600px] tw:shadow-[4px_0px_16px_0px_rgba(0,0,0,0.06)] tw:flex tw:flex-col ${isMobileView ? "tw:shadow-none tw:px-4" : ""
             }`}
-          style={{ height: "calc(100vh - 90px)" }}
+          style={{ height: isMobileView ? "auto" : "calc(100vh - 90px)" }}
         >
           <div
             className="tw:flex tw:items-center  tw:h-[72px] tw:bg-[#FAFBFC]"
