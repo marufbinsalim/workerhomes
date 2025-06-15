@@ -89,7 +89,7 @@ const GalleryStepWrapper = ({
   const totalPrices = data?.prices?.map((i) => i.type) || [];
 
   return (
-    <div>
+    <div className="tw:w-full">
       <Divider title={tPrice("title")} />
 
       <PriceForm2

@@ -50,6 +50,7 @@ const DwellingEditPage = ({ locale, id }) => {
           formData={data}
           dwellingId={id}
           locale={locale}
+          isEditing={true}
           onSuccess={() => {
             router.push(`/${locale}/dashboard/dwellings`);
           }}

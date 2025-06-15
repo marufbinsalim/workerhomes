@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback, useEffect } from "react";
 
-const Stepper = ({ children, onStepChange, error }) => {
+const Stepper = ({ children, onStepChange, error, back }) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -25,12 +25,17 @@ const Stepper = ({ children, onStepChange, error }) => {
   );
 
   const handlePrevStep = () => {
+    if (activeStep === 1 && back) {
+      router.push(back);
+      return;
+    }
     if (activeStep === 0 || isFirstStep) return;
     onStepChange(activeStep - 1);
     router.push(pathname + "?" + createQueryString("step", activeStep - 1));
   };
 
   const handleNextStep = () => {
+    if (back) router.push;
     if (activeStep === children.length - 1 || isLastStep || error) return;
     onStepChange(activeStep + 1);
     router.push(pathname + "?" + createQueryString("step", activeStep + 1));

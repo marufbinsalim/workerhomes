@@ -110,11 +110,20 @@ const PriceForm = forwardRef(
         >
           {({ values, errors, dirty, setFieldValue }) => (
             <Form className="tw:space-y-4">
+              <div className="tw:rounded-md">
+                <Input
+                  type="number"
+                  name={"min_stay"}
+                  label={t("form.fields.min_stay")}
+                  value={minStay}
+                  onChange={(e) => setMinStay(e.target.value)}
+                  min={0}
+                  className="tw:mt-1 tw:p-2 tw:w-full tw:max-w-[300px] tw:border tw:border-gray-300 tw:rounded-md"
+                />
+              </div>
+
               {values.accommodations.map((acc, idx) => (
-                <div
-                  key={idx}
-                  className="tw:p-4 tw:border tw:border-gray-300 tw:rounded-md"
-                >
+                <div key={idx} className="tw:rounded-md">
                   <label className="tw:flex tw:items-center tw:cursor-pointer">
                     <input
                       type="checkbox"
@@ -156,7 +165,7 @@ const PriceForm = forwardRef(
                     </span>
                   </label>
                   {expanded[acc.type] && (
-                    <div className="tw:mt-2 tw:ml-6 tw:grid tw:grid-cols-3 tw:gap-4">
+                    <div className="tw:mt-2 tw:grid tw:grid-cols-3 tw:gap-4">
                       <div>
                         <Input
                           type="number"
@@ -210,17 +219,6 @@ const PriceForm = forwardRef(
                   )}
                 </div>
               ))}
-              <div className="tw:p-4 tw:border tw:border-gray-300 tw:rounded-md">
-                <Input
-                  type="number"
-                  name={"min_stay"}
-                  label={t("form.fields.min_stay")}
-                  value={minStay}
-                  onChange={(e) => setMinStay(e.target.value)}
-                  min={0}
-                  className="tw:mt-1 tw:p-2 tw:w-full tw:border tw:border-gray-300 tw:rounded-md"
-                />
-              </div>
             </Form>
           )}
         </Formik>

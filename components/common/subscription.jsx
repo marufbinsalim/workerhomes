@@ -3,6 +3,8 @@
 import useFetch from "@/hooks/useFetch";
 import SubscriptionCard from "./card/subscription-card";
 import Modal from "./Modal";
+import PackageSelectCard from "./card/PackageSelectCard";
+import PackageSelectSubscriptionCard from "./card/PackageSelectSubscriptionCard";
 
 const SubscriptionPlans = ({
   packageId,
@@ -32,13 +34,17 @@ const SubscriptionPlans = ({
         ) : data?.length > 0 && !isLoading ? (
           data?.map((plan, idx) => (
             <div key={idx} className={"col-sm-12 col-md-3"}>
+              <PackageSelectSubscriptionCard
+                item={plan}
+                dwellingId={dwellingId}
+              />
+              {/* 
               <SubscriptionCard
                 isForm={isForm}
                 key={plan.id}
                 item={plan}
                 dwellingId={dwellingId}
-              />
-              <pre>{JSON.stringify(plan, null, 2)}</pre>
+              /> */}
             </div>
           ))
         ) : (

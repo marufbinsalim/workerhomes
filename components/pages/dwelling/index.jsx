@@ -329,7 +329,6 @@ const DwellingsPage = ({ locale }) => {
             >
               <button className="tw:text-[var(--color-font-dark)]">
                 <FaRegEdit size={24} />
-                {JSON.stringify(locale)}
               </button>
             </Link>
 

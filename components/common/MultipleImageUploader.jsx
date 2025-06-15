@@ -167,9 +167,9 @@ const MultipleImageUploader = ({
 
       {error && <div className="invalid-feedback">{error}</div>}
       {errorMessage && <div className="invalid-feedback">{errorMessage}</div>}
-
-      {uploadProgress > 0 && <progress value={uploadProgress} max={100} />}
-
+      <div className="tw:mt-4">
+        {uploadProgress > 0 && <progress value={uploadProgress} max={100} />}
+      </div>
       <SortableList
         onSortEnd={onSortEnd}
         className="mt-30 row x-gap-10 y-gap-10"

@@ -22,6 +22,7 @@ const DwellingFormStep = ({
   formState,
   setFormState,
   dwellingId,
+  isEditing = false,
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -62,8 +63,12 @@ const DwellingFormStep = ({
   }, [plan]);
 
   return (
-    <Stepper activeStep={step} onStepChange={(step) => {}}>
-      {formState?.id || plan ? null : (
+    <Stepper
+      activeStep={step}
+      onStepChange={(step) => {}}
+      back={formState?.package?.id ? `/${locale}/dashboard/dwellings` : null}
+    >
+      {isEditing || formState?.package?.id ? null : (
         <Step actions title={t("form.tabs.package")}>
           <div className="tw:flex tw:flex-col">
             <div className="tw:mb-8 font-secondary">
@@ -124,7 +129,7 @@ const DwellingFormStep = ({
           locale={locale}
           user={session?.id}
           onSuccess={() => {
-            if (formState?.id) {
+            if (isEditing) {
               return router.push(`/${locale}/dashboard/dwellings`);
             } else {
               setStep(4);
@@ -133,16 +138,14 @@ const DwellingFormStep = ({
           }}
         />
       </Step>
-      {!formState?.id && (
+      {!isEditing && (
         <Step title={t("form.tabs.payment")}>
           <DwellingPaymentForm
             formData={formState}
             user={session}
             onSuccess={() => {
               toast.success(t("messages.subscription"));
-              return router.push(
-                `/${locale}/dashboard/dwellings?payment=succeed`
-              );
+              return router.push(`/${locale}/dashboard/dwellings`);
             }}
           />
         </Step>
