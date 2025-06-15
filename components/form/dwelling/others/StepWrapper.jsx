@@ -13,14 +13,8 @@ import {
 } from "@/lib/services/dwelling/gallery";
 import { remove as removePrice } from "@/lib/services/dwelling/price";
 import { useEffect, useRef, useState } from "react";
-import PriceForm from "../price";
 import { useTranslations } from "next-intl";
 import ConfirmModal from "@/components/common/ConfirmModal";
-
-import SortableList, { SortableItem } from "react-easy-sort";
-import { arrayMoveImmutable } from "array-move";
-import ImageUploader from "@/components/common/ImageUploader";
-import ImageFormTwo from "../gallery/form2";
 import MultipleImageUploader from "@/components/common/MultipleImageUploader";
 import PriceForm2 from "../price/form2";
 
@@ -270,14 +264,6 @@ const PriceList = ({ t, items, formId, onSuccess, isLoading, onDelete }) => {
         }}
         data={items}
       />
-
-      {/* <Table
-        bordered
-        columns={columns}
-        data={items}
-        isLoading={isLoading}
-        fullHeight={false}
-      /> */}
     </div>
   );
 };

@@ -3,8 +3,7 @@
 import { Icon } from "@iconify/react";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useCallback, useEffect, useState } from "react";
-import { GoHorizontalRule } from "react-icons/go";
+import React, { useCallback, useEffect } from "react";
 
 const Stepper = ({ children, onStepChange, error }) => {
   const router = useRouter();
@@ -22,7 +21,7 @@ const Stepper = ({ children, onStepChange, error }) => {
 
       return params.toString();
     },
-    [searchParams],
+    [searchParams]
   );
 
   const handlePrevStep = () => {
@@ -38,8 +37,6 @@ const Stepper = ({ children, onStepChange, error }) => {
   };
 
   const currentStep = children[activeStep];
-  const currentStepActions = currentStep?.props?.actions;
-  const currentStepTitle = currentStep?.props?.title;
 
   useEffect(() => {
     if (error) {
@@ -49,8 +46,6 @@ const Stepper = ({ children, onStepChange, error }) => {
   }, [error]);
 
   return (
-    // <div className="tw:relative font-secondary tw:w-full tw:bg-red-400">
-    // {/* Fixed position container that doesn't move */}
     <div className="tw:left-[var(--dashboard-width)] tw:overflow-auto tw:transition-all tw:duration-500 tw:ease-out-cubic">
       <div className="tw:md:px-4 tw:py-4">
         {/* Stepper header */}
@@ -66,7 +61,11 @@ const Stepper = ({ children, onStepChange, error }) => {
               return (
                 <div
                   key={index}
-                  className={`tw:flex tw:items-center tw:flex-shrink-0 ${activeStep === index ? "tw:font-medium " : "tw:text-[#B7B7B7] tw:text-[16px] tw:font-medium "}`}
+                  className={`tw:flex tw:items-center tw:flex-shrink-0 ${
+                    activeStep === index
+                      ? "tw:font-medium "
+                      : "tw:text-[#B7B7B7] tw:text-[16px] tw:font-medium "
+                  }`}
                 >
                   <div
                     className={`tw:flex tw:items-center tw:justify-center tw:mr-2 ${
@@ -75,10 +74,14 @@ const Stepper = ({ children, onStepChange, error }) => {
                         : "tw:w-10 tw:h-10 tw:border tw:border-[#D8E0ED] tw:rounded-full tw:bg-white"
                     }`}
                   >
-                    {index + 1}
+                    {index}
                   </div>
                   <span
-                    className={`tw:text-lg ${activeStep === index ? "tw:text-[var(--color-primary)] tw:font-medium tw:text-[15px]" : "tw:text-[#B7B7B7] tw:font-medium tw:text-[15px]"}`}
+                    className={`tw:text-lg ${
+                      activeStep === index
+                        ? "tw:text-[var(--color-primary)] tw:font-medium tw:text-[15px]"
+                        : "tw:text-[#B7B7B7] tw:font-medium tw:text-[15px]"
+                    }`}
                   >
                     {child?.props?.title || ""}
                   </span>
@@ -103,7 +106,6 @@ const Stepper = ({ children, onStepChange, error }) => {
                   className="tw:mr-2"
                   width={24}
                 />
-                {/* {t("control-panel.prev")} */}
               </button>
             </div>
           )}
@@ -111,7 +113,6 @@ const Stepper = ({ children, onStepChange, error }) => {
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 

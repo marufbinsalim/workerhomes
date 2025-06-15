@@ -124,7 +124,7 @@ const DwellingFormStep = ({
           locale={locale}
           user={session?.id}
           onSuccess={() => {
-            if (formState?.subscription?.id) {
+            if (formState?.id) {
               return router.push(`/${locale}/dashboard/dwellings`);
             } else {
               setStep(4);
@@ -133,7 +133,7 @@ const DwellingFormStep = ({
           }}
         />
       </Step>
-      {!formState?.subscription?.id && (
+      {!formState?.id && (
         <Step title={t("form.tabs.payment")}>
           <DwellingPaymentForm
             formData={formState}
