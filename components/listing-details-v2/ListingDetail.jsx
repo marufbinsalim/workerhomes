@@ -33,7 +33,9 @@ function ImageGrid({ images, setOpen }) {
 
   if (!imagesToShow || imagesToShow.length === 0) {
     return (
-      <p className="tw:text-center font-primary tw:text-gray-500">No images available</p>
+      <p className="tw:text-center font-primary tw:text-gray-500">
+        No images available
+      </p>
     );
   }
 
@@ -205,7 +207,7 @@ export default function ListingDetail({ data, locale, session }) {
 
       showToast(
         "success",
-        isNowBookmarked ? t("toast.favoriteRemoved") : t("toast.favoriteAdded"),
+        isNowBookmarked ? t("toast.favoriteRemoved") : t("toast.favoriteAdded")
       );
     } catch (err) {
       showToast("error", t("toast.favoriteError"));
@@ -231,7 +233,7 @@ export default function ListingDetail({ data, locale, session }) {
           item.image?.url ||
           item.image?.formats?.medium?.url ||
           item.image?.formats?.small?.url ||
-          item.image?.formats?.thumbnail?.url,
+          item.image?.formats?.thumbnail?.url
       )
       .filter(Boolean)
       .map((url) => {
@@ -277,15 +279,18 @@ export default function ListingDetail({ data, locale, session }) {
           color="#FF780B"
           className="tw:cursor-pointer tw:mb-4"
         />
-        <p className="tw:text-[#FF780B] tw:text-[14px] tw:font-medium">Go Back</p>
+        <p className="tw:text-[#FF780B] tw:text-[14px] tw:font-medium">
+          Go Back
+        </p>
       </div>
       <div className="tw:flex tw:items-center tw:justify-between tw:mb-6">
         <div className="tw:flex tw:gap-4">
           <button
-            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-2 ${selectedButton === "overview"
-              ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
-              : "border"
-              }`}
+            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-2 ${
+              selectedButton === "overview"
+                ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
+                : "border"
+            }`}
             onClick={() => {
               setSelectedButton("overview");
               overviewRef.current.scrollIntoView({
@@ -297,10 +302,11 @@ export default function ListingDetail({ data, locale, session }) {
             Overview
           </button>
           <button
-            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${selectedButton === "features"
-              ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
-              : "border"
-              }`}
+            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${
+              selectedButton === "features"
+                ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
+                : "border"
+            }`}
             onClick={() => {
               setSelectedButton("features");
               pricingRef.current.scrollIntoView({
@@ -312,10 +318,11 @@ export default function ListingDetail({ data, locale, session }) {
             Prices & Conditions
           </button>
           <button
-            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${selectedButton === "location"
-              ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
-              : "border"
-              }`}
+            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${
+              selectedButton === "location"
+                ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
+                : "border"
+            }`}
             onClick={() => {
               setSelectedButton("location");
               locationRef.current.scrollIntoView({
@@ -348,7 +355,9 @@ export default function ListingDetail({ data, locale, session }) {
               />
             )}
 
-            <p className="tw:text-[#797979] tw:text-[14px] tw:font-normal">Bookmark</p>
+            <p className="tw:text-[#797979] tw:text-[14px] tw:font-normal">
+              Bookmark
+            </p>
           </div>
           <div
             className="tw:flex tw:cursor-pointer tw:py-2 tw:gap-1"
@@ -363,7 +372,9 @@ export default function ListingDetail({ data, locale, session }) {
               strokeWidth={2}
               className="tw:cursor-pointer tw:text-[var(--color-font-light)] tw:mb-4"
             />
-            <p className="tw:text-[#797979] tw:text-[14px] tw:font-normal">Share</p>
+            <p className="tw:text-[#797979] tw:text-[14px] tw:font-normal">
+              Share
+            </p>
           </div>
         </div>
       </div>
@@ -372,12 +383,15 @@ export default function ListingDetail({ data, locale, session }) {
           {data.title}
         </h1>
         <div className="tw:flex tw:gap-2 tw:items-center">
-          <MapPin size={24} className="tw:text-[var(--color-font-regular)] tw:mb-4" />
+          <MapPin
+            size={24}
+            className="tw:text-[var(--color-font-regular)] tw:mb-4"
+          />
           <p className="tw:text-[var(--color-font-regular)] tw:text-[20px] tw:font-normal">
             {getFormatedLocationString(data.location)}
           </p>
         </div>
-     </div>
+      </div>
       <div className="tw:flex tw:flex-col tw:md:flex-row tw:gap-5">
         <ImageGrid
           images={extractThumbnailUrls(data.galleries) || []}
@@ -567,7 +581,7 @@ export default function ListingDetail({ data, locale, session }) {
                   className="tw:bg-[#FAFBFC] tw:border tw:border-[#D8E0ED]  tw:p-4"
                 >
                   <p className="tw:font-semibold  tw:text-[#FF780B]">
-                    <span className="tw:text-[24px]"> ${p.amount}{" "}</span>
+                    <span className="tw:text-[24px]"> ${p.amount} </span>
                     <span className="tw:text-[18px">
                       / {p.total ? `${p.total} X ${p.type}` : p.type}
                     </span>
@@ -594,7 +608,7 @@ export default function ListingDetail({ data, locale, session }) {
         </h2>
         <MapComponent
           defaultCenter={data?.location[0]?.geo}
-          setLocations={() => { }}
+          setLocations={() => {}}
           locations={[]}
           apiKey={google_key}
           zoom={11}

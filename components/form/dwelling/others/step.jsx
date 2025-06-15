@@ -29,7 +29,6 @@ const DwellingFormStep = ({
   const [step, setStep] = useState(0);
   const { data: session } = useSession();
   const t = useTranslations("dwellings");
-  const st = searchParams.get("step");
   const plan = searchParams.get("plan");
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const DwellingFormStep = ({
 
       return params.toString();
     },
-    [searchParams],
+    [searchParams]
   );
 
   useEffect(() => {
@@ -63,21 +62,7 @@ const DwellingFormStep = ({
   }, [plan]);
 
   return (
-    <Stepper
-      activeStep={step}
-      // error={data?.length === 0 && !dwellingId}
-      onStepChange={(step) => {
-        // if (step > 1 && (!data?.id || !dwellingId)) {
-        //   toast.error('You need to subscribe to a plan before you can proceed.')
-        // } else {
-        //   setStep(step)
-        //   const path = data?.id
-        //     ? '/dashboard/dwellings'
-        //     : `/dashboard/dwellings/${data?.id}`
-        //   router.push(path + '?' + createQueryString('step', step))
-        // }
-      }}
-    >
+    <Stepper activeStep={step} onStepChange={(step) => {}}>
       {formState?.id || plan ? null : (
         <Step actions title={t("form.tabs.package")}>
           <div className="tw:flex tw:flex-col">
@@ -105,7 +90,6 @@ const DwellingFormStep = ({
         </Step>
       )}
       <Step actions title={t("form.tabs.listing")}>
-        
         <DwellingForm
           translation={translate}
           locale={locale}
@@ -157,11 +141,8 @@ const DwellingFormStep = ({
             onSuccess={() => {
               toast.success(t("messages.subscription"));
               return router.push(
-                `/${locale}/dashboard/dwellings?payment=succeed`,
+                `/${locale}/dashboard/dwellings?payment=succeed`
               );
-
-              // setStep(1)
-              // router.push(pathname + '?' + createQueryString('step', 1))
             }}
           />
         </Step>
