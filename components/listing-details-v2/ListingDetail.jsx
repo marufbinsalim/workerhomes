@@ -264,6 +264,12 @@ export default function ListingDetail({ data, locale, session }) {
     icon: f.icon?.url || "",
   }));
 
+  const shouldShowReadMore = (description) => {
+    if (!description) return false;
+    const cleanDescription = description.replace(/<\/?[^>]+(>|$)/g, "");
+    return cleanDescription.length > 400;
+  };
+
   return (
     <div className="tw:text-black tw:flex tw:flex-col tw:mt-[40px] font-primary tw:p-8 tw:py-20 tw:md:px-[60px] tw:md:py-[80px]">
       <div
@@ -447,16 +453,18 @@ export default function ListingDetail({ data, locale, session }) {
             {data.description?.replace(/<\/?[^>]+(>|$)/g, "") ||
               "No description available for this property."}
           </p>
-          <div className="fade-true tw:w-full tw:md:max-w-[80%] tw:absolute tw:bottom-0 p-4 tw:flex tw:items-center tw:justify-center tw:z-30">
-            <button
-              className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:font-semibold tw:py-2 tw:px-4"
-              onClick={() => {
-                setIsShowDescriptionOpen(true);
-              }}
-            >
-              Read More
-            </button>
-          </div>
+
+          {/* Conditionally render the Read More button */}
+          {shouldShowReadMore(data.description) && (
+            <div className="fade-true tw:w-full tw:md:max-w-[80%] tw:absolute tw:bottom-0 p-4 tw:flex tw:items-center tw:justify-center tw:z-30">
+              <button
+                className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:font-semibold tw:py-2 tw:px-4"
+                onClick={() => setIsShowDescriptionOpen(true)}
+              >
+                Read More
+              </button>
+            </div>
+          )}
         </div>
         <div className="tw:flex-2/5">
           <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
