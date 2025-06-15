@@ -16,7 +16,7 @@ const fetchListingBySlug = async (slug, locale) => {
       next: {
         revalidate: 0,
       },
-    },
+    }
   );
   const data = await res.json();
   return data?.data?.[0] || [];
@@ -56,23 +56,6 @@ export async function generateMetadata({ params: { locale, slug } }) {
     },
   };
 }
-
-// export default dynamic(
-//   () =>
-//     Promise.resolve(async ({ params }) => {
-//       const data = await fetchListingBySlug(params.slug, params.locale);
-
-//       return (
-//         <Wrapper>
-//           <ListingDetail data={data} locale={params.locale} session={session} />
-//           {/* <SingleListing data={data} locale={params.locale} /> */}
-//         </Wrapper>
-//       );
-//     }),
-//   {
-//     ssr: false,
-//   },
-// );
 
 export default async function Main({ params }) {
   const session = await getCurrentUser();

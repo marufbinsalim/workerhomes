@@ -1,21 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { FiSearch } from "react-icons/fi"; // Import search icon from react-icons
+import { FiSearch } from "react-icons/fi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Bath, BedDoubleIcon, HeartIcon, MapPin } from "lucide-react";
 import ListingCard from "./ListingCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useTranslations } from "next-intl";
-import useFetch from "@/hooks/useFetch";
 import useFeatured from "@/hooks/useFeatured";
 import { useBookmarks } from "@/context/BookmarkProvider";
 import { showToast } from "@/components/toast/Toast";
-
+import { useRouter } from "next/navigation";
 
 const Dashboard = ({ locale, session }) => {
   const [checkInDate, setCheckInDate] = useState(null);
@@ -23,10 +21,9 @@ const Dashboard = ({ locale, session }) => {
   const [destination, setDestination] = useState("");
   const [guests, setGuests] = useState("");
   const [favorites, setFavorites] = useState({});
-  const { featuredListings, featuredListingsError, featuredListingsLoading } =
-    useFeatured(locale);
+  const { featuredListings } = useFeatured(locale);
   const [isBookmarkedItem, setIsBookmarkedItem] = useState(false);
-
+  const router = useRouter();
 
   const CustomInput = ({ value, onClick }) => {
     const formatDate = (date) => {
@@ -62,7 +59,6 @@ const Dashboard = ({ locale, session }) => {
     );
   };
 
-  
   const {
     toggleBookmark,
     isBookmarked: isBookmarkedInDB,
@@ -81,7 +77,6 @@ const Dashboard = ({ locale, session }) => {
 
   const t = useTranslations("heroSection");
 
-
   const toggleFavorite = async (id) => {
     if (!session?.id) {
       showToast("info", t("toast.favoriteInfo"));
@@ -92,17 +87,17 @@ const Dashboard = ({ locale, session }) => {
       await toggleBookmark(id, session.id); // Call the toggle
 
       // Refresh actual bookmark state
-      const isNowBookmarked =  isBookmarked(id);
+      const isNowBookmarked = isBookmarked(id);
       setIsBookmarkedItem(isNowBookmarked);
 
-      showToast("success",
+      showToast(
+        "success",
         isNowBookmarked ? t("toast.favoriteRemoved") : t("toast.favoriteAdded")
       );
     } catch (err) {
       showToast("error", t("toast.favoriteError"));
     }
   };
-
 
   const isMobile = useIsMobile();
   function useIsMobile(breakpoint = 768) {
@@ -136,7 +131,9 @@ const Dashboard = ({ locale, session }) => {
         {/* Content */}
         <div className="tw:relative tw:z-20 tw:max-w-full tw:mx-auto tw:my-4 tw:md:my-0 tw:text-white">
           <div className="tw:mb-8 tw:md:mt-0 tw:mt-4 tw:md:mb-20 tw:text-center">
-            <p className="tw:text-4xl tw:md:text-6xl tw:font-semibold">  {/* instead of arbitrary values */}
+            <p className="tw:text-4xl tw:md:text-6xl tw:font-semibold">
+              {" "}
+              {/* instead of arbitrary values */}
               {t("title")}
             </p>
             <p className="tw:text-[16px] tw:md:text-[20px] tw:font-semibold tw:mb-6 tw:md:mb-8">
@@ -153,6 +150,10 @@ const Dashboard = ({ locale, session }) => {
                     {t("form.location")}
                   </label>
                   <input
+                    onChange={(e) => {
+                      setDestination(e.target.value);
+                    }}
+                    value={destination}
                     type="text"
                     placeholder={t("form.wherePlaceholder")}
                     className="tw:border-none tw:outline-none tw:text-[18px] tw:md:text-[24px] tw:leading-tight tw:font-semibold tw:text-[var(--color-font-dark)] tw:placeholder:text-[14px] tw:md:placeholder:text-[16px] tw:placeholder-[var(--color-font-light)]"
@@ -208,6 +209,9 @@ const Dashboard = ({ locale, session }) => {
                 {/* Search Icon */}
                 <div className="tw:flex tw:items-center tw:justify-center tw:mt-4 tw:md:mt-0 tw:md:ml-4">
                   <button
+                    onClick={() => {
+                      router.push(`listings?location=${destination}`);
+                    }}
                     className={`
                                                 tw:group
                                                 tw:w-12 tw:h-12 tw:md:w-16 tw:md:h-16
