@@ -463,7 +463,7 @@ export default function ListingDetail({ data, locale, session }) {
           <h2 className="tw:text-[24px] tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
             Property Overview
           </h2>
-          <p className="tw:md:max-w-[80%] tw:line-clamp-6 tw:text-[16px] tw:text-[#797979] tw:font-normal tw:text-justify">
+          <p className="tw:md:max-w-[80%] tw:line-clamp-6 tw:text-[16px] tw:text-[#797979] tw:font-normal tw:text-justify tw:break-all">
             {data.description?.replace(/<\/?[^>]+(>|$)/g, "") ||
               "No description available for this property."}
           </p>
