@@ -227,7 +227,7 @@ const PreviewDwelling = ({ data, locale }) => {
   const shouldShowReadMore = (description) => {
     if (!description) return false;
     const cleanDescription = description.replace(/<\/?[^>]+(>|$)/g, "");
-    return cleanDescription.length > 100;
+    return cleanDescription.length > 200;
   };
 
   return (
