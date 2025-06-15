@@ -30,16 +30,18 @@ function ImageGrid({ images, setOpen }) {
 
   if (!imagesToShow || imagesToShow.length === 0) {
     return (
-      <p className="tw:text-center font-primary tw:text-gray-500">
-        No images available
-      </p>
+      <div className="tw:flex tw:items-center tw:justify-center tw:h-[600px] tw:border tw:border-gray-200 tw:flex-[80%]">
+        <p className="tw:text-center font-primary tw:text-gray-500">
+          No images available
+        </p>
+      </div>
     );
   }
 
   if (imagesToShow.length === 1) {
     return (
       <div
-        className="tw:grid tw:grid-cols-1 tw:gap-4 tw:flex-[80%]"
+        className="tw:grid tw:grid-cols-1 tw:border tw:border-gray-200 tw:gap-4 tw:flex-[80%]"
         onClick={() => setOpen(true)}
       >
         <img
@@ -54,7 +56,7 @@ function ImageGrid({ images, setOpen }) {
   if (imagesToShow.length === 2) {
     return (
       <div
-        className="tw:grid tw:grid-cols-2 tw:gap-4 tw:flex-[80%]"
+        className="tw:grid tw:grid-cols-2 tw:border tw:border-gray-200  tw:gap-4 tw:flex-[80%]"
         onClick={() => setOpen(true)}
       >
         {imagesToShow.map((img, index) => (
@@ -72,7 +74,7 @@ function ImageGrid({ images, setOpen }) {
   if (imagesToShow.length === 3) {
     return (
       <div
-        className="tw:flex tw:gap-4 tw:h-[600px] tw:flex-[80%]"
+        className="tw:flex tw:gap-4 tw:h-[600px] tw:border tw:border-gray-200  tw:flex-[80%]"
         onClick={() => setOpen(true)}
       >
         <div className="tw:flex-[2] tw:h-full">
@@ -105,7 +107,7 @@ function ImageGrid({ images, setOpen }) {
   if (imagesToShow.length === 4) {
     return (
       <div
-        className="tw:flex tw:gap-4 tw:h-[600px] tw:flex-[80%]"
+        className="tw:flex tw:gap-4 tw:h-[600px] tw:border tw:border-gray-200  tw:flex-[80%]"
         onClick={() => setOpen(true)}
       >
         <div className="tw:flex-[1] tw:flex tw:flex-col tw:gap-4">
@@ -222,8 +224,14 @@ const PreviewDwelling = ({ data, locale }) => {
     type: "amenity",
   }));
 
+  const shouldShowReadMore = (description) => {
+    if (!description) return false;
+    const cleanDescription = description.replace(/<\/?[^>]+(>|$)/g, "");
+    return cleanDescription.length > 100;
+  };
+
   return (
-    <div className="tw:text-black tw:flex tw:flex-col font-primary tw:p-8 tw:md:px-[60px]">
+    <div className=" tw:flex tw:flex-col font-primary ">
       <div
         className="tw:flex tw:cursor-pointer tw:items-center tw:gap-1 tw:py-2"
         onClick={() => router.push(`/${locale}/listings`)}
@@ -283,7 +291,7 @@ const PreviewDwelling = ({ data, locale }) => {
       </div>
       <div className="tw:flex tw:flex-col tw:mb-4">
         <div className="tw:flex tw:items-center tw:gap-2">
-          <h1 className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:text-[28px]">
+          <h1 className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:text-[24px] tw:truncate tw:md:text-[26px]">
             {data.title}
           </h1>
           {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
@@ -298,7 +306,7 @@ const PreviewDwelling = ({ data, locale }) => {
             size={24}
             className="tw:text-[var(--color-font-regular)] tw:mb-4"
           />
-          <p className="tw:text-[var(--color-font-regular)] tw:text-[20px] tw:font-normal">
+          <p className="tw:text-[var(--color-font-regular)] tw:text-[14px] tw:md:text-[20px] tw:font-normal">
             {getFormatedLocationString(data.location)}
           </p>
         </div>
@@ -311,15 +319,15 @@ const PreviewDwelling = ({ data, locale }) => {
         <GenericModal isOpen={isImageSliderOpen} setOpen={setIsImageSliderOpen}>
           <ImageSlider imageUrls={extractThumbnailUrls(data.galleries) || []} />
         </GenericModal>
-        <div className="tw:flex-[40%] tw:bg-[var(--color-white-light)] tw:p-7 tw:flex tw:flex-col">
-          <div className="tw:mb-6 tw:w-full">
+        <div className="tw:flex-[40%] tw:bg-[var(--color-white-light)] tw:max-w-[20vw] tw:p-7 tw:flex tw:flex-col">
+          <div className="tw:mb-6  tw:w-full ">
             <img
               src={"/assets/blurmap.png"}
               alt="map"
               className="tw:w-full tw:object-cover tw:object-center"
             />
           </div>
-          <div className="tw-flex tw:gap-4 tw:flex-col tw:mb-6">
+          <div className="tw:flex tw:gap-4 tw:flex-col tw:mb-6">
             <p className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:text-[18px]">
               Owner Details
             </p>
@@ -352,6 +360,7 @@ const PreviewDwelling = ({ data, locale }) => {
             {data.description?.replace(/<\/?[^>]+(>|$)/g, "") ||
               "No description available for this property."}
           </p>
+          {shouldShowReadMore(data.description) && (
           <div className="fade-true tw:w-full tw:md:max-w-[80%] tw:absolute tw:bottom-0 p-4 tw:flex tw:items-center tw:justify-center tw:z-30">
             <button
               className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:font-semibold tw:py-2 tw:px-4"
@@ -359,7 +368,8 @@ const PreviewDwelling = ({ data, locale }) => {
             >
               Read More
             </button>
-          </div>
+            </div>
+          )}
         </div>
         <div className="tw:flex-2/5">
           <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
@@ -374,7 +384,7 @@ const PreviewDwelling = ({ data, locale }) => {
                     {f.type !== "feature" ? (
                       <StarIcon
                         size={24}
-                        className="tw:text-[var(--color-font-light)]"
+                        className=" tw:w-5 tw:h-5 tw:filter tw:brightness-0 tw:opacity-50 "
                       />
                     ) : (
                       <img
@@ -393,7 +403,7 @@ const PreviewDwelling = ({ data, locale }) => {
             <div className="fade-true tw:w-full tw:absolute tw:bottom-0 tw:flex tw:items-center tw:justify-center tw:z-30 tw:h-[20px]"></div>
           </div>
 
-          <div className="tw:w-full tw:flex tw:items-center tw:justify-center tw:mt-6 tw:max-w-[80%]">
+          <div className="tw:w-full tw:flex tw:items-center tw:justify-center tw:mt-6 ">
             <button
               className="tw:bg-[#040342] tw:text-[14px] tw:font-semibold tw:text-white tw:py-2 tw:px-4"
               onClick={() => {
@@ -409,9 +419,9 @@ const PreviewDwelling = ({ data, locale }) => {
         setOpen={setIsShowDescriptionOpen}
         isOpen={isShowDescriptionOpen}
       >
-        <div className="tw:bg-white tw:max-w-[40dvw] tw:rounded-2xl">
-          <div className="tw:flex tw:justify-between tw:bg-[#FAFBFC] tw:p-4 tw:rounded-2xl">
-            <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+        <div className="tw:bg-white tw:w-[90vw] tw:max-w-[95vw] tw:rounded-2xl tw:md:max-w-[40dvw]">
+          <div className="tw:flex tw:justify-between  tw:p-4 ">
+            <h2 className="tw:text-[20px] tw:font-semibold font-tertiary tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
               Property Overview
             </h2>
             <XIcon
@@ -420,8 +430,8 @@ const PreviewDwelling = ({ data, locale }) => {
               className="tw:cursor-pointer"
             />
           </div>
-          <div className="tw:p-4 tw:max-h-[60dvh] tw:overflow-y-auto">
-            <p className="tw:text-justify">
+          <div className="tw:p-4 tw:max-h-[60dvh] tw:overflow-y-auto ">
+            <p className="tw:text-justify tw:text-[#797979] tw:text-[16px] tw:font-normal tw:break-words">
               {data.description?.replace(/<\/?[^>]+(>|$)/g, "") ||
                 "No description available for this property."}
             </p>
@@ -429,9 +439,9 @@ const PreviewDwelling = ({ data, locale }) => {
         </div>
       </GenericModal>
       <GenericModal isOpen={isShowFeaturesOpen} setOpen={setIsShowFeaturesOpen}>
-        <div className="tw:bg-white tw:min-w-[40dvw] tw:max-w-[40dvw] tw:rounded-2xl">
+        <div className="tw:bg-white tw:w-[90vw] tw:max-w-[95vw] tw:rounded-2xl tw:md:w-[50vw] tw:md:min-w-[40dvw] tw:md:max-w-[40dvw]">
           <div className="tw:flex tw:justify-between tw:bg-[#FAFBFC] tw:p-4 tw:rounded-2xl">
-            <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
+            <h2 className="tw:text-[20px] tw:font-semibold font-tertiary tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
               Amenities
             </h2>
             <XIcon
@@ -446,7 +456,7 @@ const PreviewDwelling = ({ data, locale }) => {
                 {f.type !== "feature" ? (
                   <StarIcon
                     size={24}
-                    className="tw:text-[var(--color-font-light)]"
+                    className="tw:filter tw:brightness-0 tw:opacity-80 tw:w-5 tw:h-5 "
                   />
                 ) : (
                   <img
@@ -472,7 +482,7 @@ const PreviewDwelling = ({ data, locale }) => {
                 Prices & Conditions
               </h2>
             </div>
-            <div className="tw:grid tw:grid-cols-1 tw:md:grid-cols-4 tw:gap-6">
+            <div className="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:gap-6">
               {data?.prices.map((p, idx) => (
                 <div
                   key={idx}
