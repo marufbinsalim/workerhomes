@@ -16,23 +16,16 @@ const Modal = ({
           width: size === 'sm' ? '400px' : size === 'lg' ? '1000px' : '800px',
         }}
       >
-        <div className='d-flex items-start justify-between px-30 py-20 sm:px-15 border-bottom-light'>
+        <div className='d-flex items-start justify-between px-30 py-20 sm:px-15 '>
           <div>
-            <h5>{title}</h5>
-            <p
-              style={{
-                lineHeight: '1.5',
-                fontSize: '14px',
-                marginTop: '10px',
-              }}
+            <h5 className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:text-[24px] font-primary tw:md:text-[28px]">{title}</h5>
+            <p className="tw:text-[var(--color-font-regular)] tw:text-[14px] tw:md:text-[16px] tw:font-normal"
             >
               {description}
             </p>
-            <p
+            <p className="tw:text-[var(--color-font-regular)] tw:text-[14px] tw:md:text-[16px] tw:font-normal"
               style={{
                 marginTop: '5px',
-                lineHeight: '1.5',
-                fontSize: '14px',
               }}
             >
               {description2}
@@ -42,7 +35,7 @@ const Modal = ({
             <i className='icon-close' />
           </button>
         </div>
-        <div className='modal-body  px-30 py-30 sm:px-15 sm:py-15'>
+        <div className='modal-body  px-30 py-10 sm:px-15 sm:py-5'>
           {children}
         </div>
       </div>

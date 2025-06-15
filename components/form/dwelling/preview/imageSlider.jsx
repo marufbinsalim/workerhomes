@@ -33,7 +33,7 @@ const ImageSlider = ({ imageUrls }) => {
       {!!imageUrls.length && (
         <button
           onClick={prevSlide}
-          className="tw:absolute tw:top-1/2 tw:left-4 tw:-translate-y-1/2 tw:bg-white/70 tw:p-2 tw:rounded-full tw:shadow tw:hover:bg-white"
+          className="tw:absolute tw:top-1/2 tw:left-4 tw:-translate-y-1/2 tw:bg-white/90 tw:border tw:border-gray-200  tw:p-2 tw:rounded-full tw:shadow-md  tw:hover:bg-white"
         >
           <ChevronLeft className="tw:w-5 tw:h-5" />
         </button>
@@ -41,7 +41,7 @@ const ImageSlider = ({ imageUrls }) => {
       {!!imageUrls.length && (
         <button
           onClick={nextSlide}
-          className="tw:absolute tw:top-1/2 tw:right-4 tw:-translate-y-1/2 tw:bg-white/70 tw:p-2 tw:rounded-full tw:shadow tw:hover:bg-white"
+          className="tw:absolute tw:top-1/2 tw:right-4 tw:-translate-y-1/2 tw:bg-white/70 tw:p-2 tw:border tw:border-gray-200  tw:rounded-full tw:shadow-md tw:hover:bg-white"
         >
           <ChevronRight className="tw:w-5 tw:h-5" />
         </button>
