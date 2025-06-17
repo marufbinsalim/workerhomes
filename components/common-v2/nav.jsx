@@ -14,6 +14,7 @@ const UserDropdown = ({ session, isOpen, setIsOpen }) => {
   const dropdownRef = useRef(null);
   const router = useRouter();
   const locale = useParams().locale;
+  const t = useTranslations("nav");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -84,7 +85,7 @@ const UserDropdown = ({ session, isOpen, setIsOpen }) => {
           >
             <GoMoveToEnd className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
             <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">
-              Go to dashboard
+              {t("goToDashboard")}
             </p>
           </div>
 
@@ -95,7 +96,7 @@ const UserDropdown = ({ session, isOpen, setIsOpen }) => {
           >
             <LuUser className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
             <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">
-              My profile
+              {t("myProfile")}
             </p>
           </div>
 
@@ -111,7 +112,7 @@ const UserDropdown = ({ session, isOpen, setIsOpen }) => {
           >
             <MdLogout className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
             <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">
-              Logout
+              {t("logout")}
             </p>
           </div>
         </div>
@@ -363,9 +364,25 @@ const Navbar = ({ session, slugMap = null }) => {
                 ? router.push(`/${locale}/dashboard/dwellings/form?step=0`)
                 : router.push("/login");
             }}
-            className="tw:relative tw:w-[130px] tw:lg:w-[150px] tw:h-[30px] tw:lg:h-[33px] tw:text-xs tw:lg:text-sm tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border"
+            className="
+                    tw:relative
+                    tw:min-w-[130px]  // Changed from fixed width to minimum width
+                    tw:lg:min-w-[150px]
+                    tw:h-[30px]
+                    tw:lg:h-[33px]
+                    tw:text-xs
+                    tw:lg:text-sm
+                    tw:font-medium
+                    tw:text-[var(--color-primary)]
+                    tw:bg-white
+                    tw:z-10
+                    tw:overflow-hidden
+                    tw:whitespace-nowrap  // Prevent text wrapping
+                    tw:px-2  // Add horizontal padding
+                    animated-border
+                  "
           >
-            List your property
+            {t("links.listYourProperty")}
           </button>
         </div>
 

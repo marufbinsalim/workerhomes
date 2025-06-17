@@ -167,7 +167,6 @@
     "details": "Details",
     "empty": "Kein Gespräch ausgewählt",
     "noMessagesDescription": "Wähle ein Gespräch aus der Liste, um den Chat zu starten!"
-
   },
   "subscribe": {
     "title": "Abonnieren Sie unseren Newsletter",
@@ -182,7 +181,8 @@
       "pricing": "Preise",
       "blogs": "Blogs",
       "about": "Über uns",
-      "contact": "Kontakt"
+      "contact": "Kontakt",
+      "listYourProperty": "Immobilie inserieren"
     },
     "locales": {
       "title": "Wählen Sie Ihre Sprache",
@@ -611,15 +611,20 @@
       "created": "Erstellt am"
     }
   },
-
   "navbarTitle": {
-  "statistics": "Statistiken",
-  "listings": "Anzeigen",
-  "profile": "Profil",
-  "contact": "Kontakt",
-  "invoices": "Rechnungen",
-  "messages": "Nachrichten"
-},
+    "statistics": "Statistiken",
+    "listings": "Anzeigen",
+    "profile": "Profil",
+    "contact": "Kontakt",
+    "invoices": "Rechnungen",
+    "messages": "Nachrichten"
+  },
+  "nav": {
+    "goToDashboard": "Zum Dashboard",
+    "myProfile": "Mein Profil",
+    "logout": "Abmelden",
+    "listYourProperty": "Immobilie inserieren"
+  },
   "profile": {
     "title": "Profil",
     "description": "Dies sind die beliebtesten Reiseziele der Welt.",
@@ -631,7 +636,7 @@
     "deleteAccountDescription": "Dadurch wird dein Konto sowie alle zugehörigen Daten dauerhaft gelöscht. Möchtest du fortfahren?",
     "confirmDelete": "Löschen bestätigen?",
     "confirmDeleteDescription": "Bestätige dein Passwort, um das Löschen deines Kontos zu verifizieren.",
-    "button":{
+    "button": {
       "cancel": "Abbrechen",
       "confirm": "Bestätigen",
       "proceed": "Fortfahren",
@@ -1122,7 +1127,6 @@
       "options": "Optionen"
     }
   },
-
   "listingDetails": {
     "goBack": "Zurück",
     "overview": "Übersicht",
@@ -1141,9 +1145,9 @@
     "showMoreAmenities": "Weitere Ausstattung & Merkmale anzeigen",
     "numberOfGuests": "Anzahl der Gäste:",
     "similarListing": "Ähnliche Anzeige",
-    "amenities": "Ausstattung"
+    "amenities": "Ausstattung",
+    "postalCode": "Postleitzahl"
   },
-
   "dwelling-equipments": {
     "title": "Ausstattungen",
     "description": "Dies sind die beliebtesten Ziele weltweit.",

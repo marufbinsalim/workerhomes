@@ -181,7 +181,8 @@
       "pricing": "Pricing",
       "blogs": "Blogs",
       "about": "About",
-      "contact": "Contact"
+      "contact": "Contact",
+      "listYourProperty": "List your property"
     },
     "locales": {
       "title": "Select your language",
@@ -1590,6 +1591,13 @@
     "invoices": "Invoices",
     "messages": "Messages"
   },
+
+ "nav": {
+  "goToDashboard": "Go to dashboard",
+  "myProfile": "My profile",
+  "logout": "Logout"
+},
+
   "statistics": {
     "title": "Statistics",
     "description": "These are the most popular destinations in the world.",

@@ -181,7 +181,8 @@
       "pricing": "Cennik",
       "blogs": "Blogi",
       "about": "O nas",
-      "contact": "Kontakt"
+      "contact": "Kontakt",
+     "listYourProperty": "Dodaj swoją nieruchomość"
     },
     "locales": {
       "title": "Wybierz swój język",
@@ -618,6 +619,14 @@
     "invoices": "Faktury",
     "messages": "Wiadomości"
   },
+
+  "nav": {
+    "goToDashboard": "Przejdź do panelu",
+    "myProfile": "Mój profil",
+    "logout": "Wyloguj się",
+    "listYourProperty": "Dodaj swoją nieruchomość"
+  },
+
   "profile": {
     "title": "Profil",
     "description": "To są najpopularniejsze miejsca na świecie.",
@@ -703,7 +712,8 @@
         "no": "Nie",
         "payment-methods": "Metody płatności",
         "current-method": "Obecna metoda płatności",
-        "payment-method": "Metoda płatności"
+        "payment-method": "Metoda płatności",
+        "postalCode": "Kod pocztowy"
       },
       "errors": {
         "password": "Hasło jest wymagane.",
