@@ -364,23 +364,7 @@ const Navbar = ({ session, slugMap = null }) => {
                 ? router.push(`/${locale}/dashboard/dwellings/form?step=0`)
                 : router.push("/login");
             }}
-            className="
-                    tw:relative
-                    tw:min-w-[130px]  // Changed from fixed width to minimum width
-                    tw:lg:min-w-[150px]
-                    tw:h-[30px]
-                    tw:lg:h-[33px]
-                    tw:text-xs
-                    tw:lg:text-sm
-                    tw:font-medium
-                    tw:text-[var(--color-primary)]
-                    tw:bg-white
-                    tw:z-10
-                    tw:overflow-hidden
-                    tw:whitespace-nowrap  // Prevent text wrapping
-                    tw:px-2  // Add horizontal padding
-                    animated-border
-                  "
+            className="tw:relative tw:min-w-[130px] tw:px-2 tw:lg:min-w-[150px] tw:h-[30px] tw:lg:h-[33px] tw:text-xs tw:lg:text-sm tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border"
           >
             {t("links.listYourProperty")}
           </button>
