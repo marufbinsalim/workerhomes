@@ -1140,9 +1140,10 @@
     "featuresAmenities": "Ausstattung & Merkmale",
     "showMoreAmenities": "Weitere Ausstattung & Merkmale anzeigen",
     "numberOfGuests": "Anzahl der Gäste:",
-    "similarListing": "Ähnliche Anzeige"
+    "similarListing": "Ähnliche Anzeige",
+    "amenities": "Ausstattung"
   },
-  
+
   "dwelling-equipments": {
     "title": "Ausstattungen",
     "description": "Dies sind die beliebtesten Ziele weltweit.",

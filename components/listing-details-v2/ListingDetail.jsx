@@ -522,7 +522,7 @@ export default function ListingDetail({ data, locale, session }) {
         <div className="tw:bg-white tw:max-w-[40dvw] tw:rounded-2xl">
           <div className="tw:flex tw:justify-between tw:bg-[#FAFBFC] tw:p-4 tw:rounded-2xl">
             <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
-              {`Property Overview`}
+              {tl("propertyOverview")}
             </h2>
 
             <XIcon
@@ -547,7 +547,7 @@ export default function ListingDetail({ data, locale, session }) {
         <div className="tw:bg-white tw:min-w-[40dvw] tw:max-w-[40dvw] tw:rounded-2xl">
           <div className="tw:flex tw:justify-between tw:bg-[#FAFBFC] tw:p-4 tw:rounded-2xl">
             <h2 className="tw:text-2xl tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
-              {`Features & Amenities`}
+              {tl("featuresAmenities")}
             </h2>
 
             <XIcon

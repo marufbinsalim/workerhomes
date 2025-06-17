@@ -149,7 +149,7 @@ function ImageGrid({ images, setOpen }) {
 
 const PreviewDwelling = ({ data, locale }) => {
   if (!data) return null;
-  const t = useTranslations("heroSection");
+  const tl = useTranslations("listingDetails");
   const ht = useTranslations("header");
 
   const router = useRouter();
@@ -252,7 +252,7 @@ const PreviewDwelling = ({ data, locale }) => {
               });
             }}
           >
-            Overview
+            {tl("overview")}
           </button>
           <button
             className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${
@@ -268,7 +268,7 @@ const PreviewDwelling = ({ data, locale }) => {
               });
             }}
           >
-            Prices & Conditions
+            {tl("pricesConditions")}
           </button>
           <button
             className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${
@@ -284,7 +284,7 @@ const PreviewDwelling = ({ data, locale }) => {
               });
             }}
           >
-            Location
+            {tl("location")}
           </button>
         </div>
         {data?.isRecommended && <RatingTag />}
@@ -329,17 +329,17 @@ const PreviewDwelling = ({ data, locale }) => {
           </div>
           <div className="tw:flex tw:gap-4 tw:flex-col tw:mb-6">
             <p className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:text-[18px]">
-              Owner Details
+              {tl("ownerDetails")}
             </p>
             <div className="tw:flex tw:gap-1 tw:flex-col">
               <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:m-0">
-                Owner :{" "}
+                {tl("owner")}:{" "}
                 <span className="tw:font-normal tw:text-[var(--color-font-regular)]">
                   {data?.owner?.name}
                 </span>
               </p>
               <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:m-0">
-                Languages :{" "}
+                {tl("languages")}:{" "}
                 <span className="tw:font-normal tw:text-[var(--color-font-regular)]">
                   {getFormattedLanguages(data)}
                 </span>
@@ -354,7 +354,7 @@ const PreviewDwelling = ({ data, locale }) => {
       >
         <div className="tw:flex-3/5 tw:relative">
           <h2 className="tw:text-[24px] tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
-            Property Overview
+            {tl("propertyOverview")}
           </h2>
           <p className="tw:md:max-w-[80%] tw:line-clamp-6 tw:text-[16px] tw:text-[#797979] tw:font-normal tw:text-justify tw:break-all">
             {data.description?.replace(/<\/?[^>]+(>|$)/g, "") ||
@@ -366,14 +366,14 @@ const PreviewDwelling = ({ data, locale }) => {
               className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:font-semibold tw:py-2 tw:px-4"
               onClick={() => setIsShowDescriptionOpen(true)}
             >
-              Read More
+                {tl("readMore")}
             </button>
             </div>
           )}
         </div>
         <div className="tw:flex-2/5">
           <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
-            Features & Amenities
+            {tl("featuresAmenities")}
           </h2>
           <div className="tw:relative tw:grid tw:grid-cols-2 tw:gap-4">
             {[...formattedFeatures, ...formattedAmenities]
@@ -410,7 +410,7 @@ const PreviewDwelling = ({ data, locale }) => {
                 setIsShowFeaturesOpen(true);
               }}
             >
-              Show More Amenities & Features
+              {tl("showMoreAmenities")}
             </button>
           </div>
         </div>
@@ -422,7 +422,7 @@ const PreviewDwelling = ({ data, locale }) => {
         <div className="tw:bg-white tw:w-[90vw] tw:max-w-[95vw] tw:rounded-2xl tw:md:max-w-[40dvw]">
           <div className="tw:flex tw:justify-between  tw:p-4 ">
             <h2 className="tw:text-[20px] tw:font-semibold font-tertiary tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
-              Property Overview
+              {tl("propertyOverview")}
             </h2>
             <XIcon
               size={24}
@@ -442,7 +442,7 @@ const PreviewDwelling = ({ data, locale }) => {
         <div className="tw:bg-white tw:w-[90vw] tw:max-w-[95vw] tw:rounded-2xl tw:md:w-[50vw] tw:md:min-w-[40dvw] tw:md:max-w-[40dvw]">
           <div className="tw:flex tw:justify-between tw:bg-[#FAFBFC] tw:p-4 tw:rounded-2xl">
             <h2 className="tw:text-[20px] tw:font-semibold font-tertiary tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
-              Amenities
+              {tl("amenities")}
             </h2>
             <XIcon
               size={24}
@@ -479,7 +479,7 @@ const PreviewDwelling = ({ data, locale }) => {
           <div className="mx-auto">
             <div className="tw:flex tw:flex-col tw:items-center">
               <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
-                Prices & Conditions
+                {tl("pricesConditions")}
               </h2>
             </div>
             <div className="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:gap-6">
@@ -495,7 +495,7 @@ const PreviewDwelling = ({ data, locale }) => {
                     </span>
                   </p>
                   <p className="tw:text-[14px] tw:font-normal tw:mt-2 tw:text-[#797979]">
-                    Number of Guests:{" "}
+                    {tl("numberOfGuests")}:{" "}
                     <span className="tw:font-medium tw:text-[#3B3B3B]">
                       {p.guest}
                     </span>
@@ -512,7 +512,7 @@ const PreviewDwelling = ({ data, locale }) => {
         ref={locationRef}
       >
         <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
-          Location
+          {tl("location")}
         </h2>
         <MapComponent
           defaultCenter={data?.location[0]?.geo}
