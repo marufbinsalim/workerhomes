@@ -381,7 +381,7 @@ const Navbar = ({ session, slugMap = null }) => {
           ) : (
             <button
               onClick={() => router.push("/login")}
-              className="tw:bg-[#040342] tw:text-white tw:text-[13px] tw:lg:text-[14px] tw:min-w-[130px] tw:lg:min-w-[150px] tw:h-[30px] tw:lg:h-[33px] tw:px-2 tw:font-medium"
+              className="tw:bg-[#040342] tw:text-white tw:text-[13px] tw:lg:text-[14px] tw:min-w-[130px] tw:lg:min-w-[150px] tw:h-[30px] tw:lg:h-[35px] tw:px-2  tw:font-medium"
             >
               {t("links.signInRegister")}
             </button>
