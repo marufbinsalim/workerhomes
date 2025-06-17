@@ -23,7 +23,10 @@ const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
 
         {/* Favorite Icon */}
         <div
-          onClick={async () => await toggleFavorite(listing.id)}
+          onClick={async (e) => {
+            e.stopPropagation();
+            await toggleFavorite(listing.id);
+          }}
           className="tw:absolute tw:top-4 tw:right-4 tw:cursor-pointer tw:border tw:border-[#1b1b1b10] tw:rounded-md tw:p-[2px]"
         >
           <div className="tw:inline-flex tw:items-center tw:justify-center tw:w-10 tw:h-10 tw:bg-black/40 tw:rounded-full">
