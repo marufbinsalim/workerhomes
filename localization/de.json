@@ -164,7 +164,10 @@
     "all": "Alle",
     "unread": "Ungelesen",
     "cancel": "Abbrechen",
-    "details": "Details"
+    "details": "Details",
+    "empty": "Kein Gespräch ausgewählt",
+    "noMessagesDescription": "Wähle ein Gespräch aus der Liste, um den Chat zu starten!"
+
   },
   "subscribe": {
     "title": "Abonnieren Sie unseren Newsletter",

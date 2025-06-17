@@ -1020,10 +1020,10 @@ const MessengerPage = ({ locale }) => {
                 className="tw:w-[300px] tw:h-[300px] "
               />
               <h3 className="tw:text-[14px] tw:font-medium tw:text-[#3B3B3B] tw:mb-[10px]">
-                No conversation chosen
+                  {t("empty")}
               </h3>
-              <p className="tw:text-[14px] tw:font-medium tw:text-[#797979] ">
-                Select a conversation from the list to start chatting
+                <p className="tw:text-[14px] tw:font-medium tw:text-[#797979] ">
+                  {t("noMessagesDescription")}
               </p>
             </div>
           )}

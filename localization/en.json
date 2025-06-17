@@ -169,7 +169,9 @@
     "all": "All",
     "unread": "Unread",
     "cancel": "Cancel",
-    "details": "details"
+    "details": "details",
+    "empty": "No conversation chosen",
+    "noMessagesDescription": "Select a conversation from the list to start chatting!"
   },
   "subscribe": {
     "title": "Subscribe to our newsletter",
