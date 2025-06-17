@@ -1,10 +1,19 @@
+"use client";
 import React from "react";
 import { HeartIcon, MapPin, BedDoubleIcon, Bath } from "lucide-react";
 import { exactPath } from "@/utils";
+import { useRouter } from "next/navigation";
 
 const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
+  const router = useRouter();
   return (
-    <div className="tw:w-full tw:max-w-[90dvw] tw:md:max-w-[413px] tw:h-auto tw:flex tw:flex-col tw:bg-white tw:shadow-lg tw:mt-6 tw:md:mt-2">
+    <div
+      className="tw:w-full tw:max-w-[90dvw] tw:md:max-w-[413px] tw:h-auto tw:flex tw:flex-col tw:bg-white tw:shadow-lg tw:mt-6 tw:md:mt-2 tw:cursor-pointer"
+      onClick={(e) => {
+        e.stopPropagation();
+        router.push(`${listing.slug}`);
+      }}
+    >
       <div className="tw:relative tw:w-full">
         <img
           src={exactPath(listing.image)}
@@ -14,7 +23,10 @@ const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
 
         {/* Favorite Icon */}
         <div
-          onClick={async () => await toggleFavorite(listing.id)}
+          onClick={async (e) => {
+            e.stopPropagation();
+            await toggleFavorite(listing.id);
+          }}
           className="tw:absolute tw:top-4 tw:right-4 tw:cursor-pointer tw:border tw:border-[#1b1b1b10] tw:rounded-md tw:p-[2px]"
         >
           <div className="tw:inline-flex tw:items-center tw:justify-center tw:w-10 tw:h-10 tw:bg-black/40 tw:rounded-full">
@@ -35,7 +47,7 @@ const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
       </div>
 
       <div className="tw:p-4 tw:flex tw:flex-col tw:gap-2">
-        <h3 className="tw:text-[20px] sm:text-[24px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+        <h3 className="tw:text-[20px] sm:text-[24px] tw:font-semibold tw:text-[var(--color-font-dark)] tw:hover:underline">
           {listing.title}
         </h3>
         <div className="tw:flex tw:items-center tw:gap-2 tw:text-gray-600">

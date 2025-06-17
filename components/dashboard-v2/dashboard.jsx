@@ -257,7 +257,12 @@ const Dashboard = ({ locale, session }) => {
           {/* Row 1 */}
           <div className="tw:flex tw:flex-col tw:md:flex-row tw:w-full tw:gap-6 tw:md:gap-[30px] tw:justify-center ">
             {/* Frankfurt */}
-            <div className="tw:relative tw:w-full tw:md:w-[755px] tw:h-[200px] tw:sm:h-[300px] tw:md:h-[540px] tw:overflow-hidden tw:bg-red-300">
+            <div
+              className="tw:relative tw:w-full tw:md:w-[755px] tw:h-[200px] tw:sm:h-[300px] tw:md:h-[540px] tw:overflow-hidden tw:bg-red-300 tw:cursor-pointer"
+              onClick={() => {
+                router.push(`listings?location=${"frankfurt"}`);
+              }}
+            >
               <Image
                 src="/assets/frankfurt.jpg"
                 alt="Frankfurt"
@@ -277,7 +282,12 @@ const Dashboard = ({ locale, session }) => {
             </div>
 
             {/* Munich */}
-            <div className="tw:relative tw:w-full tw:md:w-[495px] tw:h-[200px] tw:sm:h-[300px] tw:md:h-[540px] tw:overflow-hidden">
+            <div
+              className="tw:relative tw:w-full tw:md:w-[495px] tw:h-[200px] tw:sm:h-[300px] tw:md:h-[540px] tw:overflow-hidden tw:cursor-pointer"
+              onClick={() => {
+                router.push(`listings?location=${"munich"}`);
+              }}
+            >
               <Image
                 src="/assets/munich.jpg"
                 alt="Munich"
@@ -300,7 +310,12 @@ const Dashboard = ({ locale, session }) => {
           {/* Row 2 */}
           <div className="tw:flex tw:flex-col tw:md:flex-row tw:gap-6 tw:md:gap-[30px] tw:justify-center tw:w-full">
             {/* Warsaw */}
-            <div className="tw:relative tw:w-full tw:md:w-[406px] tw:h-[180px] tw:sm:h-[250px] tw:md:h-[471px] tw:overflow-hidden">
+            <div
+              className="tw:relative tw:w-full tw:md:w-[406px] tw:h-[180px] tw:sm:h-[250px] tw:md:h-[471px] tw:overflow-hidden tw:cursor-pointer"
+              onClick={() => {
+                router.push(`listings?location=${"warsaw"}`);
+              }}
+            >
               <Image
                 src="/assets/warsaw.jpg"
                 alt="Warsaw"
@@ -320,7 +335,12 @@ const Dashboard = ({ locale, session }) => {
             </div>
 
             {/* Hamburg */}
-            <div className="tw:relative tw:w-full tw:md:w-[406.67px] tw:h-[180px] tw:sm:h-[250px] tw:md:h-[471px] tw:overflow-hidden">
+            <div
+              className="tw:relative tw:w-full tw:md:w-[406.67px] tw:h-[180px] tw:sm:h-[250px] tw:md:h-[471px] tw:overflow-hidden tw:cursor-pointer"
+              onClick={() => {
+                router.push(`listings?location=${"hamburg"}`);
+              }}
+            >
               <Image
                 src="/assets/humburg.jpg"
                 alt="Hamburg"
@@ -340,7 +360,12 @@ const Dashboard = ({ locale, session }) => {
             </div>
 
             {/* Edinburgh */}
-            <div className="tw:relative tw:w-full tw:md:w-[406.67px] tw:h-[180px] tw:sm:h-[250px] tw:md:h-[471px] tw:overflow-hidden">
+            <div
+              className="tw:relative tw:w-full tw:md:w-[406.67px] tw:h-[180px] tw:sm:h-[250px] tw:md:h-[471px] tw:overflow-hidden tw:cursor-pointer"
+              onClick={() => {
+                router.push(`listings?location=${"edinburgh"}`);
+              }}
+            >
               <Image
                 src="/assets/edinburgh.jpg"
                 alt="Edinburgh"

@@ -63,7 +63,11 @@ const UserDropdown = ({ session, isOpen, setIsOpen }) => {
         <FiChevronDown
           className={`tw:w-6 tw:h-6 tw:text-gray-500 tw:transition-transform ${
             isOpen ? "tw:rotate-180" : ""
-          } ${isOpen ? "tw:opacity-100" : "tw:opacity-0 tw:group-hover:opacity-100"}`}
+          } ${
+            isOpen
+              ? "tw:opacity-100"
+              : "tw:opacity-0 tw:group-hover:opacity-100"
+          }`}
           aria-hidden="true"
         />
       </button>
@@ -352,7 +356,15 @@ const Navbar = ({ session, slugMap = null }) => {
             {t("links.contact")}
           </a>
 
-          <button className="tw:relative tw:w-[130px] tw:lg:w-[150px] tw:h-[30px] tw:lg:h-[33px] tw:text-xs tw:lg:text-sm tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border">
+          <button
+            onClick={() => {
+              console.log("clicked!");
+              session
+                ? router.push(`/${locale}/dashboard/dwellings/form?step=0`)
+                : router.push("/login");
+            }}
+            className="tw:relative tw:w-[130px] tw:lg:w-[150px] tw:h-[30px] tw:lg:h-[33px] tw:text-xs tw:lg:text-sm tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border"
+          >
             List your property
           </button>
         </div>
@@ -560,7 +572,17 @@ const Navbar = ({ session, slugMap = null }) => {
                     </div>
                   </div>
                 </div>
-                <button className="tw:w-full tw:py-3 tw:mt-2  tw:relative  tw:text-lg tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border">
+                <button
+                  onClick={() => {
+                    console.log("clicked!");
+                    session
+                      ? router.push(
+                          `/${locale}/dashboard/dwellings/form?step=0`
+                        )
+                      : router.push("/login");
+                  }}
+                  className="tw:w-full tw:py-3 tw:mt-2  tw:relative  tw:text-lg tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border"
+                >
                   List your property
                 </button>
 
