@@ -182,7 +182,8 @@
       "blogs": "Blogs",
       "about": "About",
       "contact": "Contact",
-      "listYourProperty": "List your property"
+      "listYourProperty": "List your property",
+      "signInRegister": "Sign In / Register"
     },
     "locales": {
       "title": "Select your language",

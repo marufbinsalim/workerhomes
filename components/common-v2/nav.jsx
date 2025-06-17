@@ -75,7 +75,7 @@ const UserDropdown = ({ session, isOpen, setIsOpen }) => {
 
       {isOpen && (
         <div
-          className="tw:absolute tw:top-full tw:right-0 tw:mt-2 tw:w-[174px] tw:bg-white tw:rounded tw:shadow-dropdown tw:z-50 tw:py-2"
+          className="tw:absolute tw:top-full tw:right-0 tw:mt-2 tw:w-[180px] tw:bg-white tw:rounded tw:shadow-dropdown tw:z-50 tw:py-2"
           role="menu"
         >
           {/* Dashboard */}
@@ -399,7 +399,7 @@ const Navbar = ({ session, slugMap = null }) => {
               onClick={() => router.push("/login")}
               className="tw:bg-[#040342] tw:text-white tw:text-[13px] tw:lg:text-[14px] tw:w-[130px] tw:lg:w-[150px] tw:h-[30px] tw:lg:h-[33px] tw:font-medium"
             >
-              Sign In / Register
+              {t("links.signInRegister")}
             </button>
           )}
 

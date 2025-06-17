@@ -182,7 +182,8 @@
       "blogs": "Blogi",
       "about": "O nas",
       "contact": "Kontakt",
-     "listYourProperty": "Dodaj swoją nieruchomość"
+     "listYourProperty": "Dodaj swoją nieruchomość",
+      "signInRegister": "Zaloguj się / Zarejestruj"
     },
     "locales": {
       "title": "Wybierz swój język",
