@@ -110,18 +110,6 @@ const PriceForm = forwardRef(
         >
           {({ values, errors, dirty, setFieldValue }) => (
             <Form className="tw:space-y-4">
-              <div className="tw:rounded-md">
-                <Input
-                  type="number"
-                  name={"min_stay"}
-                  label={t("form.fields.min_stay")}
-                  value={minStay}
-                  onChange={(e) => setMinStay(e.target.value)}
-                  min={0}
-                  className="tw:mt-1 tw:p-2 tw:w-full tw:max-w-[300px] tw:border tw:border-gray-300 tw:rounded-md"
-                />
-              </div>
-
               {values.accommodations.map((acc, idx) => (
                 <div key={idx} className="tw:rounded-md">
                   <label className="tw:flex tw:items-center tw:cursor-pointer">
@@ -219,6 +207,17 @@ const PriceForm = forwardRef(
                   )}
                 </div>
               ))}
+              <div className="tw:rounded-md">
+                <Input
+                  type="number"
+                  name={"min_stay"}
+                  label={t("form.fields.min_stay")}
+                  value={minStay}
+                  onChange={(e) => setMinStay(e.target.value)}
+                  min={0}
+                  className="tw:mt-1 tw:p-2 tw:w-full tw:max-w-[300px] tw:border tw:border-gray-300 tw:rounded-md"
+                />
+              </div>
             </Form>
           )}
         </Formik>
