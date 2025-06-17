@@ -47,7 +47,7 @@ const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
       </div>
 
       <div className="tw:p-4 tw:flex tw:flex-col tw:gap-2">
-        <h3 className="tw:text-[20px] sm:text-[24px] tw:font-semibold tw:text-[var(--color-font-dark)]">
+        <h3 className="tw:text-[20px] sm:text-[24px] tw:font-semibold tw:text-[var(--color-font-dark)] tw:hover:underline">
           {listing.title}
         </h3>
         <div className="tw:flex tw:items-center tw:gap-2 tw:text-gray-600">
