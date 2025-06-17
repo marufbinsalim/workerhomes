@@ -10,7 +10,7 @@ export const getPageTitle = (pathname, locale = 'en') => {
         "/dashboard/me": (t("profile")),
         "/dashboard/statistics": (t("statistics")),
         "/dashboard/invoices": (t("invoices")),
-        "/dashboard/messenger": (t("messenger")),
+        "/dashboard/messenger": (t("messages")),
         "/dashboard/dwellings" : (t("listings")),
     };
 

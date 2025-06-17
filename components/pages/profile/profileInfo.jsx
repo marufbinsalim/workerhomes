@@ -27,7 +27,7 @@ export default function profileInfo({
   return (
     <div className="tw:border font-secondary tw:border-[#D8E0ED] tw:px-3 tw:md:px-5 tw:py-4 tw:md:py-7  tw:w-full">
       <h2 className="tw:text-[18px] tw:font-semibold tw:mb-4 tw:pb-4 tw:border-b tw:border-b-gray-200 tw:text-[var(--color-font-regular)]">
-        Basic Information{isBusiness ? " (Business Account)" : ""}
+        {t("basicInformation")} {isBusiness ? ` (${t("businessAccount")})` : ""}
       </h2>
 
       {/* Toggle Switch */}
@@ -200,7 +200,7 @@ export default function profileInfo({
             className="tw:flex tw:items-center tw:bg-white tw:text-[#FF780B] tw:font-semibold tw:text-[14px] tw:border tw:border-[#FF780B] tw:px-4 tw:py-2 tw:rounded tw:text-sm  tw:transition"
           >
             <FiRefreshCcw className="tw:w-6 tw:h-6 tw:mr-2" />
-            Change Password
+            {t("changePassword")}
           </button>
         </div>
       </div>

@@ -133,11 +133,11 @@ const Dropdown = ({
       {open && (
         <div
           className={`
-            tw:absolute 
-            tw:w-[275px] 
-            tw:bg-white 
-            tw:rounded-lg 
-            tw:shadow-lg 
+            tw:absolute
+            tw:w-[275px]
+            tw:bg-white
+            tw:rounded-lg
+            tw:shadow-lg
             tw:z-50
             tw:p-4
             font-tertiary
@@ -157,12 +157,12 @@ const Dropdown = ({
                 setOpen(false);
               }}
               className="
-                tw:flex 
-                tw:items-center 
-                tw:justify-between 
-                tw:py-3 
-                tw:px-3 
-                tw:cursor-pointer 
+                tw:flex
+                tw:items-center
+                tw:justify-between
+                tw:py-3
+                tw:px-3
+                tw:cursor-pointer
                 hover:tw:bg-gray-50
                 tw:rounded-md
               "
@@ -291,13 +291,13 @@ const Navbar = ({ session }) => {
               />
             </div>
           )}
-          <h1 className="tw:text-xl tw:font-medium tw:my-auto tw:text-[var(--color-font-regular)] tw:ml-4">
+          <h1 className="tw:text-xl tw:font-medium tw:my-auto tw:text-[var(--color-font-regular)] tw:ml-2">
             {pageTitle || "Dashboard"}
           </h1>
         </div>
 
         {/* Right side - desktop and mobile elements */}
-        <div className="tw:flex tw:items-center tw:gap-4">
+        <div className="tw:flex tw:items-center tw:gap-4 ">
           {/* Mobile Language Selector (visible only on small screens) */}
           <div className="tw:flex tw:items-center tw:gap-2 tw:md:hidden">
             <button

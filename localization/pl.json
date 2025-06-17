@@ -162,7 +162,9 @@
     "send": "wysłać",
     "write": "Napisz swoją wiadomość...",
     "all": "Wszystkie",
-    "unread": "Nieprzeczytane"
+    "unread": "Nieprzeczytane",
+    "cancel": "Anuluj",
+    "details": "Szczegóły"
   },
   "subscribe": {
     "title": "Subskrybuj nasz newsletter",
@@ -615,13 +617,22 @@
     "invoices": "Faktury",
     "messages": "Wiadomości"
   },
-  
+
   "profile": {
     "title": "Profil",
     "description": "To są najpopularniejsze miejsca na świecie.",
+    "basicInformation": "Informacje podstawowe",
+    "businessAccount": "Konto firmowe",
+    "changePassword": " Zmień hasło",
+    "dangerZone": "Strefa zagrożenia!",
+    "deleteAccount": "Usunąć konto?",
+    "deleteAccountDescription": "To trwale usunie Twoje konto oraz wszystkie powiązane dane. Czy chcesz kontynuować?",
+    "confirmDelete": "Potwierdzić usunięcie?",
+    "confirmDeleteDescription": "Aby potwierdzić usunięcie konta, zweryfikuj swoje hasło.",
     "button":{
       "cancel": "Anuluj",
       "confirm": "Potwierdź",
+      "proceed": "Kontynuuj",
       "edit": "Edytuj",
       "password": "Zmień swoje hasło",
       "turnOnBusinessAccount": "Włącz konto firmowe",
@@ -846,6 +857,14 @@
   },
   "dwellings": {
     "title": "Oferty",
+    "adminApproval": "Wymaga zatwierdzenia przez administratora",
+    "upgrade": "Degraduj",
+    "downgrade": "Downgrade",
+    "delete": "Usuń",
+    "approved": "Zatwierdzono",
+    "edit": "Edytuj",
+    "view": "Zobacz",
+    "more": "Więcej",
     "description": "To są najpopularniejsze destynacje na świecie.",
     "messages": {
       "delete": "Czy na pewno chcesz usunąć to z listy?",
@@ -873,7 +892,7 @@
         "approval": "Wymaga zatwierdzenia"
       },
       "search": "Szukaj według tytułu",
-      "create": "Utwórz",
+      "create": "UtwUtwórz ogłoszenieórz",
       "edit": "Edytuj",
       "delete": "Usuń",
       "next": "Dalej",
@@ -899,14 +918,15 @@
       "status": "Status",
       "payment_status": "Status Płatności",
       "published": "Opublikowano",
-      "plan": "Plan (Data Wygaśnięcia)",
+      "plan": "Plan",
       "translation": "Tłumaczenia",
       "created": "Utworzono",
       "options": "Opcje",
       "owner": "Właściciel",
       "claims": "Roszczenia",
       "created_by": "Utworzono przez",
-      "image": "Domyślny obraz"
+      "image": "Domyślny obraz",
+      "action": "Akcja"
     },
     "form": {
       "title": {
@@ -1433,9 +1453,11 @@
     "of": "z",
     "found": "znalezionych nieruchomości"
   },
-  "table": {
+  "listingsTable": {
     "loading": "Ładowanie...",
-    "no-data": "Obecnie brak danych do wyświetlenia. Proszę najpierw dodać dane."
+    "no-data": "Obecnie brak danych do wyświetlenia. Proszę najpierw dodać dane.",
+    "action": "Akcja"
+
   },
   "localizations": {
     "default": "Wybierz język",
@@ -1731,6 +1753,8 @@
   "invoice": {
     "title": "Faktury",
     "description": "To są najpopularniejsze destynacje, sprawdź je, aby uzyskać najlepsze oferty.",
+    "noInvoicesFound": "Brak faktur",
+    "noInvoicesFoundDescription": "Twoja lista faktur jest obecnie pusta!",
     "create": "Utwórz",
     "messages": {
       "delete": "Czy na pewno chcesz usunąć tę lokalizację?",
@@ -2211,6 +2235,7 @@
     "trial-success": "Twój pakiet próbny został utworzony i jest aktywny przez 3 miesiące."
   },
   "payment-card": {
+    "title": "Szczegóły płatności",
     "customer": "Klient:",
     "email": "E-mail:",
     "brand": "Marka karty:",
@@ -2220,7 +2245,7 @@
     "no-method": "Nie znaleziono metody płatności.",
     "un-support": "Nieobsługiwana metoda płatności.",
     "loading": "Ładowanie szczegółów płatności...",
-    "update": "Zaktualizuj szczegóły płatności",
+    "update": "Zaktualizuj kartę",
     "failed": "Wystąpił błąd podczas tworzenia sesji portalu.",
     "unable": "Nie można utworzyć sesji portalu klienta.",
     "retrieve-error": "Nie udało się pobrać danych klienta.",

@@ -106,8 +106,8 @@ export default function ProfileEdit({
   return (
     <div className="tw:border font-secondary tw:border-[#D8E0ED] tw:px-3 tw:md:px-5 tw:py-4 tw:md:py-7 tw:w-full">
       <h2 className="tw:text-[18px] tw:font-medium tw:text-[var(--color-font-regular)] tw:mb-4">
-        {t("form.field.basicInformation")}
-        {isBusiness ? t("form.field.businessAccount") : ""}
+        {t("basicInformation")}
+        {isBusiness ? ` (${t("businessAccount")})` : ""}
       </h2>
 
       <form onSubmit={formik.handleSubmit}>

@@ -29,7 +29,7 @@ const ControlPanel = ({
   }, [])
 
   return (
-    <div className='tw:w-full tw:mt-18 font-secondary tw:md:px-[20px] tw:flex tw:flex-col'>
+    <div className='tw:w-full tw:mt-18 font-secondary tw:md:px-[18px] tw:flex tw:flex-col'>
       <div className='tw:w-full tw:flex  tw:flex-row tw:gap-4 tw:md:justify-between tw:md:items-start'>
         {/* Left Section - Actions and Filters */}
         <div className='tw:flex tw:flex-col  tw:gap-4 tw:sm:flex-row tw:sm:items-center tw:sm:gap-2'>
@@ -40,7 +40,7 @@ const ControlPanel = ({
                 return action?.href ? (
                   <Link
                     href={action?.href}
-                    className="tw:inline-flex tw:items-center tw:justify-center tw:gap-2 tw:min-w-[174px] tw:h-[40px] tw:px-5 tw:py-2 tw:text-sm tw:font-semibold tw:rounded-lg tw:bg-[#FF780B] tw:text-white hover:tw:bg-[#E56B08]"
+                    className="tw:inline-flex tw:items-center tw:justify-center tw:gap-2 tw:min-w-[174px] tw:h-[40px] tw:px-5 tw:py-2 tw:text-sm tw:font-semibold  tw:bg-[#FF780B] tw:text-white hover:tw:bg-[#E56B08]"
                     key={index}
                   >
                     <FiPlus className="tw:w-5 tw:h-5" />

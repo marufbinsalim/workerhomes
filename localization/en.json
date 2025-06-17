@@ -157,7 +157,6 @@
   },
 
 
-
   "brand": {
     "title": "Hello world!",
     "description": "This is a simple example of a brand object."
@@ -168,7 +167,9 @@
     "send": "Send",
     "write": "Write your message...",
     "all": "All",
-    "unread": "Unread"
+    "unread": "Unread",
+    "cancel": "Cancel",
+    "details": "details"
   },
   "subscribe": {
     "title": "Subscribe to our newsletter",
@@ -508,7 +509,7 @@
       "price": "Price",
       "guest": "Guests",
       "stay": "Minimum Stay",
-      
+
       "0": {
         "title": "Price",
         "options": {
@@ -644,9 +645,18 @@
   "profile": {
     "title": "Profile",
     "description": "These are the most popular destinations in the world.",
+    "basicInformation": "Basic Information",
+    "businessAccount": "Business Account",
+    "changePassword": "Change Password",
+    "dangerZone": "Danger Zone!",
+    "deleteAccount": "Delete Account?",
+    "deleteAccountDescription": "This will permanently delete your account and all associated data. Do you want to proceed?",
+    "confirmDelete": "Confirm Delete?",
+    "confirmDeleteDescription": " Verify your password to confirm the deletion of your account.",
     "button":{
       "cancel": "Cancel",
       "confirm": "Confirm",
+      "proceed": "Proceed",
       "edit": "Edit",
       "password": "Change Your Password",
       "turnOnBusinessAccount": "Turn on business account",
@@ -873,6 +883,14 @@
   },
   "dwellings": {
     "title": "Listings",
+    "adminApproval": "Needs admin approval",
+    "upgrade": "Upgrade",
+    "downgrade": "Downgrade",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "more": "More",
+    "approved": "Approved",
     "description": "These are the most popular destinations in the world.",
     "messages": {
       "delete": "Are you sure you want to delete it from the list?",
@@ -901,7 +919,7 @@
         "approval": "Needs Claim Approval"
       },
       "search": "Search by Title",
-      "create": "Create",
+      "create": "Create a listing",
       "edit": "Edit",
       "delete": "Delete",
       "next": "Next",
@@ -928,14 +946,15 @@
       "status": "Status",
       "payment_status": "Payment Status",
       "published": "Published",
-      "plan": "Plan (Expiration Date)",
+      "plan": "Plan",
       "translation": "Translations",
       "created": "Created At",
       "options": "Options",
       "owner": "Owner",
       "claims": "Claims",
       "created_by": "Created By",
-      "image": "Default Image"
+      "image": "Default Image",
+      "action": "Action"
     },
     "form": {
       "title": {
@@ -1220,6 +1239,8 @@
     "title": "Invoices",
     "description": "These are the most popular destinations check them to get the best offers.",
     "create": "Create",
+    "noInvoicesFound": "No invoices found",
+    "noInvoicesFoundDescription": "Your invoice list is currently empty!",
     "messages": {
       "delete": "Are you sure you want to delete this location?",
       "create": "Location has been created successfully.",
@@ -1443,9 +1464,10 @@
     "of": "of",
     "found": "properties found"
   },
-  "table": {
+  "listingsTable": {
     "loading": "Loading...",
-    "no-data": "There are no records to display at this moment. please add some records first."
+    "no-data": "There are no records to display at this moment. please add some records first.",
+    "action": "Action"
   },
   "localizations": {
     "default": "Select Language",
@@ -2269,6 +2291,7 @@
     "trial-success": "Your trial package has been created and is active for 3 months."
   },
   "payment-card": {
+    "title": "Payment Details",
     "customer": "Customer:",
     "email": "Email:",
     "brand": "Card Brand:",
@@ -2278,7 +2301,7 @@
     "no-method": "No payment method found.",
     "un-support": "Unsupported payment method",
     "loading": "Loading your payment details...",
-    "update": "Update payment details",
+    "update": "Update card",
     "failed": "An error occurred while creating the portal session.",
     "unable": "Unable to create customer portal session.",
     "retrieve-error": "Failed to retrieve customer data.",
