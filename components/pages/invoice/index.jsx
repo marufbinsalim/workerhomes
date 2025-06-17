@@ -92,13 +92,14 @@ const InvoicePage = ({ locale }) => {
     },
     {
       Header: t("table.action"),
+      align: "right",
       Cell: (item) => (
         <Link
           href={item.hosted_invoice_url}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FiDownload size={24} />
+          <FiDownload size={24} className="tw:right-0"/>
         </Link>
       ),
     },
@@ -115,10 +116,10 @@ const InvoicePage = ({ locale }) => {
         ]}
       /> */}
 
-      <div className=" tw:rounded-lg tw:min-h-[calc(100dvh-70px)] tw:mt-12 tw:max-h-[calc(100dvh-70px)] tw:md:p-6 tw:gap-[30px] tw:flex tw:flex-col">
+      <div className=" tw:rounded-lg tw:min-h-[calc(100dvh-70px)]  tw:mt-12 tw:max-h-[calc(100dvh-70px)] tw:md:p-4 tw:gap-[30px] tw:flex tw:flex-col">
         <Table isLoading={loading} data={invoices || []} columns={columns}
           emptyState={
-            <div className="tw:h-full tw:flex tw:flex-col tw:items-center tw:justify-center tw:gap-4 tw:p-8">
+            <div className="tw:h-full tw:flex tw:flex-col tw:bg0 tw:items-center tw:justify-center tw:gap-4 tw:p-8">
               <img
                 src="/assets/invoiceNotFound.png"
                 alt="No invoices"
@@ -126,10 +127,10 @@ const InvoicePage = ({ locale }) => {
               />
               <div className="tw:text-center font-secondary">
                 <h3 className="tw:text-[24px] tw:font-medium tw:text-[var(--color-font-dark)] tw:mb-2">
-                  No invoices found
+                  {t("noInvoicesFound")}
                 </h3>
                 <p className="tw:text-[var(--color-font-regular)] tw:text-[16px] tw:font-normal">
-                  Your invoice list is currently empty...
+                  {t("noInvoicesFoundDescription")}
                 </p>
               </div>
             </div>

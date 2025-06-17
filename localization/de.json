@@ -162,7 +162,9 @@
     "send": "Senden",
     "write": "Schreiben Sie Ihre Nachricht...",
     "all": "Alle",
-    "unread": "Ungelesen"
+    "unread": "Ungelesen",
+    "cancel": "Abbrechen",
+    "details": "Details"
   },
   "subscribe": {
     "title": "Abonnieren Sie unseren Newsletter",
@@ -618,9 +620,18 @@
   "profile": {
     "title": "Profil",
     "description": "Dies sind die beliebtesten Reiseziele der Welt.",
+    "basicInformation": "Grundlegende Informationen",
+    "businessAccount": "Geschäftskonto",
+    "changePassword": " Passwort ändern",
+    "dangerZone": "Gefahrenzone!",
+    "deleteAccount": "Konto löschen?",
+    "deleteAccountDescription": "Dadurch wird dein Konto sowie alle zugehörigen Daten dauerhaft gelöscht. Möchtest du fortfahren?",
+    "confirmDelete": "Löschen bestätigen?",
+    "confirmDeleteDescription": "Bestätige dein Passwort, um das Löschen deines Kontos zu verifizieren.",
     "button":{
       "cancel": "Abbrechen",
       "confirm": "Bestätigen",
+      "proceed": "Fortfahren",
       "edit": "Bearbeiten",
       "password": "Ändere dein Passwort",
       "turnOnBusinessAccount": "Geschäftskonto aktivieren",
@@ -845,6 +856,14 @@
   },
   "dwellings": {
     "title": "Angebote",
+    "adminApproval": "Erfordert die Genehmigung des Administrators",
+    "upgrade": "Aktualisieren",
+    "downgrade": "Herabstufen",
+    "delete": "Löschen",
+    "approved": "Genehmigt",
+    "edit": "Bearbeiten",
+    "view": "Ansehen",
+    "more": "Mehr",
     "description": "Dies sind die beliebtesten Reiseziele der Welt.",
     "messages": {
       "delete": "Sind Sie sicher, dass Sie es aus der Liste löschen möchten?",
@@ -872,7 +891,7 @@
         "approval": "Benötigt Genehmigung"
       },
       "search": "Suche nach Titel",
-      "create": "Erstellen",
+      "create": "Eine Anzeige erstellen",
       "edit": "Bearbeiten",
       "delete": "Löschen",
       "current-state": "Aktueller Zustand",
@@ -898,14 +917,15 @@
       "status": "Status",
       "payment_status": "Zahlungsstatus",
       "published": "Veröffentlicht",
-      "plan": "Plan (Ablaufdatum)",
+      "plan": "Plan",
       "translation": "Übersetzungen",
       "created": "Erstellt am",
       "options": "Optionen",
       "owner": "Besitzer",
       "claims": "Ansprüche",
       "created_by": "Erstellt von",
-      "image": "Standardbild"
+      "image": "Standardbild",
+      "action": "Aktion"
     },
     "form": {
       "title": {
@@ -1432,9 +1452,10 @@
     "of": "von",
     "found": "Eigenschaften gefunden"
   },
-  "table": {
+  "listingsTable": {
     "loading": "Laden...",
-    "no-data": "Es gibt keine Datensätze, die momentan angezeigt werden könnten. Bitte fügen Sie zuerst einige Datensätze hinzu."
+    "no-data": "Es gibt keine Datensätze, die momentan angezeigt werden könnten. Bitte fügen Sie zuerst einige Datensätze hinzu.",
+    "action": "Aktion"
   },
   "localizations": {
     "default": "Sprache auswählen",
@@ -1730,6 +1751,8 @@
   "invoice": {
     "title": "Rechnungen",
     "description": "Dies sind die beliebtesten Ziele. Prüfen Sie sie, um die besten Angebote zu erhalten.",
+    "noInvoicesFound": "Keine Rechnungen gefunden",
+    "noInvoicesFoundDescription": "Deine Rechnungsliste ist derzeit leer!",
     "create": "Erstellen",
     "messages": {
       "delete": "Möchten Sie diesen Standort wirklich löschen?",
@@ -2207,6 +2230,7 @@
     "trial-success": "Dein Testpaket wurde erstellt und ist für 3 Monate aktiv."
   },
   "payment-card": {
+    "title": "Zahlungsdetails",
     "customer": "Kunde:",
     "email": "E-Mail:",
     "brand": "Kartenmarke:",
@@ -2216,7 +2240,7 @@
     "no-method": "Keine Zahlungsmethode gefunden.",
     "un-support": "Nicht unterstützte Zahlungsmethode.",
     "loading": "Lade Zahlungsdetails...",
-    "update": "Zahlungsdetails aktualisieren",
+    "update": "Karte aktualisieren",
     "failed": "Ein Fehler ist beim Erstellen der Portal-Session aufgetreten.",
     "unable": "Kundenportal-Session konnte nicht erstellt werden.",
     "retrieve-error": "Kundendaten konnten nicht abgerufen werden.",

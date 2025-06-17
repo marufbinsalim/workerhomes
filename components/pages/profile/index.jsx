@@ -115,8 +115,8 @@ const ProfilePage = ({ locale }) => {
           {isEditing && (
             <ProfileEdit
               data={data}
-              onSubmit={() => {}}
-              onCancel={() => {}}
+              onSubmit={() => { }}
+              onCancel={() => { }}
               reFetch={reFetch}
               isBusiness={isBusiness}
               setEditing={setIsEditing}
@@ -124,27 +124,27 @@ const ProfilePage = ({ locale }) => {
             />
           )}
 
-          <div className="tw:col-span-2 tw:flex tw:justify-between tw:items-center">
+          <div className="tw:col-span-2  tw:flex tw:justify-between tw:items-center">
             <CustomerCard
               customer={session?.stripe_customer_id}
               locale={locale}
             />
           </div>
 
-          <div className="tw:flex tw:flex-col tw:gap-4 tw:w-full tw:border tw:border-[#D8E0ED] tw:p-4 tw:mt-8 ">
-            <h2 className="tw:text-lg tw:font-semibold tw:mb-4 tw:pb-4 tw:border-b tw:border-b-[#FE475B] tw:text-[#FE475B]">
-              Danger Zone:
+          <div className="tw:flex tw:flex-col tw:gap-4 font-secondary tw:w-full tw:border tw:border-[#D8E0ED] tw:p-4 tw:mt-8 ">
+            <h2 className="tw:text-lg tw:font-medium tw:mb-4 tw:pb-4 tw:border-b tw:border-b-[#FE475B] tw:text-[#FE475B]">
+              {t("dangerZone")}
             </h2>
 
             <div className="tw:flex tw:gap-4">
               <button
-                className="tw:mr-4 tw:mb-2 tw:bg-[#FE475B] tw:text-white tw:px-4 tw:py-2 tw:rounded-md tw:w-max tw:font-medium tw:flex tw:items-center"
+                className="tw:mr-4 tw:mb-2 tw:bg-[#FE475B] tw:text-white tw:px-4 tw:py-2  tw:w-max tw:font-semibold tw:text-[14px] tw:flex tw:items-center"
                 onClick={() => {
                   setIsDeleteOpen(true);
                   setIsDeleteConfirmed(false);
                 }}
               >
-                <Trash className="tw-inline tw:mr-2" />
+                <Trash size={24} className="tw-inline tw:mr-2" />
                 {t("control-panel.deleteAccount")}
               </button>
             </div>
@@ -216,7 +216,7 @@ const ProfilePage = ({ locale }) => {
             <Key className="tw:w-12 tw:h-12 tw:mb-4 tw:text-gray-500" />
 
             <h2 className="tw:text-lg tw:font-semibold tw:mb-4 tw:w-[80%]">
-              Change Password?
+              {t("changePassword")}
             </h2>
           </div>
           <PasswordForm
@@ -231,7 +231,7 @@ const ProfilePage = ({ locale }) => {
                   setIsChangePasswordOpen(false);
                 }}
               >
-                Cancel
+                {t("button.cancel")}
               </button>
             }
           />
@@ -248,10 +248,10 @@ const ProfilePage = ({ locale }) => {
                 className="tw:w-12 tw:h-12 tw:mb-4"
               />
               <h2 className="tw:text-lg tw:font-semibold tw:mb-4 tw:w-[80%]">
-                Confirm Delete?
+                {t("confirmDelete")}
               </h2>
               <p>
-                Verify your password to confirm the deletion of your account.
+                {t("confirmDeleteDescription")}
               </p>
               <PasswordVerifiedForm
                 isLoading={isLoading}
@@ -264,7 +264,7 @@ const ProfilePage = ({ locale }) => {
                       setIsDeleteConfirmed(true);
                     }}
                   >
-                    Cancel
+                    {t("button.cancel")}
                   </button>
                 }
                 onSuccess={async () => {
@@ -280,11 +280,10 @@ const ProfilePage = ({ locale }) => {
                 className="tw:w-12 tw:h-12 tw:mb-4"
               />
               <h2 className="tw:text-lg tw:font-semibold tw:mb-4 tw:w-[80%]">
-                Delete Account?
+                {t("deleteAccount")}
               </h2>
               <p>
-                This will permanently delete your account and all associated
-                data. Do you want to proceed?
+                {t("deleteAccountDescription")}
               </p>
             </div>
           )}
@@ -297,7 +296,7 @@ const ProfilePage = ({ locale }) => {
                   setIsDeleteConfirmed(true);
                 }}
               >
-                Cancel
+                {t("button.cancel")}
               </button>
               <button
                 className="tw:bg-[#FE475B] tw:text-white tw:px-4 tw:py-2 tw:rounded-md tw:mr-2 tw:flex tw:items-center"
@@ -314,7 +313,7 @@ const ProfilePage = ({ locale }) => {
                 }}
               >
                 <Trash className="tw:mr-2" size={16} />
-                proceed
+                {t("button.proceed")}
               </button>
             </div>
           )}

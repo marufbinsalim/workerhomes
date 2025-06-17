@@ -337,11 +337,11 @@ const MessengerPage = ({ locale }) => {
   return (
     <>
       <div
-        className="tw:flex tw:flex-row tw:gap-4 tw:max-h-[calc(100vh_-_90px)] font-secondary tw:mt-20  tw:bg-white "
+        className="tw:flex tw:flex-row tw:gap-4 tw:ml-4 tw:mr-4 tw:max-h-[calc(100vh_-_90px)] font-secondary tw:mt-20  tw:bg-white "
       >
         {/* Left Section */}
         <div
-          className={`tw:w-full tw:md:w-[600px] tw:shadow-[4px_0px_16px_0px_rgba(0,0,0,0.06)] tw:flex tw:flex-col ${isMobileView ? "tw:hidden tw:md:flex" : "tw:flex"
+          className={`tw:w-full tw:md:w-[600px]  tw:shadow-[4px_0px_16px_0px_rgba(0,0,0,0.06)] tw:flex tw:flex-col ${isMobileView ? "tw:hidden tw:md:flex" : "tw:flex"
             }`}
           style={{ height: "calc(100vh - 90px)" }}
         >
@@ -381,19 +381,19 @@ const MessengerPage = ({ locale }) => {
               {/* Cancel Button */}
               {isSearchExpanded && (
                 <button
-                  className="tw:btn tw:btn-link tw:absolute"
+                  className="tw:btn tw:btn-link tw:absolute tw:hover:underline tw:focus:outline-none"
                   onClick={hideSearch}
                   style={{
                     right: "10px",
                     top: "50%",
                     transform: "translateY(-50%)",
-                    fontSize: "1rem",
+                    fontSize: "18px",
                     padding: 0,
                     textDecoration: "none",
                     color: "#B7B7B7",
                   }}
                 >
-                  Cancel
+                  <IoMdClose  className="tw:text-[#B7B7B7] tw:w-[24px] tw:h-[24px] tw:md:w-[30px] tw:md:h-[30px]" />
                 </button>
               )}
             </div>
@@ -555,7 +555,7 @@ const MessengerPage = ({ locale }) => {
                   className="tw:text-[#040342] tw:font-medium tw:text-[16px] tw:hover:underline tw:ml-auto tw:cursor-pointer"
                   onClick={toggleDetailsModal}
                 >
-                  Details
+                  {t("details")}
                 </div>
               </div>
 
@@ -568,7 +568,7 @@ const MessengerPage = ({ locale }) => {
                   <div className="modal-drawer">
                     <div className="tw:flex tw:items-center tw:bg-[#FAFBFC] tw:justify-between  tw:p-4">
                       <h3 className="tw:text-[18px] tw:font-semibold ">
-                        Details
+                        {t("details")}
                       </h3>
                       <button
                         className="close-button"
@@ -1053,7 +1053,7 @@ const MessengerPage = ({ locale }) => {
           }
 
           .show-searchbar {
-            width: calc(100% - 90px); /* Adjust based on padding/margins */
+            width: calc(100% - 60px); /* Adjust based on padding/margins */
             opacity: 1;
             padding-left: 40px;
             transform: scaleX(1);

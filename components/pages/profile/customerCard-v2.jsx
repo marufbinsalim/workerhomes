@@ -60,17 +60,17 @@ const CustomerCard = ({ customer, locale }) => {
     if (type === "card" && card) {
       return (
         <>
-          <p className="tw:flex tw:justify-between tw:items-center tw:text-gray-700 tw:mb-2">
-            <strong>{t("type")}</strong> Card
+          <p className="tw:flex tw:justify-between font-secondary tw:items-center tw:text-[#797979] tw:font-semibold tw:text-[16px] tw:mb-4">
+            <strong>{t("type")}</strong> <span className="tw:font-normal tw:text-[16px] tw:text-[#3B3B3B] ">Card</span>
           </p>
-          <p className="tw:flex tw:justify-between tw:items-center tw:text-gray-700 tw:mb-2">
-            <strong>{t("brand")}</strong> {card?.brand?.toUpperCase()}
+          <p className="tw:flex tw:justify-between tw:items-center tw:text-[#797979] tw:font-semibold tw:text-[16px] tw:mb-4">
+            <strong>{t("brand")}</strong> <span className="tw:font-normal tw:text-[16px] tw:text-[#3B3B3B] ">{card?.brand?.toUpperCase()}</span>
           </p>
-          <p className="tw:flex tw:justify-between tw:items-center tw:text-gray-700 tw:mb-2">
-            <strong>{t("last4")}</strong> **** **** **** {card?.last4}
+          <p className="tw:flex tw:justify-between tw:items-center tw:text-[#797979] tw:font-semibold tw:text-[16px] tw:mb-4">
+            <strong>{t("last4")}</strong> <span className="tw:font-normal tw:text-[16px] tw:text-[#3B3B3B] ">**** **** **** {card?.last4}</span>
           </p>
-          <p className="tw:flex tw:justify-between tw:items-center tw:text-gray-700">
-            <strong>{t("expiry")}</strong> {card?.exp_month}/{card?.exp_year}
+          <p className="tw:flex tw:justify-between tw:items-center tw:text-[#797979] tw:font-semibold tw:text-[16px]">
+            <strong>{t("expiry")}</strong> <span className="tw:font-normal tw:text-[16px] tw:text-[#3B3B3B] ">{card?.exp_month}/{card?.exp_year}</span>
           </p>
         </>
       );
@@ -79,11 +79,11 @@ const CustomerCard = ({ customer, locale }) => {
     if (type === "paypal" && paypal) {
       return (
         <>
-          <p className="tw:flex tw:justify-between tw:items-center tw:text-gray-700 tw:mb-2">
-            <strong>{t("type")}</strong> PayPal
+          <p className="tw:flex tw:justify-between tw:items-center tw:text-[#797979] tw:font-semibold tw:text-[16px] tw:mb-4">
+            <strong>{t("type")}</strong> <span className="tw:font-normal tw:text-[16px] tw:text-[#3B3B3B] ">PayPal</span>
           </p>
-          <p className="tw:flex tw:justify-between tw:items-center tw:text-gray-700">
-            <strong>{t("email")}</strong> {paypal?.email || "N/A"}
+          <p className="tw:flex tw:justify-between tw:items-center tw:text-[#797979] tw:font-semibold tw:text-[16px]">
+            <strong>{t("email")}</strong> <span className="tw:font-normal tw:text-[16px] tw:text-[#3B3B3B] ">{paypal?.email || "N/A"}</span>
           </p>
         </>
       );
@@ -92,23 +92,23 @@ const CustomerCard = ({ customer, locale }) => {
     if (type === "link" && link) {
       return (
         <>
-          <p className="tw:flex tw:justify-between tw:items-center tw:text-gray-700 tw:mb-2">
-            <strong>{t("type")}</strong> Link
+          <p className="tw:flex tw:justify-between tw:items-center tw:text-[#797979] tw:font-semibold tw:text-[16px] tw:mb-4">
+            <strong>{t("type")}</strong> <span className="tw:font-normal tw:text-[16px] tw:text-[#3B3B3B] ">Link</span>
           </p>
-          <p className="tw:flex tw:justify-between tw:items-center tw:text-gray-700">
-            <strong>{t("email")}</strong> {link?.email || "N/A"}
+          <p className="tw:flex tw:justify-between tw:items-center tw:text-[#797979] tw:font-semibold tw:text-[16px]">
+            <strong>{t("email")}</strong> <span className="tw:font-normal tw:text-[16px] tw:text-[#3B3B3B] ">{link?.email || "N/A"}</span>
           </p>
         </>
       );
     }
 
-    return <p className="tw:text-gray-700">{t("un-support")}</p>;
+    return <p className="tw:text-[#797979] tw:font-semibold tw:text-[16px]">{t("un-support")}</p>;
   };
 
   return (
-    <div className="tw:flex tw:flex-col tw:gap-4 tw:w-full tw:border tw:border-[#D8E0ED] tw:p-4 tw:mt-8 ">
-      <h2 className="tw:text-lg tw:font-semibold tw:mb-4 tw:pb-4 tw:border-b tw:border-b-gray-200 tw:text-[var(--color-font-regular)]">
-        Payment Details:
+    <div className="tw:flex tw:flex-col tw:gap-4 tw:w-full tw:border font-secondary tw:border-[#D8E0ED] tw:p-4 tw:mt-8 ">
+      <h2 className="tw:text-[18px] tw:font-medium tw:mb-4 tw:pb-4 tw:border-b tw:border-b-[#D8E0ED] tw:text-[var(--color-font-regular)]">
+        {t("title")}
       </h2>
       <div className="tw:bg-[#FAFBFC] border border-[#D8E0ED] tw:p-6 tw:rounded-lg tw:shadow-sm tw:min-w-[70dvw] tw:md:min-w-[400px] tw:max-w-[400px]">
         {loading ? (

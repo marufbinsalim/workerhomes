@@ -10,7 +10,7 @@ const Table = ({
   bordered = false,
   emptyState = null,
 }) => {
-  const t = useTranslations("table");
+  const t = useTranslations("listingsTable");
 
   const defaultEmptyState = (
     <div className="tw:h-full tw:flex tw:flex-col tw:items-center tw:justify-center tw:gap-4 tw:p-8">
@@ -41,7 +41,7 @@ const Table = ({
       ) : data?.length <= 0 && !isLoading ? (
         emptyState || defaultEmptyState
       ) : (
-        <table className="tw:w-full font-secondary">
+        <table className="tw:w-full  font-secondary">
           <thead>
             <tr className="tw:border-b tw:border-[#D8E0ED]">
               {columns.map((column, index) => {
@@ -50,16 +50,16 @@ const Table = ({
                     key={index}
                     colSpan={column.colSpan || 1}
                     className={`
-                    tw:w-[1102px] 
-                    tw:h-[68px] 
-                    tw:p-[26px] 
+                    tw:w-[1102px]
+                    tw:h-[68px]
+                    tw:p-[26px]
                     tw:bg-[#FAFBFC]
-                    tw:font-normal 
+                    tw:font-normal
                     tw:text-[14px]
                     tw:text-[var(--color-font-regular)]
-                    tw:border-b 
+                    tw:border-b
                     tw:border-[#D8E0ED]
-                    ${column.Header === 'Action' ? 'tw:text-right' : 'tw:text-left'}
+                    ${column.align === 'right' ? 'tw:text-right' : 'tw:text-left'}
                   `}
                   >
                     {column.Header}
@@ -84,7 +84,7 @@ const Table = ({
               "
               >
                 {columns.map((column, colIndex) => {
-                  const isActionColumn = column.Header === 'Action';
+                  const isActionColumn = column.align === "right";
 
                   return !column.hidden && (
                     <td

@@ -101,8 +101,8 @@ const DwellingsPage = ({ locale }) => {
         status: {
           $eq:
             filter?.key === "PENDING" ||
-            filter?.key === "RENT" ||
-            filter?.key === "AVAILABLE"
+              filter?.key === "RENT" ||
+              filter?.key === "AVAILABLE"
               ? filter?.key
               : undefined,
         },
@@ -223,7 +223,7 @@ const DwellingsPage = ({ locale }) => {
               className={`tw:inline-flex tw:items-center tw:justify-center tw:w-[82px] tw:h-[32px] tw:rounded-lg tw:text-sm tw:font-medium ${statusClass}`}
             >
               {item?.status === "AVAILABLE"
-                ? "Approved"
+                ? t("approved")
                 : tStatus(item?.status)}
             </span>
           </div>
@@ -251,7 +251,7 @@ const DwellingsPage = ({ locale }) => {
       Header: t("table.plan"),
       Cell: (item) => {
         if (!item?.subscription?.id) {
-          return <span className="tw:badge">N/A</span>;
+          return <span className="tw:text-[var(--color-primary)] tw:text-sm tw:font-normal">N/A</span>;
         }
 
         return (
@@ -271,8 +271,27 @@ const DwellingsPage = ({ locale }) => {
                   strokeWidth={2}
                   className="tw:inline tw:ml-6  tw:text-[#FFAB00]"
                 />
-                <span className="tw:absolute tw:left-0 tw:bottom-full tw:mb-1 tw:p-2 tw:bg-white tw:rounded-[4px] tw:shadow-[0px_0px_26px_0px_#0000000F] tw:text-[14px] tw:text-[var(--color-primary)] tw:hidden tw:group-hover:block tw:z-10 tw:w-40">
-                  Needs admin approval
+                <span
+                  className="
+                    tw:absolute
+                    tw:bottom-full
+                    tw:mb-1
+                    tw:px-2
+                    tw:py-2
+                    tw:bg-white
+                    tw:rounded-[4px]
+                    tw:shadow-[0px_0px_26px_0px_#0000000F]
+                    tw:text-[14px]
+                    tw:text-[var(--color-primary)]
+                    tw:hidden
+                    tw:group-hover:block
+                    tw:z-10
+                    tw:whitespace-nowrap
+                    tw:w-auto
+                    tw:min-w-min
+                  "
+                >
+                  {t("adminApproval")}
                 </span>
               </>
             )}
@@ -289,7 +308,8 @@ const DwellingsPage = ({ locale }) => {
       ),
     },
     {
-      Header: "Action",
+      Header: t("table.action"),
+      align: "right",
       Cell: (item) => (
         <div className="tw:flex tw:items-center tw:justify-end tw:gap-4">
           {(!item?.subscription?.id ||
@@ -297,31 +317,31 @@ const DwellingsPage = ({ locale }) => {
               item?.subscription?.package?.name !== "Platinum") ||
             (item?.owner?.id === session?.id &&
               item?.subscription?.package?.name !== "Platinum")) && (
-            <div className="tw:relative tw:group">
-              <button
-                onClick={() => {
-                  if (item?.subscription?.pending_subscription?.id) {
-                    return toast.warn(t("messages.pending-subscription"));
-                  }
-                  setOpen((prev) => ({ ...prev, upgrade: true }));
-                  setSelected(item);
-                }}
-                className="tw:text-[var(--color-red)] "
-              >
-                <GrUpgrade size={24} />
-              </button>
-              <div
-                className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10
+              <div className="tw:relative tw:group">
+                <button
+                  onClick={() => {
+                    if (item?.subscription?.pending_subscription?.id) {
+                      return toast.warn(t("messages.pending-subscription"));
+                    }
+                    setOpen((prev) => ({ ...prev, upgrade: true }));
+                    setSelected(item);
+                  }}
+                  className="tw:text-[var(--color-red)] "
+                >
+                  <GrUpgrade size={24} />
+                </button>
+                <div
+                  className="tw:absolute tw:hidden tw:group-hover:flex tw:z-10
                   tw:bottom-full tw:left-1/2 tw:-translate-x-[50%] tw:mb-2
                   tw:w-[88px] tw:h-[36px] tw:px-6 tw:py-[10px]
                   tw:items-center tw:justify-center tw:bg-white
                   tw:rounded tw:shadow-sm tw:whitespace-nowrap
                   tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center"
-              >
-                Upgrade
+                >
+                  {t("upgrade")}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
           <div className="tw:relative tw:group">
             <Link
@@ -340,7 +360,7 @@ const DwellingsPage = ({ locale }) => {
                   tw:rounded tw:shadow-sm tw:whitespace-nowrap
                   tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center"
             >
-              Edit
+              {t("edit")}
             </div>
           </div>
 
@@ -362,7 +382,7 @@ const DwellingsPage = ({ locale }) => {
                   tw:rounded tw:shadow-sm tw:whitespace-nowrap
                   tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center"
             >
-              View
+              {t("view")}
             </div>
           </div>
 
@@ -377,7 +397,7 @@ const DwellingsPage = ({ locale }) => {
               options={[
                 {
                   value: "downgrade",
-                  label: "Downgrade",
+                  label: t("downgrade"),
                   icon: (
                     <FaRegArrowAltCircleDown
                       size={24}
@@ -394,7 +414,7 @@ const DwellingsPage = ({ locale }) => {
                 },
                 {
                   value: "delete",
-                  label: "Delete",
+                  label: t("delete"),
                   icon: (
                     <RiDeleteBinLine
                       size={24}
@@ -416,7 +436,7 @@ const DwellingsPage = ({ locale }) => {
                   tw:rounded tw:shadow-sm tw:whitespace-nowrap
                   tw:text-[var(--color-font-regular)] tw:text-sm tw:text-center"
             >
-              More
+              {t("more")}
             </div>
           </div>
         </div>
@@ -474,11 +494,11 @@ const DwellingsPage = ({ locale }) => {
   const actions =
     !userProfileLoading && userProfile?.address && userProfile?.phone
       ? [
-          {
-            label: "Create a listing",
-            href: `/dashboard/dwellings/form?step=0`,
-          },
-        ]
+        {
+          label: t("control-panel.create"),
+          href: `/dashboard/dwellings/form?step=0`,
+        },
+      ]
       : [];
 
   return (
