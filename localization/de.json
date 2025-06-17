@@ -1122,6 +1122,27 @@
       "options": "Optionen"
     }
   },
+
+  "listingDetails": {
+    "goBack": "Zurück",
+    "overview": "Übersicht",
+    "pricesConditions": "Preise und Bedingungen",
+    "location": "Standort",
+    "bookmark": "Lesezeichen",
+    "share": "Teilen",
+    "ownerDetails": "Eigentümerdetails",
+    "owner": "Eigentümer",
+    "languages": "Sprachen",
+    "call": "Anrufen",
+    "message": "Nachricht",
+    "propertyOverview": "Objektübersicht",
+    "readMore": "Mehr erfahren",
+    "featuresAmenities": "Ausstattung & Merkmale",
+    "showMoreAmenities": "Weitere Ausstattung & Merkmale anzeigen",
+    "numberOfGuests": "Anzahl der Gäste:",
+    "similarListing": "Ähnliche Anzeige"
+  },
+  
   "dwelling-equipments": {
     "title": "Ausstattungen",
     "description": "Dies sind die beliebtesten Ziele weltweit.",

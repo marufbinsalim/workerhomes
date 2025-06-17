@@ -53,7 +53,6 @@
       }
     }
   },
-
   "heroSection": {
     "title": "Elevate Your Work Stay Experience.",
     "subtitle": "Enjoy Comfort, Convenience and Productivity During Your Stay.",
@@ -93,7 +92,6 @@
         }
       }
     },
-
     "whoWeAreSection": {
       "title": "Who are we & What we do",
       "subtitle": "Learn about our identity and the services we provide.",
@@ -124,7 +122,6 @@
       "favoriteRemoved": "Removed from your favorites!"
     }
   },
-
   "contactUs": {
     "title": " We have got a entire dedicated team to support you & your business",
     "subtitle": "A Dedicated Team of Experts, Ready to Support You and Your Business Every Step of the Way",
@@ -155,8 +152,6 @@
       "followUsLabel": "Follow us on social media"
     }
   },
-
-
   "brand": {
     "title": "Hello world!",
     "description": "This is a simple example of a brand object."
@@ -511,7 +506,6 @@
       "price": "Price",
       "guest": "Guests",
       "stay": "Minimum Stay",
-
       "0": {
         "title": "Price",
         "options": {
@@ -655,7 +649,7 @@
     "deleteAccountDescription": "This will permanently delete your account and all associated data. Do you want to proceed?",
     "confirmDelete": "Confirm Delete?",
     "confirmDeleteDescription": " Verify your password to confirm the deletion of your account.",
-    "button":{
+    "button": {
       "cancel": "Cancel",
       "confirm": "Confirm",
       "proceed": "Proceed",
@@ -689,7 +683,6 @@
       "invalid-password": "Invalid password, please try again.",
       "no-card": "You need to select a least one payment method.",
       "payment-method": "Payment method has been updated successfully."
-
     },
     "control-panel": {
       "delete": "Delete",
@@ -1101,6 +1094,27 @@
       "options": "Options"
     }
   },
+
+  "listingDetails": {
+    "goBack": "Go Back",
+    "overview": "Overview",
+    "pricesConditions": "Prices & Conditions",
+    "location": "Location",
+    "bookmark": "Bookmark",
+    "share": "Share",
+    "ownerDetails": "Owner Details",
+    "owner": "Owner",
+    "languages": "Languages",
+    "call": "Call",
+    "message": "Message",
+    "propertyOverview": "Property Overview",
+    "readMore": "Read More",
+    "featuresAmenities": "Features & Amenities",
+    "showMoreAmenities": "Show More Amenities & Features",
+    "numberOfGuests": "Number of Guests:",
+    "similarListing": "Similar Listing"
+  },
+
   "dwelling-equipments": {
     "title": "Equipments",
     "description": "These are the most popular destinations in the world.",
@@ -1567,7 +1581,6 @@
       "created": "Created At"
     }
   },
-
   "navbarTitle": {
     "statistics": "Statistics",
     "listings": "Listings",
@@ -1576,7 +1589,6 @@
     "invoices": "Invoices",
     "messages": "Messages"
   },
-
   "statistics": {
     "title": "Statistics",
     "description": "These are the most popular destinations in the world.",
