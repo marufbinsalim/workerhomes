@@ -380,7 +380,7 @@ const Navbar = ({ session, slugMap = null }) => {
             />
           ) : (
             <button
-              onClick={() => router.push("/login")}
+              onClick={() => router.push(`/${locale}/login`)}
               className="tw:bg-[#040342] tw:text-white tw:text-[13px] tw:lg:text-[14px] tw:min-w-[130px] tw:lg:min-w-[150px] tw:h-[30px] tw:lg:h-[36px] tw:px-2  tw:font-medium"
             >
               {t("links.signInRegister")}
@@ -475,7 +475,7 @@ const Navbar = ({ session, slugMap = null }) => {
             >
               <div className="tw:relative tw:border-b tw:border-[var(--color-border-light)] tw:pb-5 tw:px-4 tw:pt-5">
                 {/* Logo */}
-                <img
+                <img href={`/${locale}`} onClick={closeMenu}
                   src="/assets/logo.png"
                   alt="workerhomes"
                   className="tw:w-[150px] tw:h-[30px]"
@@ -506,44 +506,50 @@ const Navbar = ({ session, slugMap = null }) => {
               {/* Scrollable Menu Content */}
               <div className="tw:flex tw:flex-col tw:p-6 tw:space-y-6 tw:mt-4">
                 <a
-                  href="#"
-                  className="tw:text-[var(--color-primary)] tw:text-lg"
+                  href={`/${locale}`}
+                  className={`tw:text-[var(--color-primary)] tw:text-lg ${pathname === `/${locale}`
+                  }`}
                   onClick={closeMenu}
                 >
-                  Home
+                  {t("links.home")}
                 </a>
                 <a
-                  href="#"
-                  className="tw:text-[var(--color-primary)] tw:text-lg"
+                  href={`/${locale}/pricing`}
+                  className={`tw:text-[var(--color-primary)] tw:text-large ${pathname === `/${locale}/pricing`
+                  }`}
                   onClick={closeMenu}
                 >
-                  Pricing
+                  {t("links.pricing")}
                 </a>
                 <a
-                  href="#"
-                  className="tw:text-[var(--color-primary)] tw:text-lg"
+                  href={`/${locale}/bookmarks`}
+                  className={`tw:text-[var(--color-primary)] tw:text-lg ${pathname === `/${locale}/bookmarks`
+                 }`}
                   onClick={closeMenu}
                 >
-                  Bookmarks
+                  {t("links.bookmarks")}
                 </a>
                 <a
-                  href="#"
-                  className="tw:text-[var(--color-primary)] tw:text-lg"
+                  href={`/${locale}/blogs`}
+                  className={`tw:text-[var(--color-primary)] tw:text-lg ${pathname === `/${locale}/blogs`
+                }`}
                   onClick={closeMenu}
                 >
-                  Blogs
+                  {t("links.blogs")}
                 </a>
                 <a
-                  href="#"
-                  className="tw:text-[var(--color-primary)] tw:text-lg"
+                  href={`/${locale}/contact`}
+
+                  className={`tw:text-[var(--color-primary)] tw:text-lg ${pathname === `/${locale}/contact`
+                  }`}
                   onClick={closeMenu}
                 >
-                  Contact
+                  {t("links.contact")}
                 </a>
 
                 <div className="tw:flex tw:items-center tw:justify-between tw:gap-2 tw:cursor-pointer">
                   <span className="tw:text-[var(--color-font-dark)] tw:text-lg">
-                    Change Language
+                    {t("links.changeLanguage")}
                   </span>
                   <div className="tw:flex tw:items-center tw:gap-2">
                     <img
@@ -584,11 +590,11 @@ const Navbar = ({ session, slugMap = null }) => {
                   }}
                   className="tw:w-full tw:py-3 tw:mt-2  tw:relative  tw:text-lg tw:font-medium tw:text-[var(--color-primary)] tw:bg-white tw:z-10 tw:overflow-hidden animated-border"
                 >
-                  List your property
+                  {t("links.listYourProperty")}
                 </button>
 
-                <button className="tw:w-full tw:py-3 tw:text-lg tw:font-medium tw:text-white tw:bg-[#040342] ">
-                  Sign In / Register
+                <button onClick={() => router.push(`/${locale}/login`)} className="tw:w-full tw:py-3 tw:text-lg tw:font-medium tw:text-white tw:bg-[#040342] ">
+                  {t("links.signInRegister")}
                 </button>
               </div>
             </motion.div>

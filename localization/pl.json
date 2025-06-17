@@ -183,7 +183,8 @@
       "about": "O nas",
       "contact": "Kontakt",
      "listYourProperty": "Dodaj swoją nieruchomość",
-      "signInRegister": "Zaloguj się / Zarejestruj"
+      "signInRegister": "Zaloguj się / Zarejestruj",
+      "changeLanguage": "Zmień język"
     },
     "locales": {
       "title": "Wybierz swój język",

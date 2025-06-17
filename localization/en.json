@@ -183,7 +183,8 @@
       "about": "About",
       "contact": "Contact",
       "listYourProperty": "List your property",
-      "signInRegister": "Sign In / Register"
+      "signInRegister": "Sign In / Register",
+      "changeLanguage": "Change Language"
     },
     "locales": {
       "title": "Select your language",
