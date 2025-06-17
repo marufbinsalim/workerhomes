@@ -1,10 +1,19 @@
+"use client";
 import React from "react";
 import { HeartIcon, MapPin, BedDoubleIcon, Bath } from "lucide-react";
 import { exactPath } from "@/utils";
+import { useRouter } from "next/navigation";
 
 const ListingCard = ({ listing, toggleFavorite, isFavorite }) => {
+  const router = useRouter();
   return (
-    <div className="tw:w-full tw:max-w-[90dvw] tw:md:max-w-[413px] tw:h-auto tw:flex tw:flex-col tw:bg-white tw:shadow-lg tw:mt-6 tw:md:mt-2">
+    <div
+      className="tw:w-full tw:max-w-[90dvw] tw:md:max-w-[413px] tw:h-auto tw:flex tw:flex-col tw:bg-white tw:shadow-lg tw:mt-6 tw:md:mt-2 tw:cursor-pointer"
+      onClick={(e) => {
+        e.stopPropagation();
+        router.push(`${listing.slug}`);
+      }}
+    >
       <div className="tw:relative tw:w-full">
         <img
           src={exactPath(listing.image)}

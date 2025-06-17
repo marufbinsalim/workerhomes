@@ -46,6 +46,7 @@ export default function useFeatured(locale) {
       const id = item.id;
       const title = item.title;
       const image = item?.galleries[0]?.image?.url || null;
+      const slug = item?.slug ? `/${locale}/listings/${item.slug}` : null;
 
       let features = item.features.map((feature) => {
         return {
@@ -66,6 +67,7 @@ export default function useFeatured(locale) {
         features,
         location,
         price,
+        slug,
       };
     });
   };
