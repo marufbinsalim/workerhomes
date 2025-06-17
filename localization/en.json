@@ -1105,6 +1105,10 @@
     "title": "Equipments",
     "description": "These are the most popular destinations in the world.",
     "create": "Create",
+    "listingDetails": "Listing Details",
+    "provideListingDetails": "Provide your details for the listing",
+    "selectFeaturesAndAmenities": "Select Features and Amenities",
+    "chooseAmenities": "Choose amenities and Features you want to add to your listing.",
     "messages": {
       "delete": "Are you sure you want to delete this equipment?",
       "create": "Equipment has been created successfully.",

@@ -1125,6 +1125,10 @@
   "dwelling-equipments": {
     "title": "Ausstattungen",
     "description": "Dies sind die beliebtesten Ziele weltweit.",
+    "listingDetails": "Anzeigendetails",
+    "provideListingDetails": "Gib deine Angaben für die Anzeige ein",
+    "selectFeaturesAndAmenities": "Wähle Merkmale und Annehmlichkeiten aus",
+    "chooseAmenities": "Wähle die Annehmlichkeiten und Merkmale, die du deiner Anzeige hinzufügen möchtest.",
     "create": "Erstellen",
     "messages": {
       "delete": "Möchten Sie diese Ausstattung wirklich löschen?",
