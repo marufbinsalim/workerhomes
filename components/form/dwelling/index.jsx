@@ -177,8 +177,8 @@ const DwellingForm = ({
         return (
           <Form>
             <div className="tw:mb-8 font-secondary">
-              <h2 className="tw:text-[20px] tw:font-semibold tw:mb-2 tw:text-[var(--color-font-dark)]">Listing Details</h2>
-              <p className="tw:text-[var(--color-font-regular)] tw:text-[14px] tw:font-normal">Provide your details for the listing</p>
+              <h2 className="tw:text-[20px] tw:font-semibold tw:mb-2 tw:text-[var(--color-font-dark)]">{t("listingDetails")}</h2>
+              <p className="tw:text-[var(--color-font-regular)] tw:text-[14px] tw:font-normal">{t("provideListingDetails")}</p>
             </div>
             <div className="tw:flex tw:flex-col tw:md:flex-row tw:w-full tw:gap-6 font-secondary">
               {/* Left Column */}
@@ -292,12 +292,11 @@ const DwellingForm = ({
                 <div className="tw:w-full">
                   <div className="tw:mb-2">
                     <label className="tw:font-medium tw:text-[14px] tw:text-[var(--color-font-dark)]">
-                      Select Features and Amenities
+                      {t("selectFeaturesAndAmenities")}
                       <span className="tw:text-red-500 tw:ml-1">*</span>
                     </label>
                     <p className="tw:font-normal tw:text-[14px] tw:text-[var(--color-font-regular)]">
-                      Choose amenities and Features you want to add to your
-                      listing
+                      {t("chooseAmenities")}
                     </p>
                   </div>
                   <div className="tw:flex tw:flex-col tw:gap-3">

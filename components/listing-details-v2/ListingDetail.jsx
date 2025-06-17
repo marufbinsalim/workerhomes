@@ -191,6 +191,8 @@ export default function ListingDetail({ data, locale, session }) {
   };
 
   const t = useTranslations("heroSection");
+  const tl = useTranslations("listingDetails");
+
 
   const toggleFavorite = async (id) => {
     if (!session?.id) {
@@ -286,17 +288,16 @@ export default function ListingDetail({ data, locale, session }) {
           className="tw:cursor-pointer tw:mb-4"
         />
         <p className="tw:text-[#FF780B] tw:text-[14px] tw:font-medium">
-          Go Back
+          {tl("goBack")}
         </p>
       </div>
       <div className="tw:flex tw:items-center tw:justify-between tw:mb-6">
         <div className="tw:flex tw:gap-4">
           <button
-            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-2 ${
-              selectedButton === "overview"
+            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-2 ${selectedButton === "overview"
                 ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
                 : "border"
-            }`}
+              }`}
             onClick={() => {
               setSelectedButton("overview");
               overviewRef.current.scrollIntoView({
@@ -305,14 +306,13 @@ export default function ListingDetail({ data, locale, session }) {
               });
             }}
           >
-            Overview
+            {tl("overview")}
           </button>
           <button
-            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${
-              selectedButton === "features"
+            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${selectedButton === "features"
                 ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
                 : "border"
-            }`}
+              }`}
             onClick={() => {
               setSelectedButton("features");
               pricingRef.current.scrollIntoView({
@@ -321,14 +321,13 @@ export default function ListingDetail({ data, locale, session }) {
               });
             }}
           >
-            Prices & Conditions
+            {tl("pricesConditions")}
           </button>
           <button
-            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${
-              selectedButton === "location"
+            className={`tw:font-medium tw:text-sm tw:px-4 tw:py-1 tw:flex tw:items-center ${selectedButton === "location"
                 ? "tw:border-b-2 tw:border-[var(--color-brand-secondary)] tw:bg-[var(--color-brand-secondary)] tw:text-white"
                 : "border"
-            }`}
+              }`}
             onClick={() => {
               setSelectedButton("location");
               locationRef.current.scrollIntoView({
@@ -337,7 +336,7 @@ export default function ListingDetail({ data, locale, session }) {
               });
             }}
           >
-            Location
+            {tl("location")}
           </button>
         </div>
 
@@ -362,7 +361,7 @@ export default function ListingDetail({ data, locale, session }) {
             )}
 
             <p className="tw:text-[#797979] tw:text-[14px] tw:font-normal">
-              Bookmark
+              {tl("bookmark")}
             </p>
           </div>
           <div
@@ -379,7 +378,7 @@ export default function ListingDetail({ data, locale, session }) {
               className="tw:cursor-pointer tw:text-[var(--color-font-light)] tw:mb-4"
             />
             <p className="tw:text-[#797979] tw:text-[14px] tw:font-normal">
-              Share
+              {tl("share")}
             </p>
           </div>
         </div>
@@ -416,17 +415,17 @@ export default function ListingDetail({ data, locale, session }) {
           </div>
           <div className="tw-flex tw:gap-4 tw:flex-col tw:mb-6">
             <p className="tw:font-semibold tw:text-[var(--color-font-dark)] tw:text-[18px]">
-              Owner Details
+              {tl("ownerDetails")}
             </p>
             <div className="tw:flex tw:gap-1 tw:flex-col">
               <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:m-0">
-                Owner :{" "}
+                {tl("owner")}:{" "}
                 <span className="tw:font-normal tw:text-[var(--color-font-regular)]">
                   {data?.owner?.name}
                 </span>
               </p>
               <p className="tw:text-[var(--color-font-dark)] tw:font-semibold tw:m-0">
-                Languages :{" "}
+                {tl("languages")}:{" "}
                 <span className="tw:font-normal tw:text-[var(--color-font-regular)]">
                   {getFormattedLanguages(data)}
                 </span>
@@ -440,7 +439,7 @@ export default function ListingDetail({ data, locale, session }) {
                 size={20}
                 className="tw:text-[var(--color-brand-secondary)]"
               />
-              <p className="tw:text-[var(--color-brand-secondary)] m-0">Call</p>
+              <p className="tw:text-[var(--color-brand-secondary)] m-0">{tl("call")}</p>
             </button>
             <button
               className="tw:flex tw:items-center tw:justify-center tw:bg-[var(--color-primary)] tw:gap-2 tw:px-5 tw:py-2"
@@ -449,7 +448,7 @@ export default function ListingDetail({ data, locale, session }) {
               }}
             >
               <Send size={20} className="tw:text-white" />
-              <p className="tw:text-white  tw:font-semibold m-0">Message</p>
+              <p className="tw:text-white  tw:font-semibold m-0">{tl("message")}</p>
             </button>
           </div>
         </div>
@@ -461,7 +460,7 @@ export default function ListingDetail({ data, locale, session }) {
       >
         <div className="tw:flex-3/5 tw:relative">
           <h2 className="tw:text-[24px] tw:font-bold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
-            Property Overview
+            {tl("propertyOverview")}
           </h2>
           <p className="tw:md:max-w-[80%] tw:line-clamp-6 tw:text-[16px] tw:text-[#797979] tw:font-normal tw:text-justify tw:break-all">
             {data.description?.replace(/<\/?[^>]+(>|$)/g, "") ||
@@ -475,14 +474,14 @@ export default function ListingDetail({ data, locale, session }) {
                 className="tw:bg-[#040342] tw:text-white tw:text-[14px] tw:font-semibold tw:py-2 tw:px-4"
                 onClick={() => setIsShowDescriptionOpen(true)}
               >
-                Read More
+                {tl("readMore")}
               </button>
             </div>
           )}
         </div>
         <div className="tw:flex-2/5">
           <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
-            Features & Amenities
+            {tl("featuresAmenities")}
           </h2>
           <div className="tw:relative tw:grid tw:grid-cols-2 tw:gap-4">
             {[...formattedFeatures, ...formattedAmenities]
@@ -511,7 +510,7 @@ export default function ListingDetail({ data, locale, session }) {
                 setIsShowFeaturesOpen(true);
               }}
             >
-              Show More Amenities & Features
+              {tl("showMoreAmenities")}
             </button>
           </div>
         </div>
@@ -595,7 +594,7 @@ export default function ListingDetail({ data, locale, session }) {
                     </span>
                   </p>
                   <p className="tw:text-[14px] tw:font-normal tw:mt-2 tw:text-[#797979]">
-                    Number of Guests:{" "}
+                    {tl("numberOfGuests")}:{" "}
                     <span className="tw:font-medium tw:text-[#3B3B3B]">
                       {p.guest}
                     </span>
@@ -612,11 +611,11 @@ export default function ListingDetail({ data, locale, session }) {
         ref={locationRef}
       >
         <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full">
-          {`Location`}
+          {tl("location")}
         </h2>
         <MapComponent
           defaultCenter={data?.location[0]?.geo}
-          setLocations={() => {}}
+          setLocations={() => { }}
           locations={[]}
           apiKey={google_key}
           zoom={11}
@@ -627,7 +626,7 @@ export default function ListingDetail({ data, locale, session }) {
 
       <div>
         <h2 className="tw:text-[24px] tw:font-semibold tw:text-left tw:text-[var(--color-font-dark)] tw:w-full tw:mt-10">
-          Similar Listing
+          {tl("similarListing")}
         </h2>
 
         {/* Grid for Desktop */}

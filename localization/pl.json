@@ -167,7 +167,6 @@
     "details": "Szczegóły",
     "empty": "Nie wybrano rozmowy",
     "noMessagesDescription": "Wybierz rozmowę z listy, aby rozpocząć czat!"
-
   },
   "subscribe": {
     "title": "Subskrybuj nasz newsletter",
@@ -611,7 +610,6 @@
       "created": "Utworzono"
     }
   },
-
   "navbarTitle": {
     "statistics": "Statystyki",
     "listings": "Ogłoszenia",
@@ -620,7 +618,6 @@
     "invoices": "Faktury",
     "messages": "Wiadomości"
   },
-
   "profile": {
     "title": "Profil",
     "description": "To są najpopularniejsze miejsca na świecie.",
@@ -632,7 +629,7 @@
     "deleteAccountDescription": "To trwale usunie Twoje konto oraz wszystkie powiązane dane. Czy chcesz kontynuować?",
     "confirmDelete": "Potwierdzić usunięcie?",
     "confirmDeleteDescription": "Aby potwierdzić usunięcie konta, zweryfikuj swoje hasło.",
-    "button":{
+    "button": {
       "cancel": "Anuluj",
       "confirm": "Potwierdź",
       "proceed": "Kontynuuj",
@@ -1123,9 +1120,32 @@
       "options": "Opcje"
     }
   },
+  "listingDetails": {
+    "goBack": "Wróć",
+    "overview": "Przegląd",
+    "pricesConditions": "Ceny i warunki",
+    "location": "Lokalizacja",
+    "bookmark": "Zapisz",
+    "share": "Udostępnij",
+    "ownerDetails": "Dane właściciela",
+    "owner": "Właściciel",
+    "languages": "Języki",
+    "call": "Zadzwoń",
+    "message": "Wiadomość",
+    "propertyOverview": "Przegląd nieruchomości",
+    "readMore": "Czytaj więcej",
+    "featuresAmenities": "Cechy i udogodnienia",
+    "showMoreAmenities": "Pokaż więcej udogodnień i cech",
+    "numberOfGuests": "Liczba gości:",
+    "similarListing": "Podobne ogłoszenie"
+  },
   "dwelling-equipments": {
     "title": "Wyposażenie",
     "description": "To są najpopularniejsze miejsca na świecie.",
+    "listingDetails": "Szczegóły ogłoszenia",
+    "provideListingDetails": "Podaj swoje dane dotyczące ogłoszenia",
+    "selectFeaturesAndAmenities": "Wybierz cechy i udogodnienia",
+    "chooseAmenities": "Wybierz udogodnienia i cechy, które chcesz dodać do ogłoszenia.",
     "create": "Utwórz",
     "messages": {
       "delete": "Czy na pewno chcesz usunąć to wyposażenie?",
@@ -1460,7 +1480,6 @@
     "loading": "Ładowanie...",
     "no-data": "Obecnie brak danych do wyświetlenia. Proszę najpierw dodać dane.",
     "action": "Akcja"
-
   },
   "localizations": {
     "default": "Wybierz język",
