@@ -1116,7 +1116,21 @@
     "showMoreAmenities": "Show More Amenities & Features",
     "numberOfGuests": "Number of Guests:",
     "similarListing": "Similar Listing",
-    "amenities": "Amenities"
+    "amenities": "Amenities",
+    "form":{
+      "contactOwner": "Contact the owner",
+      "contactInstruction": "You can contact the owner of this listing by filling the form below.",
+      "companyName": "Company name",
+      "email": "Email",
+      "contactNo": "Contact no",
+      "checkIn": "Check in",
+      "checkOut": "Check out",
+      "noOfGuests": "No of guests",
+      "additionalInfo": "Additional information",
+      "cancel": "Cancel",
+      "add": "Add",
+      "leaveAdditionalInfo": "Leave an additional info for us..."
+    }
   },
 
   "dwelling-equipments": {

@@ -1148,7 +1148,21 @@
     "numberOfGuests": "Anzahl der Gäste:",
     "similarListing": "Ähnliche Anzeige",
     "amenities": "Ausstattung",
-    "postalCode": "Postleitzahl"
+    "postalCode": "Postleitzahl",
+    "form": {
+      "contactOwner": "Kontakt zum Eigentümer",
+      "contactInstruction": "Du kannst den Eigentümer dieser Anzeige kontaktieren, indem du das folgende Formular ausfüllst.",
+      "companyName": "Firmenname",
+      "email": "E-Mail",
+      "contactNo": "Kontakt-Nr.",
+      "checkIn": "Check-in",
+      "checkOut": "Check-out",
+      "noOfGuests": "Anzahl der Gäste",
+      "additionalInfo": "Zusätzliche Informationen",
+      "cancel": "Abbrechen",
+      "add": "Hinzufügen",
+      "leaveAdditionalInfo": "Hinterlasse uns zusätzliche Informationen..."
+    }
   },
   "dwelling-equipments": {
     "title": "Ausstattungen",

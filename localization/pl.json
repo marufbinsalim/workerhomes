@@ -1150,7 +1150,21 @@
     "showMoreAmenities": "Pokaż więcej udogodnień i cech",
     "numberOfGuests": "Liczba gości:",
     "similarListing": "Podobne ogłoszenie",
-    "amenities": "Udogodnienia"
+    "amenities": "Udogodnienia",
+    "form": {
+      "contactOwner": "Skontaktuj się z właścicielem",
+      "contactInstruction": "Możesz skontaktować się z właścicielem tego ogłoszenia, wypełniając poniższy formularz.",
+      "companyName": "Nazwa firmy",
+      "email": "Email",
+      "contactNo": "Numer kontaktowy",
+      "checkIn": "Zameldowanie",
+      "checkOut": "Wymeldowanie",
+      "noOfGuests": "Liczba gości",
+      "additionalInfo": "Dodatkowe informacje",
+      "cancel": "Anuluj",
+      "add": "Dodaj",
+      "leaveAdditionalInfo": "Zostaw nam dodatkowe informacje..."
+    }
   },
   "dwelling-equipments": {
     "title": "Wyposażenie",

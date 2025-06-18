@@ -27,22 +27,22 @@ const ContactForm = ({ dwelling, onSuccess }) => {
   const { functions } = useMessenger("dwelling_contact");
   const [guests, setGuests] = useState(1);
 
-  const t = useTranslations("listing-contact");
+  const tl = useTranslations("listingDetails");
 
   let email = session ? session.user.email : "";
 
   const { data, reFetch } = useFetch(
     session
       ? {
-          keys: ["me"],
-          url: "/api/users/me",
-          query: {
-            populate: ["address", "subscriptions"],
-          },
-        }
-      : {
-          keys: [""],
+        keys: ["me"],
+        url: "/api/users/me",
+        query: {
+          populate: ["address", "subscriptions"],
         },
+      }
+      : {
+        keys: [""],
+      },
   );
   let phone = data?.phone || "";
 
@@ -84,7 +84,7 @@ const ContactForm = ({ dwelling, onSuccess }) => {
           const fetchListingBySlug = async (slug, locale) => {
             const res = await fetch(
               api +
-                `/api/dwellings?filters[slug][$eq]=${slug}&populate=galleries.image,features.icon,seo,location,contact,amenities,category,prices,subscription.package,owner,subscription.package.icon,localizations&locale=${locale}`,
+              `/api/dwellings?filters[slug][$eq]=${slug}&populate=galleries.image,features.icon,seo,location,contact,amenities,category,prices,subscription.package,owner,subscription.package.icon,localizations&locale=${locale}`,
               {
                 next: {
                   revalidate: 0,
@@ -301,150 +301,170 @@ const ContactForm = ({ dwelling, onSuccess }) => {
     >
       {({ dirty, values, errors, setFieldValue }) => (
         <Form>
-          <div className="tw:bg-white tw:p-6 tw:rounded-lg tw:shadow-md tw:h-[90dvh] tw:overflow-auto">
-            <h2 className="tw:text-lg tw:font-bold tw:mb-4">
-              Contact the owner
-            </h2>
-            <p className="tw:text-gray-600 tw:mb-4">
-              You can contact the owner of this listing by filling the form
-              below.
-            </p>
-            <div className="tw:space-y-4">
-              <div>
-                <label className="tw:block tw:text-sm tw:font-medium tw:text-gray-700">
-                  Company name
-                </label>
-                <Input
-                  type="text"
-                  name="name_or_company"
-                  className="tw:w-full tw:p-2 tw:border tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
-                  required
-                />
-              </div>
-              <div>
-                <label className="tw:block tw:text-sm tw:font-medium tw:text-gray-700">
-                  Email
-                </label>
-                <Input
-                  type="email"
-                  name="email"
-                  className="tw:w-full tw:p-2 tw:border tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
-                  disabled={session ? true : false}
-                  required
-                />
-              </div>
-              <div>
-                <label className="tw:block tw:text-sm tw:font-medium tw:text-gray-700">
-                  Contact no
-                </label>
-                <Input
-                  type="phone"
-                  name="phone"
-                  className="tw:w-full tw:p-2 tw:border tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
-                  disabled={session ? (phone ? true : false) : false}
-                  required
-                />
-              </div>
-              <div className="tw:flex tw:space-x-4">
-                <div className="tw:w-1/2">
-                  <label className="tw:block tw:text-sm tw:font-medium tw:text-gray-700">
-                    Check in
+          <div className="tw:bg-white tw:shadow-md font-primary tw:h-[93dvh] tw:overflow-auto tw:w-full">
+            {/* Header - unchanged on large screens */}
+            <div className="tw:bg-[#F8F9FB] tw:h-[60px] tw:flex tw:items-center tw:px-6 tw:mb-5">
+              <h2 className="tw:text-xl tw:font-semibold tw:text-[#3B3B3B]">
+                {tl("form.contactOwner")}
+              </h2>
+            </div>
+
+            {/* Content container */}
+            <div className="tw:px-6">
+              {/* Instruction text - full width on mobile */}
+              <p className="tw:text-[#797979] tw:text-[16px] tw:font-normal tw:mb-5 tw:md:max-w-[500px] tw:break-words">
+                {tl("form.contactInstruction")}
+              </p>
+
+              <div className="tw:space-y-4">
+                {/* Form fields - unchanged on large screens */}
+                <div>
+                  <label className="tw:block tw:text-[16px] tw:font-semibold tw:text-[#3B3B3B]">
+                    {tl("form.companyName")}
                   </label>
-                  <Input
-                    type="datetime-local"
-                    name="check_in"
-                    min={new Date()}
-                    className="tw:w-full tw:p-2 tw:border tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
-                    required
-                  />
-                </div>
-                <div className="tw:w-1/2">
-                  <label className="tw:block tw:text-sm tw:font-medium tw:text-gray-700">
-                    Check out
-                  </label>
-                  <Input
-                    type="datetime-local"
-                    name="check_out"
-                    className="tw:w-full tw:p-2 tw:border tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
-                    required
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="tw:block tw:text-sm tw:font-medium tw:text-gray-700">
-                  No of guests
-                </label>
-                <div className="tw:flex tw:items-center">
                   <Input
                     type="text"
-                    name="guests"
-                    disabled={true}
-                    value={guests}
-                    className="tw:w-full tw:p-2 tw:border tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
+                    name="name_or_company"
+                    className="tw:w-full tw:p-2 tw:border tw:placeholder:text-[#797979] tw:placeholder:text-[14px] tw:placeholder:font-normal tw:border-[#D8E0ED] tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
+                    required
+                    placeholder={tl("form.companyName")}
                   />
+                </div>
+
+                <div>
+                  <label className="tw:block tw:text-[16px] tw:font-semibold tw:text-[#3B3B3B]">
+                    {tl("form.email")}
+                  </label>
+                  <Input
+                    type="email"
+                    name="email"
+                    className="tw:w-full tw:p-2 tw:border tw:placeholder:text-[#797979] tw:placeholder:text-[14px] tw:placeholder:font-normal tw:border-[#D8E0ED] tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
+                    disabled={session ? true : false}
+                    required
+                    placeholder={tl("form.email")}
+                  />
+                </div>
+
+                <div>
+                  <label className="tw:block tw:text-[16px] tw:font-semibold tw:text-[#3B3B3B]">
+                    {tl("form.contactNo")}
+                  </label>
+                  <Input
+                    type="phone"
+                    name="phone"
+                    className="tw:w-full tw:p-2 tw:border tw:placeholder:text-[#797979] tw:placeholder:text-[14px] tw:placeholder:font-normal tw:border-[#D8E0ED] tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
+                    disabled={session ? (phone ? true : false) : false}
+                    required
+                    placeholder={tl("form.contactNo")}
+                  />
+                </div>
+
+                {/* Date pickers - stack vertically on mobile only */}
+                <div className="tw:flex tw:flex-col tw:md:flex-row tw:md:space-x-4 tw:space-y-4 tw:md:space-y-0">
+                  <div className="tw:w-full tw:md:w-1/2">
+                    <label className="tw:block tw:text-[16px] tw:font-semibold tw:text-[#3B3B3B]">
+                      {tl("form.checkIn")}
+                    </label>
+                    <Input
+                      type="datetime-local"
+                      name="check_in"
+                      min={new Date()}
+                      className="tw:w-full tw:p-2 tw:border tw:placeholder:text-[#797979] tw:placeholder:text-[14px] tw:placeholder:font-normal tw:border-[#D8E0ED] tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
+                      required
+                    />
+                  </div>
+                  <div className="tw:w-full tw:md:w-1/2">
+                    <label className="tw:block tw:text-[16px] tw:font-semibold tw:text-[#3B3B3B]">
+                      {tl("form.checkOut")}
+                    </label>
+                    <Input
+                      type="datetime-local"
+                      name="check_out"
+                      className="tw:w-full tw:p-2 tw:border tw:placeholder:text-[#797979] tw:placeholder:text-[14px] tw:placeholder:font-normal tw:border-[#D8E0ED] tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="tw:block tw:text-[16px] tw:font-semibold tw:text-[#3B3B3B]">
+                    {tl("form.noOfGuests")}
+                  </label>
+                  <div className="tw:flex tw:mt-1 tw:gap-2">
+                    <Input
+                      type="text"
+                      name="guests"
+                      disabled
+                      value={guests}
+                      className="tw:w-full tw:h-[44px] tw:p-2 tw:border tw:placeholder:text-[#797979] tw:placeholder:text-[14px] tw:placeholder:font-normal tw:border-[#D8E0ED] tw:rounded tw:bg-[#F8F9FB] "
+                    />
+                    <button
+                      className="tw:bg-orange-500 tw:w-[44px] tw:h-[44px] tw:rounded tw:flex tw:items-center tw:justify-center"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (guests > 1) setGuests(guests - 1);
+                      }}
+                    >
+                      <Minus size={16} color="white" />
+                    </button>
+                    <button
+                      className="tw:bg-orange-500 tw:w-[44px] tw:h-[44px] tw:rounded tw:flex tw:items-center tw:justify-center"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setGuests(guests + 1);
+                      }}
+                    >
+                      <Plus size={16} color="white" />
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="tw:block tw:text-[16px] tw:font-semibold tw:text-[#3B3B3B]">
+                    {tl("form.additionalInfo")}
+                  </label>
+                  <Input
+                    type="textarea"
+                    name="additional_information"
+                    placeholder={tl("form.leaveAdditionalInfo")}
+                    rows={5}
+                    className="tw:w-full tw:p-2 tw:border tw:placeholder:text-[#797979] tw:placeholder:text-[14px] tw:placeholder:font-normal tw:border-[#D8E0ED] tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
+                  />
+                </div>
+
+
+                {/* Action buttons - stack vertically on mobile only */}
+                <div className="tw:flex tw:flex-col tw:md:flex-row tw:justify-end tw:md:space-x-4 tw:space-y-3 tw:md:space-y-0 tw:mb-4">
                   <button
-                    className="tw:ml-2 tw:bg-orange-500 tw:p-2 tw:py-3 tw:rounded"
+                    type="button"
+                    className="tw:px-4 tw:py-2 tw:bg-white tw:text-[#FF780B] tw:font-medium tw:text-sm tw:rounded tw:border tw:border-[#FF780B] tw:flex tw:justify-center tw:items-center"
                     onClick={(e) => {
                       e.preventDefault();
-                      if (guests > 1) {
-                        setGuests(guests - 1);
-                      }
+                      onSuccess();
                     }}
                   >
-                    <Minus size={16} color="white" />
+                    {tl("form.cancel")}
+                    <Icon
+                      icon="mdi:close"
+                      className="tw:ml-2 tw:text-[#FF780B]"
+                      width={20}
+                      height={20}
+                    />
                   </button>
                   <button
-                    className="tw:ml-2 tw:bg-orange-500 tw:p-2 tw:py-3 tw:rounded"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setGuests(guests + 1);
-                    }}
+                    type="submit"
+                    className="tw:px-4 tw:py-2 tw:bg-orange-500 tw:text-white tw:rounded tw:font-medium tw:text-sm tw:hover:bg-orange-600 tw:flex tw:justify-center tw:items-center"
+                    disabled={isLoading}
                   >
-                    <Plus color="white" size={16} />
+                    {tl("form.add")}
+                    <Icon
+                      icon={isLoading ? "line-md:loading-loop" : "mdi:check"}
+                      className="tw:ml-2"
+                      width={20}
+                      height={20}
+                    />
                   </button>
                 </div>
-              </div>
-              <div>
-                <label className="tw:block tw:text-sm tw:font-medium tw:text-gray-700">
-                  Additional information
-                </label>
-                <Input
-                  type="textarea"
-                  name="additional_information"
-                  rows={5}
-                  className="tw:w-full tw:p-2 tw:border tw:rounded tw:mt-1 tw:bg-[#F8F9FB]"
-                />
-              </div>
-              <div className="tw:flex tw:justify-end tw:space-x-4">
-                <button
-                  type="button"
-                  className="tw:px-4 tw:py-2 tw:bg-gray-200 tw:text-gray-800 tw:rounded tw:hover:bg-gray-300 tw:flex"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onSuccess();
-                  }}
-                >
-                  Cancel
-                  <Icon
-                    icon="mdi:close"
-                    className="tw:ml-2"
-                    width={20}
-                    height={20}
-                  />
-                </button>
-                <button
-                  type="submit"
-                  className="tw:px-4 tw:py-2 tw:bg-orange-500 tw:text-white tw:rounded tw:hover:bg-orange-600 tw:flex tw:items-center"
-                  disabled={isLoading}
-                >
-                  Add
-                  <Icon
-                    icon={isLoading ? "line-md:loading-loop" : "mdi:check"}
-                    className="tw:ml-2"
-                    width={20}
-                    height={20}
-                  />
-                </button>
               </div>
             </div>
           </div>
