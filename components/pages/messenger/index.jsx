@@ -393,7 +393,7 @@ const MessengerPage = ({ locale }) => {
                     color: "#B7B7B7",
                   }}
                 >
-                  <IoMdClose  className="tw:text-[#B7B7B7] tw:w-[24px] tw:h-[24px] tw:md:w-[30px] tw:md:h-[30px]" />
+                  <IoMdClose className="tw:text-[#B7B7B7] tw:w-[24px] tw:h-[24px] tw:md:w-[30px] tw:md:h-[30px]" />
                 </button>
               )}
             </div>
@@ -1020,10 +1020,10 @@ const MessengerPage = ({ locale }) => {
                 className="tw:w-[300px] tw:h-[300px] "
               />
               <h3 className="tw:text-[14px] tw:font-medium tw:text-[#3B3B3B] tw:mb-[10px]">
-                  {t("empty")}
+                {t("empty")}
               </h3>
-                <p className="tw:text-[14px] tw:font-medium tw:text-[#797979] ">
-                  {t("noMessagesDescription")}
+              <p className="tw:text-[14px] tw:font-medium tw:text-[#797979] ">
+                {t("noMessagesDescription")}
               </p>
             </div>
           )}
@@ -1121,29 +1121,29 @@ const MessengerPage = ({ locale }) => {
             }
 
             .modal-drawer {
-  position: fixed;
-  top: 0;
-  height: 100%;
-  background: white;
-  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
-  transform: translateX(100%);
-  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
-  will-change: transform;
-  overflow: hidden;
+              position: fixed;
+              top: 0;
+              height: 100%;
+              background: white;
+              box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+              transform: translateX(100%);
+              transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+              will-change: transform;
+              overflow: hidden;
 
-  /* Mobile styles (default) */
-  right: 0;
-  width: 100%;
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px;
+              /* Mobile styles (default) */
+              right: 0;
+              width: 100%;
+              border-top-left-radius: 16px;
+              border-bottom-left-radius: 16px;
 
-  /* Desktop styles */
-  @media (min-width: 768px) {
-    width: 500px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-}
+              /* Desktop styles */
+              @media (min-width: 768px) {
+                width: 500px;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+              }
+            }
 
             .modal-container.active .modal-drawer {
               transform: translateX(0);
@@ -1196,9 +1196,13 @@ const MessengerPage = ({ locale }) => {
               padding: 0 !important; /* Remove padding from the container */
             }
             .show-searchbar {
-              width: 280px; /* Adjust width for mobile view */
-              margin-left: 10px; /* Adjust padding for mobile view */
+              width: 300px; /* Adjust width for mobile view */
+              margin-left: 15px; /* Adjust padding for mobile view */
             }
+            .hide-searchbar ~ .search-icon {
+            opacity: 1;
+            transition: none;
+          }
 
           }
             @media (min-width: 769px) {

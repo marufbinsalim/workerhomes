@@ -16,6 +16,7 @@ const UserDropdown = ({ session }) => {
   const dropdownRef = useRef(null);
   const router = useRouter();
   const locale = useParams().locale;
+  let t = useTranslations("nav");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -86,7 +87,7 @@ const UserDropdown = ({ session }) => {
           >
             <LuUser className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
             <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">
-              My profile
+              {t("myProfile")}
             </p>
           </div>
 
@@ -102,7 +103,7 @@ const UserDropdown = ({ session }) => {
           >
             <MdLogout className="tw:w-6 tw:h-6 tw:text-[var(--color-font-dark)]" />
             <p className="tw:text-[14px] tw:my-auto tw:font-normal tw:text-[var(--color-font-dark)]">
-              Logout
+              {t("logout")}
             </p>
           </div>
         </div>
@@ -344,7 +345,7 @@ const Navbar = ({ session }) => {
                 onClick={() => router.push("/login")}
                 className="tw:bg-[#040342] tw:text-white tw:text-sm tw:lg:text-base tw:px-4 tw:py-1.5 tw:rounded tw:font-medium"
               >
-                Sign In / Register
+                  {t("links.signInRegister")}
               </button>
             )}
 
